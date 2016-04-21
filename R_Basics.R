@@ -43,7 +43,7 @@ ggplot(train, aes(Item_Type, Item_MRP)) +
 # combine training data and testing data
 # An intuitive approach would be to extract 
 # the mean value of targest from train data set and use it as placeholder for test, here just use 1
-test$Item_Outlet_Sales <-  1
+test$Item_Outlet_Sales <- 1
 combi <- rbind(train, test)
 
 # impute missing value using median, which is robust to outliers
