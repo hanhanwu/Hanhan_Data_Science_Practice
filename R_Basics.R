@@ -22,23 +22,23 @@ summary(train)
 # Graphical Representation of Variables
 library("ggplot2", lib.loc="/Library/Frameworks/R.framework/Versions/3.2/Resources/library")
 
-ggplot(train, aes(x= Item_Visibility, y = Item_Outlet_Sales)) 
-  + geom_point(size = 2.5, color="navy") + xlab("Item Visibility") + ylab("Item Outlet Sales")
+ggplot(train, aes(x= Item_Visibility, y = Item_Outlet_Sales)) +
+   geom_point(size = 2.5, color = "navy") + xlab("Item Visibility") + ylab("Item Outlet Sales")
 
-ggplot(train, aes(Outlet_Identifier, Item_Outlet_Sales)) 
-  + geom_bar(stat = "identity", color = "purple") 
-  + theme(axis.text.x = element_text(size=6), axis.text.y = element_text(size=6), 
+ggplot(train, aes(Outlet_Identifier, Item_Outlet_Sales)) +
+   geom_bar(stat = "identity", color = "purple") +
+   theme(axis.text.x = element_text(size=6), axis.text.y = element_text(size=6), 
           panel.background = element_rect(fill = "white"), 
           panel.grid.major = element_line(colour = "grey"), 
           panel.grid.minor = element_blank())
 
-ggplot(train, aes(Item_Type, Item_Outlet_Sales)) 
-  + geom_bar( stat = "identity") 
-  +theme(axis.text.x = element_text(angle = 70, vjust = 0.5), panel.grid.minor = element_blank())
+ggplot(train, aes(Item_Type, Item_Outlet_Sales)) +
+   geom_bar( stat = "identity") +
+   theme(axis.text.x = element_text(angle = 70, vjust = 0.5), panel.grid.minor = element_blank())
 
-ggplot(train, aes(Item_Type, Item_MRP)) 
-  +geom_boxplot() +ggtitle("Box Plot") 
-  + theme(axis.text.x = element_text(angle = 70, vjust = 0.5))
+ggplot(train, aes(Item_Type, Item_MRP)) +
+  geom_boxplot() +ggtitle("Box Plot") +
+  theme(axis.text.x = element_text(angle = 70, vjust = 0.5))
 
 # combine training data and testing data
 # An intuitive approach would be to extract 
