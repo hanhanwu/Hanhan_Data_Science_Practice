@@ -8,6 +8,7 @@ data analysis, big data development, cloud, and any other cool things!
 
   * Problem Statement: http://datahack.analyticsvidhya.com/contest/practice-problem-bigmart-sales-prediction
   * data set: R_basics_train.csv, R_basics_test.csv
+  * cleaned data sets: new_train.csv, nnew_test.csv
   * R code: R_Basics.R
 
 
