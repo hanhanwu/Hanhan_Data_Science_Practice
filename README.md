@@ -22,6 +22,6 @@ CLOUD for DATA SCIENCE
  https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Spark_Cluster_hdfs_commands.py
 
 
-* Azure Machine Learning
+* Azure Machine Learning (AzureML)
   
- * 
+ * AzureML Studio R Script with Time Series Forecasting: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AzureML_time_series_forcasting.md
