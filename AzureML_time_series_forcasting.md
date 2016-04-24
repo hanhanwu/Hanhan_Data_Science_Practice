@@ -12,3 +12,5 @@ https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/time_series
 
 * Execute R Script Module 3 - build a trend model and a seasonal model: 
 https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/time_series_forecasting_seasonal_models.R
+
+* Origional Tutorial: https://azure.microsoft.com/en-us/documentation/articles/machine-learning-r-quickstart/
