@@ -20,3 +20,8 @@ CLOUD for DATA SCIENCE
  
  * Spark Cluster FileSystem commands:
  https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Spark_Cluster_hdfs_commands.py
+
+
+* Azure Machine Learning
+  
+ * 
