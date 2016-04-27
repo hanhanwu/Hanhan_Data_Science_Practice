@@ -1,5 +1,5 @@
 #set working directory
-path<- "/Users/hanhanwu/Desktop"
+path<- "[the root dir for your data sets]"
 setwd(path)
 
 # load data
