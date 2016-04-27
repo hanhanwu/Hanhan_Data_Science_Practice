@@ -21,6 +21,10 @@ PCA (Principle Component Analysis) for DIMENSION REDUCTION
  * R code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/PCA_practice.R
  * data set: R_basics_train.csv, R_basics_test.csv
 
+* Python Version
+
+ * Python code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/PCA_practice.py
+ * data set: PCA_combi.csv
 
 ********************************************
 
