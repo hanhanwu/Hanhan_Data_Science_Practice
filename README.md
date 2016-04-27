@@ -14,6 +14,16 @@ data analysis, big data development, cloud, and any other cool things!
 
 ********************************************
 
+PCA (Principle Component Analysis) for DIMENSION REDUCTION
+
+* R Version
+
+ * R code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/PCA_practice.R
+ * data set: R_basics_train.csv, R_basics_test.csv
+
+
+********************************************
+
 CLOUD for DATA SCIENCE
 
 * Databrics Cloud (Spark Cluster)
