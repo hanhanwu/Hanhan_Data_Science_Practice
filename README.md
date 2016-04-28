@@ -14,17 +14,26 @@ data analysis, big data development, cloud, and any other cool things!
 
 ********************************************
 
-PCA (Principle Component Analysis) for DIMENSION REDUCTION
+DIMENSION REDUCTION
 
-* R Version
+* PCA (Principle Component Analysis) - R Version
 
  * R code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/PCA_practice.R
  * data set: R_basics_train.csv, R_basics_test.csv
 
-* Python Version
+* PCA (Principle Component Analysis) - Python Version
 
  * Python code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/PCA_practice.py
  * data set: PCA_combi.csv
+ 
+* PLS (Partial Least Squares) - R Version
+
+ * R code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/PLS_practice.R
+ * data set: R_basics_train.csv, R_basics_test.csv
+
+* NOTE
+ * PCA is a unsupervised method while PLS is a supervised method. Therefore PLS is used when you want to find columns closely related to the label column. When there is just 1 label column, use R plsreg1(), when there are 1+ label columns, use R plsreg2()
+ * In the code, when I was using PCA, it has funtion to help rescale values, when I was using PLS, I wrote data rescaling code, when compare the result with the code without rescaling, the result was worse.
 
 ********************************************
 
