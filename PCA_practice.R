@@ -39,6 +39,9 @@ levels(combi$Outlet_Identifier)
 levels(combi$Item_Type)
 levels(combi$Item_Identifier)
 
+combi$Item_Outlet_Sales[is.na(combi$Item_Outlet_Sales)] <- median(combi$Item_Outlet_Sales, na.rm = TRUE)
+levels(combi$Outlet_Type)[1] <- "Other"
+
 ## 3. When there are mismatched data, standaridize them
 library("plyr", lib.loc="/Library/Frameworks/R.framework/Versions/3.2/Resources/library")
 combi$Item_Fat_Content <- revalue(combi$Item_Fat_Content,
