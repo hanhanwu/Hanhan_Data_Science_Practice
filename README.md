@@ -20,6 +20,7 @@ DIMENSION REDUCTION
 
  * R code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/PCA_practice.R
  * data set: R_basics_train.csv, R_basics_test.csv
+ * Why using One Hot encoding to convert categorical data into numerical data and only choose the top N columns after using PCA is right: http://stats.stackexchange.com/questions/209711/why-convert-categorical-data-into-numerical-using-one-hot-encoding
 
 * PCA (Principle Component Analysis) - Python Version
 
