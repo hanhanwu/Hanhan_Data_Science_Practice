@@ -60,7 +60,7 @@ KAGGLE PRACICE
 * Who Will Purchase The Insurance
 
  * dataset: https://www.kaggle.com/c/homesite-quote-conversion/data
- * R code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/who_will_purchase_insurance.R
+ * Data Preprocessing: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/who_will_purchase_insurance_preprocessing.R
  
  -- Notes
  * Dimensional Reduction: I tried FAMD model first, since it supposed to handle the mix of categorical and numerical data. But my laptop didn't have enough memory to finish this. Then I changed to PCA, but needed to convert categorical data into numerical data myself first. After running PCA, it shows that the first 150-180 columns comtain the major info of the data.
