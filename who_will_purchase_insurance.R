@@ -176,3 +176,27 @@ plot(cumsum(prop_varex), xlab = "Principal Component",
      ylab = "Cumulative Proportion of Variance Explained",
      type = "b")
 # The first 150-180 columns contain the most info
+
+
+# predictive analysis
+new_train <- combi[1:nrow(train),]
+new_train <- subset(new_train, select = 1:150)
+new_test <- combi[-(1:nrow(train)),]
+new_test <- subset(new_test, select = 1:150)
+new_train$QuoteConversion_Flag <- train$QuoteConversion_Flag
+dim(new_train)
+dim(new_test)
+
+## SVM (too slow in R on my laptop)
+library("e1071")
+svm_model <- svm(QuoteConversion_Flag ~ ., data=new_train)
+
+## NN (too slow in R on my laptop)
+library(MASS)
+library(neuralnet)
+n <- names(new_train)
+f <- as.formula(paste("QuoteConversion_Flag ~", 
+                      paste(n[!n %in% "QuoteConversion_Flag"], collapse = " + ")))
+hd <- length(n)
+nn <- neuralnet(f,data=new_train,hidden=hd,linear.output=T)
+
