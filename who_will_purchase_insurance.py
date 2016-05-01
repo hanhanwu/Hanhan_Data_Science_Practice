@@ -44,17 +44,13 @@ def to_LP_testing(line):
         return None
 
 
-
-
-
-
 def main():
     training_rdd = sc.textFile(train_inputs).map(to_LP_training).filter(lambda lp: lp!=None)
     testing_rdd = sc.textFile(test_inputs).map(to_LP_testing).filter(lambda lp: lp!=None).zipWithIndex()
 
     svm_model = SVMWithSGD.train(training_rdd, iterations=10)
     svm_prediction = testing_rdd.map(lambda (sv, idx): (svm_model.predict(sv), idx))
-    print svm_prediction.take(50)
+    print svm_prediction.filter(lambda (p,idx):p!=0).collect()
 
 if __name__ == "__main__":
     main()
