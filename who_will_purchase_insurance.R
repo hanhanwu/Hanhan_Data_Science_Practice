@@ -206,3 +206,7 @@ pr.nn <- compute(nn,new_test)
 result$QuoteConversion_Flag <- pr.nn$net.result
 result$QuoteNumber <- new_text$QuoteNumber
 write.csv(result, "result.csv")
+
+# output the processed data so that they can be used on other machine learning tools
+write.csv(new_train, "insurance_new_train.csv", row.names=FALSE)
+write.csv(new_test, "insurance_new_test.csv", row.names=FALSE)
