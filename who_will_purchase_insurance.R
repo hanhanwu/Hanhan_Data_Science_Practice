@@ -200,3 +200,9 @@ f <- as.formula(paste("QuoteConversion_Flag ~",
 hd <- length(n)
 nn <- neuralnet(f,data=new_train,hidden=hd,linear.output=T)
 
+plot(nn)
+
+pr.nn <- compute(nn,new_test)
+result$QuoteConversion_Flag <- pr.nn$net.result
+result$QuoteNumber <- new_text$QuoteNumber
+write.csv(result, "result.csv")
