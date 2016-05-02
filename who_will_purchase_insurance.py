@@ -1,3 +1,4 @@
+# The data set is cleaned data from who_will_purchase_insurance.R
 __author__ = 'hanhanwu'
 
 import sys
