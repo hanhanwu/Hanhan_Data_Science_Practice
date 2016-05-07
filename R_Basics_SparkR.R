@@ -51,3 +51,42 @@ colSums(is.na(combi))
 ##  1. Item_Visibility == 0 is impossible in practice 
 combi$Item_Visibility <- ifelse(combi$Item_Visibility == 0,
                                 median(combi$Item_Visibility), combi$Item_Visibility)
+max(combi$Item_Visibility)
+min(combi$Item_Visibility)
+
+## 2. When there is missing categorical data, using "Other" to replace
+unique(combi$Outlet_Size)
+combi$Outlet_Size <- ifelse(combi$Outlet_Size == "",
+                                "Other", combi$Outlet_Size)
+unique(combi$Outlet_Size)
+
+## 3. When there are mismatched data, standaridize them
+library("plyr")
+unique(combi$Item_Fat_Content)
+combi$Item_Fat_Content <- revalue(combi$Item_Fat_Content,
+                                  c("LF" = "Low Fat", "reg" = "Regular"))
+combi$Item_Fat_Content <- revalue(combi$Item_Fat_Content, c("low fat" = "Low Fat"))
+unique(combi$Item_Fat_Content)
+
+combi$Year <- 2013 - combi$Outlet_Establishment_Year
+
+#drop variables not required in modeling
+library("dplyr")
+combi <- select(combi, -c(Item_Identifier, Outlet_Identifier, Outlet_Establishment_Year))
+
+new_train <- combi[1:nrow(train_df),]
+new_test <- combi[-(1:nrow(train_df)),]
+dim(new_train)
+dim(new_test)
+
+# Model 1: Linear Regression
+linear_model <- lm(Item_Outlet_Sales ~ ., data = new_train)
+plot(linear_model) # can only show 1 plot even after using par(mfrow=c(2,2))
+linear_model <- lm(log(Item_Outlet_Sales) ~ ., data = new_train)
+plot(linear_model)
+
+# does not support Metrics package, since Saprk R may have lower version in my community edition
+# library("Metrics")
+# rmse(new_train$Item_Outlet_Sales, exp(linear_model$fitted.values))
+
+# does not support decision tree or rendom forest either since package "e1071" cannot be installed in the community edition
