@@ -10,6 +10,9 @@ data analysis, big data development, cloud, and any other cool things!
   * data set: R_basics_train.csv, R_basics_test.csv
   * cleaned data sets: new_train.csv, nnew_test.csv
   * R code: R_Basics.R
+  * Spark R code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/R_Basics_SparkR.R
+ 
+Note: The Spark R Notebook I am using is community editon, because R version maybe lower, many package in R Basics have not been supported.
 
 
 ********************************************
