@@ -1,4 +1,3 @@
-# The data set is cleaned data from who_will_purchase_insurance.R
 __author__ = 'hanhanwu'
 
 import sys
@@ -6,7 +5,7 @@ from pyspark import SparkConf, SparkContext
 from pyspark.sql import SQLContext
 from pyspark.mllib.linalg import SparseVector
 from pyspark.mllib.regression import LabeledPoint
-from pyspark.mllib.classification import LogisticRegressionWithSGD, SVMWithSGD
+from pyspark.mllib.classification import LogisticRegressionWithSGD, SVMWithSGD, LogisticRegressionWithLBFGS
 
 conf = SparkConf().setAppName("who will buy insurance")
 sc = SparkContext(conf=conf)
@@ -45,13 +44,29 @@ def to_LP_testing(line):
         return None
 
 
+
 def main():
     training_rdd = sc.textFile(train_inputs).map(to_LP_training).filter(lambda lp: lp!=None)
     testing_rdd = sc.textFile(test_inputs).map(to_LP_testing).filter(lambda lp: lp!=None).zipWithIndex()
 
-    svm_model = SVMWithSGD.train(training_rdd, iterations=10)
-    svm_prediction = testing_rdd.map(lambda (sv, idx): (svm_model.predict(sv), idx))
-    print svm_prediction.filter(lambda (p,idx):p!=0).collect()
+    # Logistic Regression with SGD
+    lg_model = LogisticRegressionWithSGD.train(training_rdd, step = 0.1, regType = 'l1')
+    lg_prediction = testing_rdd.map(lambda (fs, idx): (lg_model.predict(fs), idx))
+
+
+    # Logistic Regression with LBFGS
+    lg_model2 = LogisticRegressionWithLBFGS.train(training_rdd)
+    lg_prediction2 = testing_rdd.map(lambda (fs, idx): (lg_model2.predict(fs), idx))
+
+
+    # SVM with SGD
+    svm_model = SVMWithSGD.train(training_rdd, step = 0.01)
+    svm_prediction = testing_rdd.map(lambda (fs, idx): (svm_model.predict(fs), idx))
+
+
+    print 'Logistic Regression with SGD results: ', len(lg_prediction.filter(lambda (p,idx):p!=0).collect())
+    print 'Logistic Regression with LBFGS results: ', len(lg_prediction2.filter(lambda (p,idx):p!=0).collect())
+    print 'SVM with SGD results: ', len(svm_prediction.filter(lambda (p,idx):p!=0).collect())
 
 if __name__ == "__main__":
     main()
