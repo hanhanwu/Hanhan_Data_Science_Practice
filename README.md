@@ -14,6 +14,12 @@ data analysis, big data development, cloud, and any other cool things!
  
 Note: The Spark R Notebook I am using is community editon, because R version maybe lower, many package in R Basics have not been supported.
 
+* R data.table Basics
+
+ * data.table is much faster than R data.frame
+ * free tutorial: https://www.datacamp.com/courses/data-analysis-the-data-table-way
+ * R code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/R_data.table_basics.R
+
 
 ********************************************
 
