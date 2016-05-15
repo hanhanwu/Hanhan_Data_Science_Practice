@@ -21,6 +21,10 @@ Note: The Spark R Notebook I am using is community editon, because R version may
  * R code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/R_data.table_basics.R
 
 
+* Deal with Imbalanced Dataset in Classification
+
+ * R code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/deal_with_imbalanced_dataset.R
+
 ********************************************
 
 DIMENSION REDUCTION
