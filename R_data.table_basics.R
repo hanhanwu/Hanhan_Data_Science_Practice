@@ -58,6 +58,28 @@ DT <- as.data.table(iris)
 DT[, mean(Sepal.Length), by=Species]
 ## Print mean Sepal.Length, grouping by first letter of Species
 DT[, mean(Sepal.Length), by=substr(Species, 1, 1)]
+## order the columns, "-" means descending order
+order_DT <- DT[order(Sepal.Length, -Sepal.Width)]
+head(order_DT)
+## add a column
+DT[, new_col:= Sepal.Width+Sepal.Length]
+head(DT)
+## update a column
+table(DT$Species)
+DT[Species == 'setosa', Species:= 'Setosa']
+table(DT$Species)
+## delete columns
+head(DT)
+DT[, c("new_col") := NULL]
+head(DT)
+## chaining of changes
+DT[, new_col:= Sepal.Width+Sepal.Length][Species == 'setosa', Species:= 'Setosa'][, c("new_col") := NULL]
+## use keys for subset
+setkey(DT, Species)
+sub_DT1 <- DT[.("Setosa")]
+sub_DT2 <- DT[.("Setosa", "virginica")]   # the second class has been added as a new column
+dim(sub_DT1)
+dim(sub_DT2)
 
 
 ## use .N in j with by, will count number of rows in each group
