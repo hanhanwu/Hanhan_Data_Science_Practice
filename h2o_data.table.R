@@ -79,6 +79,37 @@ combi$Product_Category_3 <- as.integer(combi$Product_Category_3)
 install.packages("h2o")
 library(h2o)
 
+new_train <- combi[1:nrow(train),]
+new_test <- combi[1:nrow(test),]
+
+# product_category_1 has 20 items while, product_category_2, 
+# product_category_3 all have 18, so there maybe some noise in product_category_1
+new_train <- new_train[new_train$Product_Category_1 <= 18,]
 
 
+# H2O will use CPU memories
+local_h2o <- h2o.init(nthreads = -1)
+## check connection
+h2o.init() 
 
+## transfer data into H2O instance
+h2o_train <- as.h2o(new_train)
+h2o_test <- as.h2o(new_test)
+
+# check column indexing number
+colnames(h2o_train)
+# Purchase (dependent variable/label) is #14
+y.dep <- 14
+# independent variables and drop IDs
+x.indep <- c(3:13, 15:20)
+
+
+# Multiple Regression in H2O
+h2o_regression_model <- h2o.glm(y = y.dep, x = x.indep, training_frame = h2o_train, family = "gaussian")
+h2o.performance(h2o_regression_model)
+## low R2 here means that only 32.6% of the variance in the dependent variable
+## is explained by independent variable and rest is unexplained. 
+## This shows that regression model is unable to capture non linear relationships
+reg_predict <- as.data.frame(h2o.predict(h2o_regression_model, h2o_test))
+result <- data.frame(User_ID = test$User_ID, Product_ID = test$Product_ID, Purchase = reg_predict$predict)
+# write.csv(result, "result.csv", row.names = F)
