@@ -66,7 +66,7 @@ combi[, Product_Count := .N, by = Product_ID]
 combi[, Mean_Purchase_Product := mean(Purchase), by = Product_ID]
 ## Mean_Purchase_User
 combi[, Mean_Purchase_User := mean(Purchase), by = Product_ID]
-## one hot encoding with City_Category
+## one-hot encoding with City_Category
 library(dummies)
 combi <- dummy.data.frame(combi, names = c("City_Category"), sep = "_")
 
@@ -112,4 +112,13 @@ h2o.performance(h2o_regression_model)
 ## This shows that regression model is unable to capture non linear relationships
 reg_predict <- as.data.frame(h2o.predict(h2o_regression_model, h2o_test))
 result <- data.frame(User_ID = test$User_ID, Product_ID = test$Product_ID, Purchase = reg_predict$predict)
+# write.csv(result, "result.csv", row.names = F)
+
+
+# Random Forest in H2O
+h2o_random_forest_model <- h2o.randomForest(y = y.dep, x = x.indep, training_frame = h2o_train, 
+                                            ntrees = 1000, mtries = 3,max_depth = 4,  seed = 1)
+h2o.performance(h2o_random_forest_model)
+rf_predict <- as.data.frame(h2o.predict(h2o_random_forest_model, h2o_test))
+result <- data.frame(User_ID = test$User_ID, Product_ID = test$Product_ID, Purchase = rf_predict$predict)
 # write.csv(result, "result.csv", row.names = F)
