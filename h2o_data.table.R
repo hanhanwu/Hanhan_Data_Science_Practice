@@ -119,6 +119,30 @@ result <- data.frame(User_ID = test$User_ID, Product_ID = test$Product_ID, Purch
 h2o_random_forest_model <- h2o.randomForest(y = y.dep, x = x.indep, training_frame = h2o_train, 
                                             ntrees = 1000, mtries = 3,max_depth = 4,  seed = 1)
 h2o.performance(h2o_random_forest_model)
+## check variable importance
+h2o.varimp(h2o_random_forest_model)
 rf_predict <- as.data.frame(h2o.predict(h2o_random_forest_model, h2o_test))
 result <- data.frame(User_ID = test$User_ID, Product_ID = test$Product_ID, Purchase = rf_predict$predict)
+# write.csv(result, "result.csv", row.names = F)
+
+
+# GBM in H2O, a boosting algorithm
+h2o_gbm_model <- h2o.gbm(y = y.dep, x = x.indep, training_frame = h2o_train,
+                         ntrees = 1000, max_depth = 4, learn_rate = 0.01, seed = 1)
+h2o.performance(h2o_gbm_model)
+h2o.varimp(h2o_gbm_model)
+gbm_predict <- as.data.frame(h2o.predict(h2o_gbm_model, h2o_test))
+result <- data.frame(User_ID = test$User_ID, Product_ID = test$Product_ID, Purchase = gbm_predict$predict)
+# write.csv(result, "result.csv", row.names = F)
+
+
+# Deep Learning in H2O
+## 2 layers hidden layers here with 100 neurons each layer
+## epochs is the number of passes on the train data to be carried out
+## activation indicates the activation function
+h2o_deep_learning_model <- h2o.deeplearning(y = y.dep, x = x.indep, training_frame = h2o_train,
+                                            epochs = 60, hidden = c(100, 100), activation = "Rectifier", seed = 1)
+h2o.performance(h2o_deep_learning_model)
+dp_predict <- as.data.frame(h2o.predict(h2o_deep_learning_model, h2o_test))
+result <- data.frame(User_ID = test$User_ID, Product_ID = test$Product_ID, Purchase = dp_predict$predict)
 # write.csv(result, "result.csv", row.names = F)
