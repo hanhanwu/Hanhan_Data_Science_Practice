@@ -146,3 +146,12 @@ h2o.performance(h2o_deep_learning_model)
 dp_predict <- as.data.frame(h2o.predict(h2o_deep_learning_model, h2o_test))
 result <- data.frame(User_ID = test$User_ID, Product_ID = test$Product_ID, Purchase = dp_predict$predict)
 # write.csv(result, "result.csv", row.names = F)
+
+
+
+# Using h2o.grid for param tuning, sort models through MSE
+grid <- h2o.grid("gbm", x = c(1:4), y = 5, training_frame = h2o_train,
+                 hyper_params = list(ntrees = c(1,2,3)))
+grid     # get grid_id in the output
+auc_table <- h2o.getGrid(grid_id = "Grid_GBM_iris_model_R_1463635853570_1", 
+                         sort_by = "mse", decreasing = TRUE)
