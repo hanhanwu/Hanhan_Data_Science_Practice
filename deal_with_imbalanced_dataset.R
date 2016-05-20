@@ -86,3 +86,10 @@ plot(pf2, add = TRUE, colorize = TRUE)
 plot(pf3, add = TRUE, colorize = TRUE)
 plot(pf4, add = TRUE, colorize = TRUE)
 
+
+# An alternative easier way to plot all the ROC curves together with AUC
+
+library(pROC)
+p<- plot(roc(hacide.test$cls, pred_rose[,2]), print.auc = TRUE, col = "blue")
+p <- plot(roc(hacide.test$cls, pred_both[,2]), print.auc = TRUE, 
+                       col = "green", print.auc.y = .4, add = TRUE)
