@@ -149,9 +149,17 @@ result <- data.frame(User_ID = test$User_ID, Product_ID = test$Product_ID, Purch
 
 
 
-# Using h2o.grid for param tuning, sort models through MSE
-grid <- h2o.grid("gbm", x = c(1:4), y = 5, training_frame = h2o_train,
-                 hyper_params = list(ntrees = c(1,2,3)))
-grid     # get grid_id in the output
-auc_table <- h2o.getGrid(grid_id = "Grid_GBM_iris_model_R_1463635853570_1", 
-                         sort_by = "mse", decreasing = TRUE)
+# Using h2o.grid for param tuning, sort models through MSE, then get predicions for each model
+grid <- h2o.grid("deeplearning", x = x.indep, y = y.dep, training_frame = h2o_train,
+                 hyper_params = list(epochs = c(10, 60, 100), 
+                                     hidden = c(100,100), 
+                                     activation = c("Rectifier", "Maxout"),
+                                     seed = 1))
+grid   # get grid_id in the output
+mse_table <- h2o.getGrid(grid_id = "Grid_DeepLearning_new_train_model_R_1463718746513_2",
+                         sort_by = "mse", decreasing = TRUE)     
+mse_table    # show details of model ranking and mses
+
+model_ids <- grid@model_ids
+models <- lapply(model_ids, function(id) { h2o.getModel(id) })
+predictions <- lapply(models, function(m) { as.data.frame(h2o.predict(m, h2o_test)) })
