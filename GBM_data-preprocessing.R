@@ -3,8 +3,9 @@ setwd(path)
 
 library(data.table)
 
-train <- fread("GBM_train.csv")
-test <- fread("GBM_test.csv")
+# using stringAsFactor so that categorical data will be easier to read in summary()
+train <- fread("GBM_train.csv", stringsAsFactors = T)
+test <- fread("GBM_test.csv", stringsAsFactors = T)
 
 dim(train)
 dim(test)
