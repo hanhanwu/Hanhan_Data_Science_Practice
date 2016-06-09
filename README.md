@@ -14,6 +14,7 @@ data analysis, big data development, cloud, and any other cool things!
  
 Note: The Spark R Notebook I am using is community editon, because R version maybe lower, many package in R Basics have not been supported.
 
+
 * R data.table Basics
 
  * data.table is much faster than R data.frame
@@ -30,6 +31,12 @@ Note: The Spark R Notebook I am using is community editon, because R version may
 
  * R code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/h2o_data.table.R
  * dataset: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/h2o_data.zip
+ 
+
+* 7 Commonly used R data summary methods
+
+ * R code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/R_summarize_methods.R
+ 
 
 ********************************************
 
