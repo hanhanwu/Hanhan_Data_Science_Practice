@@ -20,4 +20,10 @@ dim(unique(train[, .(City)]))
 train[, c("City") := NULL]
 test[, c("City") := NULL]
 
-
+# convert DOB to age
+## convert to R standard Date format first
+train$DOB <- as.character(train$DOB)
+str(train$DOB)
+ptn <- '(\\d\\d-\\w\\w\\w-)(\\d\\d)'
+train$DOB <- sub(ptn, '\\119\\2', train$DOB)
+str(train$DOB)
