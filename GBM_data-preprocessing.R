@@ -37,3 +37,9 @@ str(train$DOB)
 train$DOB <- floor(age_calc(train$DOB, units = "years"))   # you may get warning, it's ok
 str(train$DOB)
 summary(train$DOB)
+
+## rename DOB as Age
+train[,Age := DOB]
+summary(train)
+train[, DOB := NULL]
+summary(train)
