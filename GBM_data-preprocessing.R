@@ -30,6 +30,10 @@ ptn <- '(\\d\\d-\\w\\w\\w-)(\\d\\d)'
 train$DOB <- sub(ptn, '\\119\\2', train$DOB)
 str(train$DOB)
 
+test$DOB <- as.character(test$DOB)
+test$DOB <- sub(ptn, '\\119\\2', test$DOB)
+str(test$DOB)
+
 ## convert DOB to Age, default is Age in months
 library(eeptools)
 train$DOB <- as.Date(train$DOB, "%d-%b-%Y")
@@ -38,8 +42,23 @@ train$DOB <- floor(age_calc(train$DOB, units = "years"))   # you may get warning
 str(train$DOB)
 summary(train$DOB)
 
+test$DOB <- as.Date(test$DOB, "%d-%b-%Y")
+test$DOB <- floor(age_calc(test$DOB, units = "years")) 
+summary(test$DOB)
+
 ## rename DOB as Age
-train[,Age := DOB]
+train[, Age := DOB]
 summary(train)
 train[, DOB := NULL]
+summary(train)
+
+test[, Age := DOB]
+test[, DOB := NULL]
+summary(test)
+
+# drop EmployerName, which has many distinct values
+train[, Employer_Name := NULL]
+summary(train)
+
+test[, Employer_Name := NULL]
 summary(train)
