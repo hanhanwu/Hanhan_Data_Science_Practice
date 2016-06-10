@@ -22,8 +22,18 @@ test[, c("City") := NULL]
 
 # convert DOB to age
 ## convert to R standard Date format first
+## If simply use as.Date(), some years wil be convert to the wrong format, 
+## I have to use regex here
 train$DOB <- as.character(train$DOB)
 str(train$DOB)
 ptn <- '(\\d\\d-\\w\\w\\w-)(\\d\\d)'
 train$DOB <- sub(ptn, '\\119\\2', train$DOB)
 str(train$DOB)
+
+## convert DOB to Age, default is Age in months
+library(eeptools)
+train$DOB <- as.Date(train$DOB, "%d-%b-%Y")
+str(train$DOB)
+train$DOB <- floor(age_calc(train$DOB, units = "years"))   # you may get warning, it's ok
+str(train$DOB)
+summary(train$DOB)
