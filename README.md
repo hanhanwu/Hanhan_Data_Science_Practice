@@ -36,7 +36,12 @@ Note: The Spark R Notebook I am using is community editon, because R version may
 * 7 Commonly used R data summary methods
 
  * R code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/R_summarize_methods.R
+
+
+* 5 R packages to help deal with missing values
  
+ * R code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/5R_packages_for_missing_values.R
+ * MICE package creator description: http://www.stefvanbuuren.nl/mi/MI.html
 
 ********************************************
 
