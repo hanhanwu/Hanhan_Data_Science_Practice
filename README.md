@@ -42,6 +42,7 @@ Note: The Spark R Notebook I am using is community editon, because R version may
  
  * R code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/5R_packages_for_missing_values.R
  * MICE package creator description: http://www.stefvanbuuren.nl/mi/MI.html
+ * Amelia package: This package (Amelia II) is named after Amelia Earhart, the first female aviator to fly solo across the Atlantic Ocean. History says, she got mysteriously disappeared (missing) while flying over the pacific ocean in 1937, hence this package was named to solve missing value problems.  
 
 ********************************************
 
