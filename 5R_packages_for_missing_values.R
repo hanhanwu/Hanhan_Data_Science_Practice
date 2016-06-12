@@ -63,3 +63,19 @@ write.amelia(amelia_imputed, file.stem = "amelia_imputed_data")
 
 
 # missForest package
+## It builds a random forest model for each variable. 
+## Then it uses the model to predict missing values in the variable with the help of observed values.
+library(missForest)
+data("iris")
+iris.mis <- prodNA(iris, noNA = 0.1)
+summary(iris.mis)
+# This one is so simple
+missForest_imputed <- missForest(iris.mis)
+
+# check imputed outputs
+summary(missForest_imputed$ximp)
+# check imputation error - NRMSE indicates the error for continuous values, PFC indicates categorical values
+missForest_imputed$OOBerror
+# compare actual imputation accuracy, in order to get lower error rate, we could tune the params in missForest()
+missForest_error <- mixError(missForest_imputed$ximp, iris.mis, iris)
+missForest_error
