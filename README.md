@@ -41,8 +41,9 @@ Note: The Spark R Notebook I am using is community editon, because R version may
 * 5 R packages to help deal with missing values
  
  * R code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/5R_packages_for_missing_values.R
- * MICE package creator description: http://www.stefvanbuuren.nl/mi/MI.html
- * Amelia package: This package (Amelia II) is named after Amelia Earhart, the first female aviator to fly solo across the Atlantic Ocean. History says, she got mysteriously disappeared (missing) while flying over the pacific ocean in 1937, hence this package was named to solve missing value problems.  
+ * <b>MICE</b> package creator description: http://www.stefvanbuuren.nl/mi/MI.html
+ * <b>Amelia</b> package: This package (Amelia II) is named after Amelia Earhart, the first female aviator to fly solo across the Atlantic Ocean. History says, she got mysteriously disappeared (missing) while flying over the pacific ocean in 1937, hence this package was named to solve missing value problems.  
+ * <b>missForest</b> package: it is implemented on Random Forest, and offers methods to check imputation error, actual imputation accuracy, simply by tuning the parameters of the missForest() function, we can lower the error rate
 
 ********************************************
 
