@@ -33,8 +33,33 @@ imputed_data$imp$Sepal.Width
 # here, with complete(), we can choose a certain dataset
 complete_data <- complete(imputed_data, 4)
 summary(complete_data)
-# build predictive model on all the m datasets, use with() method
+# build predictive model on all the m imputed datasets, use with() method
 fit <- with(data = imputed_data, exp = lm(Sepal.Width ~ Sepal.Length+Sepal.Width))
 # combine results of the analysis on m datasets
 combine <- pool(fit)
 summary(combine)
+
+
+
+# Amelia package
+## It assumpes that All variables in a data set have Multivariate Normal Distribution (MVN). 
+## It uses means and covariances to summarize data. 
+## It also auupmes Missing data is random in nature (Missing at Random)
+## This package works best when data has multivariable normal distribution
+library(Amelia)
+data("iris")
+iris.mis <- prodNA(iris, noNA = 0.1)
+summary(iris.mis)
+amelia_imputed<- amelia(iris.mis, m = 5, parallel = "multicore", noms = "Species")
+
+# check imputed outputs, or a specific column in an output
+summary(amelia_imputed$imputations[[1]])
+summary(amelia_imputed$imputations[[5]])
+summary(amelia_imputed$imputations[[4]]$Sepal.Length)
+
+# output the imputed data
+write.amelia(amelia_imputed, file.stem = "amelia_imputed_data")
+
+
+
+# missForest package
