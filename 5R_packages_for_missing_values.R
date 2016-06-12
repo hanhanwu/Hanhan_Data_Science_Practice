@@ -76,6 +76,36 @@ missForest_imputed <- missForest(iris.mis)
 summary(missForest_imputed$ximp)
 # check imputation error - NRMSE indicates the error for continuous values, PFC indicates categorical values
 missForest_imputed$OOBerror
-# compare actual imputation accuracy, in order to get lower error rate, we could tune the params in missForest()
+# compare actual imputation accuracy, in order to get lower error rate, 
+## we could tune the params in missForest(), mtry and ntree
 missForest_error <- mixError(missForest_imputed$ximp, iris.mis, iris)
 missForest_error
+
+
+
+# Hmisc package
+## It assumes linearity in the variables being predicted.
+library(Hmisc)
+data("iris")
+iris.mis <- prodNA(iris, noNA = 0.1)
+summary(iris.mis)
+
+# impute(), you can impute with mean, median, min, max, random values
+## impute with mean
+iris.mis$imputed_mean <- with(iris.mis, impute(Sepal.Length, mean))
+summary(iris.mis$imputed_mean)
+## impute with random values
+iris.mis$imputed_random <- with(iris.mis, impute(Sepal.Length, 'random'))
+summary(iris.mis$imputed_random)
+
+# aregImpute(), detect the data type automatically
+imputed_hmisc_areg <- aregImpute(~ Sepal.Length + Sepal.Width, data = iris.mis, n.impute = 5)
+imputed_hmisc_areg
+imputed_hmisc_areg_all <- aregImpute(~Sepal.Length + Sepal.Width + Petal.Length + Petal.Width + Species, 
+                                     data = iris.mis, n.impute = 5)
+
+imputed_hmisc_areg_all
+
+# check imputed output
+summary(imputed_hmisc_areg_all$imputed)
+summary(imputed_hmisc_areg_all$imputed$Sepal.Length)
