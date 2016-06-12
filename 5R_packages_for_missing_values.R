@@ -109,3 +109,20 @@ imputed_hmisc_areg_all
 # check imputed output
 summary(imputed_hmisc_areg_all$imputed)
 summary(imputed_hmisc_areg_all$imputed$Sepal.Length)
+
+
+
+# mi package
+## similar to pmm, for each observation in a variable with missing value, 
+## we find observation (from available values)  with the closest predictive 
+## mean to that variable. The observed value from this “match” 
+## is then used as imputed value.
+library(mi)
+data("iris")
+iris.mis <- prodNA(iris, noNA = 0.1)
+summary(iris.mis)
+
+mi_imputed <- mi(iris.mis, seed = 410)
+summary(mi_imputed)
+
+
