@@ -137,53 +137,15 @@ summary(iris.mis)
 
 mis1 <- iris.mis
 mis2 <- iris.mis
-mis3 <- iris.mis
 
+# using missForest
 missForest_imputed <- missForest(mis1, ntree = 100)
 missForest_error <- mixError(missForest_imputed$ximp, mis1, iris)
+dim(missForest_imputed$ximp)
 missForest_error
 
+# using Hmisc
 library(Hmisc)
-himsc_imputed <- aregImpute(~Sepal.Length + Sepal.Width + Petal.Length + Petal.Width + Species, 
-                            data = mis2, n.impute = 5)
-
-summary(himsc_imputed$imputed$Sepal.Length)
-t <- himsc_imputed$imputed$Sepal.Length[,1]
-t <- append(t, himsc_imputed$imputed$Sepal.Length[,2])
-t <- append(t, himsc_imputed$imputed$Sepal.Length[,3])
-t <- append(t, himsc_imputed$imputed$Sepal.Length[,4])
-t <- append(t, himsc_imputed$imputed$Sepal.Length[,5])
-
-t1 <- himsc_imputed$imputed$Sepal.Width[,1]
-t1 <- append(t1, himsc_imputed$imputed$Sepal.Width[,2])
-t1 <- append(t1, himsc_imputed$imputed$Sepal.Width[,3])
-t1 <- append(t1, himsc_imputed$imputed$Sepal.Width[,4])
-t1 <- append(t1, himsc_imputed$imputed$Sepal.Width[,5])
-
-t2 <- himsc_imputed$imputed$Petal.Length[,1]
-t2 <- append(t2, himsc_imputed$imputed$Petal.Length[,2])
-t2 <- append(t2, himsc_imputed$imputed$Petal.Length[,3])
-t2 <- append(t2, himsc_imputed$imputed$Petal.Length[,4])
-t2 <- append(t2, himsc_imputed$imputed$Petal.Length[,5])
-
-t3 <- himsc_imputed$imputed$Petal.Width[,1]
-t3 <- append(t3, himsc_imputed$imputed$Petal.Width[,2])
-t3 <- append(t3, himsc_imputed$imputed$Petal.Width[,3])
-t3 <- append(t3, himsc_imputed$imputed$Petal.Width[,4])
-t3 <- append(t3, himsc_imputed$imputed$Petal.Width[,5])
-
-t4 <- himsc_imputed$imputed$Species[,1]
-t4 <- append(t4, himsc_imputed$imputed$Species[,2])
-t4 <- append(t4, himsc_imputed$imputed$Species[,3])
-t4 <- append(t4, himsc_imputed$imputed$Species[,4])
-t4 <- append(t4, himsc_imputed$imputed$Species[,5])
-
-
-himsc_imputed_all <- merge(t, t1, all = TRUE)
-himsc_imputed_all <- merge(himsc_imputed_all, t2, all = TRUE)
-himsc_imputed_all <- merge(himsc_imputed_all, t3, all = TRUE)
-himsc_imputed_all <- merge(himsc_imputed_all, t4, all = TRUE)
-
-colnames(himsc_imputed_all)[which(names(himsc_imputed_all)=="x")] <- "Sepal.Length"
-colnames(himsc_imputed_all)[which(names(himsc_imputed_all)=="y")] <- "Sepal.Width"
-summary(himsc_imputed_all)
+hmisc_imputed <- aregImpute(~Sepal.Length + Sepal.Width + Petal.Length + Petal.Width + Species, 
+                            data = mis2, n.impute = 1)
+length(hmisc_imputed$imputed$Sepal.Length)
