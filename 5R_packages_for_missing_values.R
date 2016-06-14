@@ -126,3 +126,49 @@ mi_imputed <- mi(iris.mis, seed = 410)
 summary(mi_imputed)
 
 
+#----------------------------------------------#
+# test when there is > 50% missing values
+#----------------------------------------------#
+
+data("iris")
+library(missForest)
+iris.mis <- prodNA(iris, noNA = 0.6)
+summary(iris.mis)
+
+mis1 <- iris.mis
+mis2 <- iris.mis
+mis3 <- iris.mis
+
+missForest_imputed <- missForest(mis1, ntree = 100)
+missForest_error <- mixError(missForest_imputed$ximp, mis1, iris)
+missForest_error
+
+library(Hmisc)
+himsc_imputed <- aregImpute(~Sepal.Length + Sepal.Width + Petal.Length + Petal.Width + Species, 
+                            data = mis2, n.impute = 5)
+
+summary(himsc_imputed$imputed$Sepal.Length)
+t <- himsc_imputed$imputed$Sepal.Length[,1]
+t <- append(t, himsc_imputed$imputed$Sepal.Length[,2])
+t <- append(t, himsc_imputed$imputed$Sepal.Length[,3])
+t <- append(t, himsc_imputed$imputed$Sepal.Length[,4])
+t <- append(t, himsc_imputed$imputed$Sepal.Length[,5])
+
+t1 <- himsc_imputed$imputed$Sepal.Width[,1]
+t1 <- append(t1, himsc_imputed$imputed$Sepal.Width[,2])
+t1 <- append(t1, himsc_imputed$imputed$Sepal.Width[,3])
+t1 <- append(t1, himsc_imputed$imputed$Sepal.Width[,4])
+t1 <- append(t1, himsc_imputed$imputed$Sepal.Width[,5])
+
+t2 <- himsc_imputed$imputed$Petal.Length[,1]
+t2 <- append(t2, himsc_imputed$imputed$Petal.Length[,2])
+t2 <- append(t2, himsc_imputed$imputed$Petal.Length[,3])
+t2 <- append(t2, himsc_imputed$imputed$Petal.Length[,4])
+t2 <- append(t2, himsc_imputed$imputed$Petal.Length[,5])
+
+himsc_imputed_all <- merge(t, t1)
+himsc_imputed_all <- merge(himsc_imputed_all, t2)
+typeof(himsc_imputed_all)
+colnames(himsc_imputed_all)[which(names(himsc_imputed_all)=="x")] <- "Sepal.Length"
+colnames(himsc_imputed_all)[which(names(himsc_imputed_all)=="y")] <- "Sepal.Width"
+summary(himsc_imputed_all)
