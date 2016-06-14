@@ -58,7 +58,15 @@ summary(test)
 
 # drop EmployerName, which has many distinct values
 train[, Employer_Name := NULL]
+train[, ID := NULL]
 summary(train)
 
 test[, Employer_Name := NULL]
+test[, ID := NULL]
 summary(train)
+
+# deal with missing values
+colSums(is.na(train))
+library(missForest)
+## missForest can not handle categorical predictors with more than 53 categories
+train_imputed <- missForest(train)
