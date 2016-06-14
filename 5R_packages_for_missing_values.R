@@ -166,9 +166,24 @@ t2 <- append(t2, himsc_imputed$imputed$Petal.Length[,3])
 t2 <- append(t2, himsc_imputed$imputed$Petal.Length[,4])
 t2 <- append(t2, himsc_imputed$imputed$Petal.Length[,5])
 
-himsc_imputed_all <- merge(t, t1)
-himsc_imputed_all <- merge(himsc_imputed_all, t2)
-typeof(himsc_imputed_all)
+t3 <- himsc_imputed$imputed$Petal.Width[,1]
+t3 <- append(t3, himsc_imputed$imputed$Petal.Width[,2])
+t3 <- append(t3, himsc_imputed$imputed$Petal.Width[,3])
+t3 <- append(t3, himsc_imputed$imputed$Petal.Width[,4])
+t3 <- append(t3, himsc_imputed$imputed$Petal.Width[,5])
+
+t4 <- himsc_imputed$imputed$Species[,1]
+t4 <- append(t4, himsc_imputed$imputed$Species[,2])
+t4 <- append(t4, himsc_imputed$imputed$Species[,3])
+t4 <- append(t4, himsc_imputed$imputed$Species[,4])
+t4 <- append(t4, himsc_imputed$imputed$Species[,5])
+
+
+himsc_imputed_all <- merge(t, t1, all = TRUE)
+himsc_imputed_all <- merge(himsc_imputed_all, t2, all = TRUE)
+himsc_imputed_all <- merge(himsc_imputed_all, t3, all = TRUE)
+himsc_imputed_all <- merge(himsc_imputed_all, t4, all = TRUE)
+
 colnames(himsc_imputed_all)[which(names(himsc_imputed_all)=="x")] <- "Sepal.Length"
 colnames(himsc_imputed_all)[which(names(himsc_imputed_all)=="y")] <- "Sepal.Width"
 summary(himsc_imputed_all)
