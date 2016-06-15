@@ -149,3 +149,37 @@ library(Hmisc)
 hmisc_imputed <- aregImpute(~Sepal.Length + Sepal.Width + Petal.Length + Petal.Width + Species, 
                             data = mis2, n.impute = 1)
 length(hmisc_imputed$imputed$Sepal.Length)
+
+check_missing <- function(x, hmisc) {
+  # Check whether the index of origional missing data and the index of imputed data are the sames
+  return(all.equal(which(is.na(x)), as.integer(attr(hmisc, "dimnames")[[1]])))
+}
+
+get_level_text <- function(val, lvls) {
+  return(lvls[val])
+}
+
+convert <- function(miss_dat, hmisc) {
+  m_p <- ncol(miss_dat)
+  h_p <- length(hmisc)
+  if (m_p != h_p) stop("miss_dat and hmisc must have the same number of variables")
+  # assume matches for all if 1 matches
+  if (!check_missing(miss_dat[[1]], hmisc[[1]]))
+    stop("missing data and imputed data do not match")
+  
+  for (i in 1:m_p) {
+    i_factor <- is.factor(miss_dat[[i]])
+    if (!i_factor) {miss_dat[[i]][which(is.na(miss_dat[[i]]))] <- hmisc[[i]]}
+    else {
+      levels_i <- levels(miss_dat[[i]])
+      miss_dat[[i]] <- as.character(miss_dat[[i]])
+      miss_dat[[i]][which(is.na(miss_dat[[i]]))] <- sapply(hmisc[[i]], get_level_text, lvls= levels_i)
+      miss_dat[[i]] <- factor(miss_dat[[i]])
+    }
+  }
+  return(miss_dat)
+}
+
+mis2_converted <- convert(mis2, hmisc_imputed$imputed)
+hmisc_error <- mixError(mis2_converted, mis2, iris)
+hmisc_error
