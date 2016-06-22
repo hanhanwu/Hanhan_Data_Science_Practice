@@ -14,3 +14,14 @@ pdata = sqlContext.read.format('csv').load("/FileStore/tables/[file name in HDFS
 # cell 2 - Bollean Indexing
 pdata.loc[(pdata["Gender"]=="Female") & (pdata["Salary_Account"]=="ICICI Bank") & (pdata["Mobile_Verified"]=="Y"), 
 ["Gender", "Salary_Account", "Mobile_Verified"]]
+
+
+# cell 3 - apply function, similar to R apply()
+def get_missing_data(x):
+  return sum(x.isnull())
+
+print "find missing data for each column:"
+print pdata.apply(get_missing_data, axis = 0)
+
+print "find missing data for each row:"
+print pdata.apply(get_missing_data, axis = 1)
