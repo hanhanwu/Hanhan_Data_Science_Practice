@@ -37,3 +37,13 @@ pdata['Gender'].fillna(mode(pdata['Gender'])[0][0], inplace=True)
 pdata.apply(get_missing_data, axis=0)
 
 
+# cell 5 - create Excel style pivot table, I really like this
+# check data type first
+pdata.dtypes
+
+# convert Monthly_Income into numerical data
+pdata['Monthly_Income'] = pdata['Monthly_Income'].astype(float)
+pdata.dtypes
+
+pivot_t = pdata.pivot_table(values=['Monthly_Income'], index=['Gender', 'Mobile_Verified', 'Device_Type'], aggfunc = np.mean)
+print pivot_t
