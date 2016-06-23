@@ -25,3 +25,15 @@ print pdata.apply(get_missing_data, axis = 0)
 
 print "find missing data for each row:"
 print pdata.apply(get_missing_data, axis = 1)
+
+
+# cell 4 - fillna(), updating missing values with the overall mean/mode/median of the column
+from scipy.stats import mode
+
+# check the mode
+mode(pdata['Gender'])[0][0] 
+
+pdata['Gender'].fillna(mode(pdata['Gender'])[0][0], inplace=True)
+pdata.apply(get_missing_data, axis=0)
+
+
