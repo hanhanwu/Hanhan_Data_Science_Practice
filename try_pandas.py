@@ -37,7 +37,7 @@ pdata['Gender'].fillna(mode(pdata['Gender'])[0][0], inplace=True)
 pdata.apply(get_missing_data, axis=0)
 
 
-# cell 5 - create Excel style pivot table, I really like this
+# cell 5 - create Excel style pivot table
 # check data type first
 pdata.dtypes
 
