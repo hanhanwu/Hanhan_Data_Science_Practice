@@ -47,3 +47,12 @@ pdata.dtypes
 
 pivot_t = pdata.pivot_table(values=['Monthly_Income'], index=['Gender', 'Mobile_Verified', 'Device_Type'], aggfunc = np.mean)
 print pivot_t
+
+
+# cell 6 - MUltiple Indexing
+## I like this, only iterate rows with Monthly_Income as null
+for i, r in pdata.loc[pdata['Monthly_Income'].isnull(),:].iterrows():
+  index_list = tuple([r(['Gender']), r(['Mobile_Verified']), r(['Device_Type'])])
+  pdata.loc[i, 'Monthly_Income'] = pivot_t.loc[index_list].values[0]   # using multiple index to locate data
+  
+print pdata.apply(get_missing_data, axis=0)
