@@ -56,3 +56,13 @@ for i, r in pdata.loc[pdata['Monthly_Income'].isnull(),:].iterrows():
   pdata.loc[i, 'Monthly_Income'] = pivot_t.loc[index_list].values[0]   # using multiple index to locate data
   
 print pdata.apply(get_missing_data, axis=0)
+
+
+# cell 7 - cross tab
+print pd.crosstab(pdata['Gender'], pdata['Mobile_Verified'], margins=True)
+print
+
+def get_percentage(ser):
+  return ser/float(ser[-1])
+
+print pd.crosstab(pdata['Gender'], pdata['Mobile_Verified'], margins=True).apply(get_percentage, axis=1)
