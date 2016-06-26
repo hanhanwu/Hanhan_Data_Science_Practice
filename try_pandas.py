@@ -74,3 +74,8 @@ people_rate
 
 data_merge = pdata.merge(right=people_rate, how='inner', left_on='Device_Type', right_index=True, sort=False)
 data_merge.pivot_table(values=['Monthly_Income'], index=['Device_Type', 'people_rate'], aggfunc = len)
+
+
+# sorting on multiple columns
+sorted_data = pdata.sort_values(['Loan-Amount_submitted', 'Interest_Rate'], ascenting=False)
+sorted_data[['Loan-Amount_submitted', 'Interest_Rate']].head(10)
