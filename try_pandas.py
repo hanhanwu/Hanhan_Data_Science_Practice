@@ -66,3 +66,11 @@ def get_percentage(ser):
   return ser/float(ser[-1])
 
 print pd.crosstab(pdata['Gender'], pdata['Mobile_Verified'], margins=True).apply(get_percentage, axis=1)
+
+
+# cell 8 - data merging
+people_rate = pd.DataFrame([200, 400], index=['Mobile', 'Web-borwser'], columns=['people_rate'])
+people_rate
+
+data_merge = pdata.merge(right=people_rate, how='inner', left_on='Device_Type', right_index=True, sort=False)
+data_merge.pivot_table(values=['Monthly_Income'], index=['Device_Type', 'people_rate'], aggfunc = len)
