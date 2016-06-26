@@ -36,3 +36,15 @@ hist(data$Illiteracy)
 ## data$Illiteracy is highly skewed, change to log values, much better!
 hist(log(data$Illiteracy))
 skewness(log(data$Illiteracy))
+
+
+# method 4 - outliers
+## here, we will see Area has more obvious outliers
+boxplot(data)
+boxplot(quantiles <- quantile(data$Area, c(.05, .90 )))
+data$Area <- squish(data$Area, quantile(data$Area, c(.05, .90)))
+boxplot(data)
+boxplot(data$Area)
+## Note: as you can see, after squishing the outliers in Area, other data like Population
+## starts to have outliers.... 
+## When dealing with outliers, need to do deeper research to understand the data and see how to deal with them
