@@ -50,8 +50,9 @@ boxplot(data$Area)
 ## When dealing with outliers, need to do deeper research to understand the data and see how to deal with them
 
 
-# method 5 - PCA, finding out few 'principal' variables which explain significant 
-## amount of variation in dependent variable
+# method 5 - PCA and Factor Analysis
+## PCA - Finding out few 'principal' variables which explain significant amount of variation in dependent variable
+## Factor Analysis - factor reduction
 data(Boston, package = 'MASS')
 my_data <- Boston
 str(my_data)
@@ -61,15 +62,16 @@ pcaData <- princomp(my_data, scores = TRUE, cor = TRUE)
 summary(pcaData)
 # represent the contribution of each factor, higher the value, higher contributions
 loadings(pcaData)
+# the top 3 compnents contribute most
 screeplot(pcaData, type = 'line', main = 'Screeplot')
 biplot(pcaData)
 pcaData$scores[1:10,]
 
-std_dev <- pcaData$sdev
-pr_var <- std_dev^2
-prop_varex <- pr_var/sum(pr_var)
-prop_varex[1:15]
-plot(prop_varex, xlab = "Principal Component", ylab = "Proportion of Variance Explained", type = "b")
-plot(cumsum(prop_varex), xlab = "Principal Component", ylab = "Cumulative Proportion of Variance Explained", type = "b")
+#Exploratory Factor Analysis
+#Using PCA we've determined 3 factors - Comp 1, Comp 2 and Comp 3
+pcaFac <- factanal(my_data, factors = 3, rotation = 'varimax')
+pcaFac
 
-
+#To find the scores of factors
+pcaFac.scores <- factanal(my_data, factors = 3, rotation = 'varimax', scores = 'regression')
+pcaFac.scores$scores[1:10,]
