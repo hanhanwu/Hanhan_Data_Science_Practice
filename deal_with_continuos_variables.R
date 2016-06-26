@@ -48,3 +48,28 @@ boxplot(data$Area)
 ## Note: as you can see, after squishing the outliers in Area, other data like Population
 ## starts to have outliers.... 
 ## When dealing with outliers, need to do deeper research to understand the data and see how to deal with them
+
+
+# method 5 - PCA, finding out few 'principal' variables which explain significant 
+## amount of variation in dependent variable
+data(Boston, package = 'MASS')
+my_data <- Boston
+str(my_data)
+# check correlation table
+cor(my_data)
+pcaData <- princomp(my_data, scores = TRUE, cor = TRUE)
+summary(pcaData)
+# represent the contribution of each factor, higher the value, higher contributions
+loadings(pcaData)
+screeplot(pcaData, type = 'line', main = 'Screeplot')
+biplot(pcaData)
+pcaData$scores[1:10,]
+
+std_dev <- pcaData$sdev
+pr_var <- std_dev^2
+prop_varex <- pr_var/sum(pr_var)
+prop_varex[1:15]
+plot(prop_varex, xlab = "Principal Component", ylab = "Proportion of Variance Explained", type = "b")
+plot(cumsum(prop_varex), xlab = "Principal Component", ylab = "Cumulative Proportion of Variance Explained", type = "b")
+
+
