@@ -52,6 +52,10 @@ data analysis, big data development, cloud, and any other cool things!
 <b>Note:</b> I'm using Spark Python Notebook, some features are unique there. Because my own machine could not install the right numpy version for pandas~
 
 
+* Deal With Continuous Variables
+ * Tutorial reference: http://www.analyticsvidhya.com/blog/2015/11/8-ways-deal-continuous-variables-predictive-modeling/?utm_content=buffer346f3&utm_medium=social&utm_source=facebook.com&utm_campaign=buffer
+ * R code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/deal_with_continuos_variables.R
+
 ********************************************
 
 DIMENSION REDUCTION
