@@ -25,5 +25,47 @@ train[,convert_cols] <- data.frame(apply(train[convert_cols], 2, as.factor))
 summary(train)
 colSums(is.na(train))
 
+# Boruta is the most easy-to-use feature selection method I have used so far
+# just 3 lines of code, it tells the important, unimportant features
+set.seed(410)
+boruta_train <- Boruta(LoanStatus~.-LoanID, data = train, doTrace = 2)
+boruta_train
 
-## TO BE CONTINUED...
+# plot the features in sorted median Z score order
+## red, yellow, green indicate rejected, tentative and confirmed featues
+## blue shows the min/max/mean Z score
+plot(boruta_train, xlab = "", xaxt = "n")
+str(boruta_train)
+summary(boruta_train$ImpHistory)
+finite_matrix <- lapply(1:ncol(boruta_train$ImpHistory), 
+      function(i) boruta_train$ImpHistory[is.finite(boruta_train$ImpHistory[,i]), i])
+names(finite_matrix) <- colnames(boruta_train$ImpHistory)
+plot_labels <- sort(sapply(finite_matrix, median))
+axis(side = 1, las = 2, labels = names(plot_labels), 
+     at = 1:ncol(boruta_train$ImpHistory), cex.axis = 0.7)
+
+
+# determine tentative features
+## by comparing the median Z score of the tentative features with 
+## the median Z score of the best shadow feature
+new_boruta_train <- TentativeRoughFix(boruta_train)
+new_boruta_train
+plot(new_boruta_train, xlab = "", xaxt = "n")
+finite_matrix <- lapply(1:ncol(new_boruta_train$ImpHistory), 
+function(i) new_boruta_train$ImpHistory[is.finite(new_boruta_train$ImpHistory[,i]), i])
+names(finite_matrix) <- colnames(new_boruta_train$ImpHistory) 
+plot_labels <- sort(sapply(finite_matrix, median))
+axis(side = 1, las = 2, labels = names(plot_labels), 
+     at = 1:ncol(new_boruta_train$ImpHistory), cex.axis = 0.7)
+
+getSelectedAttributes(new_boruta_train, withTentative = F)
+
+feature_stats = attStats(new_boruta_train)
+class(feature_stats)
+feature_stats
+
+
+# Traditional Feature Selection Algorithm
+## RFE - Recursive Feature Elimination
+library(caret)
+library(randomForest)
