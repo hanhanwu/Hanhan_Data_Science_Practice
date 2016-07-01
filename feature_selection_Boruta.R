@@ -69,3 +69,14 @@ feature_stats
 ## RFE - Recursive Feature Elimination
 library(caret)
 library(randomForest)
+set.seed(410)
+
+# specific Random Forest as the underlying algorithm, just as Boruta
+control <- rfeControl(functions = rfFuncs, method = "cv", number = 10)
+
+rfe_train <- rfe(train[,2:12], train[,13], sizes = 1:12, rfeControl = control)
+rfe_train
+plot(rfe_train, type = c("g", "o"), cex = 1.0, col = 1:11)
+
+predictors(rfe_train)
+getSelectedAttributes(new_boruta_train, withTentative = F)
