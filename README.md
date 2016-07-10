@@ -56,6 +56,13 @@ data analysis, big data development, cloud, and any other cool things!
  * Tutorial reference: http://www.analyticsvidhya.com/blog/2015/11/8-ways-deal-continuous-variables-predictive-modeling/?utm_content=buffer346f3&utm_medium=social&utm_source=facebook.com&utm_campaign=buffer
  * R code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/deal_with_continuos_variables.R
 
+
+* Minimize Logloss
+ * R code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/minimize_logloss.R
+ * The 2 methods used in the code are: Platt Scaling and Isotonic Regression
+ * Plotting Logloss can caputure changes that may not be able to be caputered by accuracy, AUC and other metrics
+ * reference: http://www.analyticsvidhya.com/blog/2016/07/platt-scaling-isotonic-regression-minimize-logloss-error/?utm_content=buffer2f3d5&utm_medium=social&utm_source=facebook.com&utm_campaign=buffer
+
 ********************************************
 
 DIMENSION REDUCTION
