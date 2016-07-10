@@ -100,3 +100,21 @@ k2
 lines(k2$V2, k2$V1, xlim=c(0,1), ylim=c(0,1), xlab="Mean Prediction", ylab="Observed Fraction", col="blue", type="o", main="Reliability Plot")
 
 legend("topright",lty=c(1,1),lwd=c(2.5,2.5),col=c("blue","red"),legend = c("platt scaling","without plat scaling"))
+
+
+
+# Do Prediction on Test data
+
+## without platt scaling, probability prediction for both label values (0,1)
+predict_test <- as.data.frame(predict(model_rf, newdata = test, type = "prob"))
+summary(predict_test)
+str(predict_test)
+
+## with platt scaling, probability prediction for label value 1
+df_test <- data.frame(predict_test$`1`)
+str(df_test)
+colnames(df_test) <- c("predict_value")
+predict_test_platt <- predict(model_LogisticRegresion, df_test, type = "response")
+summary(predict_test_platt)
+str(predict_test_platt)
+
