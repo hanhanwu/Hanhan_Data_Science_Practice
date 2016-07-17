@@ -65,6 +65,11 @@ data analysis, big data development, cloud, and any other cool things!
  * Plotting Logloss can caputure changes that may not be able to be caputered by accuracy, AUC and other metrics
  * reference: http://www.analyticsvidhya.com/blog/2016/07/platt-scaling-isotonic-regression-minimize-logloss-error/?utm_content=buffer2f3d5&utm_medium=social&utm_source=facebook.com&utm_campaign=buffer
 
+
+* Time Series Modeling
+ * My R code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/time_series_modeling.R
+ * Tutorial Reference: http://www.analyticsvidhya.com/blog/2015/12/complete-tutorial-time-series-modeling/?utm_content=buffer529c5&utm_medium=social&utm_source=facebook.com&utm_campaign=buffer
+
 ********************************************
 
 DIMENSION REDUCTION
