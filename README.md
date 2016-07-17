@@ -59,6 +59,8 @@ data analysis, big data development, cloud, and any other cool things!
 
 * Minimize Logloss
  * R code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/minimize_logloss.R
+ * Training data: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/blood_train.csv
+ * Testing data: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/blood_test.csv
  * The 2 methods used in the code are: Platt Scaling and Isotonic Regression
  * Plotting Logloss can caputure changes that may not be able to be caputered by accuracy, AUC and other metrics
  * reference: http://www.analyticsvidhya.com/blog/2016/07/platt-scaling-isotonic-regression-minimize-logloss-error/?utm_content=buffer2f3d5&utm_medium=social&utm_source=facebook.com&utm_campaign=buffer
@@ -91,6 +93,8 @@ DIMENSION REDUCTION
 
 * Easy simple way to do feature selection with Boruta (so far it's the most convenient feature selection method I have tried):
  * R code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/feature_selection_Boruta.R
+ * Training data: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/loan_prediction_train.csv
+ * Testing data: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/loan_prediction_test.csv
  * Tutorial: http://www.analyticsvidhya.com/blog/2016/03/select-important-variables-boruta-package/?utm_content=bufferec6a6&utm_medium=social&utm_source=facebook.com&utm_campaign=buffer
 
 ********************************************
