@@ -67,7 +67,7 @@ data analysis, big data development, cloud, and any other cool things!
 
 
 * Time Series Modeling
- * My R code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/time_series_modeling.R
+ * Time Series Prediction R code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/time_series_modeling.R
  * Tutorial Reference: http://www.analyticsvidhya.com/blog/2015/12/complete-tutorial-time-series-modeling/?utm_content=buffer529c5&utm_medium=social&utm_source=facebook.com&utm_campaign=buffer
 
 ********************************************
