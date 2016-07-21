@@ -4,6 +4,19 @@ data analysis, big data development, cloud, and any other cool things!
 
 ********************************************
 
+<b> BIG DATA! </b> - Fantastic
+
+* Why Spark is great?!
+ * Spark is awesome to deal with big data problems! My godness, before I work on real big data, I just thought it was cool and smart! Today I have realized, it is super fantastic! Especially after I have written normal Python iterate code on 4000000 text records (2G) to extract multiple patterns....
+ * My normal python iterate code, method 1: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/large_file_python_iterate_method1.py
+ * My normal python iterate code, method 2: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/large_file_python_iterate_method2.py
+ * My Spark Python code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/large_file_Spark_Python.py
+ * Running time comparison: Using the normal pyhton code, both methods (method 2 is a little bit faster), they took 20 minutes to run 5000 records. When I was running the Spark code to get insights of those 4000000 records, it took less than 10 minutes to give me what I want.
+ * But! Every strong weapon has its limitation, Spark too. In this case, if you try to count the final results or if you want to see error_df, it will take very long time and your GPU can become very hot. The reason I got what I wanted fast was because Spark is using lazy methods, without check all the records, it could return me the results I want, for example: merchant_df.show(n=3).
+
+
+********************************************
+
 * R Basics Data Analysis Practice
   * Problem Statement: http://datahack.analyticsvidhya.com/contest/practice-problem-bigmart-sales-prediction
   * data set: R_basics_train.csv, R_basics_test.csv
