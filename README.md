@@ -14,6 +14,16 @@ data analysis, big data development, cloud, and any other cool things!
  * Running time comparison: Using the normal pyhton code, both methods (method 2 is a little bit faster), they took 20 minutes to run 5000 records. When I was running the Spark code to get insights of those 4000000 records, it took less than 10 minutes to give me what I want.
  * In Spark, remember to use cache() on the data you need to repeatedly use later. This will store the data on cache and reuse it without re-run all the previous steps. If you don't use cache(), it can be very slow. In my case, I'm cacheing `extracted_pattern_df`
  * <b>Note</b>: When you are running a big job through terminal command line, and want to stop the job before it finished execution, press `Control + C`, this is very helpful, trust me 
+* How to run Spark through terminal command line
+ * Download Spark here: https://spark.apache.org/downloads.html
+ * Unpack that somewhere you like. Set an environment variable so you can find it easily later (CSH and BASH versions):
+
+
+`setenv SPARK_HOME /home/you/spark-1.5.1-bin-hadoop2.6/`
+
+
+`export SPARK_HOME=/home/you/spark-1.5.1-bin-hadoop2.6/`
+ * Then `${SPARK_HOME}/bin/spark-submit --master local [your code file path] [your large data file path as input, this one only exist when you have sys.argv[1]]`
 
 
 ********************************************
