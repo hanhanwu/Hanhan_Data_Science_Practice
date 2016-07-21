@@ -38,7 +38,7 @@ def extract_pattern(l):
 def main():
     text = sc.textFile(inputs)
 
-    extracted_pattern_df = text.map(extract_pattern).toDF()
+    extracted_pattern_df = text.map(extract_pattern).toDF().cache()
     merchant_df = extracted_pattern_df.where(extracted_pattern_df.Label == 'merchant')
     ept_df = extracted_pattern_df.where(extracted_pattern_df.Label == 'ept')
     error_df = extracted_pattern_df.where(extracted_pattern_df.Label == 'error')
