@@ -26,6 +26,16 @@ data analysis, big data development, cloud, and any other cool things!
  * Then `${SPARK_HOME}/bin/spark-submit --master local [your code file path] [your large data file path as input, this one only exist when you have sys.argv[1]]`
 
 
+* Automation
+ * Automation work is also necessary for Big Data, you can use PowerShell to creat .cmd file and schedule a task in your OS. For work related to database like SQL Server, Oracle, you can use their own scheduler to schedule jobs
+ * Oracle Scueduler Official: http://docs.oracle.com/cd/E11882_01/server.112/e25494/scheduse.htm#ADMIN034
+ * Oracle Scueduler StackOverflow: http://stackoverflow.com/questions/12212147/best-way-to-run-oracle-queries-periodically
+ * Oracle Time Zones: https://docs.oracle.com/cd/B13866_04/webconf.904/b10877/timezone.htm
+
+
+ * My experience about using PowerShell to automate Hadoop Hive query (HQL): That was a lot of pain. Hive is already more difficult to use than SQL/TSQL because it has less functions. Then, when you need to embed HQL in PowerShell, my godness, it made my life more difficult, especially when the data was gigantic and each time when you need to make a tiny change, all the testing time could force you to work overtime... After finishing that work, I have realized, how good our relational database is and how smart Spark SQL is!
+
+
 ********************************************
 
 * R Basics Data Analysis Practice
