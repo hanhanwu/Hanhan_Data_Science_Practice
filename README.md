@@ -13,6 +13,7 @@ data analysis, big data development, cloud, and any other cool things!
  * My Spark Python code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/large_file_Spark_Python.py
  * Running time comparison: Using the normal pyhton code, both methods (method 2 is a little bit faster), they took 20 minutes to run 5000 records. When I was running the Spark code to get insights of those 4000000 records, it took less than 10 minutes to give me what I want.
  * But! Every strong weapon has its limitation, Spark too. In this case, if you try to count the final results or if you want to see error_df, it will take very long time and your GPU can become very hot, because Spark needs to check the whole records. The reason I got what I wanted fast was because Spark is using lazy methods, without check all the records, it could return me the results I want, for example: merchant_df.show(n=3).
+ * <b>Note</b>: When you are running a big job through terminal command line, and want to stop the job before it finished execution, press `Control + C`, this is very helpful, trust me 
 
 
 ********************************************
