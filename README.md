@@ -136,6 +136,20 @@ DIMENSION REDUCTION
  * Testing data: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/loan_prediction_test.csv
  * Tutorial: http://www.analyticsvidhya.com/blog/2016/03/select-important-variables-boruta-package/?utm_content=bufferec6a6&utm_medium=social&utm_source=facebook.com&utm_campaign=buffer
 
+
+********************************************
+
+DATA PREPROCESSING
+
+* Python scikit-learn preprocessing, with pandas
+ * IPython Notebook: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/scikit_learn_preprocessing.ipynb
+ * Tutorial reference: http://www.analyticsvidhya.com/blog/2016/07/practical-guide-data-preprocessing-python-scikit-learn/?utm_content=buffera1e2c&utm_medium=social&utm_source=facebook.com&utm_campaign=buffer
+ * X_train: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/X_train.csv
+ * Y_train: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Y_train.csv
+ * X_test: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/X_test.csv
+ * Y_test: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Y_test.csv
+
+
 ********************************************
 
 CLOUD for DATA SCIENCE
