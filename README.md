@@ -104,6 +104,15 @@ data analysis, big data development, cloud, and any other cool things!
  * Time Series Prediction R code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/time_series_modeling.R
  * Tutorial Reference: http://www.analyticsvidhya.com/blog/2015/12/complete-tutorial-time-series-modeling/?utm_content=buffer529c5&utm_medium=social&utm_source=facebook.com&utm_campaign=buffer
 
+
+* GBM (Gradient Boostin) parma tuning
+ * training data: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/GBM_Train.csv
+ * testing data: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/GBM_Test.csv
+ * data preprocessing: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/GBM_data_preprocessing.R
+ * cleaned training data: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/GBM_new_train.csv
+ * cleaned testing data: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/GBM_new_test.csv
+ 
+
 ********************************************
 
 DIMENSION REDUCTION
