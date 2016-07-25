@@ -112,3 +112,7 @@ colSums(is.na(train))
 summary(train)
 colSums(is.na(test))
 summary(test)
+
+
+write.csv(train, "GBM_new_train.csv")
+write.csv(test, "GBM_new_test.csv")
