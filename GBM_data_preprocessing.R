@@ -67,7 +67,6 @@ summary(train)
 test[, Employer_Name := NULL]
 test[, ID := NULL]
 test[, Lead_Creation_Date := NULL]
-test[, LoggedIn := NULL]
 test[, Salary_Account := NULL]
 summary(train)
 
@@ -106,13 +105,56 @@ test$Loan_Amount_Applied[is.na(test$Loan_Amount_Applied)] <- median(test$Loan_Am
 train$Loan_Tenure_Applied[is.na(train$Loan_Tenure_Applied)] <- median(train$Loan_Tenure_Applied, na.rm = TRUE)
 test$Loan_Tenure_Applied[is.na(test$Loan_Tenure_Applied)] <- median(test$Loan_Tenure_Applied, na.rm = TRUE)
 
-
-# deal with missing values
 colSums(is.na(train))
 summary(train)
 colSums(is.na(test))
 summary(test)
 
 
-write.csv(train, "GBM_new_train.csv")
-write.csv(test, "GBM_new_test.csv")
+
+
+
+# Only keep top 2 levels in Source, other levels change to 'Other'
+x_train <- train
+summary(x_train$Source)
+levels(x_train$Source)[2] <- 'Other'
+for (i in 3:7) {
+  levels(x_train$Source)[3] <- 'Other'
+}
+summary(x_train$Source)
+for (j in 1:22) {
+  levels(x_train$Source)[4] <- 'Other'
+}
+summary(x_train$Source)
+
+
+x_test <- test
+summary(x_test$Source)
+levels(x_test$Source)[2] <- 'Other'
+for (i in 3:8) {
+  levels(x_test$Source)[3] <- 'Other'
+}
+summary(x_test$Source)
+for (j in 1:19) {
+  levels(x_test$Source)[4] <- 'Other'
+}
+summary(x_test$Source)
+
+
+
+# One-Hot Encoding, change factor variables into numeric
+library("dummies", lib.loc="/Library/Frameworks/R.framework/Versions/3.2/Resources/library")
+
+str(x_train)
+new_train <- dummy.data.frame(x_train, names = c('Gender','Mobile_Verified','Var1', 'Filled_Form', 'Device_Type', 'Var2', 'Source'),  sep='_')
+str(new_train)
+
+str(x_test)
+new_test <- dummy.data.frame(x_test, names = c('Gender','Mobile_Verified','Var1', 'Filled_Form', 'Device_Type', 'Var2', 'Source'),  sep='_')
+str(new_test)
+
+
+# Write new data into .csv
+write.csv(new_train, "GBM_new_train.csv", row.names = F)
+write.csv(new_test, "GBM_new_test.csv", row.names = F)
+
