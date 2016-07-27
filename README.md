@@ -111,6 +111,9 @@ data analysis, big data development, cloud, and any other cool things!
  * data preprocessing: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/GBM_data_preprocessing.R
  * cleaned training data: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/GBM_new_train.csv
  * cleaned testing data: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/GBM_new_test.csv
+ * GBM param tuning: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/GBM_param_tuning.ipynb
+ * This is one of the most challenge practice I have done, not only because the way to preprocess the data is different from what I have learned before, but also because of the way it tune params made my machine pretty hot and sacred me (I love my machine and really make it function well for a very long time). <b>But!</b> Have to admit that this practice is also one of the most useful one! Not only because of its preprocessing method is useful, but also because the way it tune params and the order of tuning params are very practical. I was always wondering which params to tune and should be in which order. Now the methods used here have answered all my previous questions.
+ * Reference: http://www.analyticsvidhya.com/blog/2016/02/complete-guide-parameter-tuning-gradient-boosting-gbm-python/?utm_content=bufferc754b&utm_medium=social&utm_source=facebook.com&utm_campaign=buffer
  
 
 ********************************************
