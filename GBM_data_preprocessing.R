@@ -117,27 +117,13 @@ summary(test)
 # Only keep top 2 levels in Source, other levels change to 'Other'
 x_train <- train
 summary(x_train$Source)
-levels(x_train$Source)[2] <- 'Other'
-for (i in 3:7) {
-  levels(x_train$Source)[3] <- 'Other'
-}
-summary(x_train$Source)
-for (j in 1:22) {
-  levels(x_train$Source)[4] <- 'Other'
-}
+levels(train$source) <-c("S122", rep("Other",6), "S133", rep("Other",22))
 summary(x_train$Source)
 
 
 x_test <- test
 summary(x_test$Source)
-levels(x_test$Source)[2] <- 'Other'
-for (i in 3:8) {
-  levels(x_test$Source)[3] <- 'Other'
-}
-summary(x_test$Source)
-for (j in 1:19) {
-  levels(x_test$Source)[4] <- 'Other'
-}
+levels(train$source) <-c("S122", rep("Other",7), "S133", rep("Other",19))
 summary(x_test$Source)
 
 
