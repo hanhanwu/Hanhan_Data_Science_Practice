@@ -42,4 +42,22 @@ levels(train$Credit_History)
 levels(test$Credit_History)[1] <- 'N'
 levels(test$Credit_History)[2] <- 'Y'
 
+# impute missing values, for factor variables use mode, for numeric variables use mean
+## encode the imputed results as numerical
+imp_train <- impute(train, classes = list(factor = imputeMode(), integer = imputeMean()), 
+                    dummy.classes = c("integer","factor"), dummy.type = "numeric")
+imp_train <- imp_train$data
+
+imp_test <- impute(test, classes = list(factor = imputeMode(), integer = imputeMean()), 
+                    dummy.classes = c("integer","factor"), dummy.type = "numeric")
+imp_test <- imp_test$data
+
+summary(imp_train)
+summary(train)
+
+summary(test)
+summary(imp_test)
+
+# In test data Married has no NA, but in train data it does, so in imp_train, it has Married.dummy
+
 # TO BE CONTINUED...
