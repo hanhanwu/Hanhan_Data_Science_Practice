@@ -116,6 +116,15 @@ data analysis, big data development, cloud, and any other cool things!
  * Reference: http://www.analyticsvidhya.com/blog/2016/02/complete-guide-parameter-tuning-gradient-boosting-gbm-python/?utm_content=bufferc754b&utm_medium=social&utm_source=facebook.com&utm_campaign=buffer
  
 
+* R MLR package
+ * This packages contains algorithms and methods for data preprocessing and machine learning, ALL IN ONE
+ * Its impute method is good to impute all the columns have NAs, but didn't work well when I tried to impute individual columns. Because its impute will generate dummy columns for columns with NAs, using this methods needs both training and testing data has the same columns that contain NAs. But if they don't, we can still use this impute method but need to remove dummy columns only in training data or testing data, this is fine because the original columns have been imputed at the same time.
+ * R code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/MLR_basics.R
+ * training data: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/MLR_train.csv
+ * testing data: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/MLR_test.csv
+ * Reference: https://www.analyticsvidhya.com/blog/2016/08/practicing-machine-learning-techniques-in-r-with-mlr-package/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+
+
 ********************************************
 
 DIMENSION REDUCTION
