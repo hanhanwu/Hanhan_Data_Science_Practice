@@ -59,5 +59,11 @@ summary(test)
 summary(imp_test)
 
 # In test data Married has no NA, but in train data it does, so in imp_train, it has Married.dummy
+## In imp_train, Married NAs have been repalced, so I can simply remove Married.dummy
+imp_train <- subset(imp_train, select = -c(Married.dummy))
+summary(imp_train)
+
+## !!! List algorithms that can handle missing values themselves if you don't want to deal with missing data
+listLearners("classif", check.packages = TRUE, properties = "missings")[c("class","package")]
 
 # TO BE CONTINUED...
