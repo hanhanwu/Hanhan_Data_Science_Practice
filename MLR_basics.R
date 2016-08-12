@@ -66,4 +66,42 @@ summary(imp_train)
 ## !!! List algorithms that can handle missing values themselves if you don't want to deal with missing data
 listLearners("classif", check.packages = TRUE, properties = "missings")[c("class","package")]
 
-# TO BE CONTINUED...
+# deal with outliers
+boxplot(imp_train$ApplicantIncome)
+cd <- capLargeValues(imp_train, target = "Loan_Status",cols = c("ApplicantIncome"),threshold = 40000)
+hist(cd$ApplicantIncome, xlab = "ApplicantIncome", breaks = 300, main = "Applicant Income" )
+boxplot(cd$ApplicantIncome)
+
+boxplot(imp_train$CoapplicantIncome)
+cd <- capLargeValues(cd, target = "Loan_Status",cols = c("CoapplicantIncome"),threshold = 20000)
+boxplot(cd$CoapplicantIncome)
+hist(cd$CoapplicantIncome, xlab = "Coapplicant Income", breaks = 50, main = "Coapplicant Income")
+
+boxplot(imp_train$LoanAmount)
+cd <- capLargeValues(cd, target = "Loan_Status",cols = c("LoanAmount"),threshold = 500)
+boxplot(cd$LoanAmount)
+hist(cd$LoanAmount, xlab = "Loan Amount", breaks = 10, main = "Loan Amount")
+
+imp_train <- cd
+
+imp_test$Loan_Status <- sample(0:1,size = 367,replace = T)
+
+boxplot(imp_test$ApplicantIncome)
+cd <- capLargeValues(imp_test, target = "Loan_Status",cols = c("ApplicantIncome"),threshold = 30000)
+hist(cd$ApplicantIncome, xlab = "ApplicantIncome", breaks = 300, main = "Applicant Income" )
+boxplot(cd$ApplicantIncome)
+
+boxplot(imp_test$CoapplicantIncome)
+cd <- capLargeValues(cd, target = "Loan_Status",cols = c("CoapplicantIncome"),threshold = 10000)
+boxplot(cd$CoapplicantIncome)
+hist(cd$CoapplicantIncome, xlab = "Coapplicant Income", breaks = 50, main = "Coapplicant Income")
+
+boxplot(imp_test$LoanAmount)
+cd <- capLargeValues(cd, target = "Loan_Status",cols = c("LoanAmount"),threshold = 350)
+boxplot(cd$LoanAmount)
+hist(cd$LoanAmount, xlab = "Loan Amount", breaks = 10, main = "Loan Amount")
+
+imp_test <- cd
+
+summary(imp_train)
+summary(imp_test)
