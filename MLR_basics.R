@@ -66,7 +66,8 @@ summary(imp_train)
 ## !!! List algorithms that can handle missing values themselves if you don't want to deal with missing data
 listLearners("classif", check.packages = TRUE, properties = "missings")[c("class","package")]
 
-# deal with outliers
+# FEATURE ENGINEERING - Data Transfer
+## deal with outliers
 boxplot(imp_train$ApplicantIncome)
 cd <- capLargeValues(imp_train, target = "Loan_Status",cols = c("ApplicantIncome"),threshold = 40000)
 hist(cd$ApplicantIncome, xlab = "ApplicantIncome", breaks = 300, main = "Applicant Income" )
@@ -105,3 +106,49 @@ imp_test <- cd
 
 summary(imp_train)
 summary(imp_test)
+
+
+## convetr dummry variables fromnumeric to factor
+summarizeColumns(imp_train)
+for (f in names(imp_train[, c(14:19)])) {
+  if( class(imp_train[, c(14:19)] [[f]]) == "numeric"){
+    levels <- unique(imp_train[, c(14:19)][[f]])
+    imp_train[, c(14:19)][[f]] <- as.factor(factor(imp_train[, c(14:19)][[f]], levels = levels))
+  }
+}
+summarizeColumns(imp_train)
+
+summarizeColumns(imp_test)
+for (f in names(imp_test[, c(13:18)])) {
+  if( class(imp_test[, c(13:18)] [[f]]) == "numeric"){
+    levels <- unique(imp_test[, c(13:18)][[f]])
+    imp_test[, c(13:18)][[f]] <- as.factor(factor(imp_test[, c(13:18)][[f]], levels = levels))
+  }
+}
+summarizeColumns(imp_test)
+
+
+# FEATURE ENGINEERING - Create New Features
+imp_train$Total_Income <- imp_train$ApplicantIncome + imp_train$CoapplicantIncome
+imp_test$Total_Income <- imp_test$ApplicantIncome + imp_test$CoapplicantIncome
+
+imp_train$Income_by_Term <- imp_train$Total_Income/imp_train$LoanAmount
+imp_test$Income_by_Term <- imp_test$Total_Income/imp_test$LoanAmount
+
+imp_train$LoanAmount_by_Term <- imp_train$LoanAmount/imp_train$Loan_Amount_Term
+imp_test$LoanAmount_by_Term <- imp_test$LoanAmount/imp_test$Loan_Amount_Term
+
+summary(imp_train)
+summary(imp_test)
+
+#!!! After creating the new NUMERIC features, check their correlation with existing features
+## if there is high correlation, remove the new feature since it does not add any value
+
+# split data based on class
+class_split_train <- split(names(imp_train), sapply(imp_train, function(x){ class(x)}))
+class_split_train
+# Total_Income and ApplicantIncome has high correlation
+cor(imp_train[class_split_train$numeric])
+
+imp_train$Total_Income <- NULL
+imp_test$Total_Income <- NULL
