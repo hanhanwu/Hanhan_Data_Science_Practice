@@ -144,11 +144,85 @@ summary(imp_test)
 #!!! After creating the new NUMERIC features, check their correlation with existing features
 ## if there is high correlation, remove the new feature since it does not add any value
 
-# split data based on class
+## split data based on class
 class_split_train <- split(names(imp_train), sapply(imp_train, function(x){ class(x)}))
 class_split_train
-# Total_Income and ApplicantIncome has high correlation
+## Total_Income and ApplicantIncome have high correlation
 cor(imp_train[class_split_train$numeric])
 
 imp_train$Total_Income <- NULL
 imp_test$Total_Income <- NULL
+imp_test$Loan_Status <- as.factor(imp_test$Loan_Status)
+levels(imp_test$Loan_Status)[1] <- "N"
+levels(imp_test$Loan_Status)[2] <- "Y"
+
+
+# a task here is the dataset for learning, set positive class as "Y"
+trainTask <- makeClassifTask(data = imp_train,target = "Loan_Status", positive = "Y")
+trainTask
+str(getTaskData(trainTask))
+testTask <- makeClassifTask(data = imp_test,target = "Loan_Status", positive = "Y")
+testTask
+str(getTaskData(testTask))
+
+# normalized skewed variables
+trainTask <- normalizeFeatures(trainTask,method = "standardize")
+summary(getTaskData((trainTask)))
+testTask <- normalizeFeatures(testTask,method = "standardize")
+summary(getTaskData((testTask)))
+
+# drop unnecessary features
+trainTask <- dropFeatures(task = trainTask,features = c("Loan_ID"))
+testTask <- dropFeatures(task = testTask,features = c("Loan_ID"))
+
+# feature importance
+im_feat <- generateFilterValuesData(trainTask, method = c("information.gain","chi.squared", "rf.importance"))
+plotFilterValues(im_feat,n.show = 20)
+
+# !! This feature is awesome!
+plotFilterValuesGGVIS(im_feat)
+
+
+# QDA, a parametric algorithm, when the data follows the assumption, this type of algorithm works well
+qda_learner <- makeLearner("classif.qda", predict.type = "response")
+qda_model <- train(qda_learner, trainTask)
+qpredict <- predict(qda_model, testTask)
+qpredict
+
+
+# Logistic Regression
+lr_learner <- makeLearner("classif.logreg",predict.type = "response")
+## cross validation
+cv_lr <- crossval(learner = lr_learner,task = trainTask,iters = 5,stratify = TRUE,measures = acc,show.info = F)
+cv_lr
+cv_lr$aggr   ## average accuracy
+cv_lr$measures.test  ## accuracy in each fold
+
+lr_model <- train(lr_learner,trainTask)
+getLearnerModel(lr_model)
+lrpredict <- predict(lr_model, testTask)
+lrpredict
+
+
+# desicion tree, capture non-linear relations better than a logistic regression
+## list all the tunable params
+getParamSet("classif.rpart")
+
+dt_learner <- makeLearner("classif.rpart", predict.type = "response")
+cv_dt <- makeResampleDesc("CV",iters = 5L)
+## grid search and param tuning
+gs <- makeParamSet(
+  makeIntegerParam("minsplit",lower = 10, upper = 50),
+  makeIntegerParam("minbucket", lower = 5, upper = 50),
+  makeNumericParam("cp", lower = 0.001, upper = 0.2)
+)
+gscontrol <- makeTuneControlGrid()
+stune <- tuneParams(learner = dt_learner, resampling = cv_dt, task = trainTask, par.set = gs, control = gscontrol, measures = acc)
+stune$x ## best params
+stune$y ## cv accuracy
+
+t.tree <- setHyperPars(dt_learner, par.vals = stune$x)
+dt_model <- train(t.tree, trainTask)
+getLearnerModel(dt_model)
+dtpredict <- predict(dt_model, testTask)
+dtpredict
