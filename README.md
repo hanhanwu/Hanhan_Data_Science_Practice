@@ -170,6 +170,12 @@ DATA PREPROCESSING
  * X_test: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/X_test.csv
  * Y_test: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Y_test.csv
 
+* Resolve Skewness
+ * Many models assume data predictors are normaly distributed, which is evenly skewness. But in practice, this is almost impossible. Therefore, by checking the skewness of continuous factors and try to make them to get close to normal distribution is ncessary, for those models that have this accumption.
+ * scipy.stats.boxcox: http://scipy.github.io/devdocs/generated/scipy.stats.boxcox.html
+ * data for practice: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/168866123_T_ONTIME.csv
+ * Original data source for download: http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236
+ * Python Practice Code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/resolve_skewness.ipynb
 
 ********************************************
 
