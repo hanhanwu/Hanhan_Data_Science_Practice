@@ -81,7 +81,10 @@ data analysis, big data development, cloud, and any other cool things!
 * Try Pandas
  * data input: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/GBM_Test.csv
  * python code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/try_pandas.py
+ * modified pyhton code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/try_pandas.ipynb
  * I really like pandas indexing and selection methods: http://pandas.pydata.org/pandas-docs/stable/indexing.html#indexing-label
+ * While implementing my modified pyhton code, I gradually felt, R is still much better than pandas in binning and ploting. R cna do those data query related work such as data merging as well. But I still like Pivot Table, Multi-Indexing, Corss Tab in pandas.
+ * Reference: https://www.analyticsvidhya.com/blog/2016/01/12-pandas-techniques-python-data-manipulation/?utm_content=buffer34860&utm_medium=social&utm_source=facebook.com&utm_campaign=buffer
 
 <b>Note:</b> I'm using Spark Python Notebook, some features are unique there. Because my own machine could not install the right numpy version for pandas~
 
