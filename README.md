@@ -179,6 +179,11 @@ DATA PREPROCESSING
  * data for practice: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/168866123_T_ONTIME.csv
  * Original data source for download: http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236
  * Python Practice Code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/resolve_skewness.ipynb
+ 
+ * Deal with Imbalanced Dataset
+  * practice 1: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/deal_with_imbalanced_dataset.R
+  * practice 2: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/deal_with_imbalanced_data_2.R
+  * data description for practice 2: http://archive.ics.uci.edu/ml/machine-learning-databases/census-income-mld/census-income.names
 
 ********************************************
 
