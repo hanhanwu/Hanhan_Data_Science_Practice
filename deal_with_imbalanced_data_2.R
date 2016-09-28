@@ -1,4 +1,4 @@
-path<- "[your file path]"
+path<- "[YOUR FILE PATH]"
 setwd(path)
 
 library(data.table)
@@ -160,14 +160,46 @@ num_train[,.N,age][order(age)]
 tr(num_train$age)  # based on the plot, create 3 bins, 0-25, 26-50, 51-90
 num_train[,age:= cut(x = age,breaks = c(0,25,50,90),include.lowest = TRUE,labels = c("young","adult","old"))]
 num_train[,age := factor(age)]
-unique(num_train$age)
+num_train[,.N,age][order(age)]
 
 num_test[,age:= cut(x = age,breaks = c(0,25,50,90),include.lowest = TRUE,labels = c("young","adult","old"))]
 num_test[,age := factor(age)]
-unique(num_test$age)
+num_test[,.N,age][order(age)]
 
 
+## most values are 0, 2 bins (Zero, MoreThanZero)
 num_train[,.N,wage_per_hour][order(-N)]
-  
-  
+num_train[,wage_per_hour := ifelse(wage_per_hour == 0,"Zero","MoreThanZero")][,wage_per_hour := as.factor(wage_per_hour)]
+num_train[,.N,wage_per_hour][order(-N)]
+
+num_train[,.N,capital_losses][order(-N)]
+num_train[,capital_losses := ifelse(capital_losses == 0,"Zero","MoreThanZero")][,capital_losses:= as.factor(capital_losses)]
+num_train[,.N,capital_losses][order(-N)]
+
+num_train[,.N,capital_gains][order(-N)]
+num_train[,capital_gains := ifelse(capital_gains == 0,"Zero","MoreThanZero")][,capital_gains:= as.factor(capital_gains)]
+num_train[,.N,capital_gains][order(-N)]
+
+num_train[,.N,dividend_from_Stocks][order(-N)]
+num_train[,dividend_from_Stocks := ifelse(dividend_from_Stocks == 0,"Zero","MoreThanZero")][,dividend_from_Stocks:= as.factor(dividend_from_Stocks)]
+num_train[,.N,dividend_from_Stocks][order(-N)]
+
+
+num_test[,.N,wage_per_hour][order(-N)]
+num_test[,wage_per_hour := ifelse(wage_per_hour == 0,"Zero","MoreThanZero")][,wage_per_hour := as.factor(wage_per_hour)]
+num_test[,.N,wage_per_hour][order(-N)]
+
+num_test[,.N,capital_losses][order(-N)]
+num_test[,capital_losses := ifelse(capital_losses == 0,"Zero","MoreThanZero")][,capital_losses:= as.factor(capital_losses)]
+num_test[,.N,capital_losses][order(-N)]
+
+num_test[,.N,capital_gains][order(-N)]
+num_test[,capital_gains := ifelse(capital_gains == 0,"Zero","MoreThanZero")][,capital_gains:= as.factor(capital_gains)]
+num_test[,.N,capital_gains][order(-N)]
+
+num_test[,.N,dividend_from_Stocks][order(-N)]
+num_test[,dividend_from_Stocks := ifelse(dividend_from_Stocks == 0,"Zero","MoreThanZero")][,dividend_from_Stocks:= as.factor(dividend_from_Stocks)]
+num_test[,.N,dividend_from_Stocks][order(-N)]
+
+
 # TO BE CONTINUED...
