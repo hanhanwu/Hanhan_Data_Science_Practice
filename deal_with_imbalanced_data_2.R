@@ -202,4 +202,98 @@ num_test[,dividend_from_Stocks := ifelse(dividend_from_Stocks == 0,"Zero","MoreT
 num_test[,.N,dividend_from_Stocks][order(-N)]
 
 
+
+
+# combine data
+d_train <- cbind(num_train, cat_train)
+d_test <- cbind(num_test, cat_test)
+rm(num_train, num_test, cat_train, cat_test)
+
+library(mlr) # The all in one library :)
+# the task here is dataset
+train.task <- makeClassifTask(data=d_train, target="income_level")
+test.task <- makeClassifTask(data=d_test, target="income_level")
+
+# remove zero variance features
+train.task <- removeConstantFeatures(train.task)
+test.task <- removeConstantFeatures(test.task)
+
+# get variable importance chart
+## This chart is deduced using a tree algorithm, where at every split, the information is calculated using reduction in entropy
+var_imp <- generateFilterValuesData(train.task, method = c("information.gain"))
+plotFilterValues(var_imp, feat.type.cols = TRUE)
+
+# try undersampling, oversampling, SMOTE to balance data
+## SMOTE: In SMOTE, the algorithm looks at n nearest neighbors, measures the distance between them and introduces a new observation at the center of n observations.
+## undersampling: tends to loss of information
+## oversampling: tends to overestimation of minority class
+
+# undersampling
+train_under <- undersample(train.task, rate = 0.1)   # keep 10% majority class
+table(getTaskTargets(train_under))
+
+# oversampling
+train_over <- oversample(train.task, rate = 15)   # make minority class 15 times
+table(getTaskTargets(train_over))
+
+# SMOTE
+train_smote <- smote(train.task, rate = 10, nn = 3)
+table(getTaskTargets(train_smote))
+
+
+# find available algorithms in MLR for the prediction problem here
+listLearners("classif", "twoclass")[c("class", "package")]
+
+## METHOD 1 - Try naive bayesian on all imbalanced, undersampled, oversmapled and SMOTE dataset,
+## then compare accuracy using cross validation
+
+naive_learner <- makeLearner("classif.naiveBayes", predict.type = "response")
+naive_learner$par.vals <- list(laplace = 1)
+
+## 10 folds for CV
+folds <- makeResampleDesc("CV", iters=10, stratify = T)
+fun_cv <- function(a){
+  crv_val <- resample(naive_learner,a,folds,measures = list(acc,tpr,tnr,fpr,fp,fn))
+  crv_val$aggr
+}
+
+## compare accuracy, tpr, tnr, fpr, fp, fn on the 4 dataset
+fun_cv(train.task)
+# acc.test.mean tpr.test.mean tnr.test.mean fpr.test.mean  fp.test.mean  fn.test.mean 
+# 0.7267533     0.7153964     0.8984022     0.1015978   125.8000000  5326.1000000
+
+fun_cv(train_under)
+# acc.test.mean tpr.test.mean tnr.test.mean fpr.test.mean  fp.test.mean  fn.test.mean 
+# 0.75964678    0.65667267    0.91527999    0.08472001  104.90000000  642.50000000 
+
+fun_cv(train_over)
+# acc.test.mean tpr.test.mean tnr.test.mean fpr.test.mean  fp.test.mean  fn.test.mean 
+# 7.834291e-01  6.518080e-01  9.160502e-01  8.394982e-02  1.559200e+03  6.516100e+03 
+
+fun_cv(train_smote)
+# acc.test.mean tpr.test.mean tnr.test.mean fpr.test.mean  fp.test.mean  fn.test.mean 
+# 8.709581e-01  8.205524e-01  9.471410e-01  5.285899e-02  6.545000e+02  3.358200e+03
+
+# In this case, SMOTE gives the highest accuracy, use train_smote to build the model
+nb_model <- train(naive_learner, train_smote)
+nb_predict <- predict(nb_model, test.task)
+
+## evaluate the model
+nb_prediction <- nb_predict$data$response
+dCM <- confusionMatrix(d_test$income_level, nb_prediction)
+dCM
+## F meansure
+precision <- dCM$byClass['Pos Pred Value']
+precision
+recall <- dCM$byClass['Sensitivity']
+recall
+f_measure <- 2*((precision*recall)/(precision+recall))
+f_measure
+
+## According to dCM, Sensitivity is 98% means there is 98% accuracy in predicting majority class,
+## but with 23% Specificity, which means minority class prediction accuracy is only 23%, 
+## more models should be tried beyond Naive Bayesian
+
+
+
 # TO BE CONTINUED...
