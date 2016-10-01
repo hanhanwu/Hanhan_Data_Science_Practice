@@ -295,5 +295,46 @@ f_measure
 ## more models should be tried beyond Naive Bayesian
 
 
+  
+# XGBOOST
+set.seed(410)
+xgb_learner <- makeLearner("classif.xgboost", predict.type = "response")
+xgb_learner$par.vals <- list(
+  objective = "binary:logistic",
+  eval_metric = "error",
+  nrounds = 150,
+  print.every.n = 50
+)
+## tuning params
+xgb_params <- makeParamSet(
+  makeIntegerParam("max_depth",lower=3,upper=10),
+  makeNumericParam("lambda",lower=0.05,upper=0.5),
+  makeNumericParam("eta", lower = 0.01, upper = 0.5),
+  makeNumericParam("subsample", lower = 0.50, upper = 1),
+  makeNumericParam("min_child_weight",lower=2,upper=10),
+  makeNumericParam("colsample_bytree",lower = 0.50,upper = 0.80)
+)
+## random search function to choose params
+rancontrol <- makeTuneControlRandom(maxit = 5L)  # 5 iterations
+set_cv <- makeResampleDesc("CV", iters = 5L, stratify = T)  # 5 folds cross validation
+## tune params
+xgb_tune <- tuneParams(learner = xgb_learner, task = train.task, resampling = set_cv, measures = list(acc, tpr, tnr, fpr, fp, fn), par.set = xgb_params, control = rancontrol)
+xgb_tune$x
+## train the model and make predictions with optimal params
+xgb_optimal <- setHyperPars(learner = xgb_learner, par.vals = xgb_tune$x)
+xgb_model <- train(xgb_optimal, train.task)
+xgb_predict <- predict(xgb_model, test.task)
+xgb_prediction <- xgb_predict$data$response
+## evaluate the prediction results
+xgb_confusionmatrix <- confusionMatrix(d_test$income_level, xgb_prediction)
+xgb_confusionmatrix    # Sensitivity: 0.9568, Specificity: 0.6657, Accuracy: 0.948
+precision <- xgb_confusionmatrix$byClass["Pos Pred Value"]
+precision
+recall <- xgb_confusionmatrix$byClass["Sensitivity"]
+recall
+f_measure <- 2*((precision*recall)/(precision+recall))
+f_measure     
+## XGBoost got much better results than Naive Bayesian
+  
 
 # TO BE CONTINUED...
