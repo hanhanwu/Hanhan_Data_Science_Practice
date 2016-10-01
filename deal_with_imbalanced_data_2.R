@@ -355,5 +355,52 @@ f_measure     # 0.9679402
 ## It seems that, after feature dimensional reduction, the performace dropped, 
 ## especially I got 0 Specificity here which means the minority group prediction is very bad
 
+
+## Instead of predicint labels as above, I'm trying to predict probabilities below
+xgb_prob <- setPredictType(learner = xgb_optimal, predict.type = "prob")
+xgb_model_prob <- train(xgb_prob, train.task)
+xgb_predict_prob <- predict(xgb_model_prob, test.task)
+# check sample probability prediction results
+xgb_predict_prob$data[1:10,]
+
+
+# TUNE 1 - original threshold, 0.5
+xgb_predict_prob$threshold
+confusionMatrix(d_test$income_level, xgb_predict_prob$data$response)
+## Sensitivity: 0.9569, Specifity: 0.6609
+
+# TUNE 2 - threshold 0.4
+pred2 <- setThreshold(xgb_predict_prob, 0.4)
+confusionMatrix(d_test$income_level, pred2$data$response)
+## Sensitivity: 0.9517, Specificity: 0.7148
+
+# TUNE 3  - threshold 0.3
+pred3 <- setThreshold(xgb_predict_prob, 0.3)
+confusionMatrix(d_test$income_level, pred3$data$response)
+## Sensitivity: 0.9466, Specificity: 0.7851
+
+# TUNE 4  - threshold 0.6
+pred4 <- setThreshold(xgb_predict_prob, 0.6)
+confusionMatrix(d_test$income_level, pred4$data$response)
+## Sensitivity: 0.9627, Specificity: 0.5977
+
+# xgb threshold may influce the prediction for minority group when data is not balanced
+## Using AUC plot to tune threshold, the AUC curve which is closer to the TOP LEFT CORNER is better
+pt1 <- generateThreshVsPerfData(xgb_predict_prob, measures = list(fpr, tpr))
+plotROCCurves(pt1)
+pt2 <- generateThreshVsPerfData(pred3, measures = list(fpr, tpr))
+plotROCCurves(pt2)
+library(pROC)
+roc <- plot(roc(pt1$data$tpr, pt1$data$fpr), print.auc = TRUE, col = "green")
+roc <- plot(roc(pt2$data$tpr, pt2$data$fpr), print.auc = TRUE, col = "blue", print.auc.y = .4, add = TRUE)
+## cannot tell too much differences in above plot.... use Sensitivity and Specifity numbers are better
+
+## TUNE 3 is already good enough
+# Beside tuning threshold, can try these methods too:
+    # INcrease rounds
+    # Use 10 folds CV
+    # Increase repetitions in random search
+    # Build xgb models on undersampling, oversampling, SMOTE data  
   
+
 # TO BE CONTINUED...
