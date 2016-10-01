@@ -335,6 +335,25 @@ recall
 f_measure <- 2*((precision*recall)/(precision+recall))
 f_measure     
 ## XGBoost got much better results than Naive Bayesian
-  
 
+
+## I'm trying to make XGBoost performs better, I'm going to use the top important features in the training data
+## in the feature importance plot above, we have seen 20 top features have been chosen from 35 features
+top_features <- filterFeatures(train.task, method = "information.gain", abs = 20)
+xgb_model <- train(xgb_optimal, top_features)
+xgb_predict <- predict(xgb_model, test.task)
+xgb_prediction <- xgb_predict$data$response
+## evaluate the prediction results
+xgb_confusionmatrix <- confusionMatrix(d_test$income_level, xgb_prediction)
+xgb_confusionmatrix    # Sensitivity: 0.938, Specificity: 0.0, Accuracy: 0.9379
+precision <- xgb_confusionmatrix$byClass["Pos Pred Value"]
+precision
+recall <- xgb_confusionmatrix$byClass["Sensitivity"]
+recall
+f_measure <- 2*((precision*recall)/(precision+recall))
+f_measure     # 0.9679402
+## It seems that, after feature dimensional reduction, the performace dropped, 
+## especially I got 0 Specificity here which means the minority group prediction is very bad
+
+  
 # TO BE CONTINUED...
