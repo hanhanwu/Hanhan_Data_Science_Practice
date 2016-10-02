@@ -333,7 +333,7 @@ precision
 recall <- xgb_confusionmatrix$byClass["Sensitivity"]
 recall
 f_measure <- 2*((precision*recall)/(precision+recall))
-f_measure     
+f_measure     # 0.9726193 
 ## XGBoost got much better results than Naive Bayesian
 
 
@@ -400,7 +400,34 @@ roc <- plot(roc(pt2$data$tpr, pt2$data$fpr), print.auc = TRUE, col = "blue", pri
     # INcrease rounds
     # Use 10 folds CV
     # Increase repetitions in random search
-    # Build xgb models on undersampling, oversampling, SMOTE data  
-  
+    # Build xgb models on undersampling, oversampling, SMOTE data
+    # Or, set weights to classes, set higher wieght to the class you want to pay more attention
 
-# TO BE CONTINUED...
+
+
+# SVM
+## check params
+getParamSet("classif.svm")
+svm_learner <- makeLearner("classif.svm", predict.type = "response")
+## set weights to classes
+svm_learner$par.vals <- list(class.weights = c("0"=1, "1"=10), kernel="radial")
+svm_param <- makeParamSet(
+  makeIntegerParam("cost", lower = 10^-1, upper = 10^2),
+  makeIntegerParam("gamma", lower = 0.5, upper = 2)
+)
+## random search, cross validation settings
+set_search <- makeTuneControlRandom(maxit = 5L)
+set_cv <- makeResampleDesc("CV", iters=3L, stratify = T)
+## find optimal params, looks like this step will take forever on my machine...
+svm_optimal <- tuneParams(
+  learner = svm_learner, 
+  task = train.task, measures = list(acc, tpr, tnr, fpr, fp, fn),
+  par.set = svm_param,
+  control = set_search,
+  resampling = set_cv
+)
+## train and predict
+svm_model <- train(svm_optimal, train.task)
+svm_predict <- predict(svm_model, test.task)
+## evaluate
+confusionMatrix(d_test$income_level, svm_predict$data$response)
