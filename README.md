@@ -183,7 +183,10 @@ DATA PREPROCESSING
  * Deal with Imbalanced Dataset
   * practice 1: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/deal_with_imbalanced_dataset.R
   * practice 2: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/deal_with_imbalanced_data_2.R
+  * training data for practice 2: https://www.analyticsvidhya.com/wp-content/uploads/2016/09/train.zip
+  * testing data for practice 2: https://www.analyticsvidhya.com/wp-content/uploads/2016/09/test.zip
   * data description for practice 2: http://archive.ics.uci.edu/ml/machine-learning-databases/census-income-mld/census-income.names
+  * Tutorial: https://www.analyticsvidhya.com/blog/2016/09/this-machine-learning-project-on-imbalanced-data-can-add-value-to-your-resume/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
 
 ********************************************
 
