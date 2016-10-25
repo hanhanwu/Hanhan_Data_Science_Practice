@@ -1,4 +1,5 @@
 path<- "[your file path]"
+output_path <- "[your output path]"
 setwd(path)
 
 library(mlr)
@@ -15,6 +16,9 @@ train_ids <- train$id
 test_ids <- test$id
 train[, id := NULL]
 test[, id := NULL]
+train <- data.frame(train)
+test <- data.frame(test)
+
 
 ## Method 1 - Bottom Line Prediction
 train.task <- makeClassifTask(data=train, target="species")
@@ -32,3 +36,13 @@ xgb_model_prob <- train(xgb_prob, train.task)
 xgb_predict_prob <- predict(xgb_model_prob, test.task)
 # check sample probability prediction results
 result <- xgb_predict_prob$data
+submit <- result[, 3:101]
+submit <- cbind(test_ids, submit)
+names(submit)[names(submit) == 'test_ids'] <- 'id'
+names(submit)[2:100] <- gsub("prob.", "", names(submit)[2:100])
+head(submit)
+write.csv(submit, file = output_path, quote = F, row.names = F)
+## 0.64650, later score should not be higher than this
+
+
+# TO BE CONTINUED...
