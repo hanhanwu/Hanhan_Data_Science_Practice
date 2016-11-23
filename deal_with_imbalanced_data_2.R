@@ -32,10 +32,10 @@ round(prop.table(table(train$income_level))*100)
 # convert multiple columns' data types, so convenient!
 factcols <- c(2:5,7,8:16,20:29,31:38,40,41)
 numcols <- setdiff(1:40,factcols)
-train[,(factcols) := lapply(.SD, factor), .SDcols = factcols]
+train[,(factcols) := lapply(.SD, as.factor), .SDcols = factcols]
 train[,(numcols) := lapply(.SD, as.numeric), .SDcols = numcols]
 
-test[,(factcols) := lapply(.SD, factor), .SDcols = factcols]
+test[,(factcols) := lapply(.SD, as.factor), .SDcols = factcols]
 test[,(numcols) := lapply(.SD, as.numeric), .SDcols = numcols]
 
 str(train)
