@@ -245,8 +245,8 @@ rf_tune <- tuneParams(learner = rf_learner, resampling = cv_rf, task = trainTask
 rf_tune$x
 rf_tune$y
 rf.tree <- setHyperPars(rf_learner, par.vals = rf_tune$x)
-rf_model <- train(rf.tree, trainTask)
-getLearnerModel(t.rpart)
+rf_model <- mlr::train(learner=rf.tree, task=trainTask)
+getLearnerModel(rf_model)
 rfpredict <- predict(rf_model, testTask)
 rfpredict
 
