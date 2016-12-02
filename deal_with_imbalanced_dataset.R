@@ -60,7 +60,7 @@ roc.curve(hacide.test$cls, pred_both[,2])
 roc.curve(hacide.test$cls, pred_over[,2])
 roc.curve(hacide.test$cls, pred_under[,2])
 
-# by using ROSE, we can alsi use "holdout"
+# by using ROSE, we can also use "holdout"
 # to prevent high variance
 ROSE_holdout <- ROSE.eval(cls ~ ., data = hacide.train, 
                           learner = rpart, method.assess = "holdout", 
