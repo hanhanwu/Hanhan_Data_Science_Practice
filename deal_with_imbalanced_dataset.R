@@ -27,20 +27,20 @@ roc.curve(hacide.test$cls, imb_pred[,2], plotit = T)
 # SAMPLING
 
 # over sampling, may lead to overfitting
-bal_data_over <- ovun.sample(cls~., data = hacide.train, method = "over", N = 1960, seed = 1)$data
+bal_data_over <- ovun.sample(cls~., data = hacide.train, method = "over", N = 1960, seed = 410)$data
 table(bal_data_over$cls)
 
 # under sampling, may lose important data
-bal_data_under <- ovun.sample(cls~., data = hacide.train, method = "under", N = 40, seed = 1)$data
+bal_data_under <- ovun.sample(cls~., data = hacide.train, method = "under", N = 40, seed = 410)$data
 table(bal_data_under$cls)
 
 # do both over-sampling and under-smapling
 ## p means the probability of positive classes in the new dataset
-bal_data_both <- ovun.sample(cls~., data = hacide.train, method = "both", p = 0.5, N = 1000, seed = 1)$data
+bal_data_both <- ovun.sample(cls~., data = hacide.train, method = "both", p = 0.5, N = 1000, seed = 410)$data
 table(bal_data_both$cls)
 
 # ROSE helps overcome the shortcomings in over-smapling and under-sampling
-bal_data_rose <- ROSE(cls~., data = hacide.train, seed = 1)$data
+bal_data_rose <- ROSE(cls~., data = hacide.train, seed = 410)$data
 table(bal_data_rose$cls)
 
 
@@ -64,7 +64,7 @@ roc.curve(hacide.test$cls, pred_under[,2])
 # to prevent high variance
 ROSE_holdout <- ROSE.eval(cls ~ ., data = hacide.train, 
                           learner = rpart, method.assess = "holdout", 
-                          extr.pred = function(obj)obj[,2], seed = 1)
+                          extr.pred = function(obj)obj[,2], seed = 410)
 
 
 # plot all the ROC curve together
