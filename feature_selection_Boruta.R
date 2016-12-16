@@ -27,7 +27,7 @@ colSums(is.na(train))
 
 # Boruta is the most easy-to-use feature selection method I have used so far
 # just 3 lines of code, it tells the important, unimportant features
-set.seed(410)
+set.seed(1)
 boruta_train <- Boruta(LoanStatus~.-LoanID, data = train, doTrace = 2)
 boruta_train
 
@@ -69,7 +69,7 @@ feature_stats
 ## RFE - Recursive Feature Elimination
 library(caret)
 library(randomForest)
-set.seed(410)
+set.seed(1)
 
 # specific Random Forest as the underlying algorithm, just as Boruta
 control <- rfeControl(functions = rfFuncs, method = "cv", number = 10)
