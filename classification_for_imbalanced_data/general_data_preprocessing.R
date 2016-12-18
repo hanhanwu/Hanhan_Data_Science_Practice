@@ -1,3 +1,17 @@
+library(RODBC)
+library(data.table)
+require(data.table)
+library(dplyr)
+library(caret)
+library(dummies)
+library(ggplot2)
+library(plotly)
+library(FSelector)
+library('e1071')
+library(mlr)
+library(ROSE)
+
+
 # Method 1 - impute missing data with median/mode
 q2 <- cbind(fact_data, num_data)
 summarizeColumns(q2)
