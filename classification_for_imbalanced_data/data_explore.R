@@ -1,3 +1,16 @@
+library(RODBC)
+library(data.table)
+require(data.table)
+library(dplyr)
+library(caret)
+library(dummies)
+library(ggplot2)
+library(plotly)
+library(FSelector)
+library('e1071')
+library(mlr)
+library(ROSE)
+
 
 # Univarite Analysis - check categorical data distribution
 fact_distribution_plot <- function(a){
