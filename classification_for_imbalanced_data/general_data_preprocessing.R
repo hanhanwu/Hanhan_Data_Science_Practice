@@ -49,3 +49,19 @@ num_distribution_plot(sqrt(q2$mlbf_InterestRate), q2)
 quantile(q2$mlbf_InterestRate)
 q2$mlbf_InterestRate <- as.factor(ifelse (q2$mlbf_InterestRate <= 0.05, "0~0.05", ifelse(q2$mlbf_InterestRate >0.07, ">0.07", "0.05~0.07")))
 summary(q2$mlbf_InterestRate)
+
+
+# remove almost constant varibales
+get_rare_case <- function(a, n) {
+  if (is.numeric(a)){
+    return(length(a[which(a!=0)]) <= n)
+  }
+  else if (is.factor(a) & length(levels(q2$IsDelinquent_v1))==2){
+     return(length(a[which(a==levels(a)[1])]) <= n | length(a[which(a==levels(a)[2])]) <= n)
+  }
+  return(FALSE)
+}
+
+rare_cases <- subset(q2, select = sapply(q2, get_rare_case, 3) ==T)
+colnames(rare_cases)
+q2[, names(rare_cases):=NULL]
