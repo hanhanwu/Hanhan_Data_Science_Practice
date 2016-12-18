@@ -72,26 +72,26 @@ origin_fact_data <- subset(q1, select = origin_nums==F)
   NA_perct <- sapply(origin_num_data, function(x){sum(is.na(x))/length(x)})*100
   NA_perct 
 
-## convert to factor without losing the original values
-origin_num_data$BranchID <- as.factor(as.character(origin_num_data$BranchID))
+  ## convert to factor without losing the original values
+  origin_num_data$BranchID <- as.factor(as.character(origin_num_data$BranchID))
 
 
-## deal with data skewness
-num_distribution_plot(log(origin_num_data$LoanAmount), origin_num_data)
-num_distribution_plot(origin_num_data$mlbf_InterestRate, origin_num_data)
-origin_num_data$ApprovedAmount <- log(origin_num_data$LoanAmount)
+  ## deal with data skewness
+  num_distribution_plot(log(origin_num_data$LoanAmount), origin_num_data)
+  num_distribution_plot(origin_num_data$mlbf_InterestRate, origin_num_data)
+  origin_num_data$ApprovedAmount <- log(origin_num_data$LoanAmount)
 
-## to know central tendency and outliers with numbers
-quantile(origin_num_data$LoanAmount)
-boxplot(origin_num_data$LoanAmount)
+  ## to know central tendency and outliers with numbers
+  quantile(origin_num_data$LoanAmount)
+  boxplot(origin_num_data$LoanAmount)
 
-## to check numerical feature distribution based on the target
-p1 <- origin_num_data$LoanAmount[which(origin_num_data$HasWriteOff==1)]
-pt1 <- ggplot(data=data.frame(p1), aes(x= p1, y=..density..)) + geom_histogram(fill="blue",color="red",alpha = 0.5,bins =100) + geom_density()
-p2 <- origin_num_data$LoanAmount[which(origin_num_data$HasWriteOff==0)]
-pt2 <- ggplot(data=data.frame(p2), aes(x= p2, y=..density..)) + geom_histogram(fill="blue",color="red",alpha = 0.5,bins =100) + geom_density()
-multiplot(pt1, pt2, cols=2)
+  ## to check numerical feature distribution based on the target
+  p1 <- origin_num_data$LoanAmount[which(origin_num_data$HasWriteOff==1)]
+  pt1 <- ggplot(data=data.frame(p1), aes(x= p1, y=..density..)) + geom_histogram(fill="blue",color="red",alpha = 0.5,bins =100) + geom_density()
+  p2 <- origin_num_data$LoanAmount[which(origin_num_data$HasWriteOff==0)]
+  pt2 <- ggplot(data=data.frame(p2), aes(x= p2, y=..density..)) + geom_histogram(fill="blue",color="red",alpha = 0.5,bins =100) + geom_density()
+  multiplot(pt1, pt2, cols=2)
 
 
-## put all the final categorical and numerical data together
+# put all the final categorical and numerical data together
 q2 <- cbind(fact_data, num_data)
