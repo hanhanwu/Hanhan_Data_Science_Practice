@@ -49,7 +49,7 @@ library(ROSE)
   selected_cols <- c(4,8,16,61)
   selected_col_names <- colnames(q2_processed[, .SD, .SDcols=selected_cols])
 
-  ## create training, testing data based on the selected features
+  ## generate training, testing data based on selected features
   selected_train <- subset(train_data, select = colnames(train_data) %in% selected_col_names)
   selected_train[, HasWriteOff:=train_data$HasWriteOff]
   selected_test <- subset(test_data, select = colnames(test_data) %in% selected_col_names)
@@ -87,8 +87,28 @@ library(ROSE)
   feature_stats
   selected_cols <- getSelectedAttributes(new_boruta_train, withTentative = F)
 
-  ## model training with selected features
+  ## generate training, testing data based on selected features
   selected_train <- subset(train_data, select = colnames(train_data) %in% selected_cols)
   selected_train[, HasWriteOff:=train_data$HasWriteOff]
   selected_test <- subset(test_data, select = colnames(test_data) %in% selected_cols)
   selected_test[, HasWriteOff:=test_data$HasWriteOff]
+                            
+                            
+
+# Method 4 - regression 
+  glm_fit <- glm(formula = HasWriteOff ~ ., family = binomial(link = "logit"), data=q2_processed)
+  sort(glm_fit$coefficients)
+  glm_feature_coefficient <- data.frame(sort(glm_fit$coefficients, decreasing = T)) 
+  colnames(glm_feature_coefficient) <- "coeffcient"
+  feature_names <- data.frame(colnames(train_data)[1:(length(train_data)-1)])
+  colnames(feature_names)[1] <- 'Feature'
+  glm_fi <- cbind(feature_names, glm_feature_coefficient$coeffcient)
+  colnames(glm_fi)[2] <- "coefficient"
+  head(glm_fi, n=15)
+
+  ## generate training, testing data based on selected features                           
+  glm_selected_cols <- glm_fi$Feature[1:15]
+  glm_selected_train <- subset(train_data, select = colnames(train_data) %in% glm_selected_cols)
+  glm_selected_train[, HasWriteOff:=train_data$HasWriteOff]
+  glm_selected_test <- subset(test_data, select = colnames(test_data) %in% glm_selected_cols)
+  glm_selected_test[, HasWriteOff:=test_data$HasWriteOff]
