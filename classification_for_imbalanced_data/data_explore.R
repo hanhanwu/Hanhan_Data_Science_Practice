@@ -72,7 +72,8 @@ origin_fact_data <- subset(q1, select = origin_nums==F)
   NA_perct <- sapply(origin_num_data, function(x){sum(is.na(x))/length(x)})*100
   NA_perct 
 
-  ## convert to factor without losing the original values
+  ## convert to factor without losing the original values  
+  ### [but this may not be necessary if you don't have any other operation on this feature]
   origin_num_data$BranchID <- as.factor(as.character(origin_num_data$BranchID))
 
 
