@@ -36,3 +36,39 @@ Recently, I did many experiments on classification with imbalanced small dataset
 * In my case, the target is categorical, so for numerical, instead of calculating their z-score or do anova test, I just plot the density for each target value and put the plots together, this is easier to understand.
 * <b> NOTE: </b> Later in model training, algorithms like Random Forests and xgboost all need numerical features, so even if from business point of view, the data belongs to categorical data, but after data loading it has been defined as numerical data, there is no need to convert the data to categorical if you won't do any other process, otherwise later you still have to convert it to numerical and the values will be changed...
 * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/classification_for_imbalanced_data/data_explore.R
+
+
+***********************************************************************
+
+<b>Data Preprocessing</b>
+
+* Here, I am listing the general methods for data preprocessing can be used all the time before training the model.
+* When dealing with missing data, I used 2 methods here. One is to use median/mode based on central tendency, the other is to use KNN to predict the missing values, meanwhile Caret KNN will help you normalize the numerical data at the same time, but if there are categorical data, it ignores them. Based my several rounds of experiments, for the dataset I am using, KNN + data normalization always gave me better results.
+* About missing data imputing, I also tried to replace NA with "MISSING" just in case missing data could in fact help the prediction, this method worked well in some of my other projects.
+* Then it's helpful to remove those 0 variance data and highly correlated features. Because 0 variance data cannot contribute anything, highly correlated features will increate the data variance.
+* Dealing with outliers, I wrote 2 methods, one is to use median/mode based on the central tendency, the other is to binning the data because sometimes, we don't want to lose any information expecialy when the data is small. However, for the dataset I am using here, it turned out that dealing with outliers gave me a lower balanced accuracy.
+* Besides 0 variance features, some features can be almost constant, therefore, in my code, I wrote a fnction to find these almost constant features. I removed those with no more then 4 distinct values, however, for the dataset I am using here, the balanced accuracy dropped a lot. Therefore, I think for small dataset with severly imbalance problems, removing almost constant features may not be a good idea.
+* My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/classification_for_imbalanced_data/general_data_preprocessing.R
+
+
+***********************************************************************
+
+<b>Feature Importance -> Feature Selection</b>
+
+* 3 major feature selection methods: https://www.analyticsvidhya.com/blog/2016/12/introduction-to-feature-selection-methods-with-an-example-or-how-to-select-the-right-variables/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+* In my code, I have used filter methods and wrapper methods.
+* For filter methods, I tried gain.ratio, information.gain (1-entropy) and anova.test, however, after I took selected features in to models, all got very low balanced accuracy, especially for the small class. This is because filter methods are trying to calculate the correlation between features and the target, I guess when the target is serverly imbalanced, the secected features may all have bias toward the large class.
+* For wrapper methods, I tried Caret package and Boruta, both of them use Random Forests as default, however the final balanced accuracy had significant difference. Caret feature selection is recursive methods, Boruta feature selection is all-relevant selection. Boruta gave me much higher balanced accuracy for this small and imbalanced accuracy. However, one thing I like Caret feature importance is, after model training, not only random forests, algorithms such as GBM can also plot the final feature importance.
+* For more about Caret and Boruta, you can find resources here: https://github.com/hanhanwu/Hanhan_Data_Science_Resources2
+* For embedded methods, I think ensembling methods like xgboost is doing that for you.
+* In my experiments, I have even tried to use regression for feature selection, selecting those with higher coefficient. Did not work well for this dataset
+* My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/classification_for_imbalanced_data/feature_selection.R
+
+
+***********************************************************************
+
+<b>Model Training and Evaluation</b>
+
+* In my experiments, I have found that bagging method Random Forests, Boosting methods GBM, XGBOOST and C50 could always return higher balanced accuracy. I used ROSE to deal with data imbalance problem and overcome the shortage of overfitting, underfitting. However it dind't work well most of the time... Random Forests is pretty great. In fact, it can handle missing data, outliers, data imbalance itself well.
+* Since the data is imbalnced, I am using Balanced Accuracy, Sensitivity and Specifity as the measure
+* My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/classification_for_imbalanced_data/model_training.R
