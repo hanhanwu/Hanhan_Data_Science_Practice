@@ -34,7 +34,7 @@ Recently, I did many experiments on classification with imbalanced small dataset
 * To deal with data skewness, we can use `log` or `sqrt` depends on the data central tendency, the result should be closer to normal distribution.
 * Sometimes, distribution plot may not be enough, with `quantile` and boxplot, it is better to check data central tendency and outliers.
 * In my case, the target is categorical, so for numerical, instead of calculating their z-score or do anova test, I just plot the density for each target value and put the plots together, this is easier to understand.
-* <b> NOTE: </b> Later in model training, algorithms like Random Forests and xgboost all need numerical features, so even if from business point of view, the data belongs to categorical data, but after data loading it has been defined as numerical data, there is no need to convert the data to categorical if you won't do any other process, otherwise later you still have to convert it to numerical and the values will be changed...
+* <b> NOTE: </b> Later in model training, algorithms like Random Forests and xgboost all need numerical features, so even if from business point of view, the data belongs to categorical data, but after data loading it has been defined as numerical data, there is no need to convert the data to categorical if you won't do any other process, otherwise later you still have to convert it to numerical and the values will be changed, and the final prediction results won't be improved.
 * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/classification_for_imbalanced_data/data_explore.R
 
 
