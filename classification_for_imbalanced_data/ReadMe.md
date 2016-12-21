@@ -72,3 +72,13 @@ Recently, I did many experiments on classification with imbalanced small dataset
 * In my experiments, I have found that bagging method Random Forests, Boosting methods GBM, XGBOOST and C50 could always return higher balanced accuracy. I used ROSE to deal with data imbalance problem and overcome the shortage of overfitting, underfitting. However it dind't work well most of the time... Random Forests is pretty great. In fact, it can handle missing data, outliers, data imbalance itself well.
 * Since the data is imbalnced, I am using Balanced Accuracy, Sensitivity and Specifity as the measure
 * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/classification_for_imbalanced_data/model_training.R
+
+
+***********************************************************************
+
+<b>Feature Engineering - One Hot Encoding</b>
+
+* I was about to give up using one-hot encoding, because there are too many categorical data and many has higher levels, checking each of them with the target in order to know how to reduce the levels can be time consuming. But, with all my patience, I still did it. It's worthy. The Balanced Accuracy has increased from 0.94469 to 0.94793, especailly the accuracy for small class has reached to be higher than 90%, and the final feature importance makes more sense.
+* In order to do feature engineering, I need to check each feature and change data format, then reduce the levels of high levels categorical data, and use one-hot on categorical data.
+* Impute all the missing data and use Boruta, since Boruta requires no NA in the data.
+* My code (in my code you will find all the examples from one-hot to model training & evaluation): https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/classification_for_imbalanced_data/one_hot_encoding.R
