@@ -20,13 +20,14 @@ library(Boruta)
 library('RANN')
 q2 <- cbind(num_data, dummy_fact)
 summarizeColumns(q2)
+q2[, HasWriteOff0:= NULL]
+q2[, HasWriteOff1:= NULL]
 
 ## remove 0 variance feature
 zero_variance_list <- has_zero_variance(q2)
 zero_variance_list
 
 ## remove highly correlation data
-q2[, HasWriteOff:= NULL]
 ax <-findCorrelation(x = cor(q2), cutoff = 0.7)   # 0.7 is the threshold here
 summarizeColumns(q2)
 sort(ax)
