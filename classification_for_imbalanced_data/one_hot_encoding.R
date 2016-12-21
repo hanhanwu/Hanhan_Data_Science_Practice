@@ -63,7 +63,6 @@ axis(side = 1, las = 2, labels = names(plot_labels),
 feature_stats = attStats(new_boruta_train)
 feature_stats
 selected_cols <- getSelectedAttributes(new_boruta_train, withTentative = F)
-selected_cols <- selected_cols[1:41]  # remove HasWriteOff dummies
 selected_cols
 
 
