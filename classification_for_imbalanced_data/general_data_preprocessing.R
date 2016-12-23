@@ -21,6 +21,10 @@ summarizeColumns(q2)
 
 
 # Method 2 - impute missing data with KNN, it will normalize data at the same time
+zero_variance_list <- has_zero_variance(num_data)
+zero_variance_list
+num_data[, (zero_variance_list):=NULL]
+
 q2 <- cbind(fact_data, num_data)
 summarizeColumns(q2)
 fact_cols <- lapply(q2, is.factor)
