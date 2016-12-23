@@ -100,3 +100,4 @@ Recently, I did many experiments on classification with imbalanced small dataset
 <b>Notes</b>
 
 * Methods like Boruta feature sdelection and clustering used here do not guarantee to improve balanced accuracy in all the time, sometimes only using Ranfom Forests for small imbalanced dataset can achiveve highest balanced accuracy, and Random Forests can deal with missing data, outliers and data imbalance itself.
+* It can be helpful add much more features. I added 100+ new features into the dataset, with data preprocessing, Boruta features selection and methods such as cross validation to avoid overfitting, my balanced accuracy improved from 0.95067 to 0.96573, especially for Sensitivity, which jumped from 0.90698 to 0.93478. But using one-hot encoding does not always guarantee the improvement.
