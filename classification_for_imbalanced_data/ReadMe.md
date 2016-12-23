@@ -44,6 +44,7 @@ Recently, I did many experiments on classification with imbalanced small dataset
 
 * Here, I am listing the general methods for data preprocessing can be used all the time before training the model.
 * When dealing with missing data, I used 2 methods here. One is to use median/mode based on central tendency, the other is to use KNN to predict the missing values, meanwhile Caret KNN will help you normalize the numerical data at the same time, but if there are categorical data, it ignores them. Based my several rounds of experiments, for the dataset I am using, KNN + data normalization always gave me better results.
+* One thing need to note about using KNN data imputing method, it only deals with numerical data and the 0 variance numerical data should be removed before using KNN.
 * About missing data imputing, I also tried to replace NA with "MISSING" just in case missing data could in fact help the prediction, this method worked well in some of my other projects.
 * Then it's helpful to remove those 0 variance data and highly correlated features. Because 0 variance data cannot contribute anything, highly correlated features will increate the data variance.
 * Dealing with outliers, I wrote 2 methods, one is to use median/mode based on the central tendency, the other is to binning the data because sometimes, we don't want to lose any information expecialy when the data is small. However, for the dataset I am using here, it turned out that dealing with outliers gave me a lower balanced accuracy.
