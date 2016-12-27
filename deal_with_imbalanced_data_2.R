@@ -362,6 +362,9 @@ xgb_model_prob <- train(xgb_prob, train.task)
 xgb_predict_prob <- predict(xgb_model_prob, test.task)
 # check sample probability prediction results
 xgb_predict_prob$data[1:10,]
+# generate AUC curve to help threshold tuning
+df <- generateThreshVsPerfData(predict.xgprob,measures = list(fpr,tpr))
+plotROCCurves(df)
 
 
 # TUNE 1 - original threshold, 0.5
