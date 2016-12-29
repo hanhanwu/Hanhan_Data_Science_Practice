@@ -160,5 +160,22 @@ dCM <- confusionMatrix(test_data$HasWriteOff, nb_prediction, positive = "2")
 dCM 
 
 
-
+# method 6 - SVM
+getParamSet("classif.ksvm")
+svm_learner <- makeLearner("classif.ksvm", predict.type = "response")
+svm_param <- makeParamSet(
+  makeDiscreteParam("C", values = 2^c(-8,-4,-2,0)), #cost parameters
+  makeDiscreteParam("sigma", values = 2^c(-8,-4,0,4)) #RBF Kernel Parameter
+)
+ctrl <- makeTuneControlRandom()
+cv_svm <- makeResampleDesc("CV",iters = 5L)
+svm_tune <- tuneParams(svm_learner, task = train_task, resampling = cv_svm, par.set = svm_param, control = ctrl,measures = acc)
+svm_tune$x
+svm_tune$y
+t.svm <- setHyperPars(svm_learner, par.vals = svm_tune$x)
+svm_model <- mlr::train(svm_learner, train_task)
+svmpredict <- predict(svm_model, test_task)
+nb_prediction <- svmpredict$data$response
+dCM <- confusionMatrix(test_data$HasWriteOff, nb_prediction, positive = "1")
+dCM 
 
