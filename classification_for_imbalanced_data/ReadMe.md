@@ -74,6 +74,7 @@ Recently, I did many experiments on classification with imbalanced small dataset
 * Later I found that SVM is good for small dataset, especially when the number of featues are large, even larger than the number of data records. in somd e of my experiments in small dataset, SVM even performs better than Random Forests and other algorithms. For SVM, need to turn 3 major parameters, `C, gamma and kernel`. For details, please check my notes here: https://github.com/hanhanwu/Hanhan_Data_Science_Resources/blob/master/Experiences.md
 * Since the data is imbalnced, I am using Balanced Accuracy, Sensitivity and Specifity as the measure
 * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/classification_for_imbalanced_data/model_training.R
+* One more thing about model evaluation is Reliability Plot, it's the visualized calibration, a tutorial said Calibration could capture those cannot be catched by AUC or Accuracy. So I wrote the code here (the visualization is scare, may not be right....): https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/classification_for_imbalanced_data/Reliability_Plot.R
 
 
 ***********************************************************************
