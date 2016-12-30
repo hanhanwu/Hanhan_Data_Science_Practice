@@ -179,3 +179,18 @@ nb_prediction <- svmpredict$data$response
 dCM <- confusionMatrix(test_data$HasWriteOff, nb_prediction, positive = "1")
 dCM 
 
+## Move Threshold and check whether the balanced accuracy can be improved
+svmpredict$threshold
+confusionMatrix(test_data$HasWriteOff, nb_prediction, positive = "1")
+
+pred2 <- setThreshold(svmpredict, 0.3)
+confusionMatrix(test_data$HasWriteOff, pred2$data$response, positive = "1")
+
+pred3 <- setThreshold(svmpredict, 0.4)
+confusionMatrix(test_data$HasWriteOff, pred3$data$response, positive = "1")
+
+pred4 <- setThreshold(svmpredict, 0.6)
+confusionMatrix(test_data$HasWriteOff, pred4$data$response, positive = "1")
+
+pred5 <- setThreshold(svmpredict, 0.7)
+confusionMatrix(test_data$HasWriteOff, pred5$data$response, positive = "1")
