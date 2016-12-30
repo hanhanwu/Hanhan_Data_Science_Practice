@@ -97,6 +97,9 @@ Recently, I did many experiments on classification with imbalanced small dataset
 * I did all the data preprocessing, then used One-Hot Encoding and Boruta Feature Selection. With the rest features, I used kmeans to generate cluster. The generated cluster ids formed a new feature. With this added new feature among all the selected features, I trained the model with Random Forests.
 * If you want to get the highest balanced accuracy, may need to write an iteration by changing k of kmeans, but here Ranfom Forests ran very slow because I was doing param tuning with cross validation. So, I dind't do that here.
 * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/classification_for_imbalanced_data/clustering_in_classification.R
+* When doing clustering, with grounf truth, we call this as Intrinsic Clustering. With the ground truth, it can be easier to find the optimal number of clusters. 
+* Reference (I think that person who wrote 8 methods, is crazy): http://stackoverflow.com/questions/15376075/cluster-analysis-in-r-determine-the-optimal-number-of-clusters
+* code for finding optimal number of clusters: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/classification_for_imbalanced_data/find_optimal_clusters.R
 
 
 ***********************************************************************
