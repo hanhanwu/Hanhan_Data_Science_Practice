@@ -180,13 +180,24 @@ DATA PREPROCESSING
  * Original data source for download: http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236
  * Python Practice Code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/resolve_skewness.ipynb
  
- * Deal with Imbalanced Dataset
-  * practice 1: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/deal_with_imbalanced_dataset.R
-  * practice 2: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/deal_with_imbalanced_data_2.R
-  * training data for practice 2: https://www.analyticsvidhya.com/wp-content/uploads/2016/09/train.zip
-  * testing data for practice 2: https://www.analyticsvidhya.com/wp-content/uploads/2016/09/test.zip
-  * data description for practice 2: http://archive.ics.uci.edu/ml/machine-learning-databases/census-income-mld/census-income.names
-  * Tutorial: https://www.analyticsvidhya.com/blog/2016/09/this-machine-learning-project-on-imbalanced-data-can-add-value-to-your-resume/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+* Deal with Imbalanced Dataset
+ * practice 1: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/deal_with_imbalanced_dataset.R
+ * practice 2: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/deal_with_imbalanced_data_2.R
+ * training data for practice 2: https://www.analyticsvidhya.com/wp-content/uploads/2016/09/train.zip
+ * testing data for practice 2: https://www.analyticsvidhya.com/wp-content/uploads/2016/09/test.zip
+ * data description for practice 2: http://archive.ics.uci.edu/ml/machine-learning-databases/census-income-mld/census-income.names
+ * Tutorial: https://www.analyticsvidhya.com/blog/2016/09/this-machine-learning-project-on-imbalanced-data-can-add-value-to-your-resume/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+
+* TOOL - Google OpenRefine
+ * [tutorial 1][1] - text facet and clustering to help organize inconsistent text data (eg. "White and Black", "white and black" are the same); numerical facet has interactive interface to allow you check outliers, calculate log and errors.
+ * Practice data (registered csv): http://data.vancouver.ca/datacatalogue/animalInventory.htm
+ * [Clustering algorithm that helps group similar text][2]
+ * Note: compared the clustering algorithms used in Google OpenRefine, Levenshtein Distance match strings is is order sensitive, which means similar words should appear in the same order so that the distance between 2 strings could be shorter.
+ 
+ 
+ 
+ [1]:https://www.youtube.com/watch?v=B70J_H_zAWM
+ [2]:http://www.padjo.org/tutorials/open-refine/clustering/#clustering-algorithms
 
 
 ********************************************
