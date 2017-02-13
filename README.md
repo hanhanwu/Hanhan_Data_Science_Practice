@@ -193,11 +193,13 @@ DATA PREPROCESSING
  * Practice data (registered csv): http://data.vancouver.ca/datacatalogue/animalInventory.htm
  * [Clustering algorithm that helps group similar text][2]
  * Note: compared the clustering algorithms used in Google OpenRefine, Levenshtein Distance match strings is is order sensitive, which means similar words should appear in the same order so that the distance between 2 strings could be shorter.
+ * [tutorial 2][3] - convert data into table and transform the data in table (such as sperate columns, format and generate new columns, etc.); export with DIY template; copy all the redo list to the new similar data file and finish automatic data transformation. It is using wiki text data as the example
  
  
  
  [1]:https://www.youtube.com/watch?v=B70J_H_zAWM
  [2]:http://www.padjo.org/tutorials/open-refine/clustering/#clustering-algorithms
+ [3]:https://www.youtube.com/watch?v=cO8NVCs_Ba0
 
 
 ********************************************
