@@ -22,8 +22,10 @@ summarizeColumns(q2)
 
 # Method 2 - impute missing data in numerical data with median
 library(caret)
+library('RANN')
 set.seed(410)
 preProcValues <- preProcess(data, method = c("medianImpute","center","scale"))
+imputed_data <- predict(preProcValues, data)
 
 
 # Method 3 - impute missing data with KNN, it will normalize data at the same time
