@@ -128,6 +128,13 @@ data analysis, big data development, cloud, and any other cool things!
  * Reference: https://www.analyticsvidhya.com/blog/2016/08/practicing-machine-learning-techniques-in-r-with-mlr-package/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
 
 
+* DIY Ensembling
+ * reference: https://www.analyticsvidhya.com/blog/2017/02/introduction-to-ensembling-along-with-implementation-in-r/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+ * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/DIY_ensembling.R
+ * data: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/DIY_ensembling_loan_data.csv
+ * One important thing I have learned is, when each model provides highly correlated prediction results, ensembling them together may not give better results. So, <b> check the correlation of their prediction results first,</b> then decide whether you want to ensembling them
+ 
+
 ********************************************
 
 DIMENSION REDUCTION
