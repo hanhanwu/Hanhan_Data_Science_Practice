@@ -20,7 +20,13 @@ q2 <- q2$data
 summarizeColumns(q2)
 
 
-# Method 2 - impute missing data with KNN, it will normalize data at the same time
+# Method 2 - impute missing data in numerical data with median
+library(caret)
+set.seed(410)
+preProcValues <- preProcess(data, method = c("medianImpute","center","scale"))
+
+
+# Method 3 - impute missing data with KNN, it will normalize data at the same time
 zero_variance_list <- has_zero_variance(num_data)
 zero_variance_list
 num_data[, (zero_variance_list):=NULL]
