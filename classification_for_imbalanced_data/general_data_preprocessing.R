@@ -20,12 +20,14 @@ q2 <- q2$data
 summarizeColumns(q2)
 
 
-# Method 2 - impute missing data in numerical data with median
+# Method 2 - impute missing data in numerical data with median, caterogical data with a certain value
 library(caret)
 library('RANN')
 set.seed(410)
-preProcValues <- preProcess(data, method = c("medianImpute","center","scale"))
-imputed_data <- predict(preProcValues, data)
+preProcValues <- preProcess(num_data, method = c("medianImpute","center","scale"))
+imputed_data <- predict(preProcValues, num_data)
+
+for (i in seq_along(fact_data)) set(fact_data, i=which(is.na(fact_data[[i]])), j=i, value="MISSING")
 
 
 # Method 3 - impute missing data with KNN, it will normalize data at the same time
