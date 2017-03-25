@@ -1,7 +1,7 @@
 library(Rtsne)
 library(mlr)
 
-path<- "/Users/hanhanwu/Desktop"
+path<- "[your path of the data file]"
 setwd(path)
 
 train_data <- read.csv("train.csv")
