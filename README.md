@@ -166,10 +166,11 @@ DIMENSION REDUCTION
 
 
 * t-SNE, dimension reduction for non-linear relationship
-  * practice dataset: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/tsne_csv.zip
   * reference: https://www.analyticsvidhya.com/blog/2017/01/t-sne-implementation-r-python/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
-  * my R code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/t-SNE_practice.R
-  * NOTE: my plot results are different from those perfect clusters shown in the tutorial, I guess the author was using another dataset for visualization, but want to show how to use t-SNE... Recently, I really got tired to see those researchers use different methods to hide the truth in their publications, when you are reading those papers, tutorials, you have learned to be critical and no longer simply trust everything they said. It makes me feel, real science world is just like real human society, people set ideal standards, but most of the people cannot really obey those rules, and others have to learn to suspect, to be critical... 
+  * practice dataset for R code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/tsne_csv.zip
+  * R code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/t-SNE_practice.R
+  * NOTE: my plot results are different from those perfect clusters shown in the tutorial, I guess the author was using another dataset for visualization, but want to show how to use t-SNE... 
+  * Python code (t-SNE works pretty well on the dataset used here): https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/t-SNE_Practice.ipynb
   
   
 ********************************************
