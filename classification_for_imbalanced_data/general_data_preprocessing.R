@@ -31,11 +31,6 @@ for (i in seq_along(fact_data)) set(fact_data, i=which(is.na(fact_data[[i]])), j
 
 
 # Method 3 - impute missing data with KNN, it will normalize data at the same time
-variance_lst <- nearZeroVar(num_data, saveMetrics = T)
-zero_variance_list <- names(subset(num_data, select = variance_lst$zeroVar==T))
-zero_variance_list
-num_data[, (zero_variance_list):=NULL]
-
 q2 <- cbind(fact_data, num_data)
 summarizeColumns(q2)
 fact_cols <- lapply(q2, is.factor)
