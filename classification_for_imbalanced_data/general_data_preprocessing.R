@@ -62,7 +62,14 @@ q2 <- cbind(q2_num_data, q2_fact_data)
 rm(q2_num_data)
 rm(q2_fact_data)
 
+  
+# Normalize data into [0,1]
+## KNN will normlize data while imputing missing data, however, it is not [0, 1] scale
+data_scaling <- function(x){(x-min(x))/(max(x)-min(x))}
+scaled_data <- data.frame(sapply(q2_num_data, data_scaling))
+summarizeColumns(scaled_data)
 
+  
 # Method 1 - deal with outliers with median/mode
 boxplot(q2$LoanAmount)
 q2$LoanAmount[which(q2$LoanAmount>12)] <- median(q2$LoanAmount)
@@ -77,7 +84,7 @@ q2$mlbf_InterestRate <- as.factor(ifelse (q2$mlbf_InterestRate <= 0.05, "0~0.05"
 summary(q2$mlbf_InterestRate)
 
 
-# remove almost constant varibales
+# remove almost constant varibales, use above nearZeroVar(), can do similar work
 get_rare_case <- function(a, n) {
   if (is.numeric(a)){
     return(length(a[which(a!=0)]) <= n)
