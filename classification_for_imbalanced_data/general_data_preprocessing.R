@@ -49,8 +49,10 @@ summarizeColumns(q2_processed)
 
 
 # remove 0 variance feature
-zero_variance_list <- has_zero_variance(q2)
+variance_lst <- nearZeroVar(q2, saveMetrics = T)
+zero_variance_list <- names(subset(q2, select = variance_lst$zeroVar==T))
 zero_variance_list
+q2[, (zero_variance_list):=NULL]
 
 
 # remove highly correlation data
