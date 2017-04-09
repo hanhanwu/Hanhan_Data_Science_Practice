@@ -31,7 +31,8 @@ for (i in seq_along(fact_data)) set(fact_data, i=which(is.na(fact_data[[i]])), j
 
 
 # Method 3 - impute missing data with KNN, it will normalize data at the same time
-zero_variance_list <- has_zero_variance(num_data)
+variance_lst <- nearZeroVar(num_data, saveMetrics = T)
+zero_variance_list <- names(subset(num_data, select = variance_lst$zeroVar==T))
 zero_variance_list
 num_data[, (zero_variance_list):=NULL]
 
