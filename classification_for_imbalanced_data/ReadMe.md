@@ -54,7 +54,7 @@ Recently, I did many experiments on classification with imbalanced small dataset
 
 ***********************************************************************
 
-<b>Feature Importance -> Feature Selection</b>
+<b>Feature Importance - Feature Selection</b>
 
 * 3 major feature selection methods: https://www.analyticsvidhya.com/blog/2016/12/introduction-to-feature-selection-methods-with-an-example-or-how-to-select-the-right-variables/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
 * In my code, I have used filter methods and wrapper methods.
@@ -64,6 +64,7 @@ Recently, I did many experiments on classification with imbalanced small dataset
 * For embedded methods, I think ensembling methods like xgboost is doing that for you.
 * In my experiments, I have even tried to use regression for feature selection, selecting those with higher coefficient. Did not work well for this dataset
 * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/classification_for_imbalanced_data/feature_selection.R
+* The paper about Boruta and all-relevant feature selection definition: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/classification_for_imbalanced_data/boruta_all_relevant_feature_selection.pdf
 
 
 ***********************************************************************
