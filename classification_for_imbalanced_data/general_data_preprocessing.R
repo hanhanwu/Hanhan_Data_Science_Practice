@@ -68,6 +68,9 @@ rm(q2_fact_data)
 data_scaling <- function(x){(x-min(x))/(max(x)-min(x))}
 scaled_data <- data.frame(sapply(q2_num_data, data_scaling))
 summarizeColumns(scaled_data)
+  
+# Normalize data into like KNN, witout using KNN
+scaled_data <- data.table(scale(q2_num_data))
 
   
 # Method 1 - deal with outliers with median/mode
