@@ -24,7 +24,7 @@ num_distribution_plot <- function(a, q){
   ggplotly()
 }
 
-# Bi-varite Analysis - polt multiple plots together
+# Bi-varite Analysis on numerical variable - polt multiple plots together
 multiplot <- function(..., plotlist=NULL, file, cols=1, layout=NULL) {
   library(grid)
   
@@ -60,6 +60,14 @@ multiplot <- function(..., plotlist=NULL, file, cols=1, layout=NULL) {
     }
   }
 }
+
+
+# Bi-varite Analysis on categorical variable - polt multiple plots together
+p1 <- rose_scaled_data$module_documented[which(rose_scaled_data$IsUnderrated=='Y')]
+pt1 <- ggplot(data=data.frame(p1), aes(x= p1, y=..density..)) + geom_histogram(fill="blue",color="red",alpha = 0.5,bins =100) + geom_density()
+p2 <- rose_scaled_data$module_documented[which(rose_scaled_data$IsUnderrated=='N')]
+pt2 <- ggplot(data=data.frame(p2), aes(x= p2, y=..density..)) + geom_histogram(fill="blue",color="red",alpha = 0.5,bins =100) + geom_density()
+multiplot(pt1, pt2, cols=2)
 
 
 # seperate data into numerical data and categorical data
