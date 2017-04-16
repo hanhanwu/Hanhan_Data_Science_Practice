@@ -63,7 +63,7 @@ rm(q2_num_data)
 rm(q2_fact_data)
 
   
-# Normalize data into [0,1]
+# Normalize data into [0,1] scale
 ## KNN will normlize data while imputing missing data, however, it is not [0, 1] scale
 data_scaling <- function(x){(x-min(x))/(max(x)-min(x))}
 scaled_data <- data.frame(sapply(q2_num_data, data_scaling))
@@ -87,7 +87,7 @@ q2$mlbf_InterestRate <- as.factor(ifelse (q2$mlbf_InterestRate <= 0.05, "0~0.05"
 summary(q2$mlbf_InterestRate)
 
 
-# remove almost constant varibales, use above nearZeroVar(), can do similar work
+# Method 1 - remove almost constant varibales
 get_rare_case <- function(a, n) {
   if (is.numeric(a)){
     return(length(a[which(a!=0)]) <= n)
@@ -101,3 +101,8 @@ get_rare_case <- function(a, n) {
 rare_cases <- subset(q2, select = sapply(q2, get_rare_case, 3) ==T)
 colnames(rare_cases)
 q2[, names(rare_cases):=NULL]
+  
+# Method 2 - remove near 0 variance variables, used nearZeroVar() function
+near_zero_variance_list <- c(2, 4, 7, 9, 10, 13, 14, 15, 22, 26)
+smote_train_data <- scaled_train_data[, -near_zero_variance_list, with=F]
+smote_test_data <- scaled_test_data[, -near_zero_variance_list, with=F]
