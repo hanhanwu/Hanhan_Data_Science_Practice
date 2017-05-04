@@ -126,3 +126,4 @@ Recently, I did many experiments on classification with imbalanced small dataset
     * ROSE copies data, so I could use it on both training and testing data
     * When using k-means clustering, it's better to change seed multiple times in order to get more optimal results
     * Sometimes using hierarchical clustering is better than k-means, since it doesn not require you to set k
+    * When traditional clustering does not work well, the data maybe non-convex, try <b>spectral clustering</b>.
