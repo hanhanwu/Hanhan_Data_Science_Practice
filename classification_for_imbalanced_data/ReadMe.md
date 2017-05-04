@@ -124,3 +124,4 @@ Recently, I did many experiments on classification with imbalanced small dataset
     * GBM may work better with SMOTE than XGBoost
     * SMOTE generate similar data, so I'd better not use it on testing data
     * ROSE copies data, so I could use it on both training and testing data
+    * When using k-means clustering, it's better to change seed multiple times in order to get more optimal results
