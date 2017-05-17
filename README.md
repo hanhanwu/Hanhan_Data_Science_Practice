@@ -133,6 +133,11 @@ data analysis, big data development, cloud, and any other cool things!
   * data: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/DIY_ensembling_loan_data.csv
   * One important thing I have learned is, when each model provides highly correlated prediction results, ensembling them together may not give better results. So, <b> check the correlation of their prediction results first,</b> then decide whether you want to ensembling them
  
+ 
+* Control Charts in R
+  * reference: https://cran.r-project.org/web/packages/qicharts/vignettes/controlcharts.html
+  * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/control_charts.R
+
 
 ********************************************
 
