@@ -30,9 +30,10 @@ I'm planning to practice more on time series analysis, pattern matching and sequ
   * [My summarized code][9], summarizing methods maybe re-used more often in the future
     * [About AR(0), AR(1) and AR(2)][11]
     * In the definition of AR(p) model [here][10]: the white noise has 0 mean and constant variance
+    * As spectral analysis visualization showing, AR model will gradually decrease. MA model will suddenly decrease.
     * What is the role of ARMA, compared with AR, MA?
   * Notes:
-    * Different from [my previous practice][6], which was using `ariam` to fit, I'm learning `sariam` for both fit and forecast
+    * Different from [my previous practice][6], which was using `ariam` to fit, is is using `sariam` for both fit and forecast. `sariam` is an improvement from `ariam`
 
 
 [1]:https://github.com/hanhanwu/Hanhan_Data_Science_Resources/blob/master/README.md
