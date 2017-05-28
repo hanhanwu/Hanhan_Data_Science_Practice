@@ -27,8 +27,10 @@ I'm planning to practice more on time series analysis, pattern matching and sequ
   * [Reference][5]
     * This tutorial is messy, but if you go through it very carefully, there are still many things to learn
   * [My practice code when following the tutorial][4], it's messy too, I use it to try all the methods in the tutorial
-  * [My summarized code][9], summarizing methods can be re-used more often in the future
-  * What I have learned:
+  * [My summarized code][9], summarizing methods maybe re-used more often in the future
+    * I don't understand why there are 2 phis in AR2 simulation?
+    * The way to judge stationary through ACF, PACF visualization is also tricky to me, sometimes it's hard to tell whether it's AR or MA. And what is the role of ARMA, compared with AR, MA?
+  * Notes:
     * Different from [my previous practice][6], which was using `ariam` to fit, I'm learning `sariam` for both fit and forecast
 
 
