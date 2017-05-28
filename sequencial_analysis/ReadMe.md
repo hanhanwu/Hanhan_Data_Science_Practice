@@ -18,13 +18,16 @@ I'm planning to practice more on time series analysis, pattern matching and sequ
 * [Previous practice][6]
   * [reference][7]
 
-* [time series beginner][4]
+* [time series beginner]
   * [Watch the free videos here FIRST!][8]
     * Often time series are generated as `Xt=(1+pt)Xt−1`, meaning the value of the time series observed at time t equals to the value observed at time t-1, and a small percent change pt at time t. pt is often refered to as <b>return/growth rate</b> of time series, and <b>it should be stable</b>. There is also `Yt=logXt−logXt−1≈pt`. In R, pt is calculated as `plot(diff(log(x)))`
     * <b>Stationary</b>: The <b>mean</b> is constant over time; The <b>correlation structure</b> remains constant over time
     * To convert non-stationary to stationary: Simple differencing can help remove the trend (detrend); You can also use logging + differencing, first logging will tablize the variance, then differencing will do detrend. In R, differencing is using `diff()`, logging is using `log()`. <b>To sum up, logging against Heteroscedasticity, differencing against the trend of the mean</b>.
+    * It has been proved that, any stationary time series can be written as a linear combination of white noise, so do ARMA model. Therefore, in R, when you are simulating the model, it uses a list with (p, d, q)
   * [Reference][5]
-  * This reference is really messy, it only chose good examples without dealing with a complete real world problem. I disagree with its method that trying to fit regression for `log(jj)`, because `log(jj)` does not satisfy the stationary for time series. Then off course it will show not a good fit...
+    * This tutorial is messy, but if you go through it very carefully, there are still many things to learn
+  * [My practice code when following the tutorial][4], it's messy too, I use it to try all the methods in the tutorial
+  * [My summarized code][9], summarizing methods can be re-used more often in the future
   * What I have learned:
     * Different from [my previous practice][6], which was using `ariam` to fit, I'm learning `sariam` for both fit and forecast
 
@@ -37,3 +40,4 @@ I'm planning to practice more on time series analysis, pattern matching and sequ
 [6]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/time_series_predition.R
 [7]:https://www.analyticsvidhya.com/blog/2015/12/complete-tutorial-time-series-modeling/?utm_content=buffer529c5&utm_medium=social&utm_source=facebook.com&utm_campaign=buffer
 [8]:https://www.datacamp.com/courses/arima-modeling-with-r
+[9]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/time_series_beginner_summary.R
