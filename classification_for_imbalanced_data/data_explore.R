@@ -18,6 +18,13 @@ fact_distribution_plot <- function(a){
   barplot(counts)
 }
 
+    ## Chekc whether it's normal distribution
+    par(mar = rep(2, 4))        # set up the graphics frame
+    hist(dljj, prob=TRUE, 12)   # histogram    
+    lines(density(data))     # smooth it
+    qqnorm(data)             # normal Q-Q plot  
+    qqline(data)             # add a line 
+
 # Univarite Analysis - check numerical data distribution
 num_distribution_plot <- function(a, q){
   ggplot(data = q, aes(x= a, y=..density..)) + geom_histogram(fill="blue",color="red",alpha = 0.5,bins =100) + geom_density()
