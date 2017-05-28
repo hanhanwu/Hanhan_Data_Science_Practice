@@ -121,4 +121,33 @@ sarima(log(jj), 2,1,0)   # the ACF of resuduals looks somewhat white (random)
 sarima.for(log(jj), 10, 2,1,0)   # predict next 10 years, my common sense tells me somehting is wrong here...
 
 
-# too busy recently, TO BE CONTINUED...
+# **********************************************
+cmort
+part
+## they both have frequency 52
+
+par(mfrow = c(2,1))
+ts.plot(part)
+ts.plot(cmort)
+ts.plot(lag(part, -4))   # it starts from 4 ends at 44, while part satrts from 1 ends at 40
+
+# Method 1 to fit linear regression and time series relation
+intersect_data <- ts.intersect(cmort, part, part4 = lag(part, -4))  # bind time series which have common frequency
+reg <- lm(cmort~ part+part4, data = intersect_data, na.action = NULL)
+summary(reg)
+plot(intersect_data, type="o")
+lines(fitted(reg), col=2)
+par(mfrow = c(2,1))
+plot(resid(reg))
+acf(resid(reg), 20)  # I don't see it's ok...
+
+# Method 2 to fit linear regression and time series relation (result are the same as above)
+library(dynlm)
+reg <- dynlm(cmort~part + lag(part,-4))
+summary(reg)
+par(mfrow = c(2,1))
+plot(resid(reg))
+acf(resid(reg), 20)
+
+
+# TO BE CONTINUED...
