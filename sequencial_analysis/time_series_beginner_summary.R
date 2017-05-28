@@ -1,9 +1,37 @@
 library(astsa)
 data()
 
-# Part 1 - time series datasets
+# Part 1 - Time Series Simulation
+set.seed(7799)
+## AR1 (set p=1)
+x1 = arima.sim(list(order=c(1,0,0), ar=.9), n=100) 
+x2 = arima.sim(list(order=c(1,0,0), ar=-.9), n=100)
+par(mfrow=c(2,1))
+plot(x1, main=(expression(AR(1)~~~phi==+.9)))  # ~ is a space and == is equal  
+plot(x2, main=(expression(AR(1)~~~phi==-.9)))
+dev.new()           # open another graphics device if you wish
+acf2(x1, 20)
+dev.new()           
+acf2(x2, 20)
 
-## 1. jj
+## AR2 (set p=2)
+x = arima.sim(list(order=c(2,0,0), ar=c(1,-.9)), n=100) 
+plot(x, main=(expression(AR(2)~~~phi[1]==1~~~phi[2]==-.9)))
+acf2(x)
+
+## MA1 (set q=1)
+x = arima.sim(list(order=c(0,0,1), ma=.8), n=100)
+plot(x, main=(expression(MA(1)~~~theta==.8)))
+acf2(x)
+
+## ARIMA(1,1,1)
+x = arima.sim(list(order=c(1,1,1), ar=.9, ma=-.5), n=200)
+plot(x, main=(expression(ARIMA(1,1,1)~~~phi==.9~~~theta==-.5)))
+acf2(x, 30)
+
+
+# Part 2 - JJ data (observation, fit model & predict)
+
 time(jj)
 cycle(jj)
 ## plot the data
