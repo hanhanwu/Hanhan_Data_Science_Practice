@@ -28,8 +28,9 @@ I'm planning to practice more on time series analysis, pattern matching and sequ
     * This tutorial is messy, but if you go through it very carefully, there are still many things to learn
   * [My practice code when following the tutorial][4], it's messy too, I use it to try all the methods in the tutorial
   * [My summarized code][9], summarizing methods maybe re-used more often in the future
-    * I don't understand why there are 2 phis in AR2 simulation?
-    * The way to judge stationary through ACF, PACF visualization is also tricky to me, sometimes it's hard to tell whether it's AR or MA. And what is the role of ARMA, compared with AR, MA?
+    * [About AR(0), AR(1) and AR(2)][11]
+    * In the definition of AR(p) model [here][10]: the white noise has 0 mean and constant variance
+    * What is the role of ARMA, compared with AR, MA?
   * Notes:
     * Different from [my previous practice][6], which was using `ariam` to fit, I'm learning `sariam` for both fit and forecast
 
@@ -43,3 +44,5 @@ I'm planning to practice more on time series analysis, pattern matching and sequ
 [7]:https://www.analyticsvidhya.com/blog/2015/12/complete-tutorial-time-series-modeling/?utm_content=buffer529c5&utm_medium=social&utm_source=facebook.com&utm_campaign=buffer
 [8]:https://www.datacamp.com/courses/arima-modeling-with-r
 [9]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/time_series_beginner_summary.R
+[10]:https://en.wikipedia.org/wiki/Autoregressive_model#Definition
+[11]:https://en.wikipedia.org/wiki/Autoregressive_model#Graphs_of_AR.28p.29_processes
