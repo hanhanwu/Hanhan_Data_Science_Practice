@@ -150,4 +150,49 @@ plot(resid(reg))
 acf(resid(reg), 20)
 
 
-# TO BE CONTINUED...
+# ************************************
+plot(gtemp)
+plot(diff(gtemp))
+plot(diff(log(gtemp)))
+acf2(gtemp)   # AR model
+acf2(diff(gtemp))
+
+final_p <- 1
+d <- 1
+min_sum <- 0
+final_q <- 0
+for (p in c(1,2)) {
+  fit <- sarima(gtemp, p,d,q)
+  sum <- fit$AIC + fit$BIC
+  if (sum < min_sum) {
+    min_sum <- sum
+    final_p <- p
+  }
+}
+final_p
+
+sarima(gtemp, 1,1,1)   # the ACF of resuduals looks somewhat white (random)
+sarima.for(dljj, 7, 1,1,1)
+
+
+# ************************************
+cmort
+time(cmort)
+trend <- time(cmort) - mean(time(cmort))  # center the time
+fit.lm <- lm(cmort ~ trend + part)
+acf2(resid(fit.lm))  # AR model
+
+final_p <- 1
+d <- 1
+min_sum <- 0
+final_q <- 0
+for (p in c(1,2)) {
+  fit <- sarima(cmort, p,d,q, xreg=cbind(trend, part))
+  sum <- fit$AIC + fit$BIC
+  if (sum < min_sum) {
+    min_sum <- sum
+    final_p <- p
+  }
+}
+final_p
+sarima(cmort, 1,0,0, xreg=cbind(trend, part))
