@@ -36,6 +36,13 @@ I'm planning to practice more on time series analysis, pattern matching and sequ
     * Different from [my previous practice][6], which was using `ariam` to fit, is is using `sariam` for both fit and forecast. `sariam` is an improvement from `ariam`
 
 
+-- READING NOTES
+
+* Outliers Detection for Temporary Data
+  * [Find the Book Here][12]
+  * [Reading Notes][13]
+
+
 [1]:https://github.com/hanhanwu/Hanhan_Data_Science_Resources/blob/master/README.md
 [2]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/ARMA_example.png
 [3]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/ts_r_intro.pdf
@@ -47,3 +54,5 @@ I'm planning to practice more on time series analysis, pattern matching and sequ
 [9]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/time_series_beginner_summary.R
 [10]:https://en.wikipedia.org/wiki/Autoregressive_model#Definition
 [11]:https://en.wikipedia.org/wiki/Autoregressive_model#Graphs_of_AR.28p.29_processes
+[12]:https://www.amazon.com/Detection-Temporal-Synthesis-Knowledge-Discovery/dp/1627053751
+[13]:https://github.com/hanhanwu/readings/blob/master/ReadingNotes_Temporal_Outlier_Detection.md
