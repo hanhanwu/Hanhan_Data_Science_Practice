@@ -37,6 +37,8 @@ data analysis, big data development, cloud, and any other cool things!
 
 ********************************************
 
+R PRACTICE
+
 * R Basics Data Analysis Practice
   * Problem Statement: http://datahack.analyticsvidhya.com/contest/practice-problem-bigmart-sales-prediction
   * data set: R_basics_train.csv, R_basics_test.csv
@@ -137,6 +139,19 @@ data analysis, big data development, cloud, and any other cool things!
 * Control Charts in R
   * reference: https://cran.r-project.org/web/packages/qicharts/vignettes/controlcharts.html
   * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/control_charts.R
+  
+
+* Create Animated Visualization with R
+  * reference: https://www.analyticsvidhya.com/blog/2017/06/a-study-on-global-seismic-activity-between-1965-and-2016/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+  * My code: https://www.analyticsvidhya.com/blog/2017/06/a-study-on-global-seismic-activity-between-1965-and-2016/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+  * <b>NOTE!</b>: Before running your code, install `ImageMagick` first and then run `XQuartz`
+    * To install `ImageMagick`, type `xcode-select --install`
+    * Then `sudo chown -R $(whoami) /usr/local`, so that you will have the permission to do brew update
+    * `brew update`
+    * `sudo chown root:wheel /usr/local` change permission back
+    * `brew rm imagemagick; brew install imagemagick --with-x11`
+    * If all the above went well, type `xclock &` to turn on `XQuartz`. All the new Mac OS are using `Xquartz` and no longer support X11
+    * If `XQuartz` is running, you can start to run the R code here. The visualization is very cool!
 
 
 ********************************************
