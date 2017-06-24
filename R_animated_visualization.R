@@ -1,6 +1,4 @@
 # Created Animated Visualization
-# export MAGICK_HOME="[the folder of you ImageMagick]/ImageMagick-7.0.5"
-# export PATH="$MAGICK_HOME/bin:$PATH"
 
 library(plyr)
 library(dplyr)
@@ -9,9 +7,10 @@ library(ggplot2)
 library(devtools)
 install_github("dgrtwo/gganimate")
 library(gganimate)
+library(animation)
 
 
-path<- "[the path of your data]"   # change path here
+path<- "[change path to the folder of your data]"  # change path here
 setwd(path)
 
 earthquare_data <- read.csv("earthquake_data.csv", stringsAsFactors = F)
@@ -40,4 +39,9 @@ p <- map + geom_point(data = earthquare_data, aes(x = Longitude, y = Latitude,
                                      cumulative = TRUE,size=earthquare_data$Magnitude), alpha = 0.3, 
                       size = 2.5,color="#336600")+
   geom_jitter(width = 0.1) +labs(title = "Earthquake above 7 point on richter scale")+theme_void()
+gganimate(p)  # Oh! it works! This is magic!
+
+
+# speed up
+ani.options(interval=0.15)
 gganimate(p)
