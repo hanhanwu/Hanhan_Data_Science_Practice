@@ -113,6 +113,16 @@ Recently, I did many experiments on classification with imbalanced small dataset
 
 ***********************************************************************
 
+Pyhton Methods Can Try
+
+* For calculation correlation, I can also try <b>coefficent from linear regression</b>
+  * <b>In fact, if I will try regression methods, go through this tutorial again</b>
+  * reference: https://www.analyticsvidhya.com/blog/2017/06/a-comprehensive-guide-for-linear-ridge-and-lasso-regression/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+* To interprete regression plots: https://www.analyticsvidhya.com/blog/2016/07/deeper-regression-analysis-assumptions-plots-solutions/
+
+
+***********************************************************************
+
 <b>Notes</b>
 
 * Methods like Boruta feature sdelection and clustering used here do not guarantee to improve balanced accuracy in all the time, sometimes only using Ranfom Forests for small imbalanced dataset can achiveve highest balanced accuracy, and Random Forests can deal with missing data, outliers and data imbalance itself.
