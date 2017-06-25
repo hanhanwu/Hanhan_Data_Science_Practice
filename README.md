@@ -143,6 +143,7 @@ R PRACTICE
 
 * Create Animated Visualization with R
   * reference: https://www.analyticsvidhya.com/blog/2017/06/a-study-on-global-seismic-activity-between-1965-and-2016/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+  * The data: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/earthquake_data.csv
   * My code: https://www.analyticsvidhya.com/blog/2017/06/a-study-on-global-seismic-activity-between-1965-and-2016/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
   * <b>NOTE!</b>: Before running your code, install `ImageMagick` first and then run `XQuartz`
     * To install `ImageMagick`, type `xcode-select --install`
