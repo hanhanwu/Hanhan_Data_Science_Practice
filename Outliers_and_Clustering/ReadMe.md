@@ -9,6 +9,17 @@ LEARNING NOTES
 * People have also implemneted another method to detect outliers, [LOF][4], it is densitiy based, and calculates nearest neighbours. Note that, when there is high dimensional features, PCA (linear regression model), LOF (proximity-based) can be less effective. This is the so-called The Curse of Dimensionality, when there are more dimensions, these methods can be time consuming, and outliers, random noise could make the calculation results lose meaning
 
 
+*********************************************************************************
+
+IDEAS SPARK
+
+* About data labeling
+  * When there are many data records, and you don't have the label, meanwhile you are not human expert to label all the data right
+    * Semi Clustering, then check each cluster, labeled and unlabeled data
+    * 2 people to label the data, but need some overlapped data from each person, calculate Cohen's kappa coefficient, higher the coefficient, better
+    * 2+ people to label the data, but need some overlapped data from each person, calculate Fleiss's kappa coefficient, higher the coefficient, better
+
+
 [1]:https://github.com/hanhanwu/readings/blob/master/ReadingNotes_DMBible.md
 [2]:http://shahramabyari.com/2016/01/19/detecting-outliers-in-high-dimensional-data-sets/
 [3]:https://github.com/shahramabyari/HiCS/blob/master/hcis.py
