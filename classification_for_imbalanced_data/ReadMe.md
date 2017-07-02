@@ -113,12 +113,19 @@ Recently, I did many experiments on classification with imbalanced small dataset
 
 ***********************************************************************
 
-Pyhton Methods Can Try
+Future Methods Can Try
 
-* For calculation correlation, I can also try <b>coefficent from linear regression</b>
+* [Python] For calculation correlation, I can also try <b>coefficent from linear regression</b>
   * <b>In fact, if I will try regression methods, go through this tutorial again</b>
   * reference: https://www.analyticsvidhya.com/blog/2017/06/a-comprehensive-guide-for-linear-ridge-and-lasso-regression/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
 * To interprete regression plots: https://www.analyticsvidhya.com/blog/2016/07/deeper-regression-analysis-assumptions-plots-solutions/
+
+* More smapling methods to deal with data imbalance
+  * [Python] Scikit-Learn imbalanced-lean API: http://contrib.scikit-learn.org/imbalanced-learn/api.html
+    * Check left side algorithms you can choose
+    * For example, you can use SMOTE-ENN: http://contrib.scikit-learn.org/imbalanced-learn/auto_examples/combine/plot_smote_enn.html
+  * [R] unbalance package (2015): https://cran.r-project.org/web/packages/unbalanced/unbalanced.pdf
+    * Page 3, `type` param, you can use `ubOver, ubUnder, ubSMOTE, ubOSS, ubCNN, ubENN, ubNCL, ubTomek`
 
 
 ***********************************************************************
