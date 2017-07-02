@@ -18,6 +18,7 @@ IDEAS SPARK
     * Semi Clustering, then check each cluster, labeled and unlabeled data
     * 2 people to label the data, but need some overlapped data from each person, calculate Cohen's kappa coefficient, higher the coefficient, better
     * 2+ people to label the data, but need some overlapped data from each person, calculate Fleiss's kappa coefficient, higher the coefficient, better
+    * Crowd Sourcing labeling, but either you calculate Fleiss's kappa, or take the risk of accuracy. This will be my last choice in industry
 
 
 [1]:https://github.com/hanhanwu/readings/blob/master/ReadingNotes_DMBible.md
