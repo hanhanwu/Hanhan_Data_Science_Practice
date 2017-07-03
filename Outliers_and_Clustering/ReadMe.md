@@ -11,6 +11,18 @@ LEARNING NOTES
 
 *********************************************************************************
 
+PRACTICE CODE
+
+* BiClustering - HiCS vs LOF
+  * Reference Tutorial (code is not formated): http://shahramabyari.com/2016/01/19/detecting-outliers-in-high-dimensional-data-sets/
+  * Reference Code: https://github.com/shahramabyari/HiCS/blob/master/hcis.py
+  * My data: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/PCA_test.csv
+  * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/HiCS_biclustering.ipynb
+  * Challenge: My godness, it's so troublesome to use these scholar implemented code.... They want to publish the paper, and code is designed just for that type of data. When I am using a randaom set of other data, took me so much time to modify the code and still, has warnings, although I got the results...
+
+
+*********************************************************************************
+
 IDEAS SPARK
 
 * About data labeling
