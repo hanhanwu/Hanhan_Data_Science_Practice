@@ -256,6 +256,13 @@ DATA PREPROCESSING
 TREE BASED MODELS
 
 * Tree based models in detail with R & Python example: https://www.analyticsvidhya.com/blog/2016/04/complete-tutorial-tree-based-modeling-scratch-in-python/?utm_content=bufferade26&utm_medium=social&utm_source=facebook.com&utm_campaign=buffer
+* [Python] LightGBM Practice
+  * For more resources, check LightGBM here: https://github.com/hanhanwu/Hanhan_Data_Science_Resources2/blob/master/README.md
+  * data: http://archive.ics.uci.edu/ml/datasets/Adult
+  * Install python xgboost to compare with LightGBM: http://xgboost.readthedocs.io/en/latest/build.html
+    * Default is without multi-threading
+    * It also mentions how to install xgboost with multi-threading
+  * reference: https://www.analyticsvidhya.com/blog/2017/06/which-algorithm-takes-the-crown-light-gbm-vs-xgboost/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
 
 
 ********************************************
