@@ -47,3 +47,45 @@ label.value_counts()
 
 # split into training and testing data
 features_train,features_test,label_train,label_test=train_test_split(features,label,test_size=.3)
+
+
+# Method 1 - XGBOOST, single thread
+dtrain=xgb.DMatrix(features_train,label=label_train)
+dtest=xgb.DMatrix(features_test)
+## xgboost params
+parameters={'max_depth':7, 'eta':1, 'silent':1,'objective':'binary:logistic','eval_metric':'auc','learning_rate':.05}
+
+from datetime import datetime 
+num_round=50
+start = datetime.now() 
+xg=xgb.train(parameters,dtrain,num_round)  # train the model
+stop = datetime.now()
+execution_time_xgb = stop-start 
+print(execution_time_xgb)   # 0:00:06.377225
+
+ypred=xg.predict(dtest) 
+print(ypred)
+
+#Converting probabilities into 1 or 0  
+for i in range(0,9769): 
+    if ypred[i]>=.5:       # setting threshold to .5 
+       ypred[i]=1 
+    else: 
+       ypred[i]=0  
+        
+from sklearn.metrics import accuracy_score 
+accuracy_xgb = accuracy_score(label_test,ypred) 
+accuracy_xgb  # 0.86713071962329824
+
+from sklearn.metrics import confusion_matrix, roc_auc_score
+cm = confusion_matrix(label_test, ypred)
+TP = cm[0][0]
+FP = cm[0][1]
+FN = cm[1][0]
+TN = cm[1][1]
+
+accuracy = (TP + TN)/(TP+FP+FN+TN)   # accuracy: 0.867130719623
+auc_score = roc_auc_score(label_test, ypred)   # AUC: 0.775170828432
+precision = TP/(TP+FP)   # 0.952047413793
+specificity = TN/(TN+FP)  # 0.797612279704
+recall = TP/(TP+TN)   # 0.834376106717
