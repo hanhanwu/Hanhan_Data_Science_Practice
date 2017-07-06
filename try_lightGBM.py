@@ -86,6 +86,6 @@ TN = cm[1][1]
 
 accuracy = (TP + TN)/(TP+FP+FN+TN)   # accuracy: 0.867130719623
 auc_score = roc_auc_score(label_test, ypred)   # AUC: 0.775170828432
-precision = TP/(TP+FP)   # 0.952047413793
+precision = TP/(TP+FP)   # 0.952047413793, how noisy the predict result is
 specificity = TN/(TN+FP)  # 0.797612279704
-recall = TP/(TP+TN)   # 0.834376106717
+recall = TP/(TP+FN)   # 0.882397003745, how complete the predicted result is
