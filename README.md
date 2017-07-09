@@ -275,8 +275,13 @@ TREE BASED MODELS
   * PRACTICE 2 - Add cross validation
     * Both LightGBM and XGBoost training API has `cv()` method to do cross validation, however, it only show you the evaluation results for each cv round, wihtout giving you the best set of parameters. In fact, it only uses the set of params you defined before `cv()`.
     * So, I started to try their scikit-learn wrapper, which has cross validation to help choosing the best set of params
-    * <b>reference - tuning python xgboost</b>: https://www.analyticsvidhya.com/blog/2016/03/complete-guide-parameter-tuning-xgboost-with-codes-python/
-    * wait for my python notebook here...
+    * <b>reference - tuning python xgboost [Python]</b> (feature importance plot part not work for me, better check my code below): https://www.analyticsvidhya.com/blog/2016/03/complete-guide-parameter-tuning-xgboost-with-codes-python/
+    * my code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/try_lightfGBM_cv.ipynb
+    * Im my xgboost code, I am using 2 types of cross validation, one is xgboost `cv()` method and it only returns the optimum number of trees; another one is scikit-learn GridSearch cross valication, `GridSearchCV()`, with htis method, you can get optimum set pf params
+    * wait for my updted python notebook here...
+  * Other Resources
+    * XGBoost Params (including R package): http://xgboost.readthedocs.io/en/latest/parameter.html#general-parameters
+    * Complete guide in tunning GBM: https://www.analyticsvidhya.com/blog/2016/02/complete-guide-parameter-tuning-gradient-boosting-gbm-python/
 
 
 ********************************************
