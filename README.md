@@ -262,10 +262,15 @@ TREE BASED MODELS
   * Install python xgboost to compare with LightGBM: http://xgboost.readthedocs.io/en/latest/build.html
     * Default is without multi-threading
     * It also mentions how to install xgboost with multi-threading
-  * Single Thread LightGBM vs Single Thread XGBoost - no cross validation: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/try_lightGBM_single_thread_basics.ipynb
+  * PRACTICE 1 - Single Thread LightGBM vs Single Thread XGBoost - no cross validation: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/try_lightGBM_single_thread_basics.ipynb
     * This one is a basic one, only use single thread, even without cross validation.
     * When you are using `train()` method, it does not allow you to set seed, and each time you may get different results.
     * reference: https://www.analyticsvidhya.com/blog/2017/06/which-algorithm-takes-the-crown-light-gbm-vs-xgboost/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+  * PRACTICE 2 - Add cross validation
+    * Both LightGBM and XGBoost training API has `cv()` method to do cross validation, however, it only show you the evaluation results for each cv round, wihtout giving you the best set of parameters. In fact, it only uses the set of params you defined before `cv()`.
+    * So, I started to try their scikit-learn wrapper, which has cross validation to help choosing the best set of params
+    * <b>reference - tuning python xgboost</b>: https://www.analyticsvidhya.com/blog/2016/03/complete-guide-parameter-tuning-xgboost-with-codes-python/
+    * wait for my python notebook here...
 
 
 ********************************************
