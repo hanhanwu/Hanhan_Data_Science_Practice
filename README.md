@@ -266,6 +266,12 @@ TREE BASED MODELS
     * This one is a basic one, only use single thread, even without cross validation.
     * When you are using `train()` method, it does not allow you to set seed, and each time you may get different results.
     * reference: https://www.analyticsvidhya.com/blog/2017/06/which-algorithm-takes-the-crown-light-gbm-vs-xgboost/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+  * XGBoost paper: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/xgboost_paper.pdf
+    * The reason I'm checking this paper is because XGBoost has its regularizer, meanwhile I was thinking how to use the `cv()` function and whether `cv()` is needed if XGBoost has its built-in regularizer. My answer is, yes, cross validation is still necessary. regularizer is used for reducing overfitting.
+    * According to the paper, if you set regularizer params all as 0, XGBoost works the same as GBM
+    * Boosting methods such as GBM tend to overfitting if you don't use cross validation or regularization. However, according to my notes, XGBoost has regularizer to reduce overfitting
+    * my notes: https://github.com/hanhanwu/Hanhan_Data_Science_Resources/blob/master/Experiences.md
+    * In python xgboost API, you will find both classifier and regressor have 2 regularizer params, `reg_alpha` and `reg_lambda`. http://xgboost.readthedocs.io/en/latest/python/python_api.html#module-xgboost.training
   * PRACTICE 2 - Add cross validation
     * Both LightGBM and XGBoost training API has `cv()` method to do cross validation, however, it only show you the evaluation results for each cv round, wihtout giving you the best set of parameters. In fact, it only uses the set of params you defined before `cv()`.
     * So, I started to try their scikit-learn wrapper, which has cross validation to help choosing the best set of params
