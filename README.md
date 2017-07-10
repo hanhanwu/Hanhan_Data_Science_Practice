@@ -276,12 +276,13 @@ TREE BASED MODELS
     * Both LightGBM and XGBoost training API has `cv()` method to do cross validation, however, it only show you the evaluation results for each cv round, wihtout giving you the best set of parameters. In fact, it only uses the set of params you defined before `cv()`.
     * So, I started to try their scikit-learn wrapper, which has cross validation to help choosing the best set of params
     * <b>reference - tuning python xgboost [Python]</b> (feature importance plot part not work for me, better check my code below): https://www.analyticsvidhya.com/blog/2016/03/complete-guide-parameter-tuning-xgboost-with-codes-python/
+    * <b>NOTE:</b> Whwn you try to tune the params with `GridSearchCV`, it's better to seperate params into a few sets, and tune each set to ginf optimum valus one by one. Otherwise, it can be running forever.
     * my code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/try_lightfGBM_cv.ipynb
-    * Im my xgboost code, I am using 2 types of cross validation, one is xgboost `cv()` method and it only returns the optimum number of trees; another one is scikit-learn GridSearch cross valication, `GridSearchCV()`, with htis method, you can get optimum set pf params
-    * wait for my updted python notebook here...
+    * As you can see in the code, both XGBoost and LightGBM have 2 cross validation methods. 1) If you use their built-in `cv()` method, the nuber of thread depends on how did you install XGBoost and how did you make LightGBM with `make -j`. Meanwhile, this type of cross validation could only allow you to find see optimum `n_estimators`, and it's not convenient. 2) If you use `GridSearchCV()`, you can define multi-threading in the code, meanwhile it finally will return optimum param set, if you turn params subgroup by subgroup
   * Other Resources
     * XGBoost Params (including R package): http://xgboost.readthedocs.io/en/latest/parameter.html#general-parameters
     * Complete guide in tunning GBM: https://www.analyticsvidhya.com/blog/2016/02/complete-guide-parameter-tuning-gradient-boosting-gbm-python/
+    * [R] - LightGBM R package: https://github.com/Microsoft/LightGBM/tree/master/R-package
 
 
 ********************************************
