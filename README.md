@@ -283,6 +283,7 @@ TREE BASED MODELS
     * XGBoost Params (including R package): http://xgboost.readthedocs.io/en/latest/parameter.html#general-parameters
     * Complete guide in tunning GBM: https://www.analyticsvidhya.com/blog/2016/02/complete-guide-parameter-tuning-gradient-boosting-gbm-python/
     * [R] - LightGBM R package: https://github.com/Microsoft/LightGBM/tree/master/R-package
+    * LightGBM params: http://lightgbm.readthedocs.io/en/latest/Parameters.html
 
 
 ********************************************
