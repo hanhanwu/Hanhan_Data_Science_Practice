@@ -278,12 +278,16 @@ TREE BASED MODELS
     * <b>reference - tuning python xgboost [Python]</b> (feature importance plot part not work for me, better check my code below): https://www.analyticsvidhya.com/blog/2016/03/complete-guide-parameter-tuning-xgboost-with-codes-python/
     * <b>NOTE:</b> Whwn you try to tune the params with `GridSearchCV`, it's better to seperate params into a few sets, and tune each set to ginf optimum valus one by one. Otherwise, it can be running forever.
     * my code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/try_lightfGBM_cv.ipynb
+    * <b>NOTE:</b> When you are using LightGBM with GridSearchCV, `n_jobs` has to be set as 1, otherwise, the code will run forever
     * As you can see in the code, both XGBoost and LightGBM have 2 cross validation methods. 1) If you use their built-in `cv()` method, the nuber of thread depends on how did you install XGBoost and how did you make LightGBM with `make -j`. Meanwhile, this type of cross validation could only allow you to find see optimum `n_estimators`, and it's not convenient. 2) If you use `GridSearchCV()`, you can define multi-threading in the code, meanwhile it finally will return optimum param set, if you turn params subgroup by subgroup
+    * During param tuning with GridSearchCV, LightGBM didn't appear to be faster, maybe because `n_jobs` has to be 1 for while in XGBoost, I used 7. But later in model training, it's faster than XGBoost
+    * In the experiments, you will see, even with cross validation, regularization and params that help avoid overfitting, overfitting could still happen
   * Other Resources
     * XGBoost Params (including R package): http://xgboost.readthedocs.io/en/latest/parameter.html#general-parameters
     * Complete guide in tunning GBM: https://www.analyticsvidhya.com/blog/2016/02/complete-guide-parameter-tuning-gradient-boosting-gbm-python/
     * [R] - LightGBM R package: https://github.com/Microsoft/LightGBM/tree/master/R-package
-    * LightGBM params: http://lightgbm.readthedocs.io/en/latest/Parameters.html
+    * LightGBM params: http://lightgbm.readthedocs.io/en/latest/Parameters-tuning.html
+    * scikit-learn GridSearchCV: http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html
   * <b>NOTE: Check param documents and 2 complete param tuning guide of XGBoost and LightGBM above, start params with typical value range for tuning</b>
 
 
