@@ -3,6 +3,10 @@ setwd(path)
 
 library(data.table)
 
+# read csv
+## NOTE: data.table is better than data.frame read.csv(), since when there is problems, fread() will give errors and indicate row/col number
+csv_data <- fread("your_file_name.csv", na.strings = c("", " ", "?", "NA", NA), sep = ",")
+
 # Create a data table
 dt1 <- data.table(x = c("a", "b", "c", "d", "e"), y = c(1, 2, 3, 4, 5))
 
