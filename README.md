@@ -282,6 +282,10 @@ TREE BASED MODELS
     * As you can see in the code, both XGBoost and LightGBM have 2 cross validation methods. 1) If you use their built-in `cv()` method, the nuber of thread depends on how did you install XGBoost and how did you make LightGBM with `make -j`. Meanwhile, this type of cross validation could only allow you to find see optimum `n_estimators`, and it's not convenient. 2) If you use `GridSearchCV()`, you can define multi-threading in the code, meanwhile it finally will return optimum param set, if you turn params subgroup by subgroup
     * During param tuning with GridSearchCV, LightGBM didn't appear to be faster, maybe because `n_jobs` has to be 1 for while in XGBoost, I used 7. But later in model training, it's faster than XGBoost
     * In the experiments, you will see, even with cross validation, regularization and params that help avoid overfitting, overfitting could still happen
+  * Summary for Using <b>CPU</b> with XGBoost and LightGBM
+    * When you are installing XGBoost or `make` LightGBM, you can set whether it's multi-threading or single thread. In this step, LightGBM is more convenient, since you just type `make -j [num]`, change num to decide how many thread do you want, while XGBoost requires to reinstall
+    * When you are using `train()` or `cv()` provided by both algorithms, you cannot get a set of optium parameters
+    * If you want to tune a set of parameters, use scikit-learn `GridSearchCV()` for the tunning. For XGBoost, it allows you to set number of threads for XGBoost and number of jobs runninng in parallel for grid search; However, for LightGBM, you can set multiple threads for LighGBM but the `n_jobs` has to be 1.
   * Other Resources
     * XGBoost Params (including R package): http://xgboost.readthedocs.io/en/latest/parameter.html#general-parameters
     * Complete guide in tunning GBM: https://www.analyticsvidhya.com/blog/2016/02/complete-guide-parameter-tuning-gradient-boosting-gbm-python/
