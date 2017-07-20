@@ -126,6 +126,10 @@ Future Methods Can Try
     * For example, you can use SMOTE-ENN: http://contrib.scikit-learn.org/imbalanced-learn/auto_examples/combine/plot_smote_enn.html
   * [R] unbalance package (2015): https://cran.r-project.org/web/packages/unbalanced/unbalanced.pdf
     * Page 3, `type` param, you can use `ubOver, ubUnder, ubSMOTE, ubOSS, ubCNN, ubENN, ubNCL, ubTomek`
+    
+* Other Models can try
+  * [Python] LightGBM with cross validation: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/try_lightfGBM_cv.ipynb
+  * [Python & R] CatBoost!: https://github.com/catboost/catboost
 
 
 ***********************************************************************
