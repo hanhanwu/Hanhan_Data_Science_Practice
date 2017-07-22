@@ -26,6 +26,11 @@ q1[, [your_ID_name]:= NULL]
 summarizeColumns(q1)
 
 # make a copy of the data.table as data.frame
+## this is because the copy of data.table will be a reference, which shares the same memory location, when you make change on
+## 1 data.table, all changed
 df_q1 <- data.frame(q1)
 q1_copy <- df_q1
 rm(df_q1)
+# to check data.table/data.frame address
+address(q1)
+address(q1_copy)
