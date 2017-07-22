@@ -12,13 +12,16 @@ library(mlr)
 library(ROSE)
 
 
+# Method 0 - impute missing data with mode (for categorical data only)
+sort(summary(dm_data$feature1)) .   # 'A' is the mode
+dm_data$feature1[which(is.na(dm_data$feature1)==T)] = 'A'
+
 # Method 1 - impute missing data with median/mode
 q2 <- cbind(fact_data, num_data)
 summarizeColumns(q2)
 q2 <- mlr::impute(data.frame(q2), classes = list(factor = imputeMode(), integer = imputeMean()), dummy.classes = c("integer","factor"), dummy.type = "numeric")
 q2 <- q2$data
 summarizeColumns(q2)
-
 
 # Method 2 - impute missing data in numerical data with median, caterogical data with a certain value
 library(caret)
@@ -28,7 +31,6 @@ preProcValues <- preProcess(num_data, method = c("medianImpute","center","scale"
 imputed_data <- predict(preProcValues, num_data)
 
 for (i in seq_along(fact_data)) set(fact_data, i=which(is.na(fact_data[[i]])), j=i, value="MISSING")
-
 
 # Method 3 - impute missing data with KNN, it will normalize data at the same time
 q2 <- cbind(fact_data, num_data)
@@ -85,6 +87,46 @@ num_distribution_plot(sqrt(q2$mlbf_InterestRate), q2)
 quantile(q2$mlbf_InterestRate)
 q2$mlbf_InterestRate <- as.factor(ifelse (q2$mlbf_InterestRate <= 0.05, "0~0.05", ifelse(q2$mlbf_InterestRate >0.07, ">0.07", "0.05~0.07")))
 summary(q2$mlbf_InterestRate)
+
+# Better binning methods, check feature variance for bin
+## Numerical Data
+num_distribution_plot(dm_data$num_feature, dm_data)
+quantile(dm_data$num_feature)
+bin_num <- 7
+dm_data[, num_feature_bin := as.integer(cut2(dm_data$num_feature, g = bin_num))] # binning, generates a new col as for bin_ids
+summary(as.factor(dm_data$num_feature_bin))
+temp_variance <- data.table(group_by(dm_data, color_group) %>%  # change color_group to your group by col
+                              summarise(GroupVariance=var(rep(num_feature_bin)))) # feature variance for group
+temp_variance
+var(dm_data$num_feature_bin)   # feature variance for the whole
+summary(cut2(dm_data$num_feature, g = bin_num))
+
+## Categorical Data
+dm_data[, cat_feature_int:= as.integer(dm_data$cat_feature)] # generate an int col first
+num_distribution_plot(dm_data$cat_feature, dm_data)
+quantile(dm_data$cat_feature_int)
+bin_num <- 9
+dm_data[, bin_cat_feature_int := as.integer(cut2(dm_data$cat_feature_int, g = bin_num))]
+temp_variance <- data.table(group_by(dm_data, color_group) %>%  # change color_group to your group by col
+                              summarise(GroupVariance=var(rep(bin_cat_feature_int))))  # feature variance for group
+temp_variance
+var(dm_data$bin_cat_feature_int) 
+summary(cut2(dm_data$cat_feature_int, g = bin_num))
+sort(summary(dm_data$cat_feature))
+sort(summary(as.factor(dm_data$cat_feature_int)))
+
+# Method 3 - deal with outliers in a more statistical method
+impute_outlier <- function(x) {
+  x[x < quantile(x,0.25) - 1.5 * IQR(x) | x > quantile(x,0.75) + 1.5 * IQR(x)] <- median(x)
+  return(x)
+}
+boxplot(dm_data$feature1)
+quantile(dm_data$feature1)  # check quantile before using log(), in case to create infinity
+dm_data$feature1 <- impute_outlier(dm_data$feature1)
+boxplot(dm_data$feature1)
+sd(dm_data$feature1)   # standard deviation, the squared root of variance
+var(dm_data$feature1)  # variance
+num_distribution_plot(dm_data$feature1, dm_data) # the function created in data_explore
 
 
 # Method 1 - remove almost constant varibales
