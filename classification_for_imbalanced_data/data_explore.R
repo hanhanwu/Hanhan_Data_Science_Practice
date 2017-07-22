@@ -124,3 +124,21 @@ origin_fact_data <- subset(q1, select = origin_nums==F)
 
 # put all the final categorical and numerical data together
 q2 <- cbind(fact_data, num_data)
+
+
+# Check feature variance
+## Numerical data
+num_feature_variance <- data.table(group_by(dm_data, color_group) %>%   # change color_group to your group by col
+                                                    summarise(GroupVariance=var(rep(num_feature))))
+num_feature_variance # variance for groups in this feature
+var(same_user_sebset$num_feature) # variance for this feature as a whole
+
+## Categorical data
+dm_data[, cat_feature:=as.integer(as.factor(dm_data$cat_feature))]
+cat_feature_variance <- data.table(group_by(dm_data, color_group) %>%  # change color_group to your group by col
+                                  summarise(GroupVariance=var(rep(cat_feature))))
+cat_feature_variance       
+var(as.integer(as.factor(dm_data$cat_feature))) 
+
+
+
