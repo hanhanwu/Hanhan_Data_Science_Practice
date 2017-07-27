@@ -115,14 +115,23 @@ summary(cut2(dm_data$cat_feature_int, g = bin_num))
 sort(summary(dm_data$cat_feature))
 sort(summary(as.factor(dm_data$cat_feature_int)))
 
-# Method 3 - deal with outliers in a more statistical method
-impute_outlier <- function(x) {
+# Method 3 - deal with outliers in a more statistical method (IQR)
+# impute outliers with median
+impute_outlier_median <- function(x) {
   x[x < quantile(x,0.25) - 1.5 * IQR(x) | x > quantile(x,0.75) + 1.5 * IQR(x)] <- median(x)
+  return(x)
+}
+
+# impute outliers with mix, max
+impute_outlier_min_max <- function(x) {
+  x[x < quantile(x,0.25) - 1.5 * IQR(x)] <- min(quantile(x,0.25) - 1.5 * IQR(x))
+  x[x > quantile(x,0.75) + 1.5 * IQR(x)] <- max(quantile(x,0.75) + 1.5 * IQR(x))
   return(x)
 }
 boxplot(dm_data$feature1)
 quantile(dm_data$feature1)  # check quantile before using log(), in case to create infinity
-dm_data$feature1 <- impute_outlier(dm_data$feature1)
+# dm_data$feature1 <- impute_outlier_median(dm_data$feature1)  # impute with median
+dm_data$feature1 <- impute_outlier_min_max(dm_data$feature1)  # impute with min, max
 boxplot(dm_data$feature1)
 sd(dm_data$feature1)   # standard deviation, the squared root of variance
 var(dm_data$feature1)  # variance
