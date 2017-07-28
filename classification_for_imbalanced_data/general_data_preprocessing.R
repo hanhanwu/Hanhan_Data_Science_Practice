@@ -101,6 +101,10 @@ temp_variance
 var(dm_data$num_feature_bin)   # feature variance for the whole
 summary(cut2(dm_data$num_feature, g = bin_num))
 
+### group by multiple cols
+temp_variance <- data.table(group_by(dm_data, color_group, shape_group) %>%  # change color_group, shape_group to your group by cols
+                              summarise(GroupVariance=var(rep(num_feature_bin)))) # feature variance for group
+
 ## Categorical Data
 dm_data[, cat_feature_int:= as.integer(dm_data$cat_feature)] # generate an int col first
 num_distribution_plot(dm_data$cat_feature, dm_data)
