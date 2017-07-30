@@ -11,6 +11,9 @@ library('e1071')
 library(mlr)
 library(ROSE)
 
+# Check data shifitng at the same time:
+## https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/deal_with_data_shifting.ipynb
+
 
 # Method 1 - Filter Methods
 
