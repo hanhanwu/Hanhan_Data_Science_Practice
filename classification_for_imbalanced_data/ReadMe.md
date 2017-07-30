@@ -56,6 +56,7 @@ Recently, I did many experiments on classification with imbalanced small dataset
 
 <b>Feature Importance - Feature Selection</b>
 
+* Check <b>data shifting</b> at the same time: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/deal_with_data_shifting.ipynb
 * 3 major feature selection methods: https://www.analyticsvidhya.com/blog/2016/12/introduction-to-feature-selection-methods-with-an-example-or-how-to-select-the-right-variables/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
 * In my code, I have used filter methods and wrapper methods.
 * For filter methods, I tried gain.ratio, information.gain (1-entropy) and anova.test, however, after I took selected features in to models, all got very low balanced accuracy, especially for the small class. This is because filter methods are trying to calculate the correlation between features and the target, I guess when the target is serverly imbalanced, the secected features may all have bias toward the large class.
@@ -120,7 +121,9 @@ Future Methods Can Try
   * reference: https://www.analyticsvidhya.com/blog/2017/06/a-comprehensive-guide-for-linear-ridge-and-lasso-regression/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
 * To interprete regression plots: https://www.analyticsvidhya.com/blog/2016/07/deeper-regression-analysis-assumptions-plots-solutions/
 
-* More smapling methods to deal with data imbalance
+* Check data shifting with feature selection: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/deal_with_data_shifting.ipynb
+
+* More sampling methods to deal with data imbalance
   * [Python] Scikit-Learn imbalanced-lean API: http://contrib.scikit-learn.org/imbalanced-learn/api.html
     * Check left side algorithms you can choose
     * For example, you can use SMOTE-ENN: http://contrib.scikit-learn.org/imbalanced-learn/auto_examples/combine/plot_smote_enn.html
