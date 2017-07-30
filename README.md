@@ -211,6 +211,11 @@ DATA PREPROCESSING
   * data for practice: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/168866123_T_ONTIME.csv
   * Original data source for download: http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236
   * Python Practice Code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/resolve_skewness.ipynb
+  
+* Deal with Data Shifting
+  * My Code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/deal_with_data_shifting.ipynb
+  * This can be helpful to check `training vs testing` data or `old vs new` data or `time period x vs time period y` data
+  * Check and deal with it before working on your final model prediction
  
 * Deal with Imbalanced Dataset
   * practice 1: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/deal_with_imbalanced_dataset.R
