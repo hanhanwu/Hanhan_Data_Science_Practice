@@ -217,6 +217,10 @@ DATA PREPROCESSING
   * This can be helpful to check `training vs testing` data or `old vs new` data or `time period x vs time period y` data
   * Check and deal with it before working on your final model prediction
   * reference: https://www.analyticsvidhya.com/blog/2017/07/covariate-shift-the-hidden-problem-of-real-world-data-science/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+  * In method 2, I used MLBox
+    * https://github.com/AxeldeRomblay/MLBox
+    * This tool does data cleaning, removing shifting data for you, after doing each preprocessing, it gives you statistics for the data
+  * Method 1 used here has more flexible and maybe more accurate, since you don't know what kind of data cleaning work that MLBox did for you
  
 * Deal with Imbalanced Dataset
   * practice 1: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/deal_with_imbalanced_dataset.R
