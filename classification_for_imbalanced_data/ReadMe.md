@@ -133,6 +133,12 @@ Future Methods Can Try
 * Other Models can try
   * [Python] LightGBM with cross validation: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/try_lightfGBM_cv.ipynb
   * [Python & R] CatBoost!: https://github.com/catboost/catboost
+  
+* Other Tools can try
+  * TPOT: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/try_genetic_alg_through_TPOT.ipynb
+    * TPOT codumentation: https://rhiever.github.io/tpot/
+    * scoring methods: https://rhiever.github.io/tpot/using/#scoring-functions
+    * This tool can help automatically choose model and optimize model params, it's worthy to give it a try
 
 
 ***********************************************************************
