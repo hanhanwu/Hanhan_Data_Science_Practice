@@ -323,6 +323,7 @@ ADVANCED TOOLS
   * It does some data cleaning, removing shifting features, model selection and param optimization automatically, and each step, it output useful information or output the final predicted results, as well as CPU time
   * For model selection and param optimization, it functions similar to TPOT
   * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/try_mlbox.ipynb
+  * Reference: https://www.analyticsvidhya.com/blog/2017/07/mlbox-library-automated-machine-learning/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
 
 
 *********************************************
