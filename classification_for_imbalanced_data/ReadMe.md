@@ -135,10 +135,16 @@ Future Methods Can Try
   * [Python & R] CatBoost!: https://github.com/catboost/catboost
   
 * Other Tools can try
+  * Before trying TPOT and MLBox, better to preprocess the data on my own first
   * TPOT: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/try_genetic_alg_through_TPOT.ipynb
     * TPOT codumentation: https://rhiever.github.io/tpot/
     * scoring methods: https://rhiever.github.io/tpot/using/#scoring-functions
     * This tool can help automatically choose model and optimize model params, it's worthy to give it a try
+  * MLBox: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/try_mlbox.ipynb
+    * It also does automatically model selection and param optimization, as TPOT
+    * MLBox outputs more useful info for each step, and even including GPU time, as well as final predicted results (looks like built for competitions such as Kaggle...)
+    * Its data cleaning is very basic, and only tells you which features are top sparse, without dealing with that for you
+  
 
 
 ***********************************************************************
