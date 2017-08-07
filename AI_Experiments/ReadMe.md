@@ -15,6 +15,18 @@ RESOURCES
     * Theano (from University of Montreal)
     * You can change between these backend
   * Install Keras: https://keras.io/#installation
+  * For installing TensorFlow, strongly recommend to use `virtualenv` (it's fast, simply and won't influence other installed python libraries): https://www.tensorflow.org/install/install_mac
+  * After `virtualenv` installation and validaton, Commands to turn on and turn off virtual environment:
+    * To activate the virtual environment, `$ source ~/Documents/Virtual_Env/bin/activate      # If using bash, sh, ksh, or zsh`, change "Documents/Virtual_Env" to your own virtual environment folder name
+    * To activate the virtual environment, `$ source ~/Documents/Virtual_Env/bin/activate.csh  # If using csh or tcsh`, change "Documents/Virtual_Env" to your own virtual environment folder name
+    * Then in your terminal, you will see `(Virtual_Env)$`
+    * To deactivate your virtual envvironment, `(Virtual_Env)$ deactivate`
+  * Install Jupyter Notebook in your virtual environment
+    * `(Virtual_Env)$ pip install jupyter`, install jupyter within the active virtualenv
+    * `(Virtual_Env)$ pip install ipykernel`, install reference ipykernel package
+    * `(Virtual_Env)$ python -m ipykernel install --user --name testenv --display-name "Python2 (Virtual_Env)"`, set up the kernel
+    * `(Virtual_Env)$ jupyter notebook`
+    * After jupyter notebook has been turned on, when you are creating a new notebook, choose "Python 2 (Virtual_Env)"
     
 * Image recognition with Keras: https://www.analyticsvidhya.com/blog/2017/06/architecture-of-convolutional-neural-networks-simplified-demystified/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
     
