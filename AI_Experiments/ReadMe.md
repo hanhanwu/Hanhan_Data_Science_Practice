@@ -94,6 +94,9 @@ EXPERIMENTS
     * Create session
     * Run graph in session, the compiled graph is passed to the session, which starts its execution. 
     * Close session
+  * Terminology in Tensorflow
+    * <b>placeholder</b>: A way to feed data into the graphs
+    * <b>feed_dict</b>: A dictionary to pass numeric values to computational graph
    
 
  
