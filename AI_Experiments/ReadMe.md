@@ -8,6 +8,8 @@ RESOURCES
 
 * Here is a bunch of libraries, tutorials you can try: https://www.analyticsvidhya.com/blog/2016/08/deep-learning-path/
 
+* 10 Deep Learning Architectures: https://www.analyticsvidhya.com/blog/2017/08/10-advanced-deep-learning-architectures-data-scientists/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+
 * Fundamentals of neural network: https://www.analyticsvidhya.com/blog/2016/03/introduction-deep-learning-fundamentals-neural-networks/
   * Important params for optimizing neural network
     * Type of architecture
@@ -50,6 +52,7 @@ RESOURCES
   * Pros and Cons of Keras
     * Simple and no detailed implemention of NN like lower level libraries (e.g. Tensorflow) required, but also because of this, it can be less flexible
     * Only support GPU Nvidia
+  * Keras Examples (a lot): https://github.com/fchollet/keras/tree/master/examples
     
 * CNN for visual recognition: http://cs231n.github.io/neural-networks-3/
     
