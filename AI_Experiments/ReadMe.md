@@ -6,6 +6,8 @@ Time to try experiments in Neural Network, Deep Learning and any other AI method
 
 RESOURCES
 
+* Here is a bunch of libraries, tutorials you can try: https://www.analyticsvidhya.com/blog/2016/08/deep-learning-path/
+
 * Fundamentals of neural network: https://www.analyticsvidhya.com/blog/2016/03/introduction-deep-learning-fundamentals-neural-networks/
   * Important params for optimizing neural network
     * Type of architecture
