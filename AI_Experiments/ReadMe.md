@@ -82,4 +82,15 @@ EXPERIMENTS
   * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/digital_recognition_Keras.ipynb
   * Reference: https://www.analyticsvidhya.com/blog/2016/10/tutorial-optimizing-neural-networks-using-keras-with-image-recognition-case-study/
     
+    
+* Digital Recognition with Tensorflow
+  * “TensorFlow is an open source software library for numerical computation using dataflow graphs. Nodes in the graph represents mathematical operations, while graph edges represent multi-dimensional data arrays (aka tensors) communicated between them. The flexible architecture allows you to deploy computation to one or more CPUs or GPUs in a desktop, server, or mobile device with a single API.”
+  * Tensorflow Workflow
+    * Build a computational graph, this can be any mathematical operation TensorFlow supports.
+    * Initialize variables
+    * Create session
+    * Run graph in session, the compiled graph is passed to the session, which starts its execution. 
+    * Close session
+   
+
  
