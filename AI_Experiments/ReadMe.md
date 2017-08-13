@@ -130,4 +130,9 @@ EXPERIMENTS
   * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/digital_recognition_TensorFlow.ipynb
     
 
- 
+*****************************************************************
+
+RELAVANT PAPERS
+
+* Adam Optimizer: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/Adam_optimizer.pdf
+  * Don't quite understand, but I really admire those PhDs who design and compare algorithms...
