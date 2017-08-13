@@ -25,9 +25,10 @@ RESOURCES
   * The meaning of "sample", "epoch", "batch": https://keras.io/getting-started/faq/#what-does-sample-batch-epoch-mean
     * <b>Sample</b>: One element of a dataset. Such as, 1 image, 1 audio file
     * <b>Batch</b>: A set of N samples. The samples in a batch are processed independently, in parallel. If training, a batch results in only one update to the model. A batch generally approximates the distribution of the input data better than a single input. <b>The larger the batch, the better the approximation</b>, but also takes longer time.
-    * <b>Epoch</b>: Epoch: an arbitrary cutoff, generally defined as "one pass over the entire dataset", used to separate training into <b>distinct phases</b>, which is useful for <b>logging and periodic evaluation</b>. When using Keras `evaluation_data` or `evaluation_split` with the `fit` method of Keras models, evaluation will be run at the end of every epoch.
+    * <b>Epoch</b>: Epoch: an arbitrary cutoff, generally defined as "one pass over the entire dataset", used to separate training into <b>distinct phases</b>, which is useful for <b>logging and periodic evaluation</b>. When using Keras `evaluation_data` or `evaluation_split` with the `fit` method of Keras models, <b>evaluation will be run at the end of every epoch</b>.
 
 * Digits recognition with <b>TensorFlow</b> [lower level library]: https://www.analyticsvidhya.com/blog/2016/10/an-introduction-to-implementing-neural-networks-using-tensorflow/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+  * <b>Tensorflow Resources</b>: https://github.com/jtoy/awesome-tensorflow
 
 * Digits recognition, using NN with <b>Keras</b> [higher level library]: https://www.analyticsvidhya.com/blog/2016/10/tutorial-optimizing-neural-networks-using-keras-with-image-recognition-case-study/
   * Keras has 3 backend you can use: https://keras.io/backend/
@@ -37,6 +38,7 @@ RESOURCES
     * You can change between these backend
   * Install Keras: https://keras.io/#installation
   * <b>Keras Resources</b>: https://github.com/fchollet/keras-resources
+  * <b>Keras Examples (a lot)</b>: https://github.com/fchollet/keras/tree/master/examples
   * For installing TensorFlow, strongly recommend to use `virtualenv` (it's fast, simply and won't influence other installed python libraries): https://www.tensorflow.org/install/install_mac
   * After `virtualenv` installation and validaton, Commands to turn on and turn off virtual environment:
     * To activate the virtual environment, `$ source ~/Documents/Virtual_Env/bin/activate      # If using bash, sh, ksh, or zsh`, change "Documents/Virtual_Env" to your own virtual environment folder name
@@ -53,7 +55,6 @@ RESOURCES
   * Pros and Cons of Keras
     * Simple and no detailed implemention of NN like lower level libraries (e.g. Tensorflow) required, but also because of this, it can be less flexible
     * Only support GPU Nvidia
-  * Keras Examples (a lot): https://github.com/fchollet/keras/tree/master/examples
     
 * CNN for visual recognition: http://cs231n.github.io/neural-networks-3/
     
@@ -106,5 +107,10 @@ EXPERIMENTS
     * Display the accuracy for a specific number of timesteps
     * After training save the model for future use
     * Test the model on a new data and check how it performs
+  * Tensorflow Resources
+    * Optimizers can be found here: https://www.tensorflow.org/api_docs/python/tf/train
+  * Reference: https://www.analyticsvidhya.com/blog/2016/10/an-introduction-to-implementing-neural-networks-using-tensorflow/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+  * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/digital_recognition_TensorFlow.ipynb
+    
 
  
