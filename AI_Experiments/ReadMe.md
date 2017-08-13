@@ -11,6 +11,22 @@ RESOURCES
 * 10 Deep Learning Architectures: https://www.analyticsvidhya.com/blog/2017/08/10-advanced-deep-learning-architectures-data-scientists/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
 
 * Fundamentals of neural network: https://www.analyticsvidhya.com/blog/2016/03/introduction-deep-learning-fundamentals-neural-networks/
+  * It's such a great feeling to review and to understand deeper
+  * After learning NN a while, are you going to forget about the relationship between weights, activation function and EACH neuron like I did? This article is a great source to review. So! Each neuron has an activation function, the input for this single neuron can come from multiple sources, each input and bias could has weight.
+  * I think, the activation function can be whatever you defined. The purpose for defining an activation is to guarantee it will give the output you want. For example, the input is x1, x2 and the output should be `x1 AND x2`, so your activation function should use mathematical method to guarantee the output will be `x1 AND x2` when the input is x1, x2.
+  * The power of multiple layers of NN - you can break a complex problem into small problems, and each NN layer deals with one of the small problem, finally, you get what you finally want
+  * The number of neurons in the output layer will depend on the type of problem. It can be 1 for regression or binary classification problem or multiple for multi-class classification problems.
+  * <b>The ultimate objective is to update the weights of the model in order to minimize the loss function</b>. The weights are updated using a back-propogation algorithm.
+  * `A XNOR B = (A' AND B') OR (A AND B) = NOT ((A OR B) AND (A' OR B'))`, `A' = NOT A`
+  * Each optimization includes:
+    * Select a network architecture, i.e. number of hidden layers,  number of neurons in each layer and activation function
+    * Initialize weights randomly
+    * Use forward propagation to determine the output node
+    * Find the error of the model using the known labels
+    * <b>Back-propogate the error</b> into the network and determine the error for each node
+    * Update the weights to minimize the loss function
+  * During back-propagation:
+    * <b>The error at a node is based on weighted sum of errors on all the nodes of the next layer which take output of this node as input.</b>
   * Important params for optimizing neural network
     * Type of architecture
     * Number of Layers
@@ -20,6 +36,7 @@ RESOURCES
     * Type of optimization / backpropagation technique to use
     * Dropout rate
     * Weight sharing
+  * Think about the activation function, the architecture, do you think Deep Learning can really generate infinite number of solutions?! So powerful isn't it? The only problem is, you still have to have ground truth first, and for Deep Learning, the ground truth has to be more accurate and informative
     
 * Core concepts of neural network: https://www.analyticsvidhya.com/blog/2016/08/evolution-core-concepts-deep-learning-neural-networks/
   * The meaning of "sample", "epoch", "batch": https://keras.io/getting-started/faq/#what-does-sample-batch-epoch-mean
