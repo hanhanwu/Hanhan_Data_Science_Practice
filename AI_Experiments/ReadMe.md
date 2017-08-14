@@ -84,6 +84,9 @@ RESOURCES
   * My NN code in python: https://github.com/hanhanwu/Hanhan-Machine-Learning-Model-Implementation/blob/master/neural_network.py
   * My NN code in real time short context search: https://github.com/hanhanwu/Hanhan_NLP/blob/master/short_context_search.py
 
+* GPU for Deep Learning: https://www.analyticsvidhya.com/blog/2017/05/gpus-necessary-for-deep-learning/
+  * Why GPU: https://www.slideshare.net/AlessioVillardita/ca-1st-presentation-final-published
+
 
 *****************************************************************
 
