@@ -111,6 +111,8 @@ summary(q2$mlbf_InterestRate)
 
 # Better binning methods, check feature variance for bin
 ## Numerical Data
+## NOTE: group_by here comes from library(dplyr), if you loaded library(plyr) after dplyr, group_by won't work
+### so, use detach(package:plyr), then it should work
 num_distribution_plot(dm_data$num_feature, dm_data)
 quantile(dm_data$num_feature)
 bin_num <- 7
