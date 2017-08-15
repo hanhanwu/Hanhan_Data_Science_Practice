@@ -61,7 +61,8 @@ impute_NA <- function(x) {
   return(x)
 }
 
-my_data <- data.table(sapply(my_data, impute_NA))
+library(plyr)
+my_data <- colwise(impute_NA)(my_data)  # here, don't use sapply() or other apply methods, they will convert all columns in to same data type
 summarizeColumns(my_data)
 
 
