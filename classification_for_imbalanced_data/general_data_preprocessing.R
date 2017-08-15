@@ -17,6 +17,8 @@ sort(summary(dm_data$feature1)) .   # 'A' is the mode
 dm_data$feature1[which(is.na(dm_data$feature1)==T)] = 'A'
 
 # Method 1 - impute missing data with median/mode
+## NOTE: This method does not impute missing data in the original data, but generate dummy columns
+## and the values in dummy columns are normalized
 q2 <- cbind(fact_data, num_data)
 summarizeColumns(q2)
 q2 <- mlr::impute(data.frame(q2), classes = list(factor = imputeMode(), integer = imputeMean()), dummy.classes = c("integer","factor"), dummy.type = "numeric")
@@ -24,6 +26,7 @@ q2 <- q2$data
 summarizeColumns(q2)
 
 # Method 2 - impute missing data in numerical data with median, caterogical data with a certain value
+## NOTE: this method will normalize the data
 library(caret)
 library('RANN')
 set.seed(410)
@@ -32,7 +35,8 @@ imputed_data <- predict(preProcValues, num_data)
 
 for (i in seq_along(fact_data)) set(fact_data, i=which(is.na(fact_data[[i]])), j=i, value="MISSING")
 
-# Method 3 - impute missing data with KNN, it will normalize data at the same time
+# Method 3 - impute missing data with KNN
+## NOTE: this method will normalize the data
 q2 <- cbind(fact_data, num_data)
 summarizeColumns(q2)
 fact_cols <- lapply(q2, is.factor)
@@ -43,6 +47,22 @@ preProcValues <- preProcess(q2, method = c("knnImpute","center","scale"))   # on
 library('RANN')
 q2_processed <- predict(preProcValues, q2)
 summarizeColumns(q2_processed)
+
+# method 4 - DIY impute missing data
+## If you don't want to change non-missing values, and you don't want to create any dummy columns,
+## but just modify the missing values, try this method
+impute_NA <- function(x) {
+  if(is.numeric(x) == T) {
+    x[is.na(x)] <- median(x[which(!is.na(x))])
+  }
+  else if(is.factor(x) == T) {
+    x[is.na(x)] <- names(sort(summary(x), decreasing = T))[1]
+  }
+  return(x)
+}
+
+my_data <- data.table(sapply(my_data, impute_NA))
+summarizeColumns(my_data)
 
 
 # remove 0 variance feature
