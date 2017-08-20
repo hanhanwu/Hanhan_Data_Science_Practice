@@ -30,3 +30,15 @@ arules::itemFrequencyPlot(Groceries,topN=20,
 plot(rules[1:10],
      method = "graph",
      control = list(type = "items"))
+
+
+# plot visualizaed recommendation about what to buy together
+## For example, here if you buy yogurt, it will recommend you to buy jam together (god, that's too sweet)
+plot(rules[1:10], method = "paracoord", control = list(reorder = TRUE))
+## amtrix version of the above, but it's really confusing...
+plot(rules[1:10], method = "matrix", control = list(reorder = TRUE))
+
+
+# Interactive visualization
+## You can see, association rules, lift, support and confidence when mouse over the point
+arulesViz::plotly_arules(rules)
