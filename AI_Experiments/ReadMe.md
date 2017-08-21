@@ -55,7 +55,7 @@ RESOURCES
     * You can change between these backend
   * Install Keras: https://keras.io/#installation
   * <b>Keras Resources</b>: https://github.com/fchollet/keras-resources
-  * <b>Keras Examples (a lot)</b>: https://github.com/fchollet/keras/tree/master/examples
+  * <b>Keras Examples</b>: https://github.com/fchollet/keras/tree/master/examples
   * For installing TensorFlow, strongly recommend to use `virtualenv` (it's fast, simply and won't influence other installed python libraries): https://www.tensorflow.org/install/install_mac
   * After `virtualenv` installation and validaton, Commands to turn on and turn off virtual environment:
     * To activate the virtual environment, `$ source ~/Documents/Virtual_Env/bin/activate      # If using bash, sh, ksh, or zsh`, change "Documents/Virtual_Env" to your own virtual environment folder name
@@ -86,6 +86,10 @@ RESOURCES
 
 * GPU for Deep Learning: https://www.analyticsvidhya.com/blog/2017/05/gpus-necessary-for-deep-learning/
   * Why GPU: https://www.slideshare.net/AlessioVillardita/ca-1st-presentation-final-published
+  
+* Deep Learning Book: http://www.deeplearningbook.org/
+* Deep Learning Path: https://www.analyticsvidhya.com/blog/2016/08/deep-learning-path/
+* Some Deep Learning tutorials: http://machinelearningmastery.com/start-here/
 
 
 *****************************************************************
