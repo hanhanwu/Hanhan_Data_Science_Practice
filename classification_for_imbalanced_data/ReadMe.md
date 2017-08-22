@@ -6,6 +6,8 @@ Recently, I did many experiments on classification with imbalanced small dataset
 
 <b>Overview</b>
 
+* <b>Review Real World Experience Notes</b> each time here: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/classification_for_imbalanced_data/Practical_Experience.md
+
 * The dataset I used here is very small, only around 6000+ records and it has severe data imbalance problem. Because of privacy issue, I cannot share anything detail about the data. But I need to write donw the summary to help my future data science work, since by doing these experiments, I am learning a lot.
 * In my current experiments, I have tried different data preprocessing methods/libraries, along with my favorite classifcation algorithms. The results were quite different from what I have learned from online tutorials but it is very interesting.
 * Here I am storing my sample code for data explore process, data preprocessing, feature selection wih different libraries and model training & evaluaion.
