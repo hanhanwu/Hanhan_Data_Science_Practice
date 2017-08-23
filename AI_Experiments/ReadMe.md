@@ -95,6 +95,17 @@ RESOURCES
 * Deep Learning Path: https://www.analyticsvidhya.com/blog/2016/08/deep-learning-path/
 * Some Deep Learning tutorials: http://machinelearningmastery.com/start-here/
 
+* Object Detection using YOLO [No Code Example]
+  * Article: https://www.analyticsvidhya.com/blog/2017/08/finding-chairs-deep-learning-part-i/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+  * I really like the author's passion in deep learning!
+  * Inspiration - what to check when something is wrong with the deep learning model
+    * Step 1: Check the architecture
+    * Step 2: Check the hyper-parameters of neural network
+    * Step 3: Check the Complexity of network
+    * Step 4: Check the Structure of Input data
+    * Step 5: Check the Distribution of data
+  * It cotains how to install YOLO for object detection, how to create training images to improve accuracy
+
 
 *****************************************************************
 
