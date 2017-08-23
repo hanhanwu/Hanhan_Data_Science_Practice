@@ -6,6 +6,10 @@ Time to try experiments in Neural Network, Deep Learning and any other AI method
 
 RESOURCES
 
+* Database
+  * ImageNet: http://www.image-net.org
+    * Here, you can download images in different format
+
 * Here is a bunch of libraries, tutorials you can try: https://www.analyticsvidhya.com/blog/2016/08/deep-learning-path/
 
 * 10 Deep Learning Architectures: https://www.analyticsvidhya.com/blog/2017/08/10-advanced-deep-learning-architectures-data-scientists/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
