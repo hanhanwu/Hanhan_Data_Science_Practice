@@ -80,6 +80,8 @@ RESOURCES
 * CNN for visual recognition: http://cs231n.github.io/neural-networks-3/
     
 * Image recognition with Keras: https://www.analyticsvidhya.com/blog/2017/06/architecture-of-convolutional-neural-networks-simplified-demystified/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+  * Calculate output volume: `([W-F+2P]/S)+1`, W is the input volume size, F is the size of the filter, P is the number of padding applied and S is the number of strides.
+  * The convolution and pooling layers will only extract features and reduce the number of parameters from the  original images
     
 * Use pre-trained model for digits recognition: https://www.analyticsvidhya.com/blog/2017/06/transfer-learning-the-art-of-fine-tuning-a-pre-trained-model/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
 
@@ -104,7 +106,7 @@ RESOURCES
     * Step 3: Check the Complexity of network
     * Step 4: Check the Structure of Input data
     * Step 5: Check the Distribution of data
-  * It cotains how to install YOLO for object detection, how to create training images to improve accuracy
+  * It cotains how to install YOLO for object detection, how to resize training images to improve accuracy
 
 
 *****************************************************************
