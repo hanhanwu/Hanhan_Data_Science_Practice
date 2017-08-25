@@ -1,5 +1,6 @@
 
 Time to try experiments in Neural Network, Deep Learning and any other AI methods :)
+Neural Network is a universal approximator, which means you can use it to implment other machine learning algorithms
 
 
 *****************************************************************
