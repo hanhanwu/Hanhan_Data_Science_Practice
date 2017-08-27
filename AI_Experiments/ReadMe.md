@@ -130,6 +130,22 @@ RESOURCES
 
 EXPERIMENTS
 
+* Conda vs Non-Conda Environments
+  * After you have installed so many python libraries, you may have already experienced 2 types of virtual environment and non-virtual environment. The installing mathods cannot apply to all of them, sometimes, 1 method just apply to 1 environment, but that's good enough if finally you can install all libraries in a certain environment and do your experiment. Let me write down my brief summary about using <b>non-virtual environment, python virtualenv and conda virtual environemnt</b>
+  * Non-Virtual Environemnt - Your local Python site-packages
+    * For new versions of Mac, better to use `sudo easy_install [package_name]`
+    * But for some machines, pip also works. `pip install [package_name]` for Python 2.*
+    * `pip3 install [package_name]` for python 3.*
+  * Python `virtualenv` - It creates a virtual environment very fast
+    * Insall virtualenv, `sudo easy_install virtualenv`, for more details, check https://www.tensorflow.org/install/install_mac
+    * Also check the above commands I used for `virtualenv`
+    * In this environment, you can just use `pip install [package_name]`, or `pip3 install [package_name]`
+    * But! Sometimes there are libraries you just cannot intsall here. This maybe because the python package does not match the requirements for this specific library... Then, maybe get some help from Conda Virtual Environment
+  * Conda Virtual Environemnt
+    * For detailed commands, check my posts here: https://stackoverflow.com/questions/45707010/ipython-importerror-cannot-import-name-layout/45727917#45727917
+    * Sometime! You can use `conda install [package_name]`. When this command does not work, try `pip install [package_name]` or `pip3 install [package_name]`. By changing between these 2 types of commands, finally, I got all the libraries I want in Conda Environemnt
+
+
 * Digital Recognition with Keras
   * Adam Optimizer: https://arxiv.org/abs/1412.6980
   * Supported Optimizers in Keras: https://keras.io/optimizers/
