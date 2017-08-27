@@ -81,8 +81,24 @@ RESOURCES
 * CNN for visual recognition: http://cs231n.github.io/neural-networks-3/
     
 * Image recognition with Keras: https://www.analyticsvidhya.com/blog/2017/06/architecture-of-convolutional-neural-networks-simplified-demystified/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+  * Stride & Padding
+    * Same Padding (zero padding) - remain image size
+    * Valid Padding - reduce features
+  * Activation Map & Number of Filters
+  * The convolution and pooling layers will only extract features and reduce the number of parameters from the  original images. Pooling is done for the sole purpose of reducing the spatial size of the image, but the depth of the image remains unchanged
   * Calculate output volume: `([W-F+2P]/S)+1`, W is the input volume size, F is the size of the filter, P is the number of padding applied and S is the number of strides.
-  * The convolution and pooling layers will only extract features and reduce the number of parameters from the  original images
+  * Output layer loss function to compute the error in prediction, then backpropagation
+  * <b>Entire CNN Network</b>
+  
+  ![entire network](https://s3-ap-south-1.amazonaws.com/av-blog-media/wp-content/uploads/2017/06/28132045/cnnimage.png)
+    * Activation Map on convolution layer extracts features. 
+    * Padding on convolution layer reduces features. If you want to retain image size, add Same Padding, to add Valid Padding to reduce features too
+    * Pooling is to further reduce features
+    * When CNN goes further, the extracted features become more specific
+    * Output layer makes prediction and has the loss function to check the prediction error
+    * Backpropagation
+    * Multiple rounds of forwardpropagation and backpropagation
+    
     
 * Use pre-trained model for digits recognition: https://www.analyticsvidhya.com/blog/2017/06/transfer-learning-the-art-of-fine-tuning-a-pre-trained-model/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
 
