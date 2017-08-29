@@ -185,6 +185,17 @@ EXPERIMENTS
     * Optimizers can be found here: https://www.tensorflow.org/api_docs/python/tf/train
   * Reference: https://www.analyticsvidhya.com/blog/2016/10/an-introduction-to-implementing-neural-networks-using-tensorflow/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
   * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/digital_recognition_TensorFlow.ipynb
+  
+  
+* Image Recognition with Keras
+  * Basic Version
+    * reference: https://www.analyticsvidhya.com/blog/2017/06/architecture-of-convolutional-neural-networks-simplified-demystified/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+    * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/Image_Recognition_Keras_simple_example.ipynb
+    * rose images I'm using: http://www.image-net.org/api/text/imagenet.synset.geturls?wnid=n04971313
+    * sunflower images I'm using: http://www.image-net.org/api/text/imagenet.synset.geturls?wnid=n11978713
+  * <b>NOTE</b>: As you can see in my code above, I'm reading local image file instead of reading image urls directly. This is because, [when I tried to read image urls directly, no matter how did I change the code, there is dimension issue][1], using `scipy.misc.imread()` to read local file can get the right dimension of images, and it only supports local files 
+    * This is the image data I got after reading from url directly 
+    ![Alt text](/Users/hanhanwu/Desktop/Screen Shot 2017-08-28 at 10.18.28 PM?raw=true "Optional Title")
     
 
 *****************************************************************
@@ -193,3 +204,8 @@ RELAVANT PAPERS
 
 * Adam Optimizer: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/Adam_optimizer.pdf
   * Don't quite understand, but I really admire those PhDs who design and compare algorithms...
+
+
+
+
+[1]:https://stackoverflow.com/questions/45912124/python-keras-how-to-generate-right-image-dimension
