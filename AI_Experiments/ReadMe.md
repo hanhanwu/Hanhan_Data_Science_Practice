@@ -195,7 +195,9 @@ EXPERIMENTS
     * sunflower images I'm using: http://www.image-net.org/api/text/imagenet.synset.geturls?wnid=n11978713
   * <b>NOTE</b>: As you can see in my code above, I'm reading local image file instead of reading image urls directly. This is because, [when I tried to read image urls directly, no matter how did I change the code, there is dimension issue][1], using `scipy.misc.imread()` to read local file can get the right dimension of images, and it only supports local files 
     * This is the image data I got after reading from url directly 
-    ![Alt text](/Users/hanhanwu/Desktop/Screen Shot 2017-08-28 at 10.18.28 PM?raw=true "Optional Title")
+    ![wrong dimwnsion](https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/wrong_dimensions.png)
+    * This is the image data I got after reading from local file
+    ![right dimwnsion](https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/right_dimensions.png)
     
 
 *****************************************************************
