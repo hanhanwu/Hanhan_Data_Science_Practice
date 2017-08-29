@@ -198,6 +198,7 @@ EXPERIMENTS
     ![wrong dimwnsion](https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/wrong_dimensions.png)
     * This is the image data I got after reading from local file
     ![right dimwnsion](https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/right_dimensions.png)
+  * Wait for my more advanced version here!
     
 
 *****************************************************************
