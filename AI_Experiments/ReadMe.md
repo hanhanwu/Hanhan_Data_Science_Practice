@@ -188,6 +188,7 @@ EXPERIMENTS
   
   
 * Image Recognition with Keras
+  * Download images: https://github.com/hanhanwu/Basic_But_Useful/blob/master/python_download_images.ipynb
   * Basic Version
     * reference: https://www.analyticsvidhya.com/blog/2017/06/architecture-of-convolutional-neural-networks-simplified-demystified/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
     * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/Image_Recognition_Keras_simple_example.ipynb
