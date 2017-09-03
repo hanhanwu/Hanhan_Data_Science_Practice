@@ -51,6 +51,48 @@ RESOURCES
     * <b>Sample</b>: One element of a dataset. Such as, 1 image, 1 audio file
     * <b>Batch</b>: A set of N samples. The samples in a batch are processed independently, in parallel. If training, a batch results in only one update to the model. A batch generally approximates the distribution of the input data better than a single input. <b>The larger the batch, the better the approximation</b>, but also takes longer time.
     * <b>Epoch</b>: Epoch: an arbitrary cutoff, generally defined as "one pass over the entire dataset", used to separate training into <b>distinct phases</b>, which is useful for <b>logging and periodic evaluation</b>. When using Keras `evaluation_data` or `evaluation_split` with the `fit` method of Keras models, <b>evaluation will be run at the end of every epoch</b>.
+    
+* Deep Leaning for Computer Vision: https://www.analyticsvidhya.com/blog/2016/04/deep-learning-computer-vision-introduction-convolution-neural-networks/?lipi=urn%3Ali%3Apage%3Ad_flagship3_feed%3BxPn6EhynRquw3Evzrg79RA%3D%3D
+  * Detailed analysis of activation functions
+    * Sigmoid (not recommended for CNN)
+      * Kill the gradient
+      * Outputs are not zero-centered since it's between [0,1]
+      * Taking the exp() is computationally expensive
+    * Tanh (not recommended for CNN)
+      * Still kill the gradient
+      * But output can be zero-centered
+    * ReLU (Rectified Linear Unit)
+      * <b>most commonly used for CNN</b>
+      * Gradient won’t saturate in the positive region
+      * Computationally very efficient as simple thresholding is required
+      * Empirically found to converge faster than sigmoid or tanh.
+      * Drawbacks - Output is not zero-centered and always positive
+      * Drawbacks - Gradient is killed for x<0. Few techniques like <b>leaky ReLU</b> and <b>parametric ReLU</b> are used to overcome this
+      * Drawbacks - Gradient is not defined at x=0. But this can be easily catered using <b>sub-gradients</b> and posts less practical challenges as x=0 is generally a rare case
+    * Data Preprocessing
+      * Same image size
+      * Mean centering: subtract mean value from each pixel
+    * Weights Initialization
+      * All zeros - a bad idea
+      * Gaussian Random Variables: you need to play with the standard deviation of the gaussian distribution which works well for your network....
+      * Xavier Initialization: It suggests that variance of the gaussian distribution of weights for each neuron should depend on the number of inputs to the layer. A recent research suggested that for ReLU neurons, the recommended update is, `np.random.randn(n_in, n_out)*sqrt(2/n_in)`
+      * You might be surprised to know that 10-20% of the ReLUs might be dead at a particular time while training and even in the end.
+    * CNN
+      * The <b>first layer</b> will try to detect edges and form templates for <b>edge detection</b>
+      * The subsequent layers will try to combine them into <b>simpler shapes</b> and eventually into <b>templates of different object positions, illumination, scales, etc</b>
+      * The final layers will <b>match an input image with all the templates</b> and the <b>final prediction</b> is like a weighted sum of all of them.
+    * CNN important layers
+      * Convolution Layer
+      * ReLU layer
+      * Pooling Layer: Using padding in convolution layer, the image size remains same. So, pooling layers are used to reduce the size of image.
+      * Fully Connected Layer: Each pixel is considered as a separate neuron just like a regular neural network. The last fully-connected layer will contain as many neurons as the number of classes to be predicted
+    * In this article, I think the correct formula for calculating output size should be: `(W-F+2P)/S + 1`
+    * To calculate zero-padding size: `(F-1)/2`
+    * Filters might be called kernels sometimes
+    * Alexnet
+    ![AlexNet](https://www.analyticsvidhya.com/wp-content/uploads/2016/03/fig-8.png)
+    * It has code example using GraphLab with pre-trained model. Pre-trained model may increase the accuracy but difficult to find and if you use CPU, may take very long time to run
+    
 
 * Digits recognition with <b>TensorFlow</b> [lower level library]: https://www.analyticsvidhya.com/blog/2016/10/an-introduction-to-implementing-neural-networks-using-tensorflow/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
   * <b>Tensorflow Resources</b>: https://github.com/jtoy/awesome-tensorflow
