@@ -234,6 +234,10 @@ EXPERIMENTS
   
 * Image Recognition with Keras
   * <b>Better to use Conda virtual environment</b>
+  * Commands to install required libraries in conda virtual environment
+    * `conda install -c menpo opencv`
+    * `pip install tensorflow`
+    * `pip install keras`
   * Download images: https://github.com/hanhanwu/Basic_But_Useful/blob/master/python_download_images.ipynb
   * Basic Version
     * reference: https://www.analyticsvidhya.com/blog/2017/06/architecture-of-convolutional-neural-networks-simplified-demystified/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
@@ -246,6 +250,12 @@ EXPERIMENTS
     * This is the image data I got after reading from local file
     ![right dimwnsion](https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/right_dimensions.png)
   * Wait for my more advanced version here!
+  
+  
+* GraphLab for Image Recognition
+  * You need to register GraphLab email first (it's free): https://turi.com/download/academic.html
+  * Right after the email registration, an install page will appear with your email and GraphLab key filled in pip command line: https://turi.com/download/install-graphlab-create-command-line.html
+    * Type `sudo pip install --upgrade --no-cache-dir https://get.graphlab.com/GraphLab-Create/2.1/[your registered email address here]/[your product key here]/GraphLab-Create-License.tar.gz`, the email and product key here should be yours. <b>sudo</b> here is very important to me during the installation
     
 
 *****************************************************************
