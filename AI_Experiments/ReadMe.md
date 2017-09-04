@@ -115,7 +115,7 @@ RESOURCES
   * Install Jupyter Notebook in your virtual environment
     * `(Virtual_Env)$ pip install jupyter`, install jupyter within the active virtualenv
     * `(Virtual_Env)$ pip install ipykernel`, install reference ipykernel package
-    * `(Virtual_Env)$ python -m ipykernel install --user --name testenv --display-name "Python2 (Virtual_Env)"`, set up the kernel
+    * `(Virtual_Env)$ python -m ipykernel install --user --name testenv --display-name "Python2 (Virtual_Env)"`, set up the kernel. Here, if you will install multiple kernel, `testenv` name should be changed to other names
     * `(Virtual_Env)$ jupyter notebook`
     * After jupyter notebook has been turned on, when you are creating a new notebook, choose "Python 2 (Virtual_Env)"
     * NOTE: If you are using Python3, for example, python3.5, then in the above commands, change `pip` to `pip3`; change `python` to `python3.5`
@@ -256,6 +256,19 @@ EXPERIMENTS
   * You need to register GraphLab email first (it's free): https://turi.com/download/academic.html
   * Right after the email registration, an install page will appear with your email and GraphLab key filled in pip command line: https://turi.com/download/install-graphlab-create-command-line.html
     * Type `sudo pip install --upgrade --no-cache-dir https://get.graphlab.com/GraphLab-Create/2.1/[your registered email address here]/[your product key here]/GraphLab-Create-License.tar.gz`, the email and product key here should be yours. <b>sudo</b> here is very important to me during the installation
+  * The side effects of the command line is, it will uninstall something related to `shutil`, then when you want to run you ipython kernel, it will fail. by showing errors such as "No module named shutil_get_terminal_size". To solve this problem, run commands after the above command
+    * `pip install --upgrade setuptools pip`
+    * `pip uninstall ipython`
+    * `pip install ipython`
+    * `pip install ipykernel`, this maybe optional
+    * `python -m ipykernel install --user --name testenv --display-name "Python2 (yourenvname)"`, here need to change `testenv` and `(yourenvname)`
+    * `conda install ipywidgets --no-deps`
+    * Then you can open ipython and `import graphlab`
+  * [Get started with GrapgLab][2]
+  * [GraphLab Create API][4]
+  * [Image dataset - CIFAR-10][3]
+  * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/try_GraphLab.ipynb
+  * [reference][5]
     
 
 *****************************************************************
@@ -269,3 +282,7 @@ RELAVANT PAPERS
 
 
 [1]:https://stackoverflow.com/questions/45912124/python-keras-how-to-generate-right-image-dimension
+[2]:https://www.analyticsvidhya.com/blog/2015/12/started-graphlab-python/
+[3]:https://www.cs.toronto.edu/~kriz/cifar.html
+[4]:https://turi.com/products/create/docs/index.html
+[5]:https://www.analyticsvidhya.com/blog/2016/04/deep-learning-computer-vision-introduction-convolution-neural-networks/?lipi=urn%3Ali%3Apage%3Ad_flagship3_feed%3BxPn6EhynRquw3Evzrg79RA%3D%3D
