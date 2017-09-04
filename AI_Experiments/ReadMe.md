@@ -239,7 +239,7 @@ EXPERIMENTS
     * `pip install tensorflow`
     * `pip install keras`
   * Download images: https://github.com/hanhanwu/Basic_But_Useful/blob/master/python_download_images.ipynb
-  * Basic Version
+  * <b>Basic Version</b>
     * reference: https://www.analyticsvidhya.com/blog/2017/06/architecture-of-convolutional-neural-networks-simplified-demystified/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
     * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/Image_Recognition_Keras_simple_example.ipynb
     * rose images I'm using: http://www.image-net.org/api/text/imagenet.synset.geturls?wnid=n04971313
@@ -249,7 +249,12 @@ EXPERIMENTS
     ![wrong dimwnsion](https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/wrong_dimensions.png)
     * This is the image data I got after reading from local file
     ![right dimwnsion](https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/right_dimensions.png)
-  * Wait for my more advanced version here!
+  * <b>Level 2 Version</b>
+    * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/image_recognition_Keras_level2.ipynb
+    * In this code, I added more layers in CNN and did some random prediction
+    * The most important thing is, I have learned much more about how to adjust the param values in CNN.... This is challenging for beginners, since there will be color and gray images, and the settings will be different. A wrong value could lead to long time debudding without really sure where is the problem. Let me write down a few summary here:
+      * In [my digital recognition code][6], you will see `train_x_temp = train_x.reshape(-1, 28, 28, 1)`, this is because the image is gray, so the depth is 1 and the image size is 28*28*1, -1 here is to make it 4 dimensions as `model.fit()` requires. But in [image recognition level 2 code][7], you are seeing `training_image_temp = training_images.reshape(-1, 100, 100, 3)`, this is because the images are color images (RGB images), the depth should be 3, and size is 100*100*3
+      * When you are using `pylab.imshow(testing_img)` to show images, whether you could show color image or 1-color image depends on this line of code `testing_img = scipy.misc.imread(testing_image_path)`, if you set `flatten=Ture` in `imread`, will be 1-color, otherwise can be RGB image
   
   
 * GraphLab for Image Recognition
@@ -286,3 +291,5 @@ RELAVANT PAPERS
 [3]:https://www.cs.toronto.edu/~kriz/cifar.html
 [4]:https://turi.com/products/create/docs/index.html
 [5]:https://www.analyticsvidhya.com/blog/2016/04/deep-learning-computer-vision-introduction-convolution-neural-networks/?lipi=urn%3Ali%3Apage%3Ad_flagship3_feed%3BxPn6EhynRquw3Evzrg79RA%3D%3D
+[6]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/digital_recognition_Keras.ipynb
+[7]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/image_recognition_Keras_level2.ipynb
