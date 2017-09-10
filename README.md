@@ -79,17 +79,6 @@ R PRACTICE
   * To sum up, when doing imputation, choose Hmisc and missForest first can be a good choice, followed by MICE
 
 
-* Try Pandas
-  * data input: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/GBM_Test.csv
-  * python code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/try_pandas.py
-  * modified pyhton code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/try_pandas.ipynb
-  * I really like pandas indexing and selection methods: http://pandas.pydata.org/pandas-docs/stable/indexing.html#indexing-label
-  * While implementing my modified pyhton code, I gradually felt, R is still much better than pandas in binning and ploting. R cna do those data query related work such as data merging as well. But I still like Pivot Table, Multi-Indexing, Corss Tab in pandas.
-  * Reference: https://www.analyticsvidhya.com/blog/2016/01/12-pandas-techniques-python-data-manipulation/?utm_content=buffer34860&utm_medium=social&utm_source=facebook.com&utm_campaign=buffer
-
-<b>Note:</b> I'm using Spark Python Notebook, some features are unique there. Because my own machine could not install the right numpy version for pandas~
-
-
 * Deal With Continuous Variables
   * Tutorial reference: http://www.analyticsvidhya.com/blog/2015/11/8-ways-deal-continuous-variables-predictive-modeling/?utm_content=buffer346f3&utm_medium=social&utm_source=facebook.com&utm_campaign=buffer
   * R code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/deal_with_continuos_variables.R
@@ -153,6 +142,30 @@ R PRACTICE
     * `brew rm imagemagick; brew install imagemagick --with-x11`
     * If all the above went well, type `xclock &` to turn on `XQuartz`. All the new Mac OS are using `Xquartz` and no longer support X11
     * If `XQuartz` is running, you can start to run the R code here. The visualization is very cool!
+
+
+********************************************
+
+PYTHON PRACTICE
+
+* Try Pandas
+  * data input: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/GBM_Test.csv
+  * python code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/try_pandas.py
+  * modified pyhton code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/try_pandas.ipynb
+  * I really like pandas indexing and selection methods: http://pandas.pydata.org/pandas-docs/stable/indexing.html#indexing-label
+  * While implementing my modified pyhton code, I gradually felt, R is still much better than pandas in binning and ploting. R can do those data query related work such as data merging as well. But I still like Pivot Table, Multi-Indexing, Corss Tab in pandas.
+  * Reference: https://www.analyticsvidhya.com/blog/2016/01/12-pandas-techniques-python-data-manipulation/?utm_content=buffer34860&utm_medium=social&utm_source=facebook.com&utm_campaign=buffer
+
+<b>Note:</b> I'm using Spark Python Notebook, some features are unique there. Because my own machine could not install the right numpy version for pandas~
+
+
+* Multi-Label Problem
+  * Multi-Class vs Multi-Label
+    * Multi-Class means there is only 1 column of label (dependent variable/y), and the classes of y is more than 2
+    * Multi-Label means there can be multiple columns of labels, which means 1 row could have multiple labels. Also! A row could have no label at all
+  * Multi-Label dataset: http://mulan.sourceforge.net/datasets.html
+  * Scikit-Learn multi-label adapt algorithms package: http://scikit.ml/api/api/skmultilearn.adapt.html#module-skmultilearn.adapt
+  * Scikit-Learn multi-label ensembling package: http://scikit.ml/api/classify.html#ensemble-approaches
 
 
 ********************************************
