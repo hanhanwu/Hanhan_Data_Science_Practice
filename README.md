@@ -164,8 +164,23 @@ PYTHON PRACTICE
     * Multi-Class means there is only 1 column of label (dependent variable/y), and the classes of y is more than 2
     * Multi-Label means there can be multiple columns of labels, which means 1 row could have multiple labels. Also! A row could have no label at all
   * Multi-Label dataset: http://mulan.sourceforge.net/datasets.html
-  * Scikit-Learn multi-label adapt algorithms package: http://scikit.ml/api/api/skmultilearn.adapt.html#module-skmultilearn.adapt
-  * Scikit-Learn multi-label ensembling package: http://scikit.ml/api/classify.html#ensemble-approaches
+  * Scikit-Learn multi-label packages: http://scikit.ml/
+    * To install it: `sudo easy_install scikit-multilearn` or `pip install scikit-multilearn` (Python2.*), `pip3 install scikit-multilearn` for python3.*
+    * Subpackages: http://scikit.ml/api/api/skmultilearn.html
+    * Scikit-Learn multi-label adapt algorithms package: http://scikit.ml/api/api/skmultilearn.adapt.html#module-skmultilearn.adapt
+    * Scikit-Learn multi-label ensembling package: http://scikit.ml/api/classify.html#ensemble-approaches
+  * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/try_multi_label_classification.ipynb
+    * If you got error "ImportError: No module named builtins", type this command in your terminal `sudo pip install future`
+    * Dataset (Choose Yeast): http://mulan.sourceforge.net/datasets-mlc.html
+    * Method 1 - Problem Transformation
+      * Binary Relevance
+      * Classifier Chains
+      * Label Powerset
+    * Method 2 - Adapt Algorithms
+    * Method 3 - Ensembling Method in scikit-learn
+      * As you can see in my code, this method had problem. I tried to install those libraries in coda emvironment and my non-virtual environment, none of them works. In order to solve that problem, you may need to install all these: https://gist.github.com/v-pravin/949fc18d58a560cf85d2
+      * FInally I decided never use scikit-learn multi-label ensembling, I'd rather use normal ensembling method to predict labels using Method 1 methods. I sense, even if you installed all those, the accuracy can still be very low
+   * reference: https://www.analyticsvidhya.com/blog/2017/08/introduction-to-multi-label-classification/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
 
 
 ********************************************
