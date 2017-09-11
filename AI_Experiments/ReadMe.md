@@ -291,6 +291,10 @@ RELAVANT PAPERS & NEWS
 
 * Adam Optimizer: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/Adam_optimizer.pdf
   * Don't quite understand, but I really admire those PhDs who design and compare algorithms...
+  
+* Practical Recommendations for Gradient-Based Training
+  * https://github.com/hanhanwu/readings/blob/master/Practical%20Recommendations%20for%20Gradient-Based%20Training.pdf
+  * Detailed suggestions in almost all the process in Gradient-Based training, very practical
 
 
 
