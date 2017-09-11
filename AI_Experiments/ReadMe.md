@@ -96,6 +96,8 @@ RESOURCES
 
 * Digits recognition with <b>TensorFlow</b> [lower level library]: https://www.analyticsvidhya.com/blog/2016/10/an-introduction-to-implementing-neural-networks-using-tensorflow/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
   * <b>Tensorflow Resources</b>: https://github.com/jtoy/awesome-tensorflow
+  * Tensorflow Models: https://github.com/tensorflow/models
+  * Google Object Detection API: https://github.com/tensorflow/models/tree/master/object_detection
 
 * Digits recognition, using NN with <b>Keras</b> [higher level library]: https://www.analyticsvidhya.com/blog/2016/10/tutorial-optimizing-neural-networks-using-keras-with-image-recognition-case-study/
   * Keras has 3 backend you can use: https://keras.io/backend/
@@ -278,7 +280,14 @@ EXPERIMENTS
 
 *****************************************************************
 
-RELAVANT PAPERS
+RELAVANT PAPERS & NEWS
+
+* Google Deep Learning Products
+  * Google TensorFlow Object Detection API: https://research.googleblog.com/2017/06/supercharge-your-computer-vision-models.html
+  * MobileNet: https://research.googleblog.com/2017/06/mobilenets-open-source-models-for.html
+  * Street View & Captcha
+    * https://research.googleblog.com/2017/05/updating-google-maps-with-deep-learning.html
+    * https://security.googleblog.com/2014/04/street-view-and-recaptcha-technology.html
 
 * Adam Optimizer: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/Adam_optimizer.pdf
   * Don't quite understand, but I really admire those PhDs who design and compare algorithms...
