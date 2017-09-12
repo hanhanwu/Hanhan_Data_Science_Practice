@@ -276,6 +276,19 @@ EXPERIMENTS
   * [Image dataset - CIFAR-10][3]
   * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/try_GraphLab.ipynb
   * [reference][5]
+  
+  
+* Audio Classification with Deep Learning
+  * Dataset: https://drive.google.com/drive/folders/0By0bAi7hOBAFUHVXd1JCN3MwTEU
+  * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/try_audio_deep_learning.ipynb
+  * Audio Feature Extraction
+    * Major Feature Types
+      * Time Domain Features
+      * Frequency Domain Features
+      * Perceptual Features
+      * Windowing Features
+    * `librosa` provided methods for audio feature extraction: https://librosa.github.io/librosa/feature.html
+   * reference: https://www.analyticsvidhya.com/blog/2017/08/audio-voice-processing-deep-learning/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
     
 
 *****************************************************************
