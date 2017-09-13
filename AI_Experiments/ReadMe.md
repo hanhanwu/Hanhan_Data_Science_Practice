@@ -124,6 +124,7 @@ RESOURCES
   * Pros and Cons of Keras
     * Simple and no detailed implemention of NN like lower level libraries (e.g. Tensorflow) required, but also because of this, it can be less flexible
     * Only support GPU Nvidia
+  * Keras Sequential models: https://keras.io/getting-started/sequential-model-guide/
     
 * CNN for visual recognition: http://cs231n.github.io/neural-networks-3/
     
