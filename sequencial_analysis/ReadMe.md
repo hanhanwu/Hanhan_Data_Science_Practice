@@ -10,8 +10,32 @@ TIME SERIES CONCEPTS
 * AR: Autoregression. A model that uses the dependent relationship between an observation and some number of lagged observations.
 * I: Integrated. The use of differencing of raw observations (e.g. subtracting an observation from an observation at the previous time step) in order to make the time series stationary.
 * MA: Moving Average. A model that uses the dependency between an observation and a residual error from a moving average model applied to lagged observations.
+* Before building the model, there is data preprocessing necessary to make the data stationary. How to check Stationary?
+    * First of all, what makes data non-stationary
+      * <b>Trend</b>: Varying mean over the time. If you see the data is increasing along the time, off course the mean is increasing too
+      * <b>Seasonality</b>: Variance at specific time frame. For example, sales of ice-cream in summer is much more than winter.
+    * Check Stationary - Plotting Rolling Statistics
+      * Check <b>moving average</b> or <b>moving variance</b>, to see whether they are changing alog the time
+    * Check Stationary - Dickey-Fuller Test
+      * It has null hypothesis that time series is non-stationary. If <b>Test Statistic is less than Critical Values</b>, then reject the null hypothesis and the data is statinoary.
+  * Make time series stationary
+    * It's almost impossible to make it perfectly stationary, but we can try to make it closer to be stationary
+    * By doing this data preprocessing before forcasting, we remove the trend, seasonality in time series and make it stationary, forcasting can be done on this stationary data, later we can convert forecast values back to the original scale, by adding the trend and seasonality back
+    * Mehtods to find trend in order to remove it from time series
+      * Aggregation – taking average for a time period like monthly/weekly averages
+      * Smoothing – taking rolling averages
+      * Polynomial Fitting – fit a regression model
+  * For ARIMA, we can follow <b>Box-Jenkins Methodology</b>
+    * <b>Model Identification</b>. Use plots and summary statistics to identify trends, seasonality, and autoregression elements to get an idea of the amount of differencing and the size of the lag that will be required.
+    * <b>Parameter Estimation</b>. Use a fitting procedure to find the coefficients of the regression model.
+    * <b>Model Checking</b>. Use plots and statistical tests of the residual errors to determine the amount and type of temporal structure not captured by the model.
+* After data preprocesing for stationary, there could be 2 results:
+  * A strictly stationary series with no dependence among the values. This is the easy case wherein we can model the residuals as white noise. But this is very rare.
+  * A series with significant dependence among values. In this case we need to use some statistical models like ARIMA to forecast the data.
+  * <b>Autocorrelation Function (ACF)</b>: It is a measure of the correlation between the time series with a lagged version of itself. For instance at lag 5, ACF would compare series at time instant ‘t1’…’t2’ with series at instant ‘t1-5’…’t2-5’ (t1-5 and t2 being end points).
+  * <b>Partial Autocorrelation Function (PACF)</b>: This measures the correlation between the TS with a lagged version of itself but after eliminating the variations already explained by the intervening comparisons. Eg at lag 5, it will check the correlation but remove the effects already explained by lags 1 to 4.
 * <b>Params (p,d,q)</b> are used to determine which specific ARIMA model will be used
-  * <b>p</b>: The number of lag observations included in the model, also called the lag order.
+  * <b>p</b>: The number of lag observations included in the model, also called the lag order. <b>It is The lag value where the PACF chart crosses the upper confidence interval for the first time</b>
   * <b>d</b>: The number of times that the raw observations are differenced, also called the degree of differencing.
   * <b>q</b>: The size of the moving average window, also called the order of moving average.
   * When set 0 for a param here, means not using this param. Ans therefore, we can simply use AR, I or MA model
@@ -50,13 +74,18 @@ TIME SERIES PRACTICE
     
 * [Python]ARIMA Beginner
   * Python ARIMAResults library: http://www.statsmodels.org/devel/generated/statsmodels.tsa.arima_model.ARIMAResults.html
-  * For ARIMA, we can follow <b>Box-Jenkins Methodology</b>
-    * <b>Model Identification</b>. Use plots and summary statistics to identify trends, seasonality, and autoregression elements to get an idea of the amount of differencing and the size of the lag that will be required.
-    * <b>Parameter Estimation</b>. Use a fitting procedure to find the coefficients of the regression model.
-    * <b>Model Checking</b>. Use plots and statistical tests of the residual errors to determine the amount and type of temporal structure not captured by the model.
-    * download dataset: https://datamarket.com/data/set/22r0/sales-of-shampoo-over-a-three-year-period#!ds=22r0&display=line
-    * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/python_ARIMA.ipynb
-    * Reference: https://machinelearningmastery.com/arima-for-time-series-forecasting-with-python/
+  * download dataset: https://datamarket.com/data/set/22r0/sales-of-shampoo-over-a-three-year-period#!ds=22r0&display=line
+  * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/python_ARIMA.ipynb
+    * In Checking Stationary stage, used
+      * Plotting Rolling Statistics
+      * Dickey-Fuller Test
+    * In <b>Making It Stationary stage</b>, used smothooing methods
+      * Moving Average - take average of ‘k’ consecutive values depending on the frequency of time series. Drawback is, you have to strictly define time period (such as taking yearly average). <b>[May not be good for data with strong Seasonality]</b>
+      * Weighted Moving Average - more recent values are given a higher weight. <b>[May not be good for data with strong Seasonality]</b>
+      * Differencing – taking the differece with a particular time lag [Eliminating Trend and Seasonality]
+    * After ARIMA forecasting, it also added vack the original sacle, to compare with real observations
+  * Check Stationary & Make Data Stationary Reference: https://www.analyticsvidhya.com/blog/2016/02/time-series-forecasting-codes-python/
+  * ARIMA Reference: https://machinelearningmastery.com/arima-for-time-series-forecasting-with-python/
 
 
 ******************************************************************************************
