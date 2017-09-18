@@ -86,6 +86,21 @@ TIME SERIES PRACTICE
     * After ARIMA forecasting, it also added vack the original sacle, to compare with real observations
   * Check Stationary & Make Data Stationary Reference: https://www.analyticsvidhya.com/blog/2016/02/time-series-forecasting-codes-python/
   * ARIMA Reference: https://machinelearningmastery.com/arima-for-time-series-forecasting-with-python/
+  
+* [Python]Data Preprocessing for LSTM
+  * This is another dataset, the data preprocessing to make data stationary here is better
+  * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/try_LSTM.ipynb
+  * download dataset here: https://datamarket.com/data/set/22u3/international-airline-passengers-monthly-totals-in-thousands-jan-49-dec-60#!ds=22u3&display=line 
+  
+  
+******************************************************************************************
+
+LSTM
+
+* LSTM beginner
+  * First of all, I did lots of works to make data stationary here
+  * download dataset here: https://datamarket.com/data/set/22u3/international-airline-passengers-monthly-totals-in-thousands-jan-49-dec-60#!ds=22u3&display=line 
+  * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/try_LSTM.ipynb
 
 
 ******************************************************************************************
