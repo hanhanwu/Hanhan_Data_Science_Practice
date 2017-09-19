@@ -15,7 +15,7 @@ library(ROSE)
 ## Altough mlr package will show you number of missing values for each col, it's not percentage
 ## Here, will show all the missing value percentage
 missing_percentage <- sapply(my_data, function(x){sum(is.na(x))/length(x)})*100
-sort(missing_percentage)
+sort(missing_percentage, decreasing = T)
 
 
 # Univarite Analysis - check categorical data distribution
