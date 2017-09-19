@@ -133,6 +133,12 @@ q2 <- cbind(fact_data, num_data)
 
 
 # Check feature variance
+## you have to impute all the missing values before checking variance
+## Here, convert all the categorical data into numerical data
+for (i in seq_along(dm_data)) set(dm_data, i=which(is.na(dm_data[[i]])), j=i, value="MISSING")
+## convert categorical col into numerical
+dm_data[, num_feature:=as.integer(dm_data$cat_feature)]
+
 ## Numerical data
 num_feature_variance <- data.table(group_by(dm_data, color_group) %>%   # change color_group to your group by col
                                                     summarise(GroupVariance=var(rep(num_feature))))
