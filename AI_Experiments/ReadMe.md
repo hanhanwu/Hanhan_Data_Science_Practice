@@ -291,6 +291,10 @@ EXPERIMENTS
     * `librosa` provided methods for audio feature extraction: https://librosa.github.io/librosa/feature.html
    * reference: https://www.analyticsvidhya.com/blog/2017/08/audio-voice-processing-deep-learning/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
     
+    
+* Resources I didn't work on
+  * CoreML for Spam classification on iPhone app development: https://www.analyticsvidhya.com/blog/2017/09/build-machine-learning-iphone-apple-coreml/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+
 
 *****************************************************************
 
