@@ -21,6 +21,18 @@ PRACTICE CODE
   * Challenge: My godness, it's so troublesome to use these scholar implemented code.... They want to publish the paper, and code is designed just for that type of data. When I am using a randaom set of other data, took me so much time to modify the code and still, has warnings, although I got the results...
 
 
+* Pseudo Labeling - A type of semi-clustering
+  * How pseudo labeling work
+    1. train your training dataset d1
+    2. use the trained model to predict a new dataset d2, the predicted label is the pseudo label
+    3. combine both d1 (with its label) and d2 (with pseudo label) as training data, train the model again
+    * According to theory, adding more data with pseudo labels will improve accuracy
+  * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Outliers_and_Clustering/pseudo-labeling.ipynb
+    * In this code, I used TPOT to find best model and optimize the model automatically. Because we don't have the ground truth for testing data, we could check MSE during the validation period. As you can see, by using pseudo labeling, MSE reduced 10 times
+    * NOTE: TPOT is built on scikit-learn. This is a regression problem, validation is using k-fold as default just like scikit-learn; if it's a classification problem, it will be stratified k-fold in order to distribution classes to each sample in almost the same percent
+  * reference: https://www.analyticsvidhya.com/blog/2017/09/pseudo-labelling-semi-supervised-learning-technique/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+    * The code in this article is too complex, I'm not referencing it at all
+
 *********************************************************************************
 
 IDEAS SPARK
