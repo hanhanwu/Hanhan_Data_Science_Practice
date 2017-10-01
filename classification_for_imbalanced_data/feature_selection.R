@@ -63,8 +63,8 @@ library(ROSE)
 # Method 3 - Boruta All-Relavant Feature Selection
 
   library(Boruta)
-  set.seed(1)
-  boruta_train <- Boruta(HasWriteOff~., data = q2, doTrace = 2)
+  set.seed(410)
+  boruta_train <- Boruta(HasWriteOff~., data = train_data, doTrace = 2)
   boruta_train
   ## plot feature importance
   plot(boruta_train, xlab = "", xaxt = "n")
