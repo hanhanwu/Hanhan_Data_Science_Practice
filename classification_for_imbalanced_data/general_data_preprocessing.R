@@ -91,6 +91,13 @@ rm(q2_fact_data)
 data_scaling <- function(x){(x-min(x))/(max(x)-min(x))}
 scaled_data <- data.frame(sapply(q2_num_data, data_scaling))
 summarizeColumns(scaled_data)
+
+## an alternative way to normalize to [0,1] range using min-max normalization (this works pretty well)
+max = apply(cereal_data, 2, max)
+max
+min = apply(cereal_data, 2, min)
+min
+scaled_data <- as.data.table(scale(cereal_data, center = min, scale = max-min))
   
 # Normalize data into like KNN, witout using KNN
 scaled_data <- data.table(scale(q2_num_data))
