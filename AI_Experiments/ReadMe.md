@@ -290,6 +290,23 @@ EXPERIMENTS
       * Windowing Features
     * `librosa` provided methods for audio feature extraction: https://librosa.github.io/librosa/feature.html
    * reference: https://www.analyticsvidhya.com/blog/2017/08/audio-voice-processing-deep-learning/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+   
+
+* [R] Try Neural Network in R
+  * Scale the data before using NN
+    * min-max normalization - <b>remains original distribution</b>
+    * Z-score normalization
+    * median & MAD method
+    * tan-h estimators
+  * download the data: https://s3-ap-south-1.amazonaws.com/av-blog-media/wp-content/uploads/2017/09/07122416/cereals.csv
+  * about the data: http://lib.stat.cmu.edu/DASL/Datafiles/Cereals.html
+  * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/R_neural_network_basics.R
+    * The plots here are very useful
+      * plot trained NN
+      * plot grouod truth and predicted results (using reversed scale)
+      * boxplot to show RMSE at a certain length of training data
+      * plot RMSE changes along the length of training data, while you are implementing k-fold cross validation on your own
+  * reference: https://www.analyticsvidhya.com/blog/2017/09/creating-visualizing-neural-network-in-r/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
     
     
 * Resources I didn't work on
