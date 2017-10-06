@@ -52,10 +52,10 @@ TIME SERIES CONCEPTS
  
 TIME SERIES PRACTICE
 
-* [R][Previous practice][6]
+* [R] [Previous practice][6]
   * [reference][7]
-
-* [R]Time series beginner
+ 
+* [R] Time series beginner
   * [Watch the free videos here FIRST!][8]
     * Often time series are generated as `Xt=(1+pt)Xt−1`, meaning the value of the time series observed at time t equals to the value observed at time t-1, and a small percent change pt at time t. pt is often refered to as <b>return/growth rate</b> of time series, and <b>it should be stable</b>. There is also `Yt=logXt−logXt−1≈pt`. In R, pt is calculated as `plot(diff(log(x)))`
     * <b>Stationary</b>: The <b>mean</b> is constant over time; The <b>correlation structure</b> remains constant over time
@@ -72,7 +72,7 @@ TIME SERIES PRACTICE
   * Notes:
     * Different from [my previous practice][6], which was using `ariam` to fit, this is using `sariam` for both fit and forecast. `sariam` is an improvement from `ariam`
     
-* [Python]ARIMA Beginner
+* [Python] ARIMA Beginner
   * Python ARIMAResults library: http://www.statsmodels.org/devel/generated/statsmodels.tsa.arima_model.ARIMAResults.html
   * download dataset: https://datamarket.com/data/set/22r0/sales-of-shampoo-over-a-three-year-period#!ds=22r0&display=line
   * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/python_ARIMA.ipynb
@@ -87,10 +87,16 @@ TIME SERIES PRACTICE
   * Check Stationary & Make Data Stationary Reference: https://www.analyticsvidhya.com/blog/2016/02/time-series-forecasting-codes-python/
   * ARIMA Reference: https://machinelearningmastery.com/arima-for-time-series-forecasting-with-python/
   
-* [Python]Data Preprocessing for LSTM
+* [Python] Data Preprocessing for LSTM
   * This is another dataset, the data preprocessing to make data stationary here is better
   * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/try_LSTM.ipynb
   * download dataset here: https://datamarket.com/data/set/22u3/international-airline-passengers-monthly-totals-in-thousands-jan-49-dec-60#!ds=22u3&display=line 
+  
+* [R] Stock Prediction
+  * Dataset Search Library - Quandl: https://www.quandl.com/search?query=
+    * Through the website, create an account, then you can search and get access to the data
+    * R library: https://cran.r-project.org/web/packages/Quandl/Quandl.pdf
+    * US Stock: https://www.quandl.com/product/WIKIP/WIKI/PRICES-Quandl-End-Of-Day-Stocks-Info
   
   
 ******************************************************************************************
