@@ -133,7 +133,8 @@ R PRACTICE
 * Create Animated Visualization with R
   * reference: https://www.analyticsvidhya.com/blog/2017/06/a-study-on-global-seismic-activity-between-1965-and-2016/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
   * The data: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/earthquake_data.csv
-  * My code: https://www.analyticsvidhya.com/blog/2017/06/a-study-on-global-seismic-activity-between-1965-and-2016/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+  * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/R_animated_visualization.R
+  * reference: https://www.analyticsvidhya.com/blog/2017/06/a-study-on-global-seismic-activity-between-1965-and-2016/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
   * <b>NOTE!</b>: Before running your code, install `ImageMagick` first and then run `XQuartz`
     * To install `ImageMagick`, type `xcode-select --install`
     * Then `sudo chown -R $(whoami) /usr/local`, so that you will have the permission to do brew update
@@ -141,7 +142,15 @@ R PRACTICE
     * `sudo chown root:wheel /usr/local` change permission back
     * `brew rm imagemagick; brew install imagemagick --with-x11`
     * If all the above went well, type `xclock &` to turn on `XQuartz`. All the new Mac OS are using `Xquartz` and no longer support X11
+    * <b>Run the commnds before turning on R studio</b>
     * If `XQuartz` is running, you can start to run the R code here. The visualization is very cool!
+  * If after above installation, you will get many erros showing , try commands below:
+    * `brew uninstall libpng`
+    * `brew install libpng`
+    * `brew uninstall libjpeg`
+    * `brew install libjpeg`
+    * `brew uninstall imagemagick`
+    * `brew install imagemagick --with-x11`
 
 
 ********************************************
