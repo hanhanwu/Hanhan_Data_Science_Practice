@@ -92,11 +92,17 @@ TIME SERIES PRACTICE
   * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/try_LSTM.ipynb
   * download dataset here: https://datamarket.com/data/set/22u3/international-airline-passengers-monthly-totals-in-thousands-jan-49-dec-60#!ds=22u3&display=line 
   
-* [R] Stock Prediction
+* [R] Stock Prediction - Part 1
   * Dataset Search Library - Quandl: https://www.quandl.com/search?query=
     * Through the website, create an account, then you can search and get access to the data
     * R library: https://cran.r-project.org/web/packages/Quandl/Quandl.pdf
     * US Stock: https://www.quandl.com/product/WIKIP/WIKI/PRICES-Quandl-End-Of-Day-Stocks-Info
+      * Just type in US bank names and find results under Wiki EOD Stocks Info
+      * Example: https://www.quandl.com/product/WIKIP/WIKI/PRICES-Quandl-End-Of-Day-Stocks-Info
+  * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/stock_analysis_part1.R
+    * First of all, to generate GIF in R, you need `ImageMagick`. To install, check [Create Animated Visualization with R][14], then type `xclock &`. After you are seeing XQuartz is running, then turn on R studio
+    * Acording to the code here, didn't have too much excited patterns. The most useful part is, data downloading through Quandl, it's a good data resource
+  * reference: https://www.analyticsvidhya.com/blog/2017/09/comparative-stock-analysis/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
   
   
 ******************************************************************************************
@@ -131,3 +137,4 @@ READING NOTES
 [11]:https://en.wikipedia.org/wiki/Autoregressive_model#Graphs_of_AR.28p.29_processes
 [12]:https://www.amazon.com/Detection-Temporal-Synthesis-Knowledge-Discovery/dp/1627053751
 [13]:https://github.com/hanhanwu/readings/blob/master/ReadingNotes_Temporal_Outlier_Detection.md
+[14]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice
