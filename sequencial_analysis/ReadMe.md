@@ -104,6 +104,27 @@ TIME SERIES PRACTICE
     * Acording to the code here, didn't have too much excited patterns. The most useful part is, data downloading through Quandl, it's a good data resource
   * reference: https://www.analyticsvidhya.com/blog/2017/09/comparative-stock-analysis/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
   
+* [R] Stock Prediction - Part 2
+  * <b>Bollinger Bands</b> - The Bands depict the volatility of stock as it increases or decreases. The bands are placed above and below the moving average line of the stocks. <b>The wider the gap between the bands, higher is the degree of volatility.</b>
+    * The <b>middle line</b> with N-period moving average (MA); 20-day SMA
+    * An <b>upper band</b> at K times an N-period standard deviation above the moving average; 20-day SMA + (20-day standard deviation of price x 2)
+    * A <b>lower band</b> at K times an N-period standard deviation below the moving average; 20-day SMA – (20-day standard deviation of price x 2)
+    * SMA is Simple Moving Average, Standard Deviation, K and N period is usually set at 20 days. The upper and lower band are placed 2 units above and below respectively.
+    * No wonder those people from economic background often check standard deviation with mean....
+    ![Bollinger Bands](https://s3-ap-south-1.amazonaws.com/av-blog-media/wp-content/uploads/2017/09/28152914/Bollinger_Band.png)
+  * How to read Bollinger Bands
+    * If an uptrend is strong, then stock touches the upper band on regular basis and remains above the middle line.This signals the strong movement towards North.
+    * If downtrend is strong, then stong touches the lower band on regular basis and remains below the middle line. This signals strong southward movement.
+    * During the upward trend the price should not be below the lower band otherwise it is signalling the reverse movement.
+    * During the downward trend, if the price move above the upper band then it signals Northward movement.
+  * Signals to identify stock behaviours
+    * <b>W-Bottom</b>: forms in a downtrend and involves two reaction lows (looks like W), and the second low is lower than the first low but holds above the lower band
+    * <b>M-Tops</b>: forms in upper trens and has 2 highs. The first high can be higher or lower than the second high, but does't above the upper band
+  * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/stock_prediction_part2.R
+    * This is the easiest, most good looking stock prediction visualization I have found
+    * It uses the combination of regression and ARIMA to do the prediction, predict Close price on the end of the month. This method can be used for other time series prediction
+  * reference: https://www.analyticsvidhya.com/blog/2017/10/comparative-stock-market-analysis-in-r-using-quandl-tidyverse-part-i/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+  
   
 ******************************************************************************************
 
