@@ -92,6 +92,14 @@ TIME SERIES PRACTICE
   * This is another dataset, the data preprocessing to make data stationary here is better
   * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/try_LSTM.ipynb
   * download dataset here: https://datamarket.com/data/set/22u3/international-airline-passengers-monthly-totals-in-thousands-jan-49-dec-60#!ds=22u3&display=line 
+  * <b>LSTM</b>: The Long Short-Term Memory network, or LSTM network, is a recurrent neural network that is trained using Backpropagation Through Time and overcomes the vanishing gradient problem.
+    * Instead of neurons, LSTM networks have <b>memory blocks</b> that are connected through layers.
+    * A block operates upon an input sequence and each gate within a block uses the sigmoid activation units to control whether they are triggered or not, making the change of state and addition of information flowing through the block conditional.
+    * 3 gates within a unit:
+      * Forget Gate: conditionally decides what information to throw away from the block.
+      * Input Gate: conditionally decides which values from the input to update the memory state.
+      * Output Gate: conditionally decides what to output based on input and the memory of the block.
+      * The gates of the units have weights that are learned during the training procedure.
   
 * [R] Stock Prediction - Part 1
   * Dataset Search Library - Quandl: https://www.quandl.com/search?query=
