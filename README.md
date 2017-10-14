@@ -199,7 +199,9 @@ DIMENSION REDUCTION
 * PCA (Principle Component Analysis) - R Version
   * R code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/PCA_practice.R
   * data set: PCA_train.csv, PCA_test.csv
-  * Why using One Hot encoding to convert categorical data into numerical data and only choose the top N columns after using PCA is right: http://stats.stackexchange.com/questions/209711/why-convert-categorical-data-into-numerical-using-one-hot-encoding
+  * Why using One Hot encoding to convert categorical data into numerical data and only choose the top N columns after using PCA is right
+    * CrossValidated Answer: http://stats.stackexchange.com/questions/209711/why-convert-categorical-data-into-numerical-using-one-hot-encoding
+    * Now I think, this question can be seperated into 2 parts. First of all, you have to convert categorical data into numerical data for PCA, with one-hot encoding, you will be able to get more info from the data. For example, one column has 100 records, among them there are 10 records as "ice-cream" while 90 records as "mochi", with this data, some algorithms will be influenced by the majority of the values ("mochi" here) and may lose accuracy. With one-hot encoding, now you generate 2 dummy columns from this 1 column, column_icecream with 1 and 0 to mark whether it's icecream or not, and column_mochi, it gives your model better chance to consider each categorical value in the original column. Secondly, after onehot encoding, you will generate many more columns. with dimensional reduction method PCA, it only selects principle components (the drawback is, it changed your data and made it non-interpretable, may loose some info) which will represent the major info from the original data, could make your model faster and even getting higher accuracy
 
 * PCA (Principle Component Analysis) - Python Version
   * Python code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/PCA_practice.py
@@ -213,6 +215,7 @@ DIMENSION REDUCTION
   * PCA is a unsupervised method while PLS is a supervised method. Therefore PLS is used when you want to find columns closely related to the label column. When there is just 1 label column, use R plsreg1(), when there are 1+ label columns, use R plsreg2()
   * In the code, when I was using PCA, it has funtion to help rescale values, when I was using PLS, I wrote data rescaling code, when compare the result with the code without rescaling, the result was worse. I am wondering whether this is related to the parameters for data rescaling, though I have tried several to make sure all the data are in [0,1] range.
   * When using PLS, one hot encoding (used in my PCA practice) to convert categorical to numerical is not a good choice, since no matter it is plsreg1 or plsreg2, both response variavles and indicators (identifiers and the label columns) need to be put into the method. Using one hot encoding on all these variables, will generate too many variables.
+  * <b>When using PCA, it is better to scale data in the same unit</b>
 
 
 * Easy simple way to do feature selection with Boruta (so far it's the most convenient feature selection method I have tried):
