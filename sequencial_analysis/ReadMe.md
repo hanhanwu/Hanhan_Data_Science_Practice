@@ -91,6 +91,10 @@ TIME SERIES PRACTICE
 * [Python] Data Preprocessing for LSTM
   * This is another dataset, the data preprocessing to make data stationary here is better
   * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/try_LSTM.ipynb
+    * My godness, each time when there is dimensions problems in neural network, often cost me so much time to figure them out.
+    * When using LSTM, it expects input format like this [sample, time_step, dimension], but when you are using Keras LSTM, it doesn't care about the amount of sample, so you are seeing I'm using `model.add(LSTM(4, input_shape=train_X.shape[1:]))`, that is to only use `(time_step, dimension)` to define input_shape
+    * Also, pay attention to `Dense(1)` here, because the output should be a single output so that it can compare to `train_Y`, `test_Y`.
+    * For more detailed description, check this GitHub answer, `wxs commented on Feb 5, 2016`
   * download dataset here: https://datamarket.com/data/set/22u3/international-airline-passengers-monthly-totals-in-thousands-jan-49-dec-60#!ds=22u3&display=line 
   * <b>LSTM</b>: The Long Short-Term Memory network, or LSTM network, is a recurrent neural network that is trained using Backpropagation Through Time and overcomes the vanishing gradient problem.
     * Instead of neurons, LSTM networks have <b>memory blocks</b> that are connected through layers.
