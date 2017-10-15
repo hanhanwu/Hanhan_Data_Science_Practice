@@ -96,6 +96,7 @@ TIME SERIES PRACTICE
     * Also, pay attention to `Dense(1)` here, because the output should be a single output so that it can compare to `train_Y`, `test_Y`.
     * For more detailed description, check this GitHub answer, `wxs commented on Feb 5, 2016`
     * In the model, I am also using the default `sigmoid` function, This do makes sense in my case. Because my model data input comes from residual, which ranges between [-1,1]. With sigmoid function, it gets [-infinite, +infinite] X value and generates smooth range of values between 0 and 1.
+    * Check more details for activation fucntions [AI section - Different activation functions][15]
   * download dataset here: https://datamarket.com/data/set/22u3/international-airline-passengers-monthly-totals-in-thousands-jan-49-dec-60#!ds=22u3&display=line 
   * <b>LSTM</b>: The Long Short-Term Memory network, or LSTM network, is a recurrent neural network that is trained using Backpropagation Through Time and overcomes the vanishing gradient problem.
     * Instead of neurons, LSTM networks have <b>memory blocks</b> that are connected through layers.
@@ -173,3 +174,4 @@ READING NOTES
 [12]:https://www.amazon.com/Detection-Temporal-Synthesis-Knowledge-Discovery/dp/1627053751
 [13]:https://github.com/hanhanwu/readings/blob/master/ReadingNotes_Temporal_Outlier_Detection.md
 [14]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice
+[15]:https://github.com/hanhanwu/Hanhan_Data_Science_Resources2/blob/master/README.md
