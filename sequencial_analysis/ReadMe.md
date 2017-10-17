@@ -151,6 +151,7 @@ LSTM
     * Check more details for activation fucntions [AI section - Different activation functions][15]
     * At the end of this code, you will see the prediction result using ARIMA forcasting and after using LSTM. Althouh it took me so much effort to make the data stationary and to deal with the data format (when there are Keras neural network, python dataframe and numpy array, things became more complex), the final prediction visualization is difficult for normal people to understand. Customers want to see those predictions make sense, so it's better to have seasonality and trend added back in the forcasting/prediction visualization. In my case, the best stationary data cannot be converted back. Now, let me try Experiment 2, LSTM prediction with seasonality, trend added back
   * <b>My code - Experiment 2</b>: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/try_LSTM_Experiment2.ipynb
+    * As you can see, without making the data stationary, the final prediction plot makes more sense. Although compared with Experiment1, RMSE in testing data is much larger then the RMSE in training data
 
 
 ******************************************************************************************
