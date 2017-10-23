@@ -155,6 +155,17 @@ LSTM
     * Method 1 - time t to predict time t+1. You look back 1 time interval, and the time step for LSTM is also 1
     * Method 2 - <b>WINDOW method</b>
       * It allows you to <b>use multiple recent time steps</b> to predict next step. For example, you can use time t-2, t-1, t to predict time t+1, which means you look back 3 time interval but the time step for LSTM is 1
+    * Method 3 - Exchange time_step and domension
+      * Compared with method 1,2, you just exchange the position of time_step and dimension in `np.reshape`
+      * By doing this, you are using previous time_steps to predict t+1 time, instead of phrasing the past observations as separate input features
+    * Method 4 - LSTM with memory between batches
+      * The LSTM network has memory, which is <b>capable of remembering across long sequences</b>
+      * Normally, after each training batch during `model.fit()`, and after`model.predict()` or `model.evaluate()`, the state in network will be reset. In this method 4, you can build state over the entire training sequence and even maintain that state if needed to make predictions.
+    * Method 5 - Stacked LSTMs with Memory Between Batches
+      * You just stack multiple LSTM models together
+      * NOTE: This method requires an LSTM layer prior to each subsequent LSTM layer must return the sequence, so in this previous LSTM model, you set `return_sequences` as True
+    * Before method 5, you can see method 1 gave the best results. But when I used method 1 settings in method 5, it gave much worse results than using method 3 settings in method 5. So, in the future, better to try all the methods and see which works better
+  * reference: https://machinelearningmastery.com/time-series-prediction-lstm-recurrent-neural-networks-python-keras/
 
 
 ******************************************************************************************
