@@ -52,6 +52,49 @@ RESOURCES
     * <b>Batch</b>: A set of N samples. The samples in a batch are processed independently, in parallel. If training, a batch results in only one update to the model. A batch generally approximates the distribution of the input data better than a single input. <b>The larger the batch, the better the approximation</b>, but also takes longer time.
     * <b>Epoch</b>: Epoch: an arbitrary cutoff, generally defined as "one pass over the entire dataset", used to separate training into <b>distinct phases</b>, which is useful for <b>logging and periodic evaluation</b>. When using Keras `evaluation_data` or `evaluation_split` with the `fit` method of Keras models, <b>evaluation will be run at the end of every epoch</b>.
     
+* Activation functions and when to ues them: https://www.analyticsvidhya.com/blog/2017/10/fundamentals-deep-learning-activation-functions-when-to-use-them/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+  * They help neural network choose the useful points and suppress irrelevant info. They can decide whether a neuron should be activated or not, whether the information the neuron is receiving is relevant or should be ignored
+  * Without activation function, the weights, bias will simply do a linear transformation, and the neural network will work as a linear regression problem
+  * Gradient helps back-propagation. <b>To check gradient, you just check derivate at each data point</b>
+  * <b>Binary Step Function</b>
+    * Threshold based classifier, decide whether or not to activate the neuron
+    * Only serves for binary classification, cannot work for multi-class classification
+    * The gradient is 0, and cannot help back-propagation. Because back-propagation expects to use gradients to update errors and improve the model, but this function will set gradients to 0 and cannot really make any improvement
+  * <b>Linear Function</b>
+    * When you have multiple classes, choose the one with max value
+    * But for linear function, the derivate is constant, which means gradient will be the same each time, still cannot help back-propagation
+  * <b>Sigmoid Function</b>
+    * `f(x)=1/(1+e^-x)`
+    * non-linear
+    * y ranges between [0,1], x ranges between [-infinite, infinite]. But because of the y range, sigmoid function is not symmetric around the origin and the values received are all positive
+    * When gradient is approaching 0 (sigmoid curve is flat), the neuron is not really learning
+  * <b>Tanh</b>
+    * Scaled version of sigmoid function
+    * `tanh(x)=2sigmoid(2x)-1`
+    * It works similar to the sigmoid function but is symmetric over the origin. it ranges from -1 to 1
+    * Your choice of using sigmoid or tanh would basically depend on the requirement of gradient in the problem statement
+    * But similar to the sigmoid function we still have the vanishing gradient problem. When the gradient approaches to 0, the neuron is not really learn
+  * <b>ReLU</b>
+    * `f(x)=max(0,x)`, f(x)= x if x>= 0, f(x)=0 if x<0
+    * non-linear
+    * The main advantage of using the ReLU function over other activation functions is that <b>it does not activate all the neurons at the same time</b>.
+    * But the gradient is 0 for x<0, which made the neurons die for activations in that region. Because it's not learning but x is always negative, so it's never learn
+    * ReLU function should <b>only be used in the hidden layers</b>
+  * <b>Leaky ReLU</b>
+    * f(x)=ax if x<0, f(x)=x if x>=0
+    * Improved ReLU
+    * By doing this, it removes 0 gradient and therefore no dead neurons
+    * In case of a <b>parameterised ReLU function</b>, ‘a‘ is also a trainable parameter. The network also learns the value of ‘a‘ for faster and more optimum convergence. The parametrised ReLU function is used when the leaky ReLU function still fails to solve the problem of dead neurons and the relevant information is not successfully passed to the next layer.
+  * <b>Softmax</b>
+    * Idealy used we you want the output is showing probability, because all the output are in range between [0,1]
+  * <b>Summarized Suggestions from the author</b>
+    * Sigmoid functions and their combinations generally work better in the case of classifiers
+    * Sigmoids and tanh functions are sometimes avoided due to the vanishing gradient problem
+    * ReLU function is a general activation function and is used in most cases these days
+    * If we encounter a case of dead neurons in our networks the leaky ReLU function is the best choice
+    * Always keep in mind that ReLU function should only be used in the hidden layers
+    * As <b>a rule of thumb</b>, you can begin with using ReLU function and then move over to other activation functions in case ReLU doesn’t provide with optimum results
+    
 * Deep Leaning for Computer Vision: https://www.analyticsvidhya.com/blog/2016/04/deep-learning-computer-vision-introduction-convolution-neural-networks/?lipi=urn%3Ali%3Apage%3Ad_flagship3_feed%3BxPn6EhynRquw3Evzrg79RA%3D%3D
   * Detailed analysis of activation functions
     * Sigmoid (not recommended for CNN)
