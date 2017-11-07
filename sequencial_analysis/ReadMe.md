@@ -166,6 +166,17 @@ LSTM
       * NOTE: This method requires an LSTM layer prior to each subsequent LSTM layer must return the sequence, so in this previous LSTM model, you set `return_sequences` as True
     * Before method 5, you can see method 1 gave the best results. But when I used method 1 settings in method 5, it gave much worse results than using method 3 settings in method 5. So, in the future, better to try all the methods and see which works better
   * reference: https://machinelearningmastery.com/time-series-prediction-lstm-recurrent-neural-networks-python-keras/
+  
+
+* LSTM Univariate Time Series
+  * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/try_LSTM_univariate_time_series.ipynb
+    * Base Line Model - Walk Forward Prediction (not LSTM)
+      * It is called baseline model does have its reason. You just shift testing data 1 step up and form prediction results, then compare this prediction results with testing data
+    * LSTM
+      * Step 1 - Data Preprocessing
+        * time series transfroms to supervised problem. You can just shift training data down k lags
+        * make time series stationary
+        * make time serles scale
 
 
 ******************************************************************************************
