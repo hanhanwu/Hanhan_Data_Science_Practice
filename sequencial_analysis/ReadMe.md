@@ -76,7 +76,7 @@ TIME SERIES PRACTICE
   * Python ARIMAResults library: http://www.statsmodels.org/devel/generated/statsmodels.tsa.arima_model.ARIMAResults.html
   * download dataset: https://datamarket.com/data/set/22r0/sales-of-shampoo-over-a-three-year-period#!ds=22r0&display=line
   * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/python_ARIMA.ipynb
-  * Better code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/try_LSTM.ipynb
+  * Better code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/try_LSTM_Experiment1.ipynb
     * In Checking Stationary stage, used
       * Plotting Rolling Statistics: Compare Test Statistic with Critical Value (1%, 5%, 10%). For example, is Test Statistic is lower than 10% Critical Value, means there is 90% confidence that current data is stationary. Note! When you are checking the visualization, pay attention to y-axis, when it's larger, rolling mean and rolling std lines look flat but in fact may not be better than another graph with smaller y values. So, be careful when compare 2 graphs
       * Dickey-Fuller Test: Check RSS, if you are seeing nan, check whether there is nan or negative value and remove them, before using `np.sqrt`
@@ -90,7 +90,7 @@ TIME SERIES PRACTICE
   
 * [Python] Data Preprocessing for LSTM
   * This is another dataset, the data preprocessing to make data stationary here is better
-  * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/try_LSTM.ipynb
+  * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/try_LSTM_Experiment1.ipynb
   
 * [R] Stock Prediction - Part 1
   * Dataset Search Library - Quandl: https://www.quandl.com/search?query=
