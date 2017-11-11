@@ -142,7 +142,7 @@ LSTM
 * LSTM beginner
   * First of all, I did lots of works to make data stationary here
   * download dataset here: https://datamarket.com/data/set/22u3/international-airline-passengers-monthly-totals-in-thousands-jan-49-dec-60#!ds=22u3&display=line 
-  * <b>My code - Experiment 1</b>: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/try_LSTM_Experiment1.ipynb
+  * <b>My code - Experiment 1 (With Stationary)</b>: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/try_LSTM_Experiment1.ipynb
     * My godness, each time when there is dimensions problems in neural network, often cost me so much time to figure them out.
     * When using LSTM, it expects input format like this [sample, time_step, dimension], but when you are using Keras LSTM, it doesn't care about the amount of sample, so you are seeing I'm using `model.add(LSTM(4, input_shape=train_X.shape[1:]))`, that is to only use `(time_step, dimension)` to define input_shape
     * Also, pay attention to `Dense(1)` here, because the output should be a single output so that it can compare to `train_Y`, `test_Y`.
@@ -150,7 +150,7 @@ LSTM
     * In the model, I am also using the default `sigmoid` function, This do makes sense in my case. Because my model data input comes from residual, which ranges between [-1,1]. With sigmoid function, it gets [-infinite, +infinite] X value and generates smooth range of values between 0 and 1.
     * Check more details for activation fucntions [AI section - Different activation functions][15]
     * At the end of this code, you will see the prediction result using ARIMA forcasting and after using LSTM. Althouh it took me so much effort to make the data stationary and to deal with the data format (when there are Keras neural network, python dataframe and numpy array, things became more complex), the final prediction visualization is difficult for normal people to understand. Customers want to see those predictions make sense, so it's better to have seasonality and trend added back in the forcasting/prediction visualization. In my case, the best stationary data cannot be converted back. Now, let me try Experiment 2, LSTM prediction with seasonality, trend added back
-  * <b>My code - Experiment 2</b>: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/try_LSTM_Experiment2.ipynb
+  * <b>My code - Experiment 2 (Without Stationary)</b>: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/try_LSTM_Experiment2.ipynb
     * As you can see, without making the data stationary, the final prediction plot makes more sense. Although compared with Experiment1, RMSE in testing data is much larger then the RMSE in training data
     * Method 1 - time t to predict time t+1. You look back 1 time interval, and the time step for LSTM is also 1
     * Method 2 - <b>WINDOW method</b>
