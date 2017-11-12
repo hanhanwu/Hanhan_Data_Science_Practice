@@ -140,6 +140,9 @@ LSTM
     * The gates of the units have weights that are learned during the training procedure.
 * The benefit of LSTM is that, <b>it can learn and remember over long sequences and does not rely on a pre-specified window lagged observation as input</b>. What does this really mean in practice?
   * In Keras, you have to set `stateful=True` when define an LSTM layer. Because by default, Keras maintains the state between data within 1 batch. <b>Between batches, the state will be cleared, by default</b>. Now, if you have `stateful=True`, after the state got cleaned, you can call `reset_states()` to get your states back
+    * This also means, you have to manually manage the training process 1 epoch at a time
+    * You can reset state at the end of each training epoch, ready for the next training iteration
+  * Also, by defualt, data samples will be shuffled within each epoch before being exposed to the network, which will break the state we need for LSTM. So, you need to set `shuffle=False`
 
 * LSTM beginner
   * First of all, I did lots of works to make data stationary here
