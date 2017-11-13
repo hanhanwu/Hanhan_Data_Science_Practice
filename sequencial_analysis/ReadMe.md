@@ -181,8 +181,10 @@ LSTM
       * Step 1 - Data Preprocessing
         * make time series stationary (better to use LSTM without stationary to compare too, sometimes stationary data may not work better)
         * time series transfroms to supervised problem. You can just shift training data down k lags
+          * In this case, training & testing vs x & y can be confusing. So, but generating supervised data, we got X, y to fit the model, X are features (here only 1 dimension), y is what to predict. As for training and testing data here are used to evaluate model performance. Both of them have X, y, we just split the data set into first 2 years (training data), lasy year (testing data)
         * make time serles scale
           * To scale data between [-1,1] is because default activation function for LSTM is tanh, which outputs the resuts between [-1,1], so it's better to have input data in this range too
+        * Step 2 - Model Fitting & Evaluation
 
 
 ******************************************************************************************
