@@ -193,6 +193,8 @@ LSTM
           * fix seeds for both numpy and tensorflow
           * repeat experiments, and take average of RMSE, to see how well the configuration would be expected to perform on unseen data on average
           * In my code, I used both.
+   * reference: https://machinelearningmastery.com/time-series-forecasting-long-short-term-memory-network-python/
+     * I really don't like some naming and param settings in it
         
 
 ******************************************************************************************
