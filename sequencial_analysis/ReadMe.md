@@ -174,6 +174,9 @@ LSTM
   
 
 * LSTM Univariate Time Series
+  * Univariate vs Multi-variate
+    * Univariate predict next 1 step
+    * Multi-variate predicts next n steps, which allows larger batch size and faster training
   * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/try_LSTM_univariate_time_series.ipynb
     * Base Line Model - Walk Forward Prediction (not LSTM)
       * It is called baseline model does have its reason. You just shift testing data 1 step up and form prediction results, then compare this prediction results with testing data
@@ -184,8 +187,13 @@ LSTM
           * In this case, training & testing vs x & y can be confusing. So, but generating supervised data, we got X, y to fit the model, X are features (here only 1 dimension), y is what to predict. As for training and testing data here are used to evaluate model performance. Both of them have X, y, we just split the data set into first 2 years (training data), lasy year (testing data)
         * make time serles scale
           * To scale data between [-1,1] is because default activation function for LSTM is tanh, which outputs the resuts between [-1,1], so it's better to have input data in this range too
-        * Step 2 - Model Fitting & Evaluation
-
+      * Step 2 - Model Fitting & Evaluation
+        * `batch_size` has to be a factor of the size of the training and test datasets. In this case, it is 1
+        * To help neural network generate reproduciable results, you can:
+          * fix seeds for both numpy and tensorflow
+          * repeat experiments, and take average of RMSE, to see how well the configuration would be expected to perform on unseen data on average
+          * In my code, I used both.
+        
 
 ******************************************************************************************
 
