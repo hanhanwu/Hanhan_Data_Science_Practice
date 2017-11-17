@@ -152,6 +152,9 @@ RESOURCES
   * <b>Keras Resources</b>: https://github.com/fchollet/keras-resources
   * <b>Keras Examples</b>: https://github.com/fchollet/keras/tree/master/examples
   * For installing TensorFlow, strongly recommend to use `virtualenv` (it's fast, simply and won't influence other installed python libraries): https://www.tensorflow.org/install/install_mac
+    * `sudo pip install --upgrade virtualenv`
+    * Then you create a new folder as virtual environment, such as folder myvirtual_env, then type `virtualenv --system-site-packages myvirtual_env`, of course, it should be thr path of your folder
+    * Now you can activate it, in this case, type command `source ~/myvirtual_env/bin/activate `
   * After `virtualenv` installation and validaton, Commands to turn on and turn off virtual environment:
     * To activate the virtual environment, `$ source ~/Documents/Virtual_Env/bin/activate      # If using bash, sh, ksh, or zsh`, change "Documents/Virtual_Env" to your own virtual environment folder name
     * To activate the virtual environment, `$ source ~/Documents/Virtual_Env/bin/activate.csh  # If using csh or tcsh`, change "Documents/Virtual_Env" to your own virtual environment folder name
