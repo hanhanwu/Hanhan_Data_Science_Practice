@@ -173,7 +173,7 @@ LSTM
   * reference: https://machinelearningmastery.com/time-series-prediction-lstm-recurrent-neural-networks-python-keras/
   
 
-* LSTM Univariate Time Series
+* LSTM Univariate Time Series Prediction
   * Univariate vs Multi-variate
     * Univariate predict next 1 step
     * Multi-variate predicts next n steps, which allows larger batch size and faster training
@@ -195,6 +195,14 @@ LSTM
           * In my code, I used both.
    * reference: https://machinelearningmastery.com/time-series-forecasting-long-short-term-memory-network-python/
      * I really don't like some naming and param settings in it
+     
+* LSTM Multivariate Time Series Prediction
+  * After being tortured by this type of practice in unvariate time series, multivariate appears to be much easier.
+  * Compared with univariate, you just need to move multiple features x steps forward
+  * my code - one step forward: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/multivariate_LSTM_one_step_forward.ipynb
+    * In this code, you just need to predict polution, so in fact polution is the only column you need to move forward. But the code here is moving all the original columns forward, and finally drop those unwanted columns, this method has more flexibility in case may want to predict multiple labels
+    * In this code, polution just moved 1 step forward
+  * reference: https://machinelearningmastery.com/multivariate-time-series-forecasting-lstms-keras/
         
 
 ******************************************************************************************
