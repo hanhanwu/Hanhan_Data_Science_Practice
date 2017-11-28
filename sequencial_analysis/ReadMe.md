@@ -202,6 +202,9 @@ LSTM
   * my code - one step forward: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/multivariate_LSTM_one_step_forward.ipynb
     * In this code, you just need to predict polution, so in fact polution is the only column you need to move forward. But the code here is moving all the original columns forward, and finally drop those unwanted columns, this method has more flexibility in case may want to predict multiple labels
     * In this code, polution just moved 1 step forward
+  * my code - multiple steps forward: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/multivariate_LSTM_multi_steps_forward.ipynb
+    * In this code, it moves 3 hours forward. Check my comments to find the difference between one-step forward
+    * It also predicts multiple lables, check my comments
   * reference: https://machinelearningmastery.com/multivariate-time-series-forecasting-lstms-keras/
         
 
