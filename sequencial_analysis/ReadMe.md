@@ -206,6 +206,13 @@ LSTM
     * In this code, it moves 3 hours forward. Check my comments to find the difference between one-step forward
     * It also predicts multiple lables, check my comments
   * reference: https://machinelearningmastery.com/multivariate-time-series-forecasting-lstms-keras/
+  
+  
+* <b>Summary of Time Series to Supervided Learning</b>
+  * According to above LSTM time series predictions, I'd better to summarize major methods used in converting time series to supervised learning. It's in fact very simple. Almost the same for univariate & multivariate, single label & multiple labels.
+  * Univariate: your label is your single feature moves x step forward & dropped NA
+  * Multivariate, single label: create new columns, each is generated from the relevant original feature & moved x step forward & dropped NA. Then, you only keep the column that you want to predict as label, drop other newly created columns
+  * Multivariate, multiple labels: create new columns, each is generated from the relevant original feature & moved x step forward & dropped NA. That's it.
         
 
 ******************************************************************************************
