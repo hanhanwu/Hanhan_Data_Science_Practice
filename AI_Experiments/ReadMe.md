@@ -353,6 +353,18 @@ EXPERIMENTS
       * boxplot to show RMSE at a certain length of training data
       * plot RMSE changes along the length of training data, while you are implementing k-fold cross validation on your own
   * reference: https://www.analyticsvidhya.com/blog/2017/09/creating-visualizing-neural-network-in-r/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+  
+  
+* Recurrent Neural Network (RNN)
+  * It stores the state of previous input and combines with current input, so it keeps some relationship between previous and current input
+  * It can be one time step or multiple time steps
+  * It also has Forward Propagation & backward Propagation
+  * How to to backward propagation in RNN
+    * The <b>cross entropy error</b> is first computed using the current output and the actual output
+    * Remember that the network is unrolled for all the time steps
+    * For the <b>unrolled network</b>, the gradient is calculated for each time step with respect to the weight parameter
+    * Now that the weight is the same for all the time steps the gradients can be combined together for all time steps
+    * The weights are then updated for both recurrent neuron and the dense layers
     
     
 * Resources I didn't work on
