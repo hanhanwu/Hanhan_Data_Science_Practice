@@ -337,6 +337,14 @@ EXPERIMENTS
     * `librosa` provided methods for audio feature extraction: https://librosa.github.io/librosa/feature.html
    * reference: https://www.analyticsvidhya.com/blog/2017/08/audio-voice-processing-deep-learning/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
    
+   
+* Neural Network Word Embedding
+  * Keras has its own word embedding layer. You can also replace this embedding layer with a general pre-trained embedding methods (such as word2vec). You can also use specific trained embedding model, for the movie review data here, you can try Stanford GloVe.
+  * Download Stanford GloVe pretrained embedding model here: https://github.com/stanfordnlp/GloVe
+  * But when you are NOT using neural network its own embedding layer, it can be slow in Keras, and may also be less accurate. Since training data influence a lot in final results for text data, you can rarely find pre-trained model just used your dataset
+  * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/text_embedding_NN.ipynb
+    * Step 1 - Generate vocabulary (word, count) first
+   
 
 * [R] Try Neural Network in R
   * Scale the data before using NN
