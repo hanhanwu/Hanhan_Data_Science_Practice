@@ -348,6 +348,9 @@ EXPERIMENTS
     * Step 2 - CNN to predict sentiment (positive or negative) with word embedding
     * NOTE 1 - In this code, `texts_to_sequences()` apply to a list of tokens joined through ' ', it won't work on a list
     * NOTE 2 - Also in `texts_to_sequences()`, only exactly the same word will be encoded with the same word index 
+  * My code 2: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/stemming_text_embedding_NN.ipynb
+    * Compared with code 1, the code here just added 1 line of code - "stemming". Because in code 1, each unique word will have a numerical value, so I was wondering whether stemmed result can be better, since it converts words with similar meaning to the same format before word embedding. The fially result improved a little bit.
+    * But looking back, similar words with different format can still be good, since they can reflect the word position and meaning better.
    
 
 * [R] Try Neural Network in R
