@@ -339,11 +339,15 @@ EXPERIMENTS
    
    
 * Neural Network Word Embedding
+  * Through word embedding, each word has a numerical value in the vector. Trough learning, words with similar meaning will stay close in the vetor space, which also means they have similar representation in the vector space
   * Keras has its own word embedding layer. You can also replace this embedding layer with a general pre-trained embedding methods (such as word2vec). You can also use specific trained embedding model, for the movie review data here, you can try Stanford GloVe.
   * Download Stanford GloVe pretrained embedding model here: https://github.com/stanfordnlp/GloVe
   * But when you are NOT using neural network its own embedding layer, it can be slow in Keras, and may also be less accurate. Since training data influence a lot in final results for text data, you can rarely find pre-trained model just used your dataset
-  * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/text_embedding_NN.ipynb
+  * My code 1: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/text_embedding_NN.ipynb
     * Step 1 - Generate vocabulary (word, count) first
+    * Step 2 - CNN to predict sentiment (positive or negative) with word embedding
+    * NOTE 1 - In this code, `texts_to_sequences()` apply to a list of tokens joined through ' ', it won't work on a list
+    * NOTE 2 - Also in `texts_to_sequences()`, only exactly the same word will be encoded with the same word index 
    
 
 * [R] Try Neural Network in R
