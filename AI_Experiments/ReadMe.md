@@ -371,7 +371,7 @@ EXPERIMENTS
   
   
 * Recurrent Neural Network (RNN)
-  * It stores the state of previous input and combines with current input, so it keeps some relationship between previous and current input
+  * <b>The difference between RNN and basic neural network:</b> As we all know, a basic neural network has 1 input layer, 1 output layer plus 1 or more hidden layer. Also a neural network only stores the input and output for a layer each step. The difference in RNN is, it only has a recurrent layer between the input layer and the output layer, this recurrent layer is similar to multiple hidden layers in a basic neural network. But it can store the state of a previous input and combines with the current input, so it keeps some relationship between previous and current input
   * It can be one time step or multiple time steps
   * It also has Forward Propagation & backward Propagation
   * How to to backward propagation in RNN
