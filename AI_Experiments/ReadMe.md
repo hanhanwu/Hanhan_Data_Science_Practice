@@ -380,6 +380,7 @@ EXPERIMENTS
     * For the <b>unrolled network</b>, the gradient is calculated for each time step with respect to the weight parameter
     * Now that the weight is the same for all the time steps the gradients can be combined together for all time steps
     * The weights are then updated for both recurrent neuron and the dense layers
+  * Here, "unrolled network" looks just like basics neural network, and the backpropagation here is similar to basic neural network but it combines the gradients of error for all time steps
     
     
 * Resources I didn't work on
