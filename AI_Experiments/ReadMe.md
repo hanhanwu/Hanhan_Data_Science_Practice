@@ -218,6 +218,10 @@ RESOURCES
     * Step 4: Check the Structure of Input data
     * Step 5: Check the Distribution of data
   * It cotains how to install YOLO for object detection, how to resize training images to improve accuracy
+  
+* 2017 Projects/Development in AI/Machine Learning
+  * https://www.analyticsvidhya.com/blog/2017/12/reminiscing-2017-defining-moments-and-future-of-data-science/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+  * Most of them are Deep Learning, some are really good to read, such as PassGAN
 
 
 *****************************************************************
