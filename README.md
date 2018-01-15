@@ -192,6 +192,27 @@ PYTHON PRACTICE
    * reference: https://www.analyticsvidhya.com/blog/2017/08/introduction-to-multi-label-classification/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
 
 
+* Factorization Machines
+  * Large dataset can be sparse, with Factorization, you can extract important or hidden features
+  * With a lower dimension dense matrix, factorization could represent a similar relationship between the target and the predictors
+  * The drawback of linear regression and logistic regression is, they only learn the effects of all features individually, instead of in combination
+  * For example, you have `Fields` Color, Category, Temperature, and `Features` Pink, Ice-cream, Cold, each feature have different values
+    * Linear regression: `w0 + wPink * xPink + wCold * xCold + wIce-cream * xIce-cream`
+    * <b>Factorization Machines (FMs)</b>: `w0 + wPink * xPink + wCold * xCold + wIce-cream * xIce-cream + dot_product(Pink, Cold) + dot_product(Pink, Ice-cream) + dot_product(Cold, Ice-cream)`
+      * dot-product: `a.b = |a|*|b|cosθ`, when θ=0, cosθ=1 and the dot product reaches to the highest value. In FMs, dor product is used to measure the similarity
+      * `dot_product(Pink, Cold) = v(Pink1)*v(Cold1) + v(Pink2)*v(Cold2) + v(Pink3)*v(Cold3)`, here k=3. This formula means dot product for 2 features in size 3
+    * <b>Field-aware factorization Machines (FFMs)</b>
+      * Not quite sure what does "latent effects" meantioned in the tutorial so far, but FFMs has awared the fields, instead of using `dot_product(Pink, Cold) + dot_product(Pink, Ice-cream) + dot_product(Cold, Ice-cream)`, it's using Fields here, `dot_product(Color_Pink, Temperature_Cold) + dot_product(Color_Pink, Category_Ice-cream) + dot_product(Temperature_Cold, Category_Ice-cream)`, Color & Temperature, Color & category, Temperature & Category
+  * `xLearn` library
+    * Sample input (has to be this format, libsvm format): https://github.com/aksnzhy/xlearn/blob/master/demo/classification/criteo_ctr/small_train.txt
+    * Detailed documentation about parameters, functions: http://xlearn-doc.readthedocs.io/en/latest/python_api.html
+    * Personally, I think this library is a little bit funny. First of all, you have to do all the work to convert sparse data into dense format (libsvm format), then ffm will do the work, such as extract important features and do the prediction. Not only how it works is in the blackbox, but also it creates many output files during validation and testing stages. You's better run evrything through terminal, so that you can see more information during the execution. I was using IPython, totally didin't know what happened.
+    * But it's fast! You can also set multi-threading in a very easy way. Check its documentation.
+  * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Factorization_Machines.ipynb
+    * My code is better than reference
+  * Reference: https://www.analyticsvidhya.com/blog/2018/01/factorization-machines/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+
+
 ********************************************
 
 DIMENSION REDUCTION
