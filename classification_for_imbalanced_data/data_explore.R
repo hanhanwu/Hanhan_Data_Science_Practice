@@ -88,7 +88,7 @@ origin_nums <- sapply(q1, is.numeric)
 origin_num_data <- subset(q1, select = origin_nums==T)
 origin_fact_data <- subset(q1, select = origin_nums==F)
 # seperate data based on row values
-subset(q1, col1=='Ice-cream' & is.na(col2)==T)
+subset(q1, col1=='Ice-cream' & is.na(col2)==T) # WARNING: this may choose only part of the data, which() maybe better
 
 
 # explore the smaller dataset, in this case, the categorical data
