@@ -83,16 +83,21 @@ pt2 <- ggplot(data=data.frame(p2), aes(x= p2, y=..density..)) + geom_histogram(f
 multiplot(pt1, pt2, cols=2)
 
 
-# seperate data into numerical data and categorical data
+# seperate data into numerical data and categorical data [operate on columns]
 origin_nums <- sapply(q1, is.numeric)
 origin_num_data <- subset(q1, select = origin_nums==T)
 origin_fact_data <- subset(q1, select = origin_nums==F)
+# seperate data based on row values
+subset(q1, col1=='Ice-cream' & is.na(col2)==T)
 
 
 # explore the smaller dataset, in this case, the categorical data
   ## check missing value percentage
   NA_perct <- sapply(origin_fact_data, function(x){sum(is.na(x))/length(x)})*100
   NA_perct
+  ## check NA percentage for each group, in this case group by "my_group", apply to all others columns using ".~"
+  match_result_NA_perct <- aggregate(.~ my_group, data=my_data, 
+                                   function(x) {sum(is.na(x))/length(x)*100}, na.action = NULL)
 
   ## univariate analysis
   fact_distribution_plot(origin_fact_data$PaymentType)
