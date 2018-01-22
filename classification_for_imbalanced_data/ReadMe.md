@@ -75,6 +75,8 @@ Recently, I did many experiments on classification with imbalanced small dataset
 <b>Model Training and Evaluation</b>
 
 * In my experiments, I have found that bagging method Random Forests, Boosting methods GBM, XGBOOST and C50 could always return higher balanced accuracy. I used ROSE to deal with data imbalance problem and overcome the shortage of overfitting, underfitting. However it dind't work well most of the time... Random Forests is pretty great. In fact, it can handle missing data, outliers, data imbalance itself well.
+  * Besides ROSE, other basic methods to deal with imbalanced data: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/deal_with_imbalanced_data_2.R
+  * Later I found , random forest can work better after you normalize all the data into (0,1) range
 * Later I found that SVM is good for small dataset, especially when the number of featues are large, even larger than the number of data records. in somd e of my experiments in small dataset, SVM even performs better than Random Forests and other algorithms. For SVM, need to turn 3 major parameters, `C, gamma and kernel`. For details, please check my notes here: https://github.com/hanhanwu/Hanhan_Data_Science_Resources/blob/master/Experiences.md
 * Since the data is imbalnced, I am using Balanced Accuracy, Sensitivity and Specifity as the measure
 * In the code, I have also tried to tune the Threshold and see whether the balanced accuracy could be improved.
