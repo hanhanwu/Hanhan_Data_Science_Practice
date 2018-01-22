@@ -116,6 +116,14 @@ Recently, I did many experiments on classification with imbalanced small dataset
 
 ***********************************************************************
 
+<b>Other Lazy Functions</b>
+
+I's rather spend a little more time to operate on a batch of features/data:
+https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/classification_for_imbalanced_data/other_lazy_functions.R
+
+
+***********************************************************************
+
 Future Methods Can Try
 
 * [Python] For calculation correlation, I can also try <b>coefficent from linear regression</b>
@@ -126,7 +134,7 @@ Future Methods Can Try
 * Check data shifting with feature selection: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/deal_with_data_shifting.ipynb
 
 * More sampling methods to deal with data imbalance
-  * [Python] Scikit-Learn imbalanced-lean API: http://contrib.scikit-learn.org/imbalanced-learn/api.html
+  * [Python] Scikit-Learn imbalanced-learn API: http://contrib.scikit-learn.org/imbalanced-learn/api.html
     * Check left side algorithms you can choose
     * For example, you can use SMOTE-ENN: http://contrib.scikit-learn.org/imbalanced-learn/auto_examples/combine/plot_smote_enn.html
   * [R] unbalance package (2015): https://cran.r-project.org/web/packages/unbalanced/unbalanced.pdf
