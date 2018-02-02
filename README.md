@@ -155,6 +155,9 @@ R PRACTICE
     
 * Channel Attribution Modeling with Markov Chains
   * "An attribution model is the rule, or set of rules, that determines how credit for sales and conversions is assigned to touchpoints in conversion paths." -- From Google
+    * For example in this transition disgram
+    ![transition diagram](https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/transion_diagram.png)
+    `P(conversion) = P(C1 -> C2 -> C3 -> Conversion) + P(C2 -> C3 -> Conversion) = 0.5*0.5*1*0.6 + 0.5*1*0.6`
 
 
 ********************************************
