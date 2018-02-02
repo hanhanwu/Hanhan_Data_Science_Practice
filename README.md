@@ -151,6 +151,10 @@ R PRACTICE
     * `brew install libjpeg`
     * `brew uninstall imagemagick`
     * `brew install imagemagick --with-x11`
+    
+    
+* Channel Attribution Modeling with Markov Chains
+  * "An attribution model is the rule, or set of rules, that determines how credit for sales and conversions is assigned to touchpoints in conversion paths." -- From Google
 
 
 ********************************************
