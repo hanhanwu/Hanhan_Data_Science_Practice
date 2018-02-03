@@ -157,7 +157,13 @@ R PRACTICE
   * "An attribution model is the rule, or set of rules, that determines how credit for sales and conversions is assigned to touchpoints in conversion paths." -- From Google
     * For example in this transition disgram
     ![transition diagram](https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/transion_diagram.png)
-    `P(conversion) = P(C1 -> C2 -> C3 -> Conversion) + P(C2 -> C3 -> Conversion) = 0.5*0.5*1*0.6 + 0.5*1*0.6`
+    `P(conversion) 
+     = P(C1 -> C2 -> C3 -> Conversion) + P(C2 -> C3 -> Conversion) 
+     = 0.5*0.5*1*0.6 + 0.5*1*0.6`
+  * Markov Chains maps the movement and gives a probability distribution when move from 1 state to another state
+    * State space - A possoble sets of a process
+    * Transition operator - the probability of moving from 1 state to another state
+    * Current state probability distribution
 
 
 ********************************************
