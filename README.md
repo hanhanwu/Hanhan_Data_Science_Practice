@@ -159,11 +159,16 @@ R PRACTICE
     ![transition diagram](https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/transion_diagram.png)
     `P(conversion) 
      = P(C1 -> C2 -> C3 -> Conversion) + P(C2 -> C3 -> Conversion) 
-     = 0.5*0.5*1*0.6 + 0.5*1*0.6`
+     = 0.5*0.5*1*0.6 + 0.5*1*0.6 = 0.45`
   * Markov Chains maps the movement and gives a probability distribution when move from 1 state to another state
-    * State space - A possoble sets of a process
+    * State space - A possible sets of a process
     * Transition operator - the probability of moving from 1 state to another state
-    * Current state probability distribution
+    * Current state probability distribution - probability distribution of being in any one of the states at the start of the process
+    * Transition state - In the screenshot above, channels such as C1, C2, C3 are transition states
+    * Removel effect - After removing a transition state, `new probability of conversion/probability of conversion`
+      * For example, removing C1 from the above, the probability of conversion is 0.5*1*0.6 = 0.3, and the remove effect is 0.3/0.45
+    * Transition probability - the probability of moving from one channel to another channel
+  * Customer Journey - a sequence of channels, it's a chain of Markov Graph where each vertex is a state, each edge represents transition probability of moving from 1 state to another. It is memory-less Markov Chain, since the probability of reaching to current state only depends on the previous state
 
 
 ********************************************
