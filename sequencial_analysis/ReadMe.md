@@ -213,7 +213,69 @@ LSTM
   * Univariate: your label is your single feature moves x step forward & dropped NA
   * Multivariate, single label: create new columns, each is generated from the relevant original feature & moved x step forward & dropped NA. Then, you only keep the column that you want to predict as label, drop other newly created columns
   * Multivariate, multiple labels: create new columns, each is generated from the relevant original feature & moved x step forward & dropped NA. That's it.
-        
+  
+  
+******************************************************************************************
+
+Channel Attrition
+
+* Find key channels in a sequence
+
+* Channel Attribution Modeling with Markov Chains
+  * "An attribution model is the rule, or set of rules, that determines how credit for sales and conversions is assigned to touchpoints in conversion paths." -- From Google
+    * For example in this transition disgram
+    ![transition diagram](https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/transion_diagram.png)
+    `P(conversion) 
+     = P(C1 -> C2 -> C3 -> Conversion) + P(C2 -> C3 -> Conversion) 
+     = 0.5*0.5*1*0.6 + 0.5*1*0.6 = 0.45`
+  * Markov Chains maps the movement and gives a probability distribution when move from 1 state to another state
+    * State space - A possible sets of a process
+    * Transition operator - the probability of moving from 1 state to another state
+    * Current state probability distribution - probability distribution of being in any one of the states at the start of the process
+    * Transition state - In the screenshot above, channels such as C1, C2, C3 are transition states
+    * Removel effect - After removing a transition state, `new probability of conversion/probability of conversion`
+      * For example, removing C1 from the above, the probability of conversion is 0.5*1*0.6 = 0.3, and the remove effect is 0.3/0.45
+    * Transition probability - the probability of moving from one channel to another channel
+  * Customer Journey - a sequence of channels, it's a chain of Markov Graph where each vertex is a state, each edge represents transition probability of moving from 1 state to another. It is memory-less Markov Chain, since the probability of reaching to current state only depends on the previous state
+  * R ChannelArrition package: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/markov_vs_heuristics.pdf
+    * I really like the description here. 
+    * Heristics Model
+      * <b>First Touch Approach</b>: Reward the channel first start the action
+      * <b>Last Touch Approach</b>: Reward the last channel made the conversion
+      * <b>Linear Approach</b>: Give the same credit to all the channels on the path to the conversion
+      * <b>Time Decay Approach</b>: Give subjective weights to each channel on the path to the conversion
+    * Markov Model
+      * Only care about toal conversion values
+      * In first order markov chains, the reaching channel only depends on the previous channel
+      * Varied-order Markov Chains (VOM): https://en.wikipedia.org/wiki/Variable-order_Markov_model
+  * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/markov_chains_beginner.R
+    * Get the data here: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/Channel_attribution.csv
+    * By setting `order` in `markov_model`, you can decide k-order markov chains. Here I'm using fitst order
+  * Install packages such as "ChannelAttribution.tar.gz"
+    * My goodness, I have never spent longer time to install an R package like this one
+    * If you check online, they told you many different methods to install R package when you had failure
+    * Now I think, a good starting point is to install from GitHub, if that package has a GitHub version, because the error messages in this install method is more detailed
+      * `library(devtools)`
+      * `install_github("cran/ChannelAttribution")`
+      * Its GitHub: https://github.com/cran/ChannelAttribution
+    * In this case, I got error telling me things maybe related to "clang", maybe related to "-lgfortran", I thought mayb ethat clang error caused by "-lgfortran", so I found the solution here:
+      * Install -lgfortran: https://thecoatlessprofessor.com/programming/rcpp-rcpparmadillo-and-os-x-mavericks--lgfortran-and--lquadmath-error/
+      * For mac Latest OS, download it here: http://gcc.gnu.org/wiki/GFortranBinaries#MacOS
+      * Install the .dmg file
+      * Then open you terminal, no matter which folder you are you, just type:
+        * `mkdir ~/.R`, if you have already had this folder, the terminal you tell you that you had it. If you had it, type `cd ~/.R`, if `Makevars` is there, it's great.
+        * Type `cat << EOF >> ~/.R/Makevars`
+        * Type `FLIBS=-L/usr/local/gfortran/lib/gcc/x86_64-apple-darwin16/6.3.0 -L/usr/local/gfortran/lib -lgfortran -lquadmath -lm`, change the version name if you downloaded another version
+        * Type `EOF`
+      * Now in your RStudio, type `library(devtools)`, `install_github("cran/ChannelAttribution")`
+    * You may still get the error after install&compile successfully. In this pack, it is important to check source code "LinkingTo"
+      * Source: https://www.rdocumentation.org/packages/ChannelAttribution/versions/1.10
+      * In LinkingTo, you will see `Rcpp`, `RcppArmadillo`. Install them all and restart your R session
+    * Other note
+      * Install from local file if you have downloaded the package
+        * `install.packages("[zipped package local location]", repos = NULL, type="source")`
+  * reference: https://www.analyticsvidhya.com/blog/2018/01/channel-attribution-modeling-using-markov-chains-in-r/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29 
+
 
 ******************************************************************************************
 
