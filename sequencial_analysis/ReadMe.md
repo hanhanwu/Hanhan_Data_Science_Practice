@@ -14,6 +14,8 @@ TIME SERIES CONCEPTS
     * First of all, what makes data non-stationary
       * <b>Trend</b>: Varying mean over the time. If you see the data is increasing along the time, off course the mean is increasing too
       * <b>Seasonality</b>: Variance at specific time frame. For example, sales of ice-cream in summer is much more than winter.
+    * Why need stationary data
+      * I guess it's because, after removing the trend and seasonality, it is easier to make forecast. After the forecast, you can add the trend and seasonality back
     * Check Stationary - Plotting Rolling Statistics
       * Check <b>moving average</b> or <b>moving variance</b>, to see whether they are changing alog the time
     * Check Stationary - Dickey-Fuller Test
