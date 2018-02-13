@@ -16,13 +16,7 @@ data analysis, big data development, cloud, and any other cool things!
   * <b>Note</b>: When you are running a big job through terminal command line, and want to stop the job before it finished execution, press `Control + C`, this is very helpful, trust me 
 * How to run Spark through terminal command line
   * Download Spark here: https://spark.apache.org/downloads.html
-  * Unpack that somewhere you like. Set an environment variable so you can find it easily later (CSH and BASH versions):
-
-
-`setenv SPARK_HOME /home/you/spark-1.5.1-bin-hadoop2.6/`
-
-
-`export SPARK_HOME=/home/you/spark-1.5.1-bin-hadoop2.6/`
+  * Unpack that somewhere you like. Set an environment variable so you can find it easily later (CSH and BASH versions): `setenv SPARK_HOME /home/you/spark-1.5.1-bin-hadoop2.6/`, `export SPARK_HOME=/home/you/spark-1.5.1-bin-hadoop2.6/`
   * Then `${SPARK_HOME}/bin/spark-submit --master local [your code file path] [your large data file path as input, this one only exist when you have sys.argv[1]]`
 
 
@@ -31,7 +25,6 @@ data analysis, big data development, cloud, and any other cool things!
   * Oracle Scueduler Official: http://docs.oracle.com/cd/E11882_01/server.112/e25494/scheduse.htm#ADMIN034
   * Oracle Scueduler StackOverflow: http://stackoverflow.com/questions/12212147/best-way-to-run-oracle-queries-periodically
   * Oracle Time Zones: https://docs.oracle.com/cd/B13866_04/webconf.904/b10877/timezone.htm
-
   * My experience about using PowerShell to automate Hadoop Hive query (HQL): That was a lot of pain. Hive is already more difficult to use than SQL/TSQL because it has less functions. Then, when you need to embed HQL in PowerShell, my godness, it made my life more difficult, especially when the data was gigantic and each time when you need to make a tiny change, all the testing time could force you to work overtime... After finishing that work, I have realized, how good our relational database is and how smart Spark SQL is!
 
 
@@ -215,6 +208,14 @@ PYTHON PRACTICE
 
 * RGF
   * reference: https://www.analyticsvidhya.com/blog/2018/02/introductory-guide-regularized-greedy-forests-rgf-python/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+  * RGF vs. Gradient Boosting
+    * Boosting add weights to misclassified observations for next base algorithm, in each iteration. RGF changes forest structure by one step to minimize the logloss, and also adjust the leaf weights for the entire forest to minimize the logloss, in each iteration
+    * RGF searches optimum structure changes
+      * The search is within the newly created k trees (default k=1), otherwise the computation can be expensive
+      * Also for computational efficiency, only do 2 types of operations:
+        * split an existing leaf node
+        * create a new tree
+      * With the weights of all leaf nodes fixed, it will try all possible structure changes and find the one with lowest logloss
 
 
 ********************************************
