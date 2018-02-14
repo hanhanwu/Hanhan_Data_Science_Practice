@@ -203,7 +203,7 @@ PYTHON PRACTICE
     * But it's fast! You can also set multi-threading in a very easy way. Check its documentation.
   * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Factorization_Machines.ipynb
     * My code is better than reference
-  * Reference: https://www.analyticsvidhya.com/blog/2018/01/factorization-machines/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+  * Reference: https://www.analyticsvidha.com/blog/2018/01/factorization-machines/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
   
 
 * RGF
@@ -216,6 +216,11 @@ PYTHON PRACTICE
         * split an existing leaf node
         * create a new tree
       * With the weights of all leaf nodes fixed, it will try all possible structure changes and find the one with lowest logloss
+    * Weights Optimization
+      * After every 100 new leaf nodes added, the weights for all nodes will be adjusted. k=100 by default
+      * When k is very large, it's similar to adjust weights at the end; when k is very small, it can be computational expensive since it's similar to adjust all nodes' weights after each new leaf node added
+    * It doesn't need to set `tree size`, since it is determined through logloss minimizing process, automatically. What you can set is `max leaf nodes` and regularization as L1 or L2
+    * RGF may has simpler model to train, compared with boosting methods, since boosting methods require small learning rate and large amount of estimators
 
 
 ********************************************
