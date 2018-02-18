@@ -207,7 +207,10 @@ PYTHON PRACTICE
   
 
 * RGF
+  * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/try_RGF.ipynb
+    * Looks like the evaluation result is, too bad, even with Grid Search Cross Validation
   * reference: https://www.analyticsvidhya.com/blog/2018/02/introductory-guide-regularized-greedy-forests-rgf-python/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+    * It's missing code in the reference and it's lack of evaluation step
   * RGF vs. Gradient Boosting
     * Boosting add weights to misclassified observations for next base algorithm, in each iteration. RGF changes forest structure by one step to minimize the logloss, and also adjust the leaf weights for the entire forest to minimize the logloss, in each iteration
     * RGF searches optimum structure changes
