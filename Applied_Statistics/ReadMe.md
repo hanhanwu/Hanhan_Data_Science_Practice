@@ -26,6 +26,12 @@
 <b>Practice Code</b>
 
 * [My Code - Chapter 1][1]
+* [My Code - Chapter 2][2]
+  * In this chapter, the author only mentioned Count & Probability to create histograms. In my code, you will see 4 types:
+    * Type 1 - Count & Probability for Discrete variable
+    * Type 2 - Equal Bin Size, Count & Probability for Continuous variable
+    * Type 3 - Normalized Count for Discrete variable
+    * Type 4 - Equal Bin Size, Normalized Count for Continuous variable
 
 ********************************************************************************
 
@@ -42,3 +48,4 @@
     * For example, it's 38th week now, and you want to know the probability of a born to be born next week (39th week). To calculate this probability, you can just check 39th week to 45th week numbers, and calculate the probability among them, instead of calculating the probability among 1st week to 45th week. I know, it sounds so simple....
 
 [1]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/thinkstats_chapter1.ipynb
+[2]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/thinkstats_chapter2.ipynb
