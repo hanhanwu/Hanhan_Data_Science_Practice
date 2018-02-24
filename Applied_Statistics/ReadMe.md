@@ -50,8 +50,10 @@
   * PMF (Probability Mass Function): maps values to probabilities in representing the distribution.
     * For discrete values, you count each value, and map the count to probability
     * For continuous values, you define bins, and drop each value into a bin, finally map the bin drop count to probability
+      * The binning here is to divide continuous values into bins
   * CDF (Cumulative Distribution Function): maps value to their percentile rank in the distribution.
     * For both discrete and continuous values, a value can be mapped to percentile. In this way, even later you need to do binning, it can be easier and more reliable. Otherwise, when you are decide bin sizes and number of bins, you won't know whether the data can distribute well
+    *  The binning here is to divide percentile values into bins
 
 [1]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/thinkstats_chapter1.ipynb
 [2]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/thinkstats_chapter2.ipynb
