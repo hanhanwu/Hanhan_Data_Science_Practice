@@ -46,6 +46,10 @@
 * Conditional Probability
   * We all know it means the probability under a certain condition, but I didn't think too much about its practical use
     * For example, it's 38th week now, and you want to know the probability of a born to be born next week (39th week). To calculate this probability, you can just check 39th week to 45th week numbers, and calculate the probability among them, instead of calculating the probability among 1st week to 45th week. I know, it sounds so simple....
+* PMF vs 
+  * PMF (Probability Mass Function): maps values to probabilities in representing the distribution. Imagine, the distribution formed by bins.
+    * Binning is good but hard to get bin size right, if you want to smooth out the bins, you may also smooth out useful information
+  * CDF (Cumulative Distribution Function)
 
 [1]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/thinkstats_chapter1.ipynb
 [2]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/thinkstats_chapter2.ipynb
