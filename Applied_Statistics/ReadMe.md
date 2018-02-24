@@ -49,7 +49,8 @@
 * PMF vs 
   * PMF (Probability Mass Function): maps values to probabilities in representing the distribution. Imagine, the distribution formed by bins.
     * Binning is good but hard to get bin size right, if you want to smooth out the bins, you may also smooth out useful information
-  * CDF (Cumulative Distribution Function)
+  * CDF (Cumulative Distribution Function): maps value to their percentile rank in the distribution.
+    * That is to say, PMF counts each value and convert to probability, but CDF counts the number of values there are no more than `<=` current value and convert to [0,1] range. This is how percentile works, check how many values are no more than a value
 
 [1]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/thinkstats_chapter1.ipynb
 [2]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/thinkstats_chapter2.ipynb
