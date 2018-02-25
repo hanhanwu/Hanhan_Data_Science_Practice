@@ -59,14 +59,24 @@
     * For discrete values, you count each value, and map the count to probability
     * For continuous values, you define bins, and drop each value into a bin, finally map the bin drop count to probability
       * The binning here is to divide continuous values into bins
-  * CDF (Cumulative Distribution Function): maps value to their percentile rank in the distribution, the function is a continuous function instead of a step function.
+  * CDF (Cumulative Distribution Function): maps value to their percentile rank in the distribution, the function is a <b>continuous function</b> instead of a step function.
     * For both discrete and continuous values, a value can be mapped to percentile. In this way, even later you need to do binning, it can be easier and more reliable. Otherwise, when you are decide bin sizes and number of bins, you won't know whether the data can distribute well
     *  The binning here is to divide percentile values into bins, then plot with a <b>continuous function</b>
     * Percentile indicates how many values (in percentage) are no more than the current value. For example, if a number ranked at 90% percentile, it means there are 90% values no more than this number
   * For percentile, we also know IQR = 75% Percentile - 25% Percentile = Q3-Q1
     * Normally, outliers are below Q1-1.5* IQR, or higher than Q4+1.5*IQR. But in practice, 1.5 may remove more useful data. You need to decide this value based on the real situation
   * Knowing the distribution, you can also do data sampling
-    
+* Different CDF Distributions
+  * Exponential Distribution
+    * `CDF(x) = 1- exp(-lambda*x)`
+      * lambda decides the distribution shape
+      * `mean=1/lambda`, is the mean of the distribution
+      * `median=ln(2)/lambda`, is the median of the distribution
+    * This method often used in time series. <b>x-axis means the time interval between events</b>, y-axis is the counts of events that happened in a time interval.
+      * For example, x-axis show time interval between 77 and 99 minutes, y-axis counts how many events happened in 77 mins time interval with each of other events, how many events happened in 7 mins time interval with each of other events, etc.
+      * <b>If all the events are equally likely to occur at any time, the distribution should be exponential distribution</b>, x is the time interval, y is the event counts at each time interval
+    * `CCDF = exp(-lambda*x)`, is the complementary of CDF
+    * Some plot looks like exponential distribution, but may not be. <b>To prove whether it is exponential distribution</b>, you can take natural log of y and see whether you can get a straight line, because `log(y)=-lambda*x`
 
 [1]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/thinkstats_chapter1.ipynb
 [2]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/thinkstats_chapter2.ipynb
