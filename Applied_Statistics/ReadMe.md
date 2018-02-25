@@ -72,8 +72,8 @@
       * lambda decides the distribution shape
       * `mean=1/lambda`, is the mean of the distribution
       * `median=ln(2)/lambda`, is the median of the distribution
-    * This method often used in time series. <b>x-axis means the time interval between events</b>, y-axis is the counts of events that happened in a time interval.
-      * For example, x-axis show time interval between 77 and 99 minutes, y-axis counts how many events happened in 77 mins time interval with each of other events, how many events happened in 7 mins time interval with each of other events, etc.
+    * This method often used in time series. <b>x-axis means the time interval between events</b>, y-axis is the percentile of the count of events that happened in a time interval.
+      * For example, x-axis show time interval between 77 and 99 minutes, y-axis shows the percentile of the count of, how many events happened in 77 mins time interval with each of other events, how many events happened in 7 mins time interval with each of other events, etc.
       * <b>If all the events are equally likely to occur at any time, the distribution should be exponential distribution</b>, x is the time interval, y is the event counts at each time interval
     * `CCDF = exp(-lambda*x)`, is the complementary of CDF
     * Some plot looks like exponential distribution, but may not be. <b>To prove whether it is exponential distribution</b>, you can take natural log of y and see whether you can get a straight line, because `log(y)=-lambda*x`
