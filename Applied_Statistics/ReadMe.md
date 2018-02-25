@@ -33,8 +33,9 @@
     * Type 3 - Normalized Count for Discrete variable
     * Type 4 - Equal Bin Size, Normalized Count for Continuous variable
 * [My Code - Chapter 3][3]
-  * In this chapter, it's majorly about CDF, another distribution funtion, which maps values to percentile. Compared with PMF in Chapter 2, PMF maps values to probability.
-  * The code here is using 3 methods to plot percentile and the count. Although percentile may be more reliable to do binning, in the case here when comparing the distribution of pregency length between first born and other born, small equal bin size (step method) plots better results than customized bins
+  * In this chapter, it's majorly about CDF, another distribution funtion, which maps values to percentile. Compared with CDF in Chapter 2, PMF maps values to probability.
+  * The code here is using 3 methods to plot percentile and the count. Although percentile may be more reliable to do binning, in the case here when comparing the distribution of pregency length between first born and other born, very small equal bin size (step method) plots better results than customized bins
+    * Here you may get confused why I can use `step()` frunction to plot CDF because CDF should generate continuous distribution, which is the opposite to step distribution. But the step function here is using very small bins which finally formed a continuous looks
   * It also proves python random methods tend to be uniform distribution
     * Python generate uniform distributed random numbers: `random.uniform(min,max)`
     * Python generate random values from a list with replacement: `random.choice(lst)`
@@ -58,9 +59,9 @@
     * For discrete values, you count each value, and map the count to probability
     * For continuous values, you define bins, and drop each value into a bin, finally map the bin drop count to probability
       * The binning here is to divide continuous values into bins
-  * CDF (Cumulative Distribution Function): maps value to their percentile rank in the distribution.
+  * CDF (Cumulative Distribution Function): maps value to their percentile rank in the distribution, the function is a continuous function instead of a step function.
     * For both discrete and continuous values, a value can be mapped to percentile. In this way, even later you need to do binning, it can be easier and more reliable. Otherwise, when you are decide bin sizes and number of bins, you won't know whether the data can distribute well
-    *  The binning here is to divide percentile values into bins
+    *  The binning here is to divide percentile values into bins, then plot with a <b>continuous function</b>
     * Percentile indicates how many values (in percentage) are no more than the current value. For example, if a number ranked at 90% percentile, it means there are 90% values no more than this number
   * For percentile, we also know IQR = 75% Percentile - 25% Percentile = Q3-Q1
     * Normally, outliers are below Q1-1.5* IQR, or higher than Q4+1.5*IQR. But in practice, 1.5 may remove more useful data. You need to decide this value based on the real situation
