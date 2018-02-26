@@ -67,7 +67,7 @@
     * Normally, outliers are below Q1-1.5* IQR, or higher than Q4+1.5*IQR. But in practice, 1.5 may remove more useful data. You need to decide this value based on the real situation
   * Knowing the distribution, you can also do data sampling
 * Different CDF Distributions
-  * Exponential Distribution
+  * <b>Exponential Distribution</b>
     * `CDF(x) = 1- exp(-lambda*x)`
       * lambda decides the distribution shape
       * `mean=1/lambda`, is the mean of the distribution
@@ -77,6 +77,15 @@
       * <b>If all the events are equally likely to occur at any time, the distribution should be exponential distribution</b>, x is the time interval, y is the event counts at each time interval
     * `CCDF = exp(-lambda*x)`, is the complementary of CDF
     * Some plot looks like exponential distribution, but may not be. <b>To prove whether it is exponential distribution</b>, you can take natural log of y and see whether you can get a straight line, because `log(y)=-lambda*x`
+  * <b>Pareto Distributon</b>
+    * Power Law distribution, 80-20 distribution
+    * Originally, the economist Pareto used this distribution to describe 80 percent wealthy were held in 20% population. Later this has been used in many phenomenons to describe majority something are owned by a small percentage population
+    * `CDF(x) = 1- pow(x/xm, -alpha)`, xm is the minimum possible value
+    * `CCDF(x) = pow(x/xm, -alpha)`
+  * <b>Normal Distribution</b>
+    * CDF with normal distribution
+    ![cdf with normal distribution](https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/cdf_normal.png)
+      * μ is mean, δ is standard deviation
 
 [1]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/thinkstats_chapter1.ipynb
 [2]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/thinkstats_chapter2.ipynb
