@@ -40,6 +40,13 @@
     * Python generate uniform distributed random numbers: `random.uniform(min,max)`
     * Python generate random values from a list with replacement: `random.choice(lst)`
     * Python generate random values from a list without replacement: `random.sample(lst, num_of_values)`
+* [My Code - Chapter 4][4]
+  * Python methods to generate random values based on different CDF continuous function
+  * Plot different CDF
+  * Mehtods to tell whether a certain dataset satisfy a certain distribution
+  * Knowing CDF continuous function formula, we can also generate random numbers based on a certain distribution,
+but it's easier to use pyton built-in functions
+
 
 ********************************************************************************
 
@@ -86,7 +93,36 @@
     * CDF with normal distribution
     ![cdf with normal distribution](https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/cdf_normal.png)
       * μ is the mean, σ is the standard deviation
+  * <b>Lognormal Distribution</b>
+    * log each value from a notmal distribution
+* Frequentism vs Bayesianism
+  * Frequentism are people who defines probability based on frequency, but for things dind't happen before, they put the probability as 0, which won't work well in random case or unpredictable case. Bayesianism are people who will give whatever event a probability, but they can be subjective.
+  * Let's review some probability formulas
+    * `P(A and B) = P(A)*P(B)`, only when A, B are independent
+    * `P(A|B) = P(B|A) = 0`, mutally exclusive
+    * `P(A or B) = P(A) + P(B)`, either event
+    * In general, `P(A or B) = P(A) + P(B) - P(A and B)`
+    * `P(H|E) = P(H)*P(E|H)/P(E)`, Bayes's theorem
+      * It describes how the probability of a hypothesis gets updated over time
+      * P(H) is prior probability, P(H|E) is posterior
+      * P(E|H) is the likelihood of the evidence, means the probability of the evidence conditioned on a hypothesis
+      * P(E) is normalizing constant, used to normalize the result to a probability
+  * Monty Hall - In a word, you choose switch has 2/3 probability, you choose stick has 1/3 probability, because the host knows where is the car. 
+  * Poincare - Well, what I have learned is, don't sell bread to a statistician
+  * <b>Compare variability - coefficient of variation</b>
+    * Conefficient of Variation = `σ/μ`. When 2 groups have different mean, you can use this value to compare the variance
+  * Binomial Distribution
+    * For example, in each trail, you choose a value between 0 and 100, and you want to know the chance of getting k 7s in n trails
+    * Binomial Distribution `PMF(k) = binomial_coefficient * pow(p,k) * pow((1-p), n-k)`
+      * Binomial Coefficient is read as "n choose k" = `n!/(k!*(n-k)!)`
+      * n is total number of trails, k is the number of event you want to track, p is the probability of the event in each trail
+ * Monte Carlo
+   * Calculate probability by simulating random process
+   * Strength: easy and fast to write a simulation without knowing too much about probability
+   * Weakness: When calculating rare event probability, it can take very long time
+ * Texas Sharpshooter Fallacy is an informal fallacy which is committed when differences in data are ignored, but similarities are stressed
 
 [1]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/thinkstats_chapter1.ipynb
 [2]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/thinkstats_chapter2.ipynb
 [3]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/thinkstats_chapter3.ipynb
+[4]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/thinkstats_chapter4.ipynb
