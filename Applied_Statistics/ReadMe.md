@@ -121,12 +121,30 @@ but it's easier to use pyton built-in functions
   * Strength: easy and fast to write a simulation without knowing too much about probability
   * Weakness: When calculating rare event probability, it can take very long time
 * Texas Sharpshooter Fallacy is an informal fallacy which is committed when differences in data are ignored, but similarities are stressed
-* Skewness
+* Skewness - measures how asymmetric the distribution is
   * "Skew Left" means the distribution extends farther to left than right
     * Extreme values have more effect on mean, so when a distribution skews left, its mean is less than median
   * <b>Pearson's median skewness coefficient</b> also measures skewness
     * `3*(mean-median)/σ`, σ is standard deviation
     * It's robust which means, it's less vulnerable to the outliers
+* Convolution - An operation that computes the distribution of the sum of values from 2 distributions
+* Central Limit Theorem
+  * If we add values drawn from normal distribution, the distribution of the sum is also normal
+  * If we add up values from other distributions, the sum does not have continuous distributionsmentioned above
+  * However, if we add up large number of values from any distribution, the distribution of the sum will converges to normal
+  * Contral Limit Theorem - If the distribution of the values has mean and standard deviation (μ, σ), the distribution of the sum is close to N(n*μ，n*pow(σ,2))
+  * Limitations
+    * Values have to be drawn independently
+    * Values have to come from the same distribution (this requirement can be relaxed)
+    * The distribution need to have finite mean and standard deviation, so distributions such as Pareto won't work
+    * The number of values you need before seeing convergence depends on the skewness of the distribtion
+* PMF, CDF, PDF
+  * PMF represents a DISCRETE set of values. From PMF to CDF, you just compute the cumulative sum. From CDF to PMF, you calculate the differences in cumulative probabilities
+    * In python, cumulative sum of a list is `numpy.cumsum(lst)`
+  * PDF is the derivative of CDF, CDF is the integral of PDF.
+    * PDF maps values to probability density, not probability. To get probability, you have to integrate
+  * If you divide a PDF into a set of bins, you can generate a PMF that is the approximation of the PDF -- a technique used in Bayesian estimation
+* Illusory Superiority: The tendency of people to imagine that they are better than the average
 
 [1]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/thinkstats_chapter1.ipynb
 [2]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/thinkstats_chapter2.ipynb
