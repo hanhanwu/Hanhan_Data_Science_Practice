@@ -160,6 +160,33 @@ but it's easier to use pyton built-in functions
     * The best way to decrease both false positive and false negative is, increase sample size
   * Test Statistic - measures total deviation, deviation means the difference between observed value and expected value. In a word, it's error function. Chi-square is a common choice for this measure
   * The author also mentioned Bayesian probability and likelihood ratio
+* Estimation
+  * Estimation is a process of inferring the params of a distribution from a sample.
+    * This sounds abstract. I like the way that the author describes in the book, for each exmaple, it starts with an estimation game.
+    * With estimation, you can estimate single value for a distribution from a sample - Point Estimate
+    * With estimation, you can also estimate an interval that contains true values for a distribution, and you also give the probability of this interval to tell how many times the true values will be in this interval among all the samples - Confidence Intervals
+  * Bayesian Estimation
+    * With this method, you can calculate the interval that contains the true value, with the given probability
+    * Basic Implementation Steps
+      * Make Uniform Suite - You have been given the upper and lower bound `[a,b]` for the value you need to estimate. With this step, you divide this range into equal sized bins
+        * The final confidence interval you wil get is narrower than this range
+        * You define the bin size yourself
+        * This is uniform because all the bins have the same prior probability
+      * Calculate Likelihood
+        * This should be the core, difference distributions have different likelihood calculation methods
+      * Update & Normalize
+        * With Prior probability and Likelihood, you can update posterio and normalize, just like Bayesian theorem
+      * With the given probability, such as 90%, you can use 5% & 95% percentiles as the confidence interval
+        * percentage = 90%
+        * `prob = (1-percentage)/2, confidence interval = [prob, 1-prob]`
+      * The author implemented 2 examples:
+        * Exponential Distribution: http://greenteapress.com/thinkstats/estimate.py
+        * Locomotive Problem: http://greenteapress.com/thinkstats/locomotive.py
+          * If there is enough evidence to swamp the priors, then all estimators tend to converge
+     * With Censored Data 
+       * When x is in a given condition
+       * Just replace your likelihood calculation method with given condition
+         * Such as for exponential distribution, your likelihood function is PDF, with censored data, just give the PDF a range of x
 
 [1]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/thinkstats_chapter1.ipynb
 [2]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/thinkstats_chapter2.ipynb
