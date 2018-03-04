@@ -145,6 +145,21 @@ but it's easier to use pyton built-in functions
     * PDF maps values to probability density, not probability. To get probability, you have to integrate
   * If you divide a PDF into a set of bins, you can generate a PMF that is the approximation of the PDF -- a technique used in Bayesian estimation
 * Illusory Superiority: The tendency of people to imagine that they are better than the average
+* <b>Hypothesis Testing</b>
+  * I was always wondering why did people chose those ways to define null hypothesis, and then how to calculate that p-value. Today I got the answer from this book.
+    * Alternative Hypothesis indicates an apparent effect will happen by chance. And therefore, null hypothesis indicates the apparent effect is not happened by chance. 
+    * Statistically Significant means an apparent effect is unlikely to happen by chance. When p-value is lower than threshold α, we accept null hypothesis, saying the apparent effect is statistically significant, which means it unlikely to happen by chance
+    * To calculate p-value, for example, you want to know how significant the DIFFERENCE between 2 groups is.
+      * You have 2 groups, Group1 has n observations while Group2 has m observations
+      * Calculate mean differnce between Group1 and Group2 as `δ`
+      * Then from each group, you choose same sized sample to form a pair. Generate 1000 sample pairs. For each sample pair you compute the difference in mean, and count how many mean differences in these 1000 sample pairs are >= δ. Such as now you have 177 mean difference >= δ, we can say p-value=0.177.
+      * You also have a threshold `α`. Such as α=18%, p-value is lower than this threshold, so we accept null hypothesis and it means the DIFFERENCE between the 2 groups is not by chance.
+      * In common practice, we choose α=10%, 5%, 1%
+  * Threshold α is also the probability of false positive (accepted null hypothesis while it's false)
+    * To decrease threshold, we can reduce the false positive, but it may also increase false negative (reject null hypothesis when it's true)
+    * The best way to decrease both false positive and false negative is, increase sample size
+  * Test Statistic - measures total deviation, deviation means the difference between observed value and expected value. In a word, it's error function. Chi-square is a common choice for this measure
+  * The author also mentioned Bayesian probability and likelihood ratio
 
 [1]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/thinkstats_chapter1.ipynb
 [2]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/thinkstats_chapter2.ipynb
