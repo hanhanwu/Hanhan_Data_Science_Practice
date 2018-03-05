@@ -1,6 +1,9 @@
 
 <b>Think Stats</b>
 * Download the book here: http://greenteapress.com/thinkstats/
+* [The book with my reading marks][6]
+
+* Greek Alphabet: https://en.wikipedia.org/wiki/Greek_alphabet
 
 ********************************************************************************
 
@@ -46,6 +49,10 @@
   * Mehtods to tell whether a certain dataset satisfy a certain distribution
   * Knowing CDF continuous function formula, we can also generate random numbers based on a certain distribution,
 but it's easier to use pyton built-in functions
+* [My Code - Chapter 9][5]
+  * Before you calculate any correlation, better to plot scatterplot to see whether there is linear or non-linear correlation. If it's non-linear, methods like pearson correlation won't work
+  * When the dataset you used has been rounded off and you may lose some info, you can try `jittering` to add random noise in the data, in order to reverse the effect caused by data rounded off
+  * For large amount of data, you can try hexbin to plot, it divides the graph into hexagonal bins and color each bin according to how many data points fall into it
 
 
 ********************************************************************************
@@ -187,8 +194,49 @@ but it's easier to use pyton built-in functions
        * When x is in a given condition
        * Just replace your likelihood calculation method with given condition
          * Such as for exponential distribution, your likelihood function is PDF, with censored data, just give the PDF a range of x
+* Correlation - The relationship between variables
+  * <b>Correlation is NOT Causation</b>, sounds simple to remember, but how many people never make this type of mistake?
+  * The challenges to measure correlation between 2 variables are: they have different units, and they may have different distributions
+    * Solution 1 - Transform all values into standard scores (Pearson Coefficent of correlation)
+      * `standard score z = (x-μ)/σ`, in this way, Z becomes dimensionless (no unit) and the distribution has 0 mean and variance 1
+      * If X is normally distributed, so does Z. If X is skewed or has outliers, so does Z. This is why Pearson Coefficient is not robust and only works well when the data is close to normal distribution. Using percentile ranks can be more robust
+    * Solution 2 - Transform values to percentile ranks (Spearman Coefficient)
+  * Covariance - Measures the tendency of 2 variables to vary together
+    * Deviation `dXi = Xi-μ`
+    * The product of deviations `dXi* dYi` will be positive when X, Y deviations have the same sign; negative when the deviations have the opposite sign
+    * Covariance `Cov(X, Y) = sum(dXi*dYi)/n`
+    * But covariance is difficult to interpret because its unit is the product of X unit and Y unit
+  * Pearson Correlation
+    * To solve the interpretatio problem caused by covariance, here comes correlation
+    * `pi = ((Xi - μx)/σx) * ((Yi - μy)/σy)`, the product of X, Y standard scores
+    * Pearson Correlation `ρ = sum(pi)/n = Cov(X, Y)/(σx*σy)`
+      * Its value is in range [-1,1]
+      * ρ=1 or -1 both indicate perfect correlation (from one variable can predict the other), one means positive correlation, the other is negative correlation
+      * <b>But Pearson Correlation only measures linear correlation, and the data should be roughly normally distributed, and not robust to outliers</b>
+      * For non-linear correlation, ρ can still be 0. So, a good practice is to plot scatter plot before calculating any correlation
+      * Correlation is NOT related to slope
+   * Spearman Correlation
+     * Spearman's rank correlation is an alternative that mitigates the effect of outliers and skew distributions
+       * First of all, you compute the rank of each value, or <b>apply a transform that makes the data more nearly normal</b>
+         * For example, if the data is close to lognormal, you can take the log of each value
+       * Then compute Pearson Correlation with the transformed data
+   * Linear Least Squares Fit
+     * Correlation measures the relationship between 2 variables, but NOT the slope. Linear Least Squares Fit can help
+     * "Linear Fit" is a line intended to model the relationship between variables; "Least Squares" minimize the mean squared error (MSE) between the line and the data
+       * Assume this line is `α + βx`
+       * Residual `εi = (α + βxi) - yi`
+     * Minimize the sum of squared residuals, `min(sum(pow(εi, 2)))`
+   * Goodness of fit - You want to know how good a linear model is, one way is to measure its predictive power
+     * Coefficient of Determination (R Square)
+       * `R Square = 1 - Var(ε)/Var(Y)`
+         * When you didn't know anything, you guess y_. `Var(Y) = pow((y_ - yi),2)/n`
+         * When you know the function for this linear model, you have `Var(ε) = pow((α + βxi - yi), 2)/n`
+         * e.g. When R Square is 0.79, it means it has reduces the MSE of your precitions by 79%
+       * For Linear Least Squares model, `R Square = pow(ρ,2)`
 
 [1]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/thinkstats_chapter1.ipynb
 [2]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/thinkstats_chapter2.ipynb
 [3]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/thinkstats_chapter3.ipynb
 [4]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/thinkstats_chapter4.ipynb
+[5]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/thinkstats_chapter9.ipynb
+[6]:https://github.com/hanhanwu/readings/blob/master/thinkstats.pdf
