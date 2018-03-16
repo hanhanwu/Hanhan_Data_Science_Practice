@@ -13,6 +13,7 @@ CONCEPTS & TERMINOLOGY
   * Frequent itemset mining
   * Rule Generation
     * All association rules must satisfy certain condistions (confidence), and the proportion of the dataset that they actually represent
+* Classification based on Frequent Pattern Mining
 
 
 *************************************************************
