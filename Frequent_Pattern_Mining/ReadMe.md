@@ -14,6 +14,16 @@ CONCEPTS & TERMINOLOGY
   * Rule Generation
     * All association rules must satisfy certain condistions (confidence), and the proportion of the dataset that they actually represent
 * Classification based on Frequent Pattern Mining
+  * Frequent patterns map data to a higher dimensional space. They capture more underlying semantics of the
+data, and thus can hold greater expressive power than single features.
+  * Through frequent pattern based classification, we are actually transformed the original feature space to a larger space, which may include the chance of including important features.
+  * Many of the frequent patterns generated in frequent itemset mining are indiscrimina- tive because they are based solely on support, without considering predictive power.
+  * The general framework for discriminative frequent pattern–based classification
+    * Feature Generation - partition the data according to the class label, discover frequent patterns that satisfy min support in each partition. The collected frequent patterns are feature candidates
+    * Feature Selection - Information gain, Fisher score, or other evaluation measures can be used for this step. Can also have relevancy checking to weed out redundant patterns
+    * Classification - Just apply classifiers
+  * DDPMine (direct discriminative pattern mining) directly mines the discriminative patterns and integrates feature selection into the mining framework. The theoretical upper bound on infor- mation gain is used to facilitate a branch-and-bound search, which prunes the search space significantly. Experimental results show that DDPMine achieves orders of mag- nitude speedup over the two-step approach without decline in classification accuracy.
+    * I cannot find any built-in library
 
 
 *************************************************************
