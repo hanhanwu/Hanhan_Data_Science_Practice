@@ -1,7 +1,12 @@
 
-<b>Think Stats</b>
-* Download the book here: http://greenteapress.com/thinkstats/
-* [The book with my reading marks][6]
+<b>Resources</b>
+
+* Think Stats
+  * Download the book here: http://greenteapress.com/thinkstats/
+  * [The book with my reading marks][6]
+  
+* Graphical Analytics: https://www.itl.nist.gov/div898/handbook/eda/section3/eda33.htm
+  * Its explain, sample, questions a plot can answer, etc. are all pretty good!
 
 * Greek Alphabet: https://en.wikipedia.org/wiki/Greek_alphabet
 
