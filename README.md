@@ -226,6 +226,17 @@ PYTHON PRACTICE
     * RGF may has simpler model to train, compared with boosting methods, since boosting methods require small learning rate and large amount of estimators
 
 
+* Regression Spline
+  * Still, EXPLORE DATA first, when you want to try regression, check independent variables (features) and dependent variable (label) relationship first to see whether there is linear relationship
+  * Linear Regression, a linear formula between X and y, deals with linear relationship; Polynomial Regression converts that linear formula into a polnomial one, and it can deal with non-linear relationship.
+  * When we increase the power value in polynomial regression, it will be easier to become over-fitting. Also with higher degree of polynomial function, the change of one y value in the training data can affect the fit of data points far away (non-local problem). 
+  * Regression Spline (non-linear method)
+    * It's trying to overcome the problems in polynomial regression
+    * It divides the dataset into multiple bins, and fits each bin with lower models
+  ![regression spline](https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/regression_spline_knots.png)
+    * Points where the division occurs are called "Knots". The function used for each bin are known as "Piecewise function"
+  
+
 ********************************************
 
 DIMENSION REDUCTION
