@@ -237,6 +237,19 @@ PYTHON PRACTICE
     * Points where the division occurs are called "Knots". The function used for each bin are known as "Piecewise function". More knots lead to the more flexible piecewise functions. When there are k knots, we will have k+1 piecewise functions.
     * Piecewise Step Functions: having a function remains constant at each bin
     * Piecewise Polynomials: each bin is using a lower degree polynomial function to fit. You can consider Piecewise Step Function as Piecewise Polynomials with degree as 0
+    * A piecewise polynomial of degree m with m-1 continuous derivates is a "spline". This means:
+      * Continuous plot at each knot
+      * derivates at each knot are the same
+      * Cubic and Natural Cubic Splines
+        * You can try Cubic Spline (polinomial function has degree=3) to add these constraints so that the plot can be more smooth. Cubic Spline has k knots with k+4 degree of freedom (this means there are k+4 variables are free to change)
+        * Boundrary knots can be unpredictable, to smooth them out, you can use Natural Cubic Spline
+    * Choose the number and locations of knots
+      * Option 1 - Place more knots in places where we feel the function might vary most rapidly, and to place fewer knots where it seems more stable
+      * Option 2 - cross validation to help decide the number of knots:
+        * remove a portion of data
+        * fit a spline with x number of knots on the rest of the data
+        * predict the removed data with the spline, choose the k with the smallest RMSE
+    * Another method to produce splines is called “smoothing splines”. It works similar to Ridge/Lasso regularisation as it penalizes both loss function and a smoothing function
   
 
 ********************************************
