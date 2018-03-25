@@ -231,10 +231,12 @@ PYTHON PRACTICE
   * Linear Regression, a linear formula between X and y, deals with linear relationship; Polynomial Regression converts that linear formula into a polnomial one, and it can deal with non-linear relationship.
   * When we increase the power value in polynomial regression, it will be easier to become over-fitting. Also with higher degree of polynomial function, the change of one y value in the training data can affect the fit of data points far away (non-local problem). 
   * Regression Spline (non-linear method)
-    * It's trying to overcome the problems in polynomial regression
-    * It divides the dataset into multiple bins, and fits each bin with lower models
+    * It's trying to overcome the problems in polynomial regression. When we apply a polynomial function to the whole dataset, it may impose the global data structure, so how about fit different portion of data with different functions
+    * It divides the dataset into multiple bins, and fits each bin with different models
   ![regression spline](https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/regression_spline_knots.png)
-    * Points where the division occurs are called "Knots". The function used for each bin are known as "Piecewise function"
+    * Points where the division occurs are called "Knots". The function used for each bin are known as "Piecewise function". More knots lead to the more flexible piecewise functions. When there are k knots, we will have k+1 piecewise functions.
+    * Piecewise Step Functions: having a function remains constant at each bin
+    * Piecewise Polynomials: each bin is using a lower degree polynomial function to fit. You can consider Piecewise Step Function as Piecewise Polynomials with degree as 0
   
 
 ********************************************
