@@ -10,6 +10,7 @@ RESOURCES
 * Database
   * ImageNet: http://www.image-net.org
     * Here, you can download images in different format
+  * 25 Open Datasets: https://www.analyticsvidhya.com/blog/2018/03/comprehensive-collection-deep-learning-datasets/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
 * Standford CNN for visual Recognition lectures: http://cs231n.stanford.edu/syllabus.html
   * I think, once you started to learn deep learning, you will really feel it's so deep to learn....
   * My notes: https://github.com/hanhanwu/Hanhan_Data_Science_Resources2/blob/master/Standford_CNN_Notes1.pdf
