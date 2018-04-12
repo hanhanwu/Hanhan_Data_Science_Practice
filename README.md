@@ -250,6 +250,8 @@ PYTHON PRACTICE
         * fit a spline with x number of knots on the rest of the data
         * predict the removed data with the spline, choose the k with the smallest RMSE
     * Another method to produce splines is called “smoothing splines”. It works similar to Ridge/Lasso regularisation as it penalizes both loss function and a smoothing function
+  * My Code [R Version]: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/learn_splines.R
+  ![regression splies R](https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/regression%20splines.png)
   
 
 ********************************************
