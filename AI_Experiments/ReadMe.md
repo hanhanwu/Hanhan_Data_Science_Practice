@@ -378,7 +378,7 @@ EXPERIMENTS
 * Recurrent Neural Network (RNN)
   * <b>The difference between RNN and basic neural network:</b> As we all know, a basic neural network has 1 input layer, 1 output layer plus 1 or more hidden layer. Also a neural network only stores the input and output for a layer each step. The difference in RNN is, it only has a recurrent layer between the input layer and the output layer, this recurrent layer is similar to multiple hidden layers in a basic neural network. But it can store the state of a previous input and combines with the current input, so it keeps some relationship between previous and current input
   * It can be one time step or multiple time steps
-  * It also has Forward Propagation & backward Propagation
+  * It also has Forward Propagation & Backward Propagation
   * How to to backward propagation in RNN
     * The <b>cross entropy error</b> is first computed using the current output and the actual output
     * Remember that the network is unrolled for all the time steps
@@ -386,6 +386,22 @@ EXPERIMENTS
     * Now that the weight is the same for all the time steps the gradients can be combined together for all time steps
     * The weights are then updated for both recurrent neuron and the dense layers
   * Here, "unrolled network" looks just like basics neural network, and the backpropagation here is similar to basic neural network but it combines the gradients of error for all time steps
+  * <b>Vanishing Gradient</b>
+    * Examples: "Baby Emmanuel, who loves eating vegetables and cares about animals, ______ (don't or doesn't) like pork"
+    * In the example, whether the blank should be filled with "don't" or "doesn't" depends on subject "Baby Emmanuel", however it's far away from the the blank. Neural networks suffer from Vanishing Gradient tend to miss out relations between words which are far away from each other
+    * LSTM, GRU are the architectures of RNN that can solve the issue of vanishing gradient.
+  * GRU (Gated Recurrent Unit)
+    * [GRU Mathematical Concept][8]
+      * Hidden state for example "who loves eating vegetables and cares about animals"
+      * RNN modifies hidden states, GRU simply give a bypass option to hidden state. So in the above "Baby Emmanuel" example, it can ignore the hidden state, and correctly fill in "doesn't"
+  * Because most of RNN practice are sequential analysis, I put the code here: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/tree/master/sequencial_analysis
+    * Check those sections start with "RNN - "
+  * LSTM
+    * LSTM is supposed to perform better than GRU in sentences with long dependencies. It has more params and therefore requires longer time to train.
+    * LSTM has forget gate to control how much previous info will be sent to the next cell, whereas GRU exposes its entire memory to the next cell
+    * Controlling the hidden state that is moving forward to the next cell can give us complete control of all gates in the next cell.
+    * [LSTM Mathematical Concept Difference with GRU][8]
+  * Both GRU and LSTM understand a text from left to right, sometimes you need to read to the right side and go back to the left side, this requires to add "Bidirectional" into RNN
     
     
 * Resources I didn't work on
@@ -420,3 +436,4 @@ RELAVANT PAPERS & NEWS
 [5]:https://www.analyticsvidhya.com/blog/2016/04/deep-learning-computer-vision-introduction-convolution-neural-networks/?lipi=urn%3Ali%3Apage%3Ad_flagship3_feed%3BxPn6EhynRquw3Evzrg79RA%3D%3D
 [6]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/digital_recognition_Keras.ipynb
 [7]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/image_recognition_Keras_level2.ipynb
+[8]https://www.analyticsvidhya.com/blog/2018/04/replicating-human-memory-structures-in-neural-networks-to-create-precise-nlu-algorithms/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
