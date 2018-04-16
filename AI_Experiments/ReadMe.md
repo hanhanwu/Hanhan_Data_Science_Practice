@@ -402,6 +402,15 @@ EXPERIMENTS
     * Controlling the hidden state that is moving forward to the next cell can give us complete control of all gates in the next cell.
     * [LSTM Mathematical Concept Difference with GRU][8]
   * Both GRU and LSTM understand a text from left to right, sometimes you need to read to the right side and go back to the left side, this requires to add "Bidirectional" into RNN
+  
+* Encoder-Decoder RNN Architecture
+  * Sequence to Sequence problem: <b>It takes a sequence as input and requires a sequence prediction as output</b>. Input length can be different from the output length.
+  * [Patterns for the Encoder-Decoder RNN Architecture][9]
+  * [Encoder-Decoder LSTM Implementation through Keras][10]
+    * "One or more LSTM layers can be used to implement the encoder model. The output of this model is a fixed-size vector that represents the internal representation of the input sequence. The number of memory cells in this layer defines the length of this fixed-sized vector."
+    * "One or more LSTM layers can also be used to implement the decoder model. This model reads from the fixed sized output from the encoder model."
+    * "The <b>RepeatVector</b> is used as an adapter to fit the fixed-sized 2D output of the encoder to the differing length and 3D input expected by the decoder."
+    * "The TimeDistributed wrapper allows the same output layer to be reused for each element in the output sequence."
     
     
 * Resources I didn't work on
@@ -428,7 +437,6 @@ RELAVANT PAPERS & NEWS
 
 
 
-
 [1]:https://stackoverflow.com/questions/45912124/python-keras-how-to-generate-right-image-dimension
 [2]:https://www.analyticsvidhya.com/blog/2015/12/started-graphlab-python/
 [3]:https://www.cs.toronto.edu/~kriz/cifar.html
@@ -437,3 +445,5 @@ RELAVANT PAPERS & NEWS
 [6]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/digital_recognition_Keras.ipynb
 [7]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/image_recognition_Keras_level2.ipynb
 [8]https://www.analyticsvidhya.com/blog/2018/04/replicating-human-memory-structures-in-neural-networks-to-create-precise-nlu-algorithms/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+[9]:https://machinelearningmastery.com/implementation-patterns-encoder-decoder-rnn-architecture-attention/
+[10]:https://machinelearningmastery.com/encoder-decoder-long-short-term-memory-networks/
