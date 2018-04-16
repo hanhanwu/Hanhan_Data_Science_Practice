@@ -104,7 +104,7 @@ TIME SERIES PRACTICE
   * Check Stationary & Make Data Stationary Reference: https://www.analyticsvidhya.com/blog/2016/02/time-series-forecasting-codes-python/
   * ARIMA Reference: https://machinelearningmastery.com/arima-for-time-series-forecasting-with-python/
   
-* [Python] Data Preprocessing for LSTM
+* [Python] RNN - Data Preprocessing for LSTM
   * This is another dataset, the data preprocessing to make data stationary here is better
   * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/try_LSTM_Experiment1.ipynb
   
@@ -144,7 +144,7 @@ TIME SERIES PRACTICE
   
 ******************************************************************************************
 
-LSTM
+RNN - LSTM
 
 * <b>LSTM</b>: The Long Short-Term Memory network, or LSTM network, is a recurrent neural network that is trained using Backpropagation Through Time and overcomes the vanishing gradient problem.
   * Instead of neurons, LSTM networks have <b>memory blocks</b> that are connected through layers.
