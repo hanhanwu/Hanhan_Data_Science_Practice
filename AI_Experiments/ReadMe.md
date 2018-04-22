@@ -223,6 +223,7 @@ RESOURCES
 * 2017 Projects/Development in AI/Machine Learning
   * https://www.analyticsvidhya.com/blog/2017/12/reminiscing-2017-defining-moments-and-future-of-data-science/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
   * Most of them are Deep Learning, some are really good to read, such as PassGAN
+* Sequence Model Use Cases: https://www.analyticsvidhya.com/blog/2018/04/sequence-modelling-an-introduction-with-practical-use-cases/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
 
 
 *****************************************************************
