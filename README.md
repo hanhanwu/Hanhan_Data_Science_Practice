@@ -411,6 +411,17 @@ TREE BASED MODELS
 
 GRAPH THEORY
 
+* Graph Theory with python networkx
+  * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/graph_theory_airlines.ipynb
+    * I found networkx Algorithms looks pretty good: https://networkx.github.io/documentation/stable/reference/algorithms/index.html
+    * Very easy to use, you can generate weighted dijkstra path through 1 function call, data input is also simple
+    * NOTE: Have to type `pip install --upgrade networkx` to install, otherwise you may not get the version with new functions used here
+  * reference: https://www.analyticsvidhya.com/blog/2018/04/introduction-to-graph-theory-network-analysis-python-codes/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+    * Degree Centrality – The first and conceptually the simplest Centrality definition. This is the number of edges connected to a node. In the case of a directed graph, we can have 2 degree centrality measures. Inflow and Outflow Centrality
+    * Closeness Centrality – Of a node is the average length of the shortest path from the node to all other nodes
+    * Betweenness Centrality – Number of times a node is present in the shortest path between 2 other nodes
+2. Closeness Centrality – Of a node is the average length of the shortest path from the node to all other nodes
+3. Betweenness Centrality – Number of times a node is present in the shortest path between 2 other nodes
 * Graph Lab for a basic Search Engine
   * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/try_GraphLab.ipynb
     * It took me so much time to install graph lab, finally I had to create a specific virtual environment, just for this tool
