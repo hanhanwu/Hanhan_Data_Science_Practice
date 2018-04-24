@@ -122,7 +122,7 @@ but it's easier to use pyton built-in functions
 * Monty Hall - In a word, you choose switch has 2/3 probability, you choose stick has 1/3 probability, because the host knows where is the car. 
 * Poincare - Well, what I have learned is, don't sell bread to a statistician
 * <b>Compare variability - coefficient of variation</b>
-  * Conefficient of Variation = `σ/μ`. When 2 groups have different mean, you can use this value to compare the variance
+  * Conefficient of Variation = `σ/μ`. When 2 groups have different mean, you can use this value to compare the variance
 * Binomial Distribution
   * For example, in each trail, you choose a value between 0 and 100, and you want to know the chance of getting k 7s in n trails
   * Binomial Distribution `PMF(k) = binomial_coefficient * pow(p,k) * pow((1-p), n-k)`
