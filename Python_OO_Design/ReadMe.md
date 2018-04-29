@@ -17,7 +17,15 @@ When I say "summer desserts", it's not any fancy pyton module, or anything like 
   * Python `abc` class, from where you can get `abstractclass`: https://www.python-course.eu/python3_abstract_classes.php
   * abstract class, abstract method tutorial: https://jeffknupp.com/blog/2014/06/18/improve-your-python-python-classes-and-object-oriented-programming/
   
-  
+ 
+*************************************************************************************
+
+DESIGN PATTERNS
+
+* [Design Patterns with simple graph & code example][4]
+
+
 [1]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Python_OO_Design/basic_design_summer_dessert/summer_dessert.py  
 [2]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Python_OO_Design/basic_design_summer_dessert/summer_dessert_children.py
 [3]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Python_OO_Design/basic_design_summer_dessert/customer.py
+[4]:http://www.oodesign.com/
