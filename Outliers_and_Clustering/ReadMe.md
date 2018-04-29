@@ -32,6 +32,12 @@ PRACTICE CODE
     * NOTE: TPOT is built on scikit-learn. This is a regression problem, validation is using k-fold as default just like scikit-learn; if it's a classification problem, it will be stratified k-fold in order to distribution classes to each sample in almost the same percent
   * reference: https://www.analyticsvidhya.com/blog/2017/09/pseudo-labelling-semi-supervised-learning-technique/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
     * The code in this article is too complex, I'm not referencing it at all
+    
+* Subspace Clustering
+  * It focuses on localized clustering, used to help remove items that do not belong to the cluster
+  * This time, I tried R Notebook: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Outliers_and_Clustering/try_subsapce_clustering.Rmd
+  * It will generate a html file: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Outliers_and_Clustering/try_subsapce_clustering.nb.html
+    * It seems that GitHub cannot show the output directly. Meanwhile, the plot in this code is dynamic, it can be seen and interact with in R studio, but won't be shown in the R notebook
 
 *********************************************************************************
 
