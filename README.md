@@ -427,7 +427,7 @@ GRAPH THEORY
     * It took me so much time to install graph lab, finally I had to create a specific virtual environment, just for this tool
     * "Turi is a graph-based, high performance, distributed computation framework written in C++" -- From GraphLab
   * refernece: https://www.analyticsvidhya.com/blog/2016/06/quick-guide-build-recommendation-engine-python/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
-    * It's using GraphLab to build for collaboration filtering model, and therefore forms a basic recommendation system
+    * It's using GraphLab to build for collaborative filtering model, and therefore forms a basic recommendation system
     
     
 ********************************************
