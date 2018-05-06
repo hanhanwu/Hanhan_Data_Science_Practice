@@ -430,6 +430,21 @@ GRAPH THEORY
     * It's using GraphLab to build for collaborative filtering model, and therefore forms a basic recommendation system
     
     
+* Graph Database with Neo4j
+  * How to install
+    * Download Neo4j server: https://neo4j.com/download/
+      * Extract the tar folder
+      * Go to extracted folder, in your terminal, type, `bin/neo4j-admin set-initial-password my_initial_password`
+        * NOTE: if this step failed, go to folder data, remove `data/dbms/auth` file, then try to set the password again
+      * Run the console by typing `./bin/neo4j console`
+      * Open Neo4j browser, http://localhost:7474/browser/, and type your initial password to connect
+      * At the top of the console, type `:play movies` and click "Run" button at the right side.
+      * Then you will see queries you can try, click the small "run" button at the left side of the query, run the query, and you can lean how to create the dataset, how to do graph search and other graph operations
+      * `Ctl + C` to stop
+  * I tried python code here: https://github.com/neo4j-examples/movies-python-bolt
+    * I'm not a big fan of this code, it's better to use Neo4j console to get familar with Cypher query language first
+    * `sudo pip install neo4j-driver`, if you want to run python
+    * `pip install Flask`, if you want to run python
 ********************************************
 
 ADVANCED TOOLS
