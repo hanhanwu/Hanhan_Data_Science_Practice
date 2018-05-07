@@ -355,13 +355,6 @@ DATA PREPROCESSING
   * [tutorial 2][3] - data transformation, convert data into table and transform the data in table (such as sperate columns, format and generate new columns, etc.); export with DIY template; copy all the redo list to the new similar data file and finish automatic data transformation. It is using wiki text data as the example
   * [tutorial 3][4] - data enrich, fetch urls for the data by using web services such as those Google web services to generate new columns; add new data using Freebase Reconcilation Service to add more data for each row
  
- 
- 
- [1]:https://www.youtube.com/watch?v=B70J_H_zAWM
- [2]:http://www.padjo.org/tutorials/open-refine/clustering/#clustering-algorithms
- [3]:https://www.youtube.com/watch?v=cO8NVCs_Ba0
- [4]:https://www.youtube.com/watch?v=5tsyz3ibYzk
-
 
 ********************************************
 
@@ -445,6 +438,9 @@ GRAPH THEORY
     * I'm not a big fan of this code, it's better to use Neo4j console to get familar with Cypher query language first
     * `sudo pip install neo4j-driver`, if you want to run python
     * `pip install Flask`, if you want to run python
+  * [Neo4j Webinar][5]
+    * Neo4j is index-free adjacency, which means, without the index, through 1 node can find other nodes through adjacency relationship like what we can do in graph
+    * It has python sample.
 ********************************************
 
 ADVANCED TOOLS
@@ -519,3 +515,9 @@ OTHER
 * RDRToolbox - A R package for nonlinear dimensional reduction
   * How to install RDRToolbox: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/install_RDRToolbox.R
 
+
+[1]:https://www.youtube.com/watch?v=B70J_H_zAWM
+[2]:http://www.padjo.org/tutorials/open-refine/clustering/#clustering-algorithms
+[3]:https://www.youtube.com/watch?v=cO8NVCs_Ba0
+[4]:https://www.youtube.com/watch?v=5tsyz3ibYzk
+[5]:https://info.neo4j.com/WBCODWBRIntroducingNeo4j3.0_LP-Video.html?_ga=2.181131879.1575748286.1525582408-1956689004.1525582408
