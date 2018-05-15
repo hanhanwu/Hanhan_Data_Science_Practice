@@ -59,6 +59,12 @@ but it's easier to use pyton built-in functions
   * When the dataset you used has been rounded off and you may lose some info, you can try `jittering` to add random noise in the data, in order to reverse the effect caused by data rounded off
   * For large amount of data, you can try hexbin to plot, it divides the graph into hexagonal bins and color each bin according to how many data points fall into it
 
+* [Decay Rate & Decay Curve - My Code][7]
+  * We can use this time of curve to represent the decrease of the population along with the time increasing, or an exponential distribution with x increase y decreases
+  * In this code it has:
+    * mean time decay curve generation, given `x,y`. Python will fit the curve and generate `a,b,k` for you
+    * half life decay curbe generation, given `x,y`. Python will fit the curve and generate `a,b,k` for you
+    * Given y at mean_time or half_life, calculate the x at the point and calculate decay rate
 
 ********************************************************************************
 
@@ -238,6 +244,7 @@ but it's easier to use pyton built-in functions
          * When you know the function for this linear model, you have `Var(ε) = pow((α + βxi - yi), 2)/n`
          * e.g. When R Square is 0.79, it means it has reduces the MSE of your precitions by 79%
        * For Linear Least Squares model, `R Square = pow(ρ,2)`
+       
 
 [1]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/thinkstats_chapter1.ipynb
 [2]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/thinkstats_chapter2.ipynb
@@ -245,3 +252,4 @@ but it's easier to use pyton built-in functions
 [4]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/thinkstats_chapter4.ipynb
 [5]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/thinkstats_chapter9.ipynb
 [6]:https://github.com/hanhanwu/readings/blob/master/thinkstats.pdf
+[7]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/decay_rate.ipynb
