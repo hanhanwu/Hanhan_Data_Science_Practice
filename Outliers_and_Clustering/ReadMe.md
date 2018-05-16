@@ -13,6 +13,12 @@ LEARNING NOTES
 
 PRACTICE CODE
 
+* Select Optimal Number of Clusters
+  * Elbow Method
+    * Useful when the data can be well clustered
+    * Choose the point where the inside angle is the smallest
+    * reference: https://bl.ocks.org/rpgove/0060ff3b656618e9136b
+
 * BiClustering - HiCS vs LOF
   * Reference Tutorial (code is not formated): http://shahramabyari.com/2016/01/19/detecting-outliers-in-high-dimensional-data-sets/
   * Reference Code: https://github.com/shahramabyari/HiCS/blob/master/hcis.py
