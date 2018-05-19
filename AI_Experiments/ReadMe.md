@@ -96,6 +96,26 @@ RESOURCES
     * Always keep in mind that ReLU function should only be used in the hidden layers
     * As <b>a rule of thumb</b>, you can begin with using ReLU function and then move over to other activation functions in case ReLU doesn’t provide with optimum results
     
+* Hierarchical Temporal Memory (HTM) - Real Time Unsupervised Learning
+  * HTM replicates the functioning of the <b>Neocortex</b>, the component of real huan intelligence.
+    * Our brain majorly has 3 parts:
+      * Neocortex - major intelligence
+      * Limbic System - supports emotions
+      * Reptilian Complex - survival instincts, each as eating, sleeping
+    * Neocortex has many different regions, such as processing visual and audio, etc. But different region in the brain have similar cellar structure, indicating that our brain is trying to solve similar problems while processing all types of sensary data.
+      * Different regions are logically related to each other in a hierarchical structure.
+  * HTM vs Deel Learning
+  ![HTM vs Deep Learning](https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/HTM_vs_DeepLearning.png)
+  * When HTM outperforms other learning methods (all have to be satisfied)
+    * The input data is temporal
+      * A simple way to check whether the data is temporal, is to randomly shuffle the data and check whether the semantics has changed
+      * NOTE: checking temproal is not checking stationary, I think they are the opposite concepts
+    * Huge amount of data that needs online learning
+    * The data sources have different structures, such as images, audios
+    * Need the model to learn continuously
+    * Unsupervised Learning
+  * Reference: https://www.analyticsvidhya.com/blog/2018/05/alternative-deep-learning-hierarchical-temporal-memory-htm-unsupervised-learning/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+    
 * Deep Leaning for Computer Vision: https://www.analyticsvidhya.com/blog/2016/04/deep-learning-computer-vision-introduction-convolution-neural-networks/?lipi=urn%3Ali%3Apage%3Ad_flagship3_feed%3BxPn6EhynRquw3Evzrg79RA%3D%3D
   * Detailed analysis of activation functions
     * Sigmoid (not recommended for CNN)
