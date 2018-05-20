@@ -106,6 +106,10 @@ RESOURCES
       * Different regions are logically related to each other in a hierarchical structure.
   * HTM vs Deel Learning
   ![HTM vs Deep Learning](https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/HTM_vs_DeepLearning.png)
+    * layer 1 in the picture is like a getting simple neural network functionality with HTM (obviously with the added benefits of HTM)
+    * layer 2 in the picture is like a getting convolution neural network functionality with HTM
+    * layer 3 in the picture is like a getting reinforcement learning functionality with HTM
+    * layer 4 in the picture is like getting multiple CNNs to work with reinforcement learning and HTM
   * When HTM outperforms other learning methods (all have to be satisfied)
     * The input data is temporal
       * A simple way to check whether the data is temporal, is to randomly shuffle the data and check whether the semantics has changed
@@ -114,7 +118,30 @@ RESOURCES
     * The data sources have different structures, such as images, audios
     * Need the model to learn continuously
     * Unsupervised Learning
+  * Applicatons
+    * Grok for anomalies detection: https://grokstream.com/product/
+    * Numenta: https://numenta.com/
+      * Stock volume anomalies
+      * Rogue human behavior: https://numenta.com/assets/pdf/whitepapers/Rogue%20Behavior%20Detection%20White%20Paper.pdf
+        * I think this one can also expose other info about each employee and looks scary to me
+      * NLP prediction
+      * Geospatial tracking
+  * How HTM works: https://www.youtube.com/watch?v=XMB0ri4qgwc
+    * Bottom up processing
+    * Sparse distributed representation (SDR) - Input temporal data generated from various data sources is semantically encoded as a sparse array called SDR
+      * Extremely noise resistant
+      * The semantic encoding makes sure similar objects get similar SDR
+    * Spatial pooling - it is the process of converting the encoded SDR into a sparse array
+      * Make sure the sparsity of the output array is constant at all times, no matter how sparse the input is
+      * Make sure the overlap or semantic nature of the input is maintained
+        * Similar objects should have high overlap
+    * Hebbian Learning - used for learning patterns
+    * Boosting - it makes sure that we are using a high capacity of the spatially pooled output
+    * Temporal Memory
+      * The concept of temporal memory is based on the fact that each neuron not only gets information from lower level neurons, but also gets contextual information from neurons at the same level.
   * Reference: https://www.analyticsvidhya.com/blog/2018/05/alternative-deep-learning-hierarchical-temporal-memory-htm-unsupervised-learning/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+    * Python implementation: http://nbviewer.jupyter.org/github/numenta/nupic/blob/master/examples/NuPIC%20Walkthrough.ipynb
+    * API to try: http://api.cortical.io/
     
 * Deep Leaning for Computer Vision: https://www.analyticsvidhya.com/blog/2016/04/deep-learning-computer-vision-introduction-convolution-neural-networks/?lipi=urn%3Ali%3Apage%3Ad_flagship3_feed%3BxPn6EhynRquw3Evzrg79RA%3D%3D
   * Detailed analysis of activation functions
