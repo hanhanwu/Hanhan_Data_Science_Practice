@@ -65,6 +65,7 @@ but it's easier to use pyton built-in functions
     * mean time decay curve generation, given `x,y`. Python will fit the curve and generate `a,b,k` for you
     * half life decay curbe generation, given `x,y`. Python will fit the curve and generate `a,b,k` for you
     * Given y at mean_time or half_life, calculate the x at the point and calculate decay rate
+  * NOTE: Sometimes, the initial value can be terribly huge and much larger than all the other values. This may lead to a negative decay rate. The solution is, either you rmeove this outlier for both x and y, or when you are generating x, y values, user higher resolution for x (time) and record y values. For example, you were using x for each 1 hour, now you change to each second
 
 ********************************************************************************
 
