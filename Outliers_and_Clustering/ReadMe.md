@@ -26,6 +26,7 @@ PRACTICE CODE
   * The performance measurements are directly linked to finding the optimal number of clusters
   * Beside the method above, I found sklearn summary about its available measurements is pretty good: http://scikit-learn.org/stable/modules/clustering.html#clustering-performance-evaluation
     * Not only the code, but also advantage and disadvantages
+    * To sum up, sklearn Silhouette Score and Calinski-Harabaz Index all work better for convex clusters than non-convex clusters. Other sklearn measurements requires ground truth, measures majorly about similarity, agreement, etc. But they don't make assumptions about the cluster structure.
 
 * BiClustering - HiCS vs LOF
   * Reference Tutorial (code is not formated): http://shahramabyari.com/2016/01/19/detecting-outliers-in-high-dimensional-data-sets/
