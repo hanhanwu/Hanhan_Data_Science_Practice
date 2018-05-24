@@ -16,10 +16,12 @@ PRACTICE CODE
 * Select Optimal Number of Clusters
   * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Outliers_and_Clustering/clustering_evaluation.ipynb
   * Elbow Method
+    * The idea behind to to choose the k that can minimize the total within-cluster sum of square, or you can consider it's trying to minimize the dispersion within clusters and maximize the dispersion between clusters - compatness of the clusters
     * Useful when the data can be well clustered
     * Choose the point where the inside angle is the smallest
     * reference: https://bl.ocks.org/rpgove/0060ff3b656618e9136b
   * Silhouette Score
+    * It measures the quality of clusters by determining how well each object lies within its cluster.
     * Higher the score, the data is better clustered. So when choosing the optimal k, choose the one give the highest silhouette score
     * But similar to k-means (can only find convex clusters), silhouette score is higher for convex clusters than other types of clusters (such as density based clusters which obtained from DBSCAN)
 * Clustering Performance Measurement
