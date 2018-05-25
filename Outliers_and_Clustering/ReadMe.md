@@ -14,7 +14,7 @@ LEARNING NOTES
 PRACTICE CODE
 
 * Select Optimal Number of Clusters
-  * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Outliers_and_Clustering/clustering_evaluation.ipynb
+  * My code [Python]: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Outliers_and_Clustering/clustering_evaluation.ipynb
   * Elbow Method
     * The idea behind to to choose the k that can minimize the total within-cluster sum of square, or you can consider it's trying to minimize the dispersion within clusters and maximize the dispersion between clusters - compatness of the clusters
     * Useful when the data can be well clustered
@@ -24,7 +24,17 @@ PRACTICE CODE
     * It measures the quality of clusters by determining how well each object lies within its cluster.
     * Higher the score, the data is better clustered. So when choosing the optimal k, choose the one give the highest silhouette score
     * But similar to k-means (can only find convex clusters), silhouette score is higher for convex clusters than other types of clusters (such as density based clusters which obtained from DBSCAN)
-* Clustering Performance Measurement
+  * Gap Statistics
+    * Similar to Elbow Method, it uses total within-cluster sum of square (total intracluster variation), the difference is it has reference dataset generated using Monte Carlo simulations. That is, for each variable (xi) in the dataset it computes its range [min(xi),max(xj)] and generate values for the n points uniformly from the interval min to max.
+    * With both reference dataset and observed dataset, Gap Statistics calculates the gap between reference data total intracluster variation and observed data total intracluster variation. The larger the gap is, the better clustering is.
+    * Optimal k has the largest gap score.
+    * I think it also only work for convex clusters
+    * <b>I don't recommend to use current python gap statistics for now, at all!</b>
+      * The implemetation is here: https://anaconda.org/milesgranger/gap-statistic/notebook
+      * The optimal k has problem, that I dare not to use.
+      * That open source code also has other problem, such as didn't set seed. Plus, the package has to use python3 to install
+  * <b>Strongly recommend to use R to find optimal number of k for clustering!</b>
+* sklearn Clustering Performance Measurement
   * The performance measurements are directly linked to finding the optimal number of clusters
   * Beside the method above, I found sklearn summary about its available measurements is pretty good: http://scikit-learn.org/stable/modules/clustering.html#clustering-performance-evaluation
     * Not only the code, but also advantage and disadvantages
