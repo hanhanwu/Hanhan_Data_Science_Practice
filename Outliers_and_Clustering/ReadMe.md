@@ -32,9 +32,9 @@ PRACTICE CODE
     * With both reference dataset and observed dataset, Gap Statistics calculates the gap between reference data total intracluster variation and observed data total intracluster variation. The larger the gap is, the better clustering is.
     * Optimal k has the largest gap score.
     * I think it also only work for convex clusters
-    * <b>I don't recommend to use current python gap statistics for now, at all!</b>
+    * <b>I don't recommend to use current python gap statistics for now</b>
       * The implemetation is here: https://anaconda.org/milesgranger/gap-statistic/notebook
-      * The optimal k has problem, that I dare not to use.
+      * The optimal k tend to be too large.
       * That open source code also has other problem, such as didn't set seed. Plus, the package has to use python3 to install
   * <b>Strongly recommend to use R to find optimal number of k for clustering!</b> Wait for my updates here
 * sklearn Clustering Performance Measurement
