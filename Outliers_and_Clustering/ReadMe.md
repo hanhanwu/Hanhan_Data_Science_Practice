@@ -15,6 +15,9 @@ PRACTICE CODE
 
 * Select Optimal Number of Clusters
   * My code [Python]: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Outliers_and_Clustering/clustering_evaluation.ipynb
+  * Direct Methods vs Testing Methods
+    * Direct methods consists of optimizing a criterion, such as the within cluster sums of squares or the average silhouette. Such as elbow method and silhouette score
+    * Testing Methods consists of comparing evidence against null hypothesi. Such as Gap Statistics
   * Elbow Method
     * The idea behind to to choose the k that can minimize the total within-cluster sum of square, or you can consider it's trying to minimize the dispersion within clusters and maximize the dispersion between clusters - compatness of the clusters
     * Useful when the data can be well clustered
@@ -33,7 +36,7 @@ PRACTICE CODE
       * The implemetation is here: https://anaconda.org/milesgranger/gap-statistic/notebook
       * The optimal k has problem, that I dare not to use.
       * That open source code also has other problem, such as didn't set seed. Plus, the package has to use python3 to install
-  * <b>Strongly recommend to use R to find optimal number of k for clustering!</b>
+  * <b>Strongly recommend to use R to find optimal number of k for clustering!</b> Wait for my updates here
 * sklearn Clustering Performance Measurement
   * The performance measurements are directly linked to finding the optimal number of clusters
   * Beside the method above, I found sklearn summary about its available measurements is pretty good: http://scikit-learn.org/stable/modules/clustering.html#clustering-performance-evaluation
