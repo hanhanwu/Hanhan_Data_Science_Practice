@@ -36,7 +36,12 @@ PRACTICE CODE
       * The implemetation is here: https://anaconda.org/milesgranger/gap-statistic/notebook
       * The optimal k tend to be too large.
       * That open source code also has other problem, such as didn't set seed. Plus, the package has to use python3 to install
-  * <b>Strongly recommend to use R to find optimal number of k for clustering!</b> Wait for my updates here
+  * <b>Strongly recommend to use R to find optimal number of k for clustering!</b>
+    * My code [R]: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Outliers_and_Clustering/finding_optimal_k.R
+      * First of all, with package `NbClust`, you can use 30 algorithms to calculate optimal k, and choose the k with highest votes
+      * Package `factoextra` also allows you to use elbow, silhouette with 1 line of code, gap statistics  needs 2 lines of code. I still don't like gap statistics, since different seed could totally change the optimal k. The visualization is pretty good, there is a line to mark the best k, I think this is especially useful when it's difficult to choose k from elbow method visualization
+      * In the code, it tried k-means, PAM (k-modoids) and hierarchical clustering for the same dataset, with different methods.
+      * I think using 30 algorithms and choose highest voted k is the most reliable way. If we have to use 1 method, I prefer Silhouette Score, since in the visualization is easier to see, you just choose the k with highest score. Elbow method maybe difficult to see when the data is not well clustered. Gap statistics always seems unstable to me...
 * sklearn Clustering Performance Measurement
   * The performance measurements are directly linked to finding the optimal number of clusters
   * Beside the method above, I found sklearn summary about its available measurements is pretty good: http://scikit-learn.org/stable/modules/clustering.html#clustering-performance-evaluation
