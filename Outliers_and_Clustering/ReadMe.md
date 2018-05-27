@@ -42,6 +42,7 @@ PRACTICE CODE
       * Package `factoextra` also allows you to use elbow, silhouette with 1 line of code, gap statistics  needs 2 lines of code. I still don't like gap statistics, since different seed could totally change the optimal k. The visualization is pretty good, there is a line to mark the best k, I think this is especially useful when it's difficult to choose k from elbow method visualization
       * In the code, it tried k-means, PAM (k-modoids) and hierarchical clustering for the same dataset, with different methods.
       * I think using 30 algorithms and choose highest voted k is the most reliable way. If we have to use 1 method, I prefer Silhouette Score, since in the visualization is easier to see, you just choose the k with highest score. Elbow method maybe difficult to see when the data is not well clustered. Gap statistics always seems unstable to me...
+    * Refernece: http://www.sthda.com/english/wiki/print.php?id=239
 * sklearn Clustering Performance Measurement
   * The performance measurements are directly linked to finding the optimal number of clusters
   * Beside the method above, I found sklearn summary about its available measurements is pretty good: http://scikit-learn.org/stable/modules/clustering.html#clustering-performance-evaluation
