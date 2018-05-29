@@ -35,3 +35,9 @@ ALGORITHMS REVIEW
   * [R] code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Frequent_Pattern_Mining/basic_alg_apriori.R
     * This R package could recommend you what items to put together, and show you support, confidence and lift at the same time
   * reference: https://www.analyticsvidhya.com/blog/2017/08/mining-frequent-items-using-apriori-algorithm/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+  
+  
+* FP-Growth
+  * [Spark Python] code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Frequent_Pattern_Mining/association_rules.ipynb
+   * Looks like the most esay-to-use python library for association rules, although how to use that `where` clause in this case casued my some time...
+     * https://stackoverflow.com/questions/50559308/spark-python-cannot-match-array
