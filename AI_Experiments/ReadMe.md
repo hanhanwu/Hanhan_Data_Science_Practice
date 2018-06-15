@@ -306,6 +306,9 @@ EXPERIMENTS
     * Use dropout to avoid overfitting. Dropout is essentially randomly turning off parts of the model so that it does not “overlearn” a concept
     * Increase epochs
   * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/digital_recognition_Keras.ipynb
+  * Download the data: https://datahack.analyticsvidhya.com/contest/practice-problem-identify-the-digits/
+    * You need to register
+    * In fact the data came from MINIST data (a dataset used for digital recognition), downloading from above link you just need to download 2 files instead of 4
   * Reference: https://www.analyticsvidhya.com/blog/2016/10/tutorial-optimizing-neural-networks-using-keras-with-image-recognition-case-study/
     
     
