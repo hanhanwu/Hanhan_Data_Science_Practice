@@ -8,6 +8,11 @@ LEARNING NOTES
 * As [my data mining bible reading notes][1] recorded (Chapter 11, high demensional clustering), even it's biclustering (such as <b>MaPle</b>), which searches subsapace in both objects and features, can be time consuming because it enumerates all the subspaces. Here is another implemented example of [HiCS, LOF with description][2], [HiCS code only][3], according to the author, HiCS can solve the subspaces search in an more effective way. I think so, since MaPle is publised in 2008, HiCS is published in 2012. So deserve to try
 * People have also implemneted another method to detect outliers, [LOF][4], it is densitiy based, and calculates nearest neighbours. Note that, when there is high dimensional features, PCA (linear regression model), LOF (proximity-based) can be less effective. This is the so-called The Curse of Dimensionality, when there are more dimensions, these methods can be time consuming, and outliers, random noise could make the calculation results lose meaning
 
+* Clustering Evaluation Methods
+  * NMI (Normalized Mutual Information)
+  ![NMI](https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Outliers_and_Clustering/NMI.png)
+    * It measures the similarity between clusters by calculating the largest number of common objects a cluster Ci has with all the other mutual clusters Mi
+  * We have NMI to measure between cluster similarity, we should also measure the within ckuster purity to guarantee the ckustering quality
 
 *********************************************************************************
 
