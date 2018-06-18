@@ -11,7 +11,7 @@ LEARNING NOTES
 * Clustering Evaluation Methods
   * NMI (Normalized Mutual Information)
   ![NMI](https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Outliers_and_Clustering/NMI.png)
-    * It measures the similarity between clusters by calculating the largest number of common objects a cluster Ci has with all the other mutual clusters Mi
+    * It measures the purity of Ci by calculating the largest number of common objects that cluster Ci has with all the other mutual clusters Mi. Higher NMI, the higher purity of Ci is.
   * We have NMI to measure between cluster similarity, we should also measure the within ckuster purity to guarantee the ckustering quality
 
 *********************************************************************************
