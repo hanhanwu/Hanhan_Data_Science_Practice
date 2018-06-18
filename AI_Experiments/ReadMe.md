@@ -293,7 +293,7 @@ EXPERIMENTS
     * Sometime! You can use `conda install [package_name]`. When this command does not work, try `pip install [package_name]` or `pip3 install [package_name]`. By changing between these 2 types of commands, finally, I got all the libraries I want in Conda Environemnt
 
 
-* Digital Recognition with Keras
+* Digit Recognition with Keras
   * Adam Optimizer: https://arxiv.org/abs/1412.6980
   * Supported Optimizers in Keras: https://keras.io/optimizers/
   * Supported loss functions in Keras: https://keras.io/losses/
@@ -310,6 +310,14 @@ EXPERIMENTS
     * You need to register
     * In fact the data came from MINIST data (a dataset used for digital recognition), downloading from above link you just need to download 2 files instead of 4
   * Reference: https://www.analyticsvidhya.com/blog/2016/10/tutorial-optimizing-neural-networks-using-keras-with-image-recognition-case-study/
+  
+  
+* Digit Recognition with Unsupervised Deep Learning
+  * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/unsupervised_deep_learning.ipynb
+    * The evaluation method is NMI (Normalized Mutual Information), which calculates the purity of each cluster in order to measure the clustering quality. Higher NMI, the higher purity the clusters have.
+    * This code used 3 methods:
+      * Simple kmeans to clustering the digits
+      * Autoencoder, it reduce the dimensions of the data and extract the useful info, then pass to kmean [very slow]
     
     
 * Digital Recognition with Tensorflow
