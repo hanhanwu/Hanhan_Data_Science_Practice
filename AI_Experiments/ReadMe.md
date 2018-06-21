@@ -318,6 +318,9 @@ EXPERIMENTS
     * This code used 3 methods:
       * Simple kmeans to clustering the digits
       * Autoencoder, it reduce the dimensions of the data and extract the useful info, then pass to kmean [very slow]
+      * Using DEC (Deep Embedding Clustering): https://github.com/XifengGuo/DEC-keras
+        * You need large epoch and clustering iteration, so that the final NMI can be higher. But this will also be computational costly. In my code, I just used at most 7 rounds iteration for clustering, otherwise I need to wait for very long time
+        * That DEC code, you need to copy the author's all the code from https://github.com/XifengGuo/DEC-keras/blob/master/DEC.py
     
     
 * Digital Recognition with Tensorflow
