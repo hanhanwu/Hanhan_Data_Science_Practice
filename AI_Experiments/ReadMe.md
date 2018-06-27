@@ -316,12 +316,13 @@ EXPERIMENTS
   * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/unsupervised_deep_learning.ipynb
     * The evaluation method is NMI (Normalized Mutual Information), which calculates the purity of each cluster in order to measure the clustering quality. Higher NMI, the higher purity the clusters have.
     * This code used 3 methods:
-      * Simple kmeans to clustering the digits
-      * encoder
-      * Autoencoder, it reduce the dimensions of the data and extract the useful info, then pass to kmean [very slow]
-      * Using DEC (Deep Embedding Clustering): https://github.com/XifengGuo/DEC-keras
-        * You need large epoch and clustering iteration, so that the final NMI can be higher. But this will also be computational costly. In my code, I just used at most 7 rounds iteration for clustering, otherwise I need to wait for very long time
-        * That DEC code, you need to copy the author's all the code from https://github.com/XifengGuo/DEC-keras/blob/master/DEC.py
+      * Method 1 Simple kmeans to clustering the digits
+      * Autoencoder
+        * It has encoder & decoder. Encoder will convert the input to a lower dimensional representation, while decoder will recreate the input from this lower dimensional representation
+        * Method 2 - DIY Autoencoder, it reduce the dimensions of the data and extract the useful info, then pass to kmean [very slow]
+        * Method 3 - Using DEC (Deep Embedding Clustering): https://github.com/XifengGuo/DEC-keras
+          * You need large epoch and clustering iteration, so that the final NMI can be higher. But this will also be computational costly. In my code, I just used at most 7 rounds iteration for clustering, otherwise I need to wait for very long time
+          * That DEC code, you need to copy the author's all the code from https://github.com/XifengGuo/DEC-keras/blob/master/DEC.py
     
     
 * Digital Recognition with Tensorflow
