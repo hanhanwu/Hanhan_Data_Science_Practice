@@ -135,6 +135,9 @@ Future Methods Can Try
 
 * Check data shifting with feature selection: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/deal_with_data_shifting.ipynb
 
+* More Feature Selection methods
+  * Feature Selection for High-Dimensional Data:A Fast Correlation-Based Filter Solution (FCBF): https://www.aaai.org/Papers/ICML/2003/ICML03-111.pdf
+
 * More sampling methods to deal with data imbalance
   * [Python] Scikit-Learn imbalanced-learn API: http://contrib.scikit-learn.org/imbalanced-learn/api.html
     * Check left side algorithms you can choose
@@ -157,7 +160,6 @@ Future Methods Can Try
     * MLBox outputs more useful info for each step, and even including GPU time, as well as final predicted results (looks like built for competitions such as Kaggle...)
     * Its data cleaning is very basic, and only tells you which features are top sparse, without dealing with that for you
   
-
 
 ***********************************************************************
 
