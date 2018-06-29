@@ -196,6 +196,7 @@ RESOURCES
     * CNTK (from Microsoft)
     * Theano (from University of Montreal)
     * You can change between these backend
+  * <b>KERAS BLOG</b>: https://blog.keras.io/category/tutorials.html
   * Install Keras: https://keras.io/#installation
   * <b>Keras Resources</b>: https://github.com/fchollet/keras-resources
   * <b>Keras Examples</b>: https://github.com/fchollet/keras/tree/master/examples
@@ -318,7 +319,8 @@ EXPERIMENTS
     * This code used 3 methods:
       * Method 1 Simple kmeans to clustering the digits
       * Autoencoder
-        * It has encoder & decoder. Encoder will convert the input to a lower dimensional representation, while decoder will recreate the input from this lower dimensional representation
+        * It has encoder & decoder. Encoder will convert the input to a lower dimensional representation, while decoder will recreate the input from this lower dimensional representation.
+        * Detailed description about autoencoder from Keras creator's blog: https://blog.keras.io/building-autoencoders-in-keras.html
         * Method 2 - DIY Autoencoder, it reduce the dimensions of the data and extract the useful info, then pass to kmean [very slow]
         * Method 3 - Using DEC (Deep Embedding Clustering): https://github.com/XifengGuo/DEC-keras
           * You need large epoch and clustering iteration, so that the final NMI can be higher. But this will also be computational costly. In my code, I just used at most 7 rounds iteration for clustering, otherwise I need to wait for very long time
