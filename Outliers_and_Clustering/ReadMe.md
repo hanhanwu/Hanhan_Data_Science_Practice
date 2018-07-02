@@ -20,6 +20,8 @@ PRACTICAL CODE
 
 * Data Exploration - Visualized Projected Clusters
   * My code : https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Outliers_and_Clustering/dimensional_reduction_visualization.ipynb
+    * It uses T-SNE to show 2D, 3D reduced dimensional projections
+    * T-SNE is famous for 2D visualization, but better for lower dimensional data
   * The methods used here are not clustering, they are dimensional reduction in sklearn `manifold`. http://scikit-learn.org/stable/modules/manifold.html
     * All the methods in this library are based on nearest neighbour search, therefore scalling all the features are necessary.
     * The basic idea behind these dimensional reduction is majorly about project the original data to a lower dimension. Therefore, the data I ploted in the code is no longer the original data. They are projected data
