@@ -510,6 +510,6 @@ RELAVANT PAPERS & NEWS
 [5]:https://www.analyticsvidhya.com/blog/2016/04/deep-learning-computer-vision-introduction-convolution-neural-networks/?lipi=urn%3Ali%3Apage%3Ad_flagship3_feed%3BxPn6EhynRquw3Evzrg79RA%3D%3D
 [6]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/digital_recognition_Keras.ipynb
 [7]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/image_recognition_Keras_level2.ipynb
-[8]https://www.analyticsvidhya.com/blog/2018/04/replicating-human-memory-structures-in-neural-networks-to-create-precise-nlu-algorithms/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+[8]:https://www.analyticsvidhya.com/blog/2018/04/replicating-human-memory-structures-in-neural-networks-to-create-precise-nlu-algorithms/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
 [9]:https://machinelearningmastery.com/implementation-patterns-encoder-decoder-rnn-architecture-attention/
 [10]:https://machinelearningmastery.com/encoder-decoder-long-short-term-memory-networks/
