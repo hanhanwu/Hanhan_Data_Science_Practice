@@ -24,3 +24,11 @@ MAJOR METHODS
     * Visitor cold start
     * Product cold start
   * While collaborative filtering needs a certain amount of history, content based filtering can help deal with cold start
+  
+Practice
+
+* MovieLens Recommendation System
+  * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/RecommendationSystem/recommendation_system_movielens.ipynb
+    * Method 1 - DIY collaborative filtering
+    * Method 2 - Library `turicreate` for collaborative filtering
+      * This one really gave me a hard time. Not sure why, I could not use `SFrame()` and found a solution to install `graphlab`, which could only be installed in my conda virtual environment and broke my ipython kernel, I had to uninstall and reinstall IPython and kernel.... Then it still not work, but later worked. No, I need more sleep...
