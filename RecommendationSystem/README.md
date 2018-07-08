@@ -40,3 +40,6 @@ Practice
           * `pip install ipykernel`
           * `python -m ipykernel install --user --name testenv --display-name "Python2 (yourenvname)"`
           * `conda install ipywidgets --no-deps`
+        * To check models in turicreate: https://apple.github.io/turicreate/docs/api/turicreate.toolkits.html
+        * `recommender` models in turicreate: https://apple.github.io/turicreate/docs/api/turicreate.toolkits.recommender.html#creating-a-recommender
+          * Pretty cool, it has not only collaborative filtering, but also content based recommendation, factorization recommendation
