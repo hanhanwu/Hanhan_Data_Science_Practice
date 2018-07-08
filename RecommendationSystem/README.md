@@ -30,7 +30,7 @@ Practice
 * MovieLens Recommendation System
   * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/RecommendationSystem/recommendation_system_movielens.ipynb
     * Method 1 - DIY collaborative filtering
-    * Method 2 - Library `turicreate` for collaborative filtering
+    * Method 2 - Library `turicreate` for recommendations
       * This one really gave me a hard time. Not sure why, I could not use `SFrame()` and found a solution to install `graphlab`, which could only be installed in my conda virtual environment and broke my ipython kernel, I had to uninstall and reinstall IPython and kernel.... Then it still not work, but later worked...
         * To install turicreate: `pip install -U turicreate`
         * To install graphlab: https://turi.com/download/install-graphlab-create-command-line.html
@@ -40,6 +40,13 @@ Practice
           * `pip install ipykernel`
           * `python -m ipykernel install --user --name testenv --display-name "Python2 (yourenvname)"`
           * `conda install ipywidgets --no-deps`
-        * To check models in turicreate: https://apple.github.io/turicreate/docs/api/turicreate.toolkits.html
+      * To check models in turicreate: https://apple.github.io/turicreate/docs/api/turicreate.toolkits.html
         * `recommender` models in turicreate: https://apple.github.io/turicreate/docs/api/turicreate.toolkits.recommender.html#creating-a-recommender
           * Pretty cool, it has not only collaborative filtering, but also content based recommendation, factorization recommendation
+          * parameters for the collaboritive filtering recommender: https://apple.github.io/turicreate/docs/api/generated/turicreate.recommender.item_similarity_recommender.create.html#turicreate.recommender.item_similarity_recommender.create
+            * In the code it's `cosin` as similarity type, we can also use `pearson`, `jaccard`
+      * 3 types of recommenders in the code
+        * Popularity Recommender - it recommends most popular items to everyone, exactly the same items and orders
+        * Collaboritive Filtering - recommend items based on ratings
+        * Rating Predition - Predict missing ratings, since each user may not rate all the items
+          * When using this method, you have to use `user_id`, `item_id` as colum names, otherwise turicreate will return error. This is what I don't really like
