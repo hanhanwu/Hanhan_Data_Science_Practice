@@ -31,4 +31,12 @@ Practice
   * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/RecommendationSystem/recommendation_system_movielens.ipynb
     * Method 1 - DIY collaborative filtering
     * Method 2 - Library `turicreate` for collaborative filtering
-      * This one really gave me a hard time. Not sure why, I could not use `SFrame()` and found a solution to install `graphlab`, which could only be installed in my conda virtual environment and broke my ipython kernel, I had to uninstall and reinstall IPython and kernel.... Then it still not work, but later worked. No, I need more sleep...
+      * This one really gave me a hard time. Not sure why, I could not use `SFrame()` and found a solution to install `graphlab`, which could only be installed in my conda virtual environment and broke my ipython kernel, I had to uninstall and reinstall IPython and kernel.... Then it still not work, but later worked...
+        * To install turicreate: `pip install -U turicreate`
+        * To install graphlab: https://turi.com/download/install-graphlab-create-command-line.html
+        * To reinstall IPython and kernel
+          * `pip uninstall ipython`
+          * `pip install ipython`
+          * `pip install ipykernel`
+          * `python -m ipykernel install --user --name testenv --display-name "Python2 (yourenvname)"`
+          * `conda install ipywidgets --no-deps`
