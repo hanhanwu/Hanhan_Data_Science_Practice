@@ -25,7 +25,27 @@ MAJOR METHODS
     * Product cold start
   * While collaborative filtering needs a certain amount of history, content based filtering can help deal with cold start
   
-Practice
+3. <b>Evaluation Metrics</b>
+* Positive means the user likes the recommended item
+* RMSE
+  * How accurate the recommendation is
+  * Do NOT consider c
+* Precision & Recall
+  * `precision = TP/(TP+FP)`, it measures for the recommended items, the propotion that the user really like
+  * `recall = TP/(TP+FN)`, for the items that a user really likes, the propotion that got recommended
+  * Do NOT consider recommendation orders
+* Mean Reciprocal Rank
+   * Considers recommendation order
+* MAP at k (Mean Average Precision at cutoff k)
+  * By calculating cutoff precision, it will depends on the order. Fianlly get the averaged value
+  * Considers recommendation order
+* NDCG (Normalized Discounted Cumulative Gain)
+  * MAP uses interest or not (binary), NDCG uses a score
+  * Considers recommendation order
+  
+*****************************************************************************
+
+PRACTICE
 
 * MovieLens Recommendation System
   * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/RecommendationSystem/recommendation_system_movielens.ipynb
@@ -45,8 +65,11 @@ Practice
           * Pretty cool, it has not only collaborative filtering, but also content based recommendation, factorization recommendation
           * parameters for the collaboritive filtering recommender: https://apple.github.io/turicreate/docs/api/generated/turicreate.recommender.item_similarity_recommender.create.html#turicreate.recommender.item_similarity_recommender.create
             * In the code it's `cosin` as similarity type, we can also use `pearson`, `jaccard`
-      * 3 types of recommenders in the code
+      * <b>3 types of recommenders in the code</b>
         * Popularity Recommender - it recommends most popular items to everyone, exactly the same items and orders
         * Collaboritive Filtering - recommend items based on ratings
         * Rating Predition - Predict missing ratings, since each user may not rate all the items
           * When using this method, you have to use `user_id`, `item_id` as colum names, otherwise turicreate will return error. This is what I don't really like
+          * The idea is the same as matrix factorization, and it also uses gradient descent to do optimization
+  * Reference: https://www.analyticsvidhya.com/blog/2018/06/comprehensive-guide-recommendation-engine-python/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+    * The description is good. It implemented its own matrix facotrization, I used turicreate built-in
