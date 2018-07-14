@@ -268,6 +268,10 @@ DIMENSION REDUCTION
 * PCA (Principle Component Analysis) - Python Version
   * Python code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/PCA_practice.py
   * data set: PCA_combi.csv
+* Make Sense PCA
+  * How to inperprete the plots
+  * How to use PCA for feature selection
+  * Python code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/make_sense_dimension_reduction.ipynb
  
 * PLS (Partial Least Squares) - R Version
   * R code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/PLS_practice.R
