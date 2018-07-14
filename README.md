@@ -263,15 +263,16 @@ DIMENSION REDUCTION
   * data set: PCA_train.csv, PCA_test.csv
   * Why using One Hot encoding to convert categorical data into numerical data and only choose the top N columns after using PCA is right
     * CrossValidated Answer: http://stats.stackexchange.com/questions/209711/why-convert-categorical-data-into-numerical-using-one-hot-encoding
-    * Now I think, this question can be seperated into 2 parts. First of all, you have to convert categorical data into numerical data for PCA, with one-hot encoding, you will be able to get more info from the data. For example, one column has 100 records, among them there are 10 records as "ice-cream" while 90 records as "mochi", with this data, some algorithms will be influenced by the majority of the values ("mochi" here) and may lose accuracy. With one-hot encoding, now you generate 2 dummy columns from this 1 column, column_icecream with 1 and 0 to mark whether it's icecream or not, and column_mochi, it gives your model better chance to consider each categorical value in the original column. Secondly, after onehot encoding, you will generate many more columns. with dimensional reduction method PCA, it only selects principle components (the drawback is, it changed your data and made it non-interpretable, may loose some info) which will represent the major info from the original data, could make your model faster and even getting higher accuracy
+    * Now I think, this question can be seperated into 2 parts. First of all, you have to convert categorical data into numerical data for PCA, <b>with one-hot encoding, you will be able to get more info from the data</b>. For example, one column has 100 records, among them there are 10 records as "ice-cream" while 90 records as "mochi", with this data, some algorithms will be influenced by the majority of the values ("mochi" here) and may lose accuracy. With one-hot encoding, now you generate 2 dummy columns from this 1 column, column_icecream with 1 and 0 to mark whether it's icecream or not, and column_mochi, it gives your model better chance to consider each categorical value in the original column. Secondly, after onehot encoding, you will generate many more columns. With dimensional reduction method PCA, it only selects principle components (the drawback is, it changed your data and made it non-interpretable, may lose some info) which will represent the major info from the original data, could make your model faster and even getting higher accuracy
 
 * PCA (Principle Component Analysis) - Python Version
   * Python code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/PCA_practice.py
   * data set: PCA_combi.csv
 * Make Sense PCA
-  * How to inperprete the plots
-  * How to use PCA for feature selection
+  * PCA helps you figure out which linear combinations of these variables matter the most.
   * Python code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/make_sense_dimension_reduction.ipynb
+    * How to inperprete the plots.
+    * How to use PCA for feature selection.
  
 * PLS (Partial Least Squares) - R Version
   * R code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/PLS_practice.R
