@@ -15,8 +15,15 @@ lines(density(raw_data$Count), col="red", lwd=2)
 ## occurring in a fixed interval of time or space if these events occur with a 
 ## known constant rate and independently of the time since the last event.
 
-# overall, the sales count 
+# Hourly sales count pattern
 library(ggplot2)
 library(lubridate)
 ggplot(raw_data, aes(as.Date(ymd_hms(raw_data$Datetime)), Count)) + geom_line() +
-  scale_x_date(date_labels = "%m-%d-%Y") + xlab("") + ylab("Daily Hourly Count")
+  scale_x_date(date_labels = "%Y-%m-%d") + xlab("") + ylab("Daily Hourly Sales")
+
+raw_data <- raw_data[, extratced_data:=as.Date(ymd_hms(raw_data$Datetime))]
+head(raw_data)
+daily_count <- raw_data[,.(daily_sales=sum(Count)),by=extratced_data]
+head(daily_count)
+ggplot(daily_count, aes(x=extratced_data, y=daily_count)) + geom_line() +
+  scale_x_date(date_labels = "%Y-%m-%d") + xlab("") + ylab("Daily Sales")
