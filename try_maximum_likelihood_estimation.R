@@ -21,9 +21,10 @@ library(lubridate)
 ggplot(raw_data, aes(as.Date(ymd_hms(raw_data$Datetime)), Count)) + geom_line() +
   scale_x_date(date_labels = "%Y-%m-%d") + xlab("") + ylab("Daily Hourly Sales")
 
+# Daily sales by adding up hourly sales in each day
 raw_data <- raw_data[, extratced_data:=as.Date(ymd_hms(raw_data$Datetime))]
 head(raw_data)
 daily_count <- raw_data[,.(daily_sales=sum(Count)),by=extratced_data]
 head(daily_count)
-ggplot(daily_count, aes(x=extratced_data, y=daily_count)) + geom_line() +
+ggplot(daily_count, aes(extratced_data, daily_sales)) + geom_line() +
   scale_x_date(date_labels = "%Y-%m-%d") + xlab("") + ylab("Daily Sales")
