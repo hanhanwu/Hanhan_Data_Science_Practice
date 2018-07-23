@@ -32,7 +32,8 @@
         * This need you to know the distribution of data, and what you need to predict
         * Then you need to know y (what you need to predict), x (features used for the prediction), formula between x,µ and θ, likelihood formula. Then you do the optimization work in order to calculate µ
         * Basicly, you can treat a finalized maximum likelihood model as a linear regression model
-    
+* Reference: https://www.analyticsvidhya.com/blog/2018/07/introductory-guide-maximum-likelihood-estimation-case-study-r/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+  * It's lack of many things that a tutorial should have.... you even don't know how did he get those columns and plots.... Better to check my code.
 
 ********************************************************************************
 
