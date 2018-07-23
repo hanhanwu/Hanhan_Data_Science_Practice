@@ -1,4 +1,41 @@
 
+## Experiments
+
+### Maximum Likelihood Estimation
+* With Maximum Likelihood, you can estimate population parameters from sample data such that the probability (likelihood) of obtaining the observed data is maximized
+* My code [R]: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/try_maximum_likelihood_estimation.R
+  * Download the data: https://s3-ap-south-1.amazonaws.com/av-blog-media/wp-content/uploads/2018/07/Train_Tickets.csv
+  * The data distribution can be treated as <b>Poisson Distribution</b>
+    * Poisson Distribution is a discrete probability distribution that expresses the probability of a given number of events occurring in a fixed interval of time or space if these events occur with a known constant rate and independently of the time since the last event.
+  * The way to evaluate the problem is to calculate `µ` of Poisson Distribution or you can understand it as the average of `y` (what you need to predict, in this case it's `Count`). 
+  * So in order to calculate `µ`, you need to calculate the coefficients vector `θ`. You can form a linear model:
+    * `µi = xi'* θ`, such that `µ = θ0 + x1*θ1 + pow(x2,2)*θ2 + .... + pow(xn,n)*θn`
+    * To allow negative values, you can also have `log(µi) = xi'* θ`, or `µi = exp(xi'* θ)`
+  * In this code, we have `x` - elapsed_weeks, `y` - Count, `µ = exp(θ0 + x*θ1)`, so we can calculate negative likelihood = `-sum(y*(log(µ)) - µ)`
+    * Poisson Distribution has `L(θ;x) = Pr{Y = y|µ} = exp(-µ) * pow(µ, y)/y!`
+    * Likelihood `LL(θ;x) = log(L(θ;x)) = sum(y*(log(µ)) - µ)`
+    * Using negative likelihood so that the optimization will become minumization, same as maximize positive likelihood
+  * Method 1 - DIY model, and you calculate coefficients vector using R `mle`
+    * With the calculated coefficients, you can calculate µ, consider it as the average of Count, and evaluate with testing data Count, to get RMSE
+    * To use `mle`, you won't find `stats4` package in installing tool, you can simply run `library(stats4)`
+  * Method 2 - R `glm` 
+    * It will calculate the coefficients for you when you define the distribution in `family`
+* Python also have a library similar to R `glm` - `pymc`
+* Inspirations
+  * Pay attention to the power of taking log
+  * To deal with Giant data computation
+    * We know there is map-reduce, parallel computing, streaming to deal with large amount of data computation. But sometimes none of them could help when there are more strict requirements came from customers...
+    * So when dealing with hiant dtaa computation, instead of using all the data at once, how about using central limit theorem and maximum likelihood estimation
+      * With central limit theorem, you generate many fixed size samples (record>=30), only compute on each sample, and generate the mean of each sample. When the distribution of these mean formed the normal distribution, your samples are representative, and you can just use the `µ` of the normal distribution as the average of your population results
+        * With this method, you don't need to check any other distribution except the distribution of all the mean from the samples
+      * But if you even cannot generate that large amount if samples, how about calculate maximum likelihood.
+        * This need you to know the distribution of data, and what you need to predict
+        * Then you need to know y (what you need to predict), x (features used for the prediction), formula between x,µ and θ, likelihood formula. Then you do the optimization work in order to calculate µ
+        * Basicly, you can treat a finalized maximum likelihood model as a linear regression model
+    
+
+********************************************************************************
+
 <b>Resources</b>
 
 * Think Stats
@@ -31,7 +68,7 @@
 
 ********************************************************************************
 
-<b>Practice Code</b>
+<b>Think Stats Practice Code</b>
 
 * [My Code - Chapter 1][1]
 * [My Code - Chapter 2][2]
