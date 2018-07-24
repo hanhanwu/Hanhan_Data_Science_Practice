@@ -7,8 +7,11 @@ SEQUENCE PREDICTION
 * Sequence Prediction - In a word, you get a sequence of behaviors/patterns and try to predict the next
 * Problems of LSTMs/RNNs
   * 10s of hours to trainn, very long time
-  * Need to re-train once there is new it
+  * Need to re-train once there is new items that didn't appear in the previous training data
 * Compact Prediction Tree (CPT)
+  * Much faster than other methods such as Markov Chain, LSTMs/RNNs
+  * Official verison [Java]: https://www.philippe-fournier-viger.com/spmf/CPTPlus.php
+  * Python version (in development): https://github.com/analyticsvidhya/CPT
   
 
 * Readings
