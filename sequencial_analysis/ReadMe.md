@@ -1,5 +1,18 @@
-I'm planning to practice more on time series analysis, pattern matching and sequential pattern matching.
+I'm planning to practice more on time series analysis, pattern matching sequential pattern matching and sequence prediction.
 
+******************************************************************************************
+
+SEQUENCE PREDICTION
+
+* Sequence Prediction - In a word, you get a sequence of behaviors/patterns and try to predict the next
+* Problems of LSTMs/RNNs
+  * 10s of hours to trainn, very long time
+  * Need to re-train once there is new it
+* Compact Prediction Tree (CPT)
+  
+
+* Readings
+  * Sequence Modeling Use Cases: https://www.analyticsvidhya.com/blog/2018/04/sequence-modelling-an-introduction-with-practical-use-cases/
 
 ******************************************************************************************
 
