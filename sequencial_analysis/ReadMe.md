@@ -12,6 +12,12 @@ SEQUENCE PREDICTION
   * Much faster than other methods such as Markov Chain, LSTMs/RNNs
   * Official verison [Java]: https://www.philippe-fournier-viger.com/spmf/CPTPlus.php
   * Python version (in development): https://github.com/analyticsvidhya/CPT
+  * Data Structure
+    * Prediction Tree - it built the training data into a tree, each path can be a sequence
+    * Inverted Index - Similar to FP-growth, the dictionary has each node as the key, and the sequences that contain the node as the value. For example:
+      * We have Sequence1: A,B,C; Sequence2: B,C; Sequence3: D
+      * Then the inverted index will be {A: [Sequence1], B: [Seuqnece1, Sequence2], C: [Sequence1], D: [Sequence3]}
+    * Lookup Table - it stores each sequence as the key and the terminal node as the value
   
 
 * Readings
