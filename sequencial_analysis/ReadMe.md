@@ -6,7 +6,7 @@ SEQUENCE PREDICTION
 
 * Sequence Prediction - In a word, you get a sequence of behaviors/patterns and try to predict the next
 * Problems of LSTMs/RNNs
-  * 10s of hours to trainn, very long time
+  * 10s of hours to train, very long time
   * Need to re-train once there is new items that didn't appear in the previous training data
 * Compact Prediction Tree (CPT)
   * Much faster than other methods such as Markov Chain, LSTMs/RNNs
@@ -18,6 +18,13 @@ SEQUENCE PREDICTION
       * We have Sequence1: A,B,C; Sequence2: B,C; Sequence3: D
       * Then the inverted index will be {A: [Sequence1], B: [Seuqnece1, Sequence2], C: [Sequence1], D: [Sequence3]}
     * Lookup Table - it stores each sequence as the key and the terminal node as the value
+  * How it makes prediction
+    * Overall View - After building all the 3 data structures with the training data, for each testing sequence, it will predict the mth node that tend to follow this testing sequence. Here by default mth means the last node, however I think it's toally fine for you to define m
+    * step 1 - finding common sequences as similiar sequences
+      * For each item in a testing sequence, we check the inverted index and find the sequences that contain each of these items. Then we choose the common sequences shared by all these items (intersection). These chosen sequences are the similar sequences.
+    * step 2 - generate the consequence for each similar sequence
+      * For each similar sequence we got from step 1, we generate the consequence for them
+      * A consequence is formed by all the similar sequence items that follow the last item of the testing sequence and removed items that appeared in the testing sequence 
   
 
 * Readings
