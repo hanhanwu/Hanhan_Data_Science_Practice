@@ -25,6 +25,16 @@ SEQUENCE PREDICTION
     * step 2 - generate the consequence for each similar sequence
       * For each similar sequence we got from step 1, we generate the consequence for them
       * A consequence is formed by all the similar sequence items that follow the last item of the testing sequence and removed items that appeared in the testing sequence 
+      * For example, we have testing sequence {A,B,C}, similar sequence {A,B,C,D,A,F}, so the consequence will be {D,F} becaue {D,A,F} appeared after C (the last item in the testing sequence), and removed A since it appeared in the testing sequence
+    * step 3 - For each consequence, add items in consequence into a shared score_dictionary
+      * If the item is in the score_dictionary keys, `score = 1 + (1/number of similar sequences) +(1/number of keys currently in the score_dictionary+1)*0.001`
+      * Otherwise, `score = 1 + (1/number of similar sequences) +(1/number of items currently in the score_dictionary+1)*previous_item_score`
+    * step 4 - prediction
+      * If you predict the most possible n items, just select the n items that with the highest score
+      * if you predict the mth item, just select the mth items in score ascending order
+  * Reference: https://www.analyticsvidhya.com/blog/2018/04/guide-sequence-prediction-using-compact-prediction-tree-python/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+    * Open Source code: https://github.com/analyticsvidhya/CPT
+      * The author allows you to choose the most possible n items, based on this, you can just choose the (N-m)th largest items and choose the smallest one as mth item you want to predict. N is the total number of items in score_dictionary
   
 
 * Readings
