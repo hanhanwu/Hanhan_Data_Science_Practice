@@ -25,6 +25,7 @@ SEQUENCE PREDICTION
     * step 2 - generate the consequence for each similar sequence
       * For each similar sequence we got from step 1, we generate the consequence for them
       * A consequence is formed by all the similar sequence items that follow the last item of the testing sequence and removed items that appeared in the testing sequence 
+        * If the last item in testing sequence never appeared in the training data, you simpy won't find a prediction
       * For example, we have testing sequence {A,B,C}, similar sequence {A,B,C,D,A,F}, so the consequence will be {D,F} becaue {D,A,F} appeared after C (the last item in the testing sequence), and removed A since it appeared in the testing sequence
     * step 3 - For each consequence, add items in consequence into a shared score_dictionary
       * If the item is in the score_dictionary keys, `score = 1 + (1/number of similar sequences) +(1/number of keys currently in the score_dictionary+1)*0.001`
@@ -33,8 +34,14 @@ SEQUENCE PREDICTION
       * If you predict the most possible n items, just select the n items that with the highest score
       * if you predict the mth item, just select the mth items in score ascending order
   * Reference: https://www.analyticsvidhya.com/blog/2018/04/guide-sequence-prediction-using-compact-prediction-tree-python/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+  * My practice code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/try_CPT_python.ipynb
+    * training data: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/train.csv
+    * testing data: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/test.csv
     * Open Source code: https://github.com/analyticsvidhya/CPT
       * The author allows you to choose the most possible n items, based on this, you can just choose the (N-m)th largest items and choose the smallest one as mth item you want to predict. N is the total number of items in score_dictionary
+      * If the last item in testing sequence never appeared in the training data, you simpy won't find a prediction
+      * The train and test files muct have the index as the first row. Each record muct have the same length, and must be the same as length as the first row.
+    * Reference: https://www.analyticsvidhya.com/blog/2018/04/guide-sequence-prediction-using-compact-prediction-tree-python/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
   
 
 * Readings
