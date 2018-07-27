@@ -41,7 +41,6 @@ SEQUENCE PREDICTION
       * The author allows you to choose the most possible n items, based on this, you can just choose the (N-m)th largest items and choose the smallest one as mth item you want to predict. N is the total number of items in score_dictionary
       * If the last item in testing sequence never appeared in the training data, you simpy won't find a prediction
       * The train and test files muct have the index as the first row. Each record muct have the same length, and must be the same as length as the first row.
-    * Reference: https://www.analyticsvidhya.com/blog/2018/04/guide-sequence-prediction-using-compact-prediction-tree-python/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
   
 
 * Readings
