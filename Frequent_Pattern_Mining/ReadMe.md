@@ -41,3 +41,19 @@ ALGORITHMS REVIEW
   * [Spark Python] code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Frequent_Pattern_Mining/association_rules.ipynb
    * Looks like the most esay-to-use python library for association rules, although how to use that `where` clause in this case casued my some time...
      * https://stackoverflow.com/questions/50559308/spark-python-cannot-match-array
+
+*************************************************************
+
+SPMF
+
+* SPMF is a Java library, it contains many frequent mining algorithms that you  won't find in either python nor R, but SPMF really has so many advanced algorithms. So why not just use Java.
+* Download, Install & Run
+  * First of all, you need to download and install Eclipse: http://www.eclipse.org/downloads/packages/release/
+    * Download the latest released version (I think Eclipse is very good at giving cool names to its release), and install Java IDE or J2EE
+    * Download and install Java JDK: http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+    * Then when you have launched Eclipse, create a project name/path, click "Next" and choose "Use a project specific JRE" and select the JDK version you installed. It may also better NOT to create your workspace in a folder that may have more access restriction. 
+  * Install source code version: http://www.philippe-fournier-viger.com/spmf/index.php?link=download.php
+    * You can follow the steps here: http://www.philippe-fournier-viger.com/spmf/how_to_install.txt
+    * In my case, after upcompress the zip folder, you need to move folder `ca` and the license directly under `src`
+    * After clicking `Refresh` of `src`, you may still get many warnings. But just go to `ca.pfv.spmf.tests` folder, find a test file such as `MainTestCharm_saveToMemory.java`, run as application. If the execution succeeded, you should be fine.
+
