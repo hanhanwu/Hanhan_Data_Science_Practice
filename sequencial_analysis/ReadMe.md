@@ -51,7 +51,11 @@ SEQUENCE PREDICTION
     * Description of `TryCPTPlus.java`
       * The original implementation came from https://github.com/tedgueniche/IPredict
       * Open source is open source.... it has very strict requirements for the input data format:
-      
+        * elements in each sequence have to be numbers
+        * Each number has to be seperated by " -1 ", and the end of the sequence should be " -1 -2"
+          * This will create the limit that your numbers cannot be -1 or -2
+      * The testing data is imput by yourself in line 56, 57, 58. In my code, as you can see I input "2,4" to predict which number should follow them
+      * One of the bug of this open source code is, if the prediction has more then 1 element that got the same score, the prediction returns empty value....
   
 
 * Readings
