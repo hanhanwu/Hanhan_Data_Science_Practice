@@ -56,4 +56,18 @@ SPMF
     * You can follow the steps here: http://www.philippe-fournier-viger.com/spmf/how_to_install.txt
     * In my case, after upcompress the zip folder, you need to move folder `ca` and the license directly under `src`
     * After clicking `Refresh` of `src`, you may still get many warnings. But just go to `ca.pfv.spmf.tests` folder, find a test file such as `MainTestCharm_saveToMemory.java`, run as application. If the execution succeeded, you should be fine.
-
+  * My Practice code [Java]: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/TryCPTPlus.java
+    * training data: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/training.txt
+    * HOW to run the code:
+      * Check how to install `SPMF` here: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/tree/master/Frequent_Pattern_Mining
+      * create a new folder under `ca.pfv.spmf.test` called "hanhan_test". You can use other folder name, but need to change the path in the .java file above.
+      * put both training data and the code into "hanhan_test" folder
+      * run the .java file as application
+    * Description of `TryCPTPlus.java`
+      * The original implementation came from https://github.com/tedgueniche/IPredict
+      * Open source is open source.... it has very strict requirements for the input data format:
+        * elements in each sequence have to be numbers
+        * Each number has to be seperated by " -1 ", and the end of the sequence should be " -1 -2"
+          * This will create the limit that your numbers cannot be -1 or -2
+      * The testing data is imput by yourself in line 56, 57, 58. In my code, as you can see I input "2,4" to predict which number should follow them
+      * One of the bug of this open source code is, if the prediction has more then 1 element that got the same score, the prediction returns empty value....
