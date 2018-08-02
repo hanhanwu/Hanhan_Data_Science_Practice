@@ -96,6 +96,11 @@ RESOURCES
     * Always keep in mind that ReLU function should only be used in the hidden layers
     * As <b>a rule of thumb</b>, you can begin with using ReLU function and then move over to other activation functions in case ReLU doesn’t provide with optimum results
     
+* How Regularization work in deep learning
+  * In linear regression, we know regularization is used to penalize coefficients; Similarily, in deep learning, regularization is used to penalise the weight matrices of the nodes. 
+    * Imagine when the weights are too low, close to 0 that the nodes won't contribute in the prediction and the model is near a linear model, this will underfit the data; when the weights are too high will overfit the data
+    * So we need regularization to help optimize the weights
+    
 * Hierarchical Temporal Memory (HTM) - Real Time Unsupervised Learning
   * HTM replicates the functioning of the <b>Neocortex</b>, the component of real huan intelligence.
     * Our brain majorly has 3 parts:
