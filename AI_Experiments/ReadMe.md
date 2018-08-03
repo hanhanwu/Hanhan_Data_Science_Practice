@@ -100,6 +100,35 @@ RESOURCES
   * In linear regression, we know regularization is used to penalize coefficients; Similarily, in deep learning, regularization is used to penalise the weight matrices of the nodes. 
     * Imagine when the weights are too low, close to 0 that the nodes won't contribute in the prediction and the model is near a linear model, this will underfit the data; when the weights are too high will overfit the data
     * So we need regularization to help optimize the weights
+  * Commonly used regularization methods
+    * Such as L1, L2, the combination of L1&L2
+    * Check keras regularizer: https://keras.io/regularizers/
+      * The parameter mean alpha
+  * Dropout
+    * It randomly selects some nodes and removes them along with all of their incoming and outgoing connections
+    * It is the most frequently used regularization method in deep learning
+    * Can be applied to both the hidden layer and the input layer
+    * Dropout is usually preferred in a large neural network structure in order to introduce more randomness.
+    * check keras dropout: https://keras.io/layers/core/#dropout
+      * The parameter means the probability of being dropped out
+  * Data Augmentation
+    * Increase the training data size, to reduce overfitting
+      * This can be very costly when data labeling is time consuming or has other challenges
+      * But imagine your data is images, you can try:
+        * Rotating
+        * Flipping
+        * Shiffting 
+        * Scaling
+        * Combined methods
+        * Other
+      * This method can provide a big leap in the improvements
+    * Check keras image preprocessing methods: https://keras.io/preprocessing/image/
+  * Early Stopping
+    * it borrows the idea of cross validation, with both training data and validation data. When the validation erros starts to go up, the training stops immediately.
+    * Check keras early_stopping: https://keras.io/callbacks/#earlystopping
+      * `val_loss`, `val_error` all indicates the loss/error on validation data
+      * `patience` indicates the number of epochs need to wait after the point where validation error starts to go up
+        * <b>NOTE: it can happen that after x apoches, the validation error can increase again</b>, so it needs to pay more attention when tuning this parameter
     
 * Hierarchical Temporal Memory (HTM) - Real Time Unsupervised Learning
   * HTM replicates the functioning of the <b>Neocortex</b>, the component of real huan intelligence.
