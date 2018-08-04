@@ -129,6 +129,7 @@ RESOURCES
       * `val_loss`, `val_error` all indicates the loss/error on validation data
       * `patience` indicates the number of epochs need to wait after the point where validation error starts to go up
         * <b>NOTE: it can happen that after x apoches, the validation error can increase again</b>, so it needs to pay more attention when tuning this parameter
+   * My practice code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/deep_learning_regularization.ipynb
     
 * Hierarchical Temporal Memory (HTM) - Real Time Unsupervised Learning
   * HTM replicates the functioning of the <b>Neocortex</b>, the component of real huan intelligence.
