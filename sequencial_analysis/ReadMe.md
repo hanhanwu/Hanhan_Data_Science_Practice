@@ -109,6 +109,10 @@ TIME SERIES CONCEPTS
     * <b>Diagnostic Checking</b>, to check non-randomness with residuals, `tsdiag(fit)`. The residuals of a “correctly specified” model should be independently distributed, otherwise it's the wrong model
     * <b>Predict Future Values of Time Series</b>, `LH.pred<-predict(fit,n.ahead=8)`
  
+* ARIMA with grid search, cross validation
+  * I was often emotionally against time series practice, because the tutorials I saw were over complex the problem. When there are existing libraries, they implemented their own and the code is not that elegant.... So, finally today, I decided to spend a little bit more time to find an easier solution. Let's just used those existing published libraries, give ourselves an easier life and better solution.
+  * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/ARIMA_grid_search.ipynb
+
 
 ******************************************************************************************
  
