@@ -108,11 +108,47 @@ TIME SERIES CONCEPTS
     * It also includes <b>parameter estimation</b>, `fit <- arima(data,order=c(p,d,q))`
     * <b>Diagnostic Checking</b>, to check non-randomness with residuals, `tsdiag(fit)`. The residuals of a “correctly specified” model should be independently distributed, otherwise it's the wrong model
     * <b>Predict Future Values of Time Series</b>, `LH.pred<-predict(fit,n.ahead=8)`
- 
-* ARIMA with grid search, cross validation
-  * I was often emotionally against time series practice, because the tutorials I saw were over complex the problem. When there are existing libraries, they implemented their own and the code is not that elegant.... So, finally today, I decided to spend a little bit more time to find an easier solution. Let's just used those existing published libraries, give ourselves an easier life and better solution.
-  * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/ARIMA_grid_search.ipynb
 
+* 11 time series models [python]
+  * AR (Autoregression) - it models the next step in the sequence as a linear function of the observations at prior time steps.
+    * `AR(p)`, for example when p=1, it means first order AR model
+  * MA (Moving Average) - it models the next step in the sequence as a linear function of the residual errors from a mean process at prior time steps.
+    * `Ma(q)`, for example when q=1, it means first order MA model
+  * ARMA (Autoregression Moving Average) - it models the next step in the sequence as a linear function of the observations and resiudal errors at prior time steps.
+    * `ARMA(p,q)`,  p is the order of the autoregressive part and q is the order of the moving average part
+  * ARIMA (Autoregressive Integrated Moving Average) - it models the next step in the sequence as a linear function of the differenced observations and residual errors at prior time steps.
+    * It combines both Autoregression (AR) and Moving Average (MA) models as well as a differencing pre-processing step of the sequence to make the sequence stationary, called integration (I).
+    * `ARIMA(p,d,q)`
+    *  It is suitable for univariate time series with trend and without seasonal components.
+  * SARIMA (Seasonal Autoregressive Integrated Moving-Average) - it models the next step in the sequence as a linear function of the differenced observations, errors, differenced seasonal observations, and seasonal errors at prior time steps.
+    * `model = SARIMAX(data, order=(1, 1, 1), seasonal_order=(1, 1, 1, 1))`
+      * The first order is (p,d,q) in ARIMA model, the seasonal_order is (P,D,Q), m at seasonal level, m is the number of time steps in each season.
+  * SARIMAX (The Seasonal Autoregressive Integrated Moving-Average with Exogenous Regressors)
+    * Exogenous variables are also called covariates and can be thought of as parallel input sequences that have observations at the same time steps as the original series.
+    * Sample code:
+      * `data1 = [x + random() for x in range(1, 100)]`
+      * `data2 = [x + random() for x in range(101, 200)]`
+      * `model = SARIMAX(data1, exog=data2, order=(1, 1, 1), seasonal_order=(0, 0, 0, 0))`
+      * See data1, data2 here
+  * VAR (Vector Autoregression)
+    * It is the generalization of AR to multiple parallel time series.
+    * `VAR(p)`
+  * VARMA (Vector Autoregression Moving-Average)
+    *  It is the generalization of ARMA to multiple parallel time series
+    * `VARMA(p, q)`
+  * VARMAX (Vector Autoregression Moving-Average with Exogenous Regressors)
+    * It is a multivariate version of the ARMAX method.
+    * `VARMAX(p,q)`, and it also has data1, data2 as above SARIMAX
+  * Simple Exponential Smoothing (SES)
+    * It models the next time step as an exponentially weighted linear function of observations at prior time steps.
+    * It is suitable for univariate time series without trend and seasonal components.
+  * HWES (Holt Winter’s Exponential Smoothing)
+    * It models the next time step as an exponentially weighted linear function of observations at prior time steps, taking trends and seasonality into account.
+    * It is suitable for univariate time series with trend and/or seasonal components.
+  * Reference: https://machinelearningmastery.com/time-series-forecasting-methods-in-python-cheat-sheet/
+    * It has sample code for each method, all with built-in functions, which is good.
+    * Long time ago, I tried DIY 7 methods, but no better than using python built-in methods
+      * https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/time_series_forecasting.ipynb
 
 ******************************************************************************************
  
@@ -167,6 +203,10 @@ TIME SERIES PRACTICE
     * After ARIMA forecasting, it also added vack the original sacle, to compare with real observations
   * Check Stationary & Make Data Stationary Reference: https://www.analyticsvidhya.com/blog/2016/02/time-series-forecasting-codes-python/
   * ARIMA Reference: https://machinelearningmastery.com/arima-for-time-series-forecasting-with-python/
+  
+* ARIMA with grid search, cross validation
+  * I was often emotionally against time series practice, because the tutorials I saw were over complex the problem. When there are existing libraries, they implemented their own and the code is not that elegant.... So, finally today, I decided to spend a little bit more time to find an easier solution. Let's just used those existing published libraries, give ourselves an easier life and better solution.
+  * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/ARIMA_grid_search.ipynb
   
 * [Python] RNN - Data Preprocessing for LSTM
   * This is another dataset, the data preprocessing to make data stationary here is better
