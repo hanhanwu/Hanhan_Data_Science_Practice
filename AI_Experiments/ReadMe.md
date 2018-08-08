@@ -457,6 +457,12 @@ EXPERIMENTS
   * My code 2: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/stemming_text_embedding_NN.ipynb
     * Compared with code 1, the code here just added 1 line of code - "stemming". Because in code 1, each unique word will have a numerical value, so I was wondering whether stemmed result can be better, since it converts words with similar meaning to the same format before word embedding. The fially result improved a little bit.
     * But looking back, similar words with different format can still be good, since they can reflect the word position and meaning better.
+    
+    
+* [Python] Sequence to Sequence with Attention
+  * Beam Search
+    * When generating words as a sequences, at each time step, the decoder has to make a decision as to what the next word would be in the sequence. One way to make a decision would be to greedily find out the most probable word at each time step.
+    * Beam search takes into account the probability of the next k words in the sequence, and then chooses the proposal with the max combined probability.
    
 
 * [R] Try Neural Network in R
