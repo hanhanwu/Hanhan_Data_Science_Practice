@@ -14,6 +14,8 @@ RESOURCES
 * Standford CNN for visual Recognition lectures: http://cs231n.stanford.edu/syllabus.html
   * I think, once you started to learn deep learning, you will really feel it's so deep to learn....
   * My notes: https://github.com/hanhanwu/Hanhan_Data_Science_Resources2/blob/master/Standford_CNN_Notes1.pdf
+* Tab-delimited Bilingual Sentence Pairs: http://www.manythings.org/anki/
+  * Used for language translation, translate to English
 
 * Here is a bunch of libraries, tutorials you can try: https://www.analyticsvidhya.com/blog/2016/08/deep-learning-path/
 
@@ -463,6 +465,8 @@ EXPERIMENTS
   * Beam Search
     * When generating words as a sequences, at each time step, the decoder has to make a decision as to what the next word would be in the sequence. One way to make a decision would be to greedily find out the most probable word at each time step.
     * Beam search takes into account the probability of the next k words in the sequence, and then chooses the proposal with the max combined probability.
+  * Attention Mechanism
+    * It takes input from each time step of the encoder – but give weights to the timesteps. The weights depend on the importance of that time step for the decoder to optimally generate the next word in the sequence
    
 
 * [R] Try Neural Network in R
