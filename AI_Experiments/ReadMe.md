@@ -467,6 +467,11 @@ EXPERIMENTS
     * Beam search takes into account the probability of the next k words in the sequence, and then chooses the proposal with the max combined probability.
   * Attention Mechanism
     * It takes input from each time step of the encoder – but give weights to the timesteps. The weights depend on the importance of that time step for the decoder to optimally generate the next word in the sequence
+  * reference: https://www.analyticsvidhya.com/blog/2018/03/essentials-of-deep-learning-sequence-to-sequence-modelling-with-attention-part-i/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+    * it simply copied part of the Keras sample code.... That's sneaky, I don't like it.
+  * One of the practical application is language translation. Here's the sample code of using Keras, LSTM to translate the language: https://github.com/keras-team/keras/blob/master/examples/lstm_seq2seq.py
+  * My Language Translation practice code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/deep_learning_sequence2sequence.ipynb
+    * I just wanted to see how it works, so copied the whole code and changed the language & parameter. Got the cold recetly, have to go to sleep early...
    
 
 * [R] Try Neural Network in R
