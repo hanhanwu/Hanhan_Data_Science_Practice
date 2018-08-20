@@ -139,9 +139,9 @@ Future Methods Can Try
   * Feature Selection for High-Dimensional Data:A Fast Correlation-Based Filter Solution (FCBF): https://www.aaai.org/Papers/ICML/2003/ICML03-111.pdf
 
 * More sampling methods to deal with data imbalance
-  * [Python] Scikit-Learn imbalanced-learn API: http://contrib.scikit-learn.org/imbalanced-learn/api.html
+  * [Python] Scikit-Learn imbalanced-learn API: http://contrib.scikit-learn.org/imbalanced-learn/stable/api.html
     * Check left side algorithms you can choose
-    * For example, you can use SMOTE-ENN: http://contrib.scikit-learn.org/imbalanced-learn/auto_examples/combine/plot_smote_enn.html
+    * For example, you can use SMOTE-ENN: http://contrib.scikit-learn.org/imbalanced-learn/stable/auto_examples/combine/plot_smote_enn.html
   * [R] unbalance package (2015): https://cran.r-project.org/web/packages/unbalanced/unbalanced.pdf
     * Page 3, `type` param, you can use `ubOver, ubUnder, ubSMOTE, ubOSS, ubCNN, ubENN, ubNCL, ubTomek`
     
