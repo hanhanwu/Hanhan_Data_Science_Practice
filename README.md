@@ -346,11 +346,11 @@ DATA PREPROCESSING
       * <b>Use SMOTE/MSMOTE with GBM, XGBoost, Random Forest may be better</b>
     * Currently, if you want to find an easy way to use sampling methods, this python library can help: http://contrib.scikit-learn.org/imbalanced-learn/stable/api.html
       * Oversampling - ADASYN vs SMOTE
-        * ADASYN will focus on the samples which are difficult to classify with a nearest-neighbors rule while regular SMOTE will not make any distinction.
+        * ADASYN will focus on the samples which are difficult to classify with a nearest-neighbors rule while regular SMOTE will not make any distinction. http://contrib.scikit-learn.org/imbalanced-learn/stable/auto_examples/over-sampling/plot_comparison_over_sampling.html#more-advanced-over-sampling-using-adasyn-and-smote
         * "The essential idea of ADASYN is to use a weighted distribution for different minority class examples according to their level of difficulty in learning, where more synthetic data is generated for minority class examples that are harder to learn compared to those minority examples that are easier to learn. As a result, the ADASYN approach improves learning with respect to the data distributions in two ways: (1) reducing the bias introduced by the class imbalance, and (2) adaptively shifting the classification decision boundary toward the difficult examples." http://sci2s.ugr.es/keel/pdf/algorithm/congreso/2008-He-ieee.pdf
         * Cannot find verified MSMOTE built-in yet.
       * Oversampling + Undersampling
-        * W"e previously presented SMOTE and showed that this method can generate noisy samples by interpolating new points between marginal outliers and inliers. This issue can be solved by cleaning the resulted space obtained after over-sampling.
+        * "We previously presented SMOTE and showed that this method can generate noisy samples by interpolating new points between marginal outliers and inliers. This issue can be solved by cleaning the resulted space obtained after over-sampling.
 In this regard, Tomek’s link and edited nearest-neighbours are the two cleaning methods which have been added pipeline after SMOTE over-sampling to obtain a cleaner space." http://contrib.scikit-learn.org/imbalanced-learn/stable/combine.html
       * Emsenbling sampling
         * Not list undersampling here
