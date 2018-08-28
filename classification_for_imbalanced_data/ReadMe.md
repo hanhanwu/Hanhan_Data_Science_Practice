@@ -142,8 +142,44 @@ Future Methods Can Try
   * [Python] Scikit-Learn imbalanced-learn API: http://contrib.scikit-learn.org/imbalanced-learn/stable/api.html
     * Check left side algorithms you can choose
     * For example, you can use SMOTE-ENN: http://contrib.scikit-learn.org/imbalanced-learn/stable/auto_examples/combine/plot_smote_enn.html
+    * Oversampling - ADASYN vs SMOTE
+      * ADASYN will focus on the samples which are difficult to classify with a nearest-neighbors rule while regular SMOTE will not make any distinction. http://contrib.scikit-learn.org/imbalanced-learn/stable/auto_examples/over-sampling/plot_comparison_over_sampling.html#more-advanced-over-sampling-using-adasyn-and-smote
+      * "The essential idea of ADASYN is to use a weighted distribution for different minority class examples according to their level of difficulty in learning, where more synthetic data is generated for minority class examples that are harder to learn compared to those minority examples that are easier to learn. As a result, the ADASYN approach improves learning with respect to the data distributions in two ways: (1) reducing the bias introduced by the class imbalance, and (2) adaptively shifting the classification decision boundary toward the difficult examples." http://sci2s.ugr.es/keel/pdf/algorithm/congreso/2008-He-ieee.pdf
+      * Cannot find verified MSMOTE built-in yet.
+    * Oversampling + Undersampling
+      * "We previously presented SMOTE and showed that this method can generate noisy samples by interpolating new points between marginal outliers and inliers. This issue can be solved by cleaning the resulted space obtained after over-sampling.
+In this regard, Tomek’s link and edited nearest-neighbours are the two cleaning methods which have been added pipeline after SMOTE over-sampling to obtain a cleaner space." http://contrib.scikit-learn.org/imbalanced-learn/stable/combine.html
+    * Emsenbling sampling
+      * Not list undersampling here
+      * BalancedBaggingClassifier: http://contrib.scikit-learn.org/imbalanced-learn/stable/generated/imblearn.ensemble.BalancedBaggingClassifier.html#imblearn.ensemble.BalancedBaggingClassifier
+        * They implemented bagging. Bagging (Bootstrap Aggregating). With Bootstrap, each row is selected with equal probability with replacement. 
   * [R] unbalance package (2015): https://cran.r-project.org/web/packages/unbalanced/unbalanced.pdf
     * Page 3, `type` param, you can use `ubOver, ubUnder, ubSMOTE, ubOSS, ubCNN, ubENN, ubNCL, ubTomek`
+    
+* [Python] Feature Selection & Param Tuning & Model Selection
+  * sklearn tend to have many functions and can have overlaps with each other. I want to simplify these 3 steps and try to make them form a pipeline.
+  * Feature Selection
+    * Recursive Feature Elimination: http://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.RFECV.html#sklearn.feature_selection.RFECV
+      * Methods such as backward selection
+      * It also allows you to do cross validation in it
+    * Chi2 Feature Selection: http://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.chi2.html#sklearn.feature_selection.chi2
+      * chi-square test measures the dependence between stochastic variables (non-deterministic variables). So this method uses chi-square to remove features that are independent from the label and therefore does not contribute to the prediction
+    * Boruta All Relevant Feature Selection
+      * I think it has similar concept as chi-square feature selection. Instead of removing features that are independent from the class label, all relevant feature selection is trying to find features that contribute to the class prediction and which features contribute to which class value: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/classification_for_imbalanced_data/boruta_all_relevant_feature_selection.pdf
+      * https://github.com/scikit-learn-contrib/boruta_py
+    * Mutual Info Estimation
+      * Also similar to all relevant feature selection, this method measures the mutual info between each feature and the target. When the value is 0, the 2 are independent from each other; higher the value, higher the dependency.
+      * It relies on nonparametric methods based on entropy estimation from k-nearest neighbors distances.
+      * For discrete label: http://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.mutual_info_classif.html#sklearn.feature_selection.mutual_info_classif
+      * For continuous label: http://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.mutual_info_regression.html#sklearn.feature_selection.mutual_info_regression
+    * Variance Threshold Feature Selection
+      * This is the basic one that can be used in preprocessing step. It removes all low-variance features
+      * http://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.VarianceThreshold.html#sklearn.feature_selection.VarianceThreshold
+  * Param Tuning
+    * Random Search: https://github.com/hyperopt/hyperopt
+    * http://scikit-learn.org/stable/modules/grid_search.html#exhaustive-grid-search
+  * Model Selection
+    * http://scikit-learn.org/stable/model_selection.html
     
 * Other Models can try
   * [Python] LightGBM with cross validation: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/try_lightfGBM_cv.ipynb
