@@ -175,6 +175,8 @@ In this regard, Tomek’s link and edited nearest-neighbours are the two cleanin
     * Variance Threshold Feature Selection
       * This is the basic one that can be used in preprocessing step. It removes all low-variance features
       * http://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.VarianceThreshold.html#sklearn.feature_selection.VarianceThreshold
+    * Drop Highly Correlated Features
+      * An example: https://chrisalbon.com/machine_learning/feature_selection/drop_highly_correlated_features/
   * Param Tuning
     * Random Search: https://github.com/hyperopt/hyperopt
     * http://scikit-learn.org/stable/modules/grid_search.html#exhaustive-grid-search
