@@ -419,9 +419,9 @@ TREE BASED MODELS
 
 ********************************************
 
-GRAPH THEORY
+### GRAPH THEORY
 
-* Graph Theory with python networkx
+#### Graph Theory with python networkx
   * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/graph_theory_airlines.ipynb
     * I found networkx Algorithms looks pretty good: https://networkx.github.io/documentation/stable/reference/algorithms/index.html
     * Very easy to use, you can generate weighted dijkstra path through 1 function call, data input is also simple
@@ -432,15 +432,15 @@ GRAPH THEORY
     * Betweenness Centrality – Number of times a node is present in the shortest path between 2 other nodes
 2. Closeness Centrality – Of a node is the average length of the shortest path from the node to all other nodes
 3. Betweenness Centrality – Number of times a node is present in the shortest path between 2 other nodes
-* Graph Lab for a basic Search Engine
+
+#### Graph Lab for a basic Search Engine
   * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/try_GraphLab.ipynb
     * It took me so much time to install graph lab, finally I had to create a specific virtual environment, just for this tool
     * "Turi is a graph-based, high performance, distributed computation framework written in C++" -- From GraphLab
   * refernece: https://www.analyticsvidhya.com/blog/2016/06/quick-guide-build-recommendation-engine-python/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
     * It's using GraphLab to build for collaborative filtering model, and therefore forms a basic recommendation system
     
-    
-* Graph Database with Neo4j
+#### Graph Database with Neo4j
   * How to install
     * Download Neo4j server: https://neo4j.com/download/
       * Extract the tar folder
@@ -459,7 +459,7 @@ GRAPH THEORY
     * Neo4j is index-free adjacency, which means, without the index, through 1 node can find other nodes through adjacency relationship like what we can do in graph
     * It has python sample.
     
-* Neptune - AWS Graph Database
+#### Neptune - AWS Graph Database
   * https://aws.amazon.com/neptune/
 ********************************************
 
