@@ -15,4 +15,6 @@
     * You use `()` as a node in match when you don't care any detail about the node.
     * If you want to return the values of anonymous nodes, you can have node name in it, such as `(product)` to return the "products" of your search
   * Using `with` will chain returned results together
-    * Using `collect()` in return clause, the results will be displaed as a list in 1 row, delimited by comma
+    * I think `match` and `with` together plays a role as `select` in relational database, while `match` is to do the search, `with` put those "columns" together in the search results.
+    * Using `collect()` in return clause, the results will be displayed as a list in 1 row, delimited by comma
+    * When there is `where`, use `with` after `where`
