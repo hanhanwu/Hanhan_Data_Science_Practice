@@ -20,6 +20,7 @@
     * To use `mle`, you won't find `stats4` package in installing tool, you can simply run `library(stats4)`
   * Method 2 - R `glm` 
     * It will calculate the coefficients for you when you define the distribution in `family`
+    * In the final evaluation part, you can see when I was using `exp()` for prediction results and comparing with the observations, the error was smaller. Maybe this is because `glm` was using `log()` function as default link function for poisson distribution and you need to convert back in prediction results, https://www.statmethods.net/advstats/glm.html
 * Python also have a library similar to R `glm` - `pymc`
 * Inspirations
   * Pay attention to the power of taking log
