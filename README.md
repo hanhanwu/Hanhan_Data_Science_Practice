@@ -445,8 +445,10 @@ TREE BASED MODELS
   * How to install
     * Download Neo4j server: https://neo4j.com/download/
       * Extract the tar folder
-      * Go to extracted folder, in your terminal, type, `bin/neo4j-admin set-initial-password my_initial_password`
+      * Go to extracted folder, in your terminal, type, `bin/neo4j-admin set-initial-password [my_initial_password]`
         * NOTE: if this step failed, go to folder data, remove `data/dbms/auth` file, then try to set the password again
+        * Don't remove `auth.ini` file
+        * After setting the password, when you opened `http://localhost:7474/browser/`, the first time you need to type the password to connect to the host. Othewise queries won't be executed.
       * Run the console by typing `./bin/neo4j console`
       * Open Neo4j browser, http://localhost:7474/browser/, and type your initial password to connect
       * At the top of the console, type `:play movies` and click "Run" button at the right side.
