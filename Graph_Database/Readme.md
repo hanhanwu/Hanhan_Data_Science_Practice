@@ -38,6 +38,7 @@
 * Create table
   * In this code, I chose a very small part of the sample query. In console, each time you can only run 1 query, which means there should only be 1 `;`.
   * In order to show the visualized graph, only `create` is not enough, you need `match` too.
+  * The query here is to find directors of the film that Keanu was acted in.
 ```sql
 CREATE (TheMatrix:Movie {title:'The Matrix', released:1999, tagline:'Welcome to the Real World'})
 CREATE (Keanu:Person {name:'Keanu Reeves', born:1964})
