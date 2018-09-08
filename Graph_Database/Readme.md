@@ -63,3 +63,89 @@ MATCH (a)-[:ACTED_IN]->(m)<-[:DIRECTED]-(d) RETURN a,m,d LIMIT 10;
 <p align="left">
 <img width="270" height="270" src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Graph_Database/sample_graph1.png">
 </p>
+
+* Match with Depth
+  * Left is the result with 2 or 3 depth; Right is the result with 4 depth
+  * I added Carrie into another movie that Keanu acted in to form a connection between the 2 movies
+```sql
+CREATE (TheMatrix:Movie {title:'The Matrix', released:1999, tagline:'Welcome to the Real World'})
+CREATE (Keanu:Person {name:'Keanu Reeves', born:1964})
+CREATE (Carrie:Person {name:'Carrie-Anne Moss', born:1967})
+CREATE (Laurence:Person {name:'Laurence Fishburne', born:1961})
+CREATE (Hugo:Person {name:'Hugo Weaving', born:1960})
+CREATE (LillyW:Person {name:'Lilly Wachowski', born:1967})
+CREATE (LanaW:Person {name:'Lana Wachowski', born:1965})
+CREATE (JoelS:Person {name:'Joel Silver', born:1952})
+CREATE
+  (Keanu)-[:ACTED_IN {roles:['Neo']}]->(TheMatrix),
+  (Carrie)-[:ACTED_IN {roles:['Trinity']}]->(TheMatrix),
+  (Laurence)-[:ACTED_IN {roles:['Morpheus']}]->(TheMatrix),
+  (Hugo)-[:ACTED_IN {roles:['Agent Smith']}]->(TheMatrix),
+  (LillyW)-[:DIRECTED]->(TheMatrix),
+  (LanaW)-[:DIRECTED]->(TheMatrix),
+  (JoelS)-[:PRODUCED]->(TheMatrix)
+
+CREATE (TheReplacements:Movie {title:'The Replacements', released:2000, tagline:'Pain heals, Chicks dig scars... Glory lasts forever'})
+CREATE (Brooke:Person {name:'Brooke Langton', born:1970})
+CREATE (Gene:Person {name:'Gene Hackman', born:1930})
+CREATE (Orlando:Person {name:'Orlando Jones', born:1968})
+CREATE (Howard:Person {name:'Howard Deutch', born:1950})
+CREATE
+  (Keanu)-[:ACTED_IN {roles:['Shane Falco']}]->(TheReplacements),
+  (Carrie)-[:ACTED_IN {roles:['Test Person']}]->(TheReplacements),
+  (Brooke)-[:ACTED_IN {roles:['Annabelle Farrell']}]->(TheReplacements),
+  (Gene)-[:ACTED_IN {roles:['Jimmy McGinty']}]->(TheReplacements),
+  (Orlando)-[:ACTED_IN {roles:['Clifford Franklin']}]->(TheReplacements),
+  (Howard)-[:DIRECTED]->(TheReplacements)
+
+WITH Keanu as a
+MATCH (a)-[*1..4]-(hollywood)
+RETURN DISTINCT hollywood;
+```
+<p align="left">
+<img width="370" height="270" src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Graph_Database/3_hops.png">
+ <img width="370" height="270" src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Graph_Database/4_hops.png">
+</p>
+
+* Shortest Path
+  * Find the shortest path that Hugo can reach to Gene.
+```sql
+CREATE (TheMatrix:Movie {title:'The Matrix', released:1999, tagline:'Welcome to the Real World'})
+CREATE (Keanu:Person {name:'Keanu Reeves', born:1964})
+CREATE (Carrie:Person {name:'Carrie-Anne Moss', born:1967})
+CREATE (Laurence:Person {name:'Laurence Fishburne', born:1961})
+CREATE (Hugo:Person {name:'Hugo Weaving', born:1960})
+CREATE (LillyW:Person {name:'Lilly Wachowski', born:1967})
+CREATE (LanaW:Person {name:'Lana Wachowski', born:1965})
+CREATE (JoelS:Person {name:'Joel Silver', born:1952})
+CREATE
+  (Keanu)-[:ACTED_IN {roles:['Neo']}]->(TheMatrix),
+  (Carrie)-[:ACTED_IN {roles:['Trinity']}]->(TheMatrix),
+  (Laurence)-[:ACTED_IN {roles:['Morpheus']}]->(TheMatrix),
+  (Hugo)-[:ACTED_IN {roles:['Agent Smith']}]->(TheMatrix),
+  (LillyW)-[:DIRECTED]->(TheMatrix),
+  (LanaW)-[:DIRECTED]->(TheMatrix),
+  (JoelS)-[:PRODUCED]->(TheMatrix)
+
+CREATE (TheReplacements:Movie {title:'The Replacements', released:2000, tagline:'Pain heals, Chicks dig scars... Glory lasts forever'})
+CREATE (Brooke:Person {name:'Brooke Langton', born:1970})
+CREATE (Gene:Person {name:'Gene Hackman', born:1930})
+CREATE (Orlando:Person {name:'Orlando Jones', born:1968})
+CREATE (Howard:Person {name:'Howard Deutch', born:1950})
+CREATE
+  (Keanu)-[:ACTED_IN {roles:['Shane Falco']}]->(TheReplacements),
+  (Carrie)-[:ACTED_IN {roles:['Test Person']}]->(TheReplacements),
+  (Brooke)-[:ACTED_IN {roles:['Annabelle Farrell']}]->(TheReplacements),
+  (Gene)-[:ACTED_IN {roles:['Jimmy McGinty']}]->(TheReplacements),
+  (Orlando)-[:ACTED_IN {roles:['Clifford Franklin']}]->(TheReplacements),
+  (Howard)-[:DIRECTED]->(TheReplacements)
+
+WITH Hugo as a
+MATCH p=shortestPath(
+  (a)-[*]-(Gene:Person {name:"Gene Hackman"})
+)
+RETURN p;
+```
+<p align="left">
+<img width="370" height="270" src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Graph_Database/shortestpath.png">
+</p>
