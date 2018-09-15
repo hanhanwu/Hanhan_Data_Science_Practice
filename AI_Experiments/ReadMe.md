@@ -249,7 +249,7 @@ RESOURCES
   * Install Jupyter Notebook in your virtual environment
     * `(Virtual_Env)$ pip install jupyter`, install jupyter within the active virtualenv
     * `(Virtual_Env)$ pip install ipykernel`, install reference ipykernel package
-    * `(Virtual_Env)$ python -m ipykernel install --user --name testenv --display-name "Python2 (Virtual_Env)"`, set up the kernel. Here, if you will install multiple kernel, `testenv` name should be changed to other names
+    * `(Virtual_Env)$ python -m ipykernel install --user --name conda_virtualenv --display-name "Python2 (Virtual_Env)"`, set up the kernel. Here, if you will install multiple kernel, `testenv` name should be changed to other names
     * `(Virtual_Env)$ jupyter notebook`
     * After jupyter notebook has been turned on, when you are creating a new notebook, choose "Python 2 (Virtual_Env)"
     * NOTE: If you are using Python3, for example, python3.5, then in the above commands, change `pip` to `pip3`; change `python` to `python3.5`
