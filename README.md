@@ -496,6 +496,16 @@ ADVANCED TOOLS
     * But with CatBoost, it does categorical features' label encoding in statistical methods. For me, in real world practice, I will still try other categorical to numerical methods, such as one-hot encoding.
 
 
+* Dask - Machine Learning in Parallel
+  * Dask is used for parallel processing, it's similar to Spark but copies part of sklearn, numpy, pandas and Spark, rather than having its own libraries like Spark.
+  * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/try_dask.ipynb
+    * Cannot say I'm a big fan of Dask now.
+    * For data preprocessing, it's no better than using pandas and numpy, since they are much faster than dask and have more functions. I tried, it took me so much time and finally decided to change back to numpy & pandas.
+    * But you can convert the preprocessed data into dask dataframe
+    * The parallel processing for machine learning didn't make me feel it's much faster than sklearn.
+    * Although dask-ml mentioned it supports both sklearn grid search and dask-ml grid search, but when I was using sklearn grid search, it gave large amount of error and could not tell what caused the error.
+    * I think for larger dataset, Spark must be faster if its machine learning supports the methods. We can also convert pandas dataframe to Saprk dataframe to overcome the shortage of data preprocessing functions.
+
 *********************************************
 
 CLOUD for DATA SCIENCE
