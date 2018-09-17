@@ -505,6 +505,13 @@ ADVANCED TOOLS
     * The parallel processing for machine learning didn't make me feel it's much faster than sklearn.
     * Although dask-ml mentioned it supports both sklearn grid search and dask-ml grid search, but when I was using sklearn grid search, it gave large amount of error and could not tell what caused the error.
     * I think for larger dataset, Spark must be faster if its machine learning supports the methods. We can also convert pandas dataframe to Saprk dataframe to overcome the shortage of data preprocessing functions.
+    
+    
+* Featuretools - Basic Auto Feature Engineering
+  * It does basic feature engineering, by generating MIN, MAX, SUM, STD, SKEW, NUM_UNIQUE, MEAN, MODE.
+  * About Featuretools: https://github.com/Featuretools/featuretools
+  * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/auto_basic_feature_engineering.ipynb
+    * Cannot say it's that advanced, it's very basic but will help you process features in a batch, and can be processed in depth. A potential problem can be, it's easy to have many errors and difficult to tell what caused the error.
 
 *********************************************
 
