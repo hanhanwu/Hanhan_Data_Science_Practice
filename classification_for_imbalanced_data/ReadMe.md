@@ -197,6 +197,11 @@ In this regard, Tomek’s link and edited nearest-neighbours are the two cleanin
     * It also does automatically model selection and param optimization, as TPOT
     * MLBox outputs more useful info for each step, and even including GPU time, as well as final predicted results (looks like built for competitions such as Kaggle...)
     * Its data cleaning is very basic, and only tells you which features are top sparse, without dealing with that for you
+  * Featuretools - Basic Auto Feature Engineering
+    * It does basic feature engineering, by generating MIN, MAX, SUM, STD, SKEW, NUM_UNIQUE, MEAN, MODE.
+    * About Featuretools: https://github.com/Featuretools/featuretools
+    * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/auto_basic_feature_engineering.ipynb
+      * Cannot say it's advanced, it's very basic but will help you process features in a batch, and can be processed in depth. A potential problem can be, it's easy to have many errors and difficult to tell what caused the error.
   
 
 ***********************************************************************
