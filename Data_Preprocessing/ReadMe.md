@@ -22,7 +22,10 @@ Finally decided to put all the future work here.
 * There is an experiment showing that with homoscedastic noise both FA and PCA succeds. However PCA fails and overestimates the rank when heteroscedastic noise is present.
   * Homoscedastic noise - noise variance is the same for each feature
   * Heteroscedastic noise - noise variance is different for each feature
-  * I think this is because PCA chooses top principle compoents that explain most of the variance, with
+  * I think this is because PCA chooses top principle compoents that explain most of the variance, then the variance between noise could be misleading to PCA.
+##### SVD (Singular Value Decomposition)
+* It uses Eigenvalues and Eigenvectors to decompose original variables into constituent matrices for dimensional reduction.
+* Majorly used to reduce redundant features.
 
 
 [1]:https://github.com/hanhanwu/Hanhan_Data_Science_Resources
