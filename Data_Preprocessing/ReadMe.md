@@ -14,6 +14,7 @@ Finally decided to put all the future work here.
 #### Linear Methods
 ##### Factor Analysis
 * It puts features into groups, features in a group have strong correlation with each other, but the between-group correlation should be lower. Each group is a "factor". So, by converting features into factors, the dimension reduced.
+* A simple linear generative model with Gaussian latent variables.
 ##### PCA (Principle Component Analysis)
 * A "principle component" is a linear combination of the original features.
 * We choose top n principle components that will explain most of the variance. From the top 1 principle component to top n principle component, the contribution to variance from each of them is decreasing. 
