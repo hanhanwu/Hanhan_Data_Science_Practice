@@ -43,6 +43,10 @@ Finally decided to put all the future work here.
 * UMAP often performs better at preserving aspects of global structure of the data than t-SNE. This means that it can often provide a better "big picture" view of your data as well as preserving local neighbor relations.
 * UMAP supports a wide variety of distance functions, including non-metric distance functions such as cosine distance and correlation distance. You can finally embed word vectors properly using cosine distance!
 * UMAP GitHub: https://github.com/lmcinnes/umap
+#### References
+* [Python Dimensional Reduction Methods][7]
+  * Some methods sklearn has built-in, no need that complex
+  * I don't really think the visualization here is a good way to show how well these methods work. Just a reference here, still has something to learn from.
 
 [1]:https://github.com/hanhanwu/Hanhan_Data_Science_Resources
 [2]:https://github.com/hanhanwu/Hanhan_Data_Science_Resources/blob/master/Experiences.md
@@ -50,3 +54,4 @@ Finally decided to put all the future work here.
 [4]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/tree/master/classification_for_imbalanced_data
 [5]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice
 [6]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/make_sense_dimension_reduction.ipynb
+[7]:https://www.analyticsvidhya.com/blog/2018/08/dimensionality-reduction-techniques-python/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
