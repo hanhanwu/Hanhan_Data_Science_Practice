@@ -24,10 +24,25 @@ Finally decided to put all the future work here.
   * Homoscedastic noise - noise variance is the same for each feature
   * Heteroscedastic noise - noise variance is different for each feature
   * I think this is because PCA chooses top principle compoents that explain most of the variance, then the variance between noise could be misleading to PCA.
+##### ICA (Independent Component Analysis)
+* A "component" here is also a linear combination of the original features.
+* But the components in ICA are independent, while the components in PCA are uncorrelated.
+  * Maximizing the kurtosis will make the distribution non-gaussian and hence we will get independent components.
+  * "One common measure of shape is called the kurtosis. As skewness involves the third moment of the distribution, kurtosis involves the fourth moment. The outliers in a sample, therefore, have even more effect on the kurtosis than they do on the skewness  and in a symmetric distribution both tails increase the kurtosis, unlike skewness where they offset each other."
 ##### SVD (Singular Value Decomposition)
 * It uses Eigenvalues and Eigenvectors to decompose original variables into constituent matrices for dimensional reduction.
 * Majorly used to reduce redundant features.
-
+#### Non-Linear Methods
+##### t-SNE
+* It's trying to retain both local and global structure of the data at the same time, by doing these:
+  * Local approaches :  They maps nearby points on the manifold to nearby points in the low dimensional representation.
+  * Global approaches : They attempt to preserve geometry at all scales, i.e. mapping nearby points on manifold to nearby points in low dimensional representation as well as far away points to far away points.
+##### UMAP (Uniform Manifold Approximation and Projection)
+* UMAP is fast. It can handle large datasets and high dimensional data without too much difficulty, scaling beyond what most t-SNE packages can manage.
+* UMAP scales well in embedding dimension -- it isn't just for visualisation! You can use UMAP as a general purpose dimension reduction technique as a preliminary step to other machine learning tasks. 
+* UMAP often performs better at preserving aspects of global structure of the data than t-SNE. This means that it can often provide a better "big picture" view of your data as well as preserving local neighbor relations.
+* UMAP supports a wide variety of distance functions, including non-metric distance functions such as cosine distance and correlation distance. You can finally embed word vectors properly using cosine distance!
+* UMAP GitHub: https://github.com/lmcinnes/umap
 
 [1]:https://github.com/hanhanwu/Hanhan_Data_Science_Resources
 [2]:https://github.com/hanhanwu/Hanhan_Data_Science_Resources/blob/master/Experiences.md
