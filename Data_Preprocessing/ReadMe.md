@@ -43,6 +43,8 @@ Finally decided to put all the future work here.
 * UMAP often performs better at preserving aspects of global structure of the data than t-SNE. This means that it can often provide a better "big picture" view of your data as well as preserving local neighbor relations.
 * UMAP supports a wide variety of distance functions, including non-metric distance functions such as cosine distance and correlation distance. You can finally embed word vectors properly using cosine distance!
 * UMAP GitHub: https://github.com/lmcinnes/umap
+##### ISOMAP
+* Used when the data is strongly non-linear
 #### References
 * [Python Dimensional Reduction Methods][7]
   * Some methods sklearn has built-in, no need that complex
