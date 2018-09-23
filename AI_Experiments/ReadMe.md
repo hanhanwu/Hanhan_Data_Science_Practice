@@ -3,9 +3,7 @@ Time to try experiments in Neural Network, Deep Learning and any other AI method
 Neural Network is a universal approximator, which means you can use it to implment other machine learning algorithms
 
 
-*****************************************************************
-
-RESOURCES
+## RESOURCES
 
 * Database
   * ImageNet: http://www.image-net.org
@@ -310,10 +308,22 @@ RESOURCES
   * Most of them are Deep Learning, some are really good to read, such as PassGAN
 * Sequence Model Use Cases: https://www.analyticsvidhya.com/blog/2018/04/sequence-modelling-an-introduction-with-practical-use-cases/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
 
+### Reinforcement Learning
+#### Using Dynamic Programming in Reinforcement Learning
+* Dynamic programming algorithms solve planning problems. Given the complete model and specifications of the environment (MDP), we can successfully find an optimal policy for the agent to follow. It contains two main steps:
+  * Break the problem into subproblems and solve it
+  * Solutions to subproblems are cached or stored for reuse to find overall optimal solution to the problem at hand
+* DP can only be used if the model of the environment is known.
+* DP Has a very high computational expense. It does not scale well as the number of states increase to a large number. An alternative called asynchronous dynamic programming helps to resolve this issue to some extent. 
+* Reference: https://www.analyticsvidhya.com/blog/2018/09/reinforcement-learning-model-based-planning-dynamic-programming/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+  * The author provided detailed mathematics methods and his implementation in an example.
+  * Step 1 - Policy Evaluation. The objective is to converge to the true value function for a given policy π.
+  * Step 2 - Policy Improvement. We need a helper function that does one step lookahead to calculate the state-value function. This will return an array of length nA containing expected value of each action.
+  * Step 3.1 - Policy Iteration. it will return the optimal policy matrix and value function for each state.
+  * Step 3.2 - Value Iteration. Instead of waiting for the policy evaluation step to converge exactly to the value function vπ, ee can get the optimal policy with just 1 step of policy evaluation followed by updating the value function repeatedly.
+  * Final observation is, value iteration has a better average reward and higher number of wins when it is run for 10,000 episodes.
 
-*****************************************************************
-
-EXPERIMENTS
+## EXPERIMENTS
 
 * Conda vs Non-Conda Environments
   * After you have installed so many python libraries, you may have already experienced 2 types of virtual environment and non-virtual environment. The installing mathods cannot apply to all of them, sometimes, 1 method just apply to 1 environment, but that's good enough if finally you can install all libraries in a certain environment and do your experiment. Let me write down my brief summary about using <b>non-virtual environment, python virtualenv and conda virtual environemnt</b>
