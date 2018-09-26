@@ -326,10 +326,19 @@ Neural Network is a universal approximator, which means you can use it to implme
   * Step 3.1 - Policy Iteration. it will return the optimal policy matrix and value function for each state.
   * Step 3.2 - Value Iteration. Instead of waiting for the policy evaluation step to converge exactly to the value function vπ, ee can get the optimal policy with just 1 step of policy evaluation followed by updating the value function repeatedly.
   * Final observation is, value iteration has a better average reward and higher number of wins when it is run for 10,000 episodes.
+  
+## Tips
+### Keras LSTM Changing Batch Size
+* When using built-in method of keras, the batch size limits the number of samples to be shown to the network before a weight update can be performed. Specifically, the batch size used when fitting your model controls how many predictions you must make at a time.
+* This will become an error when the number of predictions is lower than the batch size. For example, you may get the best results with a large batch size, but are required to make predictions for one observation at a time on something like a time series or sequence problem.
+* So, it will be better to have different batch size for training and testing.
+* My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/LSTM_changing_batch_size.ipynb
+  * <b>Just keep scrolling down... I know...</b>
+  
 
 ## EXPERIMENTS
 
-* Conda vs Non-Conda Environments
+### Conda vs Non-Conda Environments
   * After you have installed so many python libraries, you may have already experienced 2 types of virtual environment and non-virtual environment. The installing mathods cannot apply to all of them, sometimes, 1 method just apply to 1 environment, but that's good enough if finally you can install all libraries in a certain environment and do your experiment. Let me write down my brief summary about using <b>non-virtual environment, python virtualenv and conda virtual environemnt</b>
   * Non-Virtual Environemnt - Your local Python site-packages
     * For new versions of Mac, better to use `sudo easy_install [package_name]`
@@ -345,7 +354,7 @@ Neural Network is a universal approximator, which means you can use it to implme
     * Sometime! You can use `conda install [package_name]`. When this command does not work, try `pip install [package_name]` or `pip3 install [package_name]`. By changing between these 2 types of commands, finally, I got all the libraries I want in Conda Environemnt
 
 
-* Digit Recognition with Keras
+### Digit Recognition with Keras
   * Adam Optimizer: https://arxiv.org/abs/1412.6980
   * Supported Optimizers in Keras: https://keras.io/optimizers/
   * Supported loss functions in Keras: https://keras.io/losses/
@@ -364,7 +373,7 @@ Neural Network is a universal approximator, which means you can use it to implme
   * Reference: https://www.analyticsvidhya.com/blog/2016/10/tutorial-optimizing-neural-networks-using-keras-with-image-recognition-case-study/
   
   
-* Digit Recognition with Unsupervised Deep Learning
+### Digit Recognition with Unsupervised Deep Learning
   * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/unsupervised_deep_learning.ipynb
     * The evaluation method is NMI (Normalized Mutual Information), which calculates the purity of each cluster in order to measure the clustering quality. Higher NMI, the higher purity the clusters have.
     * This code used 3 methods:
@@ -378,7 +387,7 @@ Neural Network is a universal approximator, which means you can use it to implme
           * That DEC code, you need to copy the author's all the code from https://github.com/XifengGuo/DEC-keras/blob/master/DEC.py
     
     
-* Digital Recognition with Tensorflow
+### Digital Recognition with Tensorflow
   * “TensorFlow is an open source software library for numerical computation using dataflow graphs. Nodes in the graph represents mathematical operations, while graph edges represent multi-dimensional data arrays (aka tensors) communicated between them. The flexible architecture allows you to deploy computation to one or more CPUs or GPUs in a desktop, server, or mobile device with a single API.”
   * Tensorflow Workflow
     * Build a computational graph, this can be any mathematical operation TensorFlow supports.
@@ -403,7 +412,7 @@ Neural Network is a universal approximator, which means you can use it to implme
   * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/digital_recognition_TensorFlow.ipynb
   
   
-* Image Recognition with Keras
+### Image Recognition with Keras
   * <b>Better to use Conda virtual environment</b>
   * Commands to install required libraries in conda virtual environment
     * `conda install -c menpo opencv`
@@ -428,7 +437,7 @@ Neural Network is a universal approximator, which means you can use it to implme
       * When you are using `pylab.imshow(testing_img)` to show images, whether you could show color image or 1-color image depends on this line of code `testing_img = scipy.misc.imread(testing_image_path)`, if you set `flatten=Ture` in `imread`, will be 1-color, otherwise can be RGB image
   
   
-* GraphLab for Image Recognition
+### GraphLab for Image Recognition
   * You need to register GraphLab email first (it's free): https://turi.com/download/academic.html
   * Right after the email registration, an install page will appear with your email and GraphLab key filled in pip command line: https://turi.com/download/install-graphlab-create-command-line.html
     * Type `sudo pip install --upgrade --no-cache-dir https://get.graphlab.com/GraphLab-Create/2.1/[your registered email address here]/[your product key here]/GraphLab-Create-License.tar.gz`, the email and product key here should be yours. <b>sudo</b> here is very important to me during the installation
@@ -447,7 +456,7 @@ Neural Network is a universal approximator, which means you can use it to implme
   * [reference][5]
   
   
-* Audio Classification with Deep Learning
+### Audio Classification with Deep Learning
   * Dataset: https://drive.google.com/drive/folders/0By0bAi7hOBAFUHVXd1JCN3MwTEU
   * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/try_audio_deep_learning.ipynb
   * Audio Feature Extraction
@@ -460,7 +469,7 @@ Neural Network is a universal approximator, which means you can use it to implme
    * reference: https://www.analyticsvidhya.com/blog/2017/08/audio-voice-processing-deep-learning/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
    
    
-* Neural Network Word Embedding
+### Neural Network Word Embedding
   * Through word embedding, each word has a numerical value in the vector. Trough learning, words with similar meaning will stay close in the vetor space, which also means they have similar representation in the vector space
   * Keras has its own word embedding layer. You can also replace this embedding layer with a general pre-trained embedding methods (such as word2vec). You can also use specific trained embedding model, for the movie review data here, you can try Stanford GloVe.
   * Download Stanford GloVe pretrained embedding model here: https://github.com/stanfordnlp/GloVe
@@ -475,7 +484,7 @@ Neural Network is a universal approximator, which means you can use it to implme
     * But looking back, similar words with different format can still be good, since they can reflect the word position and meaning better.
     
     
-* [Python] Sequence to Sequence with Attention
+### [Python] Sequence to Sequence with Attention
   * Beam Search
     * When generating words as a sequences, at each time step, the decoder has to make a decision as to what the next word would be in the sequence. One way to make a decision would be to greedily find out the most probable word at each time step.
     * Beam search takes into account the probability of the next k words in the sequence, and then chooses the proposal with the max combined probability.
@@ -488,7 +497,7 @@ Neural Network is a universal approximator, which means you can use it to implme
     * I just wanted to see how it works, so copied the whole code and changed the language & parameter. Got the cold recetly, have to go to sleep early...
    
 
-* [R] Try Neural Network in R
+### [R] Try Neural Network in R
   * Scale the data before using NN
     * min-max normalization - <b>remains original distribution</b>
     * Z-score normalization
@@ -505,7 +514,7 @@ Neural Network is a universal approximator, which means you can use it to implme
   * reference: https://www.analyticsvidhya.com/blog/2017/09/creating-visualizing-neural-network-in-r/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
   
   
-* Recurrent Neural Network (RNN)
+### Recurrent Neural Network (RNN)
   * <b>The difference between RNN and basic neural network:</b> As we all know, a basic neural network has 1 input layer, 1 output layer plus 1 or more hidden layer. Also a neural network only stores the input and output for a layer each step. The difference in RNN is, it only has a recurrent layer between the input layer and the output layer, this recurrent layer is similar to multiple hidden layers in a basic neural network. But it can store the state of a previous input and combines with the current input, so it keeps some relationship between previous and current input
   * It can be one time step or multiple time steps
   * It also has Forward Propagation & Backward Propagation
@@ -533,7 +542,7 @@ Neural Network is a universal approximator, which means you can use it to implme
     * [LSTM Mathematical Concept Difference with GRU][8]
   * Both GRU and LSTM understand a text from left to right, sometimes you need to read to the right side and go back to the left side, this requires to add "Bidirectional" into RNN
   
-* Encoder-Decoder RNN Architecture
+### Encoder-Decoder RNN Architecture
   * Sequence to Sequence problem: <b>It takes a sequence as input and requires a sequence prediction as output</b>. Input length can be different from the output length.
   * [Patterns for the Encoder-Decoder RNN Architecture][9]
   * [Encoder-Decoder LSTM Implementation through Keras][10]
@@ -542,14 +551,11 @@ Neural Network is a universal approximator, which means you can use it to implme
     * "The <b>RepeatVector</b> is used as an adapter to fit the fixed-sized 2D output of the encoder to the differing length and 3D input expected by the decoder."
     * "The TimeDistributed wrapper allows the same output layer to be reused for each element in the output sequence."
     
-    
 * Resources I didn't work on
   * CoreML for Spam classification on iPhone app development: https://www.analyticsvidhya.com/blog/2017/09/build-machine-learning-iphone-apple-coreml/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
 
 
-*****************************************************************
-
-RELAVANT PAPERS & NEWS
+## RELAVANT PAPERS & NEWS
 
 * Google Deep Learning Products
   * Google TensorFlow Object Detection API: https://research.googleblog.com/2017/06/supercharge-your-computer-vision-models.html
