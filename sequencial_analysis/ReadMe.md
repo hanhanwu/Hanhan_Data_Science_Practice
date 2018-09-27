@@ -65,7 +65,8 @@ SEQUENCE PREDICTION
 
 TIME SERIES CONCEPTS
 
-* For previous summarized knowledge, check [-- Time Series section][1]
+* For previous summarized knowledge, check [Time Series section][1]
+* The first step is often to make the data stationary. <b>A stationary series is one in which the properties – mean, variance and covariance, do not vary with time. It should not show any trend.</b>
 * ARIMA is an acronym that stands for <b>AutoRegressive Integrated Moving Average</b>. It is a class of model that captures a suite of <b>different standard temporal structures</b> in time series data.
 * AR: Autoregression. A model that uses the dependent relationship between an observation and some number of lagged observations.
 * I: Integrated. The use of differencing of raw observations (e.g. subtracting an observation from an observation at the previous time step) in order to make the time series stationary.
@@ -406,7 +407,7 @@ READING NOTES
   * [Reading Notes][13]
 
 
-[1]:https://github.com/hanhanwu/Hanhan_Data_Science_Resources/blob/master/README.md
+[1]:https://github.com/hanhanwu/Hanhan_Data_Science_Resources/blob/master/README.md#time-series
 [2]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/ARMA_example.png
 [3]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/ts_r_intro.pdf
 [4]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/time_series_beginner.R
