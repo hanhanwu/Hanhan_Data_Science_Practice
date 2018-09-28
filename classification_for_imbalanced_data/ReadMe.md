@@ -162,6 +162,8 @@ In this regard, Tomek’s link and edited nearest-neighbours are the two cleanin
     * Recursive Feature Elimination: http://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.RFECV.html#sklearn.feature_selection.RFECV
       * Methods such as backward selection
       * It also allows you to do cross validation in it
+      * <b>This method is my favorite in python</b>, it allows you to use cross validation, specify different metrics such as "average_precision", "accuracy", and all the sklearn metrics. The output also has feature ranking, as well as cross validation scores that you can plot cv score with the number of features selected.
+        * http://scikit-learn.org/stable/auto_examples/feature_selection/plot_rfe_with_cross_validation.html
     * Chi2 Feature Selection: http://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.chi2.html#sklearn.feature_selection.chi2
       * chi-square test measures the dependence between stochastic variables (non-deterministic variables). So this method uses chi-square to remove features that are independent from the label and therefore does not contribute to the prediction
     * Boruta All Relevant Feature Selection
