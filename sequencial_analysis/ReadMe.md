@@ -67,7 +67,7 @@ SEQUENCE PREDICTION
 ### Previous Time Series
 * For previous summarized knowledge, check [Time Series section][1]
 
-### ABout Stationary
+### About Stationary
 * The first step is often to make the data stationary. <b>A stationary series is one in which the properties – mean, variance and covariance, do not vary with time. It should not show any trend. - Strict Stationary</b>
   * My code - Metrics used to measure stationary: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/7741ccebbbaa3708cd28ddf9c82b6116e3522986/sequencial_analysis/time_series_stationary_measures.ipynb
     * Different metrics may measure different types of stationary, but what we need is strict stationary.
