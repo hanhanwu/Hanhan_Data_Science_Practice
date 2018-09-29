@@ -61,12 +61,23 @@ SEQUENCE PREDICTION
 * Readings
   * Sequence Modeling Use Cases: https://www.analyticsvidhya.com/blog/2018/04/sequence-modelling-an-introduction-with-practical-use-cases/
 
-******************************************************************************************
 
-TIME SERIES CONCEPTS
+## TIME SERIES CONCEPTS
 
+### Previous Time Series
 * For previous summarized knowledge, check [Time Series section][1]
-* The first step is often to make the data stationary. <b>A stationary series is one in which the properties – mean, variance and covariance, do not vary with time. It should not show any trend.</b>
+
+### ABout Stationary
+* The first step is often to make the data stationary. <b>A stationary series is one in which the properties – mean, variance and covariance, do not vary with time. It should not show any trend. - Strict Stationary</b>
+  * My code - Metrics used to measure stationary: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/7741ccebbbaa3708cd28ddf9c82b6116e3522986/sequencial_analysis/time_series_stationary_measures.ipynb
+    * Different metrics may measure different types of stationary, but what we need is strict stationary.
+    * When KPSS and ADF are both showing stationary, it tend to be strict stationary.
+    * If KPSS is showing (trend) stationary but ADF is not showing (difference) stationary, we can try to remove the trend so that the series may become strict stationary.
+      * But also as what I tried in change 1, some differencing method may also make it strict stationary. Does this mean, some differencing may also help remove the trend?
+    * If ADF will show (difference) stationary but KPSS shows (trend) stationary, we can try differencing.
+  * My code - Methods to make time series stationary: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/python_ARIMA.ipynb
+  
+### ARIMA
 * ARIMA is an acronym that stands for <b>AutoRegressive Integrated Moving Average</b>. It is a class of model that captures a suite of <b>different standard temporal structures</b> in time series data.
 * AR: Autoregression. A model that uses the dependent relationship between an observation and some number of lagged observations.
 * I: Integrated. The use of differencing of raw observations (e.g. subtracting an observation from an observation at the previous time step) in order to make the time series stationary.
