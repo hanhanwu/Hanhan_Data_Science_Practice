@@ -60,6 +60,7 @@ I'm planning to practice more on time series analysis, pattern matching sequenti
 * As we saw from above that one of the problems of LSTM is, very long running time. In fact I tried it on my own machines, one of my machine has 2GPU and 1TB memory, still running so slow....
 * My Python Code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/try_poem_generator.ipynb
   * Method 1 - Character Based
+    * The basic idea here is, in the training data, each sequence is 1 character shift from the previous training sequence, the label is the next character of the training sequence. For any testing sequence, assume we want to predict the next n characters (namely, generate poem with next n characters...), when predicting each of these n character, we add predicted characters in the testing sequence to help predict tje next character.
     * In practice, character based tend to use less meory since you have less distinct charactr to store.
     * But even with character based sequence prediction, I only used 10 epoches & 100 batches. Each epoches took 700+ seconds (10+ mins) to run.... That's so slow.
     * Although I have used more complex LSTM, obviously, the number of epoches makes a difference. Look at the final prediction...
