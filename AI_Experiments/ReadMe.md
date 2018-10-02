@@ -338,6 +338,9 @@ Neural Network is a universal approximator, which means you can use it to implme
 
 ## EXPERIMENTS
 
+### Sequence Analysis Reltaed AI Practice:
+* https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/ReadMe.md#sequence-prediction
+
 ### Conda vs Non-Conda Environments
   * After you have installed so many python libraries, you may have already experienced 2 types of virtual environment and non-virtual environment. The installing mathods cannot apply to all of them, sometimes, 1 method just apply to 1 environment, but that's good enough if finally you can install all libraries in a certain environment and do your experiment. Let me write down my brief summary about using <b>non-virtual environment, python virtualenv and conda virtual environemnt</b>
   * Non-Virtual Environemnt - Your local Python site-packages
