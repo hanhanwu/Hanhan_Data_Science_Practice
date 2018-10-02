@@ -62,8 +62,8 @@ I'm planning to practice more on time series analysis, pattern matching sequenti
   * Method 1 - Character Based
     * In practice, character based tend to use less meory since you have less distinct charactr to store.
     * But even with character based sequence prediction, I only used 10 epoches & 100 batches. Each epoches took 700+ seconds (10+ mins) to run.... That's so slow.
-    * Although I have used more complex LSTM
-* Sample poem: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/sample_sonnets.txt
+    * Although I have used more complex LSTM, obviously, the number of epoches makes a difference. Look at the final prediction...
+* Sample poem input: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/sample_sonnets.txt
   
 
 * Readings
