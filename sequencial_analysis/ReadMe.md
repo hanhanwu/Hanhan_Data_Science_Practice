@@ -1,10 +1,9 @@
 I'm planning to practice more on time series analysis, pattern matching sequential pattern matching and sequence prediction.
 
-******************************************************************************************
+## SEQUENCE PREDICTION
+* Sequence Prediction - In a word, you get a sequence of behaviors/patterns and try to predict the next.
 
-SEQUENCE PREDICTION
-
-* Sequence Prediction - In a word, you get a sequence of behaviors/patterns and try to predict the next
+### CPT For Sequence Prediction
 * Problems of LSTMs/RNNs
   * 10s of hours to train, very long time
   * Need to re-train once there is new items that didn't appear in the previous training data
@@ -56,6 +55,15 @@ SEQUENCE PREDICTION
           * This will create the limit that your numbers cannot be -1 or -2
       * The testing data is imput by yourself in line 56, 57, 58. In my code, as you can see I input "2,4" to predict which number should follow them
       * One of the bug of this open source code is, if the prediction has more then 1 element that got the same score, the prediction returns empty value....
+ 
+### LSTM For Poem Generation
+* As we saw from above that one of the problems of LSTM is, very long running time. In fact I tried it on my own machines, one of my machine has 2GPU and 1TB memory, still running so slow....
+* My Python Code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/try_poem_generator.ipynb
+  * Method 1 - Character Based
+    * In practice, character based tend to use less meory since you have less distinct charactr to store.
+    * But even with character based sequence prediction, I only used 10 epoches & 100 batches. Each epoches took 700+ seconds (10+ mins) to run.... That's so slow.
+    * Although I have used more complex LSTM
+* Sample poem: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/sample_sonnets.txt
   
 
 * Readings
