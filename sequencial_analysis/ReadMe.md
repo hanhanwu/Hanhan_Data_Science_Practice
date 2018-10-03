@@ -64,6 +64,10 @@ I'm planning to practice more on time series analysis, pattern matching sequenti
     * In practice, character based tend to use less meory since you have less distinct charactr to store.
     * But even with character based sequence prediction, I only used 10 epoches & 100 batches. Each epoches took 700+ seconds (10+ mins) to run.... That's so slow.
     * Although I have used more complex LSTM, obviously, the number of epoches makes a difference. Look at the final prediction...
+  * Method 2 - Word based (Without Tokenization)
+    * The way it woks is exactly the same as above character based method. I just changed character to words, and the words are not tokenized, since I expected the result can be more vivid.
+    * But obviously, when the number of epoch is small, you simply tend to predict the same word/character each time. LSTM is really time consuming.
+    * But also in this case, when using words (even without tokenization), it's faster than character based method, since we will have less training sequences.
 * Sample poem input: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/sample_sonnets.txt
   
 
