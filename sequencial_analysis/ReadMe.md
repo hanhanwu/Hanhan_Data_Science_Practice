@@ -68,8 +68,16 @@ I'm planning to practice more on time series analysis, pattern matching sequenti
     * The way it woks is exactly the same as above character based method. I just changed character to words, and the words are not tokenized, since I expected the result can be more vivid.
     * But obviously, when the number of epoch is small, you simply tend to predict the same word/character each time. LSTM is really time consuming.
     * But also in this case, when using words (even without tokenization), it's faster than character based method, since we will have less training sequences.
-* Sample poem input: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/sample_sonnets.txt
+* <b>Sample poem input</b>: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/sample_sonnets.txt
   
+### CPT for Poem Generation
+* My Python Code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/CPT_poem_generator.ipynb
+* CPT is really much much faster than LSTM. It even finished the task when using the whole sonnects as training data.
+* For the large data inout, at the very beginning, I tried to generate poem with selected 7 rows, each row uses 20 characters to predict the next 10 characters. It gave exactly the same output as smaller data sample output.
+  * This may indicate that, when the selected testing data is very very small and tend to be unique in the training data, smaller data inout is enough to get the results.
+* Then I changed to 12 rows, each row uses 30 characters to predict the next 10 character.
+  * The first 5 rows came from continuous rows, which means the next row is 1 character shift from its previous row. If you check their put, although cannot say accurate, but the 5 rows has similar prediction.
+* I think CPT can be more accurate when there are repeated sub-sequences appeared in the training data, because the algorithm behind CPT is prediction tree + inverted index + lookup table, similar to FP-growth in transaction prediction, more repeat more accurate.
 
 * Readings
   * Sequence Modeling Use Cases: https://www.analyticsvidhya.com/blog/2018/04/sequence-modelling-an-introduction-with-practical-use-cases/
