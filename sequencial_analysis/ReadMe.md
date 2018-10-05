@@ -72,6 +72,7 @@ I'm planning to practice more on time series analysis, pattern matching sequenti
   
 ### CPT for Poem Generation
 * My Python Code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/CPT_poem_generator.ipynb
+  * Finally, I got the most descent poem output from CPT word based method.
 * CPT is really much much faster than LSTM. It even finished the task when using the whole sonnects as training data.
 * For the large data inout, at the very beginning, I tried to generate poem with selected 7 rows, each row uses 20 characters to predict the next 10 characters. It gave exactly the same output as smaller data sample output.
   * This may indicate that, when the selected testing data is very very small and tend to be unique in the training data, smaller data inout is enough to get the results.
