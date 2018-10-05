@@ -12,6 +12,10 @@ Recently, I did many experiments on classification with imbalanced small dataset
 * In my current experiments, I have tried different data preprocessing methods/libraries, along with my favorite classifcation algorithms. The results were quite different from what I have learned from online tutorials but it is very interesting.
 * Here I am storing my sample code for data explore process, data preprocessing, feature selection wih different libraries and model training & evaluaion.
 
+* <b>Must Know!</b>
+  * The right way to do sampling: https://beckernick.github.io/oversampling-modeling/
+    * <b>spliting the data before sampling. Don't use sampling method on Testing data.</b>
+
 
 ***********************************************************************
 
