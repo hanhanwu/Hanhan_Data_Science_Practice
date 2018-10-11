@@ -1,1 +1,19 @@
 ## Experience Notes
+
+### Machine Learning Workflow Related
+#### About Sampling
+* In python, we majorly use `imblearn` to do sampling. No matter it's oversampling or undersampling, it can have synthetic records generated.
+* The so called right practice is, you should do train-test spliting before sampling, and only apply sampling on training data, and leave testing data having all original records. This will bring a problem, especially when your data is severely imbalanced.
+  * Most of imblearn methods will generate balanced dataset by default. In fact, even if you try to set `ratio` by specifying which class occupies how much ratio, imblearn tends to keep giving you errors, very tricky (open source...)
+  * With balanced training data, it's not bad, at least it can reduce the influence of the majority class in order to reduce bias. But the problem is. your testing data is all original data, it's still imbalanced.
+    * A commonly used practice is stratified train-test spling, so that both training and testing data will have similar distrubution of each class. Therefore, your testing data is still imbalanced.
+  * While training on the sampled training data, it's also worthy to do some verification:
+    * Track original and synthetic records from the sampled training data first, you can create a new label, called "is_original".
+    * Then use stratified k fold spliting to split the data into k folds, better to split by both original label and "is_original" label. In each fold, check model preformance for original data and synthetic data, finally get some aggregated performance metrics for all folds.
+      * The reason that better to split with "is_original" label here is because, you are trying to check both original data performance and synthetic data performance, without split by this label, there can be folds that do not have original/synthetic data at all, which will influence the performance report.
+  * Of course, validating sampled training data won't really help you improve testing preformance, it just provides some insights. If your testing data gets very bad performance results, here are something you can try:
+    * Heavily rely on feature engineering, tyr to find the right features.
+    * Use "is_original" as a feature.
+    * Both training and testing data uses multi-label, which is the combination of original label and "is_original". But when calculating testing performance, ignore "is_original" label.
+      * In python, some sklearn methods does not support multi-label format, such as `StratifiedKFold`, you need to convert multi-label into 1 dimensional string array
+    * Anomalous Detection, especially when the data is severely imbalanced.
