@@ -261,6 +261,7 @@ Neural Network is a universal approximator, which means you can use it to implme
   * Keras Sequential models: https://keras.io/getting-started/sequential-model-guide/
     
 * CNN for visual recognition: http://cs231n.github.io/neural-networks-3/
+* Comparison between CNN, RCNN, Fast RCNN, Faster RCNN in object detection: https://www.analyticsvidhya.com/blog/2018/10/a-step-by-step-introduction-to-the-basic-object-detection-algorithms-part-1/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
     
 * Image recognition with Keras: https://www.analyticsvidhya.com/blog/2017/06/architecture-of-convolutional-neural-networks-simplified-demystified/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
   * Stride & Padding
