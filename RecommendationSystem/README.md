@@ -1,7 +1,5 @@
 
-*****************************************************************************
-
-MAJOR METHODS
+## MAJOR METHODS
 
 1. <b>Content Based Filtering</b>
 * This method tend to introduce same category products. So if a user didn't click/like a certain category, that category products won't be recommended.
@@ -43,12 +41,12 @@ MAJOR METHODS
   * MAP uses interest or not (binary), NDCG uses a score
   * Considers recommendation order
   
-*****************************************************************************
-
-PRACTICE
+  
+## PRACTICE
 
 * MovieLens Recommendation System
   * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/RecommendationSystem/recommendation_system_movielens.ipynb
+    * Download the data from : https://grouplens.org/datasets/movielens/100k/
     * Method 1 - DIY collaborative filtering
     * Method 2 - Library `turicreate` for recommendations
       * This one really gave me a hard time. Not sure why, I could not use `SFrame()` and found a solution to install `graphlab`, which could only be installed in my conda virtual environment and broke my ipython kernel, I had to uninstall and reinstall IPython and kernel.... Then it still not work, but later worked...
@@ -68,6 +66,8 @@ PRACTICE
       * <b>3 types of recommenders in the code</b>
         * Popularity Recommender - it recommends most popular items to everyone, exactly the same items and orders
         * Collaboritive Filtering - recommend items based on ratings
+          * It can recommend similiar products based on different user ratings and your target user's ratings
+          * It can also recommend similar users based on same items rated by different users, just transpose the matrix above, which will reverse user and item
         * Rating Predition - Predict missing ratings, since each user may not rate all the items
           * When using this method, you have to use `user_id`, `item_id` as colum names, otherwise turicreate will return error. This is what I don't really like
           * The idea is the same as matrix factorization, and it also uses gradient descent to do optimization
