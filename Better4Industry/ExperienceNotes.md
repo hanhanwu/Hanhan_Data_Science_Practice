@@ -1,6 +1,11 @@
 ## Experience Notes
 
 ### Machine Learning Workflow Related
+#### About Data Spliting
+##### Hold-out data
+* We know that we use cross validation to reduce overfitting. Meanwhile we can use Hold-out data to keep reducing it.
+* In your data, maybe you can split it into Train, Test and Validation data. With Train-test you can use cross valiation and other methods, do multiple rounds of improvement. Validation data is always out side there, and you evaluate on both train-test and validation to see whether they get similar evaluation results.
+
 #### About Sampling
 * In python, we majorly use `imblearn` to do sampling. No matter it's oversampling or undersampling, it can have synthetic records generated.
 * The so called right practice is, you should do train-test spliting before sampling, and only apply sampling on training data, and leave testing data having all original records. This will bring a problem, especially when your data is severely imbalanced.
