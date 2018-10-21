@@ -7,6 +7,7 @@ Although everything I created in my GitHub are good for industry used, today I d
 
 ### Luigi
 * It's a free python library that allows you to build pipeline which will help control parallel running, and you can also schedule multiple same pipelines for different clients at the same time. It's convenient to run locally. For each of its step, storing the output data is required, but once the data is stored, this step will be skip later we you can running the code again.
+* Luigi Github: https://github.com/spotify/luigi
 * Here's my sample code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/tree/master/Better4Industry/luigi_pipeline1
   * About this pipeline
     * For hard coded params, you can store them in .yaml config file
@@ -19,7 +20,7 @@ Although everything I created in my GitHub are good for industry used, today I d
   * Each task has `requires()` to indicate which tasks have to be finished running before current task. `output()` is also required for each task, which will store the output in each task.
   * Shortages
     * Sometimes, not easy to debug
-    * When you changed the code of a task, but if its output is stored there, Luigi will skip this task while running the pipeline and your output cannot be changed, which is inconvenient
+    * When you changed the code of a task, but if its output is stored there, Luigi will skip this task while running the pipeline and your output cannot be changed, which is inconvenient. You can write the code to remove the file automatically BEFORE running this task again. Like what I did in `execute.py`
 
 ## ACCURACY & INTERPRETABILITY
 
