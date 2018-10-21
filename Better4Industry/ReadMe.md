@@ -1,8 +1,27 @@
 Although everything I created in my GitHub are good for industry used, today I decided to create a folder to put those technologies, tools, methods, etc. that can better serve for Industry work.
 
-****************************************************************************************
+## Building Industry Data Science Pipeline
 
-### ACCURACY & INTERPRETABILITY
+### AWS Sagemaker
+* With AWS Sagemaker, you can use multiple AWS services to store the data and running data science jobs in parallel, meanwhile Sagemaker provides notebook almost the same as IPython, and shared space for team development. It's just cost money, and you may need data engineers to help set up the whole pipeline.
+
+### Luigi
+* It's a free python library that allows you to build pipeline which will help control parallel running, and you can also schedule multiple same pipelines for different clients at the same time. It's convenient to run locally. For each of its step, storing the output data is required, but once the data is stored, this step will be skip later we you can running the code again.
+* Here's my sample code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/tree/master/Better4Industry/luigi_pipeline1
+  * About this pipeline
+    * For hard coded params, you can store them in .yaml config file
+    * Data Input stores the original input data
+    * Then in Data_Pred:
+      * `task_read_raw.py` is just to tell where is the oringinal input data
+      * `generate_base_data.py` is intended to generate a dataframe that can be used many times in the future, without re-reading the original data input. 
+    * `Feature_Generation` will generate features from the output of `generate_base_data.py`
+    * Finally, `execute.py` will just call 1 task, it will execute the whole pipeline
+  * Each task has `requires()` to indicate which tasks have to be finished running before current task. `output()` is also required for each task, which will store the output in each task.
+  * Shortages
+    * Sometimes, not easy to debug
+    * When you changed the code of a task, but if its output is stored there, Luigi will skip this task while running the pipeline and your output cannot be changed, which is inconvenient
+
+## ACCURACY & INTERPRETABILITY
 
 * Lime - Visualize feature importance for all machine learning models
   * Their GitHub, Examples and the Paper: https://github.com/marcotcr/lime
@@ -10,3 +29,5 @@ Although everything I created in my GitHub are good for industry used, today I d
   * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Better4Industry/lime_interpretable_ML.ipynb
     * It seems that GitHub cannot show those visualization I have created in IPython. But you can check LIME GitHub Examples
     * LIME requires data input to be numpy array, it doesn't support pandas dataframe yet. So that's why you can see in my code, I was converting the dataframe, lists all to numpy arraies.
+    
+## Experience Notes
