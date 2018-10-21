@@ -18,9 +18,10 @@ Although everything I created in my GitHub are good for industry used, today I d
     * `Feature_Generation` will generate features from the output of `generate_base_data.py`
     * Finally, `execute.py` will just call 1 task, it will execute the whole pipeline
   * Each task has `requires()` to indicate which tasks have to be finished running before current task. `output()` is also required for each task, which will store the output in each task.
-  * Shortages
+  * NOTES
     * Sometimes, not easy to debug
     * When you changed the code of a task, but if its output is stored there, Luigi will skip this task while running the pipeline and your output cannot be changed, which is inconvenient. You can write the code to remove the file automatically BEFORE running this task again. Like what I did in `execute.py`
+    * It seems that location needs absolute path, as you can see in my code. I tried relative path, got errors, didn't work.
 
 ## ACCURACY & INTERPRETABILITY
 
