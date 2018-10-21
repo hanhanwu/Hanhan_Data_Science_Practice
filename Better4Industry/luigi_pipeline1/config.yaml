@@ -1,0 +1,11 @@
+# This is the config file that stores hard coded parameters
+
+# Data Input Location
+input_file: '/Data_Input/blood_test.csv'
+
+# Output Location
+base_file: '/Data_Output/base_file.csv'
+feature_file: '/Data_Output/feature_file.csv'
+
+# Columns from input_file and will be stored in feature_file.csv
+origin_cols: ['donation_ct', 'volume']
