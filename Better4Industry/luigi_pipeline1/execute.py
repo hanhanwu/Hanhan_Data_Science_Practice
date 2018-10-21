@@ -14,5 +14,10 @@ def load_config(config_path):
 if __name__ == '__main__':
     current_dir = os.getcwd()
     config = load_config('config.yaml')
+    feature_file_path = current_dir + config['feature_file']
+    try:
+        os.remove(feature_file_path)
+    except OSError:
+        pass
     task = GenerateFeatures(current_dir, config)
     luigi.build([task], workers=1, local_scheduler=True)
