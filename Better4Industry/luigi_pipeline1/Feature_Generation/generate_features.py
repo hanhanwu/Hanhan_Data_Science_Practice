@@ -21,7 +21,7 @@ class GenerateFeatures(luigi.Task):
     def run(self):
         df = pd.read_csv(self.current_dir + self.config['base_file'])
         print(df.columns)
-        new_df = df[['donation_ct', 'volume']]
+        new_df = df[list(self.config['origin_cols'])]
         new_df['is_zero_duration'] = df.apply(lambda r: self.is_zero(r['duration']), axis=1)
         new_df['avg_vol_per_ct'] = df['avg_vol']/df['avg_ct']
         new_df.to_csv(self.output().path, index=False)
