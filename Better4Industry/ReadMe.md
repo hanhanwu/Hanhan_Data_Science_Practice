@@ -23,6 +23,7 @@ Although everything I created in my GitHub are good for industry used, today I d
     * When you changed the code of a task, but if its output is stored there, Luigi will skip this task while running the pipeline and your output cannot be changed, which is inconvenient. You can write the code to remove the file automatically BEFORE running this task again. Like what I did in `execute.py`
     * It seems that location needs absolute path, as you can see in my code. I tried relative path, got errors, didn't work.
     * When a value in .yaml file is a very long string, it's fine to just use double quotes or single quotes for the string even if you want to use multiple lines to show the string. Don't use `"""..."""` in yaml. This is something different from python.
+    * For a list `[...]` in .yaml file, python will read it as `(...)`, so in your python code, need to use `list()` to convert to a python list.
 
 ## ACCURACY & INTERPRETABILITY
 
