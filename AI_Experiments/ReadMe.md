@@ -310,6 +310,7 @@ Neural Network is a universal approximator, which means you can use it to implme
   
 * Deep Learning Courses
   * [Course 1][11]
+  * [Understanding Inception Network][12]
 
 * 2017 Projects/Development in AI/Machine Learning
   * https://www.analyticsvidhya.com/blog/2017/12/reminiscing-2017-defining-moments-and-future-of-data-science/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
@@ -591,3 +592,4 @@ Neural Network is a universal approximator, which means you can use it to implme
 [9]:https://machinelearningmastery.com/implementation-patterns-encoder-decoder-rnn-architecture-attention/
 [10]:https://machinelearningmastery.com/encoder-decoder-long-short-term-memory-networks/
 [11]:https://www.analyticsvidhya.com/blog/2018/10/introduction-neural-networks-deep-learning/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+[12]:https://www.analyticsvidhya.com/blog/2018/10/understanding-inception-network-from-scratch/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
