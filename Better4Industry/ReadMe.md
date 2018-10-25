@@ -1,5 +1,7 @@
 Although everything I created in my GitHub are good for industry used, today I decided to create a folder to put those technologies, tools, methods, etc. that can better serve for Industry work.
 
+## [Experience Notes][1]
+
 ## Building Industry Data Science Pipeline
 
 ### AWS Sagemaker
@@ -34,4 +36,5 @@ Although everything I created in my GitHub are good for industry used, today I d
     * It seems that GitHub cannot show those visualization I have created in IPython. But you can check LIME GitHub Examples
     * LIME requires data input to be numpy array, it doesn't support pandas dataframe yet. So that's why you can see in my code, I was converting the dataframe, lists all to numpy arraies.
     
-## Experience Notes
+    
+ [1]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Better4Industry/ExperienceNotes.md
