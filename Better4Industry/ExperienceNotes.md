@@ -1,6 +1,8 @@
 ## Experience Notes
 
 ### Machine Learning Workflow Related
+#### Bootstrap the whole pipeline
+* Even after building the whole machine learning pipeline, you need to run it multiple times with different settings (such as different seeds), and calculate the average & median & variance of multiple rounds final results, to avoid you got very higher or very low result by accident.
 #### About Data Spliting
 ##### Hold-out data
 * We know that we use cross validation to reduce overfitting. Meanwhile we can use Hold-out data to keep reducing it.
