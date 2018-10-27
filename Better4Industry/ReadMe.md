@@ -35,6 +35,9 @@ Although everything I created in my GitHub are good for industry used, today I d
   * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Better4Industry/lime_interpretable_ML.ipynb
     * It seems that GitHub cannot show those visualization I have created in IPython. But you can check LIME GitHub Examples
     * LIME requires data input to be numpy array, it doesn't support pandas dataframe yet. So that's why you can see in my code, I was converting the dataframe, lists all to numpy arraies.
+  * NOTES
+    * Currently they have to use predicted probability in `explain_instance()` function
+    * You also need to specify all the class names in `LimeTabularExplainer`, especially in classification problem, otherwise the visualization cannot show classes well
     
     
  [1]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Better4Industry/ExperienceNotes.md
