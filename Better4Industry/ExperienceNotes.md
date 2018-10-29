@@ -23,9 +23,10 @@
     * Then use stratified k fold spliting to split the data into k folds, better to split by both original label and "is_original" label. In each fold, check model preformance for original data and synthetic data, finally get some aggregated performance metrics for all folds.
       * The reason that better to split with "is_original" label here is because, you are trying to check both original data performance and synthetic data performance, without split by this label, there can be folds that do not have original/synthetic data at all, which will influence the performance report.
   * Of course, validating sampled training data won't really help you improve testing preformance, it just provides some insights. If your testing data gets very bad performance results, here are something you can try:
-    * Heavily rely on feature engineering, tyr to find the right features.
+    * Heavily rely on feature engineering, try to find the right features.
     * Use "is_original" as a feature.
     * Both training and testing data uses multi-label, which is the combination of original label and "is_original". But when calculating testing performance, ignore "is_original" label.
       * In python, some sklearn methods does not support multi-label format, such as `StratifiedKFold`, you need to convert multi-label into 1 dimensional string array
     * Anomalous Detection, especially when the data is severely imbalanced.
+    * If you got very low precision or recall, which maybe caused by oversampled minority class, maybe try undersampling, even just to randomly select a subset and run the whole pipeline multiple rounds
   * When you are using oversampling, better to check whether the synthetic records are all added behind the original data or they are inserted among original data. If it's inserted in between, and difficult to find any way to join the sample data with original data (in order to get is_original label), then it can be troublesome
