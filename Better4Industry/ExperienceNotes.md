@@ -1,6 +1,8 @@
 ## Experience Notes
 
 ### Machine Learning Workflow Related
+#### Preprocessing
+* When removing those features with low variance, threshold better not to be very high. Some features have lower variance but plays more important role in the data
 #### Bootstrap the whole pipeline
 * Even after building the whole machine learning pipeline, you need to run it multiple times with different settings (such as different seeds), and calculate the average & median & variance of multiple rounds final results, to avoid you got very higher or very low result by accident.
 #### About Data Spliting
