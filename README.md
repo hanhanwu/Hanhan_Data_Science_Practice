@@ -378,6 +378,12 @@ In this regard, Tomek’s link and edited nearest-neighbours are the two cleanin
 TREE BASED MODELS
 
 * Tree based models in detail with R & Python example: https://www.analyticsvidhya.com/blog/2016/04/complete-tutorial-tree-based-modeling-scratch-in-python/?utm_content=bufferade26&utm_medium=social&utm_source=facebook.com&utm_campaign=buffer
+* [Python] Xgboost
+  * The object of XGboost has its own `train()` method, meanwhile this object also has classifier/regressor which can be used to train
+    * https://xgboost.readthedocs.io/en/latest/python/python_intro.html
+    * https://dask-ml.readthedocs.io/en/stable/modules/generated/dask_ml.xgboost.XGBClassifier.html#dask_ml.xgboost.XGBClassifier
+    * These 2 train methods have different param names, you can check source code to know which param name to use: https://github.com/dmlc/xgboost/blob/master/python-package/xgboost/sklearn.py
+      * But this source code is out of dated too
 * [Python] LightGBM Practice
   * For more resources, check LightGBM here: https://github.com/hanhanwu/Hanhan_Data_Science_Resources2/blob/master/README.md
   * data: http://archive.ics.uci.edu/ml/datasets/Adult
