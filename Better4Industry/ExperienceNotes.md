@@ -2,6 +2,11 @@
 
 ### Machine Learning Workflow Related
 #### Preprocessing
+##### Normalization
+* [How outliers influence normalization methods][1]
+  * The way it measures each scaler is to check whether after normalization, the data distribution is more balanced/less skewed/more gaussian-like
+##### Remove Low Variance Features
+* Better to normalize the data before checking variance, larger values tend to have larger variance
 * When removing those features with low variance, threshold better not to be very high. Some features have lower variance but plays more important role in the data
 #### Bootstrap the whole pipeline
 * Even after building the whole machine learning pipeline, you need to run it multiple times with different settings (such as different seeds), and calculate the average & median & variance of multiple rounds final results, to avoid you got very higher or very low result by accident.
@@ -32,3 +37,9 @@
     * Anomalous Detection, especially when the data is severely imbalanced.
     * If you got very low precision or recall, which maybe caused by oversampled minority class, maybe try undersampling, even just to randomly select a subset and run the whole pipeline multiple rounds
   * When you are using oversampling, better to check whether the synthetic records are all added behind the original data or they are inserted among original data. If it's inserted in between, and difficult to find any way to join the sample data with original data (in order to get is_original label), then it can be troublesome
+  
+#### About Prediction
+* When you are predicting the probability, you can adjust the estimator threshold. Sklearn default threshold is 0.5, but if the dataset is not balanced, then 0.5 is not the case.
+* When using sampling, built-in sklearn methods may not work well in many data imbalancing cases. We can also try to set class_weight in the estimator. Setting it as balanced may not work well, sometimes you may need to set the majority class with lower ratio
+  
+[1]:http://scikit-learn.org/stable/auto_examples/preprocessing/plot_all_scaling.html
