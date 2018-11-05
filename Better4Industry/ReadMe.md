@@ -29,15 +29,23 @@ Although everything I created in my GitHub are good for industry used, today I d
 
 ## ACCURACY & INTERPRETABILITY
 
-* Lime - Visualize feature importance for all machine learning models
-  * Their GitHub, Examples and the Paper: https://github.com/marcotcr/lime
-  * The tool can be used for both classification and regression. The reason I put it here is because it can show feature importance even for blackbox models. In industry, the interpretability can always finally influence whether you can apply the more complex methods that can bring higher accuracy. Too many situations that finally the intustry went with the most simple models or even just intuitive math models. This tool may help better intrepretation for those better models.
-  * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Better4Industry/lime_interpretable_ML.ipynb
-    * It seems that GitHub cannot show those visualization I have created in IPython. But you can check LIME GitHub Examples
-    * LIME requires data input to be numpy array, it doesn't support pandas dataframe yet. So that's why you can see in my code, I was converting the dataframe, lists all to numpy arraies.
-  * NOTES
-    * Currently they have to use predicted probability in `explain_instance()` function
-    * You also need to specify all the class names in `LimeTabularExplainer`, especially in classification problem, otherwise the visualization cannot show classes well
+### Lime - Visualize feature importance for all machine learning models
+* Their GitHub, Examples and the Paper: https://github.com/marcotcr/lime
+* The tool can be used for both classification and regression. The reason I put it here is because it can show feature importance even for blackbox models. In industry, the interpretability can always finally influence whether you can apply the more complex methods that can bring higher accuracy. Too many situations that finally the intustry went with the most simple models or even just intuitive math models. This tool may help better intrepretation for those better models.
+* My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Better4Industry/lime_interpretable_ML.ipynb
+  * It seems that GitHub cannot show those visualization I have created in IPython. But you can check LIME GitHub Examples
+  * LIME requires data input to be numpy array, it doesn't support pandas dataframe yet. So that's why you can see in my code, I was converting the dataframe, lists all to numpy arraies.
+* NOTES
+  * Currently they have to use predicted probability in `explain_instance()` function
+  * You also need to specify all the class names in `LimeTabularExplainer`, especially in classification problem, otherwise the visualization cannot show classes well
+  
+### Inspired by FastAI Lessons
+* My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Better4Industry/explore_features_fastai.ipynb
+* I thought these exploration needs fastai, and spent lots of time to install it, then it turned out, not have to use fastai library
+* The methods here are majorly to explore features from another perspective
+  * Feature contribution for Out Of Bag score
+  * Feature correlation in hieiarchical clustered view
+  * Feature contribution in each record. From above Lime, it only shows visualization, but sometimes we need to process a vunch of records, `treeinterpreter` here helps a lot.
     
     
  [1]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Better4Industry/ExperienceNotes.md
