@@ -1,6 +1,9 @@
 ## Experience Notes
 
 ### Machine Learning Workflow Related
+#### Data Collection
+* When generating aggregated features, you can try not only avg, sum, median, std, etc., but also central tendency related such as values within [mean-std, mean+std], [mean-2std, mean+2std], [mean-3std, mean+3std]; you can also try percentile, such as only collect first 25%, last 25%, etc.
+
 #### Preprocessing
 ##### Normalization
 * [How outliers influence normalization methods][1]
@@ -40,6 +43,7 @@
   
 #### About Prediction
 * When you are predicting the probability, you can adjust the estimator threshold. Sklearn default threshold is 0.5, but if the dataset is not balanced, then 0.5 is not the case.
+  * <b>But if you can checking any results before prediction results, such as feature importance using `fit()`, this method won't help</b>. I met a situation that with this method, you may get better prediction results, but in fact you training results may have lower precision or recall.
 * When using sampling, built-in sklearn methods may not work well in many data imbalancing cases. We can also try to set class_weight in the estimator. Setting it as balanced may not work well, sometimes you may need to set the majority class with lower ratio
   
 [1]:http://scikit-learn.org/stable/auto_examples/preprocessing/plot_all_scaling.html
