@@ -19,7 +19,7 @@ class GenerateFeatures(luigi.Task):
         return 0
 
     def run(self):
-        df = pd.read_csv(self.current_dir + self.config['base_file'])
+        df = pd.read_csv(self.input().path)
         print(df.columns)
         new_df = df[list(self.config['origin_cols'])]
         new_df['is_zero_duration'] = df.apply(lambda r: self.is_zero(r['duration']), axis=1)
