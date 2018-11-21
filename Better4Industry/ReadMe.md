@@ -39,6 +39,11 @@ Although everything I created in my GitHub are good for industry used, today I d
   * Currently they have to use predicted probability in `explain_instance()` function
   * You also need to specify all the class names in `LimeTabularExplainer`, especially in classification problem, otherwise the visualization cannot show classes well
   
+### SHAP
+* It has more user friendly visualization than Lime. Lime indicates the feature value tends to be which class, in each record; SHAP provides an overall feature importance and also how each value affects the prediction.
+* SHAP is also aiming at dealing with the draw back in XGBoost feature importance
+* [More Details][2]
+  
 ### Inspired by FastAI Lessons
 * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Better4Industry/explore_features_fastai.ipynb
 * I thought these exploration needs fastai, and spent lots of time to install it, then it turned out, not have to use fastai library
@@ -48,4 +53,5 @@ Although everything I created in my GitHub are good for industry used, today I d
   * Feature contribution in each record. From above Lime, it only shows visualization, but sometimes we need to process a vunch of records, `treeinterpreter` here helps a lot.
     
     
- [1]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Better4Industry/ExperienceNotes.md
+[1]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Better4Industry/ExperienceNotes.md
+[2]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Better4Industry/Feature_Selection_Collection/ReadMe.md#shap
