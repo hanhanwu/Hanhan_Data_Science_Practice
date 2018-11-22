@@ -1,8 +1,14 @@
 ## Experience Notes
 
+### Cross Clients Notes
+* Same model, Similar case
+  * About Feature Importance - Difference clients may have difference feature importance, even your features are generated in the same way, the cases are similar and you will use the same model (can be different param, though). So better NOT to use one client's important features to serve as another client's important features. If there is time, if you will get labeled data, seperate the case for each client.
+  * Impact of the feature value - Even we have decied to used the same batch of features to serve for different clients, we can check the value range of each feature that impacts the prediction, to see whether it's the same for each feature. For example, feature F1, its higher value has more impact on Class 0 for client A, but its lower value has more impact on Class 0 for Client B. The difference may make the same model, same feature set won't work cross clients.
+
 ### Machine Learning Workflow Related
 #### Data Collection
 * When generating aggregated features, you can try not only avg, sum, median, std, etc., but also central tendency related such as values within [mean-std, mean+std], [mean-2std, mean+2std], [mean-3std, mean+3std]; you can also try percentile, such as only collect first 25%, last 25%, etc.
+  * But these will also create large amount of highly correlated features. Simply remove highly correlated features might instead remove the more important one. A method we can try is, to use tree models to generate feature importance (such as SHAP) with all the features, then calculate the correlation and throw away the nonimportant ones.
 
 #### Preprocessing
 ##### Normalization
