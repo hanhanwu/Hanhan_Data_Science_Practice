@@ -9,6 +9,7 @@
 #### Data Collection
 * When generating aggregated features, you can try not only avg, sum, median, std, etc., but also central tendency related such as values within [mean-std, mean+std], [mean-2std, mean+2std], [mean-3std, mean+3std]; you can also try percentile, such as only collect first 25%, last 25%, etc.
   * But these will also create large amount of highly correlated features. Simply remove highly correlated features might instead remove the more important one. A method we can try is, to use tree models to generate feature importance (such as SHAP) with all the features, then calculate the correlation and throw away the nonimportant ones.
+  * Also be careful, for highly correlated features, if one is important, the other can also rank high in tree models
 
 #### Preprocessing
 ##### Normalization
