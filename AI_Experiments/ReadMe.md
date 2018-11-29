@@ -2,6 +2,11 @@
 Time to try experiments in Neural Network, Deep Learning and any other AI methods :)
 Neural Network is a universal approximator, which means you can use it to implment other machine learning algorithms
 
+## Pretrained Models
+"If you have pretrained models from others' hard work and they are well performed, why not just use them. Especially for deep learning."  -- Hanhan
+### Pretrained Models in Computer Vision
+* https://www.analyticsvidhya.com/blog/2018/07/top-10-pretrained-models-get-started-deep-learning-part-1-computer-vision/
+
 
 ## RESOURCES
 
