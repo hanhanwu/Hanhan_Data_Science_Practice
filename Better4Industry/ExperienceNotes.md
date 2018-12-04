@@ -1,35 +1,35 @@
-## Experience Notes
+# Experience Notes
 
-### Cross Clients Notes
+## Cross Clients Notes
 * Same model, Similar case
   * About Feature Importance - Difference clients may have difference feature importance, even your features are generated in the same way, the cases are similar and you will use the same model (can be different param, though). So better NOT to use one client's important features to serve as another client's important features. If there is time, if you will get labeled data, seperate the case for each client.
   * Impact of the feature value - Even we have decied to used the same batch of features to serve for different clients, we can check the value range of each feature that impacts the prediction, to see whether it's the same for each feature. For example, feature F1, its higher value has more impact on Class 0 for client A, but its lower value has more impact on Class 0 for Client B. The difference may make the same model, same feature set won't work cross clients.
 
-### Machine Learning Workflow Related
-#### Data Collection
+## Machine Learning Workflow Related
+### Data Collection
 * When generating aggregated features, you can try not only avg, sum, median, std, etc., but also central tendency related such as values within [mean-std, mean+std], [mean-2std, mean+2std], [mean-3std, mean+3std]; you can also try percentile, such as only collect first 25%, last 25%, etc.
   * But these will also create large amount of highly correlated features. Simply remove highly correlated features might instead remove the more important one. A method we can try is, to use tree models to generate feature importance (such as SHAP) with all the features, then calculate the correlation and throw away the nonimportant ones.
   * Also be careful, for highly correlated features, if one is important, the other can also rank high in tree models
 
-#### Preprocessing
-##### Normalization
+### Preprocessing
+#### Normalization
 * [How outliers influence normalization methods][1]
   * The way it measures each scaler is to check whether after normalization, the data distribution is more balanced/less skewed/more gaussian-like
-##### Remove Low Variance Features
+#### Remove Low Variance Features
 * Better to normalize the data before checking variance, larger values tend to have larger variance
 * When removing those features with low variance, threshold better not to be very high. Some features have lower variance but plays more important role in the data
-#### Bootstrap the whole pipeline
+### Bootstrap the whole pipeline
 * Even after building the whole machine learning pipeline, you need to run it multiple times with different settings (such as different seeds), and calculate the average & median & variance of multiple rounds final results, to avoid you got very higher or very low result by accident.
-#### About Data Spliting
-##### Hold-out data
+### About Data Spliting
+#### Hold-out data
 * We know that we use cross validation to reduce overfitting. Meanwhile we can use Hold-out data to keep reducing it.
 * In your data, maybe you can split it into Train, Test and Validation data. With Train-test you can use cross valiation and other methods, do multiple rounds of improvement. Validation data is always out side there, and you evaluate on both train-test and validation to see whether they get similar evaluation results.
 
-#### Reset Index
+### Reset Index
 * Pay attention to those python methods which will shuffle the index in the original data, such as train-test-spliting, especially after you used stratified or shuffle.
 * To reset index, use `df.reset_index(drop=True, inplace=True)`, after resetting, the index of rows will start from 0
 
-#### About Sampling
+### About Sampling
 * In python, we majorly use `imblearn` to do sampling. No matter it's oversampling or undersampling, it can have synthetic records generated.
 * The so called right practice is, you should do train-test spliting before sampling, and only apply sampling on training data, and leave testing data having all original records. This will bring a problem, especially when your data is severely imbalanced.
   * Most of imblearn methods will generate balanced dataset by default. In fact, even if you try to set `ratio` by specifying which class occupies how much ratio, imblearn tends to keep giving you errors, very tricky (open source...)
@@ -48,9 +48,28 @@
     * If you got very low precision or recall, which maybe caused by oversampled minority class, maybe try undersampling, even just to randomly select a subset and run the whole pipeline multiple rounds
   * When you are using oversampling, better to check whether the synthetic records are all added behind the original data or they are inserted among original data. If it's inserted in between, and difficult to find any way to join the sample data with original data (in order to get is_original label), then it can be troublesome
   
-#### About Prediction
+### About Prediction
 * When you are predicting the probability, you can adjust the estimator threshold. Sklearn default threshold is 0.5, but if the dataset is not balanced, then 0.5 is not the case.
   * <b>But if you can checking any results before prediction results, such as feature importance using `fit()`, this method won't help</b>. I met a situation that with this method, you may get better prediction results, but in fact you training results may have lower precision or recall.
 * When using sampling, built-in sklearn methods may not work well in many data imbalancing cases. We can also try to set class_weight in the estimator. Setting it as balanced may not work well, sometimes you may need to set the majority class with lower ratio
+
+## Model Cheatsheet
+### XGBoost
+* Python XGBoost has different methods to save model
+  * `save_model()`, `save_binary()`, `pickle.dump(your_model)`, `dump_model()` will return the artifact
+  * NOTE! - If you want artifact, you have to use python xgboost, the one NOT sklearn API
+* After you saved the model, normally in other languages, there is `loadModel()` method to call the trained model directly.
+  * Such as XGBoost php wrapper: https://github.com/bpachev/xgboost-php
+* Production team may try to understand how XGBoost work
+  * https://docs.aws.amazon.com/sagemaker/latest/dg/xgboost-HowItWorks.html
+    * Its sublinks at the bottom are also pretty good
+  * How Gradient descent work: https://towardsdatascience.com/gradient-descent-in-a-nutshell-eaf8c18212f0
+* How to convert artifact to prediction result
+  * The artifact in XGBoost is a text file, which shows each tree in XGBoost. The leaf score is what you want, but need some convertion.
+  * The leaf score the the objective socre, see `objective` here: https://xgboost.readthedocs.io/en/latest/parameter.html
+    * You need to sum up leaf values first
+    * Then based on the objective, convert the total leaf value to prediction probability
+      * For example, you are using "binary: logistic" as your objective, use the conversion rule here to convert logit score to probability: https://sebastiansauer.github.io/convert_logit2prob/
+  
   
 [1]:http://scikit-learn.org/stable/auto_examples/preprocessing/plot_all_scaling.html
