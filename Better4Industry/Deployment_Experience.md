@@ -2,6 +2,9 @@
 
 I'm taking notes when deploy machine learning model on production.
 
+## Golden Rule
+* Even if you did most of the work, remember to praise your teammates for their support and their efforts. Say that repeatly. As for what to say to your manager, it depends. But always remember to appreciate their time and patience for any question you are not certain to answer to production team.
+
 ## Preparation
 ### From Data Science Team
 #### Feature Set
