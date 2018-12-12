@@ -185,31 +185,30 @@ I'm planning to practice more on time series analysis, pattern matching sequenti
     * Long time ago, I tried DIY 7 methods, but no better than using python built-in methods
       * https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/time_series_forecasting.ipynb
 
-******************************************************************************************
  
-TIME SERIES PRACTICE
+## TIME SERIES PRACTICE
 
-* [R] [Previous practice][6]
-  * [reference][7]
+### [R] [Previous practice][6]
+* [reference][7]
  
-* [R] Time series beginner
-  * [Watch the free videos here FIRST!][8]
-    * Often time series are generated as `Xt=(1+pt)Xt−1`, meaning the value of the time series observed at time t equals to the value observed at time t-1, and a small percent change pt at time t. pt is often refered to as <b>return/growth rate</b> of time series, and <b>it should be stable</b>. There is also `Yt=logXt−logXt−1≈pt`. In R, pt is calculated as `plot(diff(log(x)))`
-    * <b>Stationary</b>: The <b>mean</b> is constant over time; The <b>correlation structure</b> remains constant over time
-    * To convert non-stationary to stationary: Simple differencing can help remove the trend (detrend); You can also use logging + differencing, first logging will tablize the variance, then differencing will do detrend. In R, differencing is using `diff()`, logging is using `log()`. <b>To sum up, logging against Heteroscedasticity, differencing against the trend of the mean</b>.
-    * It has been proved that, any stationary time series can be written as a linear combination of white noise, so do ARMA model. Therefore, in R, when you are simulating the model, it uses a list with (p, d, q)
-  * [Reference][5]
-    * This tutorial is messy, but if you go through it very carefully, there are still many things to learn
-  * [My practice code when following the tutorial][4], it's messy too, I use it to try all the methods in the tutorial
-  * [My summarized code][9], summarizing methods maybe re-used more often in the future
-    * [About AR(0), AR(1) and AR(2)][11]
-    * In the definition of AR(p) model [here][10]: the white noise has 0 mean and constant variance
-    * As spectral analysis visualization showing, AR model will gradually decrease. MA model will suddenly decrease.
-    * What is the role of ARMA, compared with AR, MA?
-  * Notes:
-    * Different from [my previous practice][6], which was using `ariam` to fit, this is using `sariam` for both fit and forecast. `sariam` is an improvement from `ariam`
+### [R] Time series beginner
+* [Watch the free videos here FIRST!][8]
+  * Often time series are generated as `Xt=(1+pt)Xt−1`, meaning the value of the time series observed at time t equals to the value observed at time t-1, and a small percent change pt at time t. pt is often refered to as <b>return/growth rate</b> of time series, and <b>it should be stable</b>. There is also `Yt=logXt−logXt−1≈pt`. In R, pt is calculated as `plot(diff(log(x)))`
+  * <b>Stationary</b>: The <b>mean</b> is constant over time; The <b>correlation structure</b> remains constant over time
+  * To convert non-stationary to stationary: Simple differencing can help remove the trend (detrend); You can also use logging + differencing, first logging will tablize the variance, then differencing will do detrend. In R, differencing is using `diff()`, logging is using `log()`. <b>To sum up, logging against Heteroscedasticity, differencing against the trend of the mean</b>.
+  * It has been proved that, any stationary time series can be written as a linear combination of white noise, so do ARMA model. Therefore, in R, when you are simulating the model, it uses a list with (p, d, q)
+* [Reference][5]
+  * This tutorial is messy, but if you go through it very carefully, there are still many things to learn
+* [My practice code when following the tutorial][4], it's messy too, I use it to try all the methods in the tutorial
+* [My summarized code][9], summarizing methods maybe re-used more often in the future
+  * [About AR(0), AR(1) and AR(2)][11]
+  * In the definition of AR(p) model [here][10]: the white noise has 0 mean and constant variance
+  * As spectral analysis visualization showing, AR model will gradually decrease. MA model will suddenly decrease.
+  * What is the role of ARMA, compared with AR, MA?
+* Notes:
+  * Different from [my previous practice][6], which was using `ariam` to fit, this is using `sariam` for both fit and forecast. `sariam` is an improvement from `ariam`
     
-[Python] Time Series 7 Methods
+### [Python] Time Series 7 Methods
   * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/time_series_forecasting.ipynb
     * `Holt_Winter` methods works the best, as it takes into account the level data, trend data and seasonal data
     * `Seasonal ARIMA` is an improvement of ARIMA, you need to set the season, you also need to know it's which ARIMA model it is in order to set (p,d,q) in `order()`
@@ -223,7 +222,7 @@ TIME SERIES PRACTICE
       * Then check whether you can import the library, `from statsmodels.tsa.api import ExponentialSmoothing`
   * reference: https://www.analyticsvidhya.com/blog/2018/02/time-series-forecasting-methods/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
     
-* [Python] ARIMA Beginner
+### [Python] ARIMA Beginner
   * Python ARIMA Results library: http://www.statsmodels.org/devel/generated/statsmodels.tsa.arima_model.ARIMAResults.html
   * download dataset: https://datamarket.com/data/set/22r0/sales-of-shampoo-over-a-three-year-period#!ds=22r0&display=line
   * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/python_ARIMA.ipynb
@@ -239,15 +238,15 @@ TIME SERIES PRACTICE
   * Check Stationary & Make Data Stationary Reference: https://www.analyticsvidhya.com/blog/2016/02/time-series-forecasting-codes-python/
   * ARIMA Reference: https://machinelearningmastery.com/arima-for-time-series-forecasting-with-python/
   
-* ARIMA with grid search, cross validation
+### ARIMA with grid search, cross validation
   * I was often emotionally against time series practice, because the tutorials I saw were over complex the problem. When there are existing libraries, they implemented their own and the code is not that elegant.... So, finally today, I decided to spend a little bit more time to find an easier solution. Let's just used those existing published libraries, give ourselves an easier life and better solution.
   * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/ARIMA_grid_search.ipynb
   
-* [Python] RNN - Data Preprocessing for LSTM
+### [Python] RNN - Data Preprocessing for LSTM
   * This is another dataset, the data preprocessing to make data stationary here is better
   * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/try_LSTM_Experiment1.ipynb
   
-* [R] Stock Prediction - Part 1
+### [R] Stock Prediction - Part 1
   * Dataset Search Library - Quandl: https://www.quandl.com/search?query=
     * Through the website, create an account, then you can search and get access to the data
     * R library: https://cran.r-project.org/web/packages/Quandl/Quandl.pdf
@@ -259,7 +258,7 @@ TIME SERIES PRACTICE
     * Acording to the code here, didn't have too much excited patterns. The most useful part is, data downloading through Quandl, it's a good data resource
   * reference: https://www.analyticsvidhya.com/blog/2017/09/comparative-stock-analysis/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
   
-* [R] Stock Prediction - Part 2
+### [R] Stock Prediction - Part 2
   * <b>Bollinger Bands</b> - The Bands depict the volatility of stock as it increases or decreases. The bands are placed above and below the moving average line of the stocks. <b>The wider the gap between the bands, higher is the degree of volatility.</b>
     * The <b>middle line</b> with N-period moving average (MA); 20-day SMA
     * An <b>upper band</b> at K times an N-period standard deviation above the moving average; 20-day SMA + (20-day standard deviation of price x 2)
@@ -279,12 +278,17 @@ TIME SERIES PRACTICE
     * This is the easiest, most good looking stock prediction visualization I have found
     * It uses the combination of regression and ARIMA to do the prediction, predict Close price on the end of the month. This method can be used for other time series prediction
   * reference: https://www.analyticsvidhya.com/blog/2017/10/comparative-stock-market-analysis-in-r-using-quandl-tidyverse-part-i/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
-  
-  
-******************************************************************************************
 
-RNN - LSTM
-
+### Facebook Propet
+#### About Prophet Forecasting Model
+* `y(t) = g(t) + s(t) + h(t) + εt`
+  * g(t): piecewise linear or logistic growth curve for modelling non-periodic changes in time series
+  * s(t): periodic changes (e.g. weekly/yearly seasonality)
+  * h(t): effects of holidays (user provided) with irregular schedules
+  * εt: error term accounts for any unusual changes not accommodated by the model
+* The solution is to frame the forecasting problem as a curve-fitting exercise rather than looking explicitly at the time based dependence of each observation within a time series.
+  
+## RNN - LSTM
 * <b>LSTM</b>: The Long Short-Term Memory network, or LSTM network, is a recurrent neural network that is trained using Backpropagation Through Time and overcomes the vanishing gradient problem.
   * Instead of neurons, LSTM networks have <b>memory blocks</b> that are connected through layers.
   * A block operates upon an input sequence and each gate within a block uses the sigmoid activation units to control whether they are triggered or not, making the change of state and addition of information flowing through the block conditional.
@@ -370,9 +374,7 @@ RNN - LSTM
   * Multivariate, multiple labels: create new columns, each is generated from the relevant original feature & moved x step forward & dropped NA. That's it.
   
   
-******************************************************************************************
-
-Channel Attrition
+## Channel Attrition
 
 * Find key channels in a sequence
 
