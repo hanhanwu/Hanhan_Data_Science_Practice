@@ -280,6 +280,9 @@ I'm planning to practice more on time series analysis, pattern matching sequenti
   * reference: https://www.analyticsvidhya.com/blog/2017/10/comparative-stock-market-analysis-in-r-using-quandl-tidyverse-part-i/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
 
 ### Facebook Propet
+* "Prophet is a procedure for forecasting time series data based on an additive model where non-linear trends are fit with yearly, weekly, and daily seasonality, plus holiday effects. <b>It works best with time series that have strong seasonal effects and several seasons of historical data.</b> Prophet is robust to missing data and shifts in the trend, and typically handles outliers well."
+#### Tutorial
+* Examples in R & Python: https://facebook.github.io/prophet/docs/quick_start.html#python-api
 #### About Prophet Forecasting Model
 * `y(t) = g(t) + s(t) + h(t) + εt`
   * g(t): piecewise linear or logistic growth curve for modelling non-periodic changes in time series
