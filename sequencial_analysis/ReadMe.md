@@ -281,14 +281,16 @@ I'm planning to practice more on time series analysis, pattern matching sequenti
 
 ### Facebook Propet
 * "Prophet is a procedure for forecasting time series data based on an additive model where non-linear trends are fit with yearly, weekly, and daily seasonality, plus holiday effects. <b>It works best with time series that have strong seasonal effects and several seasons of historical data.</b> Prophet is robust to missing data and shifts in the trend, and typically handles outliers well."
-#### Tutorial
+#### Resources
 * Examples in R & Python: https://facebook.github.io/prophet/docs/quick_start.html#python-api
+* Github: https://github.com/facebook/prophet
 #### About Prophet Forecasting Model
+* [Prophet Paper][16]
 * `y(t) = g(t) + s(t) + h(t) + εt`
   * g(t): piecewise linear or logistic growth curve for modelling non-periodic changes in time series
   * s(t): periodic changes (e.g. weekly/yearly seasonality)
   * h(t): effects of holidays (user provided) with irregular schedules
-  * εt: error term accounts for any unusual changes not accommodated by the model
+  * εt: error term accounts for any unusual changes not accommodated by the model, the parametric assumption here is, `εt` is normally distributed.
 * The solution is to frame the forecasting problem as a curve-fitting exercise rather than looking explicitly at the time based dependence of each observation within a time series.
   
 ## RNN - LSTM
@@ -461,3 +463,4 @@ READING NOTES
 [13]:https://github.com/hanhanwu/readings/blob/master/ReadingNotes_Temporal_Outlier_Detection.md
 [14]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice
 [15]:https://github.com/hanhanwu/Hanhan_Data_Science_Resources2/blob/master/README.md
+[16]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/prophet_paper.pdf
