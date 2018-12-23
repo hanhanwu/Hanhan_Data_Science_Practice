@@ -284,6 +284,7 @@ I'm planning to practice more on time series analysis, pattern matching sequenti
 #### Resources
 * Examples in R & Python: https://facebook.github.io/prophet/docs/quick_start.html#python-api
 * Github: https://github.com/facebook/prophet
+* For all the param in `Prophet()`, check https://github.com/facebook/prophet/blob/master/python/fbprophet/forecaster.py
 #### About Prophet Forecasting Model
 * [Prophet Paper][16]
 * `y(t) = g(t) + s(t) + h(t) + εt`
@@ -292,6 +293,8 @@ I'm planning to practice more on time series analysis, pattern matching sequenti
   * h(t): effects of holidays (user provided) with irregular schedules
   * εt: error term accounts for any unusual changes not accommodated by the model, the parametric assumption here is, `εt` is normally distributed.
 * The solution is to frame the forecasting problem as a curve-fitting exercise rather than looking explicitly at the time based dependence of each observation within a time series.
+#### Practice Code
+* [Python]https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/try_prophet.ipynb
   
 ## RNN - LSTM
 * <b>LSTM</b>: The Long Short-Term Memory network, or LSTM network, is a recurrent neural network that is trained using Backpropagation Through Time and overcomes the vanishing gradient problem.
