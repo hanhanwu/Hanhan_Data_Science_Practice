@@ -294,7 +294,10 @@ I'm planning to practice more on time series analysis, pattern matching sequenti
   * εt: error term accounts for any unusual changes not accommodated by the model, the parametric assumption here is, `εt` is normally distributed.
 * The solution is to frame the forecasting problem as a curve-fitting exercise rather than looking explicitly at the time based dependence of each observation within a time series.
 #### Practice Code
-* [Python]https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/try_prophet.ipynb
+* It seems that Prpphet has at most daily_seasonlity and no hourly, which means it predicts at most at daily level. The major method used here was to calculate hourly fraction (average hourly count/total hourly count)
+R and Python versions output similar results, but the digits after the decimal point can be different
+  * [Python]https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/try_prophet.ipynb
+  * [R]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/try_prophet_R.R
   
 ## RNN - LSTM
 * <b>LSTM</b>: The Long Short-Term Memory network, or LSTM network, is a recurrent neural network that is trained using Backpropagation Through Time and overcomes the vanishing gradient problem.
