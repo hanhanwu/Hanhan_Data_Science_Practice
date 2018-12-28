@@ -52,6 +52,10 @@ Although everything I created in my GitHub are good for industry used, today I d
   * Feature correlation in hieiarchical clustered view
   * Feature contribution in each record. From above Lime, it only shows visualization, but sometimes we need to process a vunch of records, `treeinterpreter` here helps a lot.
     
+## SHARED INDUSTRY EXPERIENCE
+### Digital Marketing
+* https://www.analyticsvidhya.com/blog/2018/12/guide-digital-marketing-analytics/
+  * It majorly talks about how does Google ad and relevant products work. Also includes how does cookies help in ads.
     
 [1]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Better4Industry/ExperienceNotes.md
 [2]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Better4Industry/Feature_Selection_Collection/ReadMe.md#shap
