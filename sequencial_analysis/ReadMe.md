@@ -208,8 +208,8 @@ I'm planning to practice more on time series analysis, pattern matching sequenti
 * Notes:
   * Different from [my previous practice][6], which was using `ariam` to fit, this is using `sariam` for both fit and forecast. `sariam` is an improvement from `ariam`
     
-### [Python] Time Series 7 Methods
-  * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/time_series_forecasting.ipynb
+### [Python] Time Series Methods Cheatsheet
+  * My code (7 methods): https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/time_series_forecasting.ipynb
     * `Holt_Winter` methods works the best, as it takes into account the level data, trend data and seasonal data
     * `Seasonal ARIMA` is an improvement of ARIMA, you need to set the season, you also need to know it's which ARIMA model it is in order to set (p,d,q) in `order()`
     * As you can see, the data used for forecasting is not stationary, but you can still do the forecast
@@ -220,7 +220,9 @@ I'm planning to practice more on time series analysis, pattern matching sequenti
       * `python setup.py install`
       * `python setup.py build_ext --inplace`
       * Then check whether you can import the library, `from statsmodels.tsa.api import ExponentialSmoothing`
-  * reference: https://www.analyticsvidhya.com/blog/2018/02/time-series-forecasting-methods/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+  * reference: 
+    * https://www.analyticsvidhya.com/blog/2018/02/time-series-forecasting-methods/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+    * 11 methods: https://machinelearningmastery.com/time-series-forecasting-methods-in-python-cheat-sheet/
     
 ### [Python] ARIMA Beginner
   * Python ARIMA Results library: http://www.statsmodels.org/devel/generated/statsmodels.tsa.arima_model.ARIMAResults.html
