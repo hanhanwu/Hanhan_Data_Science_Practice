@@ -44,7 +44,7 @@ summary(combine)
 # Amelia package
 ## It assumpes that All variables in a data set have Multivariate Normal Distribution (MVN). 
 ## It uses means and covariances to summarize data. 
-## It also auupmes Missing data is random in nature (Missing at Random)
+## It also assumes Missing data is random in nature (Missing at Random)
 ## This package works best when data has multivariable normal distribution
 library(Amelia)
 data("iris")
