@@ -345,6 +345,12 @@ Neural Network is a universal approximator, which means you can use it to implme
 * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/LSTM_changing_batch_size.ipynb
   * <b>Just keep scrolling down... I know...</b>
   
+### Keras ModelCheckPoint - save the best model for validation data
+* Even with early stopping, there could be overfitting at the end, the best model may appear in the middle of the early stopping when both training and testing evaluation are improving. So in Keras, with `ModelCheckPoint`, it will help you save the model that got best evaluation results on validation/testing data.
+* Code Snapshot
+![model checkpoint code](https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/model_checkpoint.png)
+* reference: https://machinelearningmastery.com/how-to-stop-training-deep-neural-networks-at-the-right-time-using-early-stopping/
+  
 
 ## EXPERIMENTS
 
