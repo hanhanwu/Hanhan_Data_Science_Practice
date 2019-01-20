@@ -295,6 +295,12 @@ I'm planning to practice more on time series analysis, pattern matching sequenti
   * h(t): effects of holidays (user provided) with irregular schedules
   * εt: error term accounts for any unusual changes not accommodated by the model, the parametric assumption here is, `εt` is normally distributed.
 * The solution is to frame the forecasting problem as a curve-fitting exercise rather than looking explicitly at the time based dependence of each observation within a time series.
+  * A piecewise linear or logistic growth curve trend. Prophet automatically detects changes in trends by selecting changepoints from the data.
+    * It seems that it could try multiple types of smoothing methods for seasonality forecasting, and find the optimized one
+    * [My code - 7 methods for seasonality modeling (better!)][17], [11 methods for seasonality modeling][18]
+  * A yearly seasonal component modeled using Fourier series.
+  * A weekly seasonal component using dummy variables.
+  * A user-provided list of important holidays.
 #### Practice Code
 * It seems that Prpphet has at most daily_seasonlity and no hourly, which means it predicts at most at daily level. The major method used here was to calculate hourly fraction (average hourly count/total hourly count)
 R and Python versions output similar results, but the digits after the decimal point can be different
@@ -378,7 +384,6 @@ R and Python versions output similar results, but the digits after the decimal p
     * In this code, it moves 3 hours forward. Check my comments to find the difference between one-step forward
     * It also predicts multiple lables, check my comments
   * reference: https://machinelearningmastery.com/multivariate-time-series-forecasting-lstms-keras/
-  
   
 * <b>Summary of Time Series to Supervided Learning</b>
   * According to above LSTM time series predictions, I'd better to summarize major methods used in converting time series to supervised learning. It's in fact very simple. Almost the same for univariate & multivariate, single label & multiple labels.
@@ -472,3 +477,5 @@ READING NOTES
 [14]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice
 [15]:https://github.com/hanhanwu/Hanhan_Data_Science_Resources2/blob/master/README.md
 [16]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/prophet_paper.pdf
+[17]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/time_series_forecasting.ipynb
+[18]:https://machinelearningmastery.com/time-series-forecasting-methods-in-python-cheat-sheet/
