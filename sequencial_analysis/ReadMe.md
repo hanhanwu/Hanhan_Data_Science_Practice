@@ -209,7 +209,7 @@ I'm planning to practice more on time series analysis, pattern matching sequenti
   * Different from [my previous practice][6], which was using `ariam` to fit, this is using `sariam` for both fit and forecast. `sariam` is an improvement from `ariam`
     
 ### [Python] Time Series Methods Cheatsheet
-  * My code (7 methods): https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/time_series_forecasting.ipynb
+  * My code (7 methods to model seasonality): https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/time_series_forecasting.ipynb
     * `Holt_Winter` methods works the best, as it takes into account the level data, trend data and seasonal data
     * `Seasonal ARIMA` is an improvement of ARIMA, you need to set the season, you also need to know it's which ARIMA model it is in order to set (p,d,q) in `order()`
     * As you can see, the data used for forecasting is not stationary, but you can still do the forecast
