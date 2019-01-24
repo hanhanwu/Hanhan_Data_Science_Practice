@@ -26,6 +26,8 @@ Although everything I created in my GitHub are good for industry used, today I d
     * It seems that location needs absolute path, as you can see in my code. I tried relative path, got errors, didn't work.
     * When a value in .yaml file is a very long string, it's fine to just use double quotes or single quotes for the string even if you want to use multiple lines to show the string. Don't use `"""..."""` in yaml. This is something different from python.
     * For a list `[...]` in .yaml file, python will read it as `(...)`, so in your python code, need to use `list()` to convert to a python list.
+    * Sometimes the config file will use previous settings even after you change the key name, so need to check carefully
+    * Pandas also could behave in a weird way, what I met was sometimes it will assign the value with `apply()` sometimes not, which could create more chanllenge in testing
 
 ## ACCURACY & INTERPRETABILITY
 
