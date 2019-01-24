@@ -1,5 +1,12 @@
 # Experience Notes
 
+## 3 Terrible Things
+* Mistakes in source data
+* Only choose part of the labels
+  * Example - You have "fraud" and "non-fraud" as the labels, meanwhile the client gave you "approve" and "decline" to tell you human decision before knowing which is the fraud. To simplify the problem, you may just choose "fraud" and "approved nonfraud", therefore you dind't include "declined nonfraud". Next when you are generating the features, some features may include all the declined cases and in your prediction, all those declined fraud will be predicted as fraud, looks like good performance but in fact included the declinded nonfraud, however since it's not in your labels, you are <b>overfitting without noticing from evaluation metrics</b>.
+  * Better to include all the ground truth you know into labels
+* Blame others
+
 ## Cross Clients Notes
 * Same model, Similar case
   * About Feature Importance - Difference clients may have difference feature importance, even your features are generated in the same way, the cases are similar and you will use the same model (can be different param, though). So better NOT to use one client's important features to serve as another client's important features. If there is time, if you will get labeled data, seperate the case for each client.
