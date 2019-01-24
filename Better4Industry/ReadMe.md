@@ -8,7 +8,7 @@ Although everything I created in my GitHub are good for industry used, today I d
 * With AWS Sagemaker, you can use multiple AWS services to store the data and running data science jobs in parallel, meanwhile Sagemaker provides notebook almost the same as IPython, and shared space for team development. It's just cost money, and you may need data engineers to help set up the whole pipeline.
 
 ### Luigi
-* It's a free python library that allows you to build pipeline which will help control parallel running, and you can also schedule multiple same pipelines for different clients at the same time. It's convenient to run locally. For each of its step, storing the output data is required, but once the data is stored, this step will be skip later we you can running the code again.
+* It's a free python library that allows you to build pipeline which will help control parallel running, and you can also schedule multiple same pipelines for different clients at the same time. It's convenient to run locally. For each of its step, storing the output data is required, but once the data is stored, this step will be skip later we you can running the code again. <b>Better to use luigi when you have confimed a pipeline and will use that repeatedly. If you begin with luigi for building the pipeline, can be less efficient.</b>
 * Luigi Github: https://github.com/spotify/luigi
 * Here's my sample code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/tree/master/Better4Industry/luigi_pipeline1
   * About this pipeline
