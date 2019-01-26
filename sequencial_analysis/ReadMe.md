@@ -391,6 +391,16 @@ R and Python versions output similar results, but the digits after the decimal p
   * Multivariate, single label: create new columns, each is generated from the relevant original feature & moved x step forward & dropped NA. Then, you only keep the column that you want to predict as label, drop other newly created columns
   * Multivariate, multiple labels: create new columns, each is generated from the relevant original feature & moved x step forward & dropped NA. That's it.
   
+## Time Series Prediction
+* Data records are recorded in time sequence. With all the sequences, you predict certain classes.
+### Time Serirs Predict Human Movement
+* Predict whether a person moved or not.
+* [Python]Code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/Time_Series_Movement_Prediction.ipynb
+  * Each record contains sensors data
+  * Each file has to record the same amount of records
+  * All files form the training, validation and testing sequences
+  * Then you just use LSTM to train the model
+  
   
 ## Channel Attrition
 
