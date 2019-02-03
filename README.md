@@ -496,6 +496,11 @@ ADVANCED TOOLS
   
 
 * CatBoost
+  * The paper of CatBoost: http://learningsys.org/nips17/assets/papers/paper_11.pdf
+    * It has multiple ways to deal with categorical features:
+      * one-hot - implemented in histogram way, which makes catboost runs more efficient
+      * label categorical encoding - implemented to reduce overfitting
+        * Normally label categorical encoding tends to lead to overfitting is because it uses the average label value for that categorical feature value. However, if there is only SINGLE value for a categorical feature value in your training data, then the label for this feature value will always be the same, which could reduce the accuracy
   * reference: https://www.analyticsvidhya.com/blog/2017/08/catboost-automated-categorical-data/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
     * I changed a lot of its code
   * My basic code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/try_CatBoost_basics.ipynb
