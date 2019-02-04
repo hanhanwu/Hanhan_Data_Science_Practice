@@ -504,16 +504,21 @@ Neural Network is a universal approximator, which means you can use it to implme
     
     
 ### [Python] Sequence to Sequence with Attention
-  * Beam Search
-    * When generating words as a sequences, at each time step, the decoder has to make a decision as to what the next word would be in the sequence. One way to make a decision would be to greedily find out the most probable word at each time step.
-    * Beam search takes into account the probability of the next k words in the sequence, and then chooses the proposal with the max combined probability.
-  * Attention Mechanism
-    * It takes input from each time step of the encoder – but give weights to the timesteps. The weights depend on the importance of that time step for the decoder to optimally generate the next word in the sequence
-  * reference: https://www.analyticsvidhya.com/blog/2018/03/essentials-of-deep-learning-sequence-to-sequence-modelling-with-attention-part-i/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
-    * it simply copied part of the Keras sample code.... That's sneaky, I don't like it.
-  * One of the practical application is language translation. Here's the sample code of using Keras, LSTM to translate the language: https://github.com/keras-team/keras/blob/master/examples/lstm_seq2seq.py
-  * My Language Translation practice code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/deep_learning_sequence2sequence.ipynb
-    * I just wanted to see how it works, so copied the whole code and changed the language & parameter. Got the cold recetly, have to go to sleep early...
+* Beam Search
+  * When generating words as a sequences, at each time step, the decoder has to make a decision as to what the next word would be in the sequence. One way to make a decision would be to greedily find out the most probable word at each time step.
+  * Beam search takes into account the probability of the next k words in the sequence, and then chooses the proposal with the max combined probability.
+* Attention Mechanism
+  * It takes input from each time step of the encoder – but give weights to the timesteps. The weights depend on the importance of that time step for the decoder to optimally generate the next word in the sequence
+* reference: https://www.analyticsvidhya.com/blog/2018/03/essentials-of-deep-learning-sequence-to-sequence-modelling-with-attention-part-i/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+  * it simply copied part of the Keras sample code.... That's sneaky, I don't like it.
+* One of the practical application is language translation. Here's the sample code of using Keras, LSTM to translate the language: https://github.com/keras-team/keras/blob/master/examples/lstm_seq2seq.py
+* My Language Translation practice code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/deep_learning_sequence2sequence.ipynb
+  * I just wanted to see how it works, so copied the whole code and changed the language & parameter. Got the cold recetly, have to go to sleep early...
+* Other Sequence2Sequence NLP
+  * https://www.analyticsvidhya.com/blog/2019/01/neural-machine-translation-keras/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+    * It has more description in data preprocessing. The issue for this tutorial and my code above is the same, you need to use large amout of computing resource in order to get a satisfied result.
+* NLP translation applications - use directly
+  * TextBlob translation
    
 
 ### [R] Try Neural Network in R
