@@ -1,11 +1,10 @@
 # Experience Notes
 
-## 3 Terrible Things
-* Mistakes in source data
-* Only choose part of the labels
+## Avoid Mistakes Notes
+* Validate source data quality
+* Be careful for choosing part of the labels
   * Example - You have "fraud" and "non-fraud" as the labels, meanwhile the client gave you "approve" and "decline" to tell you human decision before knowing which is the fraud. To simplify the problem, you may just choose "fraud" and "approved nonfraud", therefore you dind't include "declined nonfraud". Next when you are generating the features, some features may include all the declined cases and in your prediction, all those declined fraud will be predicted as fraud, looks like good performance but in fact included the declinded nonfraud, however since it's not in your labels, you are <b>overfitting without noticing from evaluation metrics</b>.
-  * Better to include all the ground truth you know into labels
-* Blame others
+  * If you are not sure which labels to include, there is a good practice that is to predict everything with probility, then compare the distribution for different labels. This will give you more insights about which labels should be used in the prediction.
 
 ## Cross Clients Notes
 * Same model, Similar case
@@ -78,5 +77,8 @@
     * Then based on the objective, convert the total leaf value to prediction probability
       * For example, you are using "binary: logistic" as your objective, use the conversion rule here to convert logit score to probability: https://sebastiansauer.github.io/convert_logit2prob/
   
+## Production Handover Notes
+* Understand deployment QA at the very beginning. Provide every output at each step for their QA test.
+* Push everyone in the team to put all the code together on time, after combining the code, re-run everything asap, to reduce potential within-team discrepencies.
   
 [1]:http://scikit-learn.org/stable/auto_examples/preprocessing/plot_all_scaling.html
