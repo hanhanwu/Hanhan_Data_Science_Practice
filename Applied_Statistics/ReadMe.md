@@ -284,7 +284,9 @@ but it's easier to use pyton built-in functions
          * When you know the function for this linear model, you have `Var(ε) = pow((α + βxi - yi), 2)/n`
          * e.g. When R Square is 0.79, it means it has reduces the MSE of your precitions by 79%
        * For Linear Least Squares model, `R Square = pow(ρ,2)`
-       
+* Interpretability vs Accuracy
+![Interpretability vs Accuracy](https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/interpretability_vs_accuracy.png)
+  * Algorithms with higher flexibility also leads to higher variance, but lcan be ower bias; those with lower flexibility have lower variance, but also could have higher bias
 
 [1]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/thinkstats_chapter1.ipynb
 [2]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/thinkstats_chapter2.ipynb
