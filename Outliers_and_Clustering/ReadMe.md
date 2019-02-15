@@ -1,22 +1,23 @@
 Outliers Detection and Clustering are related to each other, and in a world without groud truth data, it requires more efforts to find effective and efficient methods.
 
 
-*********************************************************************************
-
-LEARNING NOTES
+## LEARNING NOTES
 
 * As [my data mining bible reading notes][1] recorded (Chapter 11, high demensional clustering), even it's biclustering (such as <b>MaPle</b>), which searches subsapace in both objects and features, can be time consuming because it enumerates all the subspaces. Here is another implemented example of [HiCS, LOF with description][2], [HiCS code only][3], according to the author, HiCS can solve the subspaces search in an more effective way. I think so, since MaPle is publised in 2008, HiCS is published in 2012. So deserve to try
 * People have also implemneted another method to detect outliers, [LOF][4], it is densitiy based, and calculates nearest neighbours. Note that, when there is high dimensional features, PCA (linear regression model), LOF (proximity-based) can be less effective. This is the so-called The Curse of Dimensionality, when there are more dimensions, these methods can be time consuming, and outliers, random noise could make the calculation results lose meaning
 
-* Clustering Evaluation Methods
-  * NMI (Normalized Mutual Information)
+### Clustering Evaluation Methods
+* NMI (Normalized Mutual Information)
   ![NMI](https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Outliers_and_Clustering/NMI.png)
     * It measures the purity of Ci by calculating the largest number of common objects that cluster Ci has with all the other mutual clusters Mi. Higher NMI, the higher purity of Ci is.
-  * We have NMI to measure between cluster similarity, we should also measure the within ckuster purity to guarantee the ckustering quality
+* We have NMI to measure between cluster similarity, we should also measure the within ckuster purity to guarantee the ckustering quality
+  
+### PyOD - An Outlier Detection Python Library
+* All the algorithms it supports: https://pyod.readthedocs.io/en/latest/
+* IPython Notebook - compare all algorithms: https://github.com/yzhao062/pyod#api-cheatsheet--reference
+  
 
-*********************************************************************************
-
-PRACTICAL CODE
+## PRACTICAL CODE
 
 * Data Exploration - Visualized Projected Clusters
   * My code : https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Outliers_and_Clustering/dimensional_reduction_visualization.ipynb
