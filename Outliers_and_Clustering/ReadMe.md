@@ -14,6 +14,13 @@ Outliers Detection and Clustering are related to each other, and in a world with
   
 ### PyOD - An Outlier Detection Python Library
 * All the algorithms it supports: https://pyod.readthedocs.io/en/latest/
+  * Linear Models
+    * PCA
+      * It's often used for feature selection, since it explains the variance-covariance structure of features through a linear function of principle components. The top k mutually independent principle components has the highest variance, and the combination of their variance equals to the variance of all the features. That's why you can choost the top k principle components as the result of dimensional reduction.
+      * When it comes to anomaly detection, the basic idea here is:
+        * Firstly, they use Mahalanobis metric to identify obvious observations that are significantly different from normal observations
+        * They assumes outliers will bring higher variance and correlation (covariance), and trim the outliers
+        * paper: https://homepages.laas.fr/owe/METROSEC/DOC/FDM03.pdf
 * IPython Notebook - compare all algorithms: https://github.com/yzhao062/pyod#api-cheatsheet--reference
   
 
