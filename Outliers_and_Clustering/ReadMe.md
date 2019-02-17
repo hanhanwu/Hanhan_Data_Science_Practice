@@ -15,12 +15,35 @@ Outliers Detection and Clustering are related to each other, and in a world with
 ### PyOD - An Outlier Detection Python Library
 * All the algorithms it supports: https://pyod.readthedocs.io/en/latest/
   * Linear Models
-    * PCA
+    * PCA (Principle Component Analysis)
       * It's often used for feature selection, since it explains the variance-covariance structure of features through a linear function of principle components. The top k mutually independent principle components has the highest variance, and the combination of their variance equals to the variance of all the features. That's why you can choost the top k principle components as the result of dimensional reduction.
       * When it comes to anomaly detection, the basic idea here is:
         * Firstly, they use Mahalanobis metric to identify obvious observations that are significantly different from normal observations
         * They assumes outliers will bring higher variance and correlation (covariance), and trim the outliers
         * paper: https://homepages.laas.fr/owe/METROSEC/DOC/FDM03.pdf
+    * MCD (Minimum Covariance Determinant)
+      * Given n data points, the MCD of those data is the mean and covariance matrix based on the sample of size h (h <= n) that minimizes the determinant of the covariance matrix.
+      * Effective for multivariate location and scatter (works well when there are 3+ features). When Mahalanobis distance is not robust enough to detect outliers (mask effect), MCD develops a distributional fit to Mahalanobis distances which uses a robust shape and location estimate.
+    * OCSVM (One-Class Support Vector Machines)
+      * One class SVM + RBF kernel function is the commonly used one
+      * The hyperplane seperates the outliers and the normal data
+  * Proximity-Based Models
+    * LOF (Local Outlier Factor)
+      * By comparing the local density of an object to the local densities of its neighbors, one can identify regions of similar density, and points that have a substantially lower density than their neighbors. These are considered to be outliers.
+    * CBLOF	(Clustering-Based Local Outlier Factor)
+      * It classifies the data into small clusters and large clusters. The anomaly score is then calculated based on the size of the cluster the point belongs to, as well as the distance to the nearest large cluster. With the anomaly score, it shows the degree of outlying, instead of binary outliers or not.
+    * LOCI (Fast outlier detection using the local correlation integral)
+      * LOCI is very effective for detecting outliers and groups of outliers. 
+      * It provides an automatic, data-dictated cutoff to determine whether a point is an outlier-in contrast.
+      * LOCI leads to a practically linear approximate method, aLOCI (for approximate LOCI), which provides fast highly-accurate outlier detection.
+      * It provides a LOCI plot for each point which summarizes a lot of the information about the data in the area around the point, determining clusters, micro-clusters, their diameters, and their inter-cluster distances. This is a very special feature.
+    * HBOS (Histogram Based Outlier Score)
+      * It is an efficient unsupervised method which assumes the feature independence and calculates the outlier score by building histograms
+      * It is much faster than multivariate approaches, but at the cost of less precision
+    * KNN, AvgKNN, MedKNN
+      * KNN - the distance to the kth nearest neighbor as the outlier score
+      * AvgKNN - use the average distance to all the k nearest neighbors as the outlier score
+      * MedKNN - use the median distance to all the k nearest neighbors as the outlier score
 * IPython Notebook - compare all algorithms: https://github.com/yzhao062/pyod#api-cheatsheet--reference
   
 
