@@ -13,6 +13,8 @@ Outliers Detection and Clustering are related to each other, and in a world with
 * We have NMI to measure between cluster similarity, we should also measure the within ckuster purity to guarantee the ckustering quality
   
 ### PyOD - An Outlier Detection Python Library
+* My code - Basic PyOD:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Outliers_and_Clustering/try_PyOD.ipynb
+  * Test on Simulated Data: PyOD provides functions to generate simulated data which allows you to set anomalies proportion
 * All the algorithms it supports: https://pyod.readthedocs.io/en/latest/
   * Linear Models
     * PCA (Principle Component Analysis)
