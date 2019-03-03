@@ -39,22 +39,27 @@ Outliers Detection and Clustering are related to each other, and in a world with
       * It provides an automatic, data-dictated cutoff to determine whether a point is an outlier-in contrast.
       * LOCI leads to a practically linear approximate method, aLOCI (for approximate LOCI), which provides fast highly-accurate outlier detection.
       * It provides a LOCI plot for each point which summarizes a lot of the information about the data in the area around the point, determining clusters, micro-clusters, their diameters, and their inter-cluster distances. This is a very special feature.
+      * NOTE: this method doesn't need random state
     * HBOS (Histogram Based Outlier Score)
       * It is an efficient unsupervised method which assumes the feature independence and calculates the outlier score by building histograms
       * It is much faster than multivariate approaches, but at the cost of less precision
+      * NOTE: this method doesn't need random state
     * KNN, AvgKNN, MedKNN
       * KNN - the distance to the kth nearest neighbor as the outlier score
       * AvgKNN - use the average distance to all the k nearest neighbors as the outlier score
       * MedKNN - use the median distance to all the k nearest neighbors as the outlier score
+      * NOTE: these method doesn't need random state
   * Probabilistic Models
     * ABOD, FastABOD (Angle-Based Outlier Detection)
       * It considers the relationship between each point and its neighbor(s). It does not consider the relationships among these neighbors. The variance of its weighted cosine scores to all neighbors are viewed as the outlying score.
       * ABOD works for multi-dimensional data but time consuming. FastABOD uses KNN to approximate the results and improve the time efficiency, however this approximation will get worse when the data dimensionality increases
+      * NOTE: this method doesn't need random state
       * The paper: https://imada.sdu.dk/~zimek/publications/KDD2008/KDD08-ABOD.pdf
     * SOS (Stochastic Ourlier Selection)
       * How SOS works: https://www.datascienceworkshops.com/blog/stochastic-outlier-selection/
         * It uses "affinity" (similarity), the idea used by tSNE (tSNE uses it to preserve local structure of the high dimensional data), SOS uses this idea to detect outliers. SOS computes an affinity matrix A, a binding probability matrix B, and finally, the outlier probability vector Φ.
         * You can also find the AUC comparison between SOS and other outlier detection methods. SOS is more robust to data perturbations (noisy data) and varying densities.
+      * NOTE: this method doesn't need random state
   * Outlier Ensembles
     * IForest (Isolation Forest)
       * The algorithm isolates each point in the data and splits them into outliers or inliers. Data partitioning is done using a set of trees. It counts the number of times a point can be isolated from other points, the count is used in outlying score.
