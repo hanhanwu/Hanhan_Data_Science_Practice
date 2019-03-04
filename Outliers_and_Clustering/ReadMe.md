@@ -18,7 +18,10 @@ Outliers Detection and Clustering are related to each other, and in a world with
   * In 2D Simulated Data Experiment
     * There are only 200 records, 200*200 meshgrid points need to calculate anomaly scores, but these algorithms performed very slow in PyOD, even running for hours without output:
       * LSCP, SOS, LOCI
-   * More observations can be found in the IPython
+  * In 3D Simulated Data Experiment
+    * They all made good prediction
+    * To plot those 3D images, you need to have a plotly account in order to get your username and API key
+  * More observations can be found in the IPython
 * All the algorithms it supports: https://pyod.readthedocs.io/en/latest/
   * Linear Models
     * PCA (Principle Component Analysis)
