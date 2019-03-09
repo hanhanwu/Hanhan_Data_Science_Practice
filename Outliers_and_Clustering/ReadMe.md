@@ -21,6 +21,9 @@ Outliers Detection and Clustering are related to each other, and in a world with
   * In 3D Simulated Data Experiment
     * They all made good prediction
     * To plot those 3D images, you need to have a plotly account in order to get your username and API key
+  * In Muti-dimensional (3D+) Data Experiment
+    * When we have 3+ dimensions, proper amount of higher dimensions could sever for better prediction, therefore, when we are using X_train for all the classifiers here, most of them will still perform well.
+    * T-SNE is good to be used in 2D, 3D plots, but converting a high dimensional data into 2D, 3D before doing the prediction, tend to make more classifiers have wrong predictions, majorly because of the missing info, and the data structure has been changed.
   * More observations can be found in the IPython
 * All the algorithms it supports: https://pyod.readthedocs.io/en/latest/
   * Linear Models
