@@ -90,6 +90,20 @@ I'm planning to practice more on time series analysis, pattern matching sequenti
 ### Previous Time Series
 * For previous summarized knowledge, check [Time Series section][1]
 
+### Autocorrelation Plot
+* In some of my code below, I have used `autocorrelation plot` in multiple places, and the plot was even checked before stationary checking. This is because autocorrelation plot tells how randomly the time series is. Many statistical formula is based on randomness, such as the formula "standard deviation of the sample mean" is only useful when the randomness assumption holds. Meanwhile, most standard statistical tests depend on randomness. The validity of the test conclusions is directly linked to the validity of the randomness assumption.
+* The shape of autocorrelation plot and which model to use
+  * Exponential, decaying to zero - Autoregressive model. Use the partial autocorrelation plot to identify the order of the autoregressive model.
+  * Alternating positive and negative, decaying to zero - Autoregressive model. Use the partial autocorrelation plot to help identify the order.
+  * One or more spikes, rest are essentially zero - Moving average model, order identified by where plot becomes zero.
+  * Decay, starting after a few lags - Mixed autoregressive and moving average model.
+  * All zero or close to zero - Data is essentially random (white noise).
+  * High values at fixed intervals - Include seasonal autoregressive term.
+  * No decay to zero - Series is not stationary.
+* References
+  * https://www.itl.nist.gov/div898/handbook/eda/section3/autocopl.htm
+  * https://www.itl.nist.gov/div898/handbook/pmc/section4/pmc446.htm
+
 ### About Stationary
 * The first step is often to make the data stationary. <b>A stationary series is one in which the properties – mean, variance and covariance, do not vary with time. It should not show any trend. - Strict Stationary</b>
   * My code - Metrics used to measure stationary: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/7741ccebbbaa3708cd28ddf9c82b6116e3522986/sequencial_analysis/time_series_stationary_measures.ipynb
