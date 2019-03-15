@@ -52,8 +52,9 @@ Outliers Detection and Clustering are related to each other, and in a world with
       * NOTE: this method doesn't need random state
     * HBOS (Histogram Based Outlier Score)
       * It is an efficient unsupervised method which assumes the feature independence and calculates the outlier score by building histograms
-      * It is much faster than multivariate approaches, but at the cost of less precision
+      * It is much faster than multivariate approaches, but at the cost of less precision. It's also ot good at detecting local outliers.
       * NOTE: this method doesn't need random state
+      * How it works: https://www.researchgate.net/publication/231614824_Histogram-based_Outlier_Score_HBOS_A_fast_Unsupervised_Anomaly_Detection_Algorithm
     * KNN, AvgKNN, MedKNN
       * KNN - the distance to the kth nearest neighbor as the outlier score
       * AvgKNN - use the average distance to all the k nearest neighbors as the outlier score
