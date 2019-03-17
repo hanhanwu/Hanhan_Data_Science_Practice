@@ -41,5 +41,8 @@
       * To initial trend factor, `b = ((yL+1 - y1)/L + (yL+2 - y2)/L + ... + (yL+L - yL)/L)/L`
     * To initialize seasonal indices, the example here is good: https://www.itl.nist.gov/div898/handbook/pmc/section4/pmc435.htm
     * When γ, β have at least 1 as 0, doesn't means there is no trend or seasonality, but means the initial values for trend and/or seasonality were correct. No updating was necessary in order to arrive at the lowest possible MSE, but better to inspect the updating formulas to verify this.
+## Univariate Time Series Models
+* It indicates the time series only has single (scalar) observations recorded sequentially over equal time increments.
+* A stationary process has the property that the mean, variance and autocorrelation structure do not change over time. 
     
   
