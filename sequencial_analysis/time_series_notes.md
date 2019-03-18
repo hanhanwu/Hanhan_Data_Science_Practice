@@ -1,5 +1,10 @@
 # Time Series Notes
 
+## Time Series Plots
+* [R Code][1]
+  * Seasonal Subseries Plot - is a plot that will show within group patterns between groups patterns
+  * In the example of the code, the data has `Year&Month` column, which made yeat and month as continuous numbers, in order to make the plot works better. However I just tried to use `Year` column instead of `Year&Month`, the plot is the same.
+
 ## Moving Average
 * Take a moving average is a smoothing process
 * You can take average as the forecast value ONLY when there is no trend.
@@ -46,3 +51,4 @@
 * A stationary process has the property that the mean, variance and autocorrelation structure do not change over time. 
     
   
+[1]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/time_series_plots_R.R
