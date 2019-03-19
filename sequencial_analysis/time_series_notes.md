@@ -49,6 +49,20 @@
 ## Univariate Time Series Models
 * It indicates the time series only has single (scalar) observations recorded sequentially over equal time increments.
 * A stationary process has the property that the mean, variance and autocorrelation structure do not change over time. 
+* Common Approaches for Univariate Time Series Models
+  * Trend, Seasonal and Residual decompositions - such as triple exponential smoothing, HW method
+  * Frequency based methods
+  * AR model
+    * `Xt=δ+ϕ1Xt−1+ϕ2Xt−2+⋯+ϕpXt−1+At`, Xi is time series, At is white noise.
+    * AR model is in fact a linear regression of current value of series against one or more previous time series
+    * `p` is the order of AR model, `δ=(1−(ϕ1 + ϕ2 + .... + ϕp))*μ`, μ denoting the process mean
+  * MA model
+    * `Xt=μ+At−θ1At−1−θ2At−2−⋯−θqAt−q`, At-i is white noise, μ is the mean of the series
+    * MA model is in fact the linear regression of current value of series against white noise or random shocks of one or more prior values of series
+    * `q` is the order of MA model
+    * The random shocks at each point are assumed to come from the same distribution, typically a normal distribution, with location at zero and constant scale.
+  * Box-Jenkins Method
+    * It's a systematic methodology for identifying and estimating models that could incorporate both AR and MA models
     
   
 [1]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/time_series_plots_R.R
