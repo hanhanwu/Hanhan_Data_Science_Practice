@@ -65,6 +65,17 @@
     * It's a systematic methodology for identifying and estimating models that could incorporate both AR and MA models
     * <b>It assumes the data is stationary</b>, Box and Jenkins also suggests to differencing the non-stationary time series multiple times to achieve stationary
     * Better to have at least 50 ~ 100 observations
+    * How to decide model and order (p, q) with autocorrelation plot
+      * AR model becomes 0 at lag `p+1` or greater
+      * MA model becomes 0 at lag `q+1` or greater
+      <img src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/autocorrelation_plots.png" width="400" height="600">
+      
+    * To validate whether the model is good
+      * The residuals should be white noise (or independent when their distributions are normal) drawings from a fixed distribution with a constant mean and variance
+      * If you have the ground truth, you can also compare RMSE between the froecast and the prediction
     
+## References
+* [Engineering Statistics - Time Series][2]
   
 [1]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/time_series_plots_R.R
+[2]:https://www.itl.nist.gov/div898/handbook/pmc/section4/pmc446.htm
