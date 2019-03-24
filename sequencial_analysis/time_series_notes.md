@@ -63,6 +63,8 @@
     * The random shocks at each point are assumed to come from the same distribution, typically a normal distribution, with location at zero and constant scale.
   * Box-Jenkins Method
     * It's a systematic methodology for identifying and estimating models that could incorporate both AR and MA models
+    * <b>It assumes the data is stationary</b>, Box and Jenkins also suggests to differencing the non-stationary time series multiple times to achieve stationary
+    * Better to have at least 50 ~ 100 observations
     
   
 [1]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/time_series_plots_R.R
