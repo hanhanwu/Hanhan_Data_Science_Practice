@@ -3,6 +3,9 @@
 
 ### Maximum Likelihood Estimation
 * With Maximum Likelihood, you can estimate population parameters from sample data such that the probability (likelihood) of obtaining the observed data is maximized
+* It seems that all the likelihood function can be written in this way regardless of the distribution, and the purpose of maximum of likelihood is to estimate the coefficients `β0, β1`, in R it's `θ0, θ1`, so that the estimated coefficients will maximize the likelihood function.
+<img src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/images/likelihood_function.png" width="180" height="60">
+
 * My code [R]: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/try_maximum_likelihood_estimation.R
   * Download the data: https://s3-ap-south-1.amazonaws.com/av-blog-media/wp-content/uploads/2018/07/Train_Tickets.csv
   * The data distribution can be treated as <b>Poisson Distribution</b>
