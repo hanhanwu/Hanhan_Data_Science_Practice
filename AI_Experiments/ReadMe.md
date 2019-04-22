@@ -577,6 +577,10 @@ Neural Network is a universal approximator, which means you can use it to implme
     
 * Resources I didn't work on
   * CoreML for Spam classification on iPhone app development: https://www.analyticsvidhya.com/blog/2017/09/build-machine-learning-iphone-apple-coreml/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+  
+### Pytorch
+* How to install: `conda install pytorch torchvision cuda91 -c pytorch`
+* Pytorch has 200+ mathematical operations: https://pytorch.org/docs/stable/torch.html#math-operations
 
 
 ## RELAVANT PAPERS & NEWS
