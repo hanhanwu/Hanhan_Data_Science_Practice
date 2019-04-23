@@ -581,6 +581,8 @@ Neural Network is a universal approximator, which means you can use it to implme
 ### Pytorch
 * How to install: `conda install pytorch torchvision cuda91 -c pytorch`
 * Pytorch has 200+ mathematical operations: https://pytorch.org/docs/stable/torch.html#math-operations
+* [My code - Pytorch for Digit Recognition][13]
+  * Comparing with [My code - Keras for Digit Recognition][14], I still think Keras is much more convenient to use. It took me so much time to debug here because here you need to create batches yourself (Keras will do that for you). And because of the frequent package updates, missing 1 param will cause so much troubles later.
 
 
 ## RELAVANT PAPERS & NEWS
@@ -613,3 +615,5 @@ Neural Network is a universal approximator, which means you can use it to implme
 [10]:https://machinelearningmastery.com/encoder-decoder-long-short-term-memory-networks/
 [11]:https://www.analyticsvidhya.com/blog/2018/10/introduction-neural-networks-deep-learning/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
 [12]:https://www.analyticsvidhya.com/blog/2018/10/understanding-inception-network-from-scratch/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+[13]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/digit_recognition_Pytorch.ipynb
+[14]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/digital_recognition_Keras.ipynb
