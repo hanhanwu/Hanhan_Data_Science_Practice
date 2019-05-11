@@ -182,7 +182,10 @@ PYTHON PRACTICE
     * Method 3 - Ensembling Method in scikit-learn
       * As you can see in my code, this method had problem. I tried to install those libraries in coda emvironment and my non-virtual environment, none of them works. In order to solve that problem, you may need to install all these: https://gist.github.com/v-pravin/949fc18d58a560cf85d2
       * FInally I decided never use scikit-learn multi-label ensembling, I'd rather use normal ensembling method to predict labels using Method 1 methods. I sense, even if you installed all those, the accuracy can still be very low
-   * reference: https://www.analyticsvidhya.com/blog/2017/08/introduction-to-multi-label-classification/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+    * [Method 4 - multilabel_binarizer + OneVsRestClassifier][6]
+   * Reference
+     * https://www.analyticsvidhya.com/blog/2017/08/introduction-to-multi-label-classification/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+     * https://www.analyticsvidhya.com/blog/2019/04/predicting-movie-genres-nlp-multi-label-classification/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
 
 
 * Factorization Machines
@@ -576,3 +579,4 @@ OTHER
 [3]:https://www.youtube.com/watch?v=cO8NVCs_Ba0
 [4]:https://www.youtube.com/watch?v=5tsyz3ibYzk
 [5]:https://info.neo4j.com/WBCODWBRIntroducingNeo4j3.0_LP-Video.html?_ga=2.181131879.1575748286.1525582408-1956689004.1525582408
+[6]:https://www.analyticsvidhya.com/blog/2019/04/predicting-movie-genres-nlp-multi-label-classification/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
