@@ -601,6 +601,11 @@ Neural Network is a universal approximator, which means you can use it to implme
   * https://github.com/hanhanwu/readings/blob/master/Practical%20Recommendations%20for%20Gradient-Based%20Training.pdf
   * Detailed suggestions in almost all the process in Gradient-Based training, very practical
 
+## Deep Learning in Real World
+* [How to use forward feed network to detect PowerShell Obfuscation][15]
+  * Obfuscation is typically used to evade detection
+  * Microsoft PowerShell is the ideal attacker’s tool in a Windows operating system. Because it is installed by default in Windows, and attackers are better off using existing tools that allow them to blend well and possibly evade Antivirus (AV) software.
+  * They used character-level representation for all PowerShell scripts, instead of word-based, since obfuscated scripts are different from normal scripts
 
 
 [1]:https://stackoverflow.com/questions/45912124/python-keras-how-to-generate-right-image-dimension
@@ -617,3 +622,4 @@ Neural Network is a universal approximator, which means you can use it to implme
 [12]:https://www.analyticsvidhya.com/blog/2018/10/understanding-inception-network-from-scratch/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
 [13]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/digit_recognition_Pytorch.ipynb
 [14]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/digital_recognition_Keras.ipynb
+[15]:https://www.analyticsvidhya.com/blog/2019/05/using-power-deep-learning-cyber-security-2/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
