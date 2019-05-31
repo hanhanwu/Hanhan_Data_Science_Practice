@@ -1,6 +1,26 @@
 
-### Tutorial
-#### Neo4j Graph DB
+## Graph Libraries
+* [Neo4j][1]
+* [Boost Graph Library][2] - this is more about an interface of graph implementation
+* [iGraph][5]
+  * It supports both R and python
+  * R package: https://igraph.org/r/#startr
+  * Python package: https://igraph.org/python/
+* [NetworkX][6]
+* [Graph Tool][3]
+  * It's a python library written in C++, so should be fast
+  * [Its documentation][4]
+
+
+[1]:https://neo4j.com/developer/get-started/
+[2]:https://www.boost.org/doc/libs/1_70_0/libs/graph/doc/index.html
+[3]:https://graph-tool.skewed.de/
+[4]:https://graph-tool.skewed.de/static/doc/index.html
+[5]:https://igraph.org/
+[6]:https://github.com/networkx/networkx
+
+## Tutorial
+### Neo4j Graph DB
 * URL: https://github.com/iansrobinson/graph-databases-use-cases
 * How to intsall and open Neo4j console locally: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/README.md#graph-database-with-neo4j
 * Neo4j O'Reilly Guidance
@@ -12,7 +32,7 @@
       * For simple ad hoc queries, each tends to provide features such as indexing, simple document linking, or a query language. 
       * For more complex queries, applications commonly identify and extract a subset of data from the store before piping it through some external processing infrastructure such as a MapReduce framework. (This is also the advantage they have in comparison with relational DB)
     * Aggregate stores are not built to deal with highly connected data. Aggregate stores may be good at storing data that’s big, but they aren’t great at dealing with problems that require an understanding of how things are connected.
-##### Cypher
+#### Cypher
 * Introduction: https://neo4j.com/developer/cypher-query-language/
 * Notes
   * Graph Characteristics (node, property, label, relationship)
