@@ -14,3 +14,6 @@ There are many implemented projects stored in different folders, I need to recor
     
 * Multi-Class, Confusion Matrix
   * https://github.com/hanhanwu/Hanhan_Break_the_Limits/blob/master/attack_signals_recommendation_system/generate_rules.ipynb
+  
+* Simplified User Trained Search Engine - NN, Neural Network, Interactive
+  * https://github.com/hanhanwu/Hanhan_NLP/blob/master/short_context_search.py
