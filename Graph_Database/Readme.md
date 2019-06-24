@@ -23,15 +23,18 @@
 ### Neo4j Graph DB
 * URL: https://github.com/iansrobinson/graph-databases-use-cases
 * How to intsall and open Neo4j console locally: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/README.md#graph-database-with-neo4j
-* Neo4j O'Reilly Guidance
-  * It's free to download from their website, except you need to fill out your basic info.
-  * The book briefly talked about many details in Cypher, Neo4j architecture, how to build graph database and the comparison between graph DB with other NoSQL methods.
-  * Some tips in Cypher made me got confused more, because the examples could be the opposite as what they mentioned before. Such as relationships better to use verbs to name them, but they used noun in many cases, which made their examples more difficult to understand, especially when you need to think how to build a graph DB at the very beginning
-  * Later the comparison with other NoSQL methods is not bad, although finally still tried to emphasis on how good graphDB is as the way they talk in many other places.
-    * NoSQL such as document based, key-value based and column based are called as "aggregate stores", and they share many things in common.
-      * For simple ad hoc queries, each tends to provide features such as indexing, simple document linking, or a query language. 
-      * For more complex queries, applications commonly identify and extract a subset of data from the store before piping it through some external processing infrastructure such as a MapReduce framework. (This is also the advantage they have in comparison with relational DB)
-    * Aggregate stores are not built to deal with highly connected data. Aggregate stores may be good at storing data that’s big, but they aren’t great at dealing with problems that require an understanding of how things are connected.
+### 3 Types of Graph DB
+* Native graph DBs do not depend heavily on index, since the graph itself provides natural adjacency index. But not all graph DB is native graph DB. 
+  * Graph queries use its natural adjacency index to traverse through the graph by chasing pointers. These operations can be carried out with extreme efficiency, tra‐ versing millions of nodes per second, in contrast to joining data through a global index, which is many orders of magnitude slower.
+* Type 1 - Property Graph
+  * What we often see, nodes and relationships, both nodes and relationships can have properties, nodes can have labels, and relationships can have directions.
+* Type 2 - Hypergraph
+  * Used in many-to-many relatioships, both source and destionation of a relationship can have as many nodes it needs.
+  * Property Graph and Hypergraph are isomophic, you can transform a hypergraph into a property graph
+* Type 3 - Triples
+  * It came from Semantic Web movement, where researchers are interes‐ ted in large-scale knowledge inference by adding semantic markup to the links that connect web resources.
+  * A triple is a subject-predicate-object data structure. 
+    * Using triples, we can capture facts, such as “Ginger dances with Fred” and “Fred likes ice cream.”
 #### Cypher
 * Introduction: https://neo4j.com/developer/cypher-query-language/
 * Notes
