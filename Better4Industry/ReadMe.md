@@ -28,6 +28,8 @@ Although everything I created in my GitHub are good for industry used, today I d
     * For a list `[...]` in .yaml file, python will read it as `(...)`, so in your python code, need to use `list()` to convert to a python list.
     * Sometimes the config file will use previous settings even after you change the key name, so need to check carefully
     * Pandas also could behave in a weird way, what I met was sometimes it will assign the value with `apply()` sometimes not, which could create more chanllenge in testing
+    
+### [Luigi vs Airflow][3]
 
 ## ACCURACY & INTERPRETABILITY
 
@@ -61,3 +63,4 @@ Although everything I created in my GitHub are good for industry used, today I d
     
 [1]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Better4Industry/ExperienceNotes.md
 [2]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Better4Industry/Feature_Selection_Collection/ReadMe.md#shap
+[3]:https://eric-bunch.github.io/blog/luigi-vs-airflow
