@@ -35,6 +35,7 @@
   * It came from Semantic Web movement, where researchers are interes‐ ted in large-scale knowledge inference by adding semantic markup to the links that connect web resources.
   * A triple is a subject-predicate-object data structure. 
     * Using triples, we can capture facts, such as “Ginger dances with Fred” and “Fred likes ice cream.”
+### Index Free Graph DB vs Relational DB
 #### Cypher
 * Introduction: https://neo4j.com/developer/cypher-query-language/
 * Notes
