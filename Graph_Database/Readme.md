@@ -36,6 +36,9 @@
   * A triple is a subject-predicate-object data structure. 
     * Using triples, we can capture facts, such as “Ginger dances with Fred” and “Fred likes ice cream.”
 ### Index Free Graph DB vs Relational DB
+* Index typically takes `O(log(n))` time to traverse a physical relationship, but index free graph just needs `O(1)` time, since you just need to follow the incoming or outgoing relationships of a node.
+* So in index free graph DB, the time of the query is NOT decided by the total data size of the databse as relational DB does, but decided by the data being queried.
+* In most graph DB, most queries follow a pattern whereby an index is used simply to find a starting node, the remainder of the traversal then uses a combination of pointer chasing and pattern matching to search the data store.
 #### Cypher
 * Introduction: https://neo4j.com/developer/cypher-query-language/
 * Notes
