@@ -39,6 +39,21 @@
 * Index typically takes `O(log(n))` time to traverse a physical relationship, but index free graph just needs `O(1)` time, since you just need to follow the incoming or outgoing relationships of a node.
 * So in index free graph DB, the time of the query is NOT decided by the total data size of the databse as relational DB does, but decided by the data being queried.
 * In most graph DB, most queries follow a pattern whereby an index is used simply to find a starting node, the remainder of the traversal then uses a combination of pointer chasing and pattern matching to search the data store.
+* The physical structure of graph database is different from the visualized graph strucuture. 
+### Some Algorithms in Graph Theory
+* DFS & BFS
+  * Breath-first Search is good to search for paths
+  * When the search won't stop until it reaches to the end, it's called uninformed search. With informed search, the stop can happen ealrlier, which can be more efficient
+* Dijkstra's Algorithm
+  * It's used to find the shortest path between 2 nodes.
+  * It's using Breath First search + Best First search. The problem with this method is, it can follow nodes that will never controbute to the final shortest path, which wastes more time.
+  * Time Efficiency: `O(R + N*log(N))`, R is the number of relationship, N is the number of nodes
+* A* Algorithms
+  * It's improved on Dijkstra's Algorithm:
+    * `g(n)` measures the cost from starting point to node n
+    * `h(n)` measures the cost from node n to the destination
+    * It chooses the nodes with lowest `g(n) + h(n)`
+
 #### Cypher
 * Introduction: https://neo4j.com/developer/cypher-query-language/
 * Notes
