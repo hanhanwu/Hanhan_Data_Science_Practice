@@ -56,6 +56,10 @@
 * Triadic Closure
   * A triadic closure is a common property of social graphs, where we observe that if two nodes are connected via a path involving a third node, there is an increased likelihood that the two nodes will become directly connected at some point in the future.
   * There are strong & weak relationship in it, our preference for symmetry and rational layering formed structural balance.
+### Notes from Real World Graph DB Applications
+* Precompute new kinds of relationships [Improve Query Efficiency]
+  * It helps to enrich the shortcuts for performance-critical access patterns
+  * It’s quite common to optimize graph access by adding a direct relationship between two nodes that would otherwise be connected only by way of intermediaries.
 
 #### Cypher
 * Introduction: https://neo4j.com/developer/cypher-query-language/
