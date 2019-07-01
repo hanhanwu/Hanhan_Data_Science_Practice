@@ -40,6 +40,9 @@
 * So in index free graph DB, the time of the query is NOT decided by the total data size of the databse as relational DB does, but decided by the data being queried.
 * In most graph DB, most queries follow a pattern whereby an index is used simply to find a starting node, the remainder of the traversal then uses a combination of pointer chasing and pattern matching to search the data store.
 * The physical structure of graph database is different from the visualized graph strucuture. 
+* <b>Howveer, adding index in `MATCH` clause in Cypher, can improve lookup performance.</b>
+  * With the index here, you can pick out specific nodes directly, as the lookup staring point.
+  * Cypher allows to create indexs per label and property combinations.
 ### Some Concepts in Graph Theory
 * DFS & BFS
   * Breath-first Search is good to search for paths
