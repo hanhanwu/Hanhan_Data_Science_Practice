@@ -17,3 +17,6 @@ There are many implemented projects stored in different folders, I need to recor
   
 * Simplified User Trained Search Engine - NN, Neural Network, Interactive
   * https://github.com/hanhanwu/Hanhan_NLP/blob/master/short_context_search.py
+  
+* p-value, t-test to compare 2 lists of values
+  * https://github.com/hanhanwu/Hanhan_Applied_DataScience/blob/master/Simple%20Production%20Solutions.ipynb
