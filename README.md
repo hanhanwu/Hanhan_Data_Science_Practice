@@ -467,6 +467,11 @@ TREE BASED MODELS
       * At the top of the console, type `:play movies` and click "Run" button at the right side.
       * Then you will see queries you can try, click the small "run" button at the left side of the query, run the query, and you can lean how to create the dataset, how to do graph search and other graph operations
       * `Ctl + C` to stop
+  * How to run Neo4j console after installation
+    * In your terminal, `cd` to your downloaded Neo4j package from above
+    * Tupe `./bin/neo4j console`
+    * Then go to `http://localhost:7474/browser/` in your browser
+    * The first time when you use it will require password
   * I tried python code here: https://github.com/neo4j-examples/movies-python-bolt
     * I'm not a big fan of this code, it's better to use Neo4j console to get familar with Cypher query language first
     * `sudo pip install neo4j-driver`, if you want to run python
