@@ -40,7 +40,7 @@
 * So in index free graph DB, the time of the query is NOT decided by the total data size of the databse as relational DB does, but decided by the data being queried.
 * In most graph DB, most queries follow a pattern whereby an index is used simply to find a starting node, the remainder of the traversal then uses a combination of pointer chasing and pattern matching to search the data store.
 * The physical structure of graph database is different from the visualized graph strucuture. 
-* <b>Howveer, adding index in `MATCH` clause in Cypher, can improve lookup performance.</b>
+* <b>However, adding index in `MATCH` clause in Cypher, can improve lookup performance.</b>
   * With the index here, you can pick out specific nodes directly, as the lookup staring point.
   * Cypher allows to create indexs per label and property combinations.
 ### Some Concepts in Graph Theory
@@ -64,7 +64,7 @@
   * It helps to enrich the shortcuts for performance-critical access patterns
   * It’s quite common to optimize graph access by adding a direct relationship between two nodes that would otherwise be connected only by way of intermediaries.
 
-#### Cypher
+### Cypher
 * Introduction: https://neo4j.com/developer/cypher-query-language/
 * Notes
   * Graph Characteristics (node, property, label, relationship)
@@ -81,16 +81,16 @@
   * Anonymous Nodes - the node doesn't specify label and property
     * You use `()` as a node in match when you don't care any detail about the node.
     * If you want to return the values of anonymous nodes, you can have node name in it, such as `(product)` to return the "products" of your search
-  * Using `with` will chain returned results together
-    * I think `match` and `with` together plays a role as `select` in relational database, while `match` is to do the search, `with` put those "columns" together in the search results.
+  * Using `with` will chain together several `MATCH`, since sometimes it's not possible to do everything in 1 `MATCH`
+    * While `match` is to do the search, `with` put those "columns" together in the search results.
     * Using `collect()` in return clause, the results will be displayed as a list in 1 row, delimited by comma
     * When there is `where`, use `with` after `where`
-#### Sample Cypher & Graph
-##### I'm using neo4j console, it's simple to use and has visualized graph generated.
-* Create table
-  * In this code, I chose a very small part of the sample query. In console, each time you can only run 1 query, which means there should only be 1 `;`.
-  * In order to show the visualized graph, only `create` is not enough, you need `match` too.
-  * The query here is to find directors of the film that Keanu was acted in.
+### Sample Cypher & Graph
+<b>I'm using neo4j console, it's simple to use and has visualized graph generated.</b>
+#### Create table
+* In this code, I chose a very small part of the sample query. In console, each time you can only run 1 query, which means there should only be 1 `;`.
+* In order to show the visualized graph, only `create` is not enough, you need `match` too.
+* The query here is to find directors of the film that Keanu was acted in.
 ```sql
 CREATE (TheMatrix:Movie {title:'The Matrix', released:1999, tagline:'Welcome to the Real World'})
 CREATE (Keanu:Person {name:'Keanu Reeves', born:1964})
@@ -116,9 +116,9 @@ MATCH (a)-[:ACTED_IN]->(m)<-[:DIRECTED]-(d) RETURN a,m,d LIMIT 10;
 <img width="270" height="270" src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Graph_Database/sample_graph1.png">
 </p>
 
-* Match with Depth
-  * Left is the result with 2 or 3 depth; Right is the result with 4 depth
-  * I added Carrie into another movie that Keanu acted in to form a connection between the 2 movies
+#### Match with Depth
+* Left is the result with 2 or 3 depth; Right is the result with 4 depth
+* I added Carrie into another movie that Keanu acted in to form a connection between the 2 movies
 ```sql
 CREATE (TheMatrix:Movie {title:'The Matrix', released:1999, tagline:'Welcome to the Real World'})
 CREATE (Keanu:Person {name:'Keanu Reeves', born:1964})
@@ -159,7 +159,7 @@ RETURN DISTINCT hollywood;
  <img width="370" height="270" src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Graph_Database/4_hops.png">
 </p>
 
-* Shortest Path
+#### Shortest Path
   * Find the shortest path that Hugo can reach to Gene.
 ```sql
 CREATE (TheMatrix:Movie {title:'The Matrix', released:1999, tagline:'Welcome to the Real World'})
