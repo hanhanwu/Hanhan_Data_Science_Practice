@@ -30,21 +30,31 @@ CREATE (d6:Order {id:'d6', name:'d6',deliverdate:'20171212', status:'delivered'}
 // Link Clients, Orders and ProductsCREATE
 CREATE
     (Alice)-[:PLACED]->(d1)-[:CONTAINS {quantity:1}]->(prod1),
-    (Alice)-[:PLACED]->(d1)-[:CONTAINS {quantity:2}]->(prod2),
+    (d1)-[:CONTAINS {quantity:2}]->(prod2),
     (Bob)-[:PLACED]->(d2)-[:CONTAINS {quantity:2}]->(prod1),
-    (Bob)-[:PLACED]->(d2)-[:CONTAINS {quantity:6}]->(prod7);
+    (d2)-[:CONTAINS {quantity:6}]->(prod7),
+    (Cindy)-[:PLACED]->(d3)-[:CONTAINS {quantity:1}]->(prod9),
+    (Alice)-[:PLACED]->(d4)-[:CONTAINS {quantity:100}]->(prod4)
 
+//Display all clients, orders, and products graph
+MATCH (c:Client)-[:PLACED]-(o)-[:CONTAINS]->(p)
+return c, o, p;
 
 //Display a certain client's order and products graph
-MATCH (c)-[:PLACED]-(o)-[:CONTAINS]->(p)
+MATCH (c:Client)-[:PLACED]-(o)-[:CONTAINS]->(p)
 where c.name='Alice'
 return c, o, p;
 
 // Show certain clients' products price
-MATCH (c)-[:PLACED]-(o)-[cts:CONTAINS]->(p)
+MATCH (c:Client)-[:PLACED]-(o)-[cts:CONTAINS]->(p)
 WHERE c.name='Alice'
 return distinct c.name, o.id, cts.quantity, p.price, cts.quantity * p.price as prod_price
 UNION
 MATCH (c)-[:PLACED]-(o)-[cts:CONTAINS]->(p)
 WHERE c.name='Bob'
+return distinct c.name, o.id, cts.quantity, p.price, cts.quantity * p.price as prod_price;
+
+// Find abnormal purchase behavior
+MATCH (c:Client)-[:PLACED]-(o)-[cts:CONTAINS]->(p)
+where cts.quantity > 90
 return distinct c.name, o.id, cts.quantity, p.price, cts.quantity * p.price as prod_price;
