@@ -66,6 +66,7 @@
 
 ### Cypher
 * Introduction: https://neo4j.com/developer/cypher-query-language/
+* Cypher Clauses: https://neo4j.com/docs/cypher-manual/current/clauses/
 * Notes
   * Graph Characteristics (node, property, label, relationship)
     * It contains nodes and relationships.
@@ -89,6 +90,21 @@
     * Using `MERGE` to match existing pattern, if it can’t match all parts of a pattern, MERGE will create a new instance of the entire pattern, which could lead to data duplication. So it's better to break apart the larger pattern into smaller chunks when using `merge` to match.
 ### Sample Cypher & Graph
 <b>I'm using neo4j console, it's simple to use and has visualized graph generated.</b>
+#### The Name of Nodes
+* When you are trying to return nodes that all belong to a certain Entity, it's better to have "name" property in each node so that the returned nodes will show you the name, otherwise it can be a random property value.
+* For example:
+The "name" property here is important. When using `match (c:Client) return c`, it will return names by default, otherwise will be a random property value, which can be confusing. Even "id" property won't work.
+```
+// Clients
+CREATE (Alice:Client {name:'Alice', ip: '1.1.1.1', shipping_address: 'a place', billing_address: 'a place'})
+CREATE (Bob:Client {name:'Bob', ip: '1.1.1.2', shipping_address: 'b place', billing_address: 'b place'})
+CREATE (Cindy:Client {name:'Cindy', ip: '1.1.1.3', shipping_address: 'c place', billing_address: 'c place'})
+CREATE (Diana:Client {name:'Diana', ip: '1.1.1.4', shipping_address: 'd place', billing_address: 'd place'})
+CREATE (Emily:Client {name:'Emily', ip: '1.1.1.5', shipping_address: 'e place', billing_address: 'e place'})
+CREATE (Fiona:Client {name:'Fiona', ip: '1.1.1.6', shipping_address: 'f place', billing_address: 'f place'})
+
+match (c:Client) return c
+```
 #### Create table
 * In this code, I chose a very small part of the sample query. In console, each time you can only run 1 query, which means there should only be 1 `;`.
 * In order to show the visualized graph, only `create` is not enough, you need `match` too.
