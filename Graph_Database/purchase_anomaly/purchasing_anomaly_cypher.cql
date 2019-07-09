@@ -58,3 +58,16 @@ return distinct c.name, o.id, cts.quantity, p.price, cts.quantity * p.price as p
 MATCH (c:Client)-[:PLACED]-(o)-[cts:CONTAINS]->(p)
 where cts.quantity > 90
 return distinct c.name, o.id, cts.quantity, p.price, cts.quantity * p.price as prod_price;
+                             
+// Aggregated results for each order
+MATCH (c:Client)-[:PLACED]-(o)-[cts:CONTAINS]->(p)
+WHERE c.name = 'Alice'
+RETURN c.name, o.id, COLLECT(p.name) as products, 
+COLLECT(cts.quantity) as quantities, COLLECT(p.price) as prices, 
+COLLECT(cts.quantity * p.price) as total_cost, sum(cts.quantity*p.price) as order_cost;
+
+// Count the number of orders, products per Client
+MATCH (c:Client)-[:PLACED]-(o)-[cts:CONTAINS]->(p)
+RETURN c.name, collect(distinct o.id) as orders, collect(distinct p.name) as products,
+size(COLLECT(distinct o.id) ) as num_of_orders, 
+size(COLLECT(distinct p.name)) as num_of_prods;
