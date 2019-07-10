@@ -67,6 +67,13 @@
 ### Cypher
 * Introduction: https://neo4j.com/developer/cypher-query-language/
 * Cypher Clauses: https://neo4j.com/docs/cypher-manual/current/clauses/
+* Data Sample & Data Export, Import Queries: https://neo4j.com/developer/guide-importing-data-and-etl/
+* SQL vs Cypher: https://neo4j.com/developer/guide-sql-to-cypher/
+  * `IN ['a', 'b']`, IN clause
+  * `like` replaced by `STARTS WITH`, `CONTAINS`, `ENDS WITH`
+  * Connnections between nodes can be used as `join`
+  * `MATCH` together with `OPTIONAL MATCH` are used as `OUTER JOIN`, you just change the position of entities, it will serve as left outer join or right outer join.
+  * Group by is automated as long as you use Cypher [Aggregated Functions][1]
 * Notes
   * Graph Characteristics (node, property, label, relationship)
     * It contains nodes and relationships.
@@ -89,6 +96,7 @@
     * It seems that in `WITH` clause, you cannot call the properties of the entities or repationships.
   * `MERGE` is like a mixture of MATCH and CREATE. If the pattern described in the MERGE statement already exists in the graph, the statement’s identifiers will be bound to this existing data, much as if we’d specified MATCH. If the pattern does not currently exist in the graph, MERGE will create it, much as if we’d used CREATE.
     * Using `MERGE` to match existing pattern, if it can’t match all parts of a pattern, MERGE will create a new instance of the entire pattern, which could lead to data duplication. So it's better to break apart the larger pattern into smaller chunks when using `merge` to match.
+  * `= null`, lower case, `= true` also lower case.
 ### Sample Cypher & Graph
 <b>I'm using neo4j console, it's simple to use and has visualized graph generated.</b>
 #### The Name of Nodes
@@ -220,3 +228,6 @@ RETURN p;
 <p align="left">
 <img width="370" height="270" src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Graph_Database/shortestpath.png">
 </p>
+
+
+[1]:https://neo4j.com/docs/cypher-manual/current/functions/aggregating/index.html
