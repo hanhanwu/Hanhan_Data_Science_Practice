@@ -606,6 +606,7 @@ Neural Network is a universal approximator, which means you can use it to implme
   * Obfuscation is typically used to evade detection
   * Microsoft PowerShell is the ideal attacker’s tool in a Windows operating system. Because it is installed by default in Windows, and attackers are better off using existing tools that allow them to blend well and possibly evade Antivirus (AV) software.
   * They used character-level representation for all PowerShell scripts, instead of word-based, since obfuscated scripts are different from normal scripts
+* [AI Projects for Creating Arts, Music - Including Source Code][16]
 
 
 [1]:https://stackoverflow.com/questions/45912124/python-keras-how-to-generate-right-image-dimension
@@ -623,3 +624,4 @@ Neural Network is a universal approximator, which means you can use it to implme
 [13]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/digit_recognition_Pytorch.ipynb
 [14]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/digital_recognition_Keras.ipynb
 [15]:https://www.analyticsvidhya.com/blog/2019/05/using-power-deep-learning-cyber-security-2/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+[16]:https://www.analyticsvidhya.com/blog/2019/07/8-impressive-data-science-projects-create-art-music-debates/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
