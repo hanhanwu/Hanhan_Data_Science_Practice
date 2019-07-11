@@ -98,6 +98,7 @@
   * `MERGE` is like a mixture of MATCH and CREATE. If the pattern described in the MERGE statement already exists in the graph, the statement’s identifiers will be bound to this existing data, much as if we’d specified MATCH. If the pattern does not currently exist in the graph, MERGE will create it, much as if we’d used CREATE.
     * Using `MERGE` to match existing pattern, if it can’t match all parts of a pattern, MERGE will create a new instance of the entire pattern, which could lead to data duplication. So it's better to break apart the larger pattern into smaller chunks when using `merge` to match.
   * `= null`, lower case, `= true` also lower case.
+  * Properties used in `order by` have to appear in `return` clause too
 ### Sample Cypher & Graph
 <b>I'm using neo4j console, it's simple to use and has visualized graph generated.</b>
 #### The Name of Nodes
