@@ -20,3 +20,7 @@ There are many implemented projects stored in different folders, I need to recor
   
 * p-value, t-test to compare 2 lists of values
   * https://github.com/hanhanwu/Hanhan_Applied_DataScience/blob/master/Simple%20Production%20Solutions.ipynb
+  
+* Find Optimal Thresholds of the Model Prediction
+  * https://github.com/hanhanwu/Hanhan_Applied_DataScience
+  * You can use whatever metrics you want to use, but by changing thresholds, it will show you which threshold will get the optimal metrics value
