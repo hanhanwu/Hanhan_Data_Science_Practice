@@ -34,7 +34,10 @@ CREATE
     (Bob)-[:PLACED]->(d2)-[:CONTAINS {quantity:2}]->(prod1),
     (d2)-[:CONTAINS {quantity:6}]->(prod7),
     (Cindy)-[:PLACED]->(d3)-[:CONTAINS {quantity:1}]->(prod9),
-    (Alice)-[:PLACED]->(d4)-[:CONTAINS {quantity:100}]->(prod4)
+    (Alice)-[:PLACED]->(d4)-[:CONTAINS {quantity:100}]->(prod4),
+    (Alice)-[:PLACED]->(d5)-[:CONTAINS {quantity:10}]->(prod8),
+    (Alice)-[:PLACED]->(d6)-[:CONTAINS {quantity:1}]->(prod7)
+  
 
 //Display all clients, orders, and products graph
 MATCH (c:Client)-[:PLACED]-(o)-[:CONTAINS]->(p)
@@ -58,7 +61,7 @@ return distinct c.name, o.id, cts.quantity, p.price, cts.quantity * p.price as p
 MATCH (c:Client)-[:PLACED]-(o)-[cts:CONTAINS]->(p)
 where cts.quantity > 90
 return distinct c.name, o.id, cts.quantity, p.price, cts.quantity * p.price as prod_price;
-                             
+
 // Aggregated results for each order
 MATCH (c:Client)-[:PLACED]-(o)-[cts:CONTAINS]->(p)
 WHERE c.name = 'Alice'
@@ -71,3 +74,39 @@ MATCH (c:Client)-[:PLACED]-(o)-[cts:CONTAINS]->(p)
 RETURN c.name, collect(distinct o.id) as orders, collect(distinct p.name) as products,
 size(COLLECT(distinct o.id) ) as num_of_orders, 
 size(COLLECT(distinct p.name)) as num_of_prods;
+
+// order Alice's order's by time
+MATCH (c:Client)-[:PLACED]-(o)-[:CONTAINS]->(p)
+where c.name='Alice'
+return c.name, o.id, o.deliverdate, collect(p.name) as products
+order by o.deliverdate;
+
+// orders and product list for Alice
+MATCH (c:Client)-[:PLACED]-(o)-[:CONTAINS]->(p)
+where c.name='Alice'
+return c.name, o.id, o.deliverdate, collect(p.name) as products
+order by o.deliverdate;
+
+// find historical orders for each current order
+MATCH (c:Client {name:'Alice'})-[:PLACED]->(o)
+WITH c, o ORDER BY o.deliverdate
+WITH c.name AS name, COLLECT(o) AS os
+UNWIND [i IN RANGE(0, SIZE(os)-1) |
+  {name: name, id: os[i].id, history: [x IN os[0..i] | x.id]}] AS result
+RETURN result.name, result.id as order_id, result.history;
+
+
+// find historical orders for each current order
+MATCH (c:Client {name:'Alice'})-[:PLACED]->(o)-[cts:CONTAINS]->(p)
+WITH c, o, COLLECT(cts.quantity) as prod_quantity_lst, COLLECT(p.price) as prod_price_lst, 
+  SUM(cts.quantity * p.price) as order_price
+  ORDER BY o.deliverdate
+WITH c.name AS name, COLLECT(o) AS os, 
+  COLLECT(prod_quantity_lst) as qss, COLLECT(prod_price_lst) AS ppss,
+  COLLECT(order_price) as ops
+UNWIND [i IN RANGE(0, SIZE(os)-1) |
+  {name: name, id: os[i].id, prod_quanty_lst: qss[i], prod_price_lst: ppss[i], 
+  order_price: ops[i],
+  history: [x IN os[0..i] | x.id]}] AS result
+RETURN result.name, result.id as order_id, result.prod_quanty_lst, result.prod_price_lst, result.order_price,
+result.history;
