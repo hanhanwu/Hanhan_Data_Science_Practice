@@ -457,7 +457,7 @@ TREE BASED MODELS
 #### Graph Database with Neo4j
   * How to install
     * Download Neo4j server: https://neo4j.com/download/
-      * Extract the tar folder
+      * Extract the tar folder, better to use command line to extract tar, otherwise the folder might be damaged and you cannot run later commands. Type `tar -xf neo4j-enterprise-2.3.1-unix.tar.gz`, change .tar file name to what you have downloaded.
       * Go to extracted folder, in your terminal, type, `bin/neo4j-admin set-initial-password [my_initial_password]`
         * NOTE: if this step failed, go to folder data, remove `data/dbms/auth` file, then try to set the password again
         * Don't remove `auth.ini` file
