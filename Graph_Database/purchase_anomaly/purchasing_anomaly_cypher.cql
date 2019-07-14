@@ -101,7 +101,7 @@ MATCH (c:Client {name:'Alice'})-[:PLACED]->(o)-[cts:CONTAINS]->(p)
 WITH c, o, COLLECT(cts.quantity) as prod_quantity_lst, COLLECT(p.price) as prod_price_lst, 
   SUM(cts.quantity * p.price) as order_price
   ORDER BY o.deliverdate
-WITH c.name AS name, COLLECT(o) AS os, 
+WITH c.name AS name, COLLECT(o) AS os
   COLLECT(prod_quantity_lst) as qss, COLLECT(prod_price_lst) AS ppss,
   COLLECT(order_price) as ops
 UNWIND [i IN RANGE(0, SIZE(os)-1) |
@@ -133,3 +133,20 @@ UNWIND [i IN RANGE(0, SIZE(os)-1) |
   other_orders: [x IN os[0..i] + os[i+1..SIZE(os)] | x.id]
   }] AS result
 return result.name, result.id as order_id, result.other_orders;
+
+
+// collect other orders for current order, and compare current order price with other orders' total price
+MATCH (c:Client {name:'Alice'})-[:PLACED]->(o)-[cts:CONTAINS]->(p)
+WITH c, o, SUM(cts.quantity * p.price) as order_price
+  ORDER BY o.deliverdate
+WITH c.name AS name, COLLECT(o) AS os, COLLECT(order_price) as ops
+UNWIND [i IN RANGE(0, SIZE(os)-1) |
+  {name: name, id: os[i].id, current_order_cost: round(ops[i]),
+  other_orders: [x IN os[0..i] + os[i+1..SIZE(os)] | x.id],
+  other_orders_costs: [x IN ops[0..i] + ops[i+1..SIZE(os)] | round(x)]
+  }] AS result
+WITH result.name as name, result.id as order_id, result.current_order_cost as current_order_cost,
+result.other_orders as other_orders, result.other_orders_costs as other_orders_costs
+UNWIND(other_orders_costs) as unwind_other_orders_costs
+return name, order_id, current_order_cost, other_orders, other_orders_costs,
+round(stDev(unwind_other_orders_costs)) as other_costs_std;
