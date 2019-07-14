@@ -36,7 +36,7 @@ CREATE
     (Cindy)-[:PLACED]->(d3)-[:CONTAINS {quantity:1}]->(prod9),
     (Alice)-[:PLACED]->(d4)-[:CONTAINS {quantity:100}]->(prod4),
     (Alice)-[:PLACED]->(d5)-[:CONTAINS {quantity:10}]->(prod8),
-    (Alice)-[:PLACED]->(d6)-[:CONTAINS {quantity:1}]->(prod7)
+    (Alice)-[:PLACED]->(d6)-[:CONTAINS {quantity:1}]->(prod7);
   
 
 //Display all clients, orders, and products graph
@@ -96,7 +96,7 @@ UNWIND [i IN RANGE(0, SIZE(os)-1) |
 RETURN result.name, result.id as order_id, result.history;
 
 
-// find historical orders for each current order
+// find historical orders for each current order, also sum up current orders
 MATCH (c:Client {name:'Alice'})-[:PLACED]->(o)-[cts:CONTAINS]->(p)
 WITH c, o, COLLECT(cts.quantity) as prod_quantity_lst, COLLECT(p.price) as prod_price_lst, 
   SUM(cts.quantity * p.price) as order_price
@@ -110,3 +110,26 @@ UNWIND [i IN RANGE(0, SIZE(os)-1) |
   history: [x IN os[0..i] | x.id]}] AS result
 RETURN result.name, result.id as order_id, result.prod_quanty_lst, result.prod_price_lst, result.order_price,
 result.history;
+
+// find historical orders, and the total price for all the historical orders
+MATCH (c:Client {name:'Alice'})-[:PLACED]->(o)-[cts:CONTAINS]->(p)
+WITH c, o, SUM(cts.quantity * p.price) as order_price
+  ORDER BY o.deliverdate
+WITH c.name AS name, COLLECT(o) AS os, COLLECT(order_price) as ops
+UNWIND [i IN RANGE(0, SIZE(os)-1) |
+  {name: name, id: os[i].id, order_price: ops[i],
+  historical_orders: [x IN os[0..i] | x.id],
+  historical_order_costs: [x IN ops[0..i+1] | round(x)]}] AS result
+return result.name, result.id as order_id, result.historical_orders, 
+result.historical_order_costs;
+
+// collect other orders for current order
+MATCH (c:Client {name:'Alice'})-[:PLACED]->(o)-[cts:CONTAINS]->(p)
+WITH c, o, SUM(cts.quantity * p.price) as order_price
+  ORDER BY o.deliverdate
+WITH c.name AS name, COLLECT(o) AS os, COLLECT(order_price) as ops
+UNWIND [i IN RANGE(0, SIZE(os)-1) |
+  {name: name, id: os[i].id, order_price: ops[i],
+  other_orders: [x IN os[0..i] + os[i+1..SIZE(os)] | x.id]
+  }] AS result
+return result.name, result.id as order_id, result.other_orders;
