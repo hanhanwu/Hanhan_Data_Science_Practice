@@ -101,15 +101,16 @@ MATCH (c:Client {name:'Alice'})-[:PLACED]->(o)-[cts:CONTAINS]->(p)
 WITH c, o, COLLECT(cts.quantity) as prod_quantity_lst, COLLECT(p.price) as prod_price_lst, 
   SUM(cts.quantity * p.price) as order_price
   ORDER BY o.deliverdate
-WITH c.name AS name, COLLECT(o) AS os
+WITH c.name AS name, COLLECT(o) AS os,
   COLLECT(prod_quantity_lst) as qss, COLLECT(prod_price_lst) AS ppss,
   COLLECT(order_price) as ops
 UNWIND [i IN RANGE(0, SIZE(os)-1) |
   {name: name, id: os[i].id, prod_quanty_lst: qss[i], prod_price_lst: ppss[i], 
   order_price: ops[i],
   history: [x IN os[0..i] | x.id]}] AS result
-RETURN result.name, result.id as order_id, result.prod_quanty_lst, result.prod_price_lst, result.order_price,
-result.history;
+RETURN result.name as name, result.id as order_id, 
+result.prod_quanty_lst as prod_quanty_lst, result.prod_price_lst as prod_price_lst, 
+round(result.order_price) as order_price, result.history as order_history;
 
 // find historical orders, and the total price for all the historical orders
 MATCH (c:Client {name:'Alice'})-[:PLACED]->(o)-[cts:CONTAINS]->(p)
