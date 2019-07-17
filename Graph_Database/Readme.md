@@ -23,6 +23,8 @@
 ### Neo4j Graph DB
 * URL: https://github.com/iansrobinson/graph-databases-use-cases
 * How to intsall and open Neo4j console locally: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/README.md#graph-database-with-neo4j
+* Neo4j Driver Manual: https://neo4j.com/docs/driver-manual/current/
+  * Multi-language tutorial: Java, Python, Go, C#, JavaScript
 ### 3 Types of Graph DB
 * Native graph DBs do not depend heavily on index, since the graph itself provides natural adjacency index. But not all graph DB is native graph DB. 
   * Graph queries use its natural adjacency index to traverse through the graph by chasing pointers. These operations can be carried out with extreme efficiency, tra‐ versing millions of nodes per second, in contrast to joining data through a global index, which is many orders of magnitude slower.
