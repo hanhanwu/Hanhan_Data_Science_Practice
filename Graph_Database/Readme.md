@@ -71,6 +71,8 @@
 * Introduction: https://neo4j.com/developer/cypher-query-language/
 * Cypher Clauses: https://neo4j.com/docs/cypher-manual/current/clauses/
 * Data Sample & Data Export, Import Queries: https://neo4j.com/developer/guide-importing-data-and-etl/
+  * Load CSV: https://neo4j.com/docs/cypher-manual/current/clauses/load-csv/
+    * It seems that it can only load nodes, but not relationships
 * SQL vs Cypher: https://neo4j.com/developer/guide-sql-to-cypher/
   * `IN ['a', 'b']`, IN clause
   * `like` replaced by `STARTS WITH`, `CONTAINS`, `ENDS WITH`
