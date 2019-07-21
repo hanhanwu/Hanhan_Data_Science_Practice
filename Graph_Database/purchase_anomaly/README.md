@@ -2,7 +2,7 @@
 
 Here, I'm trying to use Graph DB to build a mini DB to show clients' purchasing behaviors, and see whether it's efficient to query the purchasing anomalies.
 
-## Code & Display
+## Cypher Code & Display
 * To find all the Cypher Query [here][1]
 ### Purchasing DB
 * First of all, you need to create this grapg DB, there are clients, orders and products. Products have prices and their quantities are in the realtionship "CONTAINS".
@@ -22,4 +22,16 @@ Here, I'm trying to use Graph DB to build a mini DB to show clients' purchasing 
 <img src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Graph_Database/purchase_anomaly/images/purchase_anomaly.png" width="80%">
 
 
+## Python Neo4j Version
+* [Python version code][2]
+  * To install the library, just type `pip install neo4j` in your terminal.
+  * Better not to install "Py2neo" afer installing "neo4j", Py2neo might break multiple preinstalled packages. If you really want to try Py2neo, better to use virtual environment
+  * There is also a tutorial for [neo4jrestapi][3], I personally prefer "neo4j" than this library, since you can write nodes, labels and properties in 1 query, while this library needs you to write them seperately, less convenient.
+  * When you are running this code, you can also query everything through http://localhost:7474/browser/
+* Resource Links
+  * [What you can output from BoltStatementResult][4]
+
 [1]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Graph_Database/purchase_anomaly/purchasing_anomaly_cypher.cql
+[2]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Graph_Database/purchase_anomaly/purchase%20anomaly.ipynb
+[3]:https://marcobonzanini.com/2015/04/06/getting-started-with-neo4j-and-python/
+[4]:https://neo4j.com/docs/api/python-driver/current/results.html
