@@ -24,3 +24,6 @@ There are many implemented projects stored in different folders, I need to recor
 * Find Optimal Thresholds of the Model Prediction
   * https://github.com/hanhanwu/Hanhan_Applied_DataScience
   * You can use whatever metrics you want to use, but by changing thresholds, it will show you which threshold will get the optimal metrics value
+  
+* geckodriver errors
+  * On Windows: https://github.com/hanhanwu/Hanhan_Break_the_Limits/blob/master/Ideas_Spark/track_siliconvalley_vancouver_trend.ipynb
