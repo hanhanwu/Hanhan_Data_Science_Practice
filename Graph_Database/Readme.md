@@ -67,9 +67,9 @@
   * It’s quite common to optimize graph access by adding a direct relationship between two nodes that would otherwise be connected only by way of intermediaries.
 
 ### Cypher
-* Quick Cypher Cheatsheet: https://gist.github.com/DaniSancas/1d5265fc159a95ff457b940fc5046887
-* Introduction: https://neo4j.com/developer/cypher-query-language/
-* Cypher Clauses: https://neo4j.com/docs/cypher-manual/current/clauses/
+* Cypher Introduction: https://neo4j.com/developer/cypher-query-language/
+* Cypher Manual: https://neo4j.com/docs/cypher-manual/current/clauses/
+* Neo4j Examples: https://github.com/neo4j-examples
 * Data Sample & Data Export, Import Queries: https://neo4j.com/developer/guide-importing-data-and-etl/
   * Load CSV: https://neo4j.com/docs/cypher-manual/current/clauses/load-csv/
     * It seems that it can only load nodes, but not relationships
