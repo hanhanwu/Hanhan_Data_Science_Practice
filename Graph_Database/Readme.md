@@ -70,6 +70,7 @@
 * Cypher Introduction: https://neo4j.com/developer/cypher-query-language/
 * Cypher Manual: https://neo4j.com/docs/cypher-manual/current/clauses/
 * Neo4j Examples: https://github.com/neo4j-examples
+  * Procedure Gallery, developed by the community: https://neo4j.com/developer/procedures-gallery/
 * Data Sample & Data Export, Import Queries: https://neo4j.com/developer/guide-importing-data-and-etl/
   * Load CSV: https://neo4j.com/docs/cypher-manual/current/clauses/load-csv/
     * It seems that it can only load nodes, but not relationships
