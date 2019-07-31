@@ -608,6 +608,7 @@ Neural Network is a universal approximator, which means you can use it to implme
   * They used character-level representation for all PowerShell scripts, instead of word-based, since obfuscated scripts are different from normal scripts
 * [AI Projects for Creating Arts, Music - Including Source Code][16]
 * [GPT-2 - Text Generator][17]
+* [word2vec in product recommendation][18]
 
 
 [1]:https://stackoverflow.com/questions/45912124/python-keras-how-to-generate-right-image-dimension
@@ -627,3 +628,4 @@ Neural Network is a universal approximator, which means you can use it to implme
 [15]:https://www.analyticsvidhya.com/blog/2019/05/using-power-deep-learning-cyber-security-2/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
 [16]:https://www.analyticsvidhya.com/blog/2019/07/8-impressive-data-science-projects-create-art-music-debates/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
 [17]:https://www.analyticsvidhya.com/blog/2019/07/openai-gpt2-text-generator-python/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+[18]:https://www.analyticsvidhya.com/blog/2019/07/how-to-build-recommendation-system-word2vec-python/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
