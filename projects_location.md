@@ -31,3 +31,6 @@ There are many implemented projects stored in different folders, I need to recor
 * The definition of "Lift"
   * In frequent pattern mining: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/tree/master/Frequent_Pattern_Mining
     * `lift = confidence/expected confidence`
+    
+* Ployly API Key, PyOD
+  * https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Outliers_and_Clustering/try_PyOD.ipynb
