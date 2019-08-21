@@ -25,5 +25,15 @@
 * Otherwise `L = δ*|y_true-p_pred| - δ*δ/2`
 * More robust to outliers than MSE
 
+## Binary Classification Loss Functions
+
+### Binary Corss Entropy Loss (log-loss)
+* The goal is to minimize log-loss
+* Predicted value is probability p
+  * `p` for class 1, `1-p` for class 0
+  * p can be calculated through sigmoid function
+* `L = -y*log(p) - (1-y)*log(1-p)`
+  * y = 0 then L = -log(1-p)
+  * y = 1 then L = -y*log(p)
 
 
