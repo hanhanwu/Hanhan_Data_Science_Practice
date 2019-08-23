@@ -35,5 +35,10 @@
 * `L = -y*log(p) - (1-y)*log(1-p)`
   * y = 0 then L = -log(1-p)
   * y = 1 then L = -y*log(p)
+  
+ ### Hinge Loss
+ * `L = max(0, 1-y*f(x))`
+ * Majorly used in SVM with class labels -1 and 1.
+ * Hinge Loss not only penalizes the wrong predictions but also the right predictions that has lower confident.
 
 
