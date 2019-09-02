@@ -597,6 +597,10 @@ Neural Network is a universal approximator, which means you can use it to implme
 * Adam Optimizer: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/Adam_optimizer.pdf
   * Don't quite understand, but I really admire those PhDs who design and compare algorithms...
   
+* [RAdam][19]
+  * It suggests that the convergence issue we face in deep learning techniques is due to the undesirably big variance of the adaptive learning rate in the early stages of model training.
+  * RAdam is a new variant of Adam, that rectifies the variance of the adaptive learning rate. This release brings a solid improvement over the vanilla Adam optimizer which does suffer from the issue of variance.
+  
 * Practical Recommendations for Gradient-Based Training
   * https://github.com/hanhanwu/readings/blob/master/Practical%20Recommendations%20for%20Gradient-Based%20Training.pdf
   * Detailed suggestions in almost all the process in Gradient-Based training, very practical
@@ -629,3 +633,4 @@ Neural Network is a universal approximator, which means you can use it to implme
 [16]:https://www.analyticsvidhya.com/blog/2019/07/8-impressive-data-science-projects-create-art-music-debates/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
 [17]:https://www.analyticsvidhya.com/blog/2019/07/openai-gpt2-text-generator-python/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
 [18]:https://www.analyticsvidhya.com/blog/2019/07/how-to-build-recommendation-system-word2vec-python/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+[19]:https://github.com/LiyuanLucasLiu/RAdam
