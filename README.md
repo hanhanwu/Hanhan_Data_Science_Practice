@@ -486,20 +486,25 @@ TREE BASED MODELS
     
 #### Neptune - AWS Graph Database
   * https://aws.amazon.com/neptune/
-********************************************
 
-ADVANCED TOOLS
 
-* TPOT
+## ADVANCED TOOLS
+
+### TPOT
   * https://rhiever.github.io/tpot/
   * It does feature selection, model selection and param optimization automatically. It uses genetic algorithm to optimize the parameters
   * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/try_genetic_alg_through_TPOT.ipynb
     * scoring method: By default, accuracy is used for classification and mean squared error (MSE) is used for regression. https://rhiever.github.io/tpot/using/#scoring-functions
     * At the end of its pipelien output, you will see selected model with optimized params
   * Reference: https://www.analyticsvidhya.com/blog/2017/07/introduction-to-genetic-algorithm/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+  
+### HungaBunga
+* https://github.com/ypeleg/HungaBunga
+* It runs through all sklearn models (both classification and regression), with all possible hyperparameters, and rank using cross-validation.
+* -_-||
 
 
-* MLBox
+### MLBox
   * http://mlbox.readthedocs.io/en/latest/introduction.html
   * It does some data cleaning, removing shifting features, model selection and param optimization automatically, and each step, it output useful information or output the final predicted results, as well as CPU time
   * For model selection and param optimization, it functions similar to TPOT
@@ -507,7 +512,7 @@ ADVANCED TOOLS
   * Reference: https://www.analyticsvidhya.com/blog/2017/07/mlbox-library-automated-machine-learning/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
   
 
-* CatBoost
+### CatBoost
   * The paper of CatBoost: http://learningsys.org/nips17/assets/papers/paper_11.pdf
     * It has multiple ways to deal with categorical features:
       * one-hot - implemented in histogram way, which makes catboost runs more efficient
@@ -523,7 +528,7 @@ ADVANCED TOOLS
     * But with CatBoost, it does categorical features' label encoding in statistical methods. For me, in real world practice, I will still try other categorical to numerical methods, such as one-hot encoding.
 
 
-* Dask - Machine Learning in Parallel
+### Dask - Machine Learning in Parallel
   * Dask is used for parallel processing, it's similar to Spark but copies part of sklearn, numpy, pandas and Spark, rather than having its own libraries like Spark.
   * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/try_dask.ipynb
     * Cannot say I'm a big fan of Dask now.
@@ -534,7 +539,7 @@ ADVANCED TOOLS
     * I think for larger dataset, Spark must be faster if its machine learning supports the methods. We can also convert pandas dataframe to Saprk dataframe to overcome the shortage of data preprocessing functions.
     
     
-* Featuretools - Basic Auto Feature Engineering
+### Featuretools - Basic Auto Feature Engineering
   * It does basic feature engineering, by generating MIN, MAX, SUM, STD, SKEW, NUM_UNIQUE, MEAN, MODE.
   * About Featuretools: https://github.com/Featuretools/featuretools
   * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/auto_basic_feature_engineering.ipynb
