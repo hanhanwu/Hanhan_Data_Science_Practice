@@ -2,7 +2,7 @@
 
 ## Confidence Intervals for Means
 
-The intervals calculated here means - the intervals that include the unknown mean `μ`.
+The intervals calculated here represents - the intervals that include the unknown mean `μ`.
 
 ### Terminology/Symbols
 * `α` - Often used as a `100*(1-α)%` confience interval. Such as "a 95% confidence interval". `1-α` is called as <b>confience conefficient</b>
