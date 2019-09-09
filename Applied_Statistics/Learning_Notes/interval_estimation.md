@@ -65,3 +65,28 @@
 * `[D̄-tα/2(n-1)*sd/√n, D̄+tα/2(n-1)*sd/√n]`
 * Often used when
   * X, Y came from the same data sample, but repersents "before", "after" results
+
+
+## Confidence Itervals for Proportions
+🌺 <b>It calculates the confidence of intervals of proportion p.</b> `p` here represents how frequent event Y will happen.
+
+### Type 1 Interval
+* `[y/n - 𝒛α/2 * sqrt((y/n)*(1-y/n)/n), y/n + 𝒛α/2 * sqrt((y/n)*(1-y/n)/n)]`
+  * `y` means the number of records when event Y happened in sample `n`
+  * `y/n` is estimated `p`
+  * The interval formula means, we are 100(1-α)% confident that p is within `𝒛α/2 * sqrt((y/n)*(1-y/n)/n)` of estimated `p`
+* Often used when
+  * Sample size `n` is large
+* One Side Confidence Interval
+  * `[0, y/n + 𝒛α/2 * sqrt((y/n)*(1-y/n)/n)]` is the upper bound for p
+  * `[y/n - 𝒛α/2 * sqrt((y/n)*(1-y/n)/n), 1]` is the lower bound for p
+  
+### Type 2 Interval
+* `[p' - 𝒛α/2 * sqrt(p'*(1-p')/(n+4))]`
+  * `p' = (y+2)/(n+4)`, it's the biased estimator of `p`, but it is the Bayes shrinkage estimator if we use the beta prior pdf with parameters `α=2, β=2`
+* Often used when
+  * Sample size `n` is small, and Y or n-Y many not happen within the sample, therefore with type 1 interval above, the calculated result will be 0
+  
+### Confidence Interval for Proportion Difference
+* `[y1/n1 - y2/n2 - 𝒛α/2 * sqrt((y1/n1)*(1-y1/n1)/n1 + (y2/n2)*(1-y2/n2)/n2)]`
+  * It's the interval for `p1-p2`
