@@ -90,3 +90,19 @@
 ### Confidence Interval for Proportion Difference
 * `[y1/n1 - y2/n2 - 𝒛α/2 * sqrt((y1/n1)*(1-y1/n1)/n1 + (y2/n2)*(1-y2/n2)/n2)]`
   * It's the interval for `p1-p2`
+
+## Sample Size
+🌺 <b>The problem its trying to solve is, given the maximum error of estimate and confidence conefficient, to estimate the sample size needed in order to estimate a mean.</b>
+
+* Smaller the variance, smaller the sample size is needed.
+  * An extreme example, when `δ=0`, you just need 1 record as the sample
+* An estimate associated with longer confidence interval with a smaller conffidence coefficient is satisfactory, and therefore a smaller sample size is needed.
+* `n = power(𝒛α/2, 2) * power(δ, 2) / power(ε, 2)`
+  * `ε = 𝒛α/2 * δ / sqrt(n)` is the maximum error of estimate
+* `n = power(𝒛α/2, 2)/(4 * power(ε, 2))`
+  *  If we want the 100(1 − α)% confidence interval for p to be within `[y/n - ε, y/n + ε]`
+  * Often, we don't have a strong prior idea about `p`, it's within `[0, 1]`, assume `p'` is close to `p`, and there is always `p' * (1-p') <= 1/4`. `n = power(𝒛α/2, 2) * p' * (1-p') / power(ε, 2)`
+  * Used when n can be large (total population N is large)
+* `n = m/(1 + (m-1)/N)`
+  * `m = power(𝒛α/2, 2) * p' * (1-p') / power(ε, 2)`, whe we don't know `p'`, give it value as 1/2
+  * Used when the total population N is limited
