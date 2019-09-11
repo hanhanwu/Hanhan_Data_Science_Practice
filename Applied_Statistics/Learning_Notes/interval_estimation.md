@@ -106,3 +106,10 @@
 * `n = m/(1 + (m-1)/N)`
   * `m = power(𝒛α/2, 2) * p' * (1-p') / power(ε, 2)`, whe we don't know `p'`, give it value as 1/2
   * Used when the total population N is limited
+
+## Distribution Free Confidence Intervals
+🌺 <b>It uses order statistics to construct confidence intervals for unknown distribution percentiles.</b>
+
+* `P(Yi < m < Yj) = (n!/(n-i)!)*power(0.5, i)* power(0.5, n-i) + ... + (n!/(n-j+1)!)*power(0.5, j-1)* power(0.5, n-j+1) = 1- α`
+  * `1 − α`, which is the sum of probabilities from a binomial distribution, can be calculated directly or approx- imated by an area under the normal pdf, provided that n is large enough.
+  * The observed interval (yi, yj) could then serve as a 100(1 − α)% confidence interval for the unknown distribution median.
