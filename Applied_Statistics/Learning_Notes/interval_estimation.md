@@ -110,6 +110,13 @@
 ## Distribution Free Confidence Intervals
 🌺 <b>It uses order statistics to construct confidence intervals for unknown distribution percentiles.</b>
 
+### Order Statistics
+* It just means to put a list of numbers in order
+
+### Unknown Distribution Median
 * `P(Yi < m < Yj) = (n!/(n-i)!)*power(0.5, i)* power(0.5, n-i) + ... + (n!/(n-j+1)!)*power(0.5, j-1)* power(0.5, n-j+1) = 1- α`
-  * `1 − α`, which is the sum of probabilities from a binomial distribution, can be calculated directly or approx- imated by an area under the normal pdf, provided that n is large enough.
-  * The observed interval (yi, yj) could then serve as a 100(1 − α)% confidence interval for the unknown distribution median.
+  * `1 − α`, which is the sum of probabilities from a binomial distribution, can be calculated directly or approximated by an area under the normal pdf, provided that n is large enough.
+  * The observed interval (yi, yj) could then serve as a 100(1 − α)% confidence interval for the <b>unknown distribution median</b> `m`.
+
+### Unknown Distribution pth Percentile
+* 
