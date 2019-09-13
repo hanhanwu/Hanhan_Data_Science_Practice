@@ -111,7 +111,10 @@
 🌺 <b>It uses order statistics to construct confidence intervals for unknown distribution percentiles.</b>
 
 ### Order Statistics
-* It just means to put a list of numbers in order
+* It just means to put a list of numbers in order.
+* For example
+  * We have a list of values [3,1,5,6,2]
+  * Its order statistics is 1<2<3<5<6
 
 ### Unknown Distribution Median
 * `P(Yi < m < Yj) = (n!/(n-i)!)*power(0.5, i)* power(0.5, n-i) + ... + (n!/(n-j+1)!)*power(0.5, j-1)* power(0.5, n-j+1) = 1- α`
@@ -119,4 +122,8 @@
   * The observed interval (yi, yj) could then serve as a 100(1 − α)% confidence interval for the <b>unknown distribution median</b> `m`.
 
 ### Unknown Distribution pth Percentile
-* 
+* If there are `n` records, then pth percentile is `(n+1)*p`th value
+  * For example
+    * There are 27 values, 25th percentile is `(27+1)/4 = 7` 7th value is what we want to estimate
+    * `1-α = P(Y4 < π0.25 < Y10)`
+      * Here, from 7, move left we got 4, move right we got 10. It doesn't have to be these 2 values, it can be (3, 11) and so on. Depends on how much confidence you want to achieve.
