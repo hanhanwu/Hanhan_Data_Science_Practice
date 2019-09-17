@@ -110,6 +110,11 @@
 ## Distribution Free Confidence Intervals
 🌺 <b>It uses order statistics to construct confidence intervals for unknown distribution percentiles.</b>
 
+### Benefits of Distribution Free
+* With distribution free method, we only need to assume the distribution is of the continuous type.
+* If the distribution is highly skewed or heavy-tailed so that outliers could exist, a distribution-free technique is safer and much more robust.
+* With this method, we can also get confidence intervals for various percentiles.
+
 ### Order Statistics
 * It just means to put a list of numbers in order.
 * For example
@@ -120,6 +125,7 @@
 * `P(Yi < m < Yj) = (n!/(n-i)!)*power(0.5, i)* power(0.5, n-i) + ... + (n!/(n-j+1)!)*power(0.5, j-1)* power(0.5, n-j+1) = 1- α`
   * `1 − α`, which is the sum of probabilities from a binomial distribution, can be calculated directly or approximated by an area under the normal pdf, provided that n is large enough.
   * The observed interval (yi, yj) could then serve as a 100(1 − α)% confidence interval for the <b>unknown distribution median</b> `m`.
+* If the sample arises from a distribution that does not deviate too much from the normal, the confidence interval based upon `x̅` is much shorter.
 
 ### Unknown Distribution pth Percentile
 * If there are `n` records, then pth percentile is `(n+1)*p`th value
