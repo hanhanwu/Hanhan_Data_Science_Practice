@@ -133,3 +133,18 @@
     * There are 27 values, 25th percentile is `(27+1)/4 = 7` 7th value is what we want to estimate
     * `1-α = P(Y4 < π0.25 < Y10)`
       * Here, from 7, move left we got 4, move right we got 10. It doesn't have to be these 2 values, it can be (3, 11) and so on. Depends on how much confidence you want to achieve.
+
+## Resampling Method
+* In fact, it emphasised on bootstrap. By doing resampling with replacement, it can help us estimate the confidence interval for population mean `μ`, especially in situations when we don't know the underlying distribution.
+  * "Resampling methods, however, are used for more than showing that statistics have certain distributions. Rather, they are needed in finding approximate distribu- tions of certain statistics that are used to make statistical inferences."
+  * Sample mean has an approximate normal distribution, after going through multiple rounds of resampling.
+* To make it easier to understand, let's use an example:
+  * You have a sample of 16 values, with sample mean `x̅` as 10.3
+  * Without knowing the underlying distribution, we use the emperical distribution as the best guess, so that we have:
+    * Distribution T as `T = (X̄ - 10.3)/(S/sqrt(16))`
+  * Then we use bootstrap, to choose the samples with 16 values over and over again, for example, we have done resampling 1000 times
+  * Plot the 1000 observations of T in histogram, and q-q plot for N(0,1) quantiles vs T quantiles
+  * If the confidence level is 95%, we check the t-value at 2.5% percentile, 97.5% percentile of the 1000 values are `c`, `d`
+  * Then we have `P(c <= (X̄ - μ)/(S/sqrt(16)) <= d)≈ 0.95`
+  * `[x̅ - d*s/sqrt(16), x̅ - c*s/sqrt(16)]` leads to the approximate 95% confidence interval
+    * `x̅` is the sample mean of the original 16 values, `s` is the sample standard deviation for them
