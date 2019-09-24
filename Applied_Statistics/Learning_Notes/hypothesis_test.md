@@ -38,3 +38,4 @@
     * `|x − μ0| >= zα/2(σ/√n )`
 
 
+are you kiding me?
