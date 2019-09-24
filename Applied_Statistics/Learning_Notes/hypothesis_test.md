@@ -10,18 +10,22 @@
 
   
 ## Test About 1 Mean
-* `α = P(X̄ >= hypothesis_mean_threshold; H0)`
-      `= P((X̄ - sample_mean)/(sample_std/sqrt(sample_size)) >= (hypothesis_mean_threshold- sample_mean)/(sample_std/sqrt(sample_size)); H0)`
-      `= 1- 𝚽((hypothesis_mean_threshold- sample_mean)/(sample_std/sqrt(sample_size)))`
+* `α = P(X̄ >= μ0; H0)`
+      `= P((X̄ - μ)/(s/sqrt(n)) >= (μ0- μ)/(s/sqrt(n)); H0)`
+      `= 1- 𝚽((μ0 - μ)/(s/sqrt(n)))`
       `= 1 - 𝚽(𝒛α)`
       `= 1 - The Standard Normal Right-Tail Probabilities of 𝒛α`
-* `β = P(X̄ < hypothesis_mean_threshold; H1) = 𝚽(𝒛α)`
-* `p-value = P(X̄ >= sample_mean; μ=hypothesis_mean_threshold) `
-          `= 1-𝚽((sample_mean - hypothesis_mean_threshold)/(sample_std/sqrt(sample_size)))`
+  * `μ` is sample mean
+  * `μ0` is hypothesis mean threshold
+  * `s` is sample standard deviation
+  * `n` is sample size
+* `β = P(X̄ < μ0; H1) = 𝚽(𝒛α)`
+* `p-value = P(X̄ >= μ; μ=μ0) `
+          `= 1-𝚽((μ - μ0)/(s/sqrt(n)))`
   * If p-value <= α, reject H0. Normally we have `α=0.05, 0.01, 0.1`
-  * H0 here is `X̄ >= sample_mean`
+  * H0 here is `X̄ >= μ`
 * 1 tail vs 2 tails
-  * In 1 tail, `H0: X̄ >= sample_mean`; In 2 tails, `H0: X̄ = sample_mean`
+  * In 1 tail, `H0: X̄ >= μ`; In 2 tails, `H0: X̄ = μ`
   * When it's 2 tails, p-vlaue is the doubled value
 
 
