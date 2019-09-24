@@ -25,7 +25,16 @@
   * If p-value <= α, reject H0. Normally we have `α=0.05, 0.01, 0.1`
   * H0 here is `X̄ >= μ`
 * 1 tail vs 2 tails
-  * In 1 tail, `H0: X̄ >= μ`; In 2 tails, `H0: X̄ = μ`
   * When it's 2 tails, p-vlaue is the doubled value
+* H1 for `H0: μ = μ0`
+  * `H1: μ > μ0`
+    * `𝒛 >= 𝒛α` at a significance level α
+    * `x̅ >= μ0 + zα(σ/√n)`
+  * `H1: μ < μ0`
+    * `𝒛 <= 𝒛α`
+    * `x̅ <= μ0 - zα(σ/√n)`
+  * `H1: μ != μ0`
+    * `|𝒛| >= 𝒛α/2`
+    * `|x − μ0| >= zα/2(σ/√n )`
 
 
