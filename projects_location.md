@@ -34,3 +34,10 @@ There are many implemented projects stored in different folders, I need to recor
     
 * Ployly API Key, PyOD
   * https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Outliers_and_Clustering/try_PyOD.ipynb
+  
+* Multi Media
+  * How to read multi-media: https://www.analyticsvidhya.com/blog/2017/03/read-commonly-used-formats-using-python/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+  * PDF
+    * `PyPDF` library: https://github.com/mstamy2/PyPDF2/tree/master/Sample_Code
+  * Excel
+    * Python read, write Excel: https://github.com/hanhanwu/Basic_But_Useful/blob/master/python_excel.py
