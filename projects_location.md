@@ -42,5 +42,8 @@ There are many implemented projects stored in different folders, I need to recor
   * Excel
     * Python read, write Excel: https://github.com/hanhanwu/Basic_But_Useful/blob/master/python_excel.py
     
-* IPython JS display
+* IPython JS display, python tricks
   * https://github.com/hanhanwu/Basic_But_Useful/blob/master/python_tricks.ipynb
+  
+* Virtual Environment, IPython Kernel
+  * How to details: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/ReadMe.md
