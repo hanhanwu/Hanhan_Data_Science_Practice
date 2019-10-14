@@ -41,3 +41,6 @@ There are many implemented projects stored in different folders, I need to recor
     * `PyPDF` library: https://github.com/mstamy2/PyPDF2/tree/master/Sample_Code
   * Excel
     * Python read, write Excel: https://github.com/hanhanwu/Basic_But_Useful/blob/master/python_excel.py
+    
+* IPython JS display
+  * https://github.com/hanhanwu/Basic_But_Useful/blob/master/python_tricks.ipynb
