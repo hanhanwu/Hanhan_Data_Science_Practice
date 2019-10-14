@@ -245,23 +245,23 @@ Neural Network is a universal approximator, which means you can use it to implme
       * This may no longer works, try commands below:
         * `pip uninstall virtualenv`
         * `conda install virtualenv`
-    * Then you create a new folder as virtual environment, such as folder myvirtual_env, then type `virtualenv --system-site-packages myvirtual_env`, of course, it should be thr path of your folder
-    * Now you can activate it, in this case, type command `source ~/myvirtual_env/bin/activate `
+    * Then you create a new folder as virtual environment, such as folder myvirtual_env, then type `virtualenv --system-site-packages venv`, of course, it should be thr path of your folder
+    * Now you can activate it, in this case, type command `source ~/venv/bin/activate `
   * After `virtualenv` installation and validaton, Commands to turn on and turn off virtual environment:
-    * To activate the virtual environment, `$ source ~/Documents/Virtual_Env/bin/activate      # If using bash, sh, ksh, or zsh`, change "Documents/Virtual_Env" to your own virtual environment folder name
-    * To activate the virtual environment, `$ source ~/Documents/Virtual_Env/bin/activate.csh  # If using csh or tcsh`, change "Documents/Virtual_Env" to your own virtual environment folder name
-    * Then in your terminal, you will see `(Virtual_Env)$`
-    * To deactivate your virtual envvironment, `(Virtual_Env)$ deactivate`
+    * To activate the virtual environment, `$ source ~/venv/bin/activate      # If using bash, sh, ksh, or zsh`, change "venv" to your own virtual environment folder path
+    * To activate the virtual environment, `$ source ~/venv/bin/activate.csh  # If using csh or tcsh`, change "venv" to your own virtual environment folder name
+    * Then in your terminal, you will see `(venv)$`
+    * To deactivate your virtual envvironment, `(venv)$ deactivate`
   * Install Tensorflow & Keras:
     * `sudo pip install tensorflow`
     * `sudo pip install keras`
     * These 2 commands works even when you are in conda virtual environment. I tried to use `conda` install but didn't works well.
   * Install Jupyter Notebook in your virtual environment
-    * `(Virtual_Env)$ pip install jupyter`, install jupyter within the active virtualenv
-    * `(Virtual_Env)$ pip install ipykernel`, install reference ipykernel package
-    * `(Virtual_Env)$ python -m ipykernel install --user --name conda_virtualenv --display-name "Python2 (Virtual_Env)"`, set up the kernel. Here, if you will install multiple kernel, `testenv` name should be changed to other names
-    * `(Virtual_Env)$ jupyter notebook`
-    * After jupyter notebook has been turned on, when you are creating a new notebook, choose "Python 2 (Virtual_Env)"
+    * `(venv)$ pip install jupyter`, install jupyter within the active virtualenv
+    * `(venv)$ pip install ipykernel`, install reference ipykernel package
+    * `(venv)$ python -m ipykernel install --user --name conda_virtualenv --display-name "Python2 (venv)"`, set up the kernel. Here, if you will install multiple kernel, `testenv` name should be changed to other names
+    * `(venv)$ jupyter notebook`
+    * After jupyter notebook has been turned on, when you are creating a new notebook, choose "Python 2 (venv)"
     * NOTE: If you are using Python3, for example, python3.5, then in the above commands, change `pip` to `pip3`; change `python` to `python3.5`
   * Pros and Cons of Keras
     * Simple and no detailed implemention of NN like lower level libraries (e.g. Tensorflow) required, but also because of this, it can be less flexible
