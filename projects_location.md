@@ -47,3 +47,13 @@ There are many implemented projects stored in different folders, I need to recor
   
 * Virtual Environment, IPython Kernel
   * How to details: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/ReadMe.md
+  
+* For Industry Suggestions
+  * Overall 1: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/tree/master/Better4Industry
+  * Overall 2: https://github.com/hanhanwu/Hanhan_Applied_DataScience
+  * Learning Notes: https://github.com/hanhanwu/Hanhan_Applied_DataScience/blob/master/Learning_Notes.md
+  * Experience Notes: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Better4Industry/ExperienceNotes.md
+  * Feature Selection Collection: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/tree/master/Better4Industry/Feature_Selection_Collection
+  * Model Evaluation: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/tree/master/Better4Industry/Model_Evaluation
+  * Deployment Reminder: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Better4Industry/Deployment_Experience.md
+  * Prototype Toolkit: https://github.com/hanhanwu/Hanhan_Applied_DataScience/tree/master/Prototype_Toolkit
