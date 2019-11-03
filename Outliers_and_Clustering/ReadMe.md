@@ -163,10 +163,20 @@ Outliers Detection and Clustering are related to each other, and in a world with
   * This time, I tried R Notebook: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Outliers_and_Clustering/try_subsapce_clustering.Rmd
   * It will generate a html file: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Outliers_and_Clustering/try_subsapce_clustering.nb.html
     * It seems that GitHub cannot show the output directly. Meanwhile, the plot in this code is dynamic, it can be seen and interact with in R studio, but won't be shown in the R notebook
+    
+## All About Algorithms
+### K-Means vs K-Medoids vs K-Means++
+* K-Means
+  * It randomly selects k objects as the initial center
+  * It calculates the mean value as the center of each group. Therefore it's easy to be affected by outliers
+* K-Medoids
+  * In order to overcome the outlier issues in K-Means, it choses existing objects (randomly selected) to replace the previous centroid in order to minimize within cluster distances
+* K-Means ++
+  * Similar to K-Medoids, but instead of selected the next centroid randomly, it uses a weighted probability distribution where a point x is chosen with probability proportional to D(x)2
+    * D(x)2 - Square distance to current centroid x
+    * For example it can choose the next centroid as the one whose D(x)2 is farthest from current centroid x
 
-*********************************************************************************
-
-IDEAS SPARK
+## IDEAS SPARK
 
 * About data labeling
   * When there are many data records, and you don't have the label, meanwhile you are not human expert to label all the data right
