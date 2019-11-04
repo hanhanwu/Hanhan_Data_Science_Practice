@@ -38,10 +38,28 @@
         * Basicly, you can treat a finalized maximum likelihood model as a linear regression model
 * Reference: https://www.analyticsvidhya.com/blog/2018/07/introductory-guide-maximum-likelihood-estimation-case-study-r/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
   * It's lack of many things that a tutorial should have.... you even don't know how did he get those columns and plots.... Better to check my code.
+  
 
-********************************************************************************
+## Interesting Statistics Methods
 
-<b>Resources</b>
+### 8 Simple Sampling Methods
+* Probability Sampling
+  * Random Sampling, such as monte carlo method
+  * Systematic Sampling - The first individual is selected randomly and others are selected using a fixed sampling interval
+    * This interval can be N/n, N is population size while n is sample size
+    * It might also lead to bias if there is an underlying pattern in the selected items
+  * Stratified Sampling
+  * Clustering Sampling - Randomly group the population into clusters, then choose the whole cluster as a sample
+* Non-probability Sampling
+  * Convenience Sampling - Individuals are selected based on their availability and willingness to take part
+    * tend to lead to bias
+  * Quota Sampling - choose items based on predetermined characteristics of the population
+    * such as choose odd numbers
+  * Judgement Sampling - experts decide whom to participate
+  * Snowball Sampling - randomly select the initial group, then each individual in the group to norminate more participates
+
+
+## Resources
 
 * Think Stats
   * Download the book here: http://greenteapress.com/thinkstats/
@@ -52,9 +70,8 @@
 
 * Greek Alphabet: https://en.wikipedia.org/wiki/Greek_alphabet
 
-********************************************************************************
 
-<b>Data Source</b>
+## Data Source
 
 * 2002 Preganent Data: ftp://ftp.cdc.gov/pub/Health_Statistics/NCHS/Datasets/NSFG/2002FemPreg.dat
   * Data Dictionary: ftp://ftp.cdc.gov/pub/Health_Statistics/NCHS/Datasets/NSFG/stata/2002FemPreg.dct
@@ -66,14 +83,11 @@
     * <b>finalwgt</b> is the statistical weight associated with the respondent. It is a floating-point value that indicates the number of people in the U.S. population this respondent represents. Members of oversampled groups have lower weights.
   * resp output: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/2002FemRespOut.csv
 
-
 * Other Data Sources
   * WalframAlpha: http://www.wolframalpha.com/
   
 
-********************************************************************************
-
-<b>Think Stats Practice Code</b>
+## Think Stats Practice Code
 
 * [My Code - Chapter 1][1]
 * [My Code - Chapter 2][2]
@@ -109,9 +123,8 @@ but it's easier to use pyton built-in functions
     * Given y at mean_time or half_life, calculate the x at the point and calculate decay rate
   * NOTE: Sometimes, the initial value can be terribly huge and much larger than all the other values. This may lead to a negative decay rate. The solution is, either you rmeove this outlier for both x and y, or when you are generating x, y values, user higher resolution for x (time) and record y values. For example, you were using x for each 1 hour, now you change to each second
 
-********************************************************************************
 
-<b>Learning Notes</b>
+## Learning Notes
 
 * Mean describes the central tendency, while Variance describes the spread
 * `Variance = sum(sqrt(Xi-mean))/n, i = 1,...,n`
