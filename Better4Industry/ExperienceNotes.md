@@ -87,6 +87,13 @@
  <img width="500" height="300" src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Better4Industry/images/xgboost_param_tuning.png">
 </p>
 
+  * When there is small `n_estimators` and early stopping value, this type of plot can help to decide how to run the next HPO run, check the correlation line to make the decision.
+    * The plot was created thfrough tableau. You have the output from XGBoost and Hyperopt, which shows AUC, AVP and param values in each round of evaluation. Each value convert to "Dimension". Exclude 0 in y_axis. Add trend line, choose 2-degree ploynomial as the trend line.
+  <p align="center">
+  <img width="700" height="300" src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Better4Industry/images/xgboost_hpo.png">
+</p>
+  
+
   
 ## Production Handover Notes
 * Understand deployment QA at the very beginning. Provide every output at each step for their QA test.
