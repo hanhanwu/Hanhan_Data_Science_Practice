@@ -1,6 +1,12 @@
 ## Statistics Tables
 * [Z table - Having z score to get p-value][8]
-  * I found this one contains more z-values to check, also more accruate then online z to p-value calculator
+  * I found this one contains more z-values to check.
+  * NOTE, as we can see `P(Z ≤ z-score)` here all on left side, which means the probability that we obtained is to the left of the Z-score. However, p value is to the right-hand side of the threshold, with the fact that the total area under the normal Z distribution is 1, `p-value = 1-P(Z ≤ z-score)`
+  * When to use:
+    * `z = (Population Mean - Sample Mean)/(Population std/sqrt(sample records))`
+    * If we can get the z-score, with Z table, we can get the relevant p-value.
+* [Online z-score to p-value][9]
+  * Different from the table above, this one will diretly give you the right side probability - p-value
 
 
 ## Experiments
@@ -316,3 +322,4 @@ but it's easier to use pyton built-in functions
 [6]:https://github.com/hanhanwu/readings/blob/master/thinkstats.pdf
 [7]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/decay_rate.ipynb
 [8]:http://pages.stat.wisc.edu/~ifischer/Statistical_Tables/Z-distribution.pdf
+[9]:https://www.socscistatistics.com/pvalues/normaldistribution.aspx
