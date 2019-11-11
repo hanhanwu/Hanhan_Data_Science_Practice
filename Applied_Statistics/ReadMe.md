@@ -1,3 +1,7 @@
+## Statistics Tables
+* [Z table - Having z score to get p-value][8]
+  * I found this one contains more z-values to check, also more accruate then online z to p-value calculator
+
 
 ## Experiments
 
@@ -311,3 +315,4 @@ but it's easier to use pyton built-in functions
 [5]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/thinkstats_chapter9.ipynb
 [6]:https://github.com/hanhanwu/readings/blob/master/thinkstats.pdf
 [7]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/decay_rate.ipynb
+[8]:http://pages.stat.wisc.edu/~ifischer/Statistical_Tables/Z-distribution.pdf
