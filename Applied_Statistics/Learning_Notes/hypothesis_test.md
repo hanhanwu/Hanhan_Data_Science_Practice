@@ -53,7 +53,7 @@
 
 
 ## Test About Proportions
-* One Proportions
+* One Proportion
 <p align="left">
 <img width="400" height="200" src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/Learning_Notes/images/test_proportions1.png">
  </p>
