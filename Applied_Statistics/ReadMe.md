@@ -5,6 +5,7 @@
   * When to use:
     * `z = (Population Mean - Sample Mean)/(Population std/sqrt(sample records))`
     * If we can get the z-score, with Z table, we can get the relevant p-value.
+  * Details about p-value, check [here][10]
 * [Online z-score to p-value][9]
   * Different from the table above, this one will diretly give you the right side probability - p-value
 
@@ -323,3 +324,4 @@ but it's easier to use pyton built-in functions
 [7]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/decay_rate.ipynb
 [8]:http://pages.stat.wisc.edu/~ifischer/Statistical_Tables/Z-distribution.pdf
 [9]:https://www.socscistatistics.com/pvalues/normaldistribution.aspx
+[10]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/Learning_Notes/p_value.md
