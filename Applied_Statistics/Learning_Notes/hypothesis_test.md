@@ -7,6 +7,7 @@
 * `α` - is the probability for type I error
 * `β` - is the probability for type II error
 * Both `α` and `β` will decrease when sample size increases
+* `𝒛α` is the z-value of `α`
 
   
 ## Test About 1 Mean
