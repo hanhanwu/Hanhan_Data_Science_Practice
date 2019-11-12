@@ -50,3 +50,19 @@
   * If X and Y are independent, we have above `μ0`
   * If X and Y are dependent, `μ0=0`, so it will be comparing `μ` with 0
    * An dependent example can be, comparing the time "before" vs "after"
+
+
+## Test About Proportions
+* One Proportions
+<p align="left">
+<img width="400" height="200" src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/Learning_Notes/images/test_proportions1.png">
+ </p>
+ 
+ * Two proportions
+   * Y1 and Y2 represent, respectively, the numbers of observed successes in n1 and n2 independent trials with probabilities of success p1 and p2. 
+   * `p̂1 = Y1/n1`, read as "p1 hat"
+   * `p̂2 = Y2/n2`
+   * `p̂ = (Y1+Y2)/(n1+n2)`
+ <p align="left">
+<img width="400" height="200" src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/Learning_Notes/images/test_proportions2.png">
+ </p>
