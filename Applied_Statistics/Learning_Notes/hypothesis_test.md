@@ -8,6 +8,8 @@
 * `β` - is the probability for type II error
 * Both `α` and `β` will decrease when sample size increases
 * `𝒛α` is the z-value of `α`
+  * 95% confidence, 1-α = 0.95, so α/2 = 0.025, 𝒛0.025 = 1.96
+  * 90% confidence, 1-α = 0.90, so α/2 = 0.05, 𝒛0.05 = 1.645
 
   
 ## Test About 1 Mean
