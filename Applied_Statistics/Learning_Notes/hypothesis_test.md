@@ -66,3 +66,18 @@
  <p align="left">
 <img width="400" height="200" src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/Learning_Notes/images/test_proportions2.png">
  </p>
+ 
+ 
+## Wilcoxon Test
+* When normality assumption no longer met, it needs nonparametric method (distribution free).
+* Wilcoxon statistic W is the sum of these n signed ranks, and therefore is often called the Wilcoxon signed rank statistic.
+Here's an example about how to calculate Wilcoxon Test:
+ <p align="left">
+<img width="400" height="200" src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/Learning_Notes/images/wilcoxon_statistics.png">
+ </p>
+ 
+* `z = (W-0)/sqrt(n*(n+1)*(2n+1)/6)` is approximately N(0,1)
+  * When it's N(m, std), it should be `W-m`
+  * When `z >= zα/2` or `W>= zα/2*sqrt(n*(n+1)*(2n+1)/6)` then reject H0
+    * So after calculating z, you calculate W and compare
+
