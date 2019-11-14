@@ -69,6 +69,7 @@
  
  
 ## Wilcoxon Test
+* It's test about mean.
 * When normality assumption no longer met, it needs nonparametric method (distribution free).
 * Wilcoxon statistic W is the sum of these n signed ranks, and therefore is often called the Wilcoxon signed rank statistic.
 Here's an example about how to calculate Wilcoxon Test:
