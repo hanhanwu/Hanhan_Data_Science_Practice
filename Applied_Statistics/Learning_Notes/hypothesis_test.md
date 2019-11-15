@@ -82,3 +82,14 @@ Here's an example about how to calculate Wilcoxon Test:
   * When `z >= zα/2` or `W>= zα/2*sqrt(n*(n+1)*(2n+1)/6)` then reject H0
     * So after calculating z, you calculate W and compare
 
+
+## Best Critical Region
+<p align="left">
+<img width="400" height="200" src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/Learning_Notes/images/best_critical_region.png">
+ </p>
+ 
+ <p align="left">
+<img width="400" height="200" src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/Learning_Notes/images/npl.png">
+ </p>
+ 
+ * A test defined by a critical region C of size α is a uniformly most powerful test if it is a most powerful test against each simple alternative in H1. The critical region C is called a uniformly most powerful critical region of size α.
