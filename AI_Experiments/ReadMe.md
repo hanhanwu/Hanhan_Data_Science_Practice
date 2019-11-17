@@ -407,6 +407,26 @@ Neural Network is a universal approximator, which means you can use it to implme
         * Method 3 - Using DEC (Deep Embedding Clustering): https://github.com/XifengGuo/DEC-keras
           * You need large epoch and clustering iteration, so that the final NMI can be higher. But this will also be computational costly. In my code, I just used at most 7 rounds iteration for clustering, otherwise I need to wait for very long time
           * That DEC code, you need to copy the author's all the code from https://github.com/XifengGuo/DEC-keras/blob/master/DEC.py
+          
+### More About Autoencoder
+* Properties
+  * Autoencoders are data-specific, which means that they will only be able to compress data similar to what they have been trained on.
+  * Autoencoders are lossy, which means that the decompressed outputs will be degraded compared to the original inputs (similar to MP3 or JPEG compression).
+  * Autoencoders are learned automatically from data examples, which is a useful property: it means that it is easy to train specialized instances of the algorithm that will perform well on a specific type of input. It doesn't require any new engineering, just appropriate training data.
+* Practical Use
+  * Help dimensional reduction. 
+    * For example, t-SNE can plot data into 2D or 3D, but it doesn't work well when the original dimension is large. So a good practice is to have autoencoder help reduce the dimensions first, then use t-SNE for 2D, 3D plot.
+  * It doesn't work well in data compression
+    * Such as image compression, JPEG can do better. Plus autoencoder can only work for a specific set of images, more limitation.
+#### Variational autoencoder (VAE)
+* VAE is a type of autoencoder with added constraints on the encoded representations being learned. More precisely, it is an autoencoder that learns a latent variable model for its input data. So instead of letting your neural network learn an arbitrary function, you are learning the parameters of a probability distribution modeling your data. If you sample points from this distribution, you can generate new input data samples: a VAE is a "generative model".
+
+* References
+  * [Build Autoencoders in Keras][21]
+    * Different types of autoencoder for image recognition on digits.
+    * Image denoising.
+    * VAE
+
     
     
 ### Digital Recognition with Tensorflow
@@ -639,3 +659,4 @@ Neural Network is a universal approximator, which means you can use it to implme
 [18]:https://www.analyticsvidhya.com/blog/2019/07/how-to-build-recommendation-system-word2vec-python/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
 [19]:https://github.com/LiyuanLucasLiu/RAdam
 [20]:https://github.com/hukkelas/DeepPrivacy
+[21]:https://blog.keras.io/building-autoencoders-in-keras.html
