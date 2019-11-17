@@ -85,11 +85,24 @@ Here's an example about how to calculate Wilcoxon Test:
 
 ## Best Critical Region
 <p align="left">
-<img width="400" height="200" src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/Learning_Notes/images/best_critical_region.png">
+<img width="600" height="200" src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/Learning_Notes/images/best_critical_region.png">
  </p>
  
  <p align="left">
-<img width="400" height="200" src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/Learning_Notes/images/npl.png">
+<img width="600" height="300" src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/Learning_Notes/images/npl.png">
  </p>
  
  * A test defined by a critical region C of size α is a uniformly most powerful test if it is a most powerful test against each simple alternative in H1. The critical region C is called a uniformly most powerful critical region of size α.
+
+
+## Likelihood Ratio Test
+* We assume that the functional form of the pdf is known, the pdf of X is f(x;θ), where `θ` represents one or more unknown parameters.
+* Let `𝛀` denote the total parameter space, `𝛚` is a subset of 𝛀 and `𝛚'` is the complement of 𝛚 with respect to 𝛀
+
+<p align="left">
+<img width="700" height="200" src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/Learning_Notes/images/likelihood_ratio.png">
+ </p>
+ 
+ <p align="left">
+<img width="700" height="200" src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/Learning_Notes/images/likelihood_ratio_test.png">
+ </p>
