@@ -409,12 +409,14 @@ Neural Network is a universal approximator, which means you can use it to implme
           * That DEC code, you need to copy the author's all the code from https://github.com/XifengGuo/DEC-keras/blob/master/DEC.py
           
 ### More About Autoencoder
+* `input_layer -> hidden_layer` is called "encoding", and `hidden_layer -> output_layer` is called "decoding".
 * Properties
   * Autoencoders are data-specific, which means that they will only be able to compress data similar to what they have been trained on.
   * Autoencoders are lossy, which means that the decompressed outputs will be degraded compared to the original inputs (similar to MP3 or JPEG compression).
   * Autoencoders are learned automatically from data examples, which is a useful property: it means that it is easy to train specialized instances of the algorithm that will perform well on a specific type of input. It doesn't require any new engineering, just appropriate training data.
 * Practical Use
   * Help dimensional reduction. 
+    * The input and output has same number of dimensions, and the hidden layer has less dimensions, thus it contains compressed informations of input layer, which is why it acts as a dimension reduction for the original input. "Decoding" is the lossy reconstruction of the input.
     * For example, t-SNE can plot data into 2D or 3D, but it doesn't work well when the original dimension is large. So a good practice is to have autoencoder help reduce the dimensions first, then use t-SNE for 2D, 3D plot.
   * It doesn't work well in data compression
     * Such as image compression, JPEG can do better. Plus autoencoder can only work for a specific set of images, more limitation.
