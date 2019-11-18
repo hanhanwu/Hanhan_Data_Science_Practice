@@ -1,4 +1,3 @@
-
 Time to try experiments in Neural Network, Deep Learning and any other AI methods :)
 Neural Network is a universal approximator, which means you can use it to implment other machine learning algorithms
 
@@ -418,8 +417,12 @@ Neural Network is a universal approximator, which means you can use it to implme
   * Help dimensional reduction. 
     * The input and output has same number of dimensions, and the hidden layer has less dimensions, thus it contains compressed informations of input layer, which is why it acts as a dimension reduction for the original input. "Decoding" is the lossy reconstruction of the input.
     * For example, t-SNE can plot data into 2D or 3D, but it doesn't work well when the original dimension is large. So a good practice is to have autoencoder help reduce the dimensions first, then use t-SNE for 2D, 3D plot.
+  * [Python Example - Autoencoder for Dimensional Reduction][22]
+    * Dimensional reduced data came from `encoder.predict()`, `encoder` here is the intermediate result of `input -> hidden layer`
+    * With dimensional reduced data, it's later using lighGMB for model training
   * It doesn't work well in data compression
     * Such as image compression, JPEG can do better. Plus autoencoder can only work for a specific set of images, more limitation.
+    
 #### Variational autoencoder (VAE)
 * VAE is a type of autoencoder with added constraints on the encoded representations being learned. More precisely, it is an autoencoder that learns a latent variable model for its input data. So instead of letting your neural network learn an arbitrary function, you are learning the parameters of a probability distribution modeling your data. If you sample points from this distribution, you can generate new input data samples: a VAE is a "generative model".
 
@@ -428,7 +431,8 @@ Neural Network is a universal approximator, which means you can use it to implme
     * Different types of autoencoder for image recognition on digits.
     * Image denoising.
     * VAE
-
+  * [Python Example - Autoencoder for Dimensional Reduction][23]
+    * [Its Code][22]
     
     
 ### Digital Recognition with Tensorflow
@@ -662,3 +666,5 @@ Neural Network is a universal approximator, which means you can use it to implme
 [19]:https://github.com/LiyuanLucasLiu/RAdam
 [20]:https://github.com/hukkelas/DeepPrivacy
 [21]:https://blog.keras.io/building-autoencoders-in-keras.html
+[22]:https://github.com/MJeremy2017/Machine-Learning-Models/blob/master/AutoEncoder/autoencoder.ipynb
+[23]:https://towardsdatascience.com/autoencoder-on-dimension-reduction-100f2c98608c
