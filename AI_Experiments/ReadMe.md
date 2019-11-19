@@ -420,8 +420,12 @@ Neural Network is a universal approximator, which means you can use it to implme
   * [Python Example - Autoencoder for Dimensional Reduction][22]
     * Dimensional reduced data came from `encoder.predict()`, `encoder` here is the intermediate result of `input -> hidden layer`
     * With dimensional reduced data, it's later using lighGMB for model training
+  * [R Example - Autoencoder for Dimension Reduction vs PCA][25]
+    * [Generated HTML R Notebook][24]
+      * The drawback of R Notebook is, its output cannot be visualizable in GitHub
   * It doesn't work well in data compression
     * Such as image compression, JPEG can do better. Plus autoencoder can only work for a specific set of images, more limitation.
+  
     
 #### Variational autoencoder (VAE)
 * VAE is a type of autoencoder with added constraints on the encoded representations being learned. More precisely, it is an autoencoder that learns a latent variable model for its input data. So instead of letting your neural network learn an arbitrary function, you are learning the parameters of a probability distribution modeling your data. If you sample points from this distribution, you can generate new input data samples: a VAE is a "generative model".
@@ -668,3 +672,5 @@ Neural Network is a universal approximator, which means you can use it to implme
 [21]:https://blog.keras.io/building-autoencoders-in-keras.html
 [22]:https://github.com/MJeremy2017/Machine-Learning-Models/blob/master/AutoEncoder/autoencoder.ipynb
 [23]:https://towardsdatascience.com/autoencoder-on-dimension-reduction-100f2c98608c
+[24]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/autoencoder_dimensional_reduction.nb.html
+[25]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/autoencoder_dimensional_reduction.Rmd
