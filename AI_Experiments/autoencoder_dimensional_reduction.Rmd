@@ -1,0 +1,34 @@
+---
+title: "Dimensional Reduction - AutoEncoder vs PCA"
+output: html_notebook
+---
+
+### Load Data
+```{r}
+library(DAAG)
+head(ais)
+```
+
+### Normalize Data
+```{r}
+min_max <- function(x) {
+  return ((x - min(x))/(max(x) - min(x)))
+}
+
+x_train <- apply(ais[, 1:11], 2, min_max)
+
+head(x_train)
+```
+
+### PCA for Dimensional Reduction
+```{r}
+pca <- prcomp(x_train)
+
+pca
+```
+
+```{r}
+library(ggplot2)
+qplot(x = 1:11, y = cumsum(pca$sdev)/sum(pca$sdev), geom="line")
+```
+As shown above, the first 6 components can explain 90% variance of the data.
