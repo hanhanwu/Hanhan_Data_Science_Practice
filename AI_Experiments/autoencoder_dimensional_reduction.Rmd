@@ -9,6 +9,7 @@ library(DAAG)
 head(ais)
 ```
 
+
 ### Normalize Data
 ```{r}
 min_max <- function(x) {
@@ -32,3 +33,12 @@ library(ggplot2)
 qplot(x = 1:11, y = cumsum(pca$sdev)/sum(pca$sdev), geom="line")
 ```
 As shown above, the first 6 components can explain 90% variance of the data.
+Below shows how the first 3 principle components seperates male and female:
+```{r}
+# devtools::install_github("ropensci/plotly")
+library(plotly)
+pca_plotly <- plot_ly(as.data.frame(pca$x), x = ~PC1, y = ~PC2, z = ~PC3, color = ~ais$sex) %>% add_markers()
+
+pca_plotly
+```
+

@@ -333,11 +333,25 @@ qplot(x = 1:11, y = cumsum(pca$sdev)/sum(pca$sdev), geom=&quot;line&quot;)</code
 <!-- rnb-plot-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<p>As shown above, the first 6 components can explain 90% variance of the data.</p>
+<p>As shown above, the first 6 components can explain 90% variance of the data. Below shows how the first 3 principle components seperates male and female:</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBkZXZ0b29sczo6aW5zdGFsbF9naXRodWIoXCJyb3BlbnNjaS9wbG90bHlcIilcbmxpYnJhcnkocGxvdGx5KVxucGNhX3Bsb3RseSA8LSBwbG90X2x5KGFzLmRhdGEuZnJhbWUocGNhJHgpLCB4ID0gflBDMSwgeSA9IH5QQzIsIHogPSB+UEMzLCBjb2xvciA9IH5haXMkc2V4KSAlPiUgYWRkX21hcmtlcnMoKVxucGNhX3Bsb3RseVxuYGBgIn0= -->
+<pre class="r"><code># devtools::install_github(&quot;ropensci/plotly&quot;)
+library(plotly)
+pca_plotly &lt;- plot_ly(as.data.frame(pca$x), x = ~PC1, y = ~PC2, z = ~PC3, color = ~ais$sex) %&gt;% add_markers()
+pca_plotly</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoibWluaW1hbCB2YWx1ZSBmb3IgbiBpcyAzLCByZXR1cm5pbmcgcmVxdWVzdGVkIHBhbGV0dGUgd2l0aCAzIGRpZmZlcmVudCBsZXZlbHNcbm1pbmltYWwgdmFsdWUgZm9yIG4gaXMgMywgcmV0dXJuaW5nIHJlcXVlc3RlZCBwYWxldHRlIHdpdGggMyBkaWZmZXJlbnQgbGV2ZWxzXG4ifQ== -->
+<pre><code>minimal value for n is 3, returning requested palette with 3 different levels
+minimal value for n is 3, returning requested palette with 3 different levels</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 </div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiRGltZW5zaW9uYWwgUmVkdWN0aW9uIC0gQXV0b0VuY29kZXIgdnMgUENBIgpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sKLS0tCgojIyMgTG9hZCBEYXRhCmBgYHtyfQpsaWJyYXJ5KERBQUcpCmhlYWQoYWlzKQpgYGAKCiMjIyBOb3JtYWxpemUgRGF0YQpgYGB7cn0KbWluX21heCA8LSBmdW5jdGlvbih4KSB7CiAgcmV0dXJuICgoeCAtIG1pbih4KSkvKG1heCh4KSAtIG1pbih4KSkpCn0KCnhfdHJhaW4gPC0gYXBwbHkoYWlzWywgMToxMV0sIDIsIG1pbl9tYXgpCgpoZWFkKHhfdHJhaW4pCmBgYAoKIyMjIFBDQSBmb3IgRGltZW5zaW9uYWwgUmVkdWN0aW9uCmBgYHtyfQpwY2EgPC0gcHJjb21wKHhfdHJhaW4pCgpwY2EKYGBgCgpgYGB7cn0KbGlicmFyeShnZ3Bsb3QyKQpxcGxvdCh4ID0gMToxMSwgeSA9IGN1bXN1bShwY2Ekc2Rldikvc3VtKHBjYSRzZGV2KSwgZ2VvbT0ibGluZSIpCmBgYApBcyBzaG93biBhYm92ZSwgdGhlIGZpcnN0IDYgY29tcG9uZW50cyBjYW4gZXhwbGFpbiA5MCUgdmFyaWFuY2Ugb2YgdGhlIGRhdGEuCg==</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiRGltZW5zaW9uYWwgUmVkdWN0aW9uIC0gQXV0b0VuY29kZXIgdnMgUENBIgpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sKLS0tCgojIyMgTG9hZCBEYXRhCmBgYHtyfQpsaWJyYXJ5KERBQUcpCmhlYWQoYWlzKQpgYGAKCgojIyMgTm9ybWFsaXplIERhdGEKYGBge3J9Cm1pbl9tYXggPC0gZnVuY3Rpb24oeCkgewogIHJldHVybiAoKHggLSBtaW4oeCkpLyhtYXgoeCkgLSBtaW4oeCkpKQp9Cgp4X3RyYWluIDwtIGFwcGx5KGFpc1ssIDE6MTFdLCAyLCBtaW5fbWF4KQoKaGVhZCh4X3RyYWluKQpgYGAKCiMjIyBQQ0EgZm9yIERpbWVuc2lvbmFsIFJlZHVjdGlvbgpgYGB7cn0KcGNhIDwtIHByY29tcCh4X3RyYWluKQoKcGNhCmBgYAoKYGBge3J9CmxpYnJhcnkoZ2dwbG90MikKcXBsb3QoeCA9IDE6MTEsIHkgPSBjdW1zdW0ocGNhJHNkZXYpL3N1bShwY2Ekc2RldiksIGdlb209ImxpbmUiKQpgYGAKQXMgc2hvd24gYWJvdmUsIHRoZSBmaXJzdCA2IGNvbXBvbmVudHMgY2FuIGV4cGxhaW4gOTAlIHZhcmlhbmNlIG9mIHRoZSBkYXRhLgpCZWxvdyBzaG93cyBob3cgdGhlIGZpcnN0IDMgcHJpbmNpcGxlIGNvbXBvbmVudHMgc2VwZXJhdGVzIG1hbGUgYW5kIGZlbWFsZToKYGBge3J9CiMgZGV2dG9vbHM6Omluc3RhbGxfZ2l0aHViKCJyb3BlbnNjaS9wbG90bHkiKQpsaWJyYXJ5KHBsb3RseSkKcGNhX3Bsb3RseSA8LSBwbG90X2x5KGFzLmRhdGEuZnJhbWUocGNhJHgpLCB4ID0gflBDMSwgeSA9IH5QQzIsIHogPSB+UEMzLCBjb2xvciA9IH5haXMkc2V4KSAlPiUgYWRkX21hcmtlcnMoKQoKcGNhX3Bsb3RseQpgYGAKCg==</div>
 
 
 
