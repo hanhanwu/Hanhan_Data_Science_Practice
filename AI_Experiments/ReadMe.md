@@ -422,7 +422,12 @@ Neural Network is a universal approximator, which means you can use it to implme
     * With dimensional reduced data, it's later using lighGMB for model training
   * [R Example - Autoencoder for Dimension Reduction vs PCA][25]
     * [Generated HTML R Notebook][24]
-      * The drawback of R Notebook is, its output cannot be visualizable in GitHub
+      * The drawback of R Notebook is, its output cannot be visualizable in GitHub. But when using `plotly` in R, no need credentials as python does.
+      * When using PCA first 3 principle components to see how they seperate gender
+      <p align="left">
+<img width="400" height="300" src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/images/PCA_3d.png">
+ </p>
+ 
   * It doesn't work well in data compression
     * Such as image compression, JPEG can do better. Plus autoencoder can only work for a specific set of images, more limitation.
   
