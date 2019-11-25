@@ -1,6 +1,8 @@
 ---
 title: "Dimensional Reduction - AutoEncoder vs PCA"
-output: html_notebook
+output:
+  html_notebook: default
+  pdf_document: default
 ---
 
 ### Load Data
@@ -40,5 +42,60 @@ library(plotly)
 pca_plotly <- plot_ly(as.data.frame(pca$x), x = ~PC1, y = ~PC2, z = ~PC3, color = ~ais$sex) %>% add_markers()
 
 pca_plotly
+```
+
+
+```{r}
+devtools::install_github("rstudio/tensorflow")  # make sure you have installed devtools
+library("tensorflow")
+library("keras")
+```
+
+```{r}
+# I have already installed keras with tensorflow backend through Conda, so no need to install again here
+reticulate::py_discover_config()  # this will show available installed tensorflow in python
+keras::is_keras_available()  # If this reurns True, it means you Keras with tensorflow is available
+```
+
+```{r}
+head(x_train)
+```
+
+```{r}
+x_train <- as.matrix(x_train)
+
+head(x_train)
+```
+
+```{r}
+model <- keras_model_sequential()
+
+model %>%
+  layer_dense(units=6, activation="tanh",
+              input_shape = ncol(x_train)) %>%
+  layer_dense(units=2, activation="tanh", name="bottleneck") %>%
+  layer_dense(units=6, activation="tanh") %>%
+  layer_dense(units=ncol(x_train))
+```
+
+
+```{r}
+summary(model)
+```
+
+```{r}
+model %>% compile(
+  loss = "mean_squared_error",
+  optimizer = "adam"
+)
+```
+
+```{r}
+model %>% fit(
+  x = x_train,
+  y = x_train,  # here y is still x_train
+  epochs = 2000,
+  verbose = 0
+)
 ```
 
