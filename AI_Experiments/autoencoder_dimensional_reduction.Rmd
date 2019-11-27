@@ -7,7 +7,10 @@ output:
 
 ### Load Data
 ```{r}
+# devtools::install_github("ropensci/plotly")
+library(plotly)
 library(DAAG)
+library(ggplot2)
 head(ais)
 ```
 
@@ -31,20 +34,27 @@ pca
 ```
 
 ```{r}
-library(ggplot2)
 qplot(x = 1:11, y = cumsum(pca$sdev)/sum(pca$sdev), geom="line")
 ```
 As shown above, the first 6 components can explain 90% variance of the data.
+
+Below shows how the first 2 principle components seperates male and female:
+```{r}
+ggplot(data.frame(PC1=as.data.frame(pca$x)$PC1, PC2=as.data.frame(pca$x)$PC2), 
+       aes(x = PC1, y = PC2, col = ais$sex)) + geom_point()
+```
+
+
+
 Below shows how the first 3 principle components seperates male and female:
 ```{r}
-# devtools::install_github("ropensci/plotly")
-library(plotly)
 pca_plotly <- plot_ly(as.data.frame(pca$x), x = ~PC1, y = ~PC2, z = ~PC3, color = ~ais$sex) %>% add_markers()
 
 pca_plotly
 ```
 
 
+### AutoEncoder for Dimensional Reduction
 ```{r}
 devtools::install_github("rstudio/tensorflow")  # make sure you have installed devtools
 library("tensorflow")
@@ -67,6 +77,7 @@ x_train <- as.matrix(x_train)
 head(x_train)
 ```
 
+#### Try 2 dimensions in the encoded layer
 ```{r}
 model <- keras_model_sequential()
 
@@ -97,5 +108,71 @@ model %>% fit(
   epochs = 2000,
   verbose = 0
 )
+```
+
+```{r}
+mse.ae2 <- evaluate(model, x_train, x_train)
+mse.ae2
+```
+
+```{r}
+# extract the encoded layer (bottleneck layer)
+intermediate_layer_model <- keras_model(inputs = model$input,
+                                   outputs = get_layer(model, "bottleneck")$output)
+intermediate_output <- predict(intermediate_layer_model, x_train)
+```
+
+Below shows how the encoded layer seperates male and female:
+To be honest, I didn't see much difference here, comparing with PCA method above....
+```{r}
+ggplot(data.frame(PC1 = intermediate_output[,1], PC2 = intermediate_output[,2]), 
+       aes(x = PC1, y = PC2, col = ais$sex)) + geom_point()
+```
+
+#### Try 3 dimensions in the encoded layer
+```{r}
+model2 <- keras_model_sequential()
+
+model2 %>%
+  layer_dense(units=6, activation="tanh",
+              input_shape = ncol(x_train)) %>%
+  layer_dense(units=3, activation="tanh", name="bottleneck") %>%
+  layer_dense(units=6, activation="tanh") %>%
+  layer_dense(units=ncol(x_train))
+```
+
+```{r}
+summary(model2)
+```
+
+```{r}
+# compile model
+model2 %>% compile(
+  loss = "mean_squared_error", 
+  optimizer = "adam"
+)
+
+# fit model
+model2 %>% fit(
+  x = x_train, 
+  y = x_train, 
+  epochs = 2000,
+  verbose = 0
+)
+
+# evaluate the model
+evaluate(model2, x_train, x_train)
+```
+
+It seems that it does seperate better than PCA above
+```{r}
+intermediate_layer_model <- keras_model(inputs = model2$input, outputs = get_layer(model2, "bottleneck")$output)
+intermediate_output <- predict(intermediate_layer_model, x_train)
+
+# plot the reduced dat set
+aedf <- data.frame(node1 = intermediate_output[,1], node2 = intermediate_output[,2], node3 = intermediate_output[,3])
+ae_plotly <- plot_ly(aedf, x = ~node1, y = ~node2, z = ~node3, color = ~ais$sex) %>% add_markers()
+
+ae_plotly
 ```
 
