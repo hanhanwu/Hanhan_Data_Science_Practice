@@ -417,6 +417,8 @@ Neural Network is a universal approximator, which means you can use it to implme
   * Help dimensional reduction. 
     * The input and output has same number of dimensions, and the hidden layer has less dimensions, thus it contains compressed informations of input layer, which is why it acts as a dimension reduction for the original input. "Decoding" is the lossy reconstruction of the input.
     * For example, t-SNE can plot data into 2D or 3D, but it doesn't work well when the original dimension is large. So a good practice is to have autoencoder help reduce the dimensions first, then use t-SNE for 2D, 3D plot.
+  * Autoencoder vs PCA
+    * Autoencoder is more time consuming, but when the data is too large that the memory is not enough to store, PCA cannot handle but autoencoder can handle the memory limitation.
   * [Python Example - Autoencoder for Dimensional Reduction][22]
     * Dimensional reduced data came from `encoder.predict()`, `encoder` here is the intermediate result of `input -> hidden layer`
     * With dimensional reduced data, it's later using lighGMB for model training
@@ -424,6 +426,7 @@ Neural Network is a universal approximator, which means you can use it to implme
     * [Generated HTML R Notebook][24]
       * The drawback of R Notebook is, its output cannot be visualizable in GitHub. But when using `plotly` in R, no need credentials as python does.
       * When using PCA first 3 principle components to see how they seperate gender
+      * "k" means the number of selected principle components, when k is smaller, PCA has larger reconstruction error than autoencoder, but when k became larger, the reconstruction error became the same
       <p align="left">
 <img width="400" height="300" src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/images/PCA_3d.png">
  </p>
