@@ -423,6 +423,7 @@ Neural Network is a universal approximator, which means you can use it to implme
     * Dimensional reduced data came from `encoder.predict()`, `encoder` here is the intermediate result of `input -> hidden layer`
     * With dimensional reduced data, it's later using lighGMB for model training
   * [R Example - Autoencoder for Dimension Reduction vs PCA][25]
+    * [Reference][26]
     * [Generated HTML R Notebook][24]
       * The drawback of R Notebook is, its output cannot be visualizable in GitHub. But when using `plotly` in R, no need credentials as python does.
       * When using PCA first 3 principle components to see how they seperate gender
@@ -682,3 +683,4 @@ Neural Network is a universal approximator, which means you can use it to implme
 [23]:https://towardsdatascience.com/autoencoder-on-dimension-reduction-100f2c98608c
 [24]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/autoencoder_dimensional_reduction.nb.html
 [25]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/autoencoder_dimensional_reduction.Rmd
+[26]:https://www.r-bloggers.com/pca-vs-autoencoders-for-dimensionality-reduction/
