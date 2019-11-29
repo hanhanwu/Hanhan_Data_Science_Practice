@@ -56,7 +56,7 @@ pca_plotly
 
 ### AutoEncoder for Dimensional Reduction
 ```{r}
-devtools::install_github("rstudio/tensorflow")  # make sure you have installed devtools
+# devtools::install_github("rstudio/tensorflow")  # make sure you have installed devtools
 library("tensorflow")
 library("keras")
 ```
@@ -175,4 +175,58 @@ ae_plotly <- plot_ly(aedf, x = ~node1, y = ~node2, z = ~node3, color = ~ais$sex)
 
 ae_plotly
 ```
+
+## Reconstruction Error: PCA vs AutoEncoder
+```{r}
+# pCA reconstruction
+pca.recon <- function(pca, x, k){
+  mu <- matrix(rep(pca$center, nrow(pca$x)), nrow = nrow(pca$x), byrow = T)
+  recon <- pca$x[,1:k] %*% t(pca$rotation[,1:k]) + mu
+  mse <- mean((recon - x)^2)
+  return(list(x = recon, mse = mse))
+}
+
+xhat <- rep(NA, 10)
+for(k in 1:10){
+  xhat[k] <- pca.recon(pca, x_train, k)$mse
+}
+```
+
+
+```{r}
+# Autoencoder reconstruction
+# autoencoder last layer is reconstruction
+ae.mse <- rep(NA, 5)
+for(k in 1:5){
+  modelk <- keras_model_sequential()
+  modelk %>%
+    layer_dense(units = 6, activation = "tanh", input_shape = ncol(x_train)) %>%
+    layer_dense(units = k, activation = "tanh", name = "bottleneck") %>%
+    layer_dense(units = 6, activation = "tanh") %>%
+    layer_dense(units = ncol(x_train))
+
+  modelk %>% compile(
+    loss = "mean_squared_error", 
+    optimizer = "adam"
+  )
+
+  modelk %>% fit(
+    x = x_train, 
+    y = x_train, 
+    epochs = 5000,
+    verbose = 0
+  )
+
+  ae.mse[k] <- unname(evaluate(modelk, x_train, x_train))
+}
+```
+
+```{r}
+df <- data.frame(k = c(1:10, 1:5), mse = c(xhat, ae.mse), method = c(rep("pca", 10), rep("autoencoder", 5)))
+ggplot(df, aes(x = k, y = mse, col = method)) + geom_line()
+```
+#### Observation
+* When k is small, autoencoder has less reconstruction error
+* When k is larger, autoencoder and PCA apepar to have almost the same reconstruction error
+
 
