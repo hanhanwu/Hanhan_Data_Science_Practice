@@ -48,6 +48,13 @@ There are many implemented projects stored in different folders, I need to recor
 * Virtual Environment, IPython Kernel
   * How to details: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/ReadMe.md
   
+* PCA, Dimensional Reduction, Reconstruction
+  * [Python] https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/make_sense_dimension_reduction.ipynb
+    * How to make PCA dimensional reduction visualization makes sense
+    * How to keep original features based on PCA results
+  * [R] https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/autoencoder_dimensional_reduction.Rmd
+    * PCA, autoencoder reconstruction error
+  
 * For Industry Suggestions
   * Overall 1: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/tree/master/Better4Industry
   * Overall 2: https://github.com/hanhanwu/Hanhan_Applied_DataScience
