@@ -1,7 +1,7 @@
 # p-value 🔮
 
 
-💖 I have read many about applying p-value in data work, but the more I read, the more cofusing it could be, Finally today found a well structured and clear tutorial [here][1], have to take notes here. 💖
+💖 I have read many about applying p-value in data work, but the more I read, the more cofusing it could be. Finally today found a well structured and clear tutorial [here][1], have to take notes here. 💖
 
 ## What is p-value
 p-value is the "total probability" of getting any value to the right hand side of the red point, when the values are picked randomly from the population distribution. 
