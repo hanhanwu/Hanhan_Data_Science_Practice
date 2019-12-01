@@ -1,6 +1,6 @@
 # Chi-Square Test 🔮
 
-💖For categorical variables.💖
+💖For categorical variables. 💖
 
 ## About Chi-Square Test
 * Chi-Square test is a test of statistical significance for Categorical Variables.
