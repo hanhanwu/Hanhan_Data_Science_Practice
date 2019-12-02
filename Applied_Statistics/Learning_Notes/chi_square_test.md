@@ -50,7 +50,7 @@
   * Based on df and α (such as 5% significant level), find the critical value in the table
   * If chi-square larger than the critical value, reject Null Hypothesis
 
-## [Reference][2]
+### [Reference][2]
 
 
 [1]:https://people.smp.uq.edu.au/YoniNazarathy/stat_models_B_course_spring_07/distributions/chisqtab.pdf
