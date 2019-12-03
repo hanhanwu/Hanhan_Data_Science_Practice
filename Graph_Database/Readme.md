@@ -1,6 +1,6 @@
 
 ## Graph Libraries
-* [Neo4j][1]
+* [Neo4j][7]
 * [Boost Graph Library][2] - this is more about an interface of graph implementation
 * [iGraph][5]
   * It supports both R and python
@@ -10,14 +10,19 @@
 * [Graph Tool][3]
   * It's a python library written in C++, so should be fast
   * [Its documentation][4]
+* [Spark GraphX][9]
+* [Plato][8]
+  * It says its performance is better than GraphX, and as we can see, it supports many graph algorithms. But it needs the data stored in HDFS (Hadoop File System).
 
 
-[1]:https://neo4j.com/developer/get-started/
+[7]:https://neo4j.com/developer/get-started/
 [2]:https://www.boost.org/doc/libs/1_70_0/libs/graph/doc/index.html
 [3]:https://graph-tool.skewed.de/
 [4]:https://graph-tool.skewed.de/static/doc/index.html
 [5]:https://igraph.org/
 [6]:https://github.com/networkx/networkx
+[8]:https://github.com/Tencent/plato
+[9]:https://spark.apache.org/docs/latest/graphx-programming-guide.html
 
 ## Tutorial
 ### Neo4j Graph DB
