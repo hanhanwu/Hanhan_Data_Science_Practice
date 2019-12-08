@@ -175,6 +175,24 @@ Outliers Detection and Clustering are related to each other, and in a world with
   * Similar to K-Medoids, but instead of selected the next centroid randomly, it uses a weighted probability distribution where a point x is chosen with probability proportional to D(x)2
     * D(x)2 - Square distance to current centroid x
     * For example it can choose the next centroid as the one whose D(x)2 is farthest from current centroid x
+    
+### Gaussian Mixture Models (GMMs)
+* "Gaussian Mixture Models (GMMs) assume that there are a certain number of Gaussian distributions, and each of these distributions represent a cluster. Hence, a Gaussian Mixture Model tends to group the data points belonging to a single distribution together."
+  * In each dimension, the PDF (probability density function) is a gaussian distribution.
+  * The PDF for GMM is similar to gaussian distribution formula, but having `x` and `μ` as vectors of length `d`, and `Σ` would be a `d * d` covariance matrix.
+* EM in GMMs
+  * Mean and variance are assigned through Expectation-Maximization (EM), a statistical algorithm used for finding the right model parameters.
+  * EM is often used when there is misssing variable, in unsupervised learning case, it's the label. We call any missing variable as "latent variable". EM tries to use the existing data to determine the optimum values for latent variables and then finds the model parameters.
+    * E-step: The available data is used to estimate (guess) the values of the missing variables
+    * M-step: Based on the estimated values generated in the E-step, the complete data is used to update the parameters
+  * In GMMs, 
+    * E-step: calculates the probability that a record belongs to each cluster/distribution
+    * M-step: update `Π`, `μ` and `Σ` values
+      * `Π` is density, `Π = number of records in a cluster/total number of records`
+    * E-M process is repeated to [maximize log likelihood][6]. 
+  * GMMs vs k-kmeans
+    * GMMs considers both mean and variance, while k-means only cares mean.
+* [Reference][5]
 
 ## IDEAS SPARK
 
@@ -190,3 +208,5 @@ Outliers Detection and Clustering are related to each other, and in a world with
 [2]:http://shahramabyari.com/2016/01/19/detecting-outliers-in-high-dimensional-data-sets/
 [3]:https://github.com/shahramabyari/HiCS/blob/master/hcis.py
 [4]:http://shahramabyari.com/2015/12/30/my-first-attempt-with-local-outlier-factorlof-identifying-density-based-local-outliers/
+[5]:https://www.analyticsvidhya.com/blog/2019/10/gaussian-mixture-models-clustering/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+[6]: https://www.analyticsvidhya.com/blog/2018/07/introductory-guide-maximum-likelihood-estimation-case-study-r/
