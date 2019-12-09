@@ -192,6 +192,7 @@ Outliers Detection and Clustering are related to each other, and in a world with
     * E-M process is repeated to [maximize log likelihood][6]. 
   * GMMs vs k-kmeans
     * GMMs considers both mean and variance, while k-means only cares mean.
+    * As we can see from [this example][7], when a model only checks distance, might not cluster the data in the right way. GMMs might come to help.
 * [Reference][5]
 
 ## IDEAS SPARK
@@ -210,3 +211,4 @@ Outliers Detection and Clustering are related to each other, and in a world with
 [4]:http://shahramabyari.com/2015/12/30/my-first-attempt-with-local-outlier-factorlof-identifying-density-based-local-outliers/
 [5]:https://www.analyticsvidhya.com/blog/2019/10/gaussian-mixture-models-clustering/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
 [6]: https://www.analyticsvidhya.com/blog/2018/07/introductory-guide-maximum-likelihood-estimation-case-study-r/
+[7]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Outliers_and_Clustering/GMMs_vs_kmeans.ipynb
