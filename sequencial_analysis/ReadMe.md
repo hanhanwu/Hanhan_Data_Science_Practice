@@ -145,6 +145,8 @@ I'm planning to practice more on time series analysis, pattern matching sequenti
   * A series with significant dependence among values. In this case we need to use some statistical models like ARIMA to forecast the data.
   * <b>Autocorrelation Function (ACF)</b>: It is a measure of the correlation between the time series with a lagged version of itself. For instance at lag 5, ACF would compare series at time instant ‘t1’…’t2’ with series at instant ‘t1-5’…’t2-5’ (t1-5 and t2 being end points).
   * <b>Partial Autocorrelation Function (PACF)</b>: This measures the correlation between the TS with a lagged version of itself but after eliminating the variations already explained by the intervening comparisons. Eg at lag 5, it will check the correlation but remove the effects already explained by lags 1 to 4.
+  * By ploting ACF, PACF, can help us determine the lag at which the correlation is significant, also can disclose the correlation between future data and past data. [Check the example here][19]
+    * As you can see in the example, higher bar indicating higher correlation with the lag; slower decay rate indicats higher correlation between future data and current data
 * <b>Params (p,d,q)</b> are used to determine which specific ARIMA model will be used
   * <b>p</b>: The number of lag observations included in the model, also called the lag order. <b>It is The lag value where the PACF chart crosses the upper confidence interval for the first time</b>
   * <b>d</b>: The number of times that the raw observations are differenced, also called the degree of differencing.
@@ -503,3 +505,4 @@ READING NOTES
 [16]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/prophet_paper.pdf
 [17]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/time_series_forecasting.ipynb
 [18]:https://machinelearningmastery.com/time-series-forecasting-methods-in-python-cheat-sheet/
+[19]:https://www.analyticsvidhya.com/blog/2019/12/6-powerful-feature-engineering-techniques-time-series/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
