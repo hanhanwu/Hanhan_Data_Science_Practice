@@ -204,6 +204,19 @@ I'm planning to practice more on time series analysis, pattern matching sequenti
  
 ## TIME SERIES PRACTICE
 
+### Suggestions for Time Series Practice
+#### Model Validation
+* Make sure the validation data happens after training data
+* If using cross validation, sklearn has [Time Series Split][20] to make sure testing data happens after training data in each fold
+#### Feature Engineering Methods
+* Specific time related feature - happens at a certain week of day, time of a day, etc.
+* Time based feature - such as which hour, which week, how many minutes used, etc.
+* Lag features - Such as lagged count
+* Rolling window feature - tend to closder recent time
+* Expanding window feature - tend to consider loner historical time
+* Domain specific feature
+#### [Reference][19]
+
 ### [R] [Previous practice][6]
 * [reference][7]
  
@@ -506,3 +519,4 @@ READING NOTES
 [17]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/time_series_forecasting.ipynb
 [18]:https://machinelearningmastery.com/time-series-forecasting-methods-in-python-cheat-sheet/
 [19]:https://www.analyticsvidhya.com/blog/2019/12/6-powerful-feature-engineering-techniques-time-series/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+[20]:https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.TimeSeriesSplit.html
