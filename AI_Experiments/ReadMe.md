@@ -339,6 +339,9 @@ Neural Network is a universal approximator, which means you can use it to implme
   * Step 3.2 - Value Iteration. Instead of waiting for the policy evaluation step to converge exactly to the value function vπ, ee can get the optimal policy with just 1 step of policy evaluation followed by updating the value function repeatedly.
   * Final observation is, value iteration has a better average reward and higher number of wins when it is run for 10,000 episodes.
   
+### Attention Mechanism Deep Learning
+* It's the idea that not only can all the input words be taken into account in the context vector, but relative importance should also be given to each one of them.  Whenever the proposed model generates a sentence, it searches for a set of positions in the encoder hidden states where the most relevant information is available. This idea is called ‘Attention’.
+  
 ## Tips
 ### Keras LSTM Changing Batch Size
 * When using built-in method of keras, the batch size limits the number of samples to be shown to the network before a weight update can be performed. Specifically, the batch size used when fitting your model controls how many predictions you must make at a time.
