@@ -625,6 +625,9 @@ Neural Network is a universal approximator, which means you can use it to implme
 * Pytorch has 200+ mathematical operations: https://pytorch.org/docs/stable/torch.html#math-operations
 * [My code - Pytorch for Digit Recognition][13]
   * Comparing with [My code - Keras for Digit Recognition][14], I still think Keras is much more convenient to use. It took me so much time to debug here because here you need to create batches yourself (Keras will do that for you). And because of the frequent package updates, missing 1 param will cause so much troubles later.
+  
+### Adversarial Machine Learning
+* [Adversarial Machine Learning with foolbox][27]
 
 
 ## RELAVANT PAPERS & NEWS
@@ -684,3 +687,4 @@ Neural Network is a universal approximator, which means you can use it to implme
 [24]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/autoencoder_dimensional_reduction.nb.html
 [25]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/autoencoder_dimensional_reduction.Rmd
 [26]:https://www.r-bloggers.com/pca-vs-autoencoders-for-dimensionality-reduction/
+[27]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/Henso_Jutsu_101.ipynb
