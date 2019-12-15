@@ -341,6 +341,11 @@ Neural Network is a universal approximator, which means you can use it to implme
   
 ### Attention Mechanism Deep Learning
 * It's the idea that not only can all the input words be taken into account in the context vector, but relative importance should also be given to each one of them.  Whenever the proposed model generates a sentence, it searches for a set of positions in the encoder hidden states where the most relevant information is available. This idea is called ‘Attention’.
+  * The most basic mechanism - each input has been given some importance, "global" attention. But this will increase computation when there is more input.
+  * "Local" attention, instead of considering all the encoded inputs, only a part is considered for the context vector generation. This avoids epensive computation and it's also easier to train.
+  
+#### References
+* [A comprehensive guide of attention mechanism deep learning][28]
   
 ## Tips
 ### Keras LSTM Changing Batch Size
@@ -691,3 +696,4 @@ Neural Network is a universal approximator, which means you can use it to implme
 [25]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/autoencoder_dimensional_reduction.Rmd
 [26]:https://www.r-bloggers.com/pca-vs-autoencoders-for-dimensionality-reduction/
 [27]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/Henso_Jutsu_101.ipynb
+[28]:https://www.analyticsvidhya.com/blog/2019/11/comprehensive-guide-attention-mechanism-deep-learning/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
