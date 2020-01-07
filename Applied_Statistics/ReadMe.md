@@ -141,6 +141,8 @@ but it's easier to use pyton built-in functions
 * `Variance = sum(sqrt(Xi-mean))/n, i = 1,...,n`
   * `Xi-mean` is the deviation from the mean, so variance is mean squared deviation
   * People use standard deviation because it can more meaningful than variance. Variance us using squared unit (such as squared pund) but standard deviation is using unit (such as pound)
+* HDI (Highest Density Interval) - The HDI summarizes the distribution by specifying an interval that spans most of the distribution, say 95% of it, such that every point inside the interval has higher believability than any point outside the interval.
+  * When using HDI, we often check within HDI (say 95%), whether the valeus are all lower than a certain thereshold x.
 * Relative Risk - a ratio of 2 probabilities
   * For example, first born babies have 20% probability to be born late, other babies have 15%. Relative Risk will be 1.3 here. So first born babies have 30% more likely to be late
 * Conditional Probability
