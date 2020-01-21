@@ -23,6 +23,15 @@
 [6]:https://github.com/networkx/networkx
 [8]:https://github.com/Tencent/plato
 [9]:https://spark.apache.org/docs/latest/graphx-programming-guide.html
+[10]:https://cs.stanford.edu/~jure/pubs/node2vec-kdd16.pdf
+
+## Algorithms
+### Feature Extraction for Graphs
+#### [node2vec Algorithm][10]
+* "It's an algorithmic framework for learning continuous feature representations for nodes in networks. In node2vec, we learn a mapping of nodes to a low-dimensional space of features that maximizes the likelihood of preserving network neighborhoods of nodes."
+* They designed a biased random walk procedure, which efficiently explores diverse neighborhoods. The bias came from the starting node.
+
+
 
 ## Tutorial
 ### Neo4j Graph DB
