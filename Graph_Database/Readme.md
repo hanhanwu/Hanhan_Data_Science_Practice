@@ -24,6 +24,7 @@
 [8]:https://github.com/Tencent/plato
 [9]:https://spark.apache.org/docs/latest/graphx-programming-guide.html
 [10]:https://cs.stanford.edu/~jure/pubs/node2vec-kdd16.pdf
+[11]:https://github.com/hanhanwu/Hanhan_COLAB_Experiemnts/blob/master/Try_DeepWalk.ipynb
 
 ## Algorithms
 ### Terminology
@@ -35,6 +36,7 @@
 * They designed a biased random walk procedure, which efficiently explores diverse neighborhoods. The bias came from the starting node.
 #### DeepWalk
 * It's a process that uses RandomWalk to extract sequences of nodes, then feed these sequences into a skip-gram model to get node embeddings.
+* [My Code][11]
 
 
 
