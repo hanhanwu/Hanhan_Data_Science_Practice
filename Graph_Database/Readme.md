@@ -26,10 +26,15 @@
 [10]:https://cs.stanford.edu/~jure/pubs/node2vec-kdd16.pdf
 
 ## Algorithms
+### Terminology
+* Node Embedding - Similar to Word Embedding in NLP, which uses a vector to represent a word and capture the contextual info. Same here, it uses a vector to represent a node, after training by a model, it's trying to keep the contextual info of the node.
+* Random Walk - It's technique to extract sequences from a graph. With these extracted sequences, we can train a machine learning model (such as skip-gram model) to learn node embeddings.
 ### Feature Extraction for Graphs
 #### [node2vec Algorithm][10]
 * "It's an algorithmic framework for learning continuous feature representations for nodes in networks. In node2vec, we learn a mapping of nodes to a low-dimensional space of features that maximizes the likelihood of preserving network neighborhoods of nodes."
 * They designed a biased random walk procedure, which efficiently explores diverse neighborhoods. The bias came from the starting node.
+#### DeepWalk
+* It's a process that uses RandomWalk to extract sequences of nodes, then feed these sequences into a skip-gram model to get node embeddings.
 
 
 
