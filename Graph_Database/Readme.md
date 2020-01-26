@@ -31,6 +31,14 @@
 * Node Embedding - Similar to Word Embedding in NLP, which uses a vector to represent a word and capture the contextual info. Same here, it uses a vector to represent a node, after training by a model, it's trying to keep the contextual info of the node.
 * Random Walk - It's technique to extract sequences from a graph. With these extracted sequences, we can train a machine learning model (such as skip-gram model) to learn node embeddings.
 ### Feature Extraction for Graphs
+#### General Feature Categories from Graph
+* The attributes of node
+  * For example, the node is airport, and the attributes can be airport name, location, etc.
+* Local structures of a node
+  * Such as degree (count of adjacent nodes), the number of triangles a node forms with other nodes, mean of degrees of neighbour nodes.
+* Node embeddings
+  * Node embeddings represents every node with a fixed-length vector. These vectors are able to capture information about the surrounding nodes (contextual information).
+  * The context info here is what the above 2 types of features lack of.
 #### [node2vec Algorithm][10]
 * "It's an algorithmic framework for learning continuous feature representations for nodes in networks. In node2vec, we learn a mapping of nodes to a low-dimensional space of features that maximizes the likelihood of preserving network neighborhoods of nodes."
 * They designed a biased random walk procedure, which efficiently explores diverse neighborhoods. The bias came from the starting node.
