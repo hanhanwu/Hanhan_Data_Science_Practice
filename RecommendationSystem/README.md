@@ -1,10 +1,11 @@
 
 ## MAJOR METHODS
 
-1. <b>Content Based Filtering</b>
+### Content Based Filtering
 * This method tend to introduce same category products. So if a user didn't click/like a certain category, that category products won't be recommended.
 * Content based filtering tend to use <b>similarity based method</b> such as cosin similarity, <b>distance based method</b> such as euclidean distance, or <b>correlation based method</b> such as pearson correlation to make similar recommendations.
-2. <b>Collaborative Filtering</b>
+
+### Collaborative Filtering
 * Collaborative Filtering is possible to recommends products in other categories that a user has never tried before.
 * User-User Recommendation
   * The basic idea here is, compare a user with all the other users, based on their ratings. Recommend products highly rated by similar users.
@@ -23,7 +24,11 @@
     * Product cold start
   * While collaborative filtering needs a certain amount of history, content based filtering can help deal with cold start
   
-3. <b>Evaluation Metrics</b>
+### Words Embedding
+* It makes recommendations based on the similarity of words vectors
+* [Example - Recommendation System with Word2Vec][1]
+  
+### Evaluation Metrics
 * Positive means the user likes the recommended item
 * RMSE
   * How accurate the recommendation is
@@ -73,3 +78,6 @@
           * The idea is the same as matrix factorization, and it also uses gradient descent to do optimization
   * Reference: https://www.analyticsvidhya.com/blog/2018/06/comprehensive-guide-recommendation-engine-python/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
     * The description is good. It implemented its own matrix facotrization, I used turicreate built-in
+
+
+[1]:https://www.analyticsvidhya.com/blog/2019/07/how-to-build-recommendation-system-word2vec-python/?utm_source=blog&utm_medium=graph-feature-extraction-deepwalk
