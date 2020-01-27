@@ -26,6 +26,7 @@
   
 ### Words Embedding
 * It makes recommendations based on the similarity of words vectors
+  * Words in similar info context tend to have similar vectors
 * [Example - Recommendation System with Word2Vec][1]
   
 ### Evaluation Metrics
