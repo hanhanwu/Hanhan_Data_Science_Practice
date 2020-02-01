@@ -42,7 +42,7 @@
 #### [node2vec Algorithm][10]
 * "It's an algorithmic framework for learning continuous feature representations for nodes in networks. In node2vec, we learn a mapping of nodes to a low-dimensional space of features that maximizes the likelihood of preserving network neighborhoods of nodes."
 * They designed a biased random walk procedure, which efficiently explores diverse neighborhoods. The bias came from the starting node.
-#### DeepWalk
+#### Graph Feature Extraction with RandomWalk
 * It's a process that uses RandomWalk to extract sequences of nodes, then feed these sequences into a skip-gram model to get node embeddings.
 * [My Code][11]
 
