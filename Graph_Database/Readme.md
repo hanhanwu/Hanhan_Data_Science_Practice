@@ -25,6 +25,7 @@
 [9]:https://spark.apache.org/docs/latest/graphx-programming-guide.html
 [10]:https://cs.stanford.edu/~jure/pubs/node2vec-kdd16.pdf
 [11]:https://github.com/hanhanwu/Hanhan_COLAB_Experiemnts/blob/master/Try_DeepWalk.ipynb
+[12]:https://github.com/hanhanwu/Hanhan_COLAB_Experiemnts
 
 ## Algorithms
 ### Terminology
@@ -42,9 +43,9 @@
 #### [node2vec Algorithm][10]
 * "It's an algorithmic framework for learning continuous feature representations for nodes in networks. In node2vec, we learn a mapping of nodes to a low-dimensional space of features that maximizes the likelihood of preserving network neighborhoods of nodes."
 * They designed a biased random walk procedure, which efficiently explores diverse neighborhoods. The bias came from the starting node.
-#### Graph Feature Extraction with RandomWalk
+#### [Graph Feature Extraction with RandomWalk][11]
 * It's a process that uses RandomWalk to extract sequences of nodes, then feed these sequences into a skip-gram model to get node embeddings.
-* [My Code][11]
+* [More Description][12]
 
 
 
