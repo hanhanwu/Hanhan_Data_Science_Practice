@@ -54,6 +54,9 @@ There are many implemented projects stored in different folders, I need to recor
     * How to keep original features based on PCA results
   * [R] https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/autoencoder_dimensional_reduction.Rmd
     * PCA, autoencoder reconstruction error
+  * How to plot PCA/t-SNE converted 2D data with original labels: https://github.com/hanhanwu/Hanhan_COLAB_Experiemnts/blob/master/Try_DeepWalk.ipynb
+  * t-SNE vs PCA vs LDA: https://github.com/hanhanwu/Hanhan_Data_Science_Resources2
+    * Search for "t-SNE"
   
 * For Industry Suggestions
   * Overall 1: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/tree/master/Better4Industry
