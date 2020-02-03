@@ -29,6 +29,10 @@ PRACTICAL NOTES
 
 DESIGN PATTERNS
 
+* [Python Design Patterns][6]
+  * The description here is detailed with graph
+* [Python Design Patterns Examples][7]
+  * The code examples with relevant description are easy to understand
 * [Design Patterns with simple graph & code example][4]
 
 
@@ -37,3 +41,5 @@ DESIGN PATTERNS
 [3]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Python_OO_Design/basic_design_summer_dessert/customer.py
 [4]:http://www.oodesign.com/
 [5]:https://www.python-course.eu/python3_inheritance.php
+[6]:https://refactoring.guru/design-patterns/python
+[7]:https://github.com/faif/python-patterns
