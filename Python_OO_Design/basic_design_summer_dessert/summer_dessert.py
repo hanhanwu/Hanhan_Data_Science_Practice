@@ -5,7 +5,7 @@ This module contains an abstract class summer_dessert,
 which can be inherented by summer desserts such as ice-cream, galeto, frozen_yogurt, etc.
 
 -- the @abstractmethod here is left empty in the abstract class, so that its child class can do the specific implementation
-   You need python built-in class abc to get abstractethod (although the class name is, silly)
+   You need python built-in class abc to get abstractmethod (although the class name is, silly)
 '''
 from abc import ABCMeta, abstractmethod
 
