@@ -22,8 +22,7 @@ When I say "summer desserts", it's not any fancy pyton module, or anything like 
 
 PRACTICAL NOTES
 
-* When you want to modify the `__init__()` in a descendent class, [try this!][5]
-  * If the descendent class A3 inherented from a class A2 which inherented from class A1, just use A2's `__init__()` first, then add new params for A3's `__init__()` 
+* When you want to add variables in `__init__()` in a descendent class, [try what I did in `Icecream` class][5]
  
 *************************************************************************************
 
@@ -40,6 +39,6 @@ DESIGN PATTERNS
 [2]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Python_OO_Design/basic_design_summer_dessert/summer_dessert_children.py
 [3]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Python_OO_Design/basic_design_summer_dessert/customer.py
 [4]:http://www.oodesign.com/
-[5]:https://www.python-course.eu/python3_inheritance.php
+[5]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Python_OO_Design/basic_design_summer_dessert/summer_dessert_children.py
 [6]:https://refactoring.guru/design-patterns/python
 [7]:https://github.com/faif/python-patterns
