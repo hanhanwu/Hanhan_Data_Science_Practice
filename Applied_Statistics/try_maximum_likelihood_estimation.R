@@ -1,5 +1,5 @@
 # try MLE (maximum likelihood estimaiton) to predict hourly ticket selling count
-# The goal for MLE is to get the coefficients of attributes.
+# The goal for MLE is to get the coefficients of attributes used in function y
 ## Download the input data from https://s3-ap-south-1.amazonaws.com/av-blog-media/wp-content/uploads/2018/07/Train_Tickets.csv
 library(data.table)
 
