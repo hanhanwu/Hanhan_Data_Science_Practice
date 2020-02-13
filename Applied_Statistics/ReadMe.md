@@ -29,12 +29,13 @@
     * Poisson Distribution has `L(θ;x) = Pr{Y = y|µ} = exp(-µ) * pow(µ, y)/y!`
     * Likelihood `LL(θ;x) = log(L(θ;x)) = sum(y*(log(µ)) - µ)`
     * Using negative likelihood so that the optimization will become minumization, same as maximize positive likelihood
-  * Method 1 - DIY model, and you calculate coefficients vector using R `mle`
-    * With the calculated coefficients, you can calculate µ, consider it as the average of Count, and evaluate with testing data Count, to get RMSE
-    * To use `mle`, you won't find `stats4` package in installing tool, you can simply run `library(stats4)`
-  * Method 2 - R `glm` 
-    * It will calculate the coefficients for you when you define the distribution in `family`
-    * In the final evaluation part, you can see when I was using `exp()` for prediction results and comparing with the observations, the error was smaller. Maybe this is because `glm` was using `log()` function as default link function for poisson distribution and you need to convert back in prediction results, https://www.statmethods.net/advstats/glm.html
+  * <b>The goal for MLE is to get the coefficients of attributes used in function y</b>
+    * Method 1 - DIY model, and you calculate coefficients vector using R `mle`
+      * With the calculated coefficients, you can calculate µ, consider it as the average of Count, and evaluate with testing data Count, to get RMSE
+      * To use `mle`, you won't find `stats4` package in installing tool, you can simply run `library(stats4)`
+    * Method 2 - R `glm` 
+      * It will calculate the coefficients for you when you define the distribution in `family`
+      * In the final evaluation part, you can see when I was using `exp()` for prediction results and comparing with the observations, the error was smaller. Maybe this is because `glm` was using `log()` function as default link function for poisson distribution and you need to convert back in prediction results, https://www.statmethods.net/advstats/glm.html
 * Python also have a library similar to R `glm` - `pymc`
 * Inspirations
   * Pay attention to the power of taking log
