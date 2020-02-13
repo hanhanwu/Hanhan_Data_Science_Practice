@@ -1,4 +1,5 @@
 # try MLE (maximum likelihood estimaiton) to predict hourly ticket selling count
+# The goal for MLE is to get the coefficients of attributes.
 ## Download the input data from https://s3-ap-south-1.amazonaws.com/av-blog-media/wp-content/uploads/2018/07/Train_Tickets.csv
 library(data.table)
 
@@ -58,7 +59,7 @@ pred_lm <- predict(lm_fit, raw_data[idx,])
 lm_rmse <- RMSE(exp(pred_lm), raw_data$Count[idx])  # used log(Count) when building the model
 lm_rmse  # 11.23529
 
-# Method 2 - With glm, you can choose the distribution in "family"
+# Method 2 - With glm, you can choose the distribution in "family", it will return coefficients directly
 glm_fit <- glm(Count~elapsed_weeks, family = "poisson", data = raw_data[-idx,])
 summary(glm_fit)
 pred_glm <- predict(glm_fit,  raw_data[idx,])
