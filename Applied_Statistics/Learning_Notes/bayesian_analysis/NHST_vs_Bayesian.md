@@ -1,6 +1,6 @@
 # Null Hypothesis Significance Testing (NHST) vs Bayesian Analysis
 
-* In NHST, the goal of <b>inference</b> is to ecide whether a particular value of a model parameter can be rejected.
+* In NHST, the goal of <b>inference</b> is to decide whether a particular value `𝜃` of a model parameter can be rejected.
 * A good experiment is founded on the principle that the data is insulated from the experimenter's intentions.
 
 ## About p-value
