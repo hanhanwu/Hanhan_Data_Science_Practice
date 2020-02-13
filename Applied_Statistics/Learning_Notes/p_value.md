@@ -17,7 +17,7 @@ In a word, right side space represents this probability. Threfore, larger p-valu
 * Null Hypothesis: Sample distribution is similar to the population distribution. (Or the sample was obtained from the population.)
 * p-value > alpha
   * Fail to reject NULL Hypothesis
-  * Not signnificant.
+  * Not significant.
   * The sample results are just a low probable event of the population distribution and are very likely to be obtained by luck.
 * p-value < alpha
   * The result is NOT in favor of NULL Hypothesis
