@@ -1,11 +1,13 @@
 # Hypothesis Tests
 
+## Examples
+* [Example - Calculate type I, II error][1]
 
 ## Terminology
 * Type I Error - When H0 is true but got rejected
 * Type II Errle - When H0 is false but got accepted
 * `α` - is the probability for type I error
-* `β` - is the probability for type II error
+* `β` - is the probability for type II error, also called as "power"
 * Both `α` and `β` will decrease when sample size increases
 * `𝒛α` is the z-value of `α`
   * 95% confidence, 1-α = 0.95, so α/2 = 0.025, 𝒛0.025 = 1.96
@@ -106,3 +108,6 @@ Here's an example about how to calculate Wilcoxon Test:
  <p align="left">
 <img width="700" height="200" src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/Learning_Notes/images/likelihood_ratio_test.png">
  </p>
+
+
+[1]:https://www.youtube.com/watch?v=BJZpx7Mdde4
