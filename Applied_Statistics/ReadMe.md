@@ -1,3 +1,5 @@
+# Applied Statistics
+
 ## Statistics Tables
 * [Z table - Having z score to get p-value][8]
   * I found this one contains more z-values to check.
@@ -9,6 +11,9 @@
 * [Online z-score to p-value][9]
   * Different from the table above, this one will diretly give you the right side probability - p-value
 
+## Online Calculators
+* [QuickCalcs][11]
+  * It has multiple calculators, such as "Confidence interval of a proportion or count", "Binomial and sign test. Compare observed and expected proportions", etc.
 
 ## Experiments
 
@@ -328,3 +333,4 @@ but it's easier to use pyton built-in functions
 [8]:http://pages.stat.wisc.edu/~ifischer/Statistical_Tables/Z-distribution.pdf
 [9]:https://www.socscistatistics.com/pvalues/normaldistribution.aspx
 [10]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/Learning_Notes/p_value.md
+[11]:https://www.graphpad.com/quickcalcs/catMenu/
