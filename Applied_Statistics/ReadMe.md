@@ -14,6 +14,8 @@
 ## Online Calculators
 * [QuickCalcs][11]
   * It has multiple calculators, such as "Confidence interval of a proportion or count", "Binomial and sign test. Compare observed and expected proportions", etc.
+* [Sample Size for A/B Test][12]
+  * Given Type 1 error rate (Significance level) `α`, type 2 error rate (Statistical power) `1−β`, Minimum Detectable Effect and Baseline conversion rate for the A/B test, it will calculate the sample size.
 
 ## Experiments
 
@@ -334,3 +336,4 @@ but it's easier to use pyton built-in functions
 [9]:https://www.socscistatistics.com/pvalues/normaldistribution.aspx
 [10]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/Learning_Notes/p_value.md
 [11]:https://www.graphpad.com/quickcalcs/catMenu/
+[12]:https://www.evanmiller.org/ab-testing/sample-size.html
