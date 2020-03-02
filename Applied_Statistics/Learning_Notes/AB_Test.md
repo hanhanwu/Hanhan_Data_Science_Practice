@@ -3,6 +3,7 @@
 🌺 The main purpose for A/B test is to use the data we collect from variants A and B, computing some metrics for each variant, then with statistical methods to determine which variant is better.
 
 ## Frequentist Methods
+* [My Code - Practical A/B Test Experiments][1]
 * Using p-value to choose hypothesis
   * Null Hypothesis - There's no difference between variant A, B
   * Alternative Hypothesis - A, B are different
@@ -30,3 +31,6 @@
   * https://blog.exploratory.io/an-introduction-to-bayesian-a-b-testing-in-exploratory-cb5a7ad80963
 * R - `bayesAB`
   * R package: https://github.com/FrankPortman/bayesAB
+
+
+[1]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/tree/master/Applied_Statistics/ABTest_Experiments
