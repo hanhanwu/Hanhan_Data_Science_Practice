@@ -667,6 +667,11 @@ Neural Network is a universal approximator, which means you can use it to implme
 * [GPT-2 - Text Generator][17]
 * [word2vec in product recommendation][18]
 * [DeepPrivacy - Face Detection & Switch Face][20]
+* Model Deployment
+  * [Tensorflow Serving][29]
+    * Version control: auto update, rollback
+    * Configuration update
+    * Deploying multiple models
 
 
 [1]:https://stackoverflow.com/questions/45912124/python-keras-how-to-generate-right-image-dimension
@@ -697,3 +702,4 @@ Neural Network is a universal approximator, which means you can use it to implme
 [26]:https://www.r-bloggers.com/pca-vs-autoencoders-for-dimensionality-reduction/
 [27]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/Henso_Jutsu_101.ipynb
 [28]:https://www.analyticsvidhya.com/blog/2019/11/comprehensive-guide-attention-mechanism-deep-learning/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+[29]:https://www.analyticsvidhya.com/blog/2020/03/tensorflow-serving-deploy-deep-learning-models/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
