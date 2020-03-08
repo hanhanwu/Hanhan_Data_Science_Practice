@@ -37,6 +37,8 @@
   </p>
     
 ## Approach 2
+* <b>"Bayesian model comparison is only useful when both models are genuinely viable and equivalently informed. If one or both models has little prior believability, then the Bayes factor and relative posterior believabilities are of little use."</b>
+  * Both models should have prior viability, not just one.
 * Instead of focusing on the magnitude of the parameter, it suggests to focus on deciding which of 2 hypothetical priors is least unbelievable.
   * One hypothetical prior expresses the idea that the parameter value is exactly the null value.
   * The alternative hypothetical prior expresses the idea that the parameter could be anything but the null value.
