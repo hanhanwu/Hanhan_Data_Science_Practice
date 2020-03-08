@@ -1,13 +1,18 @@
 # A/B Test Experiments
 
+### Suggestions
+* [A/B test suggestions][2]
+  * I found some of the suggestions here are helpful, especially questions in determing your experiment goal.
+  * The terminology description here is also good.
+
 ## Thorough Experiment with Confidence Interval, p-value for A/B test
 * This is a typical A/B test problem.
 ### [My code][1]
 * Online calculators can be used
   * Estimate sample size: https://www.evanmiller.org/ab-testing/sample-size.html
-    * Given Type 1 error rate α, type II error rate β, basedline conversion rate, min detectable effect
+    * Given Type 1 error rate α, type II error rate β, basedline conversion rate, min detectable effect.
   * Estimate p-value for binomial distribution: https://www.graphpad.com/quickcalcs/binomial1/
-    * Given number of success, total trails, probability of success in biomial distribution
+    * Given number of success, total trails, probability of success in biomial distribution.
 ### Overall Process
 1. Choose invariant metrics and evaluation metrics.
 2. Estimation of baselines and Sample Size
@@ -21,3 +26,4 @@
 
 
 [1]: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/ABTest_Experiments/detailed_ABTest_Experiment.ipynb
+[2]:https://github.com/dwyl/learn-ab-and-multivariate-testing
