@@ -40,6 +40,12 @@
 * Instead of focusing on the magnitude of the parameter, it suggests to focus on deciding which of 2 hypothetical priors is least unbelievable.
   * One hypothetical prior expresses the idea that the parameter value is exactly the null value.
   * The alternative hypothetical prior expresses the idea that the parameter could be anything but the null value.
+* To compare the models:
+  * `P(M_alt|D)/P(M_null|D) = (P(D|M_alt) * P(M_alt))/ (P(D|M_null) * P(M_null))`
+    * The prior beliefs in each model are typically assumed to be equal. `P(M_null) = P(M_alt)`
+    * So we majorly use <b>Byes Factor (BF)</b>, `Bayes Factor = (P(D|M_alt)/(P(D|M_null)`
+      * When P(D|M_alt) is close to P(D|M_null), BF is just slightly favors the alternative or the null, so either model remains reasonably credible.
+      * If the Bayes factor had turned out to be more extreme, we might decide to declare one or the other prior to be less unbelievable than the other prior.
 
 ## Reference
 * [Doing Bayesian Data Analysis][1]
