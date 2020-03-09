@@ -68,6 +68,6 @@
 * [Doing Bayesian Data Analysis][1]
 * [Credible Intervals in R][2]
 
-[1]:[2]:https://www.amazon.com/Doing-Bayesian-Data-Analysis-Tutorial/dp/0123814855/ref=cm_cr_arp_d_product_top?ie=UTF8
+[1]:https://www.amazon.com/Doing-Bayesian-Data-Analysis-Tutorial/dp/0123814855/ref=cm_cr_arp_d_product_top?ie=UTF8
 [2]:https://easystats.github.io/bayestestR/articles/credible_interval.html
 [3]:https://link.springer.com/article/10.1007/s10670-019-00209-z
