@@ -48,8 +48,26 @@
     * So we majorly use <b>Byes Factor (BF)</b>, `Bayes Factor = (P(D|M_alt)/(P(D|M_null)`
       * When P(D|M_alt) is close to P(D|M_null), BF is just slightly favors the alternative or the null, so either model remains reasonably credible.
       * If the Bayes factor had turned out to be more extreme, we might decide to declare one or the other prior to be less unbelievable than the other prior.
+      
+## Credible Intervals
+* Different Types of Credible Intervals
+  * HDI (High Density Interval) - all points within the interval have a higher probability density than points outside the interval.
+  * ETI (Equal-tailed Interval) - the ETI is equal-tailed. This means that a 90% interval has 5% of the distribution on either side of its limits. It indicates the 5th percentile and the 95th percentile
+  * In symmetric distributions, the two methods of computing credible intervals, the ETI and the HDI, return similar results. However,
+    * HDI is better at summarizing the credible valuesin distributions, because it's possible that parameter values in the ETI have lower credibility than parameter values outside of the ETI.
+    * But when the distribution has been transformed (such as log transformation), ETI is better than HDI, since the lower and higher bounds of the transformed distribution in EIT will correspond to the transformed lower and higher bounds of the original distribution.
+* 95% vs. 89%
+  * We were educated to use 95% credible interval, but some suggested that 95% might not be the most apppropriate for Bayesian posterior distributions, potentially lacking stability if not enough posterior samples are drawn.
+  * Thus default credible interval is 89%,in order to have a more stable choice.
+* The Support Interval (SI)
+  * Unlike the HDI and the ETI, which look at the posterior distribution, the Support Interval (SI) provides information regarding <b>the change in the credability of values from the prior to the posterior</b>
+  * It indicates which values of a parameter are have gained support by the observed data, or SI is an interval that contains only those values whose credibility is not decreased by observing the data
+  * [More about the support interval][3]
 
 ## Reference
 * [Doing Bayesian Data Analysis][1]
+* [Credible Intervals in R][2]
 
 [1]:[2]:https://www.amazon.com/Doing-Bayesian-Data-Analysis-Tutorial/dp/0123814855/ref=cm_cr_arp_d_product_top?ie=UTF8
+[2]:https://easystats.github.io/bayestestR/articles/credible_interval.html
+[3]:https://link.springer.com/article/10.1007/s10670-019-00209-z
