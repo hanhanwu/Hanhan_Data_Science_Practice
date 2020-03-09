@@ -7,6 +7,11 @@ More details about Bayesian Analysis
 * [Doing Bayesian Data Analysis][2] - It's a book
 
 
+## Bayesian Approach for Hypothesis Analysis
+* [Concepts][4]
+* [How to use Exploratory (a tool) to do Bayesian A/B test with/without prior][5]
+  * [Exploratory][6]
+
 ## R Analysis
 * [Running Proportion][1]
   * It's flip coin problem, the sequence of binary values. `Running Proportion = cumulated sum / cumulated count`, with running proportion, it can help display the trending of a coin's head (or tail) frequency when the numer of flips is increasing.
@@ -18,3 +23,6 @@ More details about Bayesian Analysis
 [1]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/Learning_Notes/bayesian_analysis/bayesian_running_proportion.R
 [2]:https://www.amazon.com/Doing-Bayesian-Data-Analysis-Tutorial/dp/0123814855/ref=cm_cr_arp_d_product_top?ie=UTF8
 [3]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/Learning_Notes/bayesian_analysis/bayesian_integralOfdensity.R
+[4]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/Learning_Notes/bayesian_analysis/Bayesian_Approaches_for%20Hypothesis_Tests.md
+[5]:https://blog.exploratory.io/an-introduction-to-bayesian-a-b-testing-in-exploratory-cb5a7ad80963
+[6]:https://exploratory.io/?utm_campaign=ab_test&utm_medium=blog&utm_source=medium
