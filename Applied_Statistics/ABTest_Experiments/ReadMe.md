@@ -4,6 +4,11 @@
 * [A/B test suggestions][2]
   * I found some of the suggestions here are helpful, especially questions in determing your experiment goal.
   * The terminology description here is also good.
+* [Ultimate guide in A/B testing][3]
+  * The suggestions in Don'ts and Do's
+  * Ideas about what usually to test
+  * Some A/B test cases
+* [Some Suggestions in multivariate testing][4]
 
 ## Thorough Experiment with Confidence Interval, p-value for A/B test
 * This is a typical A/B test problem.
@@ -27,3 +32,5 @@
 
 [1]: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/ABTest_Experiments/detailed_ABTest_Experiment.ipynb
 [2]:https://github.com/dwyl/learn-ab-and-multivariate-testing
+[3]:https://www.smashingmagazine.com/2010/06/the-ultimate-guide-to-a-b-testing/
+[4]:https://www.smashingmagazine.com/2011/04/multivariate-testing-101-a-scientific-method-of-optimizing-design/
