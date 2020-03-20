@@ -359,12 +359,13 @@ In this regard, Tomek’s link and edited nearest-neighbours are the two cleanin
         * Not list undersampling here
         * BalancedBaggingClassifier: http://contrib.scikit-learn.org/imbalanced-learn/stable/generated/imblearn.ensemble.BalancedBaggingClassifier.html#imblearn.ensemble.BalancedBaggingClassifier
           * They implemented bagging. Bagging (Bootstrap Aggregating). With Bootstrap, each row is selected with equal probability with replacement. 
-  * Emsembling
-    * Bagging - allows sampling with repalcement (bootstrap). Random Forest is a type of Bagging. Bagging improves stability & accuracy of machine learning algorithms; Reduces variance； Overcomes overfitting； Improved misclassification rate of the bagged classifier； In noisy data environments bagging outperforms boosting； Bagging works only if the base classifiers are not bad to begin with. Bagging bad classifiers can further degrade performance
-    * <b>Weak Learner</b> - indicates the classifier works slightly better than the average
-    * Boosting, Ada Boost - Suits for any kind of classification problem; Not prone to overfitting; Sensitive to noisy data and outliers
-    * Boosting, Gradient Tree Boosting (GBM) - uses Decision Tree as weak learner; each model minilize loss function using Gradient Descent; harder to fit than random forest; 
-    * Boosting, XGBoost
+          
+* Emsembling
+  * Bagging - allows sampling with repalcement (bootstrap). Random Forest is a type of Bagging. Bagging improves stability & accuracy of machine learning algorithms. Reduces variance. Overcomes overfitting. Improved misclassification rate of the bagged classifier. In noisy data environments bagging outperforms boosting. Bagging works only if the base classifiers are not bad to begin with. Bagging bad classifiers can further degrade performance.
+  * Boosting
+    * Ada Boost - Suits for any kind of classification problem. Not prone to overfitting. Sensitive to noisy data and outliers.
+    * Gradient Tree Boosting (GBM) - uses Decision Tree as weak learner. Each model minilize loss function using Gradient Descent. harder to fit than random forest.
+    * XGBoost
 
 
 * TOOL - Google OpenRefine
