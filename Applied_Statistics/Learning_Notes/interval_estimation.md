@@ -148,3 +148,12 @@
   * Then we have `P(c <= (X̄ - μ)/(S/sqrt(16)) <= d)≈ 0.95`
   * `[x̅ - d*s/sqrt(16), x̅ - c*s/sqrt(16)]` leads to the approximate 95% confidence interval
     * `x̅` is the sample mean of the original 16 values, `s` is the sample standard deviation for them
+
+## Other Notes About Confidence Interval
+### Confidence Interval vs Point Estimates
+* Point Estimates - It generates an estimated value of population parameter
+  * Methods of moments, maximum likelihood estimator are the methods of  point estimates
+* Confidence Interval - It generates an estimated value range of population parameter
+* Confidence interval is often prefered, since it tells how likely the value range contains the population parameter
+  * `α`: is called as "the level of significance"
+  * `1-α`: is called as "confidence level" or "confidence coefficient", this is the likelihood or probability
