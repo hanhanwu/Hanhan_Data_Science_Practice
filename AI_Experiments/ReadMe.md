@@ -54,8 +54,12 @@ Neural Network is a universal approximator, which means you can use it to implme
 * Core concepts of neural network: https://www.analyticsvidhya.com/blog/2016/08/evolution-core-concepts-deep-learning-neural-networks/
   * The meaning of "sample", "epoch", "batch": https://keras.io/getting-started/faq/#what-does-sample-batch-epoch-mean
     * <b>Sample</b>: One element of a dataset. Such as, 1 image, 1 audio file
-    * <b>Batch</b>: A set of N samples. The samples in a batch are processed independently, in parallel. If training, a batch results in only one update to the model. A batch generally approximates the distribution of the input data better than a single input. <b>The larger the batch, the better the approximation</b>, but also takes longer time.
-    * <b>Epoch</b>: Epoch: an arbitrary cutoff, generally defined as "one pass over the entire dataset", used to separate training into <b>distinct phases</b>, which is useful for <b>logging and periodic evaluation</b>. When using Keras `evaluation_data` or `evaluation_split` with the `fit` method of Keras models, <b>evaluation will be run at the end of every epoch</b>.
+    * <b>Batch</b>: A set of N samples. The samples in a batch are processed independently, in parallel. If training, a batch results in only one update to the model. 
+      * A batch generally approximates the distribution of the input data better than a single input. <b>The larger the batch, the better the approximation</b>, but also takes longer time.
+    * <b>Epoch</b>: 1 roundof training on the entire dataset.
+      * When using Keras `evaluation_data` or `evaluation_split` with the `fit` method of Keras models, <b>evaluation will be run at the end of every epoch</b>.
+    * <b>Iteration</b>: N/batch_size, N is sample size
+      * An epoch should run N/batch_size iterations
     
 * Activation functions and when to ues them: https://www.analyticsvidhya.com/blog/2017/10/fundamentals-deep-learning-activation-functions-when-to-use-them/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
   * They help neural network choose the useful points and suppress irrelevant info. They can decide whether a neuron should be activated or not, whether the information the neuron is receiving is relevant or should be ignored
@@ -212,10 +216,13 @@ Neural Network is a universal approximator, which means you can use it to implme
       * The subsequent layers will try to combine them into <b>simpler shapes</b> and eventually into <b>templates of different object positions, illumination, scales, etc</b>
       * The final layers will <b>match an input image with all the templates</b> and the <b>final prediction</b> is like a weighted sum of all of them.
     * CNN important layers
-      * Convolution Layer
-      * ReLU layer
-      * Pooling Layer: Using padding in convolution layer, the image size remains same. So, pooling layers are used to reduce the size of image.
-      * Fully Connected Layer: Each pixel is considered as a separate neuron just like a regular neural network. The last fully-connected layer will contain as many neurons as the number of classes to be predicted
+      * Convolution Layer - the layer that does the convolutional operation by creating smaller picture windows to go over the data.
+        * Using padding in convolution layer, the image size remains same.
+      * ReLU layer - it brings non-linearity to the network and converts all the negative pixels to zero. The output is a rectified feature map.
+      * Pooling Layer - pooling is a down-sampling operation that reduces the dimensionality of the feature map.
+        * It performs down-sampling operations to reduce the dimensionality and creates a pooled feature map by sliding a filter matrix over the input matrix.
+      * Fully Connected Layer - Classifiy objects.
+        * Each pixel is considered as a separate neuron just like a regular neural network. The last fully-connected layer will contain as many neurons as the number of classes to be predicted.
     * In this article, I think the correct formula for calculating output size should be: `(W-F+2P)/S + 1`
     * To calculate zero-padding size: `(F-1)/2`
     * Filters might be called kernels sometimes
