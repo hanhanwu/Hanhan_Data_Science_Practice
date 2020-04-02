@@ -62,9 +62,13 @@ Neural Network is a universal approximator, which means you can use it to implme
       * An epoch should run N/batch_size iterations
     
 * Activation functions and when to ues them: https://www.analyticsvidhya.com/blog/2017/10/fundamentals-deep-learning-activation-functions-when-to-use-them/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
-  * They help neural network choose the useful points and suppress irrelevant info. They can decide whether a neuron should be activated or not, whether the information the neuron is receiving is relevant or should be ignored
+  * "Activation functions are mathematical equations that determine the output of a neural network. The function is attached to each neuron in the network, and determines whether it should be activated (“fired”) or not, based on whether each neuron’s input is relevant for the model’s prediction. Activation functions also help normalize the output of each neuron to a range between 1 and 0 or between -1 and 1."
   * Without activation function, the weights, bias will simply do a linear transformation, and the neural network will work as a linear regression problem
-  * Gradient helps back-propagation. <b>To check gradient, you just check derivate at each data point</b>
+  * Gradient vs Gradient Descent
+    * Gradient is a numeric calculation allowing us to know how to adjust the parameters of a network in such a way that its output deviation is minimized. 
+    * It's the multi-variable derivative of the loss function with respect to all the network parameters. Graphically it would be the slope of the tangent line to the loss function at the current point when evaluating the current parameter values. 
+    * Mathematically it’s a vector that gives us the direction in which the loss function increases faster, so we should move in the opposite direction if we try to minimize it.
+  * Gradient Descent can be thought of climbing down to the bottom of a valley. It's a minimization algorithm that minimizes a given activation function.
   * <b>Binary Step Function</b>
     * Threshold based classifier, decide whether or not to activate the neuron
     * Only serves for binary classification, cannot work for multi-class classification
