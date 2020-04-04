@@ -26,8 +26,8 @@
   * Estimate sample size for each evaluation metrics, only keep the metrics that have practical amount of sample size.
 3. Verify null hypothese - Control Group vs. Experiment Group
   * Sanity check with invariant metrics
-  * Differences in evaluation metrics, using confidence interval, Dmin to check both statistical, practical significance.
-  * Differences in trending, using p_value to check statistical significance.
+  * Differences in evaluation metrics, using error of margin & confidence interval, Dmin (min change that's significant to the business) to check both statistical, practical significance.
+  * Differences in trending (such as daily trending), using p_value to check statistical significance.
 
 
 [1]: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/ABTest_Experiments/detailed_ABTest_Experiment.ipynb
