@@ -46,15 +46,9 @@
 * Python also have a library similar to R `glm` - `pymc`
 * Inspirations
   * Pay attention to the power of taking log
-  * To deal with Giant data computation
-    * We know there is map-reduce, parallel computing, streaming to deal with large amount of data computation. But sometimes none of them could help when there are more strict requirements came from customers...
-    * So when dealing with hiant dtaa computation, instead of using all the data at once, how about using central limit theorem and maximum likelihood estimation
-      * With central limit theorem, you generate many fixed size samples (record>=30), only compute on each sample, and generate the mean of each sample. When the distribution of these mean formed the normal distribution, your samples are representative, and you can just use the `µ` of the normal distribution as the average of your population results
-        * With this method, you don't need to check any other distribution except the distribution of all the mean from the samples
-      * But if you even cannot generate that large amount if samples, how about calculate maximum likelihood.
-        * This need you to know the distribution of data, and what you need to predict
-        * Then you need to know y (what you need to predict), x (features used for the prediction), formula between x,µ and θ, likelihood formula. Then you do the optimization work in order to calculate µ
-        * Basicly, you can treat a finalized maximum likelihood model as a linear regression model
+  * 2 major ways to estimate the average of the population
+    * Central Limit Theorem
+    * Maximum Likelihood Estimation (MLE)
 * Reference: https://www.analyticsvidhya.com/blog/2018/07/introductory-guide-maximum-likelihood-estimation-case-study-r/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
   * It's lack of many things that a tutorial should have.... you even don't know how did he get those columns and plots.... Better to check my code.
   
