@@ -10,6 +10,9 @@
   * Some A/B test cases
 * [Some Suggestions in multivariate testing][4]
 
+* [Frequentist Methods vs Bayesian Method in A/B Test][5]
+  * Besides using the tool called Exploratory for Bayesian A/B test, [here's the theoritical method for Bayesian hypothesis test][6]
+
 ## Thorough Experiment with Confidence Interval, p-value for A/B test
 * This is a typical A/B test problem.
 ### [My code][1]
@@ -34,3 +37,5 @@
 [2]:https://github.com/dwyl/learn-ab-and-multivariate-testing
 [3]:https://www.smashingmagazine.com/2010/06/the-ultimate-guide-to-a-b-testing/
 [4]:https://www.smashingmagazine.com/2011/04/multivariate-testing-101-a-scientific-method-of-optimizing-design/
+[5]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/Learning_Notes/AB_Test.md
+[6]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/Learning_Notes/bayesian_analysis/Bayesian_Approaches_for%20Hypothesis_Tests.md
