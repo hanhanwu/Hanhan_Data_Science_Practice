@@ -68,7 +68,10 @@ Neural Network is a universal approximator, which means you can use it to implme
     * Gradient is a numeric calculation allowing us to know how to adjust the parameters of a network in such a way that its output deviation is minimized. 
     * It's the multi-variable derivative of the loss function with respect to all the network parameters. Graphically it would be the slope of the tangent line to the loss function at the current point when evaluating the current parameter values. 
     * Mathematically it’s a vector that gives us the direction in which the loss function increases faster, so we should move in the opposite direction if we try to minimize it.
-  * Gradient Descent can be thought of climbing down to the bottom of a valley. It's a minimization algorithm that minimizes a given activation function.
+    * Gradient Descent can be thought of climbing down to the bottom of a valley. It's a minimization algorithm that minimizes a given activation function.
+  * Batch Gradient Descent vs Stochastic Gradient Descent
+    * Batch gradient descent computes the gradient using the entire dataset, while Stochastic gradient descent computes the gradient using a single sample.
+    * Batch gradient descent updates weights slower and converge slower because of the data size, Stochastic gradient descent updates weights more frequent and therefore converge faster.
   * <b>Binary Step Function</b>
     * Threshold based classifier, decide whether or not to activate the neuron
     * Only serves for binary classification, cannot work for multi-class classification
