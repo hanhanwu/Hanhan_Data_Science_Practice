@@ -94,7 +94,8 @@ Neural Network is a universal approximator, which means you can use it to implme
     * `f(x)=max(0,x)`, f(x)= x if x>= 0, f(x)=0 if x<0
     * non-linear
     * The main advantage of using the ReLU function over other activation functions is that <b>it does not activate all the neurons at the same time</b>.
-    * But the gradient is 0 for x<0, which made the neurons die for activations in that region. Because it's not learning but x is always negative, so it's never learn
+    * More computationally efficient to compute than Sigmoid like functions since Relu just needs to pick max(0,𝑥) and not perform expensive exponential operations as in Sigmoids. In practice, networks with Relu tend to show better convergence performance than sigmoid.
+    * But the gradient is 0 for x<0, which made the neurons die for activations in that region. Because it's not learning but x is always negative, so it's never learn.
     * ReLU function should <b>only be used in the hidden layers</b>
   * <b>Leaky ReLU</b>
     * f(x)=ax if x<0, f(x)=x if x>=0
