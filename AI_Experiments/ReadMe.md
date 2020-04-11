@@ -236,6 +236,7 @@ Neural Network is a universal approximator, which means you can use it to implme
     * CNN important layers
       * Convolution Layer - the layer that does the convolutional operation by creating smaller picture windows to go over the data.
         * Using padding in convolution layer, the image size remains same.
+        * Padding works by extending the area of which a convolutional neural network processes an image. The kernel scans each pixel and convert the data into smaller (sometimes larger) format. By adding the frame of the image through padding, it allows more space for the kernel to cover the image.
       * ReLU layer - it brings non-linearity to the network and converts all the negative pixels to zero. The output is a rectified feature map.
       * Pooling Layer - pooling is a down-sampling operation that reduces the dimensionality of the feature map.
         * It performs down-sampling operations to reduce the dimensionality and creates a pooled feature map by sliding a filter matrix over the input matrix.
@@ -307,7 +308,6 @@ Neural Network is a universal approximator, which means you can use it to implme
   
   ![entire network](https://s3-ap-south-1.amazonaws.com/av-blog-media/wp-content/uploads/2017/06/28132045/cnnimage.png)
     * Activation Map on convolution layer extracts features. 
-    * Padding on convolution layer reduces features. If you want to retain image size, add Same Padding, to add Valid Padding to reduce features too
     * Pooling is to further reduce features
     * When CNN goes further, the extracted features become more specific
     * Output layer makes prediction and has the loss function to check the prediction error
