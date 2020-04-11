@@ -6,6 +6,13 @@ More details about Bayesian Analysis
 ## Reference
 * [Doing Bayesian Data Analysis][2] - It's a book
 
+## Bayesian Theorem vs Conditional Probability
+* Bayesian Theorem
+  * `P(A|B) = P(B|A)*P(A)/P(B)`
+* Conditional Probability
+  * `P(A|B) = P(A and B)/P(B)`
+* Both can be used to calculate probability, and both have independence assumption is there are many subcases for A or B.
+
 
 ## Bayesian Approach for Hypothesis Analysis
 * [Concepts][4]
