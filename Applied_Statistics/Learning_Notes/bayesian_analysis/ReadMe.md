@@ -7,11 +7,23 @@ More details about Bayesian Analysis
 * [Doing Bayesian Data Analysis][2] - It's a book
 
 ## Bayesian Theorem vs Conditional Probability
-* Bayesian Theorem
-  * `P(A|B) = P(B|A)*P(A)/P(B)`
 * Conditional Probability
   * `P(A|B) = P(A and B)/P(B)`
-* Both can be used to calculate probability, and both have independence assumption is there are many subcases for A or B.
+  * A conditional probability is an expression of how probable one event is, given that some other event occurred.
+* Bayesian Theorem
+  * `P(A|B) = P(B|A)*P(A)/P(B)`
+  * It came from the axiom of conditional probability, and it centerns on relating different conditional probabilities.
+    * P(A|B) = P(A and B) / P(B)
+    * P(B|A) = P(A and B) / P(A)
+    * So P(A|B) * P(B) = P(B|A) * P(A) ==> P(A|B) = P(B|A)*P(A)/P(B)
+  * Posterior probability = likihood ratio * priori probability
+    * P(A) is "priori probability"
+    * P(B|A) is "posterior probability"
+    * P(B|A)/P(B) is "likelihood ratio"
+* Both can be used to calculate probability, and it seems that Bayesian Theoram can be used for wider scenarios.
+  * Check some examples [here][7]
+
+
 
 
 ## Bayesian Approach for Hypothesis Analysis
@@ -33,3 +45,4 @@ More details about Bayesian Analysis
 [4]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/Learning_Notes/bayesian_analysis/Bayesian_Approaches_for%20Hypothesis_Tests.md
 [5]:https://blog.exploratory.io/an-introduction-to-bayesian-a-b-testing-in-exploratory-cb5a7ad80963
 [6]:https://exploratory.io/?utm_campaign=ab_test&utm_medium=blog&utm_source=medium
+[7]:https://brilliant.org/wiki/bayes-theorem/
