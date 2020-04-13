@@ -2,7 +2,6 @@ Outliers Detection and Clustering are related to each other, and in a world with
 
 
 ## LEARNING NOTES
-
 * As [my data mining bible reading notes][1] recorded (Chapter 11, high demensional clustering), even it's biclustering (such as <b>MaPle</b>), which searches subsapace in both objects and features, can be time consuming because it enumerates all the subspaces. Here is another implemented example of [HiCS, LOF with description][2], [HiCS code only][3], according to the author, HiCS can solve the subspaces search in an more effective way. I think so, since MaPle is publised in 2008, HiCS is published in 2012. So deserve to try
 * People have also implemneted another method to detect outliers, [LOF][4], it is densitiy based, and calculates nearest neighbours. Note that, when there is high dimensional features, PCA (linear regression model), LOF (proximity-based) can be less effective. This is the so-called The Curse of Dimensionality, when there are more dimensions, these methods can be time consuming, and outliers, random noise could make the calculation results lose meaning
 
@@ -11,6 +10,20 @@ Outliers Detection and Clustering are related to each other, and in a world with
   ![NMI](https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Outliers_and_Clustering/NMI.png)
     * It measures the purity of Ci by calculating the largest number of common objects that cluster Ci has with all the other mutual clusters Mi. Higher NMI, the higher purity of Ci is.
 * We have NMI to measure between cluster similarity, we should also measure the within ckuster purity to guarantee the ckustering quality
+
+### Measure Clustering Quality
+* Extrinsic Methods - Measure with ground truth
+* Intrinsic Methods - Measure how well the clusters are seperated, without ground truth
+#### Extrinsic Method - with ground truth
+* Cluster homogeneity - check how pure the clusters are
+* Cluster completeness - counterpart of Cluster homogeneity, if 2 projects belong to the same category, they should be in the same cluster
+* Rag bag - A “rag bag” category containg objects that cannot be merged with other objects. The rag bag criterion states that putting a heterogeneous object into a pure cluster should be penalized more than putting it into a rag bag
+* Small cluster preservation - The small cluster preservation criterion states that splitting a small category into pieces is more harmful than splitting a large category into pieces.
+* Example - BCube, evaluates the precision and recall for every object in a clustering. The <b>precision</b> of an object indicates how many other objects in the same cluster belong to the same category as the object. The <b>recall</b> of an object reflects how many objects of the same category are assigned to the same cluster.
+#### Intrinsic Method - without ground truth
+* Takes advantage of similarity metrics between objects.
+* Example - silhouette coefficient, valeus are between [-1, 1].  When it approaches 1, the cluster containing object o is compact and o is far away from other clusters, which is the preferable case. When its negative, it means o is closer to the objects in another cluster, bad case. Calcuate silhouette coefficient value for each object, then use the average silhouette coefficient value of all objects in the data set.
+* Intrinsic methods can also be used in the elbow method to heuristically derive the number of clusters in a data set by replacing the sum of within-cluster variances.
   
 ### PyOD - An Outlier Detection Python Library
 * My code - Basic PyOD:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Outliers_and_Clustering/try_PyOD.ipynb
@@ -92,6 +105,9 @@ Outliers Detection and Clustering are related to each other, and in a world with
   
 
 ## PRACTICAL CODE
+* Previous Experience Notes: https://github.com/hanhanwu/Hanhan_Data_Science_Resources/edit/master/Experiences.md
+  * Suggested data preprocessing for clustering
+  * 4 rounds clustering when using clustering methods
 
 * Data Exploration - Visualized Projected Clusters
   * My code : https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Outliers_and_Clustering/dimensional_reduction_visualization.ipynb
@@ -114,7 +130,8 @@ Outliers Detection and Clustering are related to each other, and in a world with
     * reference: https://bl.ocks.org/rpgove/0060ff3b656618e9136b
   * Silhouette Score
     * It measures the quality of clusters by determining how well each object lies within its cluster.
-    * Higher the score, the data is better clustered. So when choosing the optimal k, choose the one give the highest silhouette score
+    * Higher the score, the data is better clustered. So when choosing the optimal k, choose the one give the highest silhouette score.
+      * If Elbow will return SSE, we can use both Silhouette Score and Elbow, choose k that has higher Silhouette Score and lower SSE.
     * But similar to k-means (can only find convex clusters), silhouette score is higher for convex clusters than other types of clusters (such as density based clusters which obtained from DBSCAN)
   * Gap Statistics
     * Similar to Elbow Method, it uses total within-cluster sum of square (total intracluster variation), the difference is it has reference dataset generated using Monte Carlo simulations. That is, for each variable (xi) in the dataset it computes its range [min(xi),max(xj)] and generate values for the n points uniformly from the interval min to max.
@@ -196,7 +213,6 @@ Outliers Detection and Clustering are related to each other, and in a world with
 * [Reference][5]
 
 ## IDEAS SPARK
-
 * About data labeling
   * When there are many data records, and you don't have the label, meanwhile you are not human expert to label all the data right
     * Semi Clustering, then check each cluster, labeled and unlabeled data
