@@ -7,7 +7,6 @@ Neural Network is a universal approximator, which means you can use it to implme
 
 
 ## RESOURCES
-
 * Database
   * ImageNet: http://www.image-net.org
     * Here, you can download images in different format
@@ -50,8 +49,36 @@ Neural Network is a universal approximator, which means you can use it to implme
     * Weight sharing
   * Think about the activation function, the architecture, do you think Deep Learning can really generate infinite number of solutions?! So powerful isn't it? The only problem is, you still have to have ground truth first, and for Deep Learning, the ground truth has to be more accurate and informative
     
-* Core concepts of neural network: https://www.analyticsvidhya.com/blog/2016/08/evolution-core-concepts-deep-learning-neural-networks/
-  * The meaning of "sample", "epoch", "batch": https://keras.io/getting-started/faq/#what-does-sample-batch-epoch-mean
+* Core concepts of neural network
+  * Perceptron
+    * In biology, a neuron gets multiple inputs, sum them up and pass to the next neuron. A perceptron models how neuron works.
+    * Multiple weighted inputs --> weighted sum --> bias --> activation function --> binary output.
+      * It's simply a linear model + activation function, and provides a binary output.
+      * Weights determine the slope of classifier line, and bias helps shift the line towards left or right.
+    * The learning process of perceptron
+      * Initialize the weights and thresholds
+      * Get input and provide output
+      * Update weights
+      * Repeat 2,3 steps
+  * Gradient vs Gradient Descent
+    * Gradient is a numeric calculation allowing us to know how to adjust the parameters of a network in such a way that its output deviation is minimized. 
+    * It's the multi-variable derivation of the loss function with respect to all the network parameters. Graphically it would be the slope of the tangent line to the loss function at the current point when evaluating the current parameter values. 
+    * Mathematically it’s a vector that gives us the direction in which the loss function increases faster, so we should move in the opposite direction if we try to minimize it.
+    * Gradient Descent can be thought of climbing down to the bottom of a valley by moving in the direction of steepest descent. It's an optimization algorithm that minimizes the loss function.
+  * Batch Gradient Descent vs Stochastic Gradient Descent vs Mini Batch Gradient Descent
+    * Batch gradient descent computes the gradient using the entire dataset, and performs just one update at each iteration.
+    * Stochastic gradient descent computes the gradient using a single sample and updates the parameters.
+      * Batch gradient descent updates weights slower and converge slower because of the data size, Stochastic gradient descent updates weights more frequent and therefore converge faster.
+    * Mini Batch Gradient Descent is similar to Stochastic gradient descent but instead of using single training sample, min-batch of sample is used. It's one of the most popular optimization methods.
+      * It's more efficient than Stochastic gradient descent.
+      * It's approximate the the gradient of the entire training set and helps avoid local minima.
+  * General steps of using gradient descent
+    * Initialize random weights and bias
+    * Get input and provides output
+    * Calculate the error between actual and predicted values
+    * Go back to each neuron that contributes to errors, changing its weights to reduce the error
+    * Repeat until finding the best weights of the network
+  * The meaning of "sample", "epoch", "batch"
     * <b>Sample</b>: One element of a dataset. Such as, 1 image, 1 audio file
     * <b>Batch</b>: A set of N samples. The samples in a batch are processed independently, in parallel. If training, a batch results in only one update to the model. 
       * A batch generally approximates the distribution of the input data better than a single input. <b>The larger the batch, the better the approximation</b>, but also takes longer time.
@@ -59,18 +86,13 @@ Neural Network is a universal approximator, which means you can use it to implme
       * When using Keras `evaluation_data` or `evaluation_split` with the `fit` method of Keras models, <b>evaluation will be run at the end of every epoch</b>.
     * <b>Iteration</b>: N/batch_size, N is sample size
       * An epoch should run N/batch_size iterations
+  * References
+    * https://www.analyticsvidhya.com/blog/2016/08/evolution-core-concepts-deep-learning-neural-networks/
+    * https://keras.io/getting-started/faq/#what-does-sample-batch-epoch-mean
     
 * Activation functions and when to ues them: https://www.analyticsvidhya.com/blog/2017/10/fundamentals-deep-learning-activation-functions-when-to-use-them/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
   * "Activation functions are mathematical equations that determine the output of a neural network. The function is attached to each neuron in the network, and determines whether it should be activated (“fired”) or not, based on whether each neuron’s input is relevant for the model’s prediction. Activation functions also help normalize the output of each neuron to a range between 1 and 0 or between -1 and 1."
   * Without activation function, the weights, bias will simply do a linear transformation, and the neural network will work as a linear regression problem
-  * Gradient vs Gradient Descent
-    * Gradient is a numeric calculation allowing us to know how to adjust the parameters of a network in such a way that its output deviation is minimized. 
-    * It's the multi-variable derivative of the loss function with respect to all the network parameters. Graphically it would be the slope of the tangent line to the loss function at the current point when evaluating the current parameter values. 
-    * Mathematically it’s a vector that gives us the direction in which the loss function increases faster, so we should move in the opposite direction if we try to minimize it.
-    * Gradient Descent can be thought of climbing down to the bottom of a valley. It's a minimization algorithm that minimizes a given activation function.
-  * Batch Gradient Descent vs Stochastic Gradient Descent
-    * Batch gradient descent computes the gradient using the entire dataset, while Stochastic gradient descent computes the gradient using a single sample.
-    * Batch gradient descent updates weights slower and converge slower because of the data size, Stochastic gradient descent updates weights more frequent and therefore converge faster.
   * <b>Binary Step Function</b>
     * Threshold based classifier, decide whether or not to activate the neuron
     * Only serves for binary classification, cannot work for multi-class classification
