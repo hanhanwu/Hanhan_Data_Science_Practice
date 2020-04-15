@@ -52,9 +52,11 @@ Neural Network is a universal approximator, which means you can use it to implme
 * Core concepts of neural network
   * Perceptron
     * In biology, a neuron gets multiple inputs, sum them up and pass to the next neuron. A perceptron models how neuron works.
-    * Multiple weighted inputs --> weighted sum --> bias --> activation function --> binary output.
-      * It's simply a linear model + activation function, and provides a binary output.
+    * Multiple weighted inputs --> weighted sum --> bias --> activation function --> output.
+      * A perceptron is a linear model that provides a binary output.
+        * This is why a single layer perceptron is a linear model.
       * Weights determine the slope of classifier line, and bias helps shift the line towards left or right.
+      * Activation function is not included in the perceptron.
     * The learning process of perceptron
       * Initialize the weights and thresholds
       * Get input and provide output
