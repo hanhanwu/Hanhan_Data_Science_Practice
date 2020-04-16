@@ -84,6 +84,7 @@ Neural Network is a universal approximator, which means you can use it to implme
     * Here's the implementation example: https://github.com/eriklindernoren/ML-From-Scratch/blob/master/mlfromscratch/deep_learning/optimizers.py
     * The reason it works is because, with exponentially weighted average, it can average out the oscillations on its way finding the local optimal. So that the algorithm takes more straightforward path towards local optimum, which also means it takes less iteration.
       * I like the description here: https://engmrk.com/gradient-descent-with-momentum/
+      * Bias can be 0 initially, weight can be close to 0 but not too small initially
     * With momentum, it's trying to help converge faster.
   * The meaning of "sample", "epoch", "batch"
     * <b>Sample</b>: One element of a dataset. Such as, 1 image, 1 audio file
