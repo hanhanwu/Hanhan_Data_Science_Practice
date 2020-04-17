@@ -86,12 +86,15 @@ Neural Network is a universal approximator, which means you can use it to implme
       * I like the description here: https://engmrk.com/gradient-descent-with-momentum/
       * Bias can be 0 initially, weight can be close to 0 but not too small initially
     * With momentum, it's trying to help converge faster.
+    * A typical choice of momentum is 0.5 ~ 0.9
   * The meaning of "sample", "epoch", "batch"
     * <b>Sample</b>: One element of a dataset. Such as, 1 image, 1 audio file
     * <b>Batch</b>: A set of N samples. The samples in a batch are processed independently, in parallel. If training, a batch results in only one update to the model. 
       * A batch generally approximates the distribution of the input data better than a single input. <b>The larger the batch, the better the approximation</b>, but also takes longer time.
+      * A good defualt batch size is 32, we can try 32, 64, 128, 256, etc.
     * <b>Epoch</b>: 1 roundof training on the entire dataset.
       * When using Keras `evaluation_data` or `evaluation_split` with the `fit` method of Keras models, <b>evaluation will be run at the end of every epoch</b>.
+      * We can keep increasing epoch until valication accuracy starts to drop, even when training accuracy keeps increasing.
     * <b>Iteration</b>: N/batch_size, N is sample size
       * An epoch should run N/batch_size iterations
   * References
@@ -166,6 +169,7 @@ Neural Network is a universal approximator, which means you can use it to implme
     * Dropout is usually preferred in a large neural network structure in order to introduce more randomness.
     * check keras dropout: https://keras.io/layers/core/#dropout
       * The parameter means the probability of being dropped out
+      * Normally we choose 20% ~ 50% dropout. 20% is a good starting point.
   * Data Augmentation
     * Increase the training data size, to reduce overfitting
       * This can be very costly when data labeling is time consuming or has other challenges
@@ -258,12 +262,9 @@ Neural Network is a universal approximator, which means you can use it to implme
       * Gaussian Random Variables: you need to play with the standard deviation of the gaussian distribution which works well for your network....
       * Xavier Initialization: It suggests that variance of the gaussian distribution of weights for each neuron should depend on the number of inputs to the layer. A recent research suggested that for ReLU neurons, the recommended update is, `np.random.randn(n_in, n_out)*sqrt(2/n_in)`
       * You might be surprised to know that 10-20% of the ReLUs might be dead at a particular time while training and even in the end.
-    * CNN
-      * The <b>first layer</b> will try to detect edges and form templates for <b>edge detection</b>
-      * The subsequent layers will try to combine them into <b>simpler shapes</b> and eventually into <b>templates of different object positions, illumination, scales, etc</b>
-      * The final layers will <b>match an input image with all the templates</b> and the <b>final prediction</b> is like a weighted sum of all of them.
     * CNN important layers
       * Convolution Layer - the layer that does the convolutional operation by creating smaller picture windows to go over the data.
+        * The input of CNN is not vectors as neural network, but it's a multi-channeled image.
         * Using padding in convolution layer, the image size remains same.
         * Padding works by extending the area of which a convolutional neural network processes an image. The kernel scans each pixel and convert the data into smaller (sometimes larger) format. By adding the frame of the image through padding, it allows more space for the kernel to cover the image.
       * ReLU layer - it brings non-linearity to the network and converts all the negative pixels to zero. The output is a rectified feature map.
@@ -643,7 +644,7 @@ Neural Network is a universal approximator, which means you can use it to implme
   
   
 ### Recurrent Neural Network (RNN)
-  * <b>The difference between RNN and basic neural network:</b> As we all know, a basic neural network has 1 input layer, 1 output layer plus 1 or more hidden layer. Also a neural network only stores the input and output for a layer each step. The difference in RNN is, it only has a recurrent layer between the input layer and the output layer, this recurrent layer is similar to multiple hidden layers in a basic neural network. But it can store the state of a previous input and combines with the current input, so it keeps some relationship between previous and current input
+* <b>The difference between RNN and basic neural network:</b> As we all know, a basic neural network has 1 input layer, 1 output layer plus 1 or more hidden layer. Also a neural network only stores the input and output for a layer each step. The difference in RNN is, it only has a recurrent layer between the input layer and the output layer, this recurrent layer is similar to multiple hidden layers in a basic neural network. But it can store the state of a previous input and combines with the current input, so it keeps some relationship between previous and current input
   * It can be one time step or multiple time steps
   * It also has Forward Propagation & Backward Propagation
   * How to to backward propagation in RNN
@@ -653,22 +654,26 @@ Neural Network is a universal approximator, which means you can use it to implme
     * Now that the weight is the same for all the time steps the gradients can be combined together for all time steps
     * The weights are then updated for both recurrent neuron and the dense layers
   * Here, "unrolled network" looks just like basics neural network, and the backpropagation here is similar to basic neural network but it combines the gradients of error for all time steps
-  * <b>Vanishing Gradient</b>
-    * Examples: "Baby Emmanuel, who loves eating vegetables and cares about animals, ______ (don't or doesn't) like pork"
-    * In the example, whether the blank should be filled with "don't" or "doesn't" depends on subject "Baby Emmanuel", however it's far away from the the blank. Neural networks suffer from Vanishing Gradient tend to miss out relations between words which are far away from each other
-    * LSTM, GRU are the architectures of RNN that can solve the issue of vanishing gradient.
-  * GRU (Gated Recurrent Unit)
-    * [GRU Mathematical Concept][8]
-      * Hidden state for example "who loves eating vegetables and cares about animals"
-      * RNN modifies hidden states, GRU simply give a bypass option to hidden state. So in the above "Baby Emmanuel" example, it can ignore the hidden state, and correctly fill in "doesn't"
-  * Because most of RNN practice are sequential analysis, I put the code here: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/tree/master/sequencial_analysis
-    * Check those sections start with "RNN - "
-  * LSTM
-    * LSTM is supposed to perform better than GRU in sentences with long dependencies. It has more params and therefore requires longer time to train.
-    * LSTM has forget gate to control how much previous info will be sent to the next cell, whereas GRU exposes its entire memory to the next cell
-    * Controlling the hidden state that is moving forward to the next cell can give us complete control of all gates in the next cell.
-    * [LSTM Mathematical Concept Difference with GRU][8]
-  * Both GRU and LSTM understand a text from left to right, sometimes you need to read to the right side and go back to the left side, this requires to add "Bidirectional" into RNN
+* <b>Vanishing Gradient</b>
+  * When we do Back-propagation, the gradients tend to get smaller and smaller as we keep on moving backward in the Network. This means that the neurons in the Earlier layers learn very slowly as compared to the neurons in the later layers in the Hierarchy.
+  * Examples: "Baby Emmanuel, who loves eating vegetables and cares about animals, ______ (don't or doesn't) like pork"
+  * In the example, whether the blank should be filled with "don't" or "doesn't" depends on subject "Baby Emmanuel", however it's far away from the the blank. RNN suffers from Vanishing Gradient tend to miss out relations between words which are far away from each other
+* <b>Exploding Gradient Descent</b>
+  * RNN could also suffer from Exploding Gradient Descent.
+  * Exploding gradients are a problem when large error gradients accumulate and result in very large updates to neural network model weights during training. This could lead to poor performance results.
+* LSTM, GRU are the architectures of RNN that can solve the issue of vanishing gradient.
+* GRU (Gated Recurrent Unit)
+  * [GRU Mathematical Concept][8]
+  * Hidden state for example "who loves eating vegetables and cares about animals"
+  * RNN modifies hidden states, GRU simply give a bypass option to hidden state. So in the above "Baby Emmanuel" example, it can ignore the hidden state, and correctly fill in "doesn't"
+* Because most of RNN practice are sequential analysis, I put the code here: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/tree/master/sequencial_analysis
+  * Check those sections start with "RNN - "
+* LSTM
+  * LSTM is supposed to perform better than GRU in sentences with long dependencies. It has more params and therefore requires longer time to train.
+  * LSTM has forget gate to control how much previous info will be sent to the next cell, whereas GRU exposes its entire memory to the next cell
+  * Controlling the hidden state that is moving forward to the next cell can give us complete control of all gates in the next cell.
+  * [LSTM Mathematical Concept Difference with GRU][8]
+* Both GRU and LSTM understand a text from left to right, sometimes you need to read to the right side and go back to the left side, this requires to add "Bidirectional" into RNN
   
 ### Encoder-Decoder RNN Architecture
   * Sequence to Sequence problem: <b>It takes a sequence as input and requires a sequence prediction as output</b>. Input length can be different from the output length.
