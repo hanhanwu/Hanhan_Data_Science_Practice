@@ -20,6 +20,12 @@ More details about Bayesian Analysis
     * P(A) is "priori probability"
     * P(B|A) is "posterior probability"
     * P(B|A)/P(B) is "likelihood ratio"
+  * Bayes Theorem for continuous values
+    * The y in the dividen is a specific fixed value, whereas the y in the divisor is a variable that takes on all possible values of y over the integral.
+<p align="center">
+<img src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/Learning_Notes/images/continuous_bayes.PNG" width="300" height="100" />
+</p>
+  
 * Both can be used to calculate probability, and it seems that Bayesian Theoram can be used for wider scenarios.
   * Check some examples [here][7]
 
