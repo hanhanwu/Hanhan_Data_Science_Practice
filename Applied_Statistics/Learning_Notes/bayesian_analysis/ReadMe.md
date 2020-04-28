@@ -29,8 +29,13 @@ More details about Bayesian Analysis
 * Both can be used to calculate probability, and it seems that Bayesian Theoram can be used for wider scenarios.
   * Check some examples [here][7]
 
-
-
+## Bayesian Rules Applied in Model and Data
+* With Baye's Rule, given the same data, we can check the strength of belief in each model:
+  * `P(M1|D)/P(M2|D) = P(D|M1)/P(D|M2) * P(M1)/P(M2)`
+  * The ratio of the posterior beliefs is the ratio of evidence * the ratio of priori beliefs.
+  * The ratio of evidence is "Bayes Factor", `P(D|M1)/P(D|M2)`.
+* The posterior is proportional to the product of prior and the likelihood.
+  * So the shape of posterior is influenced by both prior and likelihood.
 
 ## Bayesian Approach for Hypothesis Analysis
 * [Concepts][4]
