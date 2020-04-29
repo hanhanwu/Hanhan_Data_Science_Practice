@@ -36,6 +36,28 @@ More details about Bayesian Analysis
   * The ratio of evidence is "Bayes Factor", `P(D|M1)/P(D|M2)`.
 * The posterior is proportional to the product of prior and the likelihood.
   * So the shape of posterior is influenced by both prior and likelihood.
+* 3 Major goals of inference
+  * Estimate parameter θ
+    * Such as P(θ|D, M), given data and model, what the probability of a certain param value
+    * `P(θ|D, M) = P(D|θ, M)*P(θ|M)/P(D|M)`
+      * `P(D|θ, M)` is the likelihood
+      * `P(θ|M)` is the prior
+      * `P(D|M)` is the evidence
+  * Prediction of data values
+  * Model comparison
+    * Bayesian method automatically considers the model complexity when assessing to which degree we should believe in the model
+    * A complex model has many more available values for θ, so it has higher chance to fit an arbitrary dataset.
+    
+## Bayesian Reasoning in Daily Life
+* <b>We have a space of beliefs that are mutually exclusive and exhaust all possibilities.</b> What Bayes’ rule tells us is exactly how much to shift our beliefs across the available possibilities.
+### Holmesian Deduction
+  * "How often have I said to you that when you have eliminated the impossible, whatever remains, however improbable, must be the truth?"
+    * `p(D|θi) = 0 for i != j, then, no matter how small the prior p(θj) > 0 is, the posterior p(θj|D) must equal one.`
+  * When the data make some options less believable, we increase belief in the other options.
+### Judicial Exoneration
+  * It's the reversed Holmesian Deduction.
+  * `When p(D|θj) is higher, then even if p(D|θi) is unchanged for all i ! j, p(θi|D) is lower.`
+  * When the data make some options more believable, we decrease the belief in the other options.
 
 ## Bayesian Approach for Hypothesis Analysis
 * [Concepts][4]
