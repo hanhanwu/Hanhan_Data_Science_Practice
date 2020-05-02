@@ -34,6 +34,8 @@ More details about Bayesian Analysis
   * `P(M1|D)/P(M2|D) = P(D|M1)/P(D|M2) * P(M1)/P(M2)`
   * The ratio of the posterior beliefs is the ratio of evidence * the ratio of priori beliefs.
   * The ratio of evidence is "Bayes Factor", `P(D|M1)/P(D|M2)`.
+    * Bayes factor is the equivalent of p-value in the bayesian framework. The null hypothesis in bayesian framework assumes ∞ probability distribution only at a particular value of a parameter (say θ=0.5) and a zero probability else where. The alternative hypothesis is that all values of θ are possible, hence a flat curve representing the distribution.
+    * `To reject a null hypothesis, a BF <1/10 is preferred.`
 * The posterior is proportional to the product of prior and the likelihood.
   * So the shape of posterior is influenced by both prior and likelihood.
 * 3 Major goals of inference
