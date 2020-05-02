@@ -92,9 +92,9 @@ Neural Network is a universal approximator, which means you can use it to implme
     * <b>Batch</b>: A set of N samples. The samples in a batch are processed independently, in parallel. If training, a batch results in only one update to the model. 
       * A batch generally approximates the distribution of the input data better than a single input. <b>The larger the batch, the better the approximation</b>, but also takes longer time.
       * A good defualt batch size is 32, we can try 32, 64, 128, 256, etc.
-    * <b>Epoch</b>: 1 roundof training on the entire dataset.
+    * <b>Epoch</b>: 1 round of training on the entire dataset.
       * When using Keras `evaluation_data` or `evaluation_split` with the `fit` method of Keras models, <b>evaluation will be run at the end of every epoch</b>.
-      * We can keep increasing epoch until valication accuracy starts to drop, even when training accuracy keeps increasing.
+      * We can keep increasing epoch until validation accuracy starts to drop, even when training accuracy keeps increasing.
     * <b>Iteration</b>: N/batch_size, N is sample size
       * An epoch should run N/batch_size iterations
   * References
