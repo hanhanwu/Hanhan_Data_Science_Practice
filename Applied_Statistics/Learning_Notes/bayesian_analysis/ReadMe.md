@@ -60,6 +60,8 @@ More details about Bayesian Analysis
   * It's the reversed Holmesian Deduction.
   * `When p(D|θj) is higher, then even if p(D|θi) is unchanged for all i ! j, p(θi|D) is lower.`
   * When the data make some options more believable, we decrease the belief in the other options.
+  
+## [Binomial Proportion via Mathematical Analysis][8]
 
 ## Bayesian Approach for Hypothesis Analysis
 * [Concepts][4]
@@ -81,3 +83,4 @@ More details about Bayesian Analysis
 [5]:https://blog.exploratory.io/an-introduction-to-bayesian-a-b-testing-in-exploratory-cb5a7ad80963
 [6]:https://exploratory.io/?utm_campaign=ab_test&utm_medium=blog&utm_source=medium
 [7]:https://brilliant.org/wiki/bayes-theorem/
+[8]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/Learning_Notes/bayesian_analysis/binomial_proportion.md
