@@ -19,5 +19,5 @@
   
 * Exmaple of Beta Distributions
 <p align="center">
-<img src="hhttps://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/Learning_Notes/images/beta_distribution_examples.PNG" width="400" height="400" />
+<img src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/Learning_Notes/images/beta_distribution_examples.PNG" width="400" height="400" />
 </p>
