@@ -3,7 +3,7 @@
 More details about Bayesian Analysis
 
 
-## Reference
+## Reference 🌟🌟
 * [Doing Bayesian Data Analysis][2] - It's a book
 
 ## Bayesian Theorem vs Conditional Probability
