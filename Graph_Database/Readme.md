@@ -26,6 +26,9 @@
 [10]:https://cs.stanford.edu/~jure/pubs/node2vec-kdd16.pdf
 [11]:https://github.com/hanhanwu/Hanhan_COLAB_Experiemnts/blob/master/Try_DeepWalk.ipynb
 [12]:https://github.com/hanhanwu/Hanhan_COLAB_Experiemnts
+[13]:https://networkx.github.io/documentation/stable/reference/algorithms/centrality.html
+[14]:https://www.analyticsvidhya.com/blog/2020/03/using-graphs-to-identify-social-media-influencers/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+[15]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/graph_theory_airlines.ipynb
 
 ## Algorithms
 ### Terminology
@@ -47,7 +50,22 @@
 * It's a process that uses RandomWalk to extract sequences of nodes, then feed these sequences into a skip-gram model to get node embeddings.
 * [More Description][12]
 
-
+## Social Network Analysis
+### Social Media Influencers Identification
+#### Individual Influencers
+* A node has largest amount of edges can be a significant influencer. At the same time, a node has a few edges but serves as the bridge between large clusters can also be a significant influencer.
+* It depends on the centrality algorithm.
+* [Some centrality methods in networkx][13]
+* [To plot networkx graph][15]
+#### Collective Influence Maximization - Identify Super Spreaders
+* A handful of nodes that can impact the collective behavior of the large population.
+* Independent Cascade Model (ICM)
+  * A node can be activated by its neighbour based on success probability.
+  * Check more detailed description [here][14]
+  * Python library: https://github.com/hhchen1105/networkx_addon/blob/master/information_propagation/tests/test_independent_cascade.py
+* Linear Threshold Model (LTM)
+  * A node is influenced only if the sum of the weights of the edges incident on it >= its threshold.
+  * Python library: https://github.com/hhchen1105/networkx_addon/blob/master/information_propagation/tests/test_linear_threshold.py
 
 ## Tutorial
 ### Neo4j Graph DB
