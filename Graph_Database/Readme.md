@@ -29,6 +29,9 @@
 [13]:https://networkx.github.io/documentation/stable/reference/algorithms/centrality.html
 [14]:https://www.analyticsvidhya.com/blog/2020/03/using-graphs-to-identify-social-media-influencers/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
 [15]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/graph_theory_airlines.ipynb
+[16]:https://www.analyticsvidhya.com/blog/2020/04/community-detection-graphs-networks/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+[17]:https://networkx.github.io/documentation/stable/reference/algorithms/community.html
+[18]:https://networkx.github.io/documentation/stable/reference/algorithms/generated/networkx.algorithms.community.centrality.girvan_newman.html
 
 ## Algorithms
 ### Terminology
@@ -66,6 +69,17 @@
 * Linear Threshold Model (LTM)
   * A node is influenced only if the sum of the weights of the edges incident on it >= its threshold.
   * Python library: https://github.com/hhchen1105/networkx_addon/blob/master/information_propagation/tests/test_linear_threshold.py
+#### Community Detection
+* Major Methods
+  * Agglomerative Methods: Starting from an empty graph (nodes only), then keep adding edges from "strong" ones to "weaker" ones.
+  * Divisive Methods: Starting from a complete graph, removing edges from highest weighted to lower weighted.
+* Girvan-Newman Algorithm for Community Detection
+  * It's a divisive method
+  * It starts from removing edges with highest betweeness centrality, repeating until there are more than 1 connected clusters.
+    * Higher betweeness centrality here indicates there are more shortest paths pass through this edge.
+  * Check an implementation example [here][16]
+  * networkx also has its built-in function [here][18]
+* ‼️ networkx provides different types of community detection algorithms [here][17]
 
 ## Tutorial
 ### Neo4j Graph DB
