@@ -105,7 +105,8 @@ I'm planning to practice more on time series analysis, pattern matching sequenti
   * https://www.itl.nist.gov/div898/handbook/pmc/section4/pmc446.htm
 
 ### About Stationary
-* The first step is often to make the data stationary. <b>A stationary series is one in which the properties – mean, variance and covariance, do not vary with time. It should not show any trend. - Strict Stationary</b>
+* The first step is often to make the data stationary. <b>A stationary series is one in which the properties – mean, variance and covariance, do not vary with time. It should not show any trend nor seasonality. - Strict Stationary</b>
+  * "Trends can result in a varying mean over time, whereas seasonality can result in a changing variance over time, both which define a time series as being non-stationary." This is why when doing time series modeling, we want to make sure the data is stationary, and need to remove the trend and seasonality first.
   * My code - Metrics used to measure stationary: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/7741ccebbbaa3708cd28ddf9c82b6116e3522986/sequencial_analysis/time_series_stationary_measures.ipynb
     * Different metrics may measure different types of stationary, but what we need is strict stationary.
     * When KPSS and ADF are both showing stationary, it tend to be strict stationary.
