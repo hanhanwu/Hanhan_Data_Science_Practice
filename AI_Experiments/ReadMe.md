@@ -71,9 +71,11 @@ Neural Network is a universal approximator, which means you can use it to implme
     * Batch gradient descent computes the gradient using the entire dataset, and performs just one update at each iteration.
     * Stochastic gradient descent computes the gradient using a single sample and updates the parameters.
       * Batch gradient descent updates weights slower and converge slower because of the data size, Stochastic gradient descent updates weights more frequent and therefore converge faster.
-    * Mini Batch Gradient Descent is similar to Stochastic gradient descent but instead of using single training sample, min-batch of sample is used. It's one of the most popular optimization methods.
+    * Mini Batch Gradient Descent is similar to Stochastic gradient descent but instead of using single training sample, min-batch of N samples is used. It's one of the most popular optimization methods.
       * It's more efficient than Stochastic gradient descent.
       * It's approximate the the gradient of the entire training set and helps avoid local minima.
+    * With stochastic version of gradient descent, it's easier to escape from "saddle point".
+      * "Saddle point" is the local minimum in one dimension but the local maximum in another dimension.
   * General steps of using gradient descent
     * Initialize random weights and bias
     * Get input and provides output
@@ -87,9 +89,13 @@ Neural Network is a universal approximator, which means you can use it to implme
       * Bias can be 0 initially, weight can be close to 0 but not too small initially
     * With momentum, it's trying to help converge faster.
     * A typical choice of momentum is 0.5 ~ 0.9
+    * Why momentum, more details
+      * Gradient descent is a first-order optimization method, since it takes the first derivatives of the loss function. This gives us information on the slope of the function, but not on its curvature, so we lack part of the context. Using a second derivates can lead to high computational cost.
+      * The key to this optimization lies in updating the network parameters by adding an extra term that considers the value of the last iteration update, so previous gradients will be taken into account in addition to the current one.
+      * The value of the previous update by a constant known as the "momentum coefficient".
   * The meaning of "sample", "epoch", "batch"
     * <b>Sample</b>: One element of a dataset. Such as, 1 image, 1 audio file
-    * <b>Batch</b>: A set of N samples. The samples in a batch are processed independently, in parallel. If training, a batch results in only one update to the model. 
+    * <b>Batch</b>: An epoch is a full cycle of the algorithm in which the network sees all available samples once. The samples in a batch are processed independently, in parallel. If training, a batch results in only one update to the model. 
       * A batch generally approximates the distribution of the input data better than a single input. <b>The larger the batch, the better the approximation</b>, but also takes longer time.
       * A good defualt batch size is 32, we can try 32, 64, 128, 256, etc.
     * <b>Epoch</b>: 1 round of training on the entire dataset.
@@ -440,6 +446,11 @@ Neural Network is a universal approximator, which means you can use it to implme
 
 ### Digit Recognition with Keras
   * Adam Optimizer: https://arxiv.org/abs/1412.6980
+    * It’s a combination of RMSProp with Momentum. On the one hand we have the exponential moving average of the squared gradient, and on the other one the exponential moving average of the previous steps. Adam is usually the fastest one of these optimization techniques.
+    * RMSProp (Root Mean Square Propagation), in this method the learning rate is adapted for each parameter, as in other method known as Adagrad. RMSProp improves the latter by including the exponential moving average of the squared gradient.
+    * Improvement on Adam: RAdam, LookAhead: https://medium.com/@lessw/new-deep-learning-optimizer-ranger-synergistic-combination-of-radam-lookahead-for-the-best-of-2dc83f79a48d
+    * Tensorflow optimizers: https://www.tensorflow.org/addons/api_docs/python/tfa/optimizers
+      * Gradient descent is the most basic optimizer: https://algorithmia.com/blog/introduction-to-optimizers
   * Supported Optimizers in Keras: https://keras.io/optimizers/
   * Supported loss functions in Keras: https://keras.io/losses/
   * NN used in this practive
