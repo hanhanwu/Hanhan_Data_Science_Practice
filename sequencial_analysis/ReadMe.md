@@ -90,6 +90,9 @@ I'm planning to practice more on time series analysis, pattern matching sequenti
 ### Previous Time Series
 * For previous summarized knowledge, check [Time Series section][1]
 
+### Deal with the Missing Data in Time Series
+* [How to deal with the missing data in time series, with plot][21]
+
 ### Autocorrelation Plot
 * In some of my code below, I have used `autocorrelation plot` in multiple places, and the plot was even checked before stationary checking. This is because autocorrelation plot tells how randomly the time series is. Many statistical formula is based on randomness, such as the formula "standard deviation of the sample mean" is only useful when the randomness assumption holds. Meanwhile, most standard statistical tests depend on randomness. The validity of the test conclusions is directly linked to the validity of the randomness assumption.
 * The shape of autocorrelation plot and which model to use
@@ -521,3 +524,4 @@ READING NOTES
 [18]:https://machinelearningmastery.com/time-series-forecasting-methods-in-python-cheat-sheet/
 [19]:https://www.analyticsvidhya.com/blog/2019/12/6-powerful-feature-engineering-techniques-time-series/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
 [20]:https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.TimeSeriesSplit.html
+[21]:https://www.machinelearningplus.com/time-series/time-series-analysis-python/
