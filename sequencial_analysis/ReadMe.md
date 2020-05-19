@@ -101,6 +101,8 @@ I'm planning to practice more on time series analysis, pattern matching sequenti
   * One or more spikes, rest are essentially zero - Moving average model, order identified by where plot becomes zero.
   * Decay, starting after a few lags - Mixed autoregressive and moving average model.
   * All zero or close to zero - Data is essentially random (white noise).
+    * Similar to stationary series, white noise is NOT a function of time, and mean, variance do not change over the time.
+    * The difference is, white noise is completely random with mean as 0.
   * High values at fixed intervals - Include seasonal autoregressive term.
   * No decay to zero - Series is not stationary.
 * References
