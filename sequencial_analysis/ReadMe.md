@@ -157,7 +157,8 @@ I'm planning to practice more on time series analysis, pattern matching sequenti
   * <b>p</b>: The number of lag observations included in the model, also called the lag order. <b>It is The lag value where the PACF chart crosses the upper confidence interval for the first time</b>
   * <b>d</b>: The number of times that the raw observations are differenced, also called the degree of differencing.
   * <b>q</b>: The size of the moving average window, also called the order of moving average.
-  * When set 0 for a param here, means not using this param. Ans therefore, we can simply use AR, I or MA model
+  * When set 0 for a param here, means not using this param. And therefore, we can simply use AR, I or MA model
+  * [Summary of rules for identifying ARIMA models][22]
 * A linear regression model is constructed including the specified number and type of terms, and the data is prepared by a degree of differencing in order to make it stationary, i.e. to remove trend and seasonal structures that negatively affect the regression model.
 * Adopting an ARIMA model for a time series assumes that the underlying process that generated the observations is an ARIMA process.
 * [VISUALIZED AR, MA example in ACF, PACF][2], this in fact is a good example. Use ACF to find MA model, use PACF to find AR model
@@ -527,3 +528,4 @@ READING NOTES
 [19]:https://www.analyticsvidhya.com/blog/2019/12/6-powerful-feature-engineering-techniques-time-series/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
 [20]:https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.TimeSeriesSplit.html
 [21]:https://www.machinelearningplus.com/time-series/time-series-analysis-python/
+[22]:https://people.duke.edu/~rnau/arimrule.htm
