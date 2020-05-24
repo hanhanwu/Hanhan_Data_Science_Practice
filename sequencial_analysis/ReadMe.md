@@ -90,8 +90,11 @@ I'm planning to practice more on time series analysis, pattern matching sequenti
 ### Previous Time Series
 * For previous summarized knowledge, check [Time Series section][1]
 
-### Deal with the Missing Data in Time Series
-* [How to deal with the missing data in time series, with plot][21]
+### Statistical Methods in Time Series Frorecasting
+* [Time Series in Python][21]
+  * How to deal with missing data and plot the solution
+  * Estimate the forecastability of a time series - It uses approximate entropy or sample entropy, lower the value, more forecastable
+  * Other methods
 
 ### Autocorrelation Plot
 * In some of my code below, I have used `autocorrelation plot` in multiple places, and the plot was even checked before stationary checking. This is because autocorrelation plot tells how randomly the time series is. Many statistical formula is based on randomness, such as the formula "standard deviation of the sample mean" is only useful when the randomness assumption holds. Meanwhile, most standard statistical tests depend on randomness. The validity of the test conclusions is directly linked to the validity of the randomness assumption.
