@@ -1,5 +1,8 @@
 # Applied Statistics
 
+## Must Known
+* [p-value vs t-test vs z-test][13]
+
 ## Statistics Tables
 * [Z table - Having z score to get p-value][8]
   * I found this one contains more z-values to check.
@@ -331,3 +334,4 @@ but it's easier to use pyton built-in functions
 [10]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/Learning_Notes/p_value.md
 [11]:https://www.graphpad.com/quickcalcs/catMenu/
 [12]:https://www.evanmiller.org/ab-testing/sample-size.html
+[13]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/pvalue_ttest_ztest.md
