@@ -1,6 +1,6 @@
 # Applied Statistics
 
-## Must Known
+## Must Known 🌺
 * [p-value vs t-test vs z-test][13]
 
 ## Statistics Tables
