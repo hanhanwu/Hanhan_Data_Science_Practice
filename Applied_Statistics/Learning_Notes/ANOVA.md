@@ -31,6 +31,7 @@
 
 ## Assumptions
 1. The observations are obtained independently and randomly from the population, by factor levels
+  * "factor level" indicates different categoryies of a variable, same as the factor variable in R. For example you can divide age into different factor levels such as child, teenager, adult and seniors.
 2. Normality, the data for each factor level is normally distributed
   * Can be validated through histograms, skewness & kurtosis, Q-Q plot, [Shapiro-Wilk][3] or KS score
 3. Sample cases are independent from each other
