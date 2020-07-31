@@ -2,12 +2,14 @@
 
 
 ## ANOVA vs t-test
-
 * t-test - It compares the means of a condition between 2 groups.
 * ANOVA - It compares the means of a condition between 2+ groups.
 * H0 & H1
   * H0: There is no significant difference among the groups.
   * H1: The difference between groups is significant.
+* t-test and Post-ANOVA test
+  * Post-ANOVA test is to find which groups are significantly different from each other
+  * It uses t-tests to examine the mean differences between groups
   
 ## About Null Hypothesis
 * F-ratio
@@ -17,6 +19,14 @@
 <p align="left">
 <img src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/images/one_way_ANOVA_fscore.png" width="700" height="600" />
 </p>
+
+## 3 Types of ANOVA Test
+* One Way ANOVA - It has 1 independent variable
+* Two Way ANOVA - It has 2 independent variables
+  * It examines the interaction between the two independent variables.
+  * "Interactions" indicate that differences are not uniform across all categories of the independent variables.
+  * [More description about With/Without Replication][5]
+* N-Way ANOVA - It has 2+ independent variables
 
 
 ## Assumptions
@@ -39,3 +49,4 @@
 [2]:https://www.socscistatistics.com/pvalues/fdistribution.aspx
 [3]:https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.shapiro.html
 [4]:https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.levene.html
+[5]:http://www.biostathandbook.com/twowayanova.html#:~:text=A%20two%2Dway%20anova%20is,one%20female%20of%20each%20genotype.
