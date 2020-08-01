@@ -45,7 +45,7 @@
 
 ## Reference
 * [ANOVA Statistics][1]
-  * There are some mistakes in this tutorial that're misleading... that's why I'm using another dataset with a different example.
+  * There are some mistakes in this tutorial that're misleading... that's why I'm using another dataset with a different example. And the code in this tutorial is a a bit complex...
 
 [1]:https://www.analyticsvidhya.com/blog/2020/06/introduction-anova-statistics-data-science-covid-python/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
 [2]:https://www.socscistatistics.com/pvalues/fdistribution.aspx
