@@ -1,5 +1,6 @@
 # ANOVA 🌺
 
+* It's commonly used in feature importance, to test whether the categorical independent variable is important to the dependent variable.
 
 ## ANOVA vs t-test
 * t-test - It compares the means of a condition between 2 groups.
@@ -41,14 +42,21 @@
   * Violate the homogeneity, you can still trust the results but make sure each group has the equal size
   * Violate the Cases Independence, the result will be invalid
   * Violate the Normality, you can still trust the results if the sample size is large
+  
+## Practice 💖
+* [My Code - ANOVA Practice][6]
+  * The use of ANOVA here is to test whether the categorical independent variable is important to the dependent variable.
+  * Need to check assumptions first and do some data transformation if necessary.
+  * After finding there is a significant difference among groups, there is post-hoc test to find which pairs of groups have the significant difference.
 
 
 ## Reference
 * [ANOVA Statistics][1]
-  * There are some mistakes in this tutorial that're misleading... that's why I'm using another dataset with a different example. And the code in this tutorial is a a bit complex...
+  * There are some mistakes in this reference that're misleading... that's why I'm using another dataset with a different example. And the code in this reference is a a bit complex and messy. Better just to check [my code][6]
 
 [1]:https://www.analyticsvidhya.com/blog/2020/06/introduction-anova-statistics-data-science-covid-python/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
 [2]:https://www.socscistatistics.com/pvalues/fdistribution.aspx
 [3]:https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.shapiro.html
 [4]:https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.levene.html
 [5]:http://www.biostathandbook.com/twowayanova.html#:~:text=A%20two%2Dway%20anova%20is,one%20female%20of%20each%20genotype.
+[6]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/Learning_Notes/ANOVA_practice.ipynb
