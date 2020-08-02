@@ -45,9 +45,10 @@
   
 ## Practice 💖
 * [My Code - ANOVA Practice][6]
-  * The use of ANOVA here is to test whether the categorical independent variable is important to the dependent variable.
-  * Need to check assumptions first and do some data transformation if necessary.
+  * The use of ANOVA here is to test whether the categorical independent variable is important to the  continuous dependent variable.
+  * Better to check assumptions first and do some data transformation if necessary.
   * After finding there is a significant difference among groups, there is post-hoc test to find which pairs of groups have the significant difference.
+    * For N way ANOVA (N >= 2), the post hoc test here need to check each independent variable. I think the variables with higher percentage of `reject=True` tend to be more important to the dependent variable.
 
 
 ## Reference
