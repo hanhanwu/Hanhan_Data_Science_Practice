@@ -2,15 +2,23 @@
 
 I have decided to systematically review all the details of deep learning, and organize all important concepts together.
 
-## Data Preprocessing Methods
+## Data Preprocessing Methods 😱
 
 ## Layers & Dimensions 😱😱
-### Hidden Units
-* Having more hidden units, also means having higher dimensional space representaton, will allow you to learn more complex representation.
+### Hidden Layers
+* Having more hidden layers, also means having higher dimensional space representaton, will allow you to learn more complex representation.
   * Imagine this allows you to cut an image into smaller pieces for learning.
   * The drawback is more computationally expensive, and you might be learning unnecessary patterns which could even lead to overfitting.
+* When there are N classes to predict, the dimensions of all the hidden layers better > N, otherwise the information loss will lead to overfitting
   
 ### Activation Functions
+#### `softmax`
+* When it's used in the last layer, usually for N multi-class probability output, the last layer will have N nodes (N > 2)
+* The sum of N classes probabilities is 1
+
+#### `Sigmoid`
+* When it's used in the last layer, usually for 2 class probability output, the last layer will have 1 node
+* The sum of 2 classes probability is 1
 
 ### Output Layer
 
@@ -18,9 +26,15 @@ I have decided to systematically review all the details of deep learning, and or
   
 ### Evaluation Metrics
 * [Full list of Keras metrics][4]
+
+#### Loss Functions
+* The training process is trying to reduce the loss.
 * `crossentropy`
   * Good choice for probability output.
   * It measures the distance between y_true and y_pred probabilities
+  * `binary_` one can be used for probability of 2 classes
+  * `categorical_` one can be used for probability of 2+ classes, and the label is in categorical format (such as one-hot encoding)
+  * `sparse_categorical_` is similar to the use case of `categorical_`, but it's used when the labels are in integer format
 
 
 ## Overfitting
@@ -28,9 +42,12 @@ I have decided to systematically review all the details of deep learning, and or
 * Can be because your model has remembered the mapping between the training samples and the targets.
 * Can be because there is new samples in the testing set that never appeared in the training set.
 * The infrastructure is too complex and learned unnecessary patterns.
+* INformation loss in the hidden layers.
 
 ### Solutions to Avoid Overfitting
 * Plot the metrics (such as loss, accuracy, etc.) between training set and validation set, stop training near the epoch that starts to show the opposite trending between training metrics and validation metrics.
+  * Note, it doesn't need the 2 curves to be close to each other, we just need to check the moving trending (up or down) for each curve. For example, when the training acccuacy keeps going up, at point A, validation accuracy starts going down, then this point A can be the stopping point even if later validation accuracy could still move up after point A.
+* Avoid having the dimensions of the hidden layers < N, N is the number of classes
 
 ## Well Known Datasets
 * [Keras packaged datasets][3]
