@@ -3,6 +3,9 @@
 I have decided to systematically review all the details of deep learning, and organize all important concepts together.
 
 ## Data Preprocessing Methods 😱
+### Better to Normalize to the same range
+* When features are in different ranges, better to normalize them into the same range.
+* [sklearn functions][7]
 
 ### How to Preprocessing Testing Data ❣❣
 * The parameters used for preprocessing the training data should be generated from the training data only, and be applied to the testing data too.
@@ -33,8 +36,9 @@ I have decided to systematically review all the details of deep learning, and or
 
 ### About K-fold Cross Validation with Keras
 * Well, adding this part is because I failed this piece in Unity interview...
-* [Here's the example if the interviewer asks you to implement k-fold][5]
-* [Here's the example if you need k-fold with Keras in the work][6]
+  * [Here's the example if the interviewer asks you to implement k-fold][5]
+  * [Here's the example if you need k-fold with Keras in the work][6]
+* After finding the optimal epoch number from cross validation, train the whole dataset with the optimal number of epoch.
   
 ### Evaluation Metrics
 * [Full list of Keras metrics][4]
@@ -55,6 +59,7 @@ I have decided to systematically review all the details of deep learning, and or
     * The stopping point is where starts the opposite trending
   * For k-fold cross validation, we can average the validation metrics from all the k folds, and in each fold, training & validation sets generates 1 evaluation value
     * The stopping point is where the trend fully changed
+    * Especially useful when the dataset is small
 
 
 ## Overfitting
@@ -69,7 +74,7 @@ I have decided to systematically review all the details of deep learning, and or
 * Plot the metrics (such as loss, accuracy, etc.) between training set and validation set, stop training near the epoch that starts to show the opposite trending between training metrics and validation metrics.
   * Note, it doesn't need the 2 curves to be close to each other, we just need to check the moving trending (up or down) for each curve. For example, when the training acccuacy keeps going up, at point A, validation accuracy starts going down, then this point A can be the stopping point even if later validation accuracy could still move up after point A.
 * Avoid having the dimensions of the hidden layers < N, N is the number of classes.
-* If the training dataset is small, use a smaller NN.
+* If the training dataset is small, use a smaller NN (1 or 2 hidden layers + 1 last layer), and use cross validation to find the optimal epoch number
 
 ## Well Known Datasets
 * [Keras packaged datasets][3]
@@ -84,3 +89,4 @@ I have decided to systematically review all the details of deep learning, and or
 [4]:https://keras.io/api/metrics/
 [5]:https://nbviewer.jupyter.org/github/fchollet/deep-learning-with-python-notebooks/blob/master/3.7-predicting-house-prices.ipynb
 [6]:https://www.machinecurve.com/index.php/2020/02/18/how-to-use-k-fold-cross-validation-with-keras/
+[7]:https://scikit-learn.org/stable/modules/classes.html#module-sklearn.preprocessing
