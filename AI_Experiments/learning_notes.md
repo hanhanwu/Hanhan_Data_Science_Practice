@@ -4,6 +4,10 @@ I have decided to systematically review all the details of deep learning, and or
 
 ## Data Preprocessing Methods 😱
 
+### How to Preprocessing Testing Data ❣❣
+* The parameters used for preprocessing the training data should be generated from the training data only, and be applied to the testing data too.
+* For example, when you are using `mean` and `std` to normalize the data, these params should be generated from the training data, and be applied to the testing data.
+
 ## Layers & Dimensions 😱😱
 ### Hidden Layers
 * Having more hidden layers, also means having higher dimensional space representaton, will allow you to learn more complex representation.
@@ -12,7 +16,7 @@ I have decided to systematically review all the details of deep learning, and or
 * When there are N classes to predict, the dimensions of all the hidden layers better > N, otherwise the information loss will lead to overfitting
   
 ### Activation Functions
-#### `softmax`
+#### `Softmax`
 * When it's used in the last layer, usually for N multi-class probability output, the last layer will have N nodes (N > 2)
 * The sum of N classes probabilities is 1
 
@@ -20,9 +24,17 @@ I have decided to systematically review all the details of deep learning, and or
 * When it's used in the last layer, usually for 2 class probability output, the last layer will have 1 node
 * The sum of 2 classes probability is 1
 
+#### Without Activation Functions
+* A layer has 1 node (unit) without activation function equals to a linear function --> Can be used for regression problem.
+
 ### Output Layer
 
 ### Optimizer
+
+### About K-fold Cross Validation with Keras
+* Well, adding this part is because I failed this piece in Unity interview...
+* [Here's the example if the interviewer asks you to implement k-fold][5]
+* [Here's the example if you need k-fold with Keras in the work][6]
   
 ### Evaluation Metrics
 * [Full list of Keras metrics][4]
@@ -35,6 +47,14 @@ I have decided to systematically review all the details of deep learning, and or
   * `binary_` one can be used for probability of 2 classes
   * `categorical_` one can be used for probability of 2+ classes, and the label is in categorical format (such as one-hot encoding)
   * `sparse_categorical_` is similar to the use case of `categorical_`, but it's used when the labels are in integer format
+  
+#### Evaluation Visualization
+##### Epoch Plot
+* Epoch - Evaluation Metrics plot
+  * If there are metrics for training and 1 validation set, plot both curves for comparison will help find the stopping epoch
+    * The stopping point is where starts the opposite trending
+  * For k-fold cross validation, we can average the validation metrics from all the k folds, and in each fold, training & validation sets generates 1 evaluation value
+    * The stopping point is where the trend fully changed
 
 
 ## Overfitting
@@ -42,12 +62,14 @@ I have decided to systematically review all the details of deep learning, and or
 * Can be because your model has remembered the mapping between the training samples and the targets.
 * Can be because there is new samples in the testing set that never appeared in the training set.
 * The infrastructure is too complex and learned unnecessary patterns.
-* INformation loss in the hidden layers.
+* Information loss in the hidden layers.
+* Small training dataset.
 
 ### Solutions to Avoid Overfitting
 * Plot the metrics (such as loss, accuracy, etc.) between training set and validation set, stop training near the epoch that starts to show the opposite trending between training metrics and validation metrics.
   * Note, it doesn't need the 2 curves to be close to each other, we just need to check the moving trending (up or down) for each curve. For example, when the training acccuacy keeps going up, at point A, validation accuracy starts going down, then this point A can be the stopping point even if later validation accuracy could still move up after point A.
-* Avoid having the dimensions of the hidden layers < N, N is the number of classes
+* Avoid having the dimensions of the hidden layers < N, N is the number of classes.
+* If the training dataset is small, use a smaller NN.
 
 ## Well Known Datasets
 * [Keras packaged datasets][3]
@@ -60,3 +82,5 @@ I have decided to systematically review all the details of deep learning, and or
 [2]:https://www.manning.com/books/deep-learning-with-python?a_aid=keras&a_bid=76564dff
 [3]:https://keras.io/api/datasets/
 [4]:https://keras.io/api/metrics/
+[5]:https://nbviewer.jupyter.org/github/fchollet/deep-learning-with-python-notebooks/blob/master/3.7-predicting-house-prices.ipynb
+[6]:https://www.machinecurve.com/index.php/2020/02/18/how-to-use-k-fold-cross-validation-with-keras/
