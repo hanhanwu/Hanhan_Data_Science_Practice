@@ -7,6 +7,21 @@ I have decided to systematically review all the details of deep learning, and or
 * When features are in different ranges, better to normalize them into the same range.
 * [sklearn functions][7]
 
+### Text data
+* Text data means a column comtains longer text strings, such as comments, topics, etc.
+* General Steps
+  1. Choose top N toknized words appeared in all the text, N excludes stop words
+  2. One-hot encoding: each distinct word as a column, each row reprensents a text, for word appeared in this text, mark it as 1, others mark as 0
+  
+### Multi-class lables [Python]
+* Mehtod 1 - One-hot encoding
+  * The labels have N columns, each column represents a class
+  * Mark the labeled class as 1
+* Method 2 - Integer labels
+  * Each class is represented as an integer
+  * 1 numpy array is enough for the labels
+* [Example for both methods][8]
+
 ### How to Preprocessing Testing Data ❣❣
 * The parameters used for preprocessing the training data should be generated from the training data only, and be applied to the testing data too.
 * For example, when you are using `mean` and `std` to normalize the data, these params should be generated from the training data, and be applied to the testing data.
@@ -19,20 +34,30 @@ I have decided to systematically review all the details of deep learning, and or
 * When there are N classes to predict, the dimensions of all the hidden layers better > N, otherwise the information loss will lead to overfitting
   
 ### Activation Functions
-#### `Softmax`
-* When it's used in the last layer, usually for N multi-class probability output, the last layer will have N nodes (N > 2)
-* The sum of N classes probabilities is 1
+#### `relu` (rectified linear unit)
+* It will zero out negative values.
 
-#### `Sigmoid`
-* When it's used in the last layer, usually for 2 class probability output, the last layer will have 1 node
-* The sum of 2 classes probability is 1
+#### `softmax`
+* When it's used in the last layer, usually for N multi-class probability output, the last layer will have N nodes (N > 2).
+* The sum of N classes probabilities is 1.
+
+#### `sigmoid`
+* When it's used in the last layer, usually for 2 class probability output, the last layer will have 1 node.
+* The sum of 2 classes probability is 1.
 
 #### Without Activation Functions
 * A layer has 1 node (unit) without activation function equals to a linear function --> Can be used for regression problem.
 
 ### Output Layer
+* 2 classes
+  * 1 node, sigmoid for class probabilities
+* N classes (N > 2)
+  * N nodes, softmax for class probabilities
+* Regression
+  * Linear regression - 1 node without activation function
 
 ### Optimizer
+* `rmsprop` is often good enough
 
 ### About K-fold Cross Validation with Keras
 * Well, adding this part is because I failed this piece in Unity interview...
@@ -90,3 +115,4 @@ I have decided to systematically review all the details of deep learning, and or
 [5]:https://nbviewer.jupyter.org/github/fchollet/deep-learning-with-python-notebooks/blob/master/3.7-predicting-house-prices.ipynb
 [6]:https://www.machinecurve.com/index.php/2020/02/18/how-to-use-k-fold-cross-validation-with-keras/
 [7]:https://scikit-learn.org/stable/modules/classes.html#module-sklearn.preprocessing
+[8]:https://nbviewer.jupyter.org/github/fchollet/deep-learning-with-python-notebooks/blob/master/3.6-classifying-newswires.ipynb
