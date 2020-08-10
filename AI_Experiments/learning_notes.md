@@ -108,6 +108,7 @@ I have decided to systematically review all the details of deep learning, and or
   * L2 regularization, where the cost added is proportional to the square of the value of the weights coefficients
 * [Dropout][10]
   * Can be applied to both training and testing data, but in practice, often applied to training data only
+  * The core idea is that introducing noise in the output values of a layer can break up coincident patterns that are not significant
   * It's one of the most effective and most commonly used method
   * It randomly drops (i.e. setting to zero) a number of output features of a layer during training
   * Dropout rate is often set between 0.2 and 0.5
