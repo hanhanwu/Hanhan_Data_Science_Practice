@@ -28,7 +28,7 @@ I have decided to systematically review all the details of deep learning, and or
 
 ## Layers & Dimensions 😱😱
 ### Hidden Layers
-* Having more hidden layers, also means having higher dimensional space representaton, will allow you to learn more complex representation.
+* Having more units in a layer, also means having higher dimensional space representaton, will allow you to learn more complex representation.
   * Imagine this allows you to cut an image into smaller pieces for learning.
   * The drawback is more computationally expensive, and you might be learning unnecessary patterns which could even lead to overfitting.
 * When there are N classes to predict, the dimensions of all the hidden layers better > N, otherwise the information loss will lead to overfitting
@@ -89,7 +89,8 @@ I have decided to systematically review all the details of deep learning, and or
 
 ## Overfitting
 ### Possible Reasons
-* Can be because your model has remembered the mapping between the training samples and the targets.
+* Can be because your model has remembered the mapping between the training samples and the targets. This often happens when model capacity is too large.
+  * Model capacity is often determined by the number of layers, and the number of units in each layer. Larger the number, higher capacity.
 * Can be because there is new samples in the testing set that never appeared in the training set.
 * The infrastructure is too complex and learned unnecessary patterns.
 * Information loss in the hidden layers.
@@ -100,6 +101,16 @@ I have decided to systematically review all the details of deep learning, and or
   * Note, it doesn't need the 2 curves to be close to each other, we just need to check the moving trending (up or down) for each curve. For example, when the training acccuacy keeps going up, at point A, validation accuracy starts going down, then this point A can be the stopping point even if later validation accuracy could still move up after point A.
 * Avoid having the dimensions of the hidden layers < N, N is the number of classes.
 * If the training dataset is small, use a smaller NN (1 or 2 hidden layers + 1 last layer), and use cross validation to find the optimal epoch number
+* [Regularization][9]
+  * Training data only
+  * By adding the weight regularization, it's trying to reduce the model complexity
+  * L1 regularization, where the cost added is proportional to the absolute value of the weights coefficients
+  * L2 regularization, where the cost added is proportional to the square of the value of the weights coefficients
+* [Dropout][10]
+  * Can be applied to both training and testing data, but in practice, often applied to training data only
+  * It's one of the most effective and most commonly used method
+  * It randomly drops (i.e. setting to zero) a number of output features of a layer during training
+  * Dropout rate is often set between 0.2 and 0.5
 
 ## Well Known Datasets
 * [Keras packaged datasets][3]
@@ -116,3 +127,5 @@ I have decided to systematically review all the details of deep learning, and or
 [6]:https://www.machinecurve.com/index.php/2020/02/18/how-to-use-k-fold-cross-validation-with-keras/
 [7]:https://scikit-learn.org/stable/modules/classes.html#module-sklearn.preprocessing
 [8]:https://nbviewer.jupyter.org/github/fchollet/deep-learning-with-python-notebooks/blob/master/3.6-classifying-newswires.ipynb
+[9]:https://nbviewer.jupyter.org/github/fchollet/deep-learning-with-python-notebooks/blob/master/4.4-overfitting-and-underfitting.ipynb#Adding-weight-regularization
+[10]:https://nbviewer.jupyter.org/github/fchollet/deep-learning-with-python-notebooks/blob/master/4.4-overfitting-and-underfitting.ipynb#Adding-dropout
