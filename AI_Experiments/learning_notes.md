@@ -112,6 +112,18 @@ I have decided to systematically review all the details of deep learning, and or
   * It's one of the most effective and most commonly used method
   * It randomly drops (i.e. setting to zero) a number of output features of a layer during training
   * Dropout rate is often set between 0.2 and 0.5
+  
+## Convolutional Networks (Convnet)
+* [Keras Convnet][11]
+* [Conv2D][12]
+  * "Input shape" is `(batch_size, image_height, image_width, image_channels)`, batch_size is optional
+    * However, in Keras `reshape()`, the order is `(sample_size, channels, width, height)`...
+  * `image_channels` is also the image depth. [How to use opencv2 to find image channels][13]
+    * If returns 2 dimensions, the image channel is 1, otherwise it's the third number returned in the output
+* [What is `strides`][14]
+  * The size (height, width) of the moving window
+* Why `Flatten()`
+  * `Dense` layer is 1D, so if the output from Conv2D is more than 1D, it needs to be flatterned into 1D before entering into the Dense layer.
 
 ## Well Known Datasets
 * [Keras packaged datasets][3]
@@ -130,3 +142,7 @@ I have decided to systematically review all the details of deep learning, and or
 [8]:https://nbviewer.jupyter.org/github/fchollet/deep-learning-with-python-notebooks/blob/master/3.6-classifying-newswires.ipynb
 [9]:https://nbviewer.jupyter.org/github/fchollet/deep-learning-with-python-notebooks/blob/master/4.4-overfitting-and-underfitting.ipynb#Adding-weight-regularization
 [10]:https://nbviewer.jupyter.org/github/fchollet/deep-learning-with-python-notebooks/blob/master/4.4-overfitting-and-underfitting.ipynb#Adding-dropout
+[11]:https://keras.io/api/layers/convolution_layers/
+[12]:https://keras.io/api/layers/convolution_layers/convolution2d/
+[13]:https://stackoverflow.com/questions/19062875/how-to-get-the-number-of-channels-from-an-image-in-opencv-2
+[14]:https://www.quora.com/What-does-stride-mean-in-the-context-of-convolutional-neural-networks
