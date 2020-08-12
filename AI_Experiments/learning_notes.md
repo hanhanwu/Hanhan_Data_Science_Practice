@@ -2,6 +2,10 @@
 
 I have decided to systematically review all the details of deep learning, and organize all important concepts together.
 
+## Fun Facts of Deep Learning
+* Deep learning can find interesting features itself, so we don't need manually feature engineering in deep learning. 
+  * But this is achievable only when the dataset is large enough, higher dimensions of the data (such as images), larger dataset is needed.
+
 ## Data Preprocessing Methods 😱
 ### Better to Normalize to the same range
 * When features are in different ranges, better to normalize them into the same range.
@@ -114,9 +118,11 @@ I have decided to systematically review all the details of deep learning, and or
   * Dropout rate is often set between 0.2 and 0.5
   
 ## Convolutional Networks (Convnet)
+* Convnets can learn <b>local, translation-invariant features</b>, so they are very data-efficient on perceptual problems. Therefore, even when the dataset is small (such as hundreds of images), you might still get a reasonable results.
 * [Keras Convnet][11]
 * [Conv2D][12]
   * "Input shape" is `(batch_size, image_height, image_width, image_channels)`, batch_size is optional
+    * The width and height tend to shrink when we go deeper in convnet
     * However, in Keras `reshape()`, the order is `(sample_size, channels, width, height)`...
   * `image_channels` is also the image depth. [How to use opencv2 to find image channels][13]
     * If returns 2 dimensions, the image channel is 1, otherwise it's the third number returned in the output
