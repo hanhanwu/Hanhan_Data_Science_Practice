@@ -133,6 +133,7 @@ I have decided to systematically review all the details of deep learning, and or
 
 ## Well Known Datasets
 * [Keras packaged datasets][3]
+* [Cats and Dogs image set][15]
 
 ## Reference
 * [Deep Learning Python Notebooks][1]
@@ -152,3 +153,4 @@ I have decided to systematically review all the details of deep learning, and or
 [12]:https://keras.io/api/layers/convolution_layers/convolution2d/
 [13]:https://stackoverflow.com/questions/19062875/how-to-get-the-number-of-channels-from-an-image-in-opencv-2
 [14]:https://www.quora.com/What-does-stride-mean-in-the-context-of-convolutional-neural-networks
+[15]:https://www.kaggle.com/c/dogs-vs-cats/data
