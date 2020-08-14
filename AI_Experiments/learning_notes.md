@@ -17,6 +17,18 @@ I have decided to systematically review all the details of deep learning, and or
   1. Choose top N toknized words appeared in all the text, N excludes stop words
   2. One-hot encoding: each distinct word as a column, each row reprensents a text, for word appeared in this text, mark it as 1, others mark as 0
   
+### Image data
+* [Keras ImageDataGenerator][17] will make below steps easier
+  * Convert JPEG to RGB
+  * Resize all the images to the same size
+  * Convert images into floating point tensors
+  * Rescale the pixel values (between 0 and 255) to the [0, 1] interval
+  * Batch size is the number of samples in a batch
+    * `steps_per_epoch = total training sample size / training batch size`, this is because in each epoch, it runs all the samples
+    * `validation_steps = total validation sample size / validation batch size`
+  * Seperate data and labels
+    * Labels are created based on directories, different classes of images are put in different directories
+  
 ### Multi-class lables [Python]
 * Mehtod 1 - One-hot encoding
   * The labels have N columns, each column represents a class
@@ -124,12 +136,20 @@ I have decided to systematically review all the details of deep learning, and or
   * "Input shape" is `(batch_size, image_height, image_width, image_channels)`, batch_size is optional
     * The width and height tend to shrink when we go deeper in convnet
     * However, in Keras `reshape()`, the order is `(sample_size, channels, width, height)`...
+  * When there are multiple layers of Conv2D in a neural net, deeper layer gets larger number of batches, notmrally we choose batch size in a sequence of 32, 64, 128, ...
+    * It 
   * `image_channels` is also the image depth. [How to use opencv2 to find image channels][13]
     * If returns 2 dimensions, the image channel is 1, otherwise it's the third number returned in the output
+* [MaxPooling2D][16]
+  * Pooling Layer - pooling is a down-sampling operation that reduces the dimensionality of the feature map.
+  * It performs down-sampling operations to reduce the dimensionality and creates a pooled feature map by sliding a filter matrix over the input matrix.
 * [What is `strides`][14]
   * The size (height, width) of the moving window
 * Why `Flatten()`
   * `Dense` layer is 1D, so if the output from Conv2D is more than 1D, it needs to be flatterned into 1D before entering into the Dense layer.
+* `fit_generator()`
+  * `steps_per_epoch = total training sample size / training batch size`, this is because in each epoch, it runs all the samples
+  * `validation_steps = total validation sample size / validation batch size`
 
 ## Well Known Datasets
 * [Keras packaged datasets][3]
@@ -154,3 +174,5 @@ I have decided to systematically review all the details of deep learning, and or
 [13]:https://stackoverflow.com/questions/19062875/how-to-get-the-number-of-channels-from-an-image-in-opencv-2
 [14]:https://www.quora.com/What-does-stride-mean-in-the-context-of-convolutional-neural-networks
 [15]:https://www.kaggle.com/c/dogs-vs-cats/data
+[16]:https://keras.io/api/layers/pooling_layers/max_pooling2d/
+[17]:https://nbviewer.jupyter.org/github/fchollet/deep-learning-with-python-notebooks/blob/master/5.2-using-convnets-with-small-datasets.ipynb#Data-preprocessing
