@@ -128,6 +128,10 @@ I have decided to systematically review all the details of deep learning, and or
   * It's one of the most effective and most commonly used method
   * It randomly drops (i.e. setting to zero) a number of output features of a layer during training
   * Dropout rate is often set between 0.2 and 0.5
+* [Data Augmentation][18]
+  * Training data only
+  * "Data augmentation takes the approach of generating more training data from existing training samples, by "augmenting" the samples via a number of random transformations that yield believable-looking image"
+  * Even though there is no same image in the training set, with this method, the inputs can still be heavily intercorrelated. Therefore it's necessary to add a `dropout` layer right after flattened data to reduce some dimensions in order to further reduce overfitting.
   
 ## Convolutional Networks (Convnet)
 * Convnets can learn <b>local, translation-invariant features</b>, so they are very data-efficient on perceptual problems. Therefore, even when the dataset is small (such as hundreds of images), you might still get a reasonable results.
@@ -176,3 +180,4 @@ I have decided to systematically review all the details of deep learning, and or
 [15]:https://www.kaggle.com/c/dogs-vs-cats/data
 [16]:https://keras.io/api/layers/pooling_layers/max_pooling2d/
 [17]:https://nbviewer.jupyter.org/github/fchollet/deep-learning-with-python-notebooks/blob/master/5.2-using-convnets-with-small-datasets.ipynb#Data-preprocessing
+[18]:https://nbviewer.jupyter.org/github/fchollet/deep-learning-with-python-notebooks/blob/master/5.2-using-convnets-with-small-datasets.ipynb#Using-data-augmentation
