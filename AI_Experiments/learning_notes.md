@@ -101,6 +101,8 @@ I have decided to systematically review all the details of deep learning, and or
   * For k-fold cross validation, we can average the validation metrics from all the k folds, and in each fold, training & validation sets generates 1 evaluation value
     * The stopping point is where the trend fully changed
     * Especially useful when the dataset is small
+  * If the curves look too noisy, you can try methods to smooth out the curves, such as using exponential moving average
+    * [See the example at the bottom][21]
 
 
 ## Overfitting
@@ -164,8 +166,24 @@ I have decided to systematically review all the details of deep learning, and or
   * [python examples][20]
 * Method 1 - Pretrained Model + Standalone Densely-connected classifier
   * This method is fast and cheap to run, but doesn't allow you to do data augmentation adn therefore may not reach to an optimal accuracy
+    * It's possible to do with CPU
   * Need to reshape your new dataset as the output of the pre-trained convnet
   * [See example here][21]
+* Method 2 - Extend Pretrained Model
+  * It's costly to run, at least need the GPU
+  * Before compile and train the model, need to freeze the the convolutional base. "Freezing" a layer or set of layers means preventing their weights from getting updated during training, in order to keep the representations learned by the trained trained model.
+    * If you ever modify weight trainability after compilation, you should then re-compile the model, or these changes would be ignored.
+  * [See example here][21]
+* Fine Tuning
+  * Unfreeze a few earlier layers of the frozen model and together being trained with the newly added model parts.
+  * It slightly adjusts the more abstract representation of the pretrained model.
+  * It is more useful to fine-tune the more specialized features (deeper layers)
+  * General Steps:
+    *  Add your custom network on top of an already trained base network.
+    *  Freeze the base network.
+    *  Train the part you added.
+    *  Unfreeze some layers in the base network.
+    *  Jointly train both these layers and the part you added.
 
 ## Well Known Datasets
 * [Keras packaged datasets][3]
