@@ -17,7 +17,8 @@ I have decided to systematically review all the details of deep learning, and or
   1. Choose top N toknized words appeared in all the text, N excludes stop words
   2. One-hot encoding: each distinct word as a column, each row reprensents a text, for word appeared in this text, mark it as 1, others mark as 0
   
-### Image data
+### Preprocess Image data
+#### Raw images to NN readable input 
 * [Keras ImageDataGenerator][17] will make below steps easier
   * Convert JPEG to RGB
   * Resize all the images to the same size
@@ -28,6 +29,9 @@ I have decided to systematically review all the details of deep learning, and or
     * `validation_steps = total validation sample size / validation batch size`
   * Seperate data and labels
     * Labels are created based on directories, different classes of images are put in different directories
+#### Convert an image to image tensor
+* [Example][22]
+* The image tensor can be used to understand the output of each activation layer
   
 ### Multi-class lables [Python]
 * Mehtod 1 - One-hot encoding
@@ -184,6 +188,11 @@ I have decided to systematically review all the details of deep learning, and or
     *  Train the part you added.
     *  Unfreeze some layers in the base network.
     *  Jointly train both these layers and the part you added.
+### Convnet Visualization
+* Visualize each activation layer helps understand what does each channel learns
+* Visualize convnet filters helps understand how the network express the image by resembling edges, colors and textures, etc.
+* Visualize the heatmap of classes helps understand which part of the image led to the final classification decisions
+* [See examples here][23]
 
 ## Well Known Datasets
 * [Keras packaged datasets][3]
@@ -214,3 +223,5 @@ I have decided to systematically review all the details of deep learning, and or
 [19]:https://github.com/keras-team/keras-applications
 [20]:https://keras.io/api/applications/
 [21]:https://nbviewer.jupyter.org/github/fchollet/deep-learning-with-python-notebooks/blob/master/5.3-using-a-pretrained-convnet.ipynb
+[22]:https://nbviewer.jupyter.org/github/fchollet/deep-learning-with-python-notebooks/blob/master/5.4-visualizing-what-convnets-learn.ipynb#Visualizing-intermediate-activations
+[23]:https://nbviewer.jupyter.org/github/fchollet/deep-learning-with-python-notebooks/blob/master/5.4-visualizing-what-convnets-learn.ipynb
