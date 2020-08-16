@@ -154,6 +154,18 @@ I have decided to systematically review all the details of deep learning, and or
 * `fit_generator()`
   * `steps_per_epoch = total training sample size / training batch size`, this is because in each epoch, it runs all the samples
   * `validation_steps = total validation sample size / validation batch size`
+### Pretrined Convnet
+* Better just to reuse the pretrained convolutional base and avoid using the densely-connected classifier. Because
+  * The convolutional base has a more generic feature maps while densely-connected features are more specific
+  * The convolutional base still contains object location info while densely-connect features do not
+* Only choose earlier layers from the trained model if your new dataset has larger difference with the data used for the pretrained model
+  * Because the earlier layer capture more generic feature maps
+* [Keras pretrained applications][19]
+  * [python examples][20]
+* Method 1 - Pretrained Model + Standalone Densely-connected classifier
+  * This method is fast and cheap to run, but doesn't allow you to do data augmentation adn therefore may not reach to an optimal accuracy
+  * Need to reshape your new dataset as the output of the pre-trained convnet
+  * [See example here][21]
 
 ## Well Known Datasets
 * [Keras packaged datasets][3]
@@ -181,3 +193,6 @@ I have decided to systematically review all the details of deep learning, and or
 [16]:https://keras.io/api/layers/pooling_layers/max_pooling2d/
 [17]:https://nbviewer.jupyter.org/github/fchollet/deep-learning-with-python-notebooks/blob/master/5.2-using-convnets-with-small-datasets.ipynb#Data-preprocessing
 [18]:https://nbviewer.jupyter.org/github/fchollet/deep-learning-with-python-notebooks/blob/master/5.2-using-convnets-with-small-datasets.ipynb#Using-data-augmentation
+[19]:https://github.com/keras-team/keras-applications
+[20]:https://keras.io/api/applications/
+[21]:https://nbviewer.jupyter.org/github/fchollet/deep-learning-with-python-notebooks/blob/master/5.3-using-a-pretrained-convnet.ipynb
