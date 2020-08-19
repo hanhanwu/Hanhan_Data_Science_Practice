@@ -87,6 +87,8 @@ I have decided to systematically review all the details of deep learning, and or
   
 ### Evaluation Metrics
 * [Full list of Keras metrics][4]
+* [Top-n Error][24]
+  * We often saw "top-1 error", "top-5" error appeared in papers, here's more explaination
 
 #### Loss Functions
 * The training process is trying to reduce the loss.
@@ -168,6 +170,7 @@ I have decided to systematically review all the details of deep learning, and or
   * Because the earlier layer capture more generic feature maps
 * [Keras pretrained applications][19]
   * [python examples][20]
+  * [A bit more description on some of the pre-trained models][25]
 * Method 1 - Pretrained Model + Standalone Densely-connected classifier
   * This method is fast and cheap to run, but doesn't allow you to do data augmentation adn therefore may not reach to an optimal accuracy
     * It's possible to do with CPU
@@ -225,3 +228,5 @@ I have decided to systematically review all the details of deep learning, and or
 [21]:https://nbviewer.jupyter.org/github/fchollet/deep-learning-with-python-notebooks/blob/master/5.3-using-a-pretrained-convnet.ipynb
 [22]:https://nbviewer.jupyter.org/github/fchollet/deep-learning-with-python-notebooks/blob/master/5.4-visualizing-what-convnets-learn.ipynb#Visualizing-intermediate-activations
 [23]:https://nbviewer.jupyter.org/github/fchollet/deep-learning-with-python-notebooks/blob/master/5.4-visualizing-what-convnets-learn.ipynb
+[24]:https://www.quora.com/What-does-the-terms-Top-1-and-Top-5-mean-in-the-context-of-Machine-Learning-research-papers-when-report-empirical-results#:~:text=The%20Top%2D1%20error%20is,among%20its%20top%205%20guesses.
+[25]:https://www.analyticsvidhya.com/blog/2020/08/top-4-pre-trained-models-for-image-classification-with-python-code/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
