@@ -205,6 +205,11 @@ I have decided to systematically review all the details of deep learning, and or
 * [Deep Learning Python Notebooks][1]
 * [Deep Learning with Python][2]
 
+## Interview Questions
+I just found some companies like to ask you to implement methods used in deep learning without using numpy, sklearn, no matter whether they need deep learning... This is why I put these here, even though there is no time to check these during the interviews. Personally I don't like this type of interview at all, they gave impossible timeline (unless you have remembered each answer), no one talk with you to help you understand what do the questions really mean, and the solution used here has a big difference with the practical solutions. This type of interviews could be used at most for entry level data scientists but shuld not be used for senior level. Unfortunately, these companies do not have a qualified hiring manager. Sometimes, this world is funny and ridicuclous in a way I can never understand.
+* [Implement one-hot encoding][26]
+* [Implement k-fold CV][5]
+
 [1]:https://github.com/fchollet/deep-learning-with-python-notebooks
 [2]:https://www.manning.com/books/deep-learning-with-python?a_aid=keras&a_bid=76564dff
 [3]:https://keras.io/api/datasets/
@@ -230,3 +235,4 @@ I have decided to systematically review all the details of deep learning, and or
 [23]:https://nbviewer.jupyter.org/github/fchollet/deep-learning-with-python-notebooks/blob/master/5.4-visualizing-what-convnets-learn.ipynb
 [24]:https://www.quora.com/What-does-the-terms-Top-1-and-Top-5-mean-in-the-context-of-Machine-Learning-research-papers-when-report-empirical-results#:~:text=The%20Top%2D1%20error%20is,among%20its%20top%205%20guesses.
 [25]:https://www.analyticsvidhya.com/blog/2020/08/top-4-pre-trained-models-for-image-classification-with-python-code/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+[26]:https://nbviewer.jupyter.org/github/fchollet/deep-learning-with-python-notebooks/blob/master/6.1-one-hot-encoding-of-words-or-characters.ipynb
