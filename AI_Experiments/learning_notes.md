@@ -208,6 +208,8 @@ I have decided to systematically review all the details of deep learning, and or
 ## Interview Questions
 I just found some companies like to ask you to implement methods used in deep learning without using numpy, sklearn, no matter whether they need deep learning... This is why I put these here, even though there is no time to check these during the interviews. Personally I don't like this type of interview at all, they gave impossible timeline (unless you have remembered each answer), no one talk with you to help you understand what do the questions really mean, and the solution used here has a big difference with the practical solutions. This type of interviews could be used at most for entry level data scientists but shuld not be used for senior level. Unfortunately, these companies do not have a qualified hiring manager. Sometimes, this world is funny and ridicuclous in a way I can never understand.
 * [Implement one-hot encoding][26]
+  * This one uses numpy to create the matrix, but you can do it with simple python lists
+  * I don't like its second method because of the hashing collision. Instead, I think there are some preprocessing can be done before the encoding here, such as tokenize all the words, removing stop words and other less important tokens (such as those got low tf-idf score)
 * [Implement k-fold CV][5]
 
 [1]:https://github.com/fchollet/deep-learning-with-python-notebooks
