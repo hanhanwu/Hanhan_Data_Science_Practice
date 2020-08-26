@@ -7,6 +7,9 @@ I have decided to systematically review all the details of deep learning, and or
   * But this is achievable only when the dataset is large enough, higher dimensions of the data (such as images), larger dataset is needed.
 
 ## Data Preprocessing Methods 😱
+### Shuffle the data before spliting
+* When the arrangement of labels not distributed similar for training and testing data, better to shuffle the data before spliting into training and testing.
+
 ### Better to Normalize to the same range
 * When features are in different ranges, better to normalize them into the same range.
 * [sklearn functions][7]
@@ -197,6 +200,17 @@ I have decided to systematically review all the details of deep learning, and or
 * Visualize the heatmap of classes helps understand which part of the image led to the final classification decisions
 * [See examples here][23]
 
+
+## RNN
+### RNN Pretrained Models
+#### Words Embedding
+* These models are used to load the embedding layer.
+* [Stanford GloVe][27]
+  * [Example usage][28]
+    * Parse out the word vectors
+    * Build an embedding matrix of shape `(max_words, embedding_dim)`, max_words indicates how many top words from the dataset is needed
+    * Load the embedding matrix and freeze the embedding layer (layers[0])
+
 ## Well Known Datasets
 * [Keras packaged datasets][3]
 * [Cats and Dogs image set][15]
@@ -238,3 +252,5 @@ I just found some companies like to ask you to implement methods used in deep le
 [24]:https://www.quora.com/What-does-the-terms-Top-1-and-Top-5-mean-in-the-context-of-Machine-Learning-research-papers-when-report-empirical-results#:~:text=The%20Top%2D1%20error%20is,among%20its%20top%205%20guesses.
 [25]:https://www.analyticsvidhya.com/blog/2020/08/top-4-pre-trained-models-for-image-classification-with-python-code/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
 [26]:https://nbviewer.jupyter.org/github/fchollet/deep-learning-with-python-notebooks/blob/master/6.1-one-hot-encoding-of-words-or-characters.ipynb
+[27]:https://nlp.stanford.edu/projects/glove/
+[28]:https://nbviewer.jupyter.org/github/fchollet/deep-learning-with-python-notebooks/blob/master/6.1-using-word-embeddings.ipynb
