@@ -202,6 +202,7 @@ I have decided to systematically review all the details of deep learning, and or
 
 
 ## RNN
+* RNN is trying to help analysis on a sequence, so that there could be more context, and therefore they are often used in NLP.
 ### RNN Pretrained Models
 #### Words Embedding
 * These models are used to load the embedding layer.
