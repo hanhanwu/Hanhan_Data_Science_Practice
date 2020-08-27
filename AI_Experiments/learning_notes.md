@@ -205,12 +205,22 @@ I have decided to systematically review all the details of deep learning, and or
 * RNN is trying to help analysis on a sequence, so that there could be more context, and therefore they are often used in NLP.
 ### RNN Pretrained Models
 #### Words Embedding
+* A word embedding not only converts the word but also identifies the semantics and syntaxes of the word to build a vector representation of this information.
 * These models are used to load the embedding layer.
 * [Stanford GloVe][27]
   * [Example usage][28]
     * Parse out the word vectors
     * Build an embedding matrix of shape `(max_words, embedding_dim)`, max_words indicates how many top words from the dataset is needed
     * Load the embedding matrix and freeze the embedding layer (layers[0])
+#### Sentence Embedding
+* Sentence embedding techniques represent entire sentences and their semantic information as vectors. This method could help the machine understand the context better, and when there is large amount of text, it might be more efficient than words embedding.
+* [Example usage][29]
+  * The major usage in this exmple is to find sentence similarity with cosin similarity, using sentence embedding results
+  * 4 types of recommended libraries
+    * [doc2vec][30]
+    * [sentence transformers][31] and its [full list of pretrained models][32]
+    * [Facebook InferSent][33]
+    * [Google Universal Sentence Encoder][34]
 
 ## Well Known Datasets
 * [Keras packaged datasets][3]
@@ -255,3 +265,9 @@ I just found some companies like to ask you to implement methods used in deep le
 [26]:https://nbviewer.jupyter.org/github/fchollet/deep-learning-with-python-notebooks/blob/master/6.1-one-hot-encoding-of-words-or-characters.ipynb
 [27]:https://nlp.stanford.edu/projects/glove/
 [28]:https://nbviewer.jupyter.org/github/fchollet/deep-learning-with-python-notebooks/blob/master/6.1-using-word-embeddings.ipynb
+[29]:https://www.analyticsvidhya.com/blog/2020/08/top-4-sentence-embedding-techniques-using-python/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+[30]:https://radimrehurek.com/gensim/models/doc2vec.html#gensim.models.doc2vec.Doc2Vec
+[31]:https://github.com/UKPLab/sentence-transformers
+[32]:https://docs.google.com/spreadsheets/d/14QplCdTCDwEmTqrn1LH4yrbKvdogK4oQvYO1K1aPR5M/edit#gid=0
+[33]:https://github.com/facebookresearch/InferSent
+[34]:https://github.com/tensorflow/tfjs-models/tree/master/universal-sentence-encoder
