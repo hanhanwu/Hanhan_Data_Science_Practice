@@ -48,6 +48,7 @@ I have decided to systematically review all the details of deep learning, and or
 ### How to Preprocessing Testing Data ❣❣
 * The parameters used for preprocessing the training data should be generated from the training data only, and be applied to the testing data too.
 * For example, when you are using `mean` and `std` to normalize the data, these params should be generated from the training data, and be applied to the testing data.
+  * It seems that `(value - mean)/std` is a common way used to normalize features when they are in different scales. This method doesn't guarantee they are on the same scale, but could make them on similar scales
 
 ## Layers & Dimensions 😱😱
 ### Hidden Layers
