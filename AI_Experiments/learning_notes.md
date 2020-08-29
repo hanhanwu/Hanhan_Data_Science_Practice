@@ -6,7 +6,7 @@ I have decided to systematically review all the details of deep learning, and or
 * Deep learning can find interesting features itself, so we don't need manually feature engineering in deep learning. 
   * But this is achievable only when the dataset is large enough, higher dimensions of the data (such as images), larger dataset is needed.
 
-## Data Preprocessing Methods 😱
+## Data Preprocessing Methods 😱😱
 ### Shuffle the data before spliting
 * When the arrangement of labels not distributed similar for training and testing data, better to shuffle the data before spliting into training and testing.
 
@@ -14,7 +14,21 @@ I have decided to systematically review all the details of deep learning, and or
 * When features are in different ranges, better to normalize them into the same range.
 * [sklearn functions][7]
 
-### Text data
+### How to Preprocessing Testing Data ❣❣
+* The parameters used for preprocessing the training data should be generated from the training data only, and be applied to the testing data too.
+* For example, when you are using `mean` and `std` to normalize the data, these params should be generated from the training data, and be applied to the testing data.
+  * It seems that `(value - mean)/std` is a common way used to normalize features when they are in different scales. This method doesn't guarantee they are on the same scale, but could make them on similar scales
+
+### Multi-class lables [Python]
+* Mehtod 1 - One-hot encoding
+  * The labels have N columns, each column represents a class
+  * Mark the labeled class as 1
+* Method 2 - Integer labels
+  * Each class is represented as an integer
+  * 1 numpy array is enough for the labels
+* [Example for both methods][8]
+
+### Preprocess Text data
 * Text data means a column comtains longer text strings, such as comments, topics, etc.
 * General Steps
   1. Choose top N toknized words appeared in all the text, N excludes stop words
@@ -36,19 +50,9 @@ I have decided to systematically review all the details of deep learning, and or
 * [Example][22]
 * The image tensor can be used to understand the output of each activation layer
   
-### Multi-class lables [Python]
-* Mehtod 1 - One-hot encoding
-  * The labels have N columns, each column represents a class
-  * Mark the labeled class as 1
-* Method 2 - Integer labels
-  * Each class is represented as an integer
-  * 1 numpy array is enough for the labels
-* [Example for both methods][8]
-
-### How to Preprocessing Testing Data ❣❣
-* The parameters used for preprocessing the training data should be generated from the training data only, and be applied to the testing data too.
-* For example, when you are using `mean` and `std` to normalize the data, these params should be generated from the training data, and be applied to the testing data.
-  * It seems that `(value - mean)/std` is a common way used to normalize features when they are in different scales. This method doesn't guarantee they are on the same scale, but could make them on similar scales
+### Preprocess Time Series Data
+* [Example - How to preprocess ts data with defined moving window][35]
+  * Another things makes this data special is, it doesn't have a target value per record or per moving window, but only has a target after certain number of time windows.
 
 ## Layers & Dimensions 😱😱
 ### Hidden Layers
@@ -93,6 +97,14 @@ I have decided to systematically review all the details of deep learning, and or
 * [Full list of Keras metrics][4]
 * [Top-n Error][24]
   * We often saw "top-1 error", "top-5" error appeared in papers, here's more explaination
+
+#### Baseline Models
+* We often do this in time series prediction. Often choose a baseline model to compare with ML models, and nothing should be worse than this baseline model :P
+  * [Some ts baseline model ideas][36], in my previous code, there are a few methods we can borrow as the baseline
+    * Naive Forecast (previous day = next day)
+    * Naive Average Forecast
+    * Moving Average
+    * Exponetial Smoothing
 
 #### Loss Functions
 * The training process is trying to reduce the loss.
@@ -272,3 +284,5 @@ I just found some companies like to ask you to implement methods used in deep le
 [32]:https://docs.google.com/spreadsheets/d/14QplCdTCDwEmTqrn1LH4yrbKvdogK4oQvYO1K1aPR5M/edit#gid=0
 [33]:https://github.com/facebookresearch/InferSent
 [34]:https://github.com/tensorflow/tfjs-models/tree/master/universal-sentence-encoder
+[35]:https://nbviewer.jupyter.org/github/fchollet/deep-learning-with-python-notebooks/blob/master/6.3-advanced-usage-of-recurrent-neural-networks.ipynb
+[36]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/time_series_forecasting.ipynb
