@@ -117,7 +117,10 @@ I have decided to systematically review all the details of deep learning, and or
 * `focal loss` vs `cross entropy` vs `balanced cross entropy`
   * Focal loss works better in dealing with the data imbalance issue in object detection of one stage detection
     * Data imbalance in object detection is often caused by much larger amount of background object and only a few objects (foreground) locations
-  * 
+  * Cross-Entropy loss is to penalize the wrong predictions more than to reward the right predictions. But because the final loss is summed over small losses from the entire image, when the data is imbalanced, the loss value won't be accurate to reflect the detected objects.
+  * Balanced Cross-Entropy Loss is to add weights to both positive and negative classes. It does help differentiate the positive & negative, but cannot distinguish easy & hard examples
+  * Focal loss down-weights easy examples and focus training on hard negatives.
+    * After a lot of trials and experiments, researchers have found `∝=0.25 & γ=2` to work bes
   * [reference][37]
   
 #### Evaluation Visualization
