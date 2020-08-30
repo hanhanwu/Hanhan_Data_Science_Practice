@@ -114,6 +114,11 @@ I have decided to systematically review all the details of deep learning, and or
   * `binary_` one can be used for probability of 2 classes
   * `categorical_` one can be used for probability of 2+ classes, and the label is in categorical format (such as one-hot encoding)
   * `sparse_categorical_` is similar to the use case of `categorical_`, but it's used when the labels are in integer format
+* `focal loss` vs `cross entropy` vs `balanced cross entropy`
+  * Focal loss works better in dealing with the data imbalance issue in object detection of one stage detection
+    * Data imbalance in object detection is often caused by much larger amount of background object and only a few objects (foreground) locations
+  * 
+  * [reference][37]
   
 #### Evaluation Visualization
 ##### Epoch Plot
@@ -286,3 +291,4 @@ I just found some companies like to ask you to implement methods used in deep le
 [34]:https://github.com/tensorflow/tfjs-models/tree/master/universal-sentence-encoder
 [35]:https://nbviewer.jupyter.org/github/fchollet/deep-learning-with-python-notebooks/blob/master/6.3-advanced-usage-of-recurrent-neural-networks.ipynb
 [36]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/time_series_forecasting.ipynb
+[37]:https://www.analyticsvidhya.com/blog/2020/08/a-beginners-guide-to-focal-loss-in-object-detection/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
