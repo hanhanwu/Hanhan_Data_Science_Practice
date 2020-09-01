@@ -160,6 +160,13 @@ I have decided to systematically review all the details of deep learning, and or
   * It's one of the most effective and most commonly used method
   * It randomly drops (i.e. setting to zero) a number of output features of a layer during training
   * Dropout rate is often set between 0.2 and 0.5
+  * How to use dropout for recurrent NN
+    * If we don't use dropout properly in recurrent NN, it will limit the learning instead of doing regularization
+    * The same dropout mask (the same pattern of dropped units) should be applied at every timestep, instead of a dropout mask that would vary randomly from timestep to timestep. Because the same dropout mask at every timestep allows the network to properly propagate its learning error through time; a temporally random dropout mask would instead disrupt this error signal and be harmful to the learning process.
+    * In order to regularize the representations formed by the recurrent gates of layers such as GRU and LSTM, a temporally constant dropout mask should be applied to the inner recurrent activations of the layer
+    * In keras, it has `dropout` and `recurrent_dropout` in recurrent layer as the solution
+      * `dropout` specifies the dropout rate for input units of the layer
+      * `recurrent_dropout` specifies the dropout rate of the recurrent units
 * [Data Augmentation][18]
   * Training data only
   * "Data augmentation takes the approach of generating more training data from existing training samples, by "augmenting" the samples via a number of random transformations that yield believable-looking image"
