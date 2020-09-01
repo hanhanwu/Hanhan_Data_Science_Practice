@@ -193,7 +193,7 @@ I have decided to systematically review all the details of deep learning, and or
 * `fit_generator()`
   * `steps_per_epoch = total training sample size / training batch size`, this is because in each epoch, it runs all the samples
   * `validation_steps = total validation sample size / validation batch size`
-### Pretrined Convnet
+### Pretrained Convnet
 * Better just to reuse the pretrained convolutional base and avoid using the densely-connected classifier. Because
   * The convolutional base has a more generic feature maps while densely-connected features are more specific
   * The convolutional base still contains object location info while densely-connect features do not
@@ -231,6 +231,10 @@ I have decided to systematically review all the details of deep learning, and or
 
 ## RNN
 * RNN is trying to help analysis on a sequence, so that there could be more context, and therefore they are often used in NLP.
+### RNN Tips
+* Stacking recurrent layers to increase the learning capacity
+  * Make sure adding more recurrent layers won't make overfitting too bad
+  * `return_sequences=True` for each recorrent layer except the last one
 ### RNN Pretrained Models
 #### Words Embedding
 * A word embedding not only converts the word but also identifies the semantics and syntaxes of the word to build a vector representation of this information.
