@@ -233,8 +233,13 @@ I have decided to systematically review all the details of deep learning, and or
 * RNN is trying to help analysis on a sequence, so that there could be more context, and therefore they are often used in NLP.
 ### RNN Tips
 * Stacking recurrent layers to increase the learning capacity
+  * But for simple problem, it may not necessary
   * Make sure adding more recurrent layers won't make overfitting too bad
-  * `return_sequences=True` for each recorrent layer except the last one
+  * In keras, `return_sequences=True` for each recorrent layer except the last one
+* Bidirectional RNN
+  * It's learning both forward and backward of a sequence.
+  * Often useful in NLP, to help capture patterns got overlooked in forward learning. However, for time series problems that more recent data has higher influence, forward learning is better.
+  * In keras, add `layers.Bidirectional` outside of the recurrent layer
 ### RNN Pretrained Models
 #### Words Embedding
 * A word embedding not only converts the word but also identifies the semantics and syntaxes of the word to build a vector representation of this information.
