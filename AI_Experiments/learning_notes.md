@@ -54,7 +54,7 @@ I have decided to systematically review all the details of deep learning, and or
 * [Example - How to preprocess ts data with defined moving window][35]
   * Another things makes this data special is, it doesn't have a target value per record or per moving window, but only has a target after certain number of time windows.
 
-## Layers & Dimensions 😱😱
+## Layers & Dimensions 😱😱😱
 ### Hidden Layers
 * Having more units in a layer, also means having higher dimensional space representaton, will allow you to learn more complex representation.
   * Imagine this allows you to cut an image into smaller pieces for learning.
@@ -232,6 +232,9 @@ I have decided to systematically review all the details of deep learning, and or
 ## RNN
 * RNN is trying to help analysis on a sequence, so that there could be more context, and therefore they are often used in NLP.
 ### RNN Tips
+* Deal with very long sequence in a cheaper way
+  * Add 1 D convnet before RNN layer, the convnet will turn the long input sequence into much shorter (downsampled) sequences of higher-level features. This sequence of extracted features then becomes the input to the RNN part of the network. the performance may not improve but it's cheaper to run with RNN only
+  * [check example here][38]
 * Stacking recurrent layers to increase the learning capacity
   * But for simple problem, it may not necessary
   * Make sure adding more recurrent layers won't make overfitting too bad
@@ -311,3 +314,4 @@ I just found some companies like to ask you to implement methods used in deep le
 [35]:https://nbviewer.jupyter.org/github/fchollet/deep-learning-with-python-notebooks/blob/master/6.3-advanced-usage-of-recurrent-neural-networks.ipynb
 [36]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/time_series_forecasting.ipynb
 [37]:https://www.analyticsvidhya.com/blog/2020/08/a-beginners-guide-to-focal-loss-in-object-detection/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+[38]:https://nbviewer.jupyter.org/github/fchollet/deep-learning-with-python-notebooks/blob/master/6.4-sequence-processing-with-convnets.ipynb
