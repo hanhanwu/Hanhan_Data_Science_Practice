@@ -4,6 +4,15 @@ Neural Network is a universal approximator, which means you can use it to implme
 ## Pretrained Models
 ### Pretrained Models in Computer Vision
 * https://www.analyticsvidhya.com/blog/2018/07/top-10-pretrained-models-get-started-deep-learning-part-1-computer-vision/
+### Fun Pretrained
+* I found some pretrained deep learning models are doing well in a fun way!
+* [Google DeepDream][30]
+  * [An example to dreamify an image][31], simple words contains something to learn
+    * "The idea in DeepDream is to choose a layer (or layers) and maximize the "loss" in a way that the image increasingly 'excites' the layers. The complexity of the features incorporated depends on layers chosen by you, i.e, lower layers produce strokes or simple patterns, while deeper layers give sophisticated features in images, or even whole objects."
+      * There are layer0 to layer10, 11 layers to choose
+    * In order to make the processed image looks more like a dream, better to generate patterns from different scales. So you can apply gradient ascent at different scales, in order to allow patterns generated from small scale to incorporate with patterns generated from the large scale.
+      * To do this, you can apply gradient ascent approach while repeatedly resizing the image (octave)
+    * To save the time and memory when doing the gradient calculation, especially for large images, you can split the image into tiles and compute the gradient for each tile.
 
 
 ## RESOURCES
@@ -773,3 +782,5 @@ Neural Network is a universal approximator, which means you can use it to implme
 [27]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/Henso_Jutsu_101.ipynb
 [28]:https://www.analyticsvidhya.com/blog/2019/11/comprehensive-guide-attention-mechanism-deep-learning/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
 [29]:https://www.analyticsvidhya.com/blog/2020/03/tensorflow-serving-deploy-deep-learning-models/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+[30]:https://github.com/google/deepdream
+[31]:https://colab.research.google.com/github/tensorflow/docs/blob/master/site/en/tutorials/generative/deepdream.ipynb
