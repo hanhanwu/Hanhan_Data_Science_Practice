@@ -14,6 +14,9 @@ Neural Network is a universal approximator, which means you can use it to implme
       * To do this, you can apply gradient ascent approach while repeatedly resizing the image (octave)
     * To save the time and memory when doing the gradient calculation, especially for large images, you can split the image into tiles and compute the gradient for each tile.
     * Example output [image 1][32] & [dream 1][34], [image 2][33] & [dream 2][35]
+* [Style Transformer][36]
+  * The main idea is to minimize this loss 
+    * `loss = distance(style(reference_image) - style(generated_image)) + distance(content(original_image) - content(generated_image))`
 
 
 ## RESOURCES
@@ -789,3 +792,4 @@ Neural Network is a universal approximator, which means you can use it to implme
 [33]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/images/test2.jpg
 [34]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/images/dream1.png
 [35]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/images/dream2.png
+[36]:https://nbviewer.jupyter.org/github/fchollet/deep-learning-with-python-notebooks/blob/master/8.3-neural-style-transfer.ipynb
