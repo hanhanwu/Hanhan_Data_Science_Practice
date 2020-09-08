@@ -261,6 +261,9 @@ I have decided to systematically review all the details of deep learning, and or
     * [sentence transformers][31] and its [full list of pretrained models][32]
     * [Facebook InferSent][33]
     * [Google Universal Sentence Encoder][34]
+    
+## Autoencode
+* [A big of tricks when tunning GAN][39]
 
 ## Well Known Datasets
 * [Keras packaged datasets][3]
@@ -315,3 +318,4 @@ I just found some companies like to ask you to implement methods used in deep le
 [36]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/time_series_forecasting.ipynb
 [37]:https://www.analyticsvidhya.com/blog/2020/08/a-beginners-guide-to-focal-loss-in-object-detection/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
 [38]:https://nbviewer.jupyter.org/github/fchollet/deep-learning-with-python-notebooks/blob/master/6.4-sequence-processing-with-convnets.ipynb
+[39]:https://nbviewer.jupyter.org/github/fchollet/deep-learning-with-python-notebooks/blob/master/8.5-introduction-to-gans.ipynb#A-bag-of-tricks
