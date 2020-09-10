@@ -216,6 +216,22 @@ Outliers Detection and Clustering are related to each other, and in a world with
     * As we can see from [this example][7], when a model only checks distance, might not cluster the data in the right way. GMMs might come to help.
 * [Reference][5]
 
+### [DBSCAN][8]
+* Partitioning and hierarchical methods are designed to find spherical-shaped clusters. They have difficulty finding clusters of arbitrary shape such as the “S” shape and oval clusters. Given such data, they would likely inaccurately identify convex regions, where noise or outliers are included in the clusters. In such cases, density based clustering methods come to help.
+* 2 params
+  * `Epsilon` is the radius of the circle to be created around each data point to check the density
+  * `minPoints` is the minimum number of data points required inside that circle for that data point to be classified as a Core point.
+    * suggest to have `minPoints>=Dimensions+1` to avoid each single feature occupies a circle
+* Core vs Border vs Noise
+  * A data point is a "Core" point if the circle around it contains at least ‘minPoints’ number of points, including itself
+  * If the number of points is less than minPoints but larger than 1 inside of the circle, including itself, then it is classified as "Border" Point
+  * Data points with no point other than itself present inside the circle are considered as "Noise" point
+* Reachability and Connectivity
+  * Directly density-reachable: Y is the core point, X is directly reachable from Y and they are in the same circle. Vice versa might not be true.
+  * Density-reachable: Y is the core point, and it can reach to X through its directly density-reachable points.
+  * Density-connected: O is a core point, both X and Y are density-reachable from O, then X and Y are density-connected
+
+
 ## IDEAS SPARK
 * About data labeling
   * When there are many data records, and you don't have the label, meanwhile you are not human expert to label all the data right
@@ -232,3 +248,4 @@ Outliers Detection and Clustering are related to each other, and in a world with
 [5]:https://www.analyticsvidhya.com/blog/2019/10/gaussian-mixture-models-clustering/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
 [6]: https://www.analyticsvidhya.com/blog/2018/07/introductory-guide-maximum-likelihood-estimation-case-study-r/
 [7]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Outliers_and_Clustering/GMMs_vs_kmeans.ipynb
+[8]:https://www.analyticsvidhya.com/blog/2020/09/how-dbscan-clustering-works/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
