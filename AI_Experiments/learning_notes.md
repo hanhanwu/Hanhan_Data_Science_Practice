@@ -171,6 +171,9 @@ I have decided to systematically review all the details of deep learning, and or
   * Training data only
   * "Data augmentation takes the approach of generating more training data from existing training samples, by "augmenting" the samples via a number of random transformations that yield believable-looking image"
   * Even though there is no same image in the training set, with this method, the inputs can still be heavily intercorrelated. Therefore it's necessary to add a `dropout` layer right after flattened data to reduce some dimensions in order to further reduce overfitting.
+* Weight Initialization & Weight Constraint
+  * [See examples here][40]
+  * [Tensorflow initializer][41]
   
 ## Convolutional Networks (Convnet)
 * Convnets can learn <b>local, translation-invariant features</b>, so they are very data-efficient on perceptual problems. Therefore, even when the dataset is small (such as hundreds of images), you might still get a reasonable results.
@@ -180,7 +183,6 @@ I have decided to systematically review all the details of deep learning, and or
     * The width and height tend to shrink when we go deeper in convnet
     * However, in Keras `reshape()`, the order is `(sample_size, channels, width, height)`...
   * When there are multiple layers of Conv2D in a neural net, deeper layer gets larger number of batches, notmrally we choose batch size in a sequence of 32, 64, 128, ...
-    * It 
   * `image_channels` is also the image depth. [How to use opencv2 to find image channels][13]
     * If returns 2 dimensions, the image channel is 1, otherwise it's the third number returned in the output
 * [MaxPooling2D][16]
@@ -319,3 +321,5 @@ I just found some companies like to ask you to implement methods used in deep le
 [37]:https://www.analyticsvidhya.com/blog/2020/08/a-beginners-guide-to-focal-loss-in-object-detection/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
 [38]:https://nbviewer.jupyter.org/github/fchollet/deep-learning-with-python-notebooks/blob/master/6.4-sequence-processing-with-convnets.ipynb
 [39]:https://nbviewer.jupyter.org/github/fchollet/deep-learning-with-python-notebooks/blob/master/8.5-introduction-to-gans.ipynb#A-bag-of-tricks
+[40]:https://www.analyticsvidhya.com/blog/2020/09/overfitting-in-cnn-show-to-treat-overfitting-in-convolutional-neural-networks/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+[41]:https://www.tensorflow.org/api_docs/python/tf/keras/initializers
