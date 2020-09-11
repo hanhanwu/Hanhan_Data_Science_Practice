@@ -230,6 +230,11 @@ Outliers Detection and Clustering are related to each other, and in a world with
   * Directly density-reachable: Y is the core point, X is directly reachable from Y and they are in the same circle. Vice versa might not be true.
   * Density-reachable: Y is the core point, and it can reach to X through its directly density-reachable points.
   * Density-connected: O is a core point, both X and Y are density-reachable from O, then X and Y are density-connected
+  * Reachability is not symmetric (may not vice versa), connectivity is symmetric
+  * How to use reachability and connectivity
+    * If a point is density-reachable from some point of the cluster, it is part of the cluster as well.
+      * Note, cluster is different from circles
+    * All points within the cluster are mutually density-connected.
 
 
 ## IDEAS SPARK
