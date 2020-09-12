@@ -216,7 +216,8 @@ Outliers Detection and Clustering are related to each other, and in a world with
     * As we can see from [this example][7], when a model only checks distance, might not cluster the data in the right way. GMMs might come to help.
 * [Reference][5]
 
-### [DBSCAN][8]
+### Density Based CLustering
+#### [DBSCAN][8]
 * Partitioning and hierarchical methods are designed to find spherical-shaped clusters. They have difficulty finding clusters of arbitrary shape such as the “S” shape and oval clusters. Given such data, they would likely inaccurately identify convex regions, where noise or outliers are included in the clusters. In such cases, density based clustering methods come to help.
 * 2 params
   * `Epsilon` is the radius of the circle to be created around each data point to check the density
@@ -235,6 +236,16 @@ Outliers Detection and Clustering are related to each other, and in a world with
     * If a point is density-reachable from some point of the cluster, it is part of the cluster as well.
       * Note, cluster is different from circles
     * All points within the cluster are mutually density-connected.
+* Disadvantage
+  * Just like many other clustering methods, DBSCAN requires the user to select the params for the discovery of the clusters. But this can be hard to determine, especially in real world with high dimensional data.
+    * In real world, high dimensional data also tend to have highly skewed distribution, therefore their intrinsic clustering structure may not be well characterized by a single set of global density parameters.
+#### [OPTICS][9]
+* It can overcome the disadvantage of DBSCAN, it doesn't need the user to provide specific density threshold.
+#### DENCLUE
+* It's a clustering method based on a set of density distribu- tion functions.
+* In DBSCAN and OPTICS, density is calculated by counting the number of objects in a neighborhood defined by a radius parameter. Such density estimates can be highly sensitive to the radius value used. 
+* To overcome this problem, kernel density estimation can be used, which is a nonparametric density estimation approach from statistics. DENCLUE uses a Gaussian kernel to estimate density based on the given set of objects
+to be clustered.
 
 
 ## IDEAS SPARK
@@ -254,3 +265,4 @@ Outliers Detection and Clustering are related to each other, and in a world with
 [6]: https://www.analyticsvidhya.com/blog/2018/07/introductory-guide-maximum-likelihood-estimation-case-study-r/
 [7]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Outliers_and_Clustering/GMMs_vs_kmeans.ipynb
 [8]:https://www.analyticsvidhya.com/blog/2020/09/how-dbscan-clustering-works/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+[9]:https://scikit-learn.org/stable/modules/generated/sklearn.cluster.OPTICS.html
