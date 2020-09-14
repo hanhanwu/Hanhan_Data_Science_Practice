@@ -32,6 +32,7 @@
 [16]:https://www.analyticsvidhya.com/blog/2020/04/community-detection-graphs-networks/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
 [17]:https://networkx.github.io/documentation/stable/reference/algorithms/community.html
 [18]:https://networkx.github.io/documentation/stable/reference/algorithms/generated/networkx.algorithms.community.centrality.girvan_newman.html
+[19]:https://github.com/hanhanwu/Hanhan_COLAB_Experiemnts/blob/master/link_prediction.ipynb
 
 ## Algorithms
 ### Terminology
@@ -49,9 +50,11 @@
 #### [node2vec Algorithm][10]
 * "It's an algorithmic framework for learning continuous feature representations for nodes in networks. In node2vec, we learn a mapping of nodes to a low-dimensional space of features that maximizes the likelihood of preserving network neighborhoods of nodes."
 * They designed a biased random walk procedure, which efficiently explores diverse neighborhoods. The bias came from the starting node.
+* [My Code - Using node2vec to train link prediction model][19]
 #### [Graph Feature Extraction with RandomWalk][11]
 * It's a process that uses RandomWalk to extract sequences of nodes, then feed these sequences into a skip-gram model to get node embeddings.
 * [More Description][12]
+
 
 ## Social Network Analysis
 ### Social Media Influencers Identification
