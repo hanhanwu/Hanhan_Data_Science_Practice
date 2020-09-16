@@ -33,6 +33,8 @@
 [17]:https://networkx.github.io/documentation/stable/reference/algorithms/community.html
 [18]:https://networkx.github.io/documentation/stable/reference/algorithms/generated/networkx.algorithms.community.centrality.girvan_newman.html
 [19]:https://github.com/hanhanwu/Hanhan_COLAB_Experiemnts/blob/master/link_prediction.ipynb
+[20]:https://github.com/hanhanwu/Hanhan_COLAB_Experiemnts/blob/master/directional_graphDB.ipynb
+
 
 ## Algorithms
 ### Terminology
@@ -57,6 +59,9 @@
 
 
 ## Social Network Analysis
+### Basics in Building Graphs
+* [How to build directional graph with edge weights][20]
+
 ### Social Media Influencers Identification
 #### Individual Influencers
 * A node has largest amount of edges can be a significant influencer. At the same time, a node has a few edges but serves as the bridge between large clusters can also be a significant influencer.
