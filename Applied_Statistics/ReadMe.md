@@ -2,6 +2,8 @@
 
 ## Must Known 🌺
 * [p-value vs t-test vs z-test][13]
+* [ANOVA, categorical vs numerical][14]
+  * Includes methods to check data Randomness, Noramality, Homogeneity assumptions
 
 ## Statistics Tables
 * [Z table - Having z score to get p-value][8]
@@ -335,3 +337,4 @@ but it's easier to use pyton built-in functions
 [11]:https://www.graphpad.com/quickcalcs/catMenu/
 [12]:https://www.evanmiller.org/ab-testing/sample-size.html
 [13]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/pvalue_ttest_ztest.md
+[14]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/Learning_Notes/ANOVA.md
