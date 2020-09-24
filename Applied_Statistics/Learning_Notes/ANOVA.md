@@ -1,6 +1,6 @@
 # ANOVA 🌺
 
-* It's commonly used in feature importance, to test whether the categorical independent variable is important to the dependent variable.
+* It can be used in regression feature importance.
 
 ## ANOVA vs t-test
 * t-test - It compares the means of a condition between 2 groups.
