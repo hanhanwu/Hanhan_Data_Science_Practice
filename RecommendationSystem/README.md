@@ -49,7 +49,6 @@
   
   
 ## PRACTICE
-
 * MovieLens Recommendation System
   * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/RecommendationSystem/recommendation_system_movielens.ipynb
     * Download the data from : https://grouplens.org/datasets/movielens/100k/
@@ -79,6 +78,19 @@
           * The idea is the same as matrix factorization, and it also uses gradient descent to do optimization
   * Reference: https://www.analyticsvidhya.com/blog/2018/06/comprehensive-guide-recommendation-engine-python/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
     * The description is good. It implemented its own matrix facotrization, I used turicreate built-in
+    
+* Recommendation with Linear Optimization
+  * [YouTube video selection][4]
+  * Minimize both criteria in this case
+* [Ranking with weighted criteria][5]
+  * The better solution here is, get the relative values by diving the max value in each criteria
 
+## My Applied Projects
+* [Golden Bridge - bridge individual & business users][2]
+* [Automatic & Interactive FLinraud Detection][3]
 
 [1]:https://www.analyticsvidhya.com/blog/2019/07/how-to-build-recommendation-system-word2vec-python/?utm_source=blog&utm_medium=graph-feature-extraction-deepwalk
+[2]:https://github.com/hanhanwu/Hanhan_Break_the_Limits/tree/master/Bank_Fantasy/Golden_Bridge
+[3]:https://github.com/hanhanwu/Hanhan_Break_the_Limits/tree/master/attack_signals_recommendation_system
+[4]:https://github.com/hanhanwu/Hanhan_Play_With_Social_Media/blob/master/DEF_CON_video_list_linear_optimization.ipynb
+[5]:https://www.analyticsvidhya.com/blog/2020/09/how-to-rank-entities-with-multi-criteria-decision-making-methodsmcdm/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
