@@ -13,3 +13,7 @@
 ### Tools
 * Zookeeper: It stores the metadata for Kafka cluster and consumer 
 * Kafka Broker (server)
+### [Clients written in other languages][1]
+* The clients are like APIs used to interact with Kafka
+
+[1]:https://cwiki.apache.org/confluence/display/KAFKA/Clients
