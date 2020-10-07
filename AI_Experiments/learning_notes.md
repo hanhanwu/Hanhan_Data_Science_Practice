@@ -281,6 +281,7 @@ I just found some companies like to ask you to implement methods used in deep le
   * This one uses numpy to create the matrix, but you can do it with simple python lists
   * I don't like its second method because of the hashing collision. Instead, I think there are some preprocessing can be done before the encoding here, such as tokenize all the words, removing stop words and other less important tokens (such as those got low tf-idf score)
 * [Implement k-fold CV][5]
+* [Implements machine learning algorithms from scratch][42]
 
 [1]:https://github.com/fchollet/deep-learning-with-python-notebooks
 [2]:https://www.manning.com/books/deep-learning-with-python?a_aid=keras&a_bid=76564dff
@@ -323,3 +324,4 @@ I just found some companies like to ask you to implement methods used in deep le
 [39]:https://nbviewer.jupyter.org/github/fchollet/deep-learning-with-python-notebooks/blob/master/8.5-introduction-to-gans.ipynb#A-bag-of-tricks
 [40]:https://www.analyticsvidhya.com/blog/2020/09/overfitting-in-cnn-show-to-treat-overfitting-in-convolutional-neural-networks/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
 [41]:https://www.tensorflow.org/api_docs/python/tf/keras/initializers
+[42]:https://github.com/hanhanwu/ML-From-Scratch
