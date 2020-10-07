@@ -14,8 +14,17 @@
 ### Tools
 * Zookeeper: It stores the metadata for Kafka cluster and consumer 
 * Kafka Broker (server)
+
+### Java Coding Notes
+#### Serializer
+* Recommended to use Apach existing serializer, such as Apach Avro
+  * NOT kafka built-in serializer, since they are data type specific
+  * Self implemented generic serializer is not flexible to maintain, when there is schema change, there will be error
+* Serializers like Avro allows the change of data schema without exception or breaking errors, no need expensive update either
+  * However the schema used for writing and reading should be compatible, [here are some compatibility rules][3]
 ### [Clients written in other languages][1]
 * The clients are like APIs used to interact with Kafka
 
 [1]:https://cwiki.apache.org/confluence/display/KAFKA/Clients
 [2]:http://kafka.apache.org/documentation.html#gettingStarted
+[3]:https://avro.apache.org/docs/1.7.7/spec.html#Schema+Resolution
