@@ -3,6 +3,7 @@
 ## About Apach Kafka
 * Your company is maintaining ,ultiple systems to queue the data, all of which has its bugs and limitations. You need a single centralized system that allows for publishing generic types of data, which will grow as your business grows. Kafka is <b>a publish/subscribe messaging system</b> designed to solve this problem.
 * [Technical Document][2]
+* [Definitive Guide][4]
 ### Components
 * Messages & Batches
 * Schemas - consistent data format is important in Kafka
@@ -28,3 +29,4 @@
 [1]:https://cwiki.apache.org/confluence/display/KAFKA/Clients
 [2]:http://kafka.apache.org/documentation.html#gettingStarted
 [3]:https://avro.apache.org/docs/1.7.7/spec.html#Schema+Resolution
+[4]:https://book.huihoo.com/pdf/confluent-kafka-definitive-guide-complete.pdf
