@@ -32,6 +32,7 @@ Outliers Detection and Clustering are related to each other, and in a world with
 ### PyOD - An Outlier Detection Python Library
 * My code - Basic PyOD:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Outliers_and_Clustering/try_PyOD.ipynb
   * Test on Simulated Data: PyOD provides functions to generate simulated data which allows you to set anomalies proportion
+  * <b>NOTE:</b> There is an update of plotly interactive 3D scatter plot. I stead of using the code appeared in my ipython, now better to use the code here: https://plotly.com/python/3d-scatter-plots/
   * In 2D Simulated Data Experiment
     * There are only 200 records, 200*200 meshgrid points need to calculate anomaly scores, but these algorithms performed very slow in PyOD, even running for hours without output:
       * LSCP, SOS, LOCI
