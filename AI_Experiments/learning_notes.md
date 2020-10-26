@@ -46,6 +46,9 @@ I have decided to systematically review all the details of deep learning, and or
     * `validation_steps = total validation sample size / validation batch size`
   * Seperate data and labels
     * Labels are created based on directories, different classes of images are put in different directories
+* [Image batch preprocess for federated learning][43]
+  * For each 28*28 image, it flatten to 784 one dimensional matrix, then divided by 255 to convert the values into [0,1] range because the pixel values are between 0 and 255
+  * The preprocessed image can also be reshaped baçk to 28*28
 #### Convert an image to image tensor
 * [Example][22]
 * The image tensor can be used to understand the output of each activation layer
@@ -325,3 +328,4 @@ I just found some companies like to ask you to implement methods used in deep le
 [40]:https://www.analyticsvidhya.com/blog/2020/09/overfitting-in-cnn-show-to-treat-overfitting-in-convolutional-neural-networks/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
 [41]:https://www.tensorflow.org/api_docs/python/tf/keras/initializers
 [42]:https://github.com/hanhanwu/ML-From-Scratch
+[43]:https://github.com/tensorflow/federated/blob/master/docs/tutorials/custom_federated_algorithms_2.ipynb
