@@ -14,14 +14,14 @@
   * Besides using the tool called Exploratory for Bayesian A/B test, [here's the theoritical method for Bayesian hypothesis test][6]
 
 ## Thorough Experiment with Confidence Interval, p-value for A/B test
-* This is a typical A/B test problem.
+* This is a typical A/B test problem. 2 Options to decide whether the change on web elements will make a difference
 ### [My code][1]
 * Online calculators can be used
   * Estimate sample size: https://www.evanmiller.org/ab-testing/sample-size.html
     * Given Type 1 error rate α, type II error rate β, basedline conversion rate, min detectable effect.
   * Estimate p-value for binomial distribution: https://www.graphpad.com/quickcalcs/binomial1/
     * Given number of success, total trails, probability of success in biomial distribution.
-### Overall Process
+#### Overall Process
 1. Choose invariant metrics and evaluation metrics.
 2. Estimation of baselines and Sample Size
   * Estimate population metrics baseline
@@ -32,6 +32,12 @@
   * Differences in evaluation metrics, using error of margin & confidence interval, Dmin (min change that's significant to the business) to check both statistical, practical significance.
   * Differences in trending (such as daily trending), using p_value to check statistical significance.
 
+### [A simplified A/B test process][7]
+* Hypothesis
+* Cotrol group and test group
+  * calculate smaple size first
+* Why daily conversation rate is a simple measure
+* 2 sample t-test
 
 [1]: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/ABTest_Experiments/detailed_ABTest_Experiment.ipynb
 [2]:https://github.com/dwyl/learn-ab-and-multivariate-testing
@@ -39,3 +45,4 @@
 [4]:https://www.smashingmagazine.com/2011/04/multivariate-testing-101-a-scientific-method-of-optimizing-design/
 [5]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/Learning_Notes/AB_Test.md
 [6]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/Learning_Notes/bayesian_analysis/Bayesian_Approaches_for%20Hypothesis_Tests.md
+[7]:https://www.analyticsvidhya.com/blog/2020/10/ab-testing-data-science/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
