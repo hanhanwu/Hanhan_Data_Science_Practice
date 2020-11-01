@@ -10,10 +10,8 @@
 * "A p-value measures the probability of observing a difference between the two variants at least as extreme as what we actually observed, given that there is no difference between the variants."
   * Only after p-value achieves statistical significance or we have seen enough data, the experiment ends.
 * <b>Drawbacks</b>
-  * Have to know how much data needed.
-  * It's hard to know what to do when it's not statistically significant, or you don't have enough data.
-  * Cannot test in real time, but need to wait till getting planned data size.
-  * Not sure what to do when the new solution is slightly better than the old solution.
+  * Have to know how much data needed. Cannot test in real time, but need to wait till getting planned data size.
+  * It's hard to know what to do when it's not statistically significant, or you don't have enough data. Not sure what to do when the new solution is slightly better than the old solution.
 
 ## Bayesian A/B Test
 * In Bayesian A/B testing, we model the metric for each variant as a random variable with some probability distribution. 
