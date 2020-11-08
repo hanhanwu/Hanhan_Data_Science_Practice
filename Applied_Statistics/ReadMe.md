@@ -2,6 +2,11 @@
 
 ## Must Known 🌺
 * [p-value vs t-test vs z-test][13]
+* KS (Kolmogorov–Smirnov) test for 2 samles comparision
+  * It is a statistical hypothesis test that checks whether a test set is sampled from the same probability distribution as a reference set.
+  * [KS test is able to find the vaariance gthat can be ignored by t-test][15]
+  * Shapiro–Wilk test and the Anderson–Darling test are two tests considered more powerful than the KS Test. But they don’t allow you to compare two samples, they always compare a sample with a standard distribution.
+  * [This 2020 paper developed al angorothm MOCHI to show how to find the smallest subset that can change failed KS test to a passed test][16]
 * [ANOVA, categorical vs numerical][14]
   * Includes methods to check data Randomness, Noramality, Homogeneity assumptions
 
@@ -338,3 +343,5 @@ but it's easier to use pyton built-in functions
 [12]:https://www.evanmiller.org/ab-testing/sample-size.html
 [13]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/pvalue_ttest_ztest.md
 [14]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/Learning_Notes/ANOVA.md
+[15]:https://towardsdatascience.com/kolmogorov-smirnov-test-84c92fb4158d#:~:text=Here%20is%20an%20example%20that,T%2DTest%20and%20KS%20Test.&text=Because%20the%20sample%20mean%20and,binomial%20distribution%20which%20KS%20detect.
+[16]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/papers/Comprehensible%20Counterfactual%20Interpretation%20on%20Kolmogorov-Smirnov%20Test.pdf
