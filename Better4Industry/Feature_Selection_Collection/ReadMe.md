@@ -12,6 +12,8 @@ In industry, many times we need to generate features, understanding them and gen
   * [Code example][4]
     * Just need trained model and feature values, no need lables in the data
     * Add `link='logit'` in the `decision_plot()` function will convert log odds back to prediction probabilities (SHAP value is log odds)
+  * [SHAP decision source code][5]
+    * In the `decision plot`, by default the features are ordered by importance order. When there are multiple records, the importance of a feature is the sum of absolute shap values of the feature
   * Include multiple records plot
   * For each record, it shows how does each feature value lead to the final predictio result
 
@@ -20,3 +22,4 @@ In industry, many times we need to generate features, understanding them and gen
 [2]:https://www.analyticsvidhya.com/blog/2019/11/shapley-value-machine-learning-interpretability-game-theory/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
 [3]:https://towardsdatascience.com/introducing-shap-decision-plots-52ed3b4a1cba
 [4]:https://slundberg.github.io/shap/notebooks/plots/decision_plot.html
+[5]:https://github.com/slundberg/shap/blob/6af9e1008702fb0fab939bf2154bbf93dfe84a16/shap/plots/_decision.py#L46
