@@ -11,6 +11,7 @@ In industry, many times we need to generate features, understanding them and gen
 * [SHAP decision plot][3]
   * [Code example][4]
     * Just need trained model and feature values, no need lables in the data
+    * Add `link='logit'` in the `decision_plot()` function will convert log odds back to prediction probabilities (SHAP value is log odds)
   * Include multiple records plot
   * For each record, it shows how does each feature value lead to the final predictio result
 
