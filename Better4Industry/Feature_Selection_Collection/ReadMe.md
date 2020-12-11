@@ -9,6 +9,8 @@ In industry, many times we need to generate features, understanding them and gen
 * Github has blocked the loading of JS, in fact it provides a method to interact with each record and understand how the feature values affect the prediction
 ![shap JS](https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Better4Industry/Feature_Selection_Collection/xgboost_shap.PNG)
 * [SHAP decision plot][3]
+  * [Code example][4]
+    * Just need trained model and feature values, no need lables in the data
   * Include multiple records plot
   * For each record, it shows how does each feature value lead to the final predictio result
 
@@ -16,3 +18,4 @@ In industry, many times we need to generate features, understanding them and gen
 [1]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Better4Industry/Feature_Selection_Collection/try_shap_xgboost.ipynb
 [2]:https://www.analyticsvidhya.com/blog/2019/11/shapley-value-machine-learning-interpretability-game-theory/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
 [3]:https://towardsdatascience.com/introducing-shap-decision-plots-52ed3b4a1cba
+[4]:https://slundberg.github.io/shap/notebooks/plots/decision_plot.html
