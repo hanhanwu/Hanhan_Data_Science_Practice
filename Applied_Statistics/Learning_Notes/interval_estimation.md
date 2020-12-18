@@ -14,6 +14,7 @@
 ## Confidence Intervals for Means
 
 🌺 <b>The intervals calculated here represents - the intervals that include the unknown mean `μ`.</b>
+* For example, with the confidence interval, you can say there is 100(1-α)% confidence that the population mean is within this interval
 
 ### Type 1 Interval
 * `[x̅ - 𝒛α/2 * δ/√n, x̅ + 𝒛α/2 * δ/√n]` is a confidence interval 100(1-α)% for μ
