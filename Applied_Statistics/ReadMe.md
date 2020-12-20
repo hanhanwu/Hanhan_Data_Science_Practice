@@ -4,7 +4,7 @@
 * [p-value vs t-test vs z-test][13]
 * KS (Kolmogorov–Smirnov) test for 2 samles comparision
   * It is a statistical hypothesis test that checks whether a test set is sampled from the same probability distribution as a reference set.
-  * [KS test is able to find the vaariance gthat can be ignored by t-test][15]
+  * [KS test is able to find the variance that can be ignored by t-test][15]
   * Shapiro–Wilk test and the Anderson–Darling test are two tests considered more powerful than the KS Test. But they don’t allow you to compare two samples, they always compare a sample with a standard distribution.
   * [This 2020 paper developed al angorothm MOCHI to show how to find the smallest subset that can change failed KS test to a passed test][16]
 * [ANOVA, categorical vs numerical][14]
