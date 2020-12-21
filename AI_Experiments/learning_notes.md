@@ -65,6 +65,8 @@ I have decided to systematically review all the details of deep learning, and or
 * When there are N classes to predict, the dimensions of all the hidden layers better > N, otherwise the information loss will lead to overfitting
   
 ### Activation Functions
+An activation function is a function that is added into an artificial neural network in order to help the network learn complex patterns in the data.
+
 #### `relu` (rectified linear unit)
 * It will zero out negative values.
 
