@@ -8,8 +8,9 @@
 * When `p-value < α`, it's within the critical region, reject null hypothesis (H0)
 * Or when `test statistical > critical value`, reject null hypothesis (H0)
   * test statistical means z-score or t-score
-  * Critical value maps to α: http://www.math.armstrong.edu/statsonline/5/5.3.2.html
-    * We often choose α in [0.01, 0.05, 0.1]
+  * Critical value maps to α: https://www.stat.colostate.edu/inmem/gumina/st201/pdf/Utts-Heckard_t-Table.pdf
+    * We often choose α in [0.01, 0.05, 0.1] for 2 tailed tests
+      * such as α=0.05 and the critical value is 1.96
 * z-test vs t-test
   * The difference is just in polulation variance vs sample variance
   * When population variance is unknown -> Use t-test
