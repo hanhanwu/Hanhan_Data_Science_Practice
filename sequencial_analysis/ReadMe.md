@@ -97,8 +97,9 @@ I'm planning to practice more on time series analysis, pattern matching sequenti
   * Other methods
 
 ### Autocorrelation Plot
+* "Autocorrelation of the series" is nothing but the correlation between the series and its previous values
 * In some of my code below, I have used `autocorrelation plot` in multiple places, and the plot was even checked before stationary checking. This is because autocorrelation plot tells how randomly the time series is. Many statistical formula is based on randomness, such as the formula "standard deviation of the sample mean" is only useful when the randomness assumption holds. Meanwhile, most standard statistical tests depend on randomness. The validity of the test conclusions is directly linked to the validity of the randomness assumption.
-* The shape of autocorrelation plot and which model to use
+* The shape of autocorrelation plot and which model to use 🌺
   * Exponential, decaying to zero - Autoregressive model. Use the partial autocorrelation plot to identify the order of the autoregressive model.
   * Alternating positive and negative, decaying to zero - Autoregressive model. Use the partial autocorrelation plot to help identify the order.
   * One or more spikes, rest are essentially zero - Moving average model, order identified by where plot becomes zero.
@@ -114,7 +115,7 @@ I'm planning to practice more on time series analysis, pattern matching sequenti
 
 ### About Stationary
 * The first step is often to make the data stationary. <b>A stationary series is one in which the properties – mean, variance and covariance, do not vary with time. It should not show any trend nor seasonality. - Strict Stationary</b>
-  * "Trends can result in a varying mean over time, whereas seasonality can result in a changing variance over time, both which define a time series as being non-stationary." This is why when doing time series modeling, we want to make sure the data is stationary, and need to remove the trend and seasonality first.
+  * "Trends can result in a varying mean over time, whereas seasonality can result in a changing variance over time, both which define a time series as being non-stationary." When running a regression model, the assumption is that all of the observations are all independent of each other, so to use regression model, we need to remove the correlation with time. This is why when doing time series modeling, we want to make sure the data is stationary, and need to remove the trend and seasonality first.
   * My code - Metrics used to measure stationary: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/7741ccebbbaa3708cd28ddf9c82b6116e3522986/sequencial_analysis/time_series_stationary_measures.ipynb
     * Different metrics may measure different types of stationary, but what we need is strict stationary.
     * When KPSS and ADF are both showing stationary, it tend to be strict stationary.
@@ -132,12 +133,8 @@ I'm planning to practice more on time series analysis, pattern matching sequenti
     * First of all, what makes data non-stationary
       * <b>Trend</b>: Varying mean over the time. If you see the data is increasing along the time, off course the mean is increasing too
       * <b>Seasonality</b>: Variance at specific time frame. For example, sales of ice-cream in summer is much more than winter.
-    * Why need stationary data
-      * I guess it's because, after removing the trend and seasonality, it is easier to make forecast. After the forecast, you can add the trend and seasonality back
-    * Check Stationary - Plotting Rolling Statistics
-      * Check <b>moving average</b> or <b>moving variance</b>, to see whether they are changing alog the time
     * Check Stationary - Dickey-Fuller Test
-      * It has null hypothesis that time series is non-stationary. If <b>Test Statistic is less than Critical Values</b>, then reject the null hypothesis and the data is statinoary.
+      * It has null hypothesis that time series is non-stationary. If <b>Test Statistic is less than Critical Values</b> (or small p-value), then reject the null hypothesis and the data is statinoary.
   * Make time series stationary
     * It's almost impossible to make it perfectly stationary, but we can try to make it closer to be stationary
     * By doing this data preprocessing before forcasting, we remove the trend, seasonality in time series and make it stationary, forcasting can be done on this stationary data, later we can convert forecast values back to the original scale, by adding the trend and seasonality back
@@ -153,7 +150,7 @@ I'm planning to practice more on time series analysis, pattern matching sequenti
   * A strictly stationary series with no dependence among the values. This is the easy case wherein we can model the residuals as white noise. But this is very rare.
   * A series with significant dependence among values. In this case we need to use some statistical models like ARIMA to forecast the data.
   * <b>Autocorrelation Function (ACF)</b>: It is a measure of the correlation between the time series with a lagged version of itself. For instance at lag 5, ACF would compare series at time instant ‘t1’…’t2’ with series at instant ‘t1-5’…’t2-5’ (t1-5 and t2 being end points).
-  * <b>Partial Autocorrelation Function (PACF)</b>: This measures the correlation between the TS with a lagged version of itself but after eliminating the variations already explained by the intervening comparisons. Eg at lag 5, it will check the correlation but remove the effects already explained by lags 1 to 4.
+  * <b>Partial Autocorrelation Function (PACF)</b>: This measures the correlation between the TS with a lagged version of itself but after eliminating the variations already explained by the intervening comparisons. Eg. at lag 5, it will check the correlation but remove the effects already explained by lags 1 to 4.
   * By ploting ACF, PACF, can help us determine the lag at which the correlation is significant, also can disclose the correlation between future data and past data. [Check the example here][19]
     * As you can see in the example, higher bar indicating higher correlation with the lag; slower decay rate indicats higher correlation between future data and current data
 * <b>Params (p,d,q)</b> are used to determine which specific ARIMA model will be used
@@ -170,7 +167,7 @@ I'm planning to practice more on time series analysis, pattern matching sequenti
     * <b>Diagnostic Checking</b>, to check non-randomness with residuals, `tsdiag(fit)`. The residuals of a “correctly specified” model should be independently distributed, otherwise it's the wrong model
     * <b>Predict Future Values of Time Series</b>, `LH.pred<-predict(fit,n.ahead=8)`
 
-* 11 time series models [python]
+* 11 time series models [python] 🌺
   * AR (Autoregression) - it models the next step in the sequence as a linear function of the observations at prior time steps.
     * `AR(p)`, for example when p=1, it means first order AR model
   * MA (Moving Average) - it models the next step in the sequence as a linear function of the residual errors from a mean process at prior time steps.
@@ -320,7 +317,7 @@ I'm planning to practice more on time series analysis, pattern matching sequenti
     * It uses the combination of regression and ARIMA to do the prediction, predict Close price on the end of the month. This method can be used for other time series prediction
   * reference: https://www.analyticsvidhya.com/blog/2017/10/comparative-stock-market-analysis-in-r-using-quandl-tidyverse-part-i/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
 
-### Facebook Propet
+### Facebook Prophet
 * "Prophet is a procedure for forecasting time series data based on an additive model where non-linear trends are fit with yearly, weekly, and daily seasonality, plus holiday effects. <b>It works best with time series that have strong seasonal effects and several seasons of historical data.</b> Prophet is robust to missing data and shifts in the trend, and typically handles outliers well."
 #### Resources
 * Examples in R & Python: https://facebook.github.io/prophet/docs/quick_start.html#python-api
@@ -377,7 +374,7 @@ R and Python versions output similar results, but the digits after the decimal p
     * Method 1 - time t to predict time t+1. You look back 1 time interval, and the time step for LSTM is also 1
     * Method 2 - <b>WINDOW method</b>
       * It allows you to <b>use multiple recent time steps</b> to predict next step. For example, you can use time t-2, t-1, t to predict time t+1, which means you look back 3 time interval but the time step for LSTM is 1
-    * Method 3 - Exchange time_step and domension
+    * Method 3 - Exchange time_step and dimension
       * Compared with method 1,2, you just exchange the position of time_step and dimension in `np.reshape`
       * By doing this, you are using previous time_steps to predict t+1 time, instead of phrasing the past observations as separate input features
     * Method 4 - LSTM with memory between batches
