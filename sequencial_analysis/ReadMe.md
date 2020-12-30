@@ -1,5 +1,7 @@
 I'm planning to practice more on time series analysis, pattern matching sequential pattern matching and sequence prediction.
 
+## [Learning Notes][23]
+
 ## SEQUENCE PREDICTION
 * Sequence Prediction - In a word, you get a sequence of behaviors/patterns and try to predict the next.
 
@@ -529,3 +531,4 @@ READING NOTES
 [20]:https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.TimeSeriesSplit.html
 [21]:https://www.machinelearningplus.com/time-series/time-series-analysis-python/
 [22]:https://people.duke.edu/~rnau/arimrule.htm
+[23]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/learning_notes.md
