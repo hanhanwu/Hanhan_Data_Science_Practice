@@ -12,8 +12,9 @@
   * c: cyclical
     * Comparing with seasonality:
       * It occurs less frequently than seasonal fluctuations
-      * It may not have a fixed period of avriations
+      * It may not have a fixed period of variations
       * The average periodicity for cyclical changes can be larger (such as in years), while seasonal variations can happen within the same year
+      * This is not the part to be removed when making the ts stationary, since it's not time dependent and can only be explained by exogenous variables, when we check stationary, exogenous variables are not considered.
   * e: residuals
     * Irreducible error component, random and doesn't systematic dependent on the time index. It's caused by the lack of info of explanatory variables that can model the variations, or caused by random noise
     
@@ -30,24 +31,67 @@
     * `s_t` is a sum of weighted sum of sine waves (both `sin` and `cos`)
     
 * ACF and PACF (Autocorrelation and Partial Autocorrealtion)
-  * Stationary ts is characterized by, constant mean and correlation that depends only on the time lag between 2 time steps, but independent of the value of the time step.
+  * Stationary ts is characterized by, constant internal structures (mean, variance, autocorrelation) that do not change over time (time independent)
   * Autocorrelation reflects the degree of linear dependency between ith time series and i+h or i-h time series (h is the lag)
     * Because it's time independent, it ca be reliably used to forecast future time series
     * Positive autocorrelation means the 2 time series moves towards the same direction; negative means opposite directions; 0 means the temporal dependencies is hard to find
     * Autocorrelation is a value between [-1, 1]
   * ACF plot
-    * Each vertical bar indicates the autocorrelation between ith ts and i+gth ts, given a confidence level (such as 95%), out of the threshold lines, the autocorrelation is significant
+    * Each vertical bar indicates the autocorrelation between ith ts and i+gth ts, given a confidence level (such as 95%), out of confidence interval (the threshold lines), the autocorrelation is significant
   * PACF
     * In ACF, the autocorrelation between ith ts and i+gth ts can be affected by i+1th, t+2th, ..., i+g-1th ts too, so PACF removes the influences from these intermediate variables and only checks the autocorrelation between ith ts and i+gth ts
     * Lag0 always has autocorrelation as 1
     * In the example [here][2], besides lag0, only at lag1 there is significant autocorrelation, so the order for AR model is 1
   
+* Moving Statistics
+  * window size w: t1, t2, ..., tw
+  * stride length l: (t1, t2, ..., tw) a window and its next window will (t1+l, t2+l, ..., tw+l)
+    * When using python `rolling()` function, by default the stride length is 1, to get n (n>1) stride length, just removed first n records from `rolling()` results
+  * Moving averages have an effect of smoothing the original time series by eliminating random noise
+  * [Example of nxm weighted moving average][5]
+    * rolling by m, then rolling by n again
+    * This method is a way to make ts stationary
+    * With this method, when closer the time index got higher weight
+    
+* Methods to Convert to Stationary ts
+  * I often use both Augumented Dickey-Fuller (ADF) and KPSS to check stationary, [see this example][3]
+    * ADF checks differencing stationary, which based on the idea of differencing to transform the original ts
+      * `autolag='AIC'` instructs the function to choose a suitable number of lags for the test by maximizing AIC
+    * KPSS checks trending stationary
+    * And I prefer to check Test Statistic and critical values instead of checking p-value only, since in this way we can get the confidence level of stationary
+  * Differencing methods to convert to stationary
+    * First-order differencing: take differences between successive realizations of the time series
+      * `x_t - x_t-1`
+    * Second-order differencing
+      * `(x_t - x_t-1) - (x_t-1 - x_t-2)`
+    * Seasonal differencing
+      * `x_t - x_t-m`
+      * If in the de-trended ts' ACF plot, we are seeing repeated significant autocorrelation (beyond the confidence interval)
+      * [An example of seasonal differencing][4], just use `diff()`
+    * Weighted moving averages
+      * The nxm weighted moving averages method above can help transform ts into stationary
+  * Decomposition methods to convert to stationary
+    * [Example of decomposing a ts][7]
+      * Different from the above decomposition which can be used on the original ts, [Prophet's decomposition comes with the frecasting model][8]
+    * Additive model
+      * x_t = F_t + S_t + E_t
+      * This model is usually applied when thre is a time-dependent trend cycle component but independent seasonality that does not change over time
+    * Multiplicative model
+      * x_t = F_t * S_t * E_t
+      * This model often used when there is time-varying seasonality
+    * [Example of applying both additive and multiplicative methods for decomposition, and python built-in `seasonal_decompose`][6]
   
   
-  ## References
-  * [Practical Time Series Analysis][1]
+## References
+* [Practical Time Series Analysis][1]
 
   
   
-  [1]:https://github.com/PacktPublishing/Practical-Time-Series-Analysis
-  [2]:https://github.com/PacktPublishing/Practical-Time-Series-Analysis/blob/master/Chapter01/Chapter_1_Autocorrelation.ipynb
+[1]:https://github.com/PacktPublishing/Practical-Time-Series-Analysis
+[2]:https://github.com/PacktPublishing/Practical-Time-Series-Analysis/blob/master/Chapter01/Chapter_1_Autocorrelation.ipynb
+[3]:https://github.com/hanhanwu/Hanhan_Break_the_Limits/blob/master/Bank_Fantasy/Golden_Bridge/stationary_analysis.ipynb
+[4]:https://github.com/PacktPublishing/Practical-Time-Series-Analysis/blob/master/Chapter02/Chapter_2_Seasonal_Differencing.ipynb
+[5]:https://github.com/PacktPublishing/Practical-Time-Series-Analysis/blob/master/Chapter02/Chapter_2_Moving_Averages.ipynb
+[6]:https://github.com/PacktPublishing/Practical-Time-Series-Analysis/blob/master/Chapter02/Chapter_2_Time_Series_Decomposition_using_statsmodels.ipynb
+[7]:https://github.com/hanhanwu/Hanhan_Break_the_Limits/blob/master/Bank_Fantasy/Golden_Bridge/seasonal_decomposing.ipynb
+[8]:https://github.com/hanhanwu/Hanhan_Break_the_Limits/blob/master/Bank_Fantasy/Golden_Bridge/prophet_forecast.ipynb
