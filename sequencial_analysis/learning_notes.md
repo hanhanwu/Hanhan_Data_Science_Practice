@@ -51,7 +51,31 @@
   * [Example of nxm weighted moving average][5]
     * rolling by m, then rolling by n again
     * This method is a way to make ts stationary
-    * With this method, when closer the time index got higher weight
+    
+* Exponential Smoothing Methods
+  * The limitation of moving average and weighted moving average is the ignorance of observation recency effect, and exponential smoothing methods can help deal with this issuer by having exponential decaying weights on observations (older data gets lower weights)
+  * <b>Need to convert the ts to stationary</b> before applying moving average and exponential smoothing methods, since that align with the assumption of these methods
+  * Smoothing methods are used to remove random noise, but can be extended for forecasting by ading smoothing factor α, trend factor β, seasonal factor γ in exponential smoothing methods
+  * First order exponential smoothing
+    * `F_t = α*x_t + (1-α)*F_t-1`, x_i is observation value, α is the smoothing factor in [0,1] range
+      * When α=0, the forecasted ts is a constant line, 0 variance
+      * When α=1, the forecasted ts is the right shift of the original ts by 1 lag, same variance as the actual ts
+      * When α is increasing from 0 to 1, the variance of the forecasted ts is also exponentialy increasing, from 0 to the actial ts' variance
+    * [Python implementation of this method][9]
+    * It's also called as Holt-Winters foreacsting, check how did I use the built-in function [here][10]
+  * Second order exponential smoothing
+    * `F_t = α*x_t + (1-α)*(F_t-1 + T_t-1)`
+    * `T_t = β*(F_t - F_t-1) + (1-β)*T_t-1`
+      * β is the trend factor in [0,1] range
+      * Second order can capture the variation of the real signal better than first order if the trend component is not constant
+    * [Python implementation of this method][11]
+  * Triple order exponential smoothing
+    * `F_t = α*(x_t - S_t-L) + (1-α)*(F_t-1 + T_t-1)`
+    * `T_t = β*(F_t - F_t-1) + (1-β)*T_t-1`
+    * `S_t = γ(x_t - F_t) + (1-γ)S_t-C`
+      * γ is the seasonal factor in [0,1] range
+    * [Python implementation of this method][12]
+
     
 * Methods to Convert to Stationary ts
   * I often use both Augumented Dickey-Fuller (ADF) and KPSS to check stationary, [see this example][3]
@@ -95,3 +119,7 @@
 [6]:https://github.com/PacktPublishing/Practical-Time-Series-Analysis/blob/master/Chapter02/Chapter_2_Time_Series_Decomposition_using_statsmodels.ipynb
 [7]:https://github.com/hanhanwu/Hanhan_Break_the_Limits/blob/master/Bank_Fantasy/Golden_Bridge/seasonal_decomposing.ipynb
 [8]:https://github.com/hanhanwu/Hanhan_Break_the_Limits/blob/master/Bank_Fantasy/Golden_Bridge/prophet_forecast.ipynb
+[9]:https://github.com/PacktPublishing/Practical-Time-Series-Analysis/blob/master/Chapter03/Chapter_3_simpleExponentialSmoothing.py
+[10]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/time_series_forecasting.ipynb
+[11]:https://github.com/PacktPublishing/Practical-Time-Series-Analysis/blob/master/Chapter03/Chapter_3_doubleExponentialSmoothing.py
+[12]:https://github.com/PacktPublishing/Practical-Time-Series-Analysis/blob/master/Chapter03/Chapter_3_tripleExponentialSmoothing.py
