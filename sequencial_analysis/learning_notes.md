@@ -80,9 +80,11 @@
 * Methods to Convert to Stationary ts
   * I often use both Augumented Dickey-Fuller (ADF) and KPSS to check stationary, [see this example][3]
     * ADF checks differencing stationary, which based on the idea of differencing to transform the original ts
-      * `autolag='AIC'` instructs the function to choose a suitable number of lags for the test by maximizing AIC
+      * `autolag='AIC'` instructs the function to choose a suitable number of lags for the test by minimize AIC
+      * More negative value in ADF statistics represents closer to stationary singal
     * KPSS checks trending stationary
     * And I prefer to check Test Statistic and critical values instead of checking p-value only, since in this way we can get the confidence level of stationary
+    * We can also plot the mean, variance, if they are changing a lot, then the ts is not stationary, check [my rolling mean & variance example][15]
   * Differencing methods to convert to stationary
     * First-order differencing: take differences between successive realizations of the time series
       * `x_t - x_t-1`
@@ -104,6 +106,51 @@
       * x_t = F_t * S_t * E_t
       * This model often used when there is time-varying seasonality
     * [Example of applying both additive and multiplicative methods for decomposition, and python built-in `seasonal_decompose`][6]
+    
+### Auto-Regressive Models
+* AR, MA, ARMA, ARIMA, Seasonal ARIMA all assume stationary
+  * Python built-in functions for ARMA, AR, MA will check stationary, if non-stationary will return error; ARIMA and Seasonal ARIMA will use differencing to deal with non-stationary issue
+#### AR models
+* The way it regress on time series is to regress it with its lag term. So it's good at capturing the trens since it's predicted based on the prior time values
+* `p` is the order of AR
+  * Check PACF for this, exclude lag 0, the number of significant lags is p
+* [Example to create AR model, and forecast on it][13]
+  * The residual follows normal ditribution with 0 mean
+* <b>Positiveatocorrelation is corrected using AR models and negative autocorrelation is corrected using MA models</b>
+#### MA models
+* It uses the autocorrealtion between residuals to forecast values. This helps adjust for unpredictable events (such as market crash leading to share prices falling that will happen over time)
+* `q` is the order for MA
+  * Check ACF for q, since it defines error serial correlation well
+* [Example to create MA model, and forecast on it][14]
+  * The residual follows normal ditribution with 0 mean
+#### ARMA models
+* The AR(p) models tend to capture the mean reversion effect wheres MA(q) models tend to capture the shock effect in error
+* 🌺 Some Thumb rules to determine the orders of ARMA:
+  * ACF is exponentially decreasing and PACF has significant correlation at lag 1, use p and p=1
+  * ACF is forming a sine-wave and PACF has significant correlation at lag 1, 2, then use p and p=2
+  * ACF has significant autocorrelation and PACF has exponential decay, use q
+  * ACF has significant autocorrelation, PACF shows sine-wave pattern, use q
+  * Both ACF, PACF are showing sine-waves, use both p, q
+* When there is uncertainty in , p, q values, can try grid search with AIC as the metric, choose the option with the minimum AIC
+* After choose the orders need to check the normality of residuals of the model to see whether it's normally distributed
+  * qq-plot, check the [example here][16]
+#### ARIMA (Box_Jenkins model)
+* Comparing with ARMA model, it added the differencing order `d`, which is used to de-trend the signal to make it stationary before applying ARMA
+  * ARIMA(0,1,0) represents a random walk model
+* When there is uncertainty in , p, d, q values, can try grid search with AIC as the metric, choose the option with the minimum AIC
+* After choose the orders need to check the normality of residuals of the model to see whether it's normally distributed
+  * qq-plot, check the [example here][16]
+  * Shapiro-wilk test
+#### SARIMA (Seasonal ARIMA)
+* SARIMA(p,d,q,m), `m` represents the number of periods per season
+* In [this example][16], check the ACF, PACF, at 42 time index it's showing slghtly significant corelation, which may be the seasonality present, so m=42
+### Summarize Steps of using (S)ARIMA models 🌺
+* Check stationary and residual normality
+* Plot ACF, PACF
+  * If you will use AR, MA, ARMA need to convert to stationary then plot to decide orders
+  * If you use ARIMA, SARIMA, need to plot after differencing the original ts (and it's stationary after differencing) to decide other orders
+* If ACF, PACF cannot help decide orders, try grid search and choose the option with minimized AIC
+* Check fittedmodel's residual normality to further valid the model
   
   
 ## References
@@ -123,3 +170,7 @@
 [10]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/time_series_forecasting.ipynb
 [11]:https://github.com/PacktPublishing/Practical-Time-Series-Analysis/blob/master/Chapter03/Chapter_3_doubleExponentialSmoothing.py
 [12]:https://github.com/PacktPublishing/Practical-Time-Series-Analysis/blob/master/Chapter03/Chapter_3_tripleExponentialSmoothing.py
+[13]:https://github.com/PacktPublishing/Practical-Time-Series-Analysis/blob/master/Chapter04/Chapter_4_AR.py
+[14]:https://github.com/PacktPublishing/Practical-Time-Series-Analysis/blob/master/Chapter04/Chapter_4_MA.py
+[15]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/time_series_stationary_measures.ipynb
+[16]:https://github.com/PacktPublishing/Practical-Time-Series-Analysis/blob/master/Chapter04/Chapter_4_ARIMA.py
