@@ -2,7 +2,7 @@
 
 ## Concepts
 
-* Components if a time series
+* Components of a time series
   * f: trend
     * For example, there is linear trending, we will see ts goes up or down, using a linear regression model can get the trend line with coefficient and intercept 
   * s: seasonality
