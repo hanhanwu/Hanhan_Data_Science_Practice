@@ -153,6 +153,49 @@
 * Check fittedmodel's residual normality to further valid the model
   
   
+## Deep Learning for Time Series Analysis
+* neural networks are suitable in cases when there is little info about the underlying properties such as long-term trend and seasonality or these are too complex to be modeled with traditional models. NN helps extracting complex patterns.
+* [All the examples of using MLP, LSTM, GRU, 1D-CNN][17]
+  * Correction: In function `makeXy`, it should be `X.append(list(ts.loc[i-nb_timesteps:i]))`
+  * Notes Summary
+    * To use logloss as the metric for regression problem, need to scale the dependent variable into [0,1] range
+    * The number of epoches represents the number of times the weight updates. Increasing the number of epochs will reduce the loss but too many epoches will lead to overfitting.
+      * Therefore, the number of epochs is controlled by keeping a tap on the loss function computed for the validation set.
+    * The network's weights are optimized by the Adam (adaptive moment estimation) optimization.
+      * Unlike stochastic gradient descent, Adam uses different learning rates for each weight and seperately updates them as the training progresses
+      * The learning rate of a weight is updated based on exponentially weighted moving averages of the weight's gradients and the squared gradients
+    * `ModelCheckpoint` tracks the loss function on the validation set and saves the model for the epoch sat which the loss function has been minumum
+* [More advanced methods & examples][18]
+### RNN (Recurrent Neural Network)
+* When using MLP (multi-layer perceptron), past time steps are fed into the model as uncorrelated independent vaariables, this has ignored the sequential nature of the time series data where observations have correlation with each other. RNN can help in dealing with this.
+  * The correlation in a time series can also be interpreted as the memory that the series carries over itself.
+* "Bi-directional RNN" uses both forward and backward traversal to improve the ability to capture memory over long ranges
+* "Deep RNN": it stacks multiple RNNs on top of each other
+* RNN is difficult to train and can suffer from vanishing and exploding gradients that give erratic results during the training
+  * Vanishing gradients: The chain of gradient multiplication can be very long. When the multiplication diminishes to 0 and there is no gradient flow from a long-range timestep. Due to the negligibly low values of the gradients, the weights do not update and hence the neurons are said to be saturated
+  * Both LSTM, GRU are designed to allow RNN works better in memory transfer for long range sequence
+#### LSTM (Long Short Term Memory)
+* LSTM introduces 3 new gates, to selectively include the previous memory and the current hidden state that's computed in the same manner as in vanilla RNNs
+  * input gate controls the fraction of the newly computed input to keep
+  * forget gate determins the effect of the previous timestep
+  * output gate controls how much of the internal state to let out
+#### GRU (Gated Recurrent Units)
+* It has 2 gates
+  * update gate determines how much of the previous step's memory is to be retained in the current timestep
+  * reset gate controls how to combine the previous memory with the current step's input
+  * Comparing with LSTM, it doesn't have the output gate and the internal memory. 
+    * The update gate combines the functionality achieved by both input and forget gate in LSTM.  
+    * The reset gate combines the effect of the previous memory and the current input, and apply the effect directly to the previous memory
+#### LSTM vs GRU
+* No one works better than the other in all tasks
+* A common rule of thumb:
+  * Use GRU when there is less training data
+  * Use LSTM for large dataset
+#### 1D CNN
+* About "convolution"
+  * The movement of the filter over the image is "convolution"
+  * Multiple convolution layers stacked against each other, generated better features from the original images
+* The shape of the convolution layer is (number of samples, number of timestamp, number of features per timestep)
 ## References
 * [Practical Time Series Analysis][1]
 
@@ -174,3 +217,5 @@
 [14]:https://github.com/PacktPublishing/Practical-Time-Series-Analysis/blob/master/Chapter04/Chapter_4_MA.py
 [15]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/time_series_stationary_measures.ipynb
 [16]:https://github.com/PacktPublishing/Practical-Time-Series-Analysis/blob/master/Chapter04/Chapter_4_ARIMA.py
+[17]:https://github.com/PacktPublishing/Practical-Time-Series-Analysis/tree/master/Chapter05
+[18]:https://github.com/fchollet/deep-learning-with-python-notebooks
