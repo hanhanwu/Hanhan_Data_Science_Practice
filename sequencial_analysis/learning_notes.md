@@ -148,7 +148,7 @@
   * If you will use AR, MA, ARMA need to convert to stationary then plot to decide orders
   * If you use ARIMA, SARIMA, need to plot after differencing the original ts (and it's stationary after differencing) to decide other orders
 * If ACF, PACF cannot help decide orders, try grid search and choose the option with minimized AIC
-* Check fittedmodel's residual normality to further valid the model
+* Check fitted model's residual normality to further valid the model
   
   
 ## Deep Learning for Time Series Analysis
