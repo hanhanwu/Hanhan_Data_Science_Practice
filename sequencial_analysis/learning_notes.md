@@ -53,7 +53,7 @@
     * This method is a way to make ts stationary
     
 * Exponential Smoothing Methods
-  * The limitation of moving average and weighted moving average is the ignorance of observation recency effect, and exponential smoothing methods can help deal with this issuer by having exponential decaying weights on observations (older data gets lower weights)
+  * The limitation of moving average and weighted moving average is the ignorance of observation recency effect, and exponential smoothing methods can help deal with this issue by having exponential decaying weights on observations (older data gets lower weights)
   * <b>Need to convert the ts to stationary</b> before applying moving average and exponential smoothing methods, since that align with the assumption of these methods
   * Smoothing methods are used to remove random noise, but can be extended for forecasting by ading smoothing factor α, trend factor β, seasonality factor γ in exponential smoothing methods
   * First order exponential smoothing
@@ -92,7 +92,7 @@
       * `(x_t - x_t-1) - (x_t-1 - x_t-2)`
     * Seasonal differencing
       * `x_t - x_t-m`
-      * If in the de-trended ts' ACF plot, we are seeing repeated significant autocorrelation (beyond the confidence interval)
+      * If in the de-trended ts' ACF plot, we are seeing repeated significant autocorrelation (beyond the confidence interval), then use seasonal differencing
       * [An example of seasonal differencing][4], just use `diff()`
     * Weighted moving averages
       * The nxm weighted moving averages method above can help transform ts into stationary
@@ -111,12 +111,12 @@
 * AR, MA, ARMA, ARIMA, Seasonal ARIMA all assume stationary
   * Python built-in functions for ARMA, AR, MA will check stationary, if non-stationary will return error; ARIMA and Seasonal ARIMA will use differencing to deal with non-stationary issue
 #### AR models
-* The way it regress on time series is to regress it with its lag term. So it's good at capturing the trens since it's predicted based on the prior time values
+* The way it regress on time series is to regress it with its lag term. So it's good at capturing the trend since it's predicted based on the prior time values
 * `p` is the order of AR
   * Check PACF for this, exclude lag 0, the number of significant lags is p
 * [Example to create AR model, and forecast on it][13]
   * The residual follows normal ditribution with 0 mean
-* <b>Positiveatocorrelation is corrected using AR models and negative autocorrelation is corrected using MA models</b>
+* <b>Positive atocorrelation is corrected using AR models and negative autocorrelation is corrected using MA models</b>
 #### MA models
 * It uses the autocorrealtion between residuals to forecast values. This helps adjust for unpredictable events (such as market crash leading to share prices falling that will happen over time)
 * `q` is the order for MA
@@ -126,19 +126,17 @@
 #### ARMA models
 * The AR(p) models tend to capture the mean reversion effect wheres MA(q) models tend to capture the shock effect in error
 * 🌺 Some Thumb rules to determine the orders of ARMA:
-  * ACF is exponentially decreasing and PACF has significant correlation at lag 1, use p and p=1
-  * ACF is forming a sine-wave and PACF has significant correlation at lag 1, 2, then use p and p=2
-  * ACF has significant autocorrelation and PACF has exponential decay, use q
-  * ACF has significant autocorrelation, PACF shows sine-wave pattern, use q
+  * ACF is exponentially decreasing or forming a sine-wave, and PACF has significant correlation use p
+  * ACF has significant autocorrelation and PACF has exponential decay or sine-wave pattern, use q
   * Both ACF, PACF are showing sine-waves, use both p, q
 * When there is uncertainty in , p, q values, can try grid search with AIC as the metric, choose the option with the minimum AIC
-* After choose the orders need to check the normality of residuals of the model to see whether it's normally distributed
+* After choosing the orders need to check the normality of residuals of the model to see whether it's normally distributed
   * qq-plot, check the [example here][16]
 #### ARIMA (Box_Jenkins model)
 * Comparing with ARMA model, it added the differencing order `d`, which is used to de-trend the signal to make it stationary before applying ARMA
   * ARIMA(0,1,0) represents a random walk model
-* When there is uncertainty in , p, d, q values, can try grid search with AIC as the metric, choose the option with the minimum AIC
-* After choose the orders need to check the normality of residuals of the model to see whether it's normally distributed
+* When there is uncertainty in p, d, q values, we can try grid search with AIC as the metric, choose the option with the minimum AIC
+* After choosing the orders need to check the normality of residuals of the model to see whether it's normally distributed
   * qq-plot, check the [example here][16]
   * Shapiro-wilk test
 #### SARIMA (Seasonal ARIMA)
