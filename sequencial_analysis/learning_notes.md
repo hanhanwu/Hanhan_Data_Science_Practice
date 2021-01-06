@@ -108,6 +108,7 @@
     * [Example of applying both additive and multiplicative methods for decomposition, and python built-in `seasonal_decompose`][6]
     
 ### Auto-Regressive Models
+* Besides stationary, exponential smoothing also assumes that random noise is truly random and follows independent identical distribution, but iid assumption often got violated and smoothing is not sufficient to solve the problem. Auto-regressive methods, which will consider the serial correlation between observations can help deal with this.
 * AR, MA, ARMA, ARIMA, Seasonal ARIMA all assume stationary
   * Python built-in functions for ARMA, AR, MA will check stationary, if non-stationary will return error; ARIMA and Seasonal ARIMA will use differencing to deal with non-stationary issue
 #### AR models
@@ -135,6 +136,7 @@
 #### ARIMA (Box_Jenkins model)
 * Comparing with ARMA model, it added the differencing order `d`, which is used to de-trend the signal to make it stationary before applying ARMA
   * ARIMA(0,1,0) represents a random walk model
+  * d represents d-order differencing
 * When there is uncertainty in p, d, q values, we can try grid search with AIC as the metric, choose the option with the minimum AIC
 * After choosing the orders need to check the normality of residuals of the model to see whether it's normally distributed
   * qq-plot, check the [example here][16]
@@ -152,9 +154,9 @@
   
   
 ## Deep Learning for Time Series Analysis
-* neural networks are suitable in cases when there is little info about the underlying properties such as long-term trend and seasonality or these are too complex to be modeled with traditional models. NN helps extracting complex patterns.
+* Neural networks are suitable in cases when there is little info about the underlying properties such as long-term trend and seasonality or these are too complex to be modeled with traditional models. NN helps extracting complex patterns.
 * [All the examples of using MLP, LSTM, GRU, 1D-CNN][17]
-  * Correction: In function `makeXy`, it should be `X.append(list(ts.loc[i-nb_timesteps:i]))`
+  * ❣️ Correction: In function `makeXy`, it should be `X.append(list(ts.loc[i-nb_timesteps:i]))`
   * Notes Summary
     * To use logloss as the metric for regression problem, need to scale the dependent variable into [0,1] range
     * The number of epoches represents the number of times the weight updates. Increasing the number of epochs will reduce the loss but too many epoches will lead to overfitting.
@@ -162,7 +164,7 @@
     * The network's weights are optimized by the Adam (adaptive moment estimation) optimization.
       * Unlike stochastic gradient descent, Adam uses different learning rates for each weight and seperately updates them as the training progresses
       * The learning rate of a weight is updated based on exponentially weighted moving averages of the weight's gradients and the squared gradients
-    * `ModelCheckpoint` tracks the loss function on the validation set and saves the model for the epoch sat which the loss function has been minumum
+    * `ModelCheckpoint` tracks the loss function on the validation set and saves the model for the epoch which the loss function has been minumum
 * [More advanced methods & examples][18]
 ### RNN (Recurrent Neural Network)
 * When using MLP (multi-layer perceptron), past time steps are fed into the model as uncorrelated independent vaariables, this has ignored the sequential nature of the time series data where observations have correlation with each other. RNN can help in dealing with this.
