@@ -49,7 +49,10 @@
     * When using python `rolling()` function, by default the stride length is 1, to get n (n>1) stride length, just removed first n records from `rolling()` results
   * Moving averages have an effect of smoothing the original time series by eliminating random noise
   * [Example of nxm weighted moving average][5]
+    * It's aiming at seasonal smoothing and gives better estimate of the trend-cycle component
     * rolling by m, then rolling by n again
+    * m often choose the periodicity of the seasonal data for seasonal smoothing
+    * Check the formula in page 131 of [the book][1], this method will give the time series that are closer to the time index t higher weights, such as t-1, t+1 get higher weights than t-3, t+3. This is different from "recency".
     * This method is a way to make ts stationary
     
 * Exponential Smoothing Methods
