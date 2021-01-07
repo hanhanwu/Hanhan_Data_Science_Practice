@@ -22,7 +22,8 @@
   * Zero Mean models: The model has constant mean and constant variance
     * Observations are assumed to be `iid` (independent and identically distributed), and represent the random noise around the same mean
     * `P(X1=x1, X2=x2, ..., Xn=xn) = f(X1=x1)*f(X2=x2)*...*f(Xn=xn)`
-  * Random Walk models: the cumulative sum of the zero mean model (a sum of n_i iids at ith iid), and it has 0 mean and constant variace
+    * stationary series also have constant variance and mean
+  * Random Walk models (white noise): the cumulative sum of the zero mean model (a sum of n_i iids at ith iid), and it has 0 mean and constant variace
     * So if we take the difference between 2 consecutive time indices from this model, we will an iid with 0 mean and constant variance, which is also a zero mean model
   * Trend models: `x_t = μ_t + y_t`
     * `μ_t` is the time dependent trend of the series, it can be linear or non-linear
@@ -104,10 +105,10 @@
       * Different from the above decomposition which can be used on the original ts, [Prophet's decomposition comes with the frecasting model][8]
     * Additive model
       * x_t = F_t + S_t + E_t
-      * This model is usually applied when thre is a time-dependent trend cycle component but independent seasonality that does not change over time
+      * This model is usually applied when thre is a time-dependent trend cycle component but independent seasonality that does not change over time (constant seasonality)
     * Multiplicative model
       * x_t = F_t * S_t * E_t
-      * This model often used when there is time-varying seasonality
+      * This model often used when there is time-varying seasonality (non-constant seasonality)
     * [Example of applying both additive and multiplicative methods for decomposition, and python built-in `seasonal_decompose`][6]
     
 ### Auto-Regressive Models
@@ -199,8 +200,11 @@
   * The movement of the filter over the image is "convolution"
   * Multiple convolution layers stacked against each other, generated better features from the original images
 * The shape of the convolution layer is (number of samples, number of timestamp, number of features per timestep)
-## References
+## Recommended Readings
 * [Practical Time Series Analysis][1]
+* [Time series Q&A][19]
+  * Methods and code to deal with missing data
+  * How to use Granger Causality test to know if one Time Series is helpful in forecasting another
 
   
   
@@ -222,3 +226,4 @@
 [16]:https://github.com/PacktPublishing/Practical-Time-Series-Analysis/blob/master/Chapter04/Chapter_4_ARIMA.py
 [17]:https://github.com/PacktPublishing/Practical-Time-Series-Analysis/tree/master/Chapter05
 [18]:https://github.com/fchollet/deep-learning-with-python-notebooks
+[19]:https://www.machinelearningplus.com/time-series/time-series-analysis-python/
