@@ -205,6 +205,9 @@
 * [Time series Q&A][19]
   * Methods and code to deal with missing data
   * How to use Granger Causality test to know if one Time Series is helpful in forecasting another
+* [Time series intro][20]
+  * Cross correlation: checks whether 2 ts are corrlated with each other. I like the idea of using it in stock, cuz if one tend to drop, the highly correlated one might also drop
+    * [Python calculate cross correlation with lag][21], check the highest vote below
 
   
   
@@ -227,3 +230,5 @@
 [17]:https://github.com/PacktPublishing/Practical-Time-Series-Analysis/tree/master/Chapter05
 [18]:https://github.com/fchollet/deep-learning-with-python-notebooks
 [19]:https://www.machinelearningplus.com/time-series/time-series-analysis-python/
+[20]:https://www.kaggle.com/janiobachmann/time-series-analysis-an-introductory-start
+[21]:https://stackoverflow.com/questions/33171413/cross-correlation-time-lag-correlation-with-pandas
