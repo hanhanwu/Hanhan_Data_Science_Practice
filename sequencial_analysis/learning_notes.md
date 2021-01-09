@@ -208,6 +208,8 @@
 * [Time series intro][20]
   * Cross correlation: checks whether 2 ts are corrlated with each other. I like the idea of using it in stock, cuz if one tend to drop, the highly correlated one might also drop
     * [Python calculate cross correlation with lag][21], check the highest vote below
+* [Sales Uncertainty Prediction][22]
+  * Weighted Scaled Pinball loss (SPL) is a metrics used to measure quantile forecasts. This aarticle inclide the implementation
 
   
   
@@ -232,3 +234,4 @@
 [19]:https://www.machinelearningplus.com/time-series/time-series-analysis-python/
 [20]:https://www.kaggle.com/janiobachmann/time-series-analysis-an-introductory-start
 [21]:https://stackoverflow.com/questions/33171413/cross-correlation-time-lag-correlation-with-pandas
+[22]:https://www.kaggle.com/allunia/m5-sales-uncertainty-prediction
