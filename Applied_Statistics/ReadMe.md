@@ -57,7 +57,7 @@
 * Inspirations
   * Pay attention to the power of taking log
   * 2 major ways to estimate the average of the population
-    * Central Limit Theorem
+    * The law of large numbers
     * Maximum Likelihood Estimation (MLE)
 * Reference: https://www.analyticsvidhya.com/blog/2018/07/introductory-guide-maximum-likelihood-estimation-case-study-r/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
   * It's lack of many things that a tutorial should have.... you even don't know how did he get those columns and plots.... Better to check my code.
@@ -228,9 +228,12 @@ but it's easier to use pyton built-in functions
     * It's robust which means, it's less vulnerable to the outliers
 * Convolution - An operation that computes the distribution of the sum of values from 2 distributions
 * Central Limit Theorem
-  * If we add values drawn from normal distribution, the distribution of the sum is also normal
-  * If we add up values from other distributions, the sum does not have continuous distributionsmentioned above
-  * However, if we add up large number of values from any distribution, the distribution of the sum will converges to normal
+  * When the sample size grows larger, the distribution of sample means is getting close to normal distribution, regardless the shape of the population distribution
+  * Central Limit Theorem vs The law of large numbers
+    * Both assumes the sample size grows towards infinity
+    * Central Limit Theorem is saying the distribution of sample means is getting close to normal distribution
+    * The law of large numbers is saying the sample mean is getting close to the population mean
+  * Sample size >= 30 to hold Central Limit Theorem
   * Contral Limit Theorem - If the distribution of the values has mean and standard deviation (μ, σ), the distribution of the sum is close to N(n*μ，n*pow(σ,2))
   * Limitations
     * Values have to be drawn independently
