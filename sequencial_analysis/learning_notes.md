@@ -210,7 +210,12 @@
 * [Sales Uncertainty Prediction][22]
   * Weighted Scaled Pinball loss (SPL) is a metrics used to measure quantile forecasts. This aarticle inclide the implementation
 
-  
+## My Practice
+* [ts forecast with basic RNN][23]
+  * How to use `Sequential` to build the whole model sequence
+  * How to reshape the input for RNN and define the input shape in `Sequential`
+  * How to use `ModelCheckpoint` to save the best model and plot the hisory of each epoch training vs validation loss
+    * The way it choose the best model is to find the one with the lowest validation loss
   
 [1]:https://github.com/PacktPublishing/Practical-Time-Series-Analysis
 [2]:https://github.com/PacktPublishing/Practical-Time-Series-Analysis/blob/master/Chapter01/Chapter_1_Autocorrelation.ipynb
@@ -234,3 +239,4 @@
 [20]:https://www.kaggle.com/janiobachmann/time-series-analysis-an-introductory-start
 [21]:https://stackoverflow.com/questions/33171413/cross-correlation-time-lag-correlation-with-pandas
 [22]:https://www.kaggle.com/allunia/m5-sales-uncertainty-prediction
+[23]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/after_2020_practice/ts_RNN_basics.ipynb
