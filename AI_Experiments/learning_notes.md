@@ -12,6 +12,7 @@ I have decided to systematically review all the details of deep learning, and or
 
 ### Better to Normalize to the same range
 * When features are in different ranges, better to normalize them into the same range.
+  * For optimization functions, scaling the dependent & independent variables into [-1, 1] range ([0,1] range works too) or [-3, 3] range helps gradient descent, such as makes the converge faster
 * [sklearn functions][7]
 
 ### How to Preprocessing Testing Data ❣❣
