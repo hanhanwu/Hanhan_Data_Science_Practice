@@ -42,9 +42,12 @@ I have decided to systematically review all the details of deep learning, and or
   * Resize all the images to the same size
   * Convert images into floating point tensors
   * Rescale the pixel values (between 0 and 255) to the [0, 1] interval
-  * Batch size is the number of samples in a batch
-    * `steps_per_epoch = total training sample size / training batch size`, this is because in each epoch, it runs all the samples
-    * `validation_steps = total validation sample size / validation batch size`
+  * "Batch size" is the number of samples in a batch
+    * Because you can't pass the entire dataset into NN all at once, need multiple batches
+    * `training_batchs = total training sample size / training batch size`
+    * `validation_batchs = total validation sample size / validation batch size`
+  * 1 "Epoch" will process the entire dataset to update weights
+  * "Number of iterations = total dataset size/batch size", it's the number of batches needed to complete 1 epoch
   * Seperate data and labels
     * Labels are created based on directories, different classes of images are put in different directories
 * [Image batch preprocess for federated learning][43]
