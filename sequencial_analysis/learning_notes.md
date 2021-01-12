@@ -160,7 +160,6 @@
 ## Deep Learning for Time Series Analysis
 * Neural networks are suitable in cases when there is little info about the underlying properties such as long-term trend and seasonality or these are too complex to be modeled with traditional models. NN helps extracting complex patterns.
 * [All the examples of using MLP, LSTM, GRU, 1D-CNN][17]
-  * ❣️ Correction: In function `makeXy`, it should be `X.append(list(ts.loc[i-nb_timesteps:i]))`
   * Notes Summary
     * To use logloss as the metric for regression problem, need to scale the dependent variable into [0,1] range
     * The number of epoches represents the number of times the weight updates. Increasing the number of epochs will reduce the loss but too many epoches will lead to overfitting.
