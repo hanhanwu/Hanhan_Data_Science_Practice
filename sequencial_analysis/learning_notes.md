@@ -71,19 +71,21 @@
       * When α=1, the forecasted ts is the right shift of the original ts by 1 lag, same variance as the actual ts
       * When α is increasing from 0 to 1, the variance of the forecasted ts is also exponentialy increasing, from 0 to the actial ts' variance
     * [Python implementation of this method][9]
-    * It's also called as Holt-Winters foreacsting, check how did I use the built-in function [here][10]
+      * The correct way to start exponential smoothing average
   * Second order exponential smoothing
     * `F_t = α*x_t + (1-α)*(F_t-1 + T_t-1)`
     * `T_t = β*(F_t - F_t-1) + (1-β)*T_t-1`
       * β is the trend factor in [0,1] range
       * Second order can capture the variation of the real signal better than first order if the trend component is not constant
     * [Python implementation of this method][11]
+    * It's also called as Holt foreacsting
   * Triple order exponential smoothing
     * `F_t = α*(x_t - S_t-L) + (1-α)*(F_t-1 + T_t-1)`
     * `T_t = β*(F_t - F_t-1) + (1-β)*T_t-1`
     * `S_t = γ(x_t - F_t) + (1-γ)S_t-C`
       * γ is the seasonality factor in [0,1] range
     * [Python implementation of this method][12]
+    * It's also called as Holt-Winters foreacsting, check how did I use the built-in function [here][10]
 
     
 * Methods to Convert to Stationary ts
