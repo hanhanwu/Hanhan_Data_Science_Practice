@@ -1,5 +1,10 @@
 # Learning Notes 
 
+## Time Series Data Sets
+* [UCI time series datasets][24]
+* [CompEngine time series data][25]
+* [R-CRAN list of time series packages][26]
+
 ## Concepts
 
 * Components of a time series
@@ -240,3 +245,6 @@
 [21]:https://stackoverflow.com/questions/33171413/cross-correlation-time-lag-correlation-with-pandas
 [22]:https://www.kaggle.com/allunia/m5-sales-uncertainty-prediction
 [23]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/after_2020_practice/ts_RNN_basics.ipynb
+[24]:https://archive.ics.uci.edu/ml/datasets.php?format=&task=other&att=&area=&numAtt=&numIns=&type=ts&sort=nameUp&view=table
+[25]:https://www.comp-engine.org/
+[26]:https://cran.r-project.org/web/views/TimeSeries.html
