@@ -206,16 +206,76 @@
   * The movement of the filter over the image is "convolution"
   * Multiple convolution layers stacked against each other, generated better features from the original images
 * The shape of the convolution layer is (number of samples, number of timestamp, number of features per timestep)
+
 ## Recommended Readings
 * [Practical Time Series Analysis][1]
+  * Its code: https://github.com/PacktPublishing/Practical-Time-Series-Analysis
+* [Practical Time Series with more details][27]
+  * Its code: https://github.com/PracticalTimeSeriesAnalysis/BookRepo
 * [Time series Q&A][19]
   * Methods and code to deal with missing data
+    * Backward Fill
+    * Linear Interpolation
+    * Quadratic interpolation
+    * Mean of nearest neighbors
+    * Mean of seasonal couterparts
+    * Make sure to impute without lookahead in forecasting problems, although this will drop the imputatio quality, it's still better than making your forecasting model too good to be true
   * How to use Granger Causality test to know if one Time Series is helpful in forecasting another
 * [Time series intro][20]
   * Cross correlation: checks whether 2 ts are corrlated with each other. I like the idea of using it in stock, cuz if one tend to drop, the highly correlated one might also drop
     * [Python calculate cross correlation with lag][21], check the highest vote below
 * [Sales Uncertainty Prediction][22]
-  * Weighted Scaled Pinball loss (SPL) is a metrics used to measure quantile forecasts. This aarticle inclide the implementation
+  * Weighted Scaled Pinball loss (SPL) is a metrics used to measure quantile forecasts. This article inclide the implementation
+  
+  
+## Practical Suggestions 🍀
+### Data Preprocessing
+#### Thumb of Rules
+* Check whether there will be lookahead in each step, especially need to avoid lookahead in forecasting problems
+  * Besides checks in each step, also can use cross validation, add each feature slowly and check model performance to see whether a feature will bring in performance jump wihtout a good reason
+#### Impute Missing Data
+* Missing data can be caused by random problems or systematic problems
+  * Random problem example: network crash and suddenly lost a certain amount of data
+  * Systematic problem example: when the data came after 10pm, it never got collected
+* Main methods to impute missing data
+  * With/Without Lookahead
+    * Having lookahead can improve imputation quality from domain knowledge sense. However, if the problem is forecasting, lookahead has to be avoided!
+  * Forward/Backword fill
+    * Forward fill is to carry forward the last known value prior to the missing one
+    * Of course, if you need to avoid lookahead, forward fill is the right choice
+  * Moving Average
+    * If the data is noisy, and you have reason to doubt the value of any individual data point relative to an overall mean, you should use a moving average rather than a forward fill. Since averaging can remove some noise.
+    * It doesn't have to be arithmetic average, it can be weighted average or exponential average which give newer observations higher weights
+    * However, moving average can reduce the variance of the dataset which might overestimate your model performance. Be cautious!
+  * Interpolation
+    * "Interpolation is a method of determining the values of missing data points based on geometric constraints regarding how we want the overall data to behave. For example, a linear interpolation constrains the missing data to a linear fit consistent with known neighboring points." Such as LOWESS smoothing method.
+      * Linear interpolation accounts for the trend, it works better than moving average in some cases when imputing the missing data based on the trend makes more sense.
+#### Downsampling & Upsampling
+* Upsampling and downsampling are trying to increasing or decreasing the timestamp frequency, respectively.
+* For upsampling, you are just adding more timestamps, not more info
+* Pandas `resample()` provides up or down sampling functionality
+#### Smoothing
+* Smoothing is mainly used to reduce the noise, also strongly related to imputing the missing data
+* Moving average, weighted moving average, expoential smoothing, etc.
+* First order exponential smoothing
+  * Pandas provides exponential weighted moving average method:
+    * https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.ewm.html
+    * https://pandas.pydata.org/pandas-docs/version/0.17.0/generated/pandas.ewma.html
+    * Larger smoothing factor (alpha), it's faster to update the value closer to its current value
+* Holt's smoothing (second order exponential smoothing)
+  * Takes trend into consideration
+* Holt-Winters smoothing (third order exponential smoothing)
+  * Takes trend & seasonality into consideration
+* Kalman filters smooth the data by modeling a time series process as a combination of known dynamics and measurement error. LOESS (short for “locally estimated scatter plot smoothing”) is a nonparametric method of locally smoothing data.
+  * Both Kalman and LOWESS will bring in lookahead, so cannot used them for the preprocessing for forecasting problems
+
+
+### Be Cautious about "Lookahead" ❣️
+* A "lookahead" is the knowledge leaking about the future data. When you need to do model forecasting, lookahead has to be avoided.
+
+### Other Knowledge
+* Psychological Time Discounting: People tend to be more optimistic (and less realistic) when making estimates or assessments that are more “distant” from us.
+
 
 ## My Practice
 * [ts forecast with basic RNN][23]
@@ -223,6 +283,7 @@
   * How to reshape the input for RNN and define the input shape in `Sequential`
   * How to use `ModelCheckpoint` to save the best model and plot the hisory of each epoch training vs validation loss
     * The way it choose the best model is to find the one with the lowest validation loss
+    
   
 [1]:https://github.com/PacktPublishing/Practical-Time-Series-Analysis
 [2]:https://github.com/PacktPublishing/Practical-Time-Series-Analysis/blob/master/Chapter01/Chapter_1_Autocorrelation.ipynb
@@ -250,3 +311,4 @@
 [24]:https://archive.ics.uci.edu/ml/datasets.php?format=&task=other&att=&area=&numAtt=&numIns=&type=ts&sort=nameUp&view=table
 [25]:https://www.comp-engine.org/
 [26]:https://cran.r-project.org/web/views/TimeSeries.html
+[27]:https://github.com/PracticalTimeSeriesAnalysis/BookRepo
