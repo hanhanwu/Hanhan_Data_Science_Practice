@@ -221,6 +221,7 @@
     * Mean of seasonal couterparts
     * Make sure to impute without lookahead in forecasting problems, although this will drop the imputatio quality, it's still better than making your forecasting model too good to be true
   * How to use Granger Causality test to know if one Time Series is helpful in forecasting another
+* [More methods to test stationary other than ADF, KPSS][28]
 * [Time series intro][20]
   * Cross correlation: checks whether 2 ts are corrlated with each other. I like the idea of using it in stock, cuz if one tend to drop, the highly correlated one might also drop
     * [Python calculate cross correlation with lag][21], check the highest vote below
@@ -312,3 +313,4 @@
 [25]:https://www.comp-engine.org/
 [26]:https://cran.r-project.org/web/views/TimeSeries.html
 [27]:https://github.com/PracticalTimeSeriesAnalysis/BookRepo
+[28]:https://perma.cc/D3F2-TATY
