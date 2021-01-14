@@ -23,12 +23,17 @@
   * e: residuals
     * Irreducible error component, random and doesn't systematic dependent on the time index. It's caused by the lack of info of explanatory variables that can model the variations, or caused by random noise
     
+* Forecasting Models assumptions
+  * Stationary
+  * Normally distributed dependent and independent variables
+    * Sometimes the skewness of the data is an important info, so make sure you understand that before deciding whether to transoform to normal distribution
+    
 * Time Series Models
   * Zero Mean models: The model has constant mean and constant variance
     * Observations are assumed to be `iid` (independent and identically distributed), and represent the random noise around the same mean
     * `P(X1=x1, X2=x2, ..., Xn=xn) = f(X1=x1)*f(X2=x2)*...*f(Xn=xn)`
     * stationary series also have constant variance and mean
-  * Random Walk models (white noise): the cumulative sum of the zero mean model (a sum of n_i iids at ith iid), and it has 0 mean and constant variace
+  * Random Walk models (white noise, nonstationary!): the cumulative sum of the zero mean model (a sum of n_i iids at ith iid), and it has 0 mean and constant variace
     * So if we take the difference between 2 consecutive time indices from this model, we will an iid with 0 mean and constant variance, which is also a zero mean model
   * Trend models: `x_t = μ_t + y_t`
     * `μ_t` is the time dependent trend of the series, it can be linear or non-linear
@@ -48,6 +53,12 @@
     * In ACF, the autocorrelation between ith ts and i+gth ts can be affected by i+1th, t+2th, ..., i+g-1th ts too, so PACF removes the influences from these intermediate variables and only checks the autocorrelation between ith ts and i+gth ts
     * Lag0 always has autocorrelation as 1
     * In the example [here][2], besides lag0, only at lag1 there is significant autocorrelation, so the order for AR model is 1
+    * sometimes, PACF has a critical value for a large lag, which is caused by seasonal cycle. We can set `m` in SARIMA with this lag value to catch the seasonality
+  * ACF and PACF have the same critical region
+    * `[-1.96*sqrt(n), 1.96*sqrt(n)]`
+  * The ACF of stationary data should drop to zero quickly. For nonstationary data the value at lag 1 is positive and large.
+    * but for white noise (non-stationry), its ACF also drops to zero quickly
+ 
   
 * Moving Statistics
   * window size w: t1, t2, ..., tw
@@ -87,16 +98,25 @@
     * [Python implementation of this method][12]
     * It's also called as Holt-Winters foreacsting, check how did I use the built-in function [here][10]
 
+* Rolling Window vs Expanding Window
+  * Rolling window has fixed size, expading window collects all the observations within the specified time range, so the window size of expanding window is not fixed
     
 * Methods to Convert to Stationary ts
+  * The reason we want to make the ts stationary before applying a model is because, bias & errors, accuracy and metrics will vary over time
+  * Each stationary testing method has its focus and limitation, not all of them test both mean and variance change along the time, so better to know the limitation to decide which to use
   * I often use both Augumented Dickey-Fuller (ADF) and KPSS to check stationary, [see this example][3]
     * ADF checks differencing stationary, which based on the idea of differencing to transform the original ts
+      * It only checks whether the mean of the series changes, as for the change of variance is not formally tested
       * `autolag='AIC'` instructs the function to choose a suitable number of lags for the test by minimize AIC
       * More negative value in ADF statistics represents closer to stationary singal
     * KPSS checks trending stationary
     * And I prefer to check Test Statistic and critical values instead of checking p-value only, since in this way we can get the confidence level of stationary
     * We can also plot the mean, variance, if they are changing a lot, then the ts is not stationary, check [my rolling mean & variance example][15]
+  * <b>Differencing is often used to remove trend, log or square root are popular to deal with the changing variance</b>
+    * When using log or square root, all the data has to be positive. These methods also makelarger values less different and will deemphasize the outliers, need to think whether the transformation is appropriate 
   * Differencing methods to convert to stationary
+    * Differencing can not only helps reduce trend and even seasonality, but also could transform the data to a more normally shaped distribution
+      * sometimes a ts needs to be differenced more than once, but differencing much more times may indicate that differencing is not a prefered method
     * First-order differencing: take differences between successive realizations of the time series
       * `x_t - x_t-1`
     * Second-order differencing
@@ -230,6 +250,9 @@
   
   
 ## Practical Suggestions 🍀
+### Be Cautious about "Lookahead" ❣️
+* A "lookahead" is the knowledge leaking about the future data. When you need to do model forecasting, lookahead has to be avoided.
+
 ### Data Preprocessing
 #### Thumb of Rules
 * Check whether there will be lookahead in each step, especially need to avoid lookahead in forecasting problems
@@ -270,9 +293,12 @@
 * Kalman filters smooth the data by modeling a time series process as a combination of known dynamics and measurement error. LOESS (short for “locally estimated scatter plot smoothing”) is a nonparametric method of locally smoothing data.
   * Both Kalman and LOWESS will bring in lookahead, so cannot used them for the preprocessing for forecasting problems
 
-
-### Be Cautious about "Lookahead" ❣️
-* A "lookahead" is the knowledge leaking about the future data. When you need to do model forecasting, lookahead has to be avoided.
+### Spurious Correlation
+* When 2 series are showing high correlation it may not be real correlation. First of all need to think whether the correlation makes sense
+* There is no fixed way to determine whether the 2 series are truly correlated, here're the methods to check
+  * Method 1 - check the correlation between differenced series of the 2, if no longer showing correlation, then likely that the original 2 series are not truly correlated to each other
+  * Method 2 - check the correlation between diff(series1) and lag(diff(series2)), if no longer showing correlation, then likely that the original 2 series are not truly correlated to each other
+* Oftentimes it’s the relationship between data at different points or the change over time that is most informative about how your data behaves.
 
 ### Other Knowledge
 * Psychological Time Discounting: People tend to be more optimistic (and less realistic) when making estimates or assessments that are more “distant” from us.
