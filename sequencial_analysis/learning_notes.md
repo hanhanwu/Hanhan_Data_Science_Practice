@@ -280,10 +280,14 @@
 
 ## My Practice
 * [ts forecast with basic RNN][23]
+  * Using tensorflow2.3
+  * [Same code with tensorflow 2.4]
+    * Main change is in the library import
   * How to use `Sequential` to build the whole model sequence
   * How to reshape the input for RNN and define the input shape in `Sequential`
   * How to use `ModelCheckpoint` to save the best model and plot the hisory of each epoch training vs validation loss
     * The way it choose the best model is to find the one with the lowest validation loss
+* [ts forecast with basic LSTM, GRU][30]
     
   
 [1]:https://github.com/PacktPublishing/Practical-Time-Series-Analysis
@@ -314,3 +318,5 @@
 [26]:https://cran.r-project.org/web/views/TimeSeries.html
 [27]:https://github.com/PracticalTimeSeriesAnalysis/BookRepo
 [28]:https://perma.cc/D3F2-TATY
+[29]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/after_2020_practice/ts_RNN_basics_tf2.4.ipynb
+[30]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/after_2020_practice/basic_lstm_gru.ipynb
