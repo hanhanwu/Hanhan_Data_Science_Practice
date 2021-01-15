@@ -459,12 +459,15 @@ Neural Network is a universal approximator, which means you can use it to implme
 
 ### Digit Recognition with Keras
   * Adam Optimizer: https://arxiv.org/abs/1412.6980
-    * It’s a combination of RMSProp with Momentum. On the one hand we have the exponential moving average of the squared gradient, and on the other one the exponential moving average of the previous steps. Adam is usually the fastest one of these optimization techniques.
-    * RMSProp (Root Mean Square Propagation), in this method the learning rate is adapted for each parameter, as in other method known as Adagrad. RMSProp improves the latter by including the exponential moving average of the squared gradient.
+    * In addition to storing an exponentially decaying average of past squared gradients like Adadelta and RMSprop, Adam also keeps an exponentially decaying average of past gradients, similar to momentum. Adam is usually the fastest one of these optimization techniques.
+  * Tensorflow optimizers: https://www.tensorflow.org/addons/api_docs/python/tfa/optimizers
+    * Gradient descent is the most basic optimizer: https://algorithmia.com/blog/introduction-to-optimizers
     * Improvement on Adam: RAdam, LookAhead: https://medium.com/@lessw/new-deep-learning-optimizer-ranger-synergistic-combination-of-radam-lookahead-for-the-best-of-2dc83f79a48d
-    * Tensorflow optimizers: https://www.tensorflow.org/addons/api_docs/python/tfa/optimizers
-      * Gradient descent is the most basic optimizer: https://algorithmia.com/blog/introduction-to-optimizers
   * Supported Optimizers in Keras: https://keras.io/optimizers/
+    * RMSProp (Root Mean Square Propagation), in this method the learning rate is adapted for each parameter, as in other method known as Adagrad. RMSProp improves the latter by including the exponential moving average of the squared gradient.
+    * `AMSgrad` is a recent proposed improvement to Adam. It has been observed that for certain datasets, Adam fails to converge to the globally optimal solution, whereas simpler algorithms like SGD do.
+      * `keras.optimizers.adam(amsgrad=True)`
+    * Detailed comparison of keras optimizers: https://www.kaggle.com/residentmario/keras-optimizers
   * Supported loss functions in Keras: https://keras.io/losses/
   * NN used in this practive
     * Multi-Layer Perceptrons (MLP)
