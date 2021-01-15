@@ -314,6 +314,13 @@
   * How to use `ModelCheckpoint` to save the best model and plot the hisory of each epoch training vs validation loss
     * The way it choose the best model is to find the one with the lowest validation loss
 * [ts forecast with basic LSTM, GRU][30]
+* [ts forecast with Stacking & Bidirectional RNN][31]
+  * Having tried different activation functions, y was scaled into [0,1] range, but `tanh` works better than `sigmoid` and all better than `relu`. 
+    * There is also an online suggestion that, `tanh` is a better choice for regression problem, while `relu` may not be
+  * `optimizer=Adam(amsgrad=True, learning_rate=0.1)`, I have chosen adam optimizer
+    * `amsgrad=True` is trying to make Adam converge
+  * Besides stacking all with LSTM, also tried to stack with LSTM & GRU, in this case, mised models didn't improve the performance
+  * Although don't think bidirectional work for many industry forecasting problems, still gave it a try. In this case, it got the same performance as stacking method with linear activation
     
   
 [1]:https://github.com/PacktPublishing/Practical-Time-Series-Analysis
@@ -346,3 +353,4 @@
 [28]:https://perma.cc/D3F2-TATY
 [29]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/after_2020_practice/ts_RNN_basics_tf2.4.ipynb
 [30]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/after_2020_practice/basic_lstm_gru.ipynb
+[31]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/after_2020_practice/advanced_RNN.ipynb
