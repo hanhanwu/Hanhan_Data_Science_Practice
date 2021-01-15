@@ -94,7 +94,7 @@ An activation function is a function that is added into an artificial neural net
   * Linear regression - 1 node without activation function
 
 ### Optimizer
-* `rmsprop` is often good enough
+* `rmsprop` is often good enough, `adam` is better
 
 ### About K-fold Cross Validation with Keras
 * Well, adding this part is because I failed this piece in Unity interview...
