@@ -20,7 +20,7 @@ I have decided to systematically review all the details of deep learning, and or
 * For example, when you are using `mean` and `std` to normalize the data, these params should be generated from the training data, and be applied to the testing data.
   * It seems that `(value - mean)/std` is a common way used to normalize features when they are in different scales. This method doesn't guarantee they are on the same scale, but could make them on similar scales
 
-### Multi-class lables [Python]
+### Multi-class lables (Python)
 * Mehtod 1 - One-hot encoding
   * The labels have N columns, each column represents a class
   * Mark the labeled class as 1
@@ -129,7 +129,7 @@ An activation function is a function that is added into an artificial neural net
   * Cross-Entropy loss is to penalize the wrong predictions more than to reward the right predictions. But because the final loss is summed over small losses from the entire image, when the data is imbalanced, the loss value won't be accurate to reflect the detected objects.
   * Balanced Cross-Entropy Loss is to add weights to both positive and negative classes. It does help differentiate the positive & negative, but cannot distinguish easy & hard examples
   * Focal loss down-weights easy examples and focus training on hard negatives.
-    * After a lot of trials and experiments, researchers have found `∝=0.25 & γ=2` to work bes
+    * After a lot of trials and experiments, researchers have found `∝=0.25 & γ=2` to work best
   * [reference][37]
   
 #### Evaluation Visualization
