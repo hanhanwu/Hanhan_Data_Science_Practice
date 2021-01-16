@@ -253,6 +253,28 @@
 ### Be Cautious about "Lookahead" ❣️
 * A "lookahead" is the knowledge leaking about the future data. When you need to do model forecasting, lookahead has to be avoided.
 
+### Time Series Data Storage
+#### Relational DB
+* [InfluxDB][33] is a time series–specific database. Useful for recording metrics, events, and performing analytics.
+* [Prometheus][34] is a "monitoring system and time series database" that works via HTTP. Monitoring first and storage second.
+  * It is a pull-based system, which means that the logic for how data is pulled for creating a time series and how often it is centralized can be easily adjusted and inspected.
+  * It is also not guaranteed to be entirely up-to-date or accurate, due to its pull-based architecture. Not appropriate for applications where data has to be 100% accurate. 
+  * It has a steeper learning curve due to its custom scripting language and the less database-like architecture and API.
+#### NoSQL
+* Mongo is particularly aware of its value as a time series database.
+#### Flat File Solution
+* Save data in flaat files without any DB at all. The advantages include:
+  * System agnostic
+  * A flat file format’s I/O overhead is less than that for a database
+  * A flat file format encodes the order in which data should be read, whereas not all databases will do so
+  * Your data will occupy a much smaller amount of memory than it would on a database because you can maximize compression opportunities
+* Only try this when:
+  * Your data format is mature
+  * Your data processing is I/O bound, so it makes sense to spend development time speeding it up
+  * You don’t need random access, but can instead read data sequentially 
+* If really want to try this solution, [Xarray][35] is a good choice due to data structure and high performance computing instrument
+
+
 ### Data Preprocessing
 #### Thumb of Rules
 * Check whether there will be lookahead in each step, especially need to avoid lookahead in forecasting problems
@@ -367,3 +389,6 @@
 [30]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/after_2020_practice/basic_lstm_gru.ipynb
 [31]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/after_2020_practice/advanced_RNN.ipynb
 [32]:https://github.com/PracticalTimeSeriesAnalysis/BookRepo/blob/master/Ch04/Ising.ipynb
+[33]:https://github.com/influxdata/influxdb
+[34]:https://github.com/prometheus/prometheus
+[35]:https://github.com/pydata/xarray/blob/master/doc/index.rst
