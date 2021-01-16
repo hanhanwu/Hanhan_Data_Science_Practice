@@ -224,6 +224,7 @@
 #### 1D CNN 💡
 * One strategy to combine the speed and lightness of convnets with the order-sensitivity of RNNs is to use a 1D convnet as a preprocessing step before a RNN. 
   * This is especially beneficial when dealing with sequences that are so long that they couldn't realistically be processed with RNNs, e.g. sequences with thousands of steps. The convnet will turn the long input sequence into much shorter (downsampled) sequences of higher-level features. This sequence of extracted features then becomes the input to the RNN part of the network.
+  * [See my experiments here][36]
 * About "convolution"
   * The movement of the filter over the image is "convolution"
   * Multiple convolution layers stacked against each other, generated better features from the original images
@@ -338,7 +339,6 @@
 * Psychological Time Discounting: People tend to be more optimistic (and less realistic) when making estimates or assessments that are more “distant” from us.
 
 
-
 ## My Practice
 * [ts forecast with basic RNN][23]
   * Using tensorflow2.3
@@ -357,6 +357,7 @@
     * `amsgrad=True` is trying to make Adam converge
   * Besides stacking all with LSTM, also tried to stack with LSTM & GRU, in this case, mised models didn't improve the performance
   * Although don't think bidirectional work for many industry forecasting problems, still gave it a try. In this case, it got the same performance as stacking method with linear activation
+* [ts forecast with 1D CNN & LSTM][36]
     
   
 [1]:https://github.com/PacktPublishing/Practical-Time-Series-Analysis
@@ -394,3 +395,4 @@
 [33]:https://github.com/influxdata/influxdb
 [34]:https://github.com/prometheus/prometheus
 [35]:https://github.com/pydata/xarray/blob/master/doc/index.rst
+[36]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/after_2020_practice/ts_1DCNN.ipynb
