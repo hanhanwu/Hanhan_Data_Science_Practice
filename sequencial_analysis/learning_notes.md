@@ -221,11 +221,12 @@
 * A common rule of thumb:
   * Use GRU when there is less training data
   * Use LSTM for large dataset
-#### 1D CNN
+#### 1D CNN 💡
+* One strategy to combine the speed and lightness of convnets with the order-sensitivity of RNNs is to use a 1D convnet as a preprocessing step before a RNN. 
+  * This is especially beneficial when dealing with sequences that are so long that they couldn't realistically be processed with RNNs, e.g. sequences with thousands of steps. The convnet will turn the long input sequence into much shorter (downsampled) sequences of higher-level features. This sequence of extracted features then becomes the input to the RNN part of the network.
 * About "convolution"
   * The movement of the filter over the image is "convolution"
   * Multiple convolution layers stacked against each other, generated better features from the original images
-* The shape of the convolution layer is (number of samples, number of timestamp, number of features per timestep)
 
 ## Recommended Readings
 * [Practical Time Series Analysis][1]
@@ -343,6 +344,7 @@
   * Using tensorflow2.3
   * [Same code with tensorflow 2.4]
     * Main change is in the library import
+  * The input data shape for RNN is `(number of timestamp, number of features per timestep)`
   * How to use `Sequential` to build the whole model sequence
   * How to reshape the input for RNN and define the input shape in `Sequential`
   * How to use `ModelCheckpoint` to save the best model and plot the hisory of each epoch training vs validation loss
