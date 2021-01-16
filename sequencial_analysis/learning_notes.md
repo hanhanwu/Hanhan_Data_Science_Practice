@@ -300,8 +300,20 @@
   * Method 2 - check the correlation between diff(series1) and lag(diff(series2)), if no longer showing correlation, then likely that the original 2 series are not truly correlated to each other
 * Oftentimes it’s the relationship between data at different points or the change over time that is most informative about how your data behaves.
 
+### Data Simulation
+* SimPy, a process-based discrete-event simulation framework: https://simpy.readthedocs.io/en/latest/
+* Simulation with Markov Chain Monte Carlo (MCMC) method
+  * "The basis of a Monte Carlo simulation is that the probability of varying outcomes cannot be determined because of random variable interference. Therefore, a Monte Carlo simulation focuses on constantly repeating random samples to achieve certain results. A Monte Carlo simulation takes the variable that has uncertainty and assigns it a random value. The model is then run and a result is provided. This process is repeated again and again while assigning the variable in question with many different values. Once the simulation is complete, the results are averaged together to provide an estimate."
+  * "A Monte Carlo simulation will help you figure out what a particular distribution or series of terms looks like, but not how those terms should evolve over time. This is where a Markov chain comes in. It calculates a probability of transitioning between states, and when we factor that in, we take “steps” rather than simply calculating a global integral."
+    * In a Markov process, the probability of a transition to a state in the future depends only on the present state (not on past information).
+    * [An example of MCMCsimulation][32]
+* Deep Learning Simulation
+  * Can capture complex and nonlinear dynamics, hard to leak privacy since it's a blackbox
+  * The drawback is, even the practitioners don't understand the dynamics of the system...
+
 ### Other Knowledge
 * Psychological Time Discounting: People tend to be more optimistic (and less realistic) when making estimates or assessments that are more “distant” from us.
+
 
 
 ## My Practice
@@ -354,3 +366,4 @@
 [29]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/after_2020_practice/ts_RNN_basics_tf2.4.ipynb
 [30]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/after_2020_practice/basic_lstm_gru.ipynb
 [31]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/after_2020_practice/advanced_RNN.ipynb
+[32]:https://github.com/PracticalTimeSeriesAnalysis/BookRepo/blob/master/Ch04/Ising.ipynb
