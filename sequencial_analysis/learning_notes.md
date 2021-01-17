@@ -166,7 +166,11 @@
   * qq-plot, check the [example here][16]
 #### ARIMA (Box_Jenkins model)
 * Comparing with ARMA model, it added the differencing order `d`, which is used to de-trend the signal to make it stationary before applying ARMA
+  * ARIMA(0,0,0) is white noise
   * ARIMA(0,1,0) represents a random walk model
+  * ARIMA(0,1,1) represents first order exponential smoothing model
+  * ARIMA(0,2,2) represents second order exponential smoothing (Holt's method), which considers the trend
+  * So I think ARIMA(0,3,3) represents Holt-Winters method (Triple order exponential smoothing)
   * d represents d-order differencing
 * When there is uncertainty in p, d, q values, we can try grid search with AIC as the metric, choose the option with the minimum AIC
 * After choosing the orders need to check the normality of residuals of the model to see whether it's normally distributed
@@ -181,7 +185,20 @@
   * If you will use AR, MA, ARMA need to convert to stationary then plot to decide orders
   * If you use ARIMA, SARIMA, need to plot after differencing the original ts (and it's stationary after differencing) to decide other orders
 * If ACF, PACF cannot help decide orders, try grid search and choose the option with minimized AIC
+  * The orders should not be too large, otherwise may lead to overcomplexed model and overfitting. We should be skeptical if d >= 2, p, q >=5
+  * [There is a method in R for automated model selection][37] `auto.arima`
+    * It combines unit root tests, minimisation of the AICc and MLE to obtain an ARIMA model.
+    * Check all the params here: https://www.rdocumentation.org/packages/forecast/versions/8.13/topics/auto.arima
+      * Also supports seasonal model
 * Check fitted model's residual normality to further valid the model, [check the bottom of the example here][16]
+
+#### VAR (Vector Autoregression) for multi-variate time series
+* All the methods mentioned above are used for univariate ts analysis. Vector Autoregression (VAR) is a multivariate forecasting algorithm that is used when two or more time series influence each other.
+  * You need at least two time series (variables)
+  * The time series should influence each other.
+    * You can use Portmanteau test to check whether there is multivariate series correlation, and it's interesting that for this type of test, H0 is "there is no serial correlation"
+    * I'm also wondering whether VIF will work too?
+* [Check details and eaxmple here][38]
   
   
 ## Deep Learning for Time Series Analysis
@@ -339,6 +356,7 @@
 * Psychological Time Discounting: People tend to be more optimistic (and less realistic) when making estimates or assessments that are more “distant” from us.
 
 
+
 ## My Practice
 * [ts forecast with basic RNN][23]
   * Using tensorflow2.3
@@ -396,3 +414,5 @@
 [34]:https://github.com/prometheus/prometheus
 [35]:https://github.com/pydata/xarray/blob/master/doc/index.rst
 [36]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/after_2020_practice/ts_1DCNN.ipynb
+[37]:https://perma.cc/P92B-6QXR
+[38]:https://www.machinelearningplus.com/time-series/vector-autoregression-examples-python/
