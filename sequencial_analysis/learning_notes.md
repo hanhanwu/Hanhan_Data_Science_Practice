@@ -354,8 +354,24 @@
 
 ### Other Knowledge
 * Psychological Time Discounting: People tend to be more optimistic (and less realistic) when making estimates or assessments that are more “distant” from us.
-
-
+#### State Space Models
+* It doesn't assume stationary on the data and allows time-varying coefficients instead fixed coefficients. However, also because of this, there can be many parameters to set, which could lead to overfitting, computationally expensive and hard to understand.
+* The Kalman Filter
+  * Predict the current value merely based on the last value. This method is more useful when the internal dynamics of the system are very well understood, such as the moving trace of a rocket (you know how to calculate with Newton's Law)
+* Hidden Markov Models (HMM)
+  * It is a rare instance of unsupervised learning in time series analysis, meaning there is no labeled correct answer against which to train. "Markov process" means it is “memoryless” that the probabilities of future events can be fully calculated given only the system’s current state, no need to know earlier states. 
+  * A Hidden Markov Model represents the same kind of system, except that we are not able to directly infer the state of the system from our observations. for example, in a time series, it has states of A, B, C, D, 4 subseries, but you are only seeing 1 series.
+  * Baum-Welch algorithm is used to identify the distinct emission probabilities for each possible hidden state and identify the transition probabilities from each possible hidden state to each other possible hidden state.
+    * To find the optimal sequence of hidden states, because the complexity grows exponentially with the number of time steps. So need to use EM (expectation–maximization) algorithm. But EM cannot guarantee to find the global optimal, so better to try multiple different initialization.
+  * Viterbi algorithm is used to identify the most likely hidden state for each time step given the full history of observations.
+    * The Viterbi algorithm searches all possible paths that could explain a given observed time series, where a path indicates which state was occupied at each time step, so it's guaranteed to find the best solution.
+    * It is a dynamic programming algorithm designed to fully and efficiently explore the range of possible fits by saving the solutions to portions of a path so that as the path is lengthened there’s no need to recompute all possible paths for all path lengths
+      * Dynamic programming is also described as a technique of memoization, which saves smaller problems' solutions in order to solve a bigger problem faster
+  * HMMs will perform better on longer time series with more opportunities to observe/infer state transitions.
+  * [Python example of using HMM][39]
+    * Params: https://ogrisel.github.io/scikit-learn.org/sklearn-tutorial/modules/generated/sklearn.hmm.GaussianHMM.html
+* Bayesian structural time series (BSTS)
+  * For more details, check [python PyDLM][40] and [its user manual][41]
 
 ## My Practice
 * [ts forecast with basic RNN][23]
@@ -416,3 +432,6 @@
 [36]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/after_2020_practice/ts_1DCNN.ipynb
 [37]:https://perma.cc/P92B-6QXR
 [38]:https://www.machinelearningplus.com/time-series/vector-autoregression-examples-python/
+[39]:https://github.com/PracticalTimeSeriesAnalysis/BookRepo/blob/master/Ch07/HMM.ipynb
+[40]:https://github.com/wwrechard/pydlm
+[41]:https://pydlm.github.io/#dynamic-linear-models-user-manual
