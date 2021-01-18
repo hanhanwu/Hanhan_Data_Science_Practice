@@ -245,27 +245,6 @@
 * About "convolution"
   * The movement of the filter over the image is "convolution"
   * Multiple convolution layers stacked against each other, generated better features from the original images
-
-## Recommended Readings
-* [Practical Time Series Analysis][1]
-  * Its code: https://github.com/PacktPublishing/Practical-Time-Series-Analysis
-* [Practical Time Series with more details][27]
-  * Its code: https://github.com/PracticalTimeSeriesAnalysis/BookRepo
-* [Time series Q&A][19]
-  * Methods and code to deal with missing data
-    * Backward Fill
-    * Linear Interpolation
-    * Quadratic interpolation
-    * Mean of nearest neighbors
-    * Mean of seasonal couterparts
-    * Make sure to impute without lookahead in forecasting problems, although this will drop the imputatio quality, it's still better than making your forecasting model too good to be true
-  * How to use Granger Causality test to know if one Time Series is helpful in forecasting another
-* [More methods to test stationary other than ADF, KPSS][28]
-* [Time series intro][20]
-  * Cross correlation: checks whether 2 ts are corrlated with each other. I like the idea of using it in stock, cuz if one tend to drop, the highly correlated one might also drop
-    * [Python calculate cross correlation with lag][21], check the highest vote below
-* [Sales Uncertainty Prediction][22]
-  * Weighted Scaled Pinball loss (SPL) is a metrics used to measure quantile forecasts. This article inclide the implementation
   
   
 ## Practical Suggestions 🍀
@@ -292,7 +271,6 @@
   * Your data processing is I/O bound, so it makes sense to spend development time speeding it up
   * You don’t need random access, but can instead read data sequentially 
 * If really want to try this solution, [Xarray][35] is a good choice due to data structure and high performance computing instrument
-
 
 ### Data Preprocessing
 #### Thumb of Rules
@@ -333,6 +311,28 @@
   * Takes trend & seasonality into consideration
 * Kalman filters smooth the data by modeling a time series process as a combination of known dynamics and measurement error. LOESS (short for “locally estimated scatter plot smoothing”) is a nonparametric method of locally smoothing data.
   * Both Kalman and LOWESS will bring in lookahead, so cannot used them for the preprocessing for forecasting problems
+  
+### Time Series Feature Generation & Feature Selection
+* Most of these methods need grouby or a whole series of data, most of them are not calculated on rolling window...
+* [Python tsfresh][42]
+  * "FRESH" stands for feature extraction based on scalable hypothesis tests. 
+  * List of features: https://tsfresh.readthedocs.io/en/latest/text/list_of_features.html
+  * An example about how to use feature extraction: https://github.com/blue-yonder/tsfresh/blob/main/notebooks/advanced/perform-PCA-on-extracted-features.ipynb
+  * More examples: https://github.com/blue-yonder/tsfresh/tree/main/notebooks
+* [Python Cesium Features][43]
+  * List of features: http://cesium-ml.org/docs/feature_table.html
+  * Examples: https://github.com/cesium-ml/cesium/tree/master/examples
+* [R tsfeatures][44]
+  * List of features: https://cran.r-project.org/web/packages/tsfeatures/vignettes/tsfeatures.html
+    * There are a few functions are designed for rolling windows
+#### Feature Selection
+* [Python tsfresh][42]
+  * "FRESH" stands for feature extraction based on scalable hypothesis tests.
+    * The algorithm evaluates the significance of each input feature with respect to a target variable via the computation of a p-value for each feature.
+      * Once computed, the per-feature p-values are evaluated together via the Benjamini-Yekutieli procedure, which determines which features to keep based on input parameters about acceptable error rates and the like.
+      * An example of calculating feature significance: https://github.com/blue-yonder/tsfresh/blob/main/notebooks/advanced/visualize-benjamini-yekutieli-procedure.ipynb
+      * The Benjamini-Yekutieli procedure is a method of limiting the number of false positives discovered during hypothesis testing used to produce the p-values in the initial step of the FRESH algorithm.
+* sklearn feature selectors allow you to use different machine learning estimators: https://scikit-learn.org/stable/modules/classes.html#module-sklearn.feature_selection
 
 ### Spurious Correlation
 * When 2 series are showing high correlation it may not be real correlation. First of all need to think whether the correlation makes sense
@@ -373,6 +373,7 @@
 * Bayesian structural time series (BSTS)
   * For more details, check [python PyDLM][40] and [its user manual][41]
 
+
 ## My Practice
 * [ts forecast with basic RNN][23]
   * Using tensorflow2.3
@@ -393,6 +394,27 @@
   * Although don't think bidirectional work for many industry forecasting problems, still gave it a try. In this case, it got the same performance as stacking method with linear activation
 * [ts forecast with 1D CNN & LSTM][36]
     
+
+## Recommended Readings
+* [Practical Time Series Analysis][1]
+  * Its code: https://github.com/PacktPublishing/Practical-Time-Series-Analysis
+* [Practical Time Series with more details][27]
+  * Its code: https://github.com/PracticalTimeSeriesAnalysis/BookRepo
+* [Time series Q&A][19]
+  * Methods and code to deal with missing data
+    * Backward Fill
+    * Linear Interpolation
+    * Quadratic interpolation
+    * Mean of nearest neighbors
+    * Mean of seasonal couterparts
+    * Make sure to impute without lookahead in forecasting problems, although this will drop the imputatio quality, it's still better than making your forecasting model too good to be true
+  * How to use Granger Causality test to know if one Time Series is helpful in forecasting another
+* [More methods to test stationary other than ADF, KPSS][28]
+* [Time series intro][20]
+  * Cross correlation: checks whether 2 ts are corrlated with each other. I like the idea of using it in stock, cuz if one tend to drop, the highly correlated one might also drop
+    * [Python calculate cross correlation with lag][21], check the highest vote below
+* [Sales Uncertainty Prediction][22]
+  * Weighted Scaled Pinball loss (SPL) is a metrics used to measure quantile forecasts. This article inclide the implementation
   
 [1]:https://github.com/PacktPublishing/Practical-Time-Series-Analysis
 [2]:https://github.com/PacktPublishing/Practical-Time-Series-Analysis/blob/master/Chapter01/Chapter_1_Autocorrelation.ipynb
@@ -435,3 +457,6 @@
 [39]:https://github.com/PracticalTimeSeriesAnalysis/BookRepo/blob/master/Ch07/HMM.ipynb
 [40]:https://github.com/wwrechard/pydlm
 [41]:https://pydlm.github.io/#dynamic-linear-models-user-manual
+[42]:https://github.com/blue-yonder/tsfresh
+[43]:https://github.com/cesium-ml/cesium
+[44]:https://github.com/robjhyndman/tsfeatures
