@@ -313,7 +313,9 @@
   * Both Kalman and LOWESS will bring in lookahead, so cannot used them for the preprocessing for forecasting problems
   
 ### Time Series Feature Generation & Feature Selection
-* Most of these methods need grouby or a whole series of data, most of them are not calculated on rolling window...
+#### Feature Generation
+* Most of these methods need grouby or a whole series of data, most of them are not calculated on rolling window
+  * The issue of not calculate features with rolling window is, lookahead might appear in the forecasting problem. For features that's calculated with group by a shorter series might be better
 * [Python tsfresh][42]
   * "FRESH" stands for feature extraction based on scalable hypothesis tests. 
   * List of features: https://tsfresh.readthedocs.io/en/latest/text/list_of_features.html
@@ -377,7 +379,7 @@
 ## My Practice
 * [ts forecast with basic RNN][23]
   * Using tensorflow2.3
-  * [Same code with tensorflow 2.4]
+  * [Same code with tensorflow 2.4][29]
     * Main change is in the library import
   * The input data shape for RNN is `(number of timestamp, number of features per timestep)`
   * How to use `Sequential` to build the whole model sequence
