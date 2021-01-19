@@ -5,8 +5,7 @@
 * [CompEngine time series data][25]
 * [R-CRAN list of time series packages][26]
 
-## Concepts
-
+## Statistical Models for Time Series Analysis
 * Components of a time series
   * f: trend
     * For example, there is linear trending, we will see ts goes up or down, using a linear regression model can get the trend line with coefficient and intercept 
@@ -58,7 +57,6 @@
     * `[-1.96*sqrt(n), 1.96*sqrt(n)]`
   * The ACF of stationary data should drop to zero quickly. For nonstationary data the value at lag 1 is positive and large.
     * but for white noise (non-stationry), its ACF also drops to zero quickly
- 
   
 * Moving Statistics
   * window size w: t1, t2, ..., tw
@@ -199,7 +197,34 @@
     * You can use Portmanteau test to check whether there is multivariate series correlation, and it's interesting that for this type of test, H0 is "there is no serial correlation"
     * I'm also wondering whether VIF will work too?
 * [Check details and eaxmple here][38]
-  
+
+## Classical Machine Learning Models for Time Series Analysis
+* Instead of making assumptions of the underlying process as statistical models above, these models instead focus on identifying patterns that describe the process’s behavior in ways relevant to predicting the outcome of interest.
+* Still need to check the assumptions of the model to see whether need to preprocess the features
+### Emsembling models are good choices
+* Although not "time-aware" methodology
+### Clustering Time Series
+* We can cluster multiple time series into different clusters, then make forecast for each cluster, assuming each cluster follows a certain behavior that will help the forecasting.
+#### To Calculate Cluster Similarity
+* Similarity between raw ts data
+* Similarity between features
+  * ‼️ Make sure the features are the key features that can represent the data, cuz noisy features will only misleading the similarity calculation
+* Similarity Calculation Methods
+  * Dynamic Time Warping (DTW)
+    * It compares the shape of 2 ts, whether the time ranges of the 2 ts are the same DOESN'T matter
+      * 2 ts can be warped by being condensed to the same place on the x-axis
+    * When comparing the shape, Every point in one time series must be matched with at least one point of the other time series. The first and last indices of each time series must be matched with their counterparts in the other time series. The mapping of points must be such that time moves forward and not backward.
+    * The cost fuction is often measured as the sum of absolute differences between matched points.
+    * [Here's an example][46], but I doubt the use of `linkage = ward`, since it will use euclidean distance which is discouraged in ts similarity calculation
+  * Fréchet distance
+    * It's like a person walks his dog. They each need to traverse a separate curve from beginning to end, and they can go at different speeds and vary their speeds along the curve so long as they always move in the same direction. The Fréchet distance is the shortest length of leash necessary for them to complete the task following the optimal path.
+  * Pearson Correlation
+    * 2 ts with same legthen is required.
+  * Longest Common Subsequence
+    * It finds the length of the longest common subsequence (exactly identical). Similar to DTW, their exact location in the time series is not required to match, and 2 ts don't need to be the same length.
+  * ‼️ Avoid Euclidean distance to calculate the similarity between 2 time series, because
+    * The displacement along the time axis that isn’t really important for comparison
+    * It provides the ability to recognize similarity of magnitudes rather than recognizing the similarity of shapes
   
 ## Deep Learning for Time Series Analysis
 * Neural networks are suitable in cases when there is little info about the underlying properties such as long-term trend and seasonality or these are too complex to be modeled with traditional models. NN helps extracting complex patterns.
@@ -468,3 +493,4 @@
 [43]:https://github.com/cesium-ml/cesium
 [44]:https://github.com/robjhyndman/tsfeatures
 [45]:https://github.com/PracticalTimeSeriesAnalysis/BookRepo/blob/master/Ch09/Classification.ipynb
+[46]:https://github.com/PracticalTimeSeriesAnalysis/BookRepo/blob/master/Ch09/Clustering.ipynb
