@@ -313,9 +313,13 @@
   * Both Kalman and LOWESS will bring in lookahead, so cannot used them for the preprocessing for forecasting problems
   
 ### Time Series Feature Generation & Feature Selection
-#### Feature Generation
-* Most of these methods need grouby or a whole series of data, most of them are not calculated on rolling window
-  * The issue of not calculate features with rolling window is, lookahead might appear in the forecasting problem. For features that's calculated with group by a shorter series might be better
+#### Feature Generaion with Domain Knowledge
+* Especially in stock market (such as those index), healthcare area, etc.
+#### Automated Feature Generation 
+* ⛔️ Don't over use auto generation libraries
+* Most of these methods need groupby or a series of data, instead of calculating on rolling windows for you
+  * The issue of not calculate features with rolling window is, lookahead might appear in the forecasting problem
+  * In some cases, calculating features with the whole time series is fine, such as clustering multiple time series using features
 * [Python tsfresh][42]
   * "FRESH" stands for feature extraction based on scalable hypothesis tests. 
   * List of features: https://tsfresh.readthedocs.io/en/latest/text/list_of_features.html
@@ -324,6 +328,7 @@
 * [Python Cesium Features][43]
   * List of features: http://cesium-ml.org/docs/feature_table.html
   * Examples: https://github.com/cesium-ml/cesium/tree/master/examples
+  * Your can generate features for a list of time series by using `featurize_time_series()`, [see this example][45]
 * [R tsfeatures][44]
   * List of features: https://cran.r-project.org/web/packages/tsfeatures/vignettes/tsfeatures.html
     * There are a few functions are designed for rolling windows
@@ -462,3 +467,4 @@
 [42]:https://github.com/blue-yonder/tsfresh
 [43]:https://github.com/cesium-ml/cesium
 [44]:https://github.com/robjhyndman/tsfeatures
+[45]:https://github.com/PracticalTimeSeriesAnalysis/BookRepo/blob/master/Ch09/Classification.ipynb
