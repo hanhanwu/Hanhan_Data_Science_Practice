@@ -5,6 +5,7 @@
 * [CompEngine time series data][25]
 * [R-CRAN list of time series packages][26]
 
+
 ## Statistical Models for Time Series Analysis
 * Components of a time series
   * f: trend
@@ -283,6 +284,8 @@
 * Examples of using MXNet with different RNN models: https://github.com/PracticalTimeSeriesAnalysis/BookRepo/blob/master/Ch10/ForecastingElectricity.ipynb 
 
   
+  
+  
 ## Practical Suggestions 🍀
 ### Be Cautious about "Lookahead" ❣️
 * A "lookahead" is the knowledge leaking about the future data. When you need to do model forecasting, lookahead has to be avoided.
@@ -376,6 +379,49 @@
       * An example of calculating feature significance: https://github.com/blue-yonder/tsfresh/blob/main/notebooks/advanced/visualize-benjamini-yekutieli-procedure.ipynb
       * The Benjamini-Yekutieli procedure is a method of limiting the number of false positives discovered during hypothesis testing used to produce the p-values in the initial step of the FRESH algorithm.
 * sklearn feature selectors allow you to use different machine learning estimators: https://scikit-learn.org/stable/modules/classes.html#module-sklearn.feature_selection
+
+### Validation, Testing, Evaluation of Time Series Forecasting
+#### NOTES 💝
+* Exponential smoothing will bring in lookahead in forecasting, because your data has fitted to an exponential smoothing formula before forefasting
+  * So does moving average, and any method that will fit both training and testing time series data into a formula. <b>Be cautious about lookahead before applying a preprocessing method</b>
+  * For non time series data, we could preprocess training data first and use the same params to preprocessing testing data, but this method may ot work in time series preprocessing
+* When there is abnormal dynamics in the data, consider whether to remove them from the data, or build a seperate model for the special dataset or to keep them
+#### Cross Validation Formats
+* Format 1 - Growing window
+  * training: [A,B,C,D], testing:[E,F]
+  * training: [A,B,C,D,E,F], testing:[G,H]
+  * training: [A,B,C,D,E,F,G,H], testing:[I,J]
+  * [Iplemented in sklearn TimeseriesSplit()][48]
+* Format 2 - Moving window
+  * training: [A,B,C,D], testing:[E,F]
+  * training: [B,C,D,E], testing:[F,G]
+  * training: [C,D,E,F], testing:[G,H]
+  * stride >=1
+* Format 3 - Expanding widow
+  * Similar tomoving window, but instead of having fixed window size, it specifies the starting & ending points of a window, any observation between the time range will be included, so the window size varies
+  * This method might be better at reducing overfitting than movig window solution
+#### What to Check for Further Model Improvement
+* Performance metrics
+* Plot the output of your predictions, to see whether the output makes sense
+* Plot the residuals of the model over time
+  * If the residuals are not homogenous over time, your model is underspecified
+* Test your model against a simple temporally aware null model (baseline)
+  * A common null model is that every forecast for time t should be the value at time t – 1, a constant line. Worse than the null model, your model is useless
+* Study how your model handles outliers
+  * Sometimes the ability of forecasting outliers will lead to overfitting and need to ignore the outliers; sometimes your task is to detect the outliers and the model needs to detect them
+* Conduct temporal sensitivity analysis
+  * Whether the model treats similar termoral patterns in similar ways? comparing in both training and testing sets
+#### Validation Gotchas
+* "lookahead"
+* Structural Change
+  * The change may lead to the model change
+  * [Detect Structural Changes in Time Series-2017 paper][49]
+    * How to test structural change with hypothesis
+      * R `strucchange` package supports both cumulative SUMS (CUSUMS) and moving SUMS (MOSUMS): https://cran.r-project.org/web/packages/strucchange/strucchange.pdf
+      * Python I found OLS-CUSUMS: https://www.statsmodels.org/stable/generated/statsmodels.stats.diagnostic.recursive_olsresiduals.html
+    * Detect breakpoints of the structural change
+      * R `strucchange` package also provides the `breakpoints()` method
+    * Without the built-in method, we can also check the change significance
 
 ### Spurious Correlation
 * When 2 series are showing high correlation it may not be real correlation. First of all need to think whether the correlation makes sense
@@ -506,3 +552,5 @@
 [45]:https://github.com/PracticalTimeSeriesAnalysis/BookRepo/blob/master/Ch09/Classification.ipynb
 [46]:https://github.com/PracticalTimeSeriesAnalysis/BookRepo/blob/master/Ch09/Clustering.ipynb
 [47]:https://github.com/apache/incubator-mxnet/tree/master/example
+[48]:https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.TimeSeriesSplit.html
+[49]:https://github.com/hanhanwu/readings/blob/master/Structural_Change_in_Economic_Time_Series.pdf
