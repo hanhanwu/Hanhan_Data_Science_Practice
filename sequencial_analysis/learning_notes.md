@@ -244,8 +244,10 @@
 * "Bi-directional RNN" uses both forward and backward traversal to improve the ability to capture memory over long ranges
 * "Deep RNN": it stacks multiple RNNs on top of each other
 * RNN is difficult to train and can suffer from vanishing and exploding gradients that give erratic results during the training
+  * Vanishing & Exploding gradients: It's often the case that gradients would quickly go to zero (not helpful) or to infinity (also not helpful), meaning that backpropagation was difficult or even impossible as the recurrent network was unrolled.
   * Vanishing gradients: The chain of gradient multiplication can be very long. When the multiplication diminishes to 0 and there is no gradient flow from a long-range timestep. Due to the negligibly low values of the gradients, the weights do not update and hence the neurons are said to be saturated
-  * Both LSTM, GRU are designed to allow RNN works better in memory transfer for long range sequence
+  * Both LSTM, GRU are designed to allow RNN works better in memory transfer for long range sequence, and ca avoid vanishing or exploding gradients, because they tend to keep inputs and outputs from the cell in tractable value ranges, the update gate can learn to pass information through or not, leading to reasonable gradient values.
+  
 #### LSTM (Long Short Term Memory)
 * LSTM introduces 3 new gates, to selectively include the previous memory and the current hidden state that's computed in the same manner as in vanilla RNNs
   * input gate controls the fraction of the newly computed input to keep
@@ -270,7 +272,16 @@
 * About "convolution"
   * The movement of the filter over the image is "convolution"
   * Multiple convolution layers stacked against each other, generated better features from the original images
-  
+### Deep Learning Platform
+* Tensorflow (Google), PyTorch (Facebook), MXNet (Amazon)
+* TensorFlow and MXnet tend toward a symbolic programming style, while Torch has a more imperative flavor.
+  * In a symbolic style of programming, you declare all the relationships up front without having them computed at the time of declaration.
+    * Symbolic programming tends to be more efficient because you leave room for the framework to optimize computations rather than perform them right away.
+  * In an imperative style of programming, the computation takes place when it is coded, line by line, without waiting to account for what will come later.
+    * Imperative programming tends to be easier to debug and understand.
+#### [MXNet][47]
+* Examples of using MXNet with different RNN models: https://github.com/PracticalTimeSeriesAnalysis/BookRepo/blob/master/Ch10/ForecastingElectricity.ipynb 
+
   
 ## Practical Suggestions 🍀
 ### Be Cautious about "Lookahead" ❣️
@@ -494,3 +505,4 @@
 [44]:https://github.com/robjhyndman/tsfeatures
 [45]:https://github.com/PracticalTimeSeriesAnalysis/BookRepo/blob/master/Ch09/Classification.ipynb
 [46]:https://github.com/PracticalTimeSeriesAnalysis/BookRepo/blob/master/Ch09/Clustering.ipynb
+[47]:https://github.com/apache/incubator-mxnet/tree/master/example
