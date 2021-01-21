@@ -5,6 +5,10 @@
 * [CompEngine time series data][25]
 * [R-CRAN list of time series packages][26]
 
+## Forecasting as a Service
+* We can learn from these services when building a forecasting system
+* [Amazon Forecast][52]
+  * Examples: https://github.com/aws-samples/amazon-forecast-samples/tree/master/notebooks
 
 ## Statistical Models for Time Series Analysis
 * Components of a time series
@@ -336,6 +340,10 @@
   * Interpolation
     * "Interpolation is a method of determining the values of missing data points based on geometric constraints regarding how we want the overall data to behave. For example, a linear interpolation constrains the missing data to a linear fit consistent with known neighboring points." Such as LOWESS smoothing method.
       * Linear interpolation accounts for the trend, it works better than moving average in some cases when imputing the missing data based on the trend makes more sense.
+#### Anomaly Detection in Time Series
+* [Twitter's AnomalyDetection][51]
+  * It's an R package, can be used in both time series data or a vector of numerical data without the timestamp
+  * "The underlying algorithm – referred to as Seasonal Hybrid ESD (S-H-ESD) builds upon the Generalized ESD test for detecting anomalies. Note that S-H-ESD can be used to detect both global as well as local anomalies."
 #### Downsampling & Upsampling
 * Upsampling and downsampling are trying to increasing or decreasing the timestamp frequency, respectively.
 * For upsampling, you are just adding more timestamps, not more info
@@ -561,3 +569,5 @@
 [48]:https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.TimeSeriesSplit.html
 [49]:https://github.com/hanhanwu/readings/blob/master/Structural_Change_in_Economic_Time_Series.pdf
 [50]:https://github.com/PracticalTimeSeriesAnalysis/BookRepo/blob/master/Ch14/ForecastingStocks.ipynb
+[51]:https://github.com/twitter/AnomalyDetection
+[52]:https://docs.aws.amazon.com/forecast/latest/dg/what-is-forecast.html
