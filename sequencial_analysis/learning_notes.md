@@ -290,6 +290,9 @@
 ## Practical Suggestions 🍀
 ### Be Cautious about "Lookahead" ❣️
 * A "lookahead" is the knowledge leaking about the future data. When you need to do model forecasting, lookahead has to be avoided.
+### Forecasting profit returns can be more practical on production
+* Such as in stock market, forecasting returns is better than forecasting the price
+  * And here's a basic example: https://github.com/PracticalTimeSeriesAnalysis/BookRepo/blob/master/Ch14/ForecastingStocks.ipynb
 
 ### Time Series Data Storage
 #### Relational DB
