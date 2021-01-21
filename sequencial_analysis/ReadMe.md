@@ -321,6 +321,7 @@ I'm planning to practice more on time series analysis, pattern matching sequenti
 
 ### Facebook Prophet
 * "Prophet is a procedure for forecasting time series data based on an additive model where non-linear trends are fit with yearly, weekly, and daily seasonality, plus holiday effects. <b>It works best with time series that have strong seasonal effects and several seasons of historical data.</b> Prophet is robust to missing data and shifts in the trend, and typically handles outliers well."
+* It's better at forecasting daily data, may not be good for other time scale ‼️ 
 #### Resources
 * Examples in R & Python: https://facebook.github.io/prophet/docs/quick_start.html#python-api
 * Github: https://github.com/facebook/prophet
