@@ -231,7 +231,7 @@
 * Neural networks are suitable in cases when there is little info about the underlying properties such as long-term trend and seasonality or these are too complex to be modeled with traditional models. NN helps extracting complex patterns.
 * [All the examples of using MLP, LSTM, GRU, 1D-CNN][17]
   * Notes Summary
-    * To use logloss as the metric for regression problem, need to scale the dependent variable into [0,1] range
+    * These deep learning models work better when you scale both dependent and independent variables into [-1,1] range ([0,1] range also works)
     * The number of epoches represents the number of times the weight updates. Increasing the number of epochs will reduce the loss but too many epoches will lead to overfitting.
       * Therefore, the number of epochs is controlled by keeping a tap on the loss function computed for the validation set.
     * The network's weights are optimized by the Adam (adaptive moment estimation) optimization.
@@ -240,6 +240,7 @@
     * `ModelCheckpoint` tracks the loss function on the validation set and saves the model for the epoch which the loss function has been minumum
 * [More advanced methods & examples][18]
 ### RNN (Recurrent Neural Network)
+* TNC data format: `(number of sample per timestep, number of timestep=total sample/number of sample per timestep, number of features)`
 * When using MLP (multi-layer perceptron), past time steps are fed into the model as uncorrelated independent vaariables, this has ignored the sequential nature of the time series data where observations have correlation with each other. RNN can help in dealing with this.
   * The correlation in a time series can also be interpreted as the memory that the series carries over itself.
 * "Bi-directional RNN" uses both forward and backward traversal to improve the ability to capture memory over long ranges
@@ -344,6 +345,7 @@
     * https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.ewm.html
     * https://pandas.pydata.org/pandas-docs/version/0.17.0/generated/pandas.ewma.html
     * Larger smoothing factor (alpha), it's faster to update the value closer to its current value
+    * Because the exponential smoothing method here is build on moving window, can be used to avoid lookahead while normaling the data [like this example][50] 
 * Holt's smoothing (second order exponential smoothing)
   * Takes trend into consideration
 * Holt-Winters smoothing (third order exponential smoothing)
@@ -383,7 +385,8 @@
 ### Validation, Testing, Evaluation of Time Series Forecasting
 #### NOTES 💝
 * Exponential smoothing will bring in lookahead in forecasting, because your data has fitted to an exponential smoothing formula before forefasting
-  * So does moving average, and any method that will fit both training and testing time series data into a formula. <b>Be cautious about lookahead before applying a preprocessing method</b>
+  * And any method that will fit both training and testing time series data into a formula. <b>Be cautious about lookahead before applying a preprocessing method</b>
+  * With `ewm()`, the exponential smoothing method built on moving window, we can avoid lookahead while normaling the data [like this example][50] 
   * For non time series data, we could preprocess training data first and use the same params to preprocessing testing data, but this method may ot work in time series preprocessing
 * When there is abnormal dynamics in the data, consider whether to remove them from the data, or build a seperate model for the special dataset or to keep them
 #### Cross Validation Formats
@@ -468,7 +471,7 @@
   * Using tensorflow2.3
   * [Same code with tensorflow 2.4][29]
     * Main change is in the library import
-  * The input data shape for RNN is `(number of timestamp, number of features per timestep)`
+  * The input data shape for RNN is `(number of timestamp, number of features)`
   * How to use `Sequential` to build the whole model sequence
   * How to reshape the input for RNN and define the input shape in `Sequential`
   * How to use `ModelCheckpoint` to save the best model and plot the hisory of each epoch training vs validation loss
@@ -554,3 +557,4 @@
 [47]:https://github.com/apache/incubator-mxnet/tree/master/example
 [48]:https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.TimeSeriesSplit.html
 [49]:https://github.com/hanhanwu/readings/blob/master/Structural_Change_in_Economic_Time_Series.pdf
+[50]:https://github.com/PracticalTimeSeriesAnalysis/BookRepo/blob/master/Ch14/ForecastingStocks.ipynb
