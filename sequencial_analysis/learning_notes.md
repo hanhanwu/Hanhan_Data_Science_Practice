@@ -27,7 +27,7 @@
   * e: residuals
     * Irreducible error component, random and doesn't systematic dependent on the time index. It's caused by the lack of info of explanatory variables that can model the variations, or caused by random noise
     
-* Forecasting Models assumptions
+* <b>Statistical Forecasting Models Assumptions</b>
   * Stationary
   * Normally distributed dependent and independent variables
     * Sometimes the skewness of the data is an important info, so make sure you understand that before deciding whether to transoform to normal distribution
@@ -37,7 +37,7 @@
     * Observations are assumed to be `iid` (independent and identically distributed), and represent the random noise around the same mean
     * `P(X1=x1, X2=x2, ..., Xn=xn) = f(X1=x1)*f(X2=x2)*...*f(Xn=xn)`
     * stationary series also have constant variance and mean, but it doesn't mean zero mean ts is stationary
-  * Random Walk models (white noise, nonstationary!): the cumulative sum of the zero mean model (a sum of n_i iids at ith iid), and it has 0 mean and constant variace
+  * Random Walk models: the cumulative sum of the zero mean model (a sum of n_i iids at ith iid), and it has 0 mean and constant variace
     * So if we take the difference between 2 consecutive time indices from this model, we will an iid with 0 mean and constant variance, which is also a zero mean model
   * Trend models: `x_t = μ_t + y_t`
     * `μ_t` is the time dependent trend of the series, it can be linear or non-linear
@@ -105,7 +105,7 @@
   * Rolling window has fixed size, expading window collects all the observations within the specified time range, so the window size of expanding window is not fixed
     
 * Methods to Convert to Stationary ts
-  * The reason we want to make the ts stationary before applying a model is because, bias & errors, accuracy and metrics will vary over time
+  * The reason we want to make the ts stationary before applying a model is because, bias & errors, accuracy and metrics will vary over time for non-stationary ts
   * Each stationary testing method has its focus and limitation, not all of them test both mean and variance change along the time, so better to know the limitation to decide which to use
   * I often use both Augumented Dickey-Fuller (ADF) and KPSS to check stationary, [see this example][3]
     * ADF checks differencing stationary, which based on the idea of differencing to transform the original ts
@@ -116,23 +116,24 @@
     * And I prefer to check Test Statistic and critical values instead of checking p-value only, since in this way we can get the confidence level of stationary
     * We can also plot the mean, variance, if they are changing a lot, then the ts is not stationary, check [my rolling mean & variance example][15]
   * <b>Differencing is often used to remove trend, log or square root are popular to deal with the changing variance</b>
-    * When using log or square root, all the data has to be positive. These methods also makelarger values less different and will deemphasize the outliers, need to think whether the transformation is appropriate 
+    * When using log or square root, all the data has to be positive. These methods also make larger values less different and will deemphasize the outliers, need to think whether the transformation is appropriate 
   * Differencing methods to convert to stationary
     * Differencing can not only helps reduce trend and even seasonality, but also could transform the data to a more normally shaped distribution
-      * sometimes a ts needs to be differenced more than once, but differencing much more times may indicate that differencing is not a prefered method
+      * Sometimes a ts needs to be differenced more than once, but differencing much more times may indicate that differencing is not a prefered method
     * First-order differencing: take differences between successive realizations of the time series
       * `x_t - x_t-1`
+      * Example of using first-order differencing using `diff()`: https://github.com/PacktPublishing/Practical-Time-Series-Analysis/blob/master/Chapter02/Chapter_2_First_Order_Differencing.ipynb
     * Second-order differencing
       * `(x_t - x_t-1) - (x_t-1 - x_t-2)`
     * Seasonal differencing
       * `x_t - x_t-m`
       * If in the de-trended ts' ACF plot, we are seeing repeated significant autocorrelation (beyond the confidence interval), then use seasonal differencing
-      * [An example of seasonal differencing][4], just use `diff()`
+      * [An example of seasonal differencing][4], also use `diff()` with seasonal settings
     * Weighted moving averages
       * The nxm weighted moving averages method above can help transform ts into stationary
   * Decomposition methods to convert to stationary
     * [Example of decomposing a ts][7]
-      * Different from the above decomposition which can be used on the original ts, [Prophet's decomposition comes with the frecasting model][8]
+      * Different from the above decomposition which can be used on the original ts, [Prophet's decomposition comes with the forecasting model][8]
     * Additive model
       * x_t = F_t + S_t + E_t
       * This model is usually applied when thre is a time-dependent trend cycle component but independent seasonality that does not change over time (constant seasonality)
@@ -142,16 +143,15 @@
     * [Example of applying both additive and multiplicative methods for decomposition, and python built-in `seasonal_decompose`][6]
     
 ### Auto-Regressive Models
-* Besides stationary, exponential smoothing also assumes that random noise is truly random and follows independent identical distribution, but iid assumption often got violated and smoothing is not sufficient to solve the problem. Auto-regressive methods, which will consider the serial correlation between observations can help deal with this.
+* Besides stationary, exponential smoothing also assumes that random noise is truly random and follows independent identical distribution, but iid assumption often got violated and smoothing is not sufficient to solve the problem. Auto-regressive methods, which will consider the serial correlation between observations instead
 * AR, MA, ARMA, ARIMA, Seasonal ARIMA all assume stationary
   * Python built-in functions for ARMA, AR, MA will check stationary, if non-stationary will return error; ARIMA and Seasonal ARIMA will use differencing to deal with non-stationary issue
 #### AR models
 * The way it regress on time series is to regress it with its lag term. So it's good at capturing the trend since it's predicted based on the prior time values
 * `p` is the order of AR
-  * Check PACF for this, exclude lag 0, the number of significant lags is p
+  * Check PACF for this, exclude lag 0, choose p at those significant lags (if there are multiple significant lags, might need to try multiple, starting with the most significant lag)
 * [Example to create AR model, and forecast on it][13]
   * The residual follows normal ditribution with 0 mean
-* <b>Positive atocorrelation is corrected using AR models and negative autocorrelation is corrected using MA models</b>
 #### MA models
 * It uses the autocorrealtion between residuals to forecast values. This helps adjust for unpredictable events (such as market crash leading to share prices falling that will happen over time)
 * `q` is the order for MA
@@ -186,11 +186,11 @@
 * Check stationary and residual normality
 * Plot ACF, PACF
   * If you will use AR, MA, ARMA need to convert to stationary then plot to decide orders
-  * If you use ARIMA, SARIMA, need to plot after differencing the original ts (and it's stationary after differencing) to decide other orders
+  * If you use ARIMA, SARIMA, need to plot after differencing the original ts with d-order (and it's stationary after differencing) to decide other orders, p, q, m
 * If ACF, PACF cannot help decide orders, try grid search and choose the option with minimized AIC
   * The orders should not be too large, otherwise may lead to overcomplexed model and overfitting. We should be skeptical if d >= 2, p, q >=5
   * [There is a method in R for automated model selection][37] `auto.arima`
-    * It combines unit root tests, minimisation of the AICc and MLE to obtain an ARIMA model.
+    * It combines unit root tests, minimizing AIC and MLE to obtain an ARIMA model
     * Check all the params here: https://www.rdocumentation.org/packages/forecast/versions/8.13/topics/auto.arima
       * Also supports seasonal model
 * Check fitted model's residual normality to further valid the model, [check the bottom of the example here][16]
@@ -198,7 +198,7 @@
 #### VAR (Vector Autoregression) for multi-variate time series
 * All the methods mentioned above are used for univariate ts analysis. Vector Autoregression (VAR) is a multivariate forecasting algorithm that is used when two or more time series influence each other.
   * You need at least two time series (variables)
-  * The time series should influence each other.
+  * All the time series should influence each other.
     * You can use Portmanteau test to check whether there is multivariate series correlation, and it's interesting that for this type of test, H0 is "there is no serial correlation"
     * I'm also wondering whether VIF will work too?
 * [Check details and eaxmple here][38]
@@ -207,7 +207,7 @@
 * Instead of making assumptions of the underlying process as statistical models above, these models instead focus on identifying patterns that describe the process’s behavior in ways relevant to predicting the outcome of interest.
 * Still need to check the assumptions of the model to see whether need to preprocess the features
 ### Emsembling models are good choices
-* Although not "time-aware" methodology
+* Even though they are not "time-aware" methods
 ### Clustering Time Series
 * We can cluster multiple time series into different clusters, then make forecast for each cluster, assuming each cluster follows a certain behavior that will help the forecasting.
 #### To Calculate Cluster Similarity
@@ -218,7 +218,7 @@
   * Dynamic Time Warping (DTW)
     * It compares the shape of 2 ts, whether the time ranges of the 2 ts are the same DOESN'T matter
       * 2 ts can be warped by being condensed to the same place on the x-axis
-    * When comparing the shape, Every point in one time series must be matched with at least one point of the other time series. The first and last indices of each time series must be matched with their counterparts in the other time series. The mapping of points must be such that time moves forward and not backward.
+    * When comparing the shape, Every point in one time series must be matched with at least one point of the other time series. The first and last indices of each time series must be matched with their counterparts in the other time series. The mapping of points must be forward moving, cannot have backward moving.
     * The cost fuction is often measured as the sum of absolute differences between matched points.
     * [Here's an example][46], but I doubt the use of `linkage = ward`, since it will use euclidean distance which is discouraged in ts similarity calculation
   * Fréchet distance
@@ -238,21 +238,21 @@
     * These deep learning models work better when you scale both dependent and independent variables into [-1,1] range ([0,1] range also works)
     * The number of epoches represents the number of times the weight updates. Increasing the number of epochs will reduce the loss but too many epoches will lead to overfitting.
       * Therefore, the number of epochs is controlled by keeping a tap on the loss function computed for the validation set.
-    * The network's weights are optimized by the Adam (adaptive moment estimation) optimization.
+    * A good choice to optimize weights is Adam (adaptive moment estimation) optimization.
       * Unlike stochastic gradient descent, Adam uses different learning rates for each weight and seperately updates them as the training progresses
       * The learning rate of a weight is updated based on exponentially weighted moving averages of the weight's gradients and the squared gradients
-    * `ModelCheckpoint` tracks the loss function on the validation set and saves the model for the epoch which the loss function has been minumum
+    * `ModelCheckpoint` tracks the loss function on the validation set and saves the model for the epoch which the loss function has been minimized
 * [More advanced methods & examples][18]
 ### RNN (Recurrent Neural Network)
-* TNC data format: `(number of sample per timestep, number of timestep=total sample/number of sample per timestep, number of features)`
+* TNC data format: `(number of sample per timestep, number of timestep=total samples/number of sample per timestep, number of features)`
 * When using MLP (multi-layer perceptron), past time steps are fed into the model as uncorrelated independent vaariables, this has ignored the sequential nature of the time series data where observations have correlation with each other. RNN can help in dealing with this.
   * The correlation in a time series can also be interpreted as the memory that the series carries over itself.
 * "Bi-directional RNN" uses both forward and backward traversal to improve the ability to capture memory over long ranges
 * "Deep RNN": it stacks multiple RNNs on top of each other
 * RNN is difficult to train and can suffer from vanishing and exploding gradients that give erratic results during the training
-  * Vanishing & Exploding gradients: It's often the case that gradients would quickly go to zero (not helpful) or to infinity (also not helpful), meaning that backpropagation was difficult or even impossible as the recurrent network was unrolled.
-  * Vanishing gradients: The chain of gradient multiplication can be very long. When the multiplication diminishes to 0 and there is no gradient flow from a long-range timestep. Due to the negligibly low values of the gradients, the weights do not update and hence the neurons are said to be saturated
-  * Both LSTM, GRU are designed to allow RNN works better in memory transfer for long range sequence, and ca avoid vanishing or exploding gradients, because they tend to keep inputs and outputs from the cell in tractable value ranges, the update gate can learn to pass information through or not, leading to reasonable gradient values.
+  * Vanishing & Exploding gradients: It's often the case that gradients would quickly go to zero (not helpful) or to infinity (also not helpful), meaning that backpropagation was difficult or even impossible as the recurrent network was unrolled
+    * Vanishing gradients: The chain of gradient multiplication can be very long. When the multiplication diminishes to 0 and there is no gradient flow from a long-range timestep. Due to the negligibly low values of the gradients, the weights do not update and hence the neurons are said to be saturated
+  * Both LSTM, GRU are designed to allow RNN works better in memory transfer for long range sequence, and to avoid vanishing or exploding gradients, because they tend to keep inputs and outputs from the cell in tractable value ranges, the update gate can learn to pass information through or not, leading to reasonable gradient values.
   
 #### LSTM (Long Short Term Memory)
 * LSTM introduces 3 new gates, to selectively include the previous memory and the current hidden state that's computed in the same manner as in vanilla RNNs
@@ -280,7 +280,7 @@
   * Multiple convolution layers stacked against each other, generated better features from the original images
 ### Deep Learning Platform
 * Tensorflow (Google), PyTorch (Facebook), MXNet (Amazon)
-* TensorFlow and MXnet tend toward a symbolic programming style, while Torch has a more imperative flavor.
+* TensorFlow and MXnet are symbolic programming style, while Torch has a more imperative flavor.
   * In a symbolic style of programming, you declare all the relationships up front without having them computed at the time of declaration.
     * Symbolic programming tends to be more efficient because you leave room for the framework to optimize computations rather than perform them right away.
   * In an imperative style of programming, the computation takes place when it is coded, line by line, without waiting to account for what will come later.
@@ -306,7 +306,7 @@
   * It is also not guaranteed to be entirely up-to-date or accurate, due to its pull-based architecture. Not appropriate for applications where data has to be 100% accurate. 
   * It has a steeper learning curve due to its custom scripting language and the less database-like architecture and API.
 #### NoSQL
-* Mongo is particularly aware of its value as a time series database.
+* Mongo DB is particularly aware of its value as a time series database.
 #### Flat File Solution
 * Save data in flaat files without any DB at all. The advantages include:
   * System agnostic
@@ -340,6 +340,7 @@
   * Interpolation
     * "Interpolation is a method of determining the values of missing data points based on geometric constraints regarding how we want the overall data to behave. For example, a linear interpolation constrains the missing data to a linear fit consistent with known neighboring points." Such as LOWESS smoothing method.
       * Linear interpolation accounts for the trend, it works better than moving average in some cases when imputing the missing data based on the trend makes more sense.
+    * But these methods may bring in lookahead, look out in forecasting problems
 #### Anomaly Detection in Time Series
 * [Twitter's AnomalyDetection][51]
   * It's an R package, can be used in both time series data or a vector of numerical data without the timestamp
@@ -368,7 +369,7 @@
 #### Feature Generaion with Domain Knowledge
 * Especially in stock market (such as those index), healthcare area, etc.
 #### Automated Feature Generation 
-* ⛔️ Don't over use auto generation libraries
+* ⛔️ Don't overuse auto generation libraries
 * Most of these methods need groupby or a series of data, instead of calculating on rolling windows for you
   * The issue of not calculate features with rolling window is, lookahead might appear in the forecasting problem
   * In some cases, calculating features with the whole time series is fine, such as clustering multiple time series using features
@@ -398,7 +399,7 @@
 * Exponential smoothing will bring in lookahead in forecasting, because your data has fitted to an exponential smoothing formula before forefasting
   * And any method that will fit both training and testing time series data into a formula. <b>Be cautious about lookahead before applying a preprocessing method</b>
   * With `ewm()`, the exponential smoothing method built on moving window, we can avoid lookahead while normaling the data [like this example][50] 
-  * For non time series data, we could preprocess training data first and use the same params to preprocessing testing data, but this method may ot work in time series preprocessing
+  * For non time series data, we could preprocess training data first and use the same params to preprocessing testing data, but this method may not work in time series preprocessing
 * When there is abnormal dynamics in the data, consider whether to remove them from the data, or build a seperate model for the special dataset or to keep them
 #### Cross Validation Formats
 * Format 1 - Growing window
@@ -425,10 +426,11 @@
   * Sometimes the ability of forecasting outliers will lead to overfitting and need to ignore the outliers; sometimes your task is to detect the outliers and the model needs to detect them
 * Conduct temporal sensitivity analysis
   * Whether the model treats similar termoral patterns in similar ways? comparing in both training and testing sets
+* Open to more
 #### Validation Gotchas
 * "lookahead"
 * Structural Change
-  * The change may lead to the model change
+  * The change may lead to the model change, and we can monitor the changes in a forecasting system
   * [Detect Structural Changes in Time Series-2017 paper][49]
     * How to test structural change with hypothesis
       * R `strucchange` package supports both cumulative SUMS (CUSUMS) and moving SUMS (MOSUMS): https://cran.r-project.org/web/packages/strucchange/strucchange.pdf
@@ -440,9 +442,9 @@
 ### Spurious Correlation
 * When 2 series are showing high correlation it may not be real correlation. First of all need to think whether the correlation makes sense
 * There is no fixed way to determine whether the 2 series are truly correlated, here're the methods to check
-  * Method 1 - check the correlation between differenced series of the 2, if no longer showing correlation, then likely that the original 2 series are not truly correlated to each other
+  * Method 1 - check the correlation between differenced series of the 2 ts, if no longer showing correlation, then likely that the original 2 series are not truly correlated to each other
   * Method 2 - check the correlation between diff(series1) and lag(diff(series2)), if no longer showing correlation, then likely that the original 2 series are not truly correlated to each other
-* Oftentimes it’s the relationship between data at different points or the change over time that is most informative about how your data behaves.
+* Often times it’s the relationship between data at different points or the change over time that is most informative about how your data behaves.
 
 ### Data Simulation
 * SimPy, a process-based discrete-event simulation framework: https://simpy.readthedocs.io/en/latest/
@@ -463,7 +465,7 @@
   * Predict the current value merely based on the last value. This method is more useful when the internal dynamics of the system are very well understood, such as the moving trace of a rocket (you know how to calculate with Newton's Law)
 * Hidden Markov Models (HMM)
   * It is a rare instance of unsupervised learning in time series analysis, meaning there is no labeled correct answer against which to train. "Markov process" means it is “memoryless” that the probabilities of future events can be fully calculated given only the system’s current state, no need to know earlier states. 
-  * A Hidden Markov Model represents the same kind of system, except that we are not able to directly infer the state of the system from our observations. for example, in a time series, it has states of A, B, C, D, 4 subseries, but you are only seeing 1 series.
+  * A Hidden Markov Model represents the same kind of system, except that we are not able to directly infer the state of the system from our observations. For example, in a time series, it has states of A, B, C, D, 4 subseries, but you are only seeing 1 series.
   * Baum-Welch algorithm is used to identify the distinct emission probabilities for each possible hidden state and identify the transition probabilities from each possible hidden state to each other possible hidden state.
     * To find the optimal sequence of hidden states, because the complexity grows exponentially with the number of time steps. So need to use EM (expectation–maximization) algorithm. But EM cannot guarantee to find the global optimal, so better to try multiple different initialization.
   * Viterbi algorithm is used to identify the most likely hidden state for each time step given the full history of observations.
@@ -496,6 +498,9 @@
   * Besides stacking all with LSTM, also tried to stack with LSTM & GRU, in this case, mised models didn't improve the performance
   * Although don't think bidirectional work for many industry forecasting problems, still gave it a try. In this case, it got the same performance as stacking method with linear activation
 * [ts forecast with 1D CNN & LSTM][36]
+  * 1D CNN only is faster when there is same amount of epoches and batch_size
+    * In this case, both experiments got same performance whe epoch and batch_size were the same
+  * Looks like performed better than above stacked RNNs, but stacked method was using learning_rate=0.1 while here was using learning_rate=0.001 by default.
     
 
 ## Recommended Readings
@@ -503,6 +508,7 @@
   * Its code: https://github.com/PacktPublishing/Practical-Time-Series-Analysis
 * [Practical Time Series with more details][27]
   * Its code: https://github.com/PracticalTimeSeriesAnalysis/BookRepo
+  * This books covers a lot but very basic, lots onf concepts are not clear to understand, the GitHub code really sucks
 * [Time series Q&A][19]
   * Methods and code to deal with missing data
     * Backward Fill
@@ -511,13 +517,14 @@
     * Mean of nearest neighbors
     * Mean of seasonal couterparts
     * Make sure to impute without lookahead in forecasting problems, although this will drop the imputatio quality, it's still better than making your forecasting model too good to be true
-  * How to use Granger Causality test to know if one Time Series is helpful in forecasting another
+  * 💡 How to use Granger Causality test to know if one Time Series is helpful in forecasting another 
 * [More methods to test stationary other than ADF, KPSS][28]
 * [Time series intro][20]
-  * Cross correlation: checks whether 2 ts are corrlated with each other. I like the idea of using it in stock, cuz if one tend to drop, the highly correlated one might also drop
+  * Cross correlation: checks whether 2 ts are corrlated with each other. I like the idea of using it in stock, cuz if one tend to drop, the highly correlated one might also drop. But we need to pay attention to spurious correlation.
     * [Python calculate cross correlation with lag][21], check the highest vote below
+    * Maybe we can also check the correlation between differenced ts in order to avoid spurious correlation
 * [Sales Uncertainty Prediction][22]
-  * Weighted Scaled Pinball loss (SPL) is a metrics used to measure quantile forecasts. This article inclide the implementation
+  * Weighted Scaled Pinball loss (SPL) is a metrics used to measure quantile forecasts. This article includes the implementation
   
 [1]:https://github.com/PacktPublishing/Practical-Time-Series-Analysis
 [2]:https://github.com/PacktPublishing/Practical-Time-Series-Analysis/blob/master/Chapter01/Chapter_1_Autocorrelation.ipynb
