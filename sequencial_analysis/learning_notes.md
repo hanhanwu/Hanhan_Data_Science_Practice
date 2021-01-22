@@ -36,7 +36,7 @@
   * Zero Mean models: The model has constant mean and constant variance
     * Observations are assumed to be `iid` (independent and identically distributed), and represent the random noise around the same mean
     * `P(X1=x1, X2=x2, ..., Xn=xn) = f(X1=x1)*f(X2=x2)*...*f(Xn=xn)`
-    * stationary series also have constant variance and mean
+    * stationary series also have constant variance and mean, but it doesn't mean zero mean ts is stationary
   * Random Walk models (white noise, nonstationary!): the cumulative sum of the zero mean model (a sum of n_i iids at ith iid), and it has 0 mean and constant variace
     * So if we take the difference between 2 consecutive time indices from this model, we will an iid with 0 mean and constant variance, which is also a zero mean model
   * Trend models: `x_t = μ_t + y_t`
@@ -48,16 +48,16 @@
 * ACF and PACF (Autocorrelation and Partial Autocorrealtion)
   * Stationary ts is characterized by, constant internal structures (mean, variance, autocorrelation) that do not change over time (time independent)
   * Autocorrelation reflects the degree of linear dependency between ith time series and i+h or i-h time series (h is the lag)
-    * Because it's time independent, it ca be reliably used to forecast future time series
+    * Because it's time independent, it can be reliably used to forecast future time series
     * Positive autocorrelation means the 2 time series moves towards the same direction; negative means opposite directions; 0 means the temporal dependencies is hard to find
     * Autocorrelation is a value between [-1, 1]
   * ACF plot
-    * Each vertical bar indicates the autocorrelation between ith ts and i+gth ts, given a confidence level (such as 95%), out of confidence interval (the threshold lines), the autocorrelation is significant
+    * Each vertical bar indicates the autocorrelation between ith ts and i+gth ts, given a confidence level (such as 95%), out of the confidence interval (the threshold lines), the autocorrelation is significant
   * PACF
     * In ACF, the autocorrelation between ith ts and i+gth ts can be affected by i+1th, t+2th, ..., i+g-1th ts too, so PACF removes the influences from these intermediate variables and only checks the autocorrelation between ith ts and i+gth ts
     * Lag0 always has autocorrelation as 1
-    * In the example [here][2], besides lag0, only at lag1 there is significant autocorrelation, so the order for AR model is 1
-    * sometimes, PACF has a critical value for a large lag, which is caused by seasonal cycle. We can set `m` in SARIMA with this lag value to catch the seasonality
+    * In the example PACF [here][2], besides lag0, only at lag1 there is significant autocorrelation, so the order for AR model is 1
+    * Sometimes, PACF has a critical value for a large lag, which is caused by seasonal cycle. We can set `m` in SARIMA with this lag value to catch the seasonality
   * ACF and PACF have the same critical region
     * `[-1.96*sqrt(n), 1.96*sqrt(n)]`
   * The ACF of stationary data should drop to zero quickly. For nonstationary data the value at lag 1 is positive and large.
@@ -73,7 +73,7 @@
     * rolling by m, then rolling by n again
     * m often choose the periodicity of the seasonal data for seasonal smoothing
     * Check the formula in page 131 of [the book][1], this method will give the time series that are closer to the time index t higher weights, such as t-1, t+1 get higher weights than t-3, t+3. This is different from "recency".
-    * This method is a way to make ts stationary
+    * This method is a way to make ts stationary through de-trending
     
 * Exponential Smoothing Methods
   * The limitation of moving average and weighted moving average is the ignorance of observation recency effect, and exponential smoothing methods can help deal with this issue by having exponential decaying weights on observations (older data gets lower weights)
