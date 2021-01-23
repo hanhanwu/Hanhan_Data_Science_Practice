@@ -250,15 +250,25 @@
 * "Bi-directional RNN" uses both forward and backward traversal to improve the ability to capture memory over long ranges
 * "Deep RNN": it stacks multiple RNNs on top of each other
 * RNN is difficult to train and can suffer from vanishing and exploding gradients that give erratic results during the training
-  * Vanishing & Exploding gradients: It's often the case that gradients would quickly go to zero (not helpful) or to infinity (also not helpful), meaning that backpropagation was difficult or even impossible as the recurrent network was unrolled
+  * Vanishing & Exploding gradients: It's often the case that gradients would quickly go to zero (not helpful) or to infinity (also not helpful) as it back propagates through time, meaning that backpropagation became difficult or even impossible as the recurrent network was not learning
+    * `new weight = weight - learning_rate * gradient`
     * Vanishing gradients: The chain of gradient multiplication can be very long. When the multiplication diminishes to 0 and there is no gradient flow from a long-range timestep. Due to the negligibly low values of the gradients, the weights do not update and hence the neurons are said to be saturated
-  * Both LSTM, GRU are designed to allow RNN works better in memory transfer for long range sequence, and to avoid vanishing or exploding gradients, because they tend to keep inputs and outputs from the cell in tractable value ranges, the update gate can learn to pass information through or not, leading to reasonable gradient values.
+  * Both LSTM, GRU are designed to allow RNN works better in memory transfer for long range sequence, and to avoid vanishing gradients and reduce exploding gradients, because they tend to keep inputs and outputs from the cell in tractable value ranges, the update gate can learn to pass information through or not, leading to reasonable gradient values.
   
 #### LSTM (Long Short Term Memory)
 * LSTM introduces 3 new gates, to selectively include the previous memory and the current hidden state that's computed in the same manner as in vanilla RNNs
   * input gate controls the fraction of the newly computed input to keep
-  * forget gate determins the effect of the previous timestep
+    * Event (current input) and STM are combined together so that necessary information that we have recently learned from STM (short-term memory) can be applied to the current input.
+  * forget gate forgets information that is not useful
+  * cell state: LTM (long-term memory) information that we haven’t forget and STM and Event are combined together in here to update the LTM
   * output gate controls how much of the internal state to let out
+    * It uses LTM, STM, and Event to predict the output of the current event which works as an updated STM
+  * This video describes the architecture well: https://towardsdatascience.com/illustrated-guide-to-lstms-and-gru-s-a-step-by-step-explanation-44e9eb85bf21
+  * The formulas [here][53] are easy to understand
+    * "learn gate" --> input gate
+    * "forget gate" --> forget gate
+    * "remember gate"  --> cell state
+    * "use gate" --> output gate
 #### GRU (Gated Recurrent Units)
 * It has 2 gates
   * update gate determines how much of the previous step's memory is to be retained in the current timestep
@@ -578,3 +588,4 @@
 [50]:https://github.com/PracticalTimeSeriesAnalysis/BookRepo/blob/master/Ch14/ForecastingStocks.ipynb
 [51]:https://github.com/twitter/AnomalyDetection
 [52]:https://docs.aws.amazon.com/forecast/latest/dg/what-is-forecast.html
+[53]:https://www.analyticsvidhya.com/blog/2021/01/understanding-architecture-of-lstm/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
