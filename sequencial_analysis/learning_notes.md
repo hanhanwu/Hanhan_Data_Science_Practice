@@ -264,6 +264,7 @@
   * output gate controls how much of the internal state to let out
     * It uses LTM, STM, and Event to predict the output of the current event which works as an updated STM
   * This video describes the architecture well: https://towardsdatascience.com/illustrated-guide-to-lstms-and-gru-s-a-step-by-step-explanation-44e9eb85bf21
+    * It also has a pseudo code
   * The formulas [here][53] are easy to understand
     * "learn gate" --> input gate
     * "forget gate" --> forget gate
