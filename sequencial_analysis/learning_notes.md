@@ -418,7 +418,7 @@
   * training: [A,B,C,D,E,F], testing:[G,H]
   * training: [A,B,C,D,E,F,G,H], testing:[I,J]
   * [Iplemented in sklearn TimeseriesSplit()][48]
-* Format 2 - Moving window
+* Format 2 - Moving window (backtest)
   * training: [A,B,C,D], testing:[E,F]
   * training: [B,C,D,E], testing:[F,G]
   * training: [C,D,E,F], testing:[G,H]
@@ -426,6 +426,10 @@
 * Format 3 - Expanding widow
   * Similar tomoving window, but instead of having fixed window size, it specifies the starting & ending points of a window, any observation between the time range will be included, so the window size varies
   * This method might be better at reducing overfitting than movig window solution
+* Format 4 - Forwardtest (Walk Forward)
+  * training: [A,B,C,D], testing:[E,F]
+  * training: [G,H,I,J], testing:[K,L]
+  * training: [M,N,O,P], testing:[Q,R]
 #### What to Check for Further Model Improvement
 * Performance metrics
 * Plot the output of your predictions, to see whether the output makes sense
