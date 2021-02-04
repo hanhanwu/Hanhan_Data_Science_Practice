@@ -4,8 +4,10 @@ More details about Bayesian Analysis
 
 
 ## Reference 🌟🌟
-* [Brief but great explaination of Bayesian Inference][9]
 * [Doing Bayesian Data Analysis][2] - It's a book
+
+## Bayesian Inference
+
 
 ## Bayesian Theorem vs Conditional Probability
 * Conditional Probability
@@ -19,6 +21,9 @@ More details about Bayesian Analysis
     * So P(A|B) * P(B) = P(B|A) * P(A) ==> P(A|B) = P(B|A)*P(A)/P(B)
   * Posterior probability = likihood ratio * priori probability
     * P(A) is "priori probability"
+      * Conjugate Priors: It occurs when the final posterior distribution belongs to the family of similar probability density functions as the prior belief but with new parameter values which have been updated to reflect new evidence/ information. Examples Beta-Binomial, Gamma -Poisson or Normal-Normal.
+      * Non-conjugate Priors: When personal belief cannot be expressed in terms of a suitable conjugate prior and for those cases simulation tools are applied to approximate the posterior distribution. An example can be Gibbs sampler.
+      * Uninformative prior: Another approach is to minimize the amount of information that goes into the prior function to reduce the bias. This is an attempt to have the data have maximum influence on the posterior. But the result will be similar to frequentist approach.
     * P(B|A) is "posterior probability"
     * P(B|A)/P(B) is "likelihood ratio"
   * Bayes Theorem for continuous values
@@ -85,4 +90,3 @@ More details about Bayesian Analysis
 [6]:https://exploratory.io/?utm_campaign=ab_test&utm_medium=blog&utm_source=medium
 [7]:https://brilliant.org/wiki/bayes-theorem/
 [8]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/Learning_Notes/bayesian_analysis/binomial_proportion.md
-[9]:https://www.analyticsvidhya.com/blog/2021/01/a-beginners-guide-bayesian-inference/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
