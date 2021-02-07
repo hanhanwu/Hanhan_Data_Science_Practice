@@ -273,7 +273,7 @@ An activation function is a function that is added into an artificial neural net
     * [Facebook InferSent][33]
     * [Google Universal Sentence Encoder][34]
     
-## Autoencode
+## Autoencoder
 * [A big of tricks when tunning GAN][39]
 
 ## Well Known Datasets
