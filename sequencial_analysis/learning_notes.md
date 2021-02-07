@@ -300,8 +300,6 @@
 * Examples of using MXNet with different RNN models: https://github.com/PracticalTimeSeriesAnalysis/BookRepo/blob/master/Ch10/ForecastingElectricity.ipynb 
 
   
-  
-  
 ## Practical Suggestions 🍀
 ### Be Cautious about "Lookahead" ❣️
 * A "lookahead" is the knowledge leaking about the future data. When you need to do model forecasting, lookahead has to be avoided.
