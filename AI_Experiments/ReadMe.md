@@ -17,6 +17,8 @@ Neural Network is a universal approximator, which means you can use it to implme
 * [Style Transformer][36]
   * The main idea is to minimize this loss 
     * `loss = distance(style(reference_image) - style(generated_image)) + distance(content(original_image) - content(generated_image))`
+* [GPT-3][37]
+  * It's a poswerful GPT series model that's trained with almost all the data on the Intenet, and therefore it can do many things such as writing essays, poems, writing code, writing songs, etc.. Also super expensive to train.
 
 
 ## RESOURCES
@@ -796,3 +798,4 @@ Neural Network is a universal approximator, which means you can use it to implme
 [34]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/images/dream1.png
 [35]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/images/dream2.png
 [36]:https://nbviewer.jupyter.org/github/fchollet/deep-learning-with-python-notebooks/blob/master/8.3-neural-style-transfer.ipynb
+[37]:https://www.analyticsvidhya.com/blog/2021/01/gpt-3-the-next-big-thing-foundation-of-future/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
