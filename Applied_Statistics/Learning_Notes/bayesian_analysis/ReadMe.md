@@ -55,6 +55,7 @@ More details about Bayesian Analysis
   * Model comparison
     * Bayesian method automatically considers the model complexity when assessing to which degree we should believe in the model
     * A complex model has many more available values for θ, so it has higher chance to fit an arbitrary dataset.
+* [See my past experience notes here][9]
     
 ## Bayesian Reasoning in Daily Life
 * <b>We have a space of beliefs that are mutually exclusive and exhaust all possibilities.</b> What Bayes’ rule tells us is exactly how much to shift our beliefs across the available possibilities.
@@ -90,3 +91,4 @@ More details about Bayesian Analysis
 [6]:https://exploratory.io/?utm_campaign=ab_test&utm_medium=blog&utm_source=medium
 [7]:https://brilliant.org/wiki/bayes-theorem/
 [8]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/Learning_Notes/bayesian_analysis/binomial_proportion.md
+[9];https://github.com/hanhanwu/Hanhan_Data_Science_Resources/blob/master/Experiences.md#naive-bayesian
