@@ -6,8 +6,6 @@ More details about Bayesian Analysis
 ## Reference 🌟🌟
 * [Doing Bayesian Data Analysis][2] - It's a book
 
-## Bayesian Inference
-
 
 ## Bayesian Theorem vs Conditional Probability
 * Conditional Probability
@@ -34,6 +32,7 @@ More details about Bayesian Analysis
   
 * Both can be used to calculate probability, and it seems that Bayesian Theoram can be used for wider scenarios.
   * Check some examples [here][7]
+  * [Another example for bayesian inference][10], the example makes sense although some formula might have problems
 
 ## Bayesian Rules Applied in Model and Data
 * With Baye's Rule, given the same data, we can check the strength of belief in each model:
@@ -92,3 +91,4 @@ More details about Bayesian Analysis
 [7]:https://brilliant.org/wiki/bayes-theorem/
 [8]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/Learning_Notes/bayesian_analysis/binomial_proportion.md
 [9];https://github.com/hanhanwu/Hanhan_Data_Science_Resources/blob/master/Experiences.md#naive-bayesian
+[10]:https://www.analyticsvidhya.com/blog/2021/01/a-beginners-guide-bayesian-inference/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
