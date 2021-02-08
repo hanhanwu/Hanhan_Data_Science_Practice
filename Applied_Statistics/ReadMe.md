@@ -81,6 +81,13 @@
   * Judgement Sampling - experts decide whom to participate
   * Snowball Sampling - randomly select the initial group, then each individual in the group to norminate more participates
 
+### Distributions
+* [Check my past notes about some popular distributions][17]
+* [Discrete Probability Distributions][18]
+  * It has well summarized the examples and formulas of discrete probability distributions we will meet in life (interviews :P)
+  * Bernoulli Distribution, Binomial Distribution, Multinomial Distribution, Hypergeometric Distribution, Negative Binomial Distribution, Geometric Distribution, Geometric Distribution
+  * `nCx = n!/(x! * (n-x)!)`
+
 
 ## Resources
 
@@ -348,3 +355,5 @@ but it's easier to use pyton built-in functions
 [14]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/Learning_Notes/ANOVA.md
 [15]:https://towardsdatascience.com/kolmogorov-smirnov-test-84c92fb4158d#:~:text=Here%20is%20an%20example%20that,T%2DTest%20and%20KS%20Test.&text=Because%20the%20sample%20mean%20and,binomial%20distribution%20which%20KS%20detect.
 [16]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/papers/Comprehensible%20Counterfactual%20Interpretation%20on%20Kolmogorov-Smirnov%20Test.pdf
+[17]:https://github.com/hanhanwu/Hanhan_Data_Science_Resources2#6-distributions
+[18]:https://www.analyticsvidhya.com/blog/2021/01/discrete-probability-distributions/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
