@@ -13,11 +13,11 @@ More details about Bayesian Analysis
   * A conditional probability is an expression of how probable one event is, given that some other event occurred.
 * Bayesian Theorem
   * `P(A|B) = P(B|A)*P(A)/P(B)`
-  * It came from the axiom of conditional probability, and it centerns on relating different conditional probabilities.
+  * It came from the axiom of conditional probability, and it centers on relating different conditional probabilities.
     * P(A|B) = P(A and B) / P(B)
     * P(B|A) = P(A and B) / P(A)
     * So P(A|B) * P(B) = P(B|A) * P(A) ==> P(A|B) = P(B|A)*P(A)/P(B)
-  * Posterior probability = likihood ratio * priori probability
+  * Posterior probability = likelihood ratio * priori probability
     * P(A) is "priori probability"
       * Conjugate Priors: It occurs when the final posterior distribution belongs to the family of similar probability density functions as the prior belief but with new parameter values which have been updated to reflect new evidence/ information. Examples Beta-Binomial, Gamma -Poisson or Normal-Normal.
       * Non-conjugate Priors: When personal belief cannot be expressed in terms of a suitable conjugate prior and for those cases simulation tools are applied to approximate the posterior distribution. An example can be Gibbs sampler.
