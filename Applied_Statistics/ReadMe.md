@@ -95,6 +95,20 @@
   * This distribution describes the events that occur in a fixed interval of time or space
   * [More about it's parameters][19]
     * In one of its exampels, it's using an exponential function to model λi, which takes α as the exponential param, and mentioned "A good rule of thumb is to set the exponential parameter equal to the inverse of the average of the count data"
+#### Continuous Distributions
+* [Check more here for PDFs][20]
+* Continuous Uniform Distribution: It indicates the probability of a value x in the given range [a,b] is the same, `1/(b-a)`; otherwise 0 (outside of [a,b] range)
+* Normal Distribution
+  * Standard Normal Distribution has 0 mean and 1 std
+  * It also follows the empirical formula that 68% of the values are 1 standard deviation away, 95% percent of them are 2 standard deviations away, and 99.7% are 3 standard deviations away from the mean.
+* Log-normal Distribution
+* Student’s t Distribution
+  * Used for sample sample (n<30) without knowing population variance
+  * When p (degree of freedom) is increasing, it's getting close to the normal distribution
+    * `p = n-1`
+* Chi-square Distribution
+* Exponential Distribution
+  * While poisson distribution describes the events that occur in a fixed interval of time or space, exponential distribution describes the time interval between each 2 successive events
 
 
 ## Resources
@@ -366,3 +380,4 @@ but it's easier to use pyton built-in functions
 [17]:https://github.com/hanhanwu/Hanhan_Data_Science_Resources2#6-distributions
 [18]:https://www.analyticsvidhya.com/blog/2021/01/discrete-probability-distributions/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
 [19]:https://nbviewer.jupyter.org/github/CamDavidsonPilon/Probabilistic-Programming-and-Bayesian-Methods-for-Hackers/blob/master/Chapter1_Introduction/Ch1_Introduction_PyMC2.ipynb#Probability-Distributions
+[20]:https://www.analyticsvidhya.com/blog/2021/02/statistics-101-beginners-guide-to-continuous-probability-distributions/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
