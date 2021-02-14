@@ -83,10 +83,18 @@
 
 ### Distributions
 * [Check my past notes about some popular distributions][17]
+* PMF vs PDF
+  * Discrete distribution's probability function is called "probability mass function"
+  * Continuous distributions's probability functions is called "probability density function"
+#### Discrete Distributions
 * [Discrete Probability Distributions][18]
   * It has well summarized the examples and formulas of discrete probability distributions we will meet in life (interviews :P)
-  * Bernoulli Distribution, Binomial Distribution, Multinomial Distribution, Hypergeometric Distribution, Negative Binomial Distribution, Geometric Distribution, Geometric Distribution
+  * Bernoulli Distribution, Binomial Distribution, Multinomial Distribution, Hypergeometric Distribution, Negative Binomial Distribution, Geometric Distribution, Poisson Distribution
   * `nCx = n!/(x! * (n-x)!)`
+* Poisson Distribution
+  * This distribution describes the events that occur in a fixed interval of time or space
+  * [More about it's parameters][19]
+    * In one of its exampels, it's using an exponential function to model λi, which takes α as the exponential param, and mentioned "A good rule of thumb is to set the exponential parameter equal to the inverse of the average of the count data"
 
 
 ## Resources
@@ -357,3 +365,4 @@ but it's easier to use pyton built-in functions
 [16]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/papers/Comprehensible%20Counterfactual%20Interpretation%20on%20Kolmogorov-Smirnov%20Test.pdf
 [17]:https://github.com/hanhanwu/Hanhan_Data_Science_Resources2#6-distributions
 [18]:https://www.analyticsvidhya.com/blog/2021/01/discrete-probability-distributions/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+[19]:https://nbviewer.jupyter.org/github/CamDavidsonPilon/Probabilistic-Programming-and-Bayesian-Methods-for-Hackers/blob/master/Chapter1_Introduction/Ch1_Introduction_PyMC2.ipynb#Probability-Distributions
