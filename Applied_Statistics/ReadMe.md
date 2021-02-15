@@ -94,7 +94,9 @@
 * Poisson Distribution
   * This distribution describes the events that occur in a fixed interval of time or space
   * [More about it's parameters][19]
-    * In one of its exampels, it's using an exponential function to model λi, which takes α as the exponential param, and mentioned "A good rule of thumb is to set the exponential parameter equal to the inverse of the average of the count data"
+    * In one of its exampels, it's using an exponential function to model λ, which takes α as the exponential param, and mentioned "A good rule of thumb is to set the exponential parameter equal to the inverse of the average of the count data"
+      * The reason it chose exponential distribution to model λ is because, exponential distribution givens a probability of any positive number
+      * When α is too low, there is larger probability on high values, which cannot reflect the priori. Neither do a high α. Therefore a good idea for α as to reflect our belief is to set the value so that the mean of λ, given α, is equal to our observed mean.
 #### Continuous Distributions
 * [Check more here for PDFs][20]
 * Continuous Uniform Distribution: It indicates the probability of a value x in the given range [a,b] is the same, `1/(b-a)`; otherwise 0 (outside of [a,b] range)
