@@ -71,6 +71,8 @@ More details about Bayesian Analysis
 
 ## Bayesian Approach for Hypothesis Analysis
 * [Concepts][4]
+* [A simple case in python to show how natural bayesian method is, comparing to A/B test][11]
+  * Go to "A Simple Case"
 * [How to use Exploratory (a tool) to do Bayesian A/B test with/without prior][5]
   * [Exploratory][6]
 
@@ -92,3 +94,4 @@ More details about Bayesian Analysis
 [8]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/Learning_Notes/bayesian_analysis/binomial_proportion.md
 [9]:https://github.com/hanhanwu/Hanhan_Data_Science_Resources/blob/master/Experiences.md#naive-bayesian
 [10]:https://www.analyticsvidhya.com/blog/2021/01/a-beginners-guide-bayesian-inference/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+[11]:https://github.com/CamDavidsonPilon/Probabilistic-Programming-and-Bayesian-Methods-for-Hackers/blob/master/Chapter2_MorePyMC/Ch2_MorePyMC_PyMC3.ipynb
