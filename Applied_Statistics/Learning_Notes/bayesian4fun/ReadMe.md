@@ -1,7 +1,7 @@
 # Bayesian for Fun 🐬
 
 
-* [How to use binomial to predict Tailand Drama 😎][1]
+* [How to use binomial to predict Thai Drama 😎][1]
 * [How does observed data adjust the posterior from priori][2]
 
 
