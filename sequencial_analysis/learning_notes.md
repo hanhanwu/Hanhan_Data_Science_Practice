@@ -100,6 +100,7 @@
       * γ is the seasonality factor in [0,1] range
     * [Python implementation of this method][12]
     * It's also called as Holt-Winters foreacsting, check how did I use the built-in function [here][10]
+  * Besides python built-in functions, [check DIY smoothing methods here][54]
 
 * Rolling Window vs Expanding Window
   * Rolling window has fixed size, expading window collects all the observations within the specified time range, so the window size of expanding window is not fixed
@@ -592,3 +593,4 @@
 [51]:https://github.com/twitter/AnomalyDetection
 [52]:https://docs.aws.amazon.com/forecast/latest/dg/what-is-forecast.html
 [53]:https://www.analyticsvidhya.com/blog/2021/01/understanding-architecture-of-lstm/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+[54]:https://medium.com/@srv96/smoothing-techniques-for-time-series-data-91cccfd008a2#f381
