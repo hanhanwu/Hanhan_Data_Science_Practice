@@ -76,7 +76,7 @@
     * This method is a way to make ts stationary through de-trending
     
 * Exponential Smoothing Methods
-  * The limitation of moving average and weighted moving average is the ignorance of observation recency effect, and exponential smoothing methods can help deal with this issue by having exponential decaying weights on observations (older data gets lower weights)
+  * The limitation of moving average and weighted moving average is the ignorance of observation recency effect (equally weighted in a window), and exponential smoothing methods can help deal with this issue by having exponential decaying weights on observations (older data gets lower weights)
   * <b>Need to convert the ts to stationary</b> before applying moving average and exponential smoothing methods, since that align with the assumption of these methods
   * Smoothing methods are used to remove random noise, but can be extended for forecasting by ading smoothing factor α, trend factor β, seasonality factor γ in exponential smoothing methods
   * First order exponential smoothing
@@ -92,6 +92,7 @@
       * β is the trend factor in [0,1] range
       * Second order can capture the variation of the real signal better than first order if the trend component is not constant
     * [Python implementation of this method][11]
+      * Similarly, [check DIY smoothing methods here][54] 
     * It's also called as Holt foreacsting
   * Triple order exponential smoothing
     * `F_t = α*(x_t - S_t-L) + (1-α)*(F_t-1 + T_t-1)`
@@ -99,8 +100,10 @@
     * `S_t = γ(x_t - F_t) + (1-γ)S_t-C`
       * γ is the seasonality factor in [0,1] range
     * [Python implementation of this method][12]
+      * Similarly, [check DIY smoothing methods here][54] 
     * It's also called as Holt-Winters foreacsting, check how did I use the built-in function [here][10]
-  * Besides python built-in functions, [check DIY smoothing methods here][54]
+  * [How to use python built-in holt, holt-winters functions][55]
+    * [My past code][56] 
 
 * Rolling Window vs Expanding Window
   * Rolling window has fixed size, expading window collects all the observations within the specified time range, so the window size of expanding window is not fixed
@@ -594,3 +597,5 @@
 [52]:https://docs.aws.amazon.com/forecast/latest/dg/what-is-forecast.html
 [53]:https://www.analyticsvidhya.com/blog/2021/01/understanding-architecture-of-lstm/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
 [54]:https://medium.com/@srv96/smoothing-techniques-for-time-series-data-91cccfd008a2#f381
+[55]:https://www.statsmodels.org/stable/examples/notebooks/generated/exponential_smoothing.html
+[56]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/time_series_forecasting.ipynb
