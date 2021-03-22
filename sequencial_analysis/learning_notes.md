@@ -219,6 +219,7 @@
 * Similarity between features
   * ‼️ Make sure the features are the key features that can represent the data, cuz noisy features will only misleading the similarity calculation
 * Similarity Calculation Methods
+  * [My python code to compare series similarity][57] 
   * Dynamic Time Warping (DTW)
     * It compares the shape of 2 ts, whether the time ranges of the 2 ts are the same DOESN'T matter
       * 2 ts can be warped by being condensed to the same place on the x-axis
@@ -599,3 +600,4 @@
 [54]:https://medium.com/@srv96/smoothing-techniques-for-time-series-data-91cccfd008a2#f381
 [55]:https://www.statsmodels.org/stable/examples/notebooks/generated/exponential_smoothing.html
 [56]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/time_series_forecasting.ipynb
+[57]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/after_2020_practice/series_similarity.ipynb
