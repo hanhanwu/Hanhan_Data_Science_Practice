@@ -23,6 +23,10 @@
 <p align="center">
 <img src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/images/z_test.PNG" width="700" height="400" />
 </p>
+* NOTE
+  * When we are using z_score just to compare a single value xi and the expected value of X, we use `z = (xi - mean)/std`
+    *  if z > 0, larger z means xi is less likely to be smaller than the expected value
+    *  if z < 0, larger abs(z) means xi is more likely to larger than the expected value
 
 ### Two Sample z-test
 * The hypothesis tests compares the sample mean difference between 2 samples with an assumped mean different (population mean difference)
