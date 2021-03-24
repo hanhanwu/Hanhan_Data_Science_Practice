@@ -396,6 +396,8 @@
   * List of features: http://cesium-ml.org/docs/feature_table.html
   * Examples: https://github.com/cesium-ml/cesium/tree/master/examples
   * Your can generate features for a list of time series by using `featurize_time_series()`, [see this example][45]
+* [Python tsfel][58]
+  * It allows you to add new features 
 * [R tsfeatures][44]
   * List of features: https://cran.r-project.org/web/packages/tsfeatures/vignettes/tsfeatures.html
     * There are a few functions are designed for rolling windows
@@ -601,3 +603,4 @@
 [55]:https://www.statsmodels.org/stable/examples/notebooks/generated/exponential_smoothing.html
 [56]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/time_series_forecasting.ipynb
 [57]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/after_2020_practice/series_similarity.ipynb
+[58]:https://github.com/fraunhoferportugal/tsfel
