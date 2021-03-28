@@ -390,7 +390,10 @@
 * [Python tsfresh][42]
   * "FRESH" stands for feature extraction based on scalable hypothesis tests. 
   * List of features: https://tsfresh.readthedocs.io/en/latest/text/list_of_features.html
-  * An example about how to use feature extraction: https://github.com/blue-yonder/tsfresh/blob/main/notebooks/advanced/perform-PCA-on-extracted-features.ipynb
+  * [My python code][59], I have tried:
+    * How to generate features in expanding & rolling window without bringing in lookahead issue
+    * How to choose features to generate
+    * How to add customized features
   * More examples: https://github.com/blue-yonder/tsfresh/tree/main/notebooks
 * [Python Cesium Features][43]
   * List of features: http://cesium-ml.org/docs/feature_table.html
@@ -604,3 +607,4 @@
 [56]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/time_series_forecasting.ipynb
 [57]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/after_2020_practice/series_similarity.ipynb
 [58]:https://github.com/fraunhoferportugal/tsfel
+[59]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/after_2020_practice/try_tsfresh.ipynb
