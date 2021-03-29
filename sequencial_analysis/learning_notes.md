@@ -395,9 +395,14 @@
     * How to choose features to generate
     * How to add customized features
   * More examples: https://github.com/blue-yonder/tsfresh/tree/main/notebooks
+  * It also does feature selection, see "Feature Selection" section below
 * [Python Cesium Features][43]
   * List of features: http://cesium-ml.org/docs/feature_table.html
   * Examples: https://github.com/cesium-ml/cesium/tree/master/examples
+  * [My python code][60]
+    * It's easy to add customized ts features with Cesium
+    * To use expanding or rolling window, its input has a special data structure, which puts a window of data in a list at each row
+    * Comparing with `tsfresh`, it's doesn't have much flexibility to modify feature extraction settings or params
   * Your can generate features for a list of time series by using `featurize_time_series()`, [see this example][45]
 * [Python tsfel][58]
   * It allows you to add new features 
@@ -608,3 +613,4 @@
 [57]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/after_2020_practice/series_similarity.ipynb
 [58]:https://github.com/fraunhoferportugal/tsfel
 [59]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/after_2020_practice/try_tsfresh.ipynb
+[60]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/after_2020_practice/try_cesium.ipynb
