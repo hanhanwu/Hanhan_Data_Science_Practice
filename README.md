@@ -1,10 +1,7 @@
 # Hanhan_Data_Science_Practice
-data analysis, big data development, cloud, and any other cool things!
 
 
-********************************************
-
-<b> BIG DATA! </b> - Fantastic
+## BIG DATA! - Fantastic
 
 * Why Spark is great?!
   * Spark is awesome to deal with big data problems! My godness, before I work on real big data, I just thought it was cool and smart! Today I have realized, it is super fantastic! Especially after I have written normal Python iterate code on 4000000 text records (2G) to extract multiple patterns....
@@ -28,9 +25,7 @@ data analysis, big data development, cloud, and any other cool things!
   * My experience about using PowerShell to automate Hadoop Hive query (HQL): That was a lot of pain. Hive is already more difficult to use than SQL/TSQL because it has less functions. Then, when you need to embed HQL in PowerShell, my godness, it made my life more difficult, especially when the data was gigantic and each time when you need to make a tiny change, all the testing time could force you to work overtime... After finishing that work, I have realized, how good our relational database is and how smart Spark SQL is!
 
 
-********************************************
-
-R PRACTICE
+## R PRACTICE
 
 * R Basics Data Analysis Practice
   * Problem Statement: http://datahack.analyticsvidhya.com/contest/practice-problem-bigmart-sales-prediction
