@@ -141,9 +141,7 @@
     * `brew install imagemagick --with-x11`
     
 
-********************************************
-
-PYTHON PRACTICE
+## PYTHON PRACTICE
 
 * Try Pandas
   * data input: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/GBM_Test.csv
@@ -252,9 +250,7 @@ PYTHON PRACTICE
   ![regression splies R](https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/regression%20splines.png)
   
 
-********************************************
-
-DIMENSION REDUCTION
+## DIMENSIONAL REDUCTION
 
 * PCA (Principle Component Analysis) - R Version
   * R code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/PCA_practice.R
@@ -298,9 +294,7 @@ DIMENSION REDUCTION
   * Python code (t-SNE works pretty well on the dataset used here): https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/t-SNE_Practice.ipynb
   
   
-********************************************
-
-DATA PREPROCESSING
+## DATA PREPROCESSING
 
 * Python scikit-learn preprocessing, with pandas
   * IPython Notebook: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/scikit_learn_preprocessing.ipynb
@@ -372,9 +366,7 @@ In this regard, Tomek’s link and edited nearest-neighbours are the two cleanin
   * [tutorial 3][4] - data enrich, fetch urls for the data by using web services such as those Google web services to generate new columns; add new data using Freebase Reconcilation Service to add more data for each row
  
 
-********************************************
-
-TREE BASED MODELS
+## TREE BASED MODELS
 
 * Tree based models in detail with R & Python example: https://www.analyticsvidhya.com/blog/2016/04/complete-tutorial-tree-based-modeling-scratch-in-python/?utm_content=bufferade26&utm_medium=social&utm_source=facebook.com&utm_campaign=buffer
 * [Python] Xgboost
@@ -423,9 +415,7 @@ TREE BASED MODELS
   * <b>NOTE: Check param documents and 2 complete param tuning guide of XGBoost and LightGBM above, start params with typical value range for tuning</b>
 
 
-********************************************
-
-### GRAPH THEORY
+## GRAPH THEORY
 
 #### Graph Theory with python networkx
   * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/graph_theory_airlines.ipynb
@@ -541,9 +531,8 @@ TREE BASED MODELS
   * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/auto_basic_feature_engineering.ipynb
     * Cannot say it's that advanced, it's very basic but will help you process features in a batch, and can be processed in depth. A potential problem can be, it's easy to have many errors and difficult to tell what caused the error.
 
-*********************************************
 
-CLOUD for DATA SCIENCE
+## CLOUD for DATA SCIENCE
 
 * Databrics Cloud (Spark Cluster)
  
@@ -557,9 +546,7 @@ CLOUD for DATA SCIENCE
   * AzureML Studio R Script with Time Series Forecasting: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AzureML_time_series_forcasting.md
 
 
-********************************************
-
-KAGGLE PRACICE
+## KAGGLE PRACICE
 
 * Who Will Purchase The Insurance
 
@@ -576,9 +563,7 @@ KAGGLE PRACICE
   * In my Spark Python code, I have tried SVM with SGD, Logistic Regression with SGD and Logistic Regression with LBFGS, but when I tune the parameters for SVM and Logistic Regression with SGD, they always returned an empty list wich should show those people who will buy insurance. Logistic Regression with LBFGS gives better results.
 
 
-*********************************************
-
-OTHER
+## OTHER
 
 * RDRToolbox - A R package for nonlinear dimensional reduction
   * How to install RDRToolbox: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/install_RDRToolbox.R
