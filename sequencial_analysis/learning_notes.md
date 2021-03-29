@@ -403,7 +403,7 @@
     * It's easy to add customized ts features with Cesium
     * To use expanding or rolling window, its input has a special data structure, which puts a window of data in a list at each row
     * Comparing with `tsfresh`, it's doesn't have much flexibility to modify feature extraction settings or params
-  * Your can generate features for a list of time series by using `featurize_time_series()`, [see this example][45]
+  * [More example][45]
 * [Python tsfel][58]
   * It allows you to add new features 
 * [R tsfeatures][44]
