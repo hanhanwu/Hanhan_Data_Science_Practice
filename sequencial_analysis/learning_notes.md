@@ -405,7 +405,10 @@
     * Comparing with `tsfresh`, it's doesn't have much flexibility to modify feature extraction settings or params
   * [More example][45]
 * [Python tsfel][58]
-  * It allows you to add new features 
+  * [My python code][61]
+  * I don't like its user experience
+    * Its ts feature extractor has `window_size` but it's tricky to use and not sure whether it does support rolling/expanding window
+    * To add customized features, it's similar to `tsfresh` that you need to update the source code 
 * [R tsfeatures][44]
   * List of features: https://cran.r-project.org/web/packages/tsfeatures/vignettes/tsfeatures.html
     * There are a few functions are designed for rolling windows
@@ -614,3 +617,4 @@
 [58]:https://github.com/fraunhoferportugal/tsfel
 [59]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/after_2020_practice/try_tsfresh.ipynb
 [60]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/after_2020_practice/try_cesium.ipynb
+[61]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/after_2020_practice/try_tsfel.ipynb
