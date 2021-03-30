@@ -417,6 +417,7 @@
   * "FRESH" stands for feature extraction based on scalable hypothesis tests.
     * The algorithm evaluates the significance of each input feature with respect to a target variable via the computation of a p-value for each feature.
       * Once computed, the per-feature p-values are evaluated together via the Benjamini-Yekutieli procedure, which determines which features to keep based on input parameters about acceptable error rates and the like.
+      * [My python code][59] to try tsfresh feature selection
       * An example of calculating feature significance: https://github.com/blue-yonder/tsfresh/blob/main/notebooks/advanced/visualize-benjamini-yekutieli-procedure.ipynb
       * The Benjamini-Yekutieli procedure is a method of limiting the number of false positives discovered during hypothesis testing used to produce the p-values in the initial step of the FRESH algorithm.
 * sklearn feature selectors allow you to use different machine learning estimators: https://scikit-learn.org/stable/modules/classes.html#module-sklearn.feature_selection
