@@ -38,6 +38,8 @@
   * calculate smaple size first
 * Why daily conversation rate is a simple measure
 * 2 sample t-test
+* [Some suggestions to comapre the control and the test groups][8]
+  * Such as Mann Whitney U-test, a non-parametric method used to compare the 2 groups when the distribution is not normal
 
 [1]: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/ABTest_Experiments/detailed_ABTest_Experiment.ipynb
 [2]:https://github.com/dwyl/learn-ab-and-multivariate-testing
@@ -46,3 +48,4 @@
 [5]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/Learning_Notes/AB_Test.md
 [6]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/Learning_Notes/bayesian_analysis/Bayesian_Approaches_for%20Hypothesis_Tests.md
 [7]:https://www.analyticsvidhya.com/blog/2020/10/ab-testing-data-science/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+[8]:https://www.analyticsvidhya.com/blog/2021/03/a-b-testing-measurement-frameworks%e2%80%8a-%e2%80%8aevery-data-scientist-should-know/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
