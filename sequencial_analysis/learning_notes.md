@@ -282,6 +282,7 @@
   * Comparing with LSTM, it doesn't have the output gate and the internal memory. 
     * The update gate combines the functionality achieved by both input and forget gate in LSTM.  
     * The reset gate combines the effect of the previous memory and the current input, and apply the effect directly to the previous memory
+* [A simple visual description of GRU][62]
 #### LSTM vs GRU
 * No one works better than the other in all tasks
 * A common rule of thumb:
@@ -619,3 +620,4 @@
 [59]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/after_2020_practice/try_tsfresh.ipynb
 [60]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/after_2020_practice/try_cesium.ipynb
 [61]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/after_2020_practice/try_tsfel.ipynb
+[62]:https://www.analyticsvidhya.com/blog/2021/03/introduction-to-gated-recurrent-unit-gru/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
