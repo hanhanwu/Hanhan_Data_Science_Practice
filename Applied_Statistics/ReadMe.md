@@ -264,6 +264,7 @@ but it's easier to use pyton built-in functions
     * Both assumes the sample size grows towards infinity
     * Central Limit Theorem is saying the distribution of sample means is getting close to normal distribution
     * The law of large numbers is saying the sample mean is getting close to the population mean
+      * And this applies to almost any type of distribution 
   * Sample size >= 30 to hold Central Limit Theorem
   * Contral Limit Theorem - If the distribution of the values has mean and standard deviation (μ, σ), the distribution of the sum is close to N(n*μ，n*pow(σ,2))
   * Limitations
