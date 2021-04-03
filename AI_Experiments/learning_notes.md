@@ -5,6 +5,13 @@ I have decided to systematically review all the details of deep learning, and or
 ## Fun Facts of Deep Learning
 * Deep learning can find interesting features itself, so we don't need manually feature engineering in deep learning. 
   * But this is achievable only when the dataset is large enough, higher dimensions of the data (such as images), larger dataset is needed.
+* [How are images saved in computers][44]
+  * `N * M * C`
+    * N is the number of pixels in height
+    * M is the number of pixels in width
+    * C is the number of channels
+      * grey image (black and white) has 1 channel, RGB image has 3 channels (red, green and blue)
+    * Each pixel has a value between 0 and 255, smaller values is darker color, higher value is brighter color (0 is black, 255 is white)  
 
 ## Data Preprocessing Methods 😱😱
 ### Shuffle the data before spliting
@@ -336,3 +343,4 @@ I just found some companies like to ask you to implement methods used in deep le
 [41]:https://www.tensorflow.org/api_docs/python/tf/keras/initializers
 [42]:https://github.com/hanhanwu/ML-From-Scratch
 [43]:https://github.com/tensorflow/federated/blob/master/docs/tutorials/custom_federated_algorithms_2.ipynb
+[44]:https://www.analyticsvidhya.com/blog/2021/03/grayscale-and-rgb-format-for-storing-images/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
