@@ -260,7 +260,7 @@ but it's easier to use pyton built-in functions
 * Convolution - An operation that computes the distribution of the sum of values from 2 distributions
 * Central Limit Theorem
   * When the sample size grows larger, the distribution of sample means is getting close to normal distribution, regardless the shape of the population distribution
-  * Central Limit Theorem vs The law of large numbers
+  * <b>Central Limit Theorem vs The law of large numbers</b>
     * Both assumes the sample size grows towards infinity
     * Central Limit Theorem is saying the distribution of sample means is getting close to normal distribution
     * The law of large numbers is saying the sample mean is getting close to the population mean
