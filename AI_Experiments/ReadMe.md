@@ -527,7 +527,10 @@ Neural Network is a universal approximator, which means you can use it to implme
   * It doesn't work well in data compression
     * Such as image compression, JPEG can do better. Plus autoencoder can only work for a specific set of images, more limitation.
   
-    
+#### Vanilla autoencoder vs UNet
+* Vanilla version will lose the feature map when the info is passed from the encoder to the decoder, Unet is trying to keep this feature map. 
+* [Check the visual description and code example here][38]
+
 #### Variational autoencoder (VAE)
 * VAE is a type of autoencoder with added constraints on the encoded representations being learned. More precisely, it is an autoencoder that learns a latent variable model for its input data. So instead of letting your neural network learn an arbitrary function, you are learning the parameters of a probability distribution modeling your data. If you sample points from this distribution, you can generate new input data samples: a VAE is a "generative model".
 
@@ -799,3 +802,4 @@ Neural Network is a universal approximator, which means you can use it to implme
 [35]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/images/dream2.png
 [36]:https://nbviewer.jupyter.org/github/fchollet/deep-learning-with-python-notebooks/blob/master/8.3-neural-style-transfer.ipynb
 [37]:https://www.analyticsvidhya.com/blog/2021/01/gpt-3-the-next-big-thing-foundation-of-future/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+[38]:https://www.analyticsvidhya.com/blog/2021/01/auto-encoders-for-computer-vision-an-endless-world-of-possibilities/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
