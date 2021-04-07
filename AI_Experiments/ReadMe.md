@@ -505,7 +505,7 @@ Neural Network is a universal approximator, which means you can use it to implme
   * Autoencoders are data-specific, which means that they will only be able to compress data similar to what they have been trained on.
   * Autoencoders are lossy, which means that the decompressed outputs will be degraded compared to the original inputs (similar to MP3 or JPEG compression).
   * Autoencoders are learned automatically from data examples, which is a useful property: it means that it is easy to train specialized instances of the algorithm that will perform well on a specific type of input. It doesn't require any new engineering, just appropriate training data.
-* Practical Use
+#### Practical Use
   * Help dimensional reduction. 
     * The input and output has same number of dimensions, and the hidden layer has less dimensions, thus it contains compressed informations of input layer, which is why it acts as a dimension reduction for the original input. "Decoding" is the lossy reconstruction of the input.
     * For example, t-SNE can plot data into 2D or 3D, but it doesn't work well when the original dimension is large. So a good practice is to have autoencoder help reduce the dimensions first, then use t-SNE for 2D, 3D plot.
@@ -514,6 +514,9 @@ Neural Network is a universal approximator, which means you can use it to implme
   * [Python Example - Autoencoder for Dimensional Reduction][22]
     * Dimensional reduced data came from `encoder.predict()`, `encoder` here is the intermediate result of `input -> hidden layer`
     * With dimensional reduced data, it's later using lighGMB for model training
+  * [Python Example - Autoencoder to Improve Image Resolution][39]
+    * Autoencoder can be used to denoise and improve image resolution
+    * Of course, it's supervised learning that have to be trained with clear images
   * [R Example - Autoencoder for Dimension Reduction vs PCA][25]
     * [Reference][26]
     * [Generated HTML R Notebook][24]
@@ -803,3 +806,4 @@ Neural Network is a universal approximator, which means you can use it to implme
 [36]:https://nbviewer.jupyter.org/github/fchollet/deep-learning-with-python-notebooks/blob/master/8.3-neural-style-transfer.ipynb
 [37]:https://www.analyticsvidhya.com/blog/2021/01/gpt-3-the-next-big-thing-foundation-of-future/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
 [38]:https://www.analyticsvidhya.com/blog/2021/01/auto-encoders-for-computer-vision-an-endless-world-of-possibilities/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+[39]:analyticsvidhya.com/blog/2020/02/what-is-autoencoder-enhance-image-resolution/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
