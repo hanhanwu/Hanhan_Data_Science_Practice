@@ -535,6 +535,11 @@
     * In this case, both experiments got same performance whe epoch and batch_size were the same
   * Looks like performed better than above stacked RNNs, but stacked method was using learning_rate=0.1 while here was using learning_rate=0.001 by default.
     
+## Recommended Practice
+* [Multivariate Time Series Forecasting][63]
+  *  LSTM, autoencoding
+  *  How to preprocess the ts data with self-defined sequence length
+  *  How to do ts forecasting on multiple ts columns (multivariate ts)
 
 ## Recommended Readings
 * [Practical Time Series Analysis][1]
@@ -621,3 +626,4 @@
 [60]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/after_2020_practice/try_cesium.ipynb
 [61]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/after_2020_practice/try_tsfel.ipynb
 [62]:https://www.analyticsvidhya.com/blog/2021/03/introduction-to-gated-recurrent-unit-gru/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+[63]:https://colab.research.google.com/drive/1G6XJdUkKUWUzR5jPb0hE3nUuZipRHiAR#scrollTo=sMYwUsJ8HAtu
