@@ -102,7 +102,11 @@ An activation function is a function that is added into an artificial neural net
 
 ### Optimizer
 * `rmsprop` is often good enough, `adam` is better
-* * Check this paper (https://arxiv.org/pdf/2103.05127.pdf) when doing deep learning optimization
+* Check this paper (https://arxiv.org/pdf/2103.05127.pdf) when doing deep learning optimization
+#### Loss Function (Objective) & Optimizer & Regularizer
+* The goal of deep learning is to reduce the loss function during training
+* To minimize this loss value, optimizer is employed to determine how weights and bias should be adjusted during each training step
+* Since the trained model will be used beyond the training data, regularizer ensures the trained more is generalizes to the new data 
 
 ### About K-fold Cross Validation with Keras
 * Well, adding this part is because I failed this piece in Unity interview...
@@ -291,6 +295,7 @@ An activation function is a function that is added into an artificial neural net
 ## Reference
 * [Deep Learning Python Notebooks][1]
 * [Deep Learning with Python][2]
+* [Advanced Deep Learning with Keras and Tensorflow2][45]
 
 ## Interview Questions
 I just found some companies like to ask you to implement methods used in deep learning without using numpy, sklearn, no matter whether they need deep learning... This is why I put these here, even though there is no time to check these during the interviews. Personally I don't like this type of interview at all, they gave impossible timeline (unless you have remembered each answer), no one talk with you to help you understand what do the questions really mean, and the solution used here has a big difference with the practical solutions. This type of interviews could be used at most for entry level data scientists but shuld not be used for senior level. Unfortunately, these companies do not have a qualified hiring manager. Sometimes, this world is funny and ridicuclous in a way I can never understand.
@@ -344,3 +349,4 @@ I just found some companies like to ask you to implement methods used in deep le
 [42]:https://github.com/hanhanwu/ML-From-Scratch
 [43]:https://github.com/tensorflow/federated/blob/master/docs/tutorials/custom_federated_algorithms_2.ipynb
 [44]:https://www.analyticsvidhya.com/blog/2021/03/grayscale-and-rgb-format-for-storing-images/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+[45]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras
