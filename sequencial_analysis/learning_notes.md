@@ -260,7 +260,7 @@
     * Vanishing gradients: The chain of gradient multiplication can be very long. When the multiplication diminishes to 0 and there is no gradient flow from a long-range timestep. Due to the negligibly low values of the gradients, the weights do not update and hence the neurons are said to be saturated
   * Both LSTM, GRU are designed to allow RNN works better in memory transfer for long range sequence, and to avoid vanishing gradients and reduce exploding gradients, because they tend to keep inputs and outputs from the cell in tractable value ranges, the update gate can learn to pass information through or not, leading to reasonable gradient values.
   
-#### LSTM (Long Short Term Memory)
+#### [LSTM (Long Short Term Memory)][64]
 * LSTM introduces 3 new gates, to selectively include the previous memory and the current hidden state that's computed in the same manner as in vanilla RNNs
   * input gate controls the fraction of the newly computed input to keep
     * Event (current input) and STM are combined together so that necessary information that we have recently learned from STM (short-term memory) can be applied to the current input.
@@ -627,3 +627,4 @@
 [61]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/after_2020_practice/try_tsfel.ipynb
 [62]:https://www.analyticsvidhya.com/blog/2021/03/introduction-to-gated-recurrent-unit-gru/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
 [63]:https://colab.research.google.com/drive/1G6XJdUkKUWUzR5jPb0hE3nUuZipRHiAR#scrollTo=sMYwUsJ8HAtu
+[64]:http://colah.github.io/posts/2015-08-Understanding-LSTMs/
