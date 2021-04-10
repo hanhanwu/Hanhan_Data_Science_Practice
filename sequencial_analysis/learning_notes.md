@@ -512,7 +512,7 @@
   * For more details, check [python PyDLM][40] and [its user manual][41]
 
 
-## My Practice
+## My Practice 💖🍀
 * [ts forecast with basic RNN][23]
   * Using tensorflow2.3
   * [Same code with tensorflow 2.4][29]
@@ -535,11 +535,12 @@
     * In this case, both experiments got same performance whe epoch and batch_size were the same
   * Looks like performed better than above stacked RNNs, but stacked method was using learning_rate=0.1 while here was using learning_rate=0.001 by default.
     
-## Recommended Practice
+## Recommended Practice 💖🍀
 * [Multivariate Time Series Forecasting][63]
   *  LSTM, autoencoding
   *  How to preprocess the ts data with self-defined sequence length
   *  How to do ts forecasting on multiple ts columns (multivariate ts)
+  *  [Another example to create moving window is ts][65]
 
 ## Recommended Readings
 * [Practical Time Series Analysis][1]
@@ -628,3 +629,4 @@
 [62]:https://www.analyticsvidhya.com/blog/2021/03/introduction-to-gated-recurrent-unit-gru/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
 [63]:https://colab.research.google.com/drive/1G6XJdUkKUWUzR5jPb0hE3nUuZipRHiAR#scrollTo=sMYwUsJ8HAtu
 [64]:http://colah.github.io/posts/2015-08-Understanding-LSTMs/
+[65]:https://nbviewer.jupyter.org/github/fchollet/deep-learning-with-python-notebooks/blob/master/6.3-advanced-usage-of-recurrent-neural-networks.ipynb
