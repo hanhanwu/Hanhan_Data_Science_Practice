@@ -13,7 +13,21 @@ I have decided to systematically review all the details of deep learning, and or
       * grey image (black and white) has 1 channel, RGB image has 3 channels (red, green and blue)
     * Each pixel has a value between 0 and 255, smaller values is darker color, higher value is brighter color (0 is black, 255 is white)  
 
+## [Deep Learning in Time Series / Sequential Analysis Learning Notes][46]
+
+
 ## Data Preprocessing Methods 😱😱
+### Input Structure
+* The image below is showing the data input requirements for MLP, CNN and RNN
+  * [MLP input code][47]
+  * [CNN input code][48]
+  * [RNN input code][49]
+<p align="center">
+<img src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/images/NN_input_structure.PNG" width="700" height="300" />
+</p>
+
+
+
 ### Shuffle the data before spliting
 * When the arrangement of labels not distributed similar for training and testing data, better to shuffle the data before spliting into training and testing.
 
@@ -64,9 +78,6 @@ I have decided to systematically review all the details of deep learning, and or
 * [Example][22]
 * The image tensor can be used to understand the output of each activation layer
   
-### Preprocess Time Series Data
-* [Example - How to preprocess ts data with defined moving window][35]
-  * Another things makes this data special is, it doesn't have a target value per record or per moving window, but only has a target after certain number of time windows.
 
 ## Layers & Dimensions 😱😱😱
 ### Hidden Layers
@@ -350,3 +361,7 @@ I just found some companies like to ask you to implement methods used in deep le
 [43]:https://github.com/tensorflow/federated/blob/master/docs/tutorials/custom_federated_algorithms_2.ipynb
 [44]:https://www.analyticsvidhya.com/blog/2021/03/grayscale-and-rgb-format-for-storing-images/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
 [45]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras
+[46]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/learning_notes.md
+[47]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter1-keras-quick-tour/mlp-mnist-1.3.2.py
+[48]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter1-keras-quick-tour/cnn-model-1.3.2.py
+[49]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter1-keras-quick-tour/rnn-mnist-1.5.1.py
