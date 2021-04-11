@@ -87,21 +87,14 @@ I have decided to systematically review all the details of deep learning, and or
 * When there are N classes to predict, the dimensions of all the hidden layers better > N, otherwise the information loss will lead to overfitting
   
 ### Activation Functions
-An activation function is a function that is added into an artificial neural network in order to help the network learn complex patterns in the data.
-
-#### `relu` (rectified linear unit)
-* It will zero out negative values.
-
-#### `softmax`
-* When it's used in the last layer, usually for N multi-class probability output, the last layer will have N nodes (N > 2).
-* The sum of N classes probabilities is 1.
-
-#### `sigmoid`
-* When it's used in the last layer, usually for 2 class probability output, the last layer will have 1 node.
-* The sum of 2 classes probability is 1.
-
-#### Without Activation Functions
-* A layer has 1 node (unit) without activation function equals to a linear function --> Can be used for regression problem.
+* In deep learning, layers like `Dense` only does linear operation, and a sequence of `Dense` only approximate a linear function. 
+* Inserting the activation function enables the nonlinear mappings.
+* [Formula, prod & cons of activation functions][50]
+  * `relu` is simple to compute and often used, can only be used in the hidden layers
+  * `sigmoid` (output value in 0..1 range) and `tanh` (output value in -1..1 range) can be used in the last layer, for binary classification
+    * `tanh` is also popularly used in the hidden layers of RNN 
+  * `softmax` is often used in the last layer, usually for N multi-class probability output, the last layer will have N nodes (N > 2). It squashes the output into probabilities by normalizing the prediction, each class gets a probability and the sum is 1.
+  * [Some other activation functions][51], such as `elu`, `softplus` and `selu`
 
 ### Output Layer
 * 2 classes
@@ -154,6 +147,14 @@ An activation function is a function that is added into an artificial neural net
   * Focal loss down-weights easy examples and focus training on hard negatives.
     * After a lot of trials and experiments, researchers have found `∝=0.25 & γ=2` to work best
   * [reference][37]
+* Some loss functions's formula
+  *  `categorical_crossentropy` and `mean_squared_error` are good choices to be used after `softmax` layer
+  *  `binary_corssentropy` is often used after `sigmoid` layer
+  *  `mean_squared_error` is can be a choice after `tanh` layer
+<p align="center">
+<img src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/images/loss_functions.PNG" width="600" height="300" />
+</p>
+
   
 #### Evaluation Visualization
 ##### Epoch Plot
@@ -182,23 +183,24 @@ An activation function is a function that is added into an artificial neural net
 * Avoid having the dimensions of the hidden layers < N, N is the number of classes.
 * If the training dataset is small, use a smaller NN (1 or 2 hidden layers + 1 last layer), and use cross validation to find the optimal epoch number
 * [Regularization][9]
-  * Training data only
-  * By adding the weight regularization, it's trying to reduce the model complexity
-  * L1 regularization, where the cost added is proportional to the absolute value of the weights coefficients
-  * L2 regularization, where the cost added is proportional to the square of the value of the weights coefficients
-* [Dropout][10]
-  * Can be applied to both training and testing data, but in practice, often applied to training data only
-  * The core idea is that introducing noise in the output values of a layer can break up coincident patterns that are not significant
-  * It's one of the most effective and most commonly used method
-  * It randomly drops (i.e. setting to zero) a number of output features of a layer during training
-  * Dropout rate is often set between 0.2 and 0.5
-  * How to use dropout for recurrent NN
-    * If we don't use dropout properly in recurrent NN, it will limit the learning instead of doing regularization
-    * The same dropout mask (the same pattern of dropped units) should be applied at every timestep, instead of a dropout mask that would vary randomly from timestep to timestep. Because the same dropout mask at every timestep allows the network to properly propagate its learning error through time; a temporally random dropout mask would instead disrupt this error signal and be harmful to the learning process.
-    * In order to regularize the representations formed by the recurrent gates of layers such as GRU and LSTM, a temporally constant dropout mask should be applied to the inner recurrent activations of the layer
-    * In keras, it has `dropout` and `recurrent_dropout` in recurrent layer as the solution
-      * `dropout` specifies the dropout rate for input units of the layer
-      * `recurrent_dropout` specifies the dropout rate of the recurrent units
+  * Training data only, no need to be used in the last layer
+  * It helps reduce overfirtting and makes NN more robust to unseen data input
+  * In Keras, bias, weights and activation functions can be regularized in each layer
+  * L1 and L2
+    * L1 regularization, where the cost added is proportional to the absolute value of the weights coefficients
+    * L2 regularization, where the cost added is proportional to the square of the value of the weights coefficients
+    * Therefore, both L1 and L2 favor smaller param values. However, NN with small params are more insensitive to the noise in the input datasof
+  * [Dropout][10]
+    * It's one of the most effective and most commonly used regularization method
+    * It randomly drops (i.e. setting to zero) a number of output features of a layer during training
+    * Dropout rate is often set between 0.2 and 0.5
+    * How to use dropout for recurrent NN
+      * If we don't use dropout properly in recurrent NN, it will limit the learning instead of doing regularization
+      * The same dropout mask (the same pattern of dropped units) should be applied at every timestep, instead of a dropout mask that would vary randomly from timestep to timestep. Because the same dropout mask at every timestep allows the network to properly propagate its learning error through time; a varying random dropout mask would instead disrupt this error signal and be harmful to the learning process.
+      * In order to regularize the representations formed by the recurrent gates of layers such as GRU and LSTM, a temporally constant dropout mask should be applied to the inner recurrent activations of the layer
+      * In keras, it has `dropout` and `recurrent_dropout` in recurrent layer as the solution
+        * `dropout` specifies the dropout rate for input units of the layer
+        * `recurrent_dropout` specifies the dropout rate of the recurrent units
 * [Data Augmentation][18]
   * Training data only
   * "Data augmentation takes the approach of generating more training data from existing training samples, by "augmenting" the samples via a number of random transformations that yield believable-looking image"
@@ -365,3 +367,5 @@ I just found some companies like to ask you to implement methods used in deep le
 [47]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter1-keras-quick-tour/mlp-mnist-1.3.2.py
 [48]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter1-keras-quick-tour/cnn-model-1.3.2.py
 [49]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter1-keras-quick-tour/rnn-mnist-1.5.1.py
+[50]:https://ml-cheatsheet.readthedocs.io/en/latest/activation_functions.html#activation-functions
+[51]:https://play.google.com/books/reader?id=68rTDwAAQBAJ&hl=en_CA&pg=GBS.PA14.w.1.0.83
