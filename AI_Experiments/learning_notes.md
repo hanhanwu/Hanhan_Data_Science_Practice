@@ -63,12 +63,12 @@ I have decided to systematically review all the details of deep learning, and or
   * Resize all the images to the same size
   * Convert images into floating point tensors
   * Rescale the pixel values (between 0 and 255) to the [0, 1] interval
-  * "Batch size" is the number of samples in a batch
+  * "Batch size" is the number of samples in each training step
     * Because you can't pass the entire dataset into NN all at once, need multiple batches
     * `training_batchs = total training sample size / training batch size`
     * `validation_batchs = total validation sample size / validation batch size`
   * 1 "Epoch" will process the entire dataset to update weights
-  * "Number of iterations = total dataset size/batch size", it's the number of batches needed to complete 1 epoch
+  * "Number of iterations (or number of steps) = total dataset size/batch size", it's the number of steps needed to complete 1 epoch
   * Seperate data and labels
     * Labels are created based on directories, different classes of images are put in different directories
 * [Image batch preprocess for federated learning][43]
@@ -106,7 +106,8 @@ I have decided to systematically review all the details of deep learning, and or
 
 ### Optimizer
 * `rmsprop` is often good enough, `adam` is better
-* Check this paper (https://arxiv.org/pdf/2103.05127.pdf) when doing deep learning optimization
+* It's recommended to start with a larger learning rate, and decrease it as the loss is getting closer to the minimum
+* This paper (https://arxiv.org/pdf/2103.05127.pdf) written in 2021 talked about the model complexicity in optimization
 #### Loss Function (Objective) & Optimizer & Regularizer
 * The goal of deep learning is to reduce the loss function during training
 * To minimize this loss value, optimizer is employed to determine how weights and bias should be adjusted during each training step
@@ -119,6 +120,7 @@ I have decided to systematically review all the details of deep learning, and or
 * After finding the optimal epoch number from cross validation, train the whole dataset with the optimal number of epoch.
   
 ### Evaluation Metrics
+* Bigger networks do not always bring better performance
 * [Full list of Keras metrics][4]
 * [Top-n Error][24]
   * We often saw "top-1 error", "top-5" error appeared in papers, here's more explaination
@@ -211,6 +213,8 @@ I have decided to systematically review all the details of deep learning, and or
   
 ## Convolutional Networks (Convnet)
 * Convnets can learn <b>local, translation-invariant features</b>, so they are very data-efficient on perceptual problems. Therefore, even when the dataset is small (such as hundreds of images), you might still get a reasonable results.
+* In CNN, a <b>kernel</b> can be visualized as a window that slides through the whole image from left to right, from top to bottom. 
+  * This operation is called as "Convolution", which transforms the input image as a feature map
 * [Keras Convnet][11]
 * [Conv2D][12]
   * "Input shape" is `(batch_size, image_height, image_width, image_channels)`, batch_size is optional
@@ -219,9 +223,13 @@ I have decided to systematically review all the details of deep learning, and or
   * When there are multiple layers of Conv2D in a neural net, deeper layer gets larger number of batches, notmrally we choose batch size in a sequence of 32, 64, 128, ...
   * `image_channels` is also the image depth. [How to use opencv2 to find image channels][13]
     * If returns 2 dimensions, the image channel is 1, otherwise it's the third number returned in the output
+  * `padding=same` will pad the borders with 0 to keep the original image size
+  * `kernel` can be non-square, such as `kernel=(3,5)`
 * [MaxPooling2D][16]
-  * Pooling Layer - pooling is a down-sampling operation that reduces the dimensionality of the feature map.
-  * It performs down-sampling operations to reduce the dimensionality and creates a pooled feature map by sliding a filter matrix over the input matrix.
+  * Pooling Layer - pooling is a down-sampling operation that reduces the feature map size
+  * It performs down-sampling operations to reduce the dimensionality and creates a pooled feature map by sliding a filter matrix over the input matrix. See [example here][52], every patch of size pool_size * pool_size is reduced to 1 feature map.
+  * `MaxPooling2D` chooses the max value from each patch, `AveragePooling2D` chooses the average value from each patch
+  * `pool_size` can be non-square, such as `pool_size=(1,2)`
 * [What is `strides`][14]
   * The size (height, width) of the moving window
 * Why `Flatten()`
@@ -267,11 +275,15 @@ I have decided to systematically review all the details of deep learning, and or
 
 ## RNN
 * RNN is trying to help analysis on a sequence, so that there could be more context, and therefore they are often used in NLP.
+* RNN can also be applied to images, see [example here][53]
+  * Each image can be considered as "height" number of sequences that each sequence with length of "width"
+* If CNN is characterized by the convolution of kernels across the input feature map, RNN output is a function not only of the current input but also of the previous output or hidden states
 ### RNN Tips
 * Deal with very long sequence in a cheaper way
   * Add 1 D convnet before RNN layer, the convnet will turn the long input sequence into much shorter (downsampled) sequences of higher-level features. This sequence of extracted features then becomes the input to the RNN part of the network. the performance may not improve but it's cheaper to run with RNN only
   * [check example here][38]
-* Stacking recurrent layers to increase the learning capacity
+* For all the RNNs, increasing the number of "units" can increase the learning capacity
+* Stacking recurrent layers will also increase the learning capacity
   * But for simple problem, it may not necessary
   * Make sure adding more recurrent layers won't make overfitting too bad
   * In keras, `return_sequences=True` for each recorrent layer except the last one
@@ -369,3 +381,5 @@ I just found some companies like to ask you to implement methods used in deep le
 [49]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter1-keras-quick-tour/rnn-mnist-1.5.1.py
 [50]:https://ml-cheatsheet.readthedocs.io/en/latest/activation_functions.html#activation-functions
 [51]:https://play.google.com/books/reader?id=68rTDwAAQBAJ&hl=en_CA&pg=GBS.PA14.w.1.0.83
+[52]:https://play.google.com/books/reader?id=68rTDwAAQBAJ&hl=en_CA&pg=GBS.PA30.w.3.0.53
+[53]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter1-keras-quick-tour/rnn-mnist-1.5.1.py
