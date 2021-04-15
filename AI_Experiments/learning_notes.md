@@ -272,6 +272,11 @@ I have decided to systematically review all the details of deep learning, and or
 * Visualize the heatmap of classes helps understand which part of the image led to the final classification decisions
 * [See examples here][23]
 
+## ResNet
+* Resnet introduces residual learning, which allows to build a very deep network while addresing the vanishing gradient problem.
+
+## DenseNet
+* DenseNet improves ResNet further by allowing every convolution to have the access to inputs and lower layer feature maps, while keeping the number of params low in deep networks by using both "bottleneck" and "transition layer".
 
 ## RNN
 * RNN is trying to help analysis on a sequence, so that there could be more context, and therefore they are often used in NLP.
@@ -309,7 +314,7 @@ I have decided to systematically review all the details of deep learning, and or
     * [sentence transformers][31] and its [full list of pretrained models][32]
     * [Facebook InferSent][33]
     * [Google Universal Sentence Encoder][34]
-    
+
 ## Autoencoder
 * [A big of tricks when tunning GAN][39]
 
