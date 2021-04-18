@@ -88,6 +88,7 @@ I have decided to systematically review all the details of deep learning, and or
   * Besides concatenation, we can also do other operations to put multiple inputs together, such as `add`, `dot`, `multiple`, etc.
 * Note! The input here doesn't have to bethe first layer of NN. Each input can be a sequence of layers, and finally all these inputs merged at a certain layer.
   * It's like an NN has multiple branches, and each branch do different types of work with the same original input data 
+* Multiple inputs also has a cost in model complexity and the increasing in parameters
 
 ### Hidden Layers
 * Having more units in a layer, also means having higher dimensional space representaton, will allow you to learn more complex representation.
@@ -282,10 +283,30 @@ I have decided to systematically review all the details of deep learning, and or
 * [See examples here][23]
 
 ## ResNet
-* Resnet introduces residual learning, which allows to build a very deep network while addresing the vanishing gradient problem.
+* ResNet introduces residual learning, which allows to build a very deep network while addresing the vanishing gradient problem.
+  * Gradient Vanishing: Backpropagation follows the chain rule, there is a tendency for the gradient to diminish as it reaches to the shallow layers, due to the multiplication of small numbers (small loss functions and parameter values). However, if the gradients decrease and the parameters cannot update appropriately, then the network will fail to improve its performance.
+  * ResNet allows info flows through shortcuts to the shallow layers, in order to relieve the gradient vanishing problem
+* [The implementation of ResNet][56]
+  * A transition layer is used when joining 2 residual blocks in different sizes
+  * `kernel_initializer='he_normal'` to help the convergence when back propagation is taking the place
+  * ResNet is easier to converge with Adam
+    * In Adam, `lr_reducer()` is to reduce the learning rate by a certain factor if the validation rate has not been improved after `patience=5` epochs
+  * In Keras, we can use `load_model()` to load the saved model from `checkpoint`
+  * It has v1 and v2. v2 improves the performance by making some chanages in the layers arrangement in residual block design. It moves Conv2D layer ahead of BN-ReLU layers in each residual block, and the kernel sizes of Conv2D are a bit different.
+<p align="center">
+<img src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/images/resnet_v1_v2_diff.PNG" width="400" height="250" />
+</p>
 
 ## DenseNet
-* DenseNet improves ResNet further by allowing every convolution to have the access to inputs and lower layer feature maps, while keeping the number of params low in deep networks by using both "bottleneck" and "transition layer".
+* DenseNet improves ResNet further by allowing the next layer to get access to all the previous feature maps (Dense), while keeping the number of params low in deep networks by using both "bottleneck" and "transition layer". [See DenseNet implementation here][57]
+* The number of feature maps generated per layer is called the growth rate `k`, normally `k=12`
+* With the Bottleneck layer, each Conv2D(3) only need to process `4k` feature maps instead of `(l-1) * k + 2*k` for layer `l`
+* Transition layer is used to transform a feature map size to a smaller one between 2 `Dense` layers
+  * The reduction rate is usually half
+  * Within each Dense layerb, the feature map size remains constant
+  * Using multiple Dense layers joined by transition layers is a solution to solve feature maps sizes mismatch 
+  * When compression and dimensionality reduction being put together, the transition layer is BN-Conv2D(1)-AvergingPooling2D
+* `RMSprop` is used as the optimizer for DenseNet, since it converges better
 
 ## RNN
 * RNN is trying to help analysis on a sequence, so that there could be more context, and therefore they are often used in NLP.
@@ -399,3 +420,5 @@ I just found some companies like to ask you to implement methods used in deep le
 [53]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter1-keras-quick-tour/rnn-mnist-1.5.1.py
 [54]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter2-deep-networks/cnn-y-network-2.1.2.py
 [55]:https://towardsdatascience.com/understanding-2d-dilated-convolution-operation-with-examples-in-numpy-and-tensorflow-with-d376b3972b25
+[56]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter2-deep-networks/resnet-cifar10-2.2.1.py
+[57]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter2-deep-networks/densenet-cifar10-2.4.1.py
