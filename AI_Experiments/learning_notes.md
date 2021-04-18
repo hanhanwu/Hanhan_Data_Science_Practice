@@ -80,6 +80,15 @@ I have decided to systematically review all the details of deep learning, and or
   
 
 ## Layers & Dimensions 😱😱😱
+### Multiple Inputs
+* We often see one input in NN, but in fact it allows multiple inputs. 
+  * For example, such as `Concatenate()` which concatenate multiple inputs of the same shape at the concatenation axis to form 1 tensor. [Check the code example here][54]
+    * The 2 branches in this code are using different "dilation rate". The Dilation rate decides the kernel's receptive field's size. Comparing with `dilation_rate=1`, larger rate will fill more 0 around the kernel of dilation_rate as 1, which is a computationally effecient method to increase the kernel's receptive field's size. [See example here][55].
+    * Meanwhile, using different receptive field sizes for kernels here allows each branch to generate different feature maps.
+  * Besides concatenation, we can also do other operations to put multiple inputs together, such as `add`, `dot`, `multiple`, etc.
+* Note! The input here doesn't have to bethe first layer of NN. Each input can be a sequence of layers, and finally all these inputs merged at a certain layer.
+  * It's like an NN has multiple branches, and each branch do different types of work with the same original input data 
+
 ### Hidden Layers
 * Having more units in a layer, also means having higher dimensional space representaton, will allow you to learn more complex representation.
   * Imagine this allows you to cut an image into smaller pieces for learning.
@@ -388,3 +397,5 @@ I just found some companies like to ask you to implement methods used in deep le
 [51]:https://play.google.com/books/reader?id=68rTDwAAQBAJ&hl=en_CA&pg=GBS.PA14.w.1.0.83
 [52]:https://play.google.com/books/reader?id=68rTDwAAQBAJ&hl=en_CA&pg=GBS.PA30.w.3.0.53
 [53]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter1-keras-quick-tour/rnn-mnist-1.5.1.py
+[54]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter2-deep-networks/cnn-y-network-2.1.2.py
+[55]:https://towardsdatascience.com/understanding-2d-dilated-convolution-operation-with-examples-in-numpy-and-tensorflow-with-d376b3972b25
