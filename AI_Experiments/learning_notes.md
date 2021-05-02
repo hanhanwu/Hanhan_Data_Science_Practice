@@ -368,7 +368,7 @@ I have decided to systematically review all the details of deep learning, and or
   * In the decoder plot, it should reflect the same regions for each digit
   * This type of plot can help gain more understanding of the NN
 
-### Applications
+### Autoencoder Applications
 * All need labels
 * [Autoencoder denoising][59]
   * Removing noise from the images
@@ -383,9 +383,15 @@ I have decided to systematically review all the details of deep learning, and or
 * [Autoencoder colorization][60]
   * Colorize the images 
 
-
 ### Other
 * [A big of tricks when tunning GAN][39]
+
+## Meta Learning
+* Different from traditional supervised learning where the model learned the ground truth from the training labels, meta learning doesn't provide the ground truth but let the model to learn how to learn
+### [Few-Shot Learning][62]
+* It's a type of meta learning. The model is provided with a "support set" where doesn't have the labels but contains the multiples samples of the ground truth. The model will compare the similarities between the "query" and the supporting set, to find the most similar one and predict that as the right one
+* "K-ways": means k classes. More classes, more challenging to improve the accuracy
+* "N-shot": means n samples in a class. Higher n, easier to improve the accuracy
 
 ## Well Known Datasets
 * [Keras packaged datasets][3]
@@ -465,3 +471,4 @@ I just found some companies like to ask you to implement methods used in deep le
 [59]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter3-autoencoders/denoising-autoencoder-mnist-3.3.1.py
 [60]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter3-autoencoders/colorization-autoencoder-cifar10-3.4.1.py
 [61]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter3-autoencoders/classifier-autoencoder-mnist-3.3.1.py
+[62]:https://www.analyticsvidhya.com/blog/2021/05/an-introduction-to-few-shot-learning/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
