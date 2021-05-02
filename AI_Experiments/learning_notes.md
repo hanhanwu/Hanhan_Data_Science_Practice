@@ -346,6 +346,45 @@ I have decided to systematically review all the details of deep learning, and or
     * [Google Universal Sentence Encoder][34]
 
 ## Autoencoder
+* Autoencoder is a NN architecture that attempts to find the compressed representation of the given input data. It can learn the code alone without human label and therefore is considered as "unsupervised learning". However, when you are using autoencoder in some applications (such as denoising, colorization, etc.), labels are still needed in the model training part.
+### Main Architecture
+* Input (`x`) --> Encoder (`z = f(x)`) --> Latent Vector (`z`) --> Decoder (`x_approx = g(z)`)
+  * Latent Vector is a low-dimensional compressed representation of the input distribution
+  * It's expected that the output recovered by the decoder can only approximate the input
+  * The goal is to make `x_approx` as similar as `x`, so there's a loss function trying to minimize the dissimilarity between `x` and `x_approx`
+    * If the decoder's output is assumed to be Gaussian, then the loss function boils down to `MSE`
+    * The autoencoder can be trained to minimize the loss function through backpropagation. Keras does backpropagation automatically for you.
+* Visualized Common Autoencoder's Structure
+  * The example here was used for MNIST dataset (0 ~ 9 digits in grey scale) 
+  * For more complex dataset, we can create deeper encoder & decoder, as well as using more epoches in training
+<p align="center">
+<img src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/images/encoder.PNG" width="600" height="350" />
+<img src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/images/decoder.PNG" width="600" height="450" />
+ <img src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/images/autoencoder.PNG" width="600" height="250" />
+</p>
+
+* Using MNIST data as an example, we can plot the latent vector as 2-dim plot, [check the code here][58]
+  * Each digit is clustered in a region of the space in the latent vector plot
+  * In the decoder plot, it should reflect the same regions for each digit
+  * This type of plot can help gain more understanding of the NN
+
+### Applications
+* All need labels
+* [Autoencoder denoising][59]
+  * Removing noise from the images
+* [Autoencoder classification][61]
+  * Here provides a function to convert colored images to grey images
+  *  The architecture here is more complex 🌺:
+    * Added more blocks of convolution and transposed convolution (see `layer_filters` has more values)
+    * Increased the number of filters at each CNN block (see each value in `layer_filters`)
+    * Latent Vactor has increased  the dimension, in order to increase the number of salient properties it can present
+    * Training increased epoches
+      * Learning rate reducer is used to scale down the learning rate when validation loss is not improving 
+* [Autoencoder colorization][60]
+  * Colorize the images 
+
+
+### Other
 * [A big of tricks when tunning GAN][39]
 
 ## Well Known Datasets
@@ -422,3 +461,7 @@ I just found some companies like to ask you to implement methods used in deep le
 [55]:https://towardsdatascience.com/understanding-2d-dilated-convolution-operation-with-examples-in-numpy-and-tensorflow-with-d376b3972b25
 [56]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter2-deep-networks/resnet-cifar10-2.2.1.py
 [57]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter2-deep-networks/densenet-cifar10-2.4.1.py
+[58]:https://github.com/hanhanwu/Hanhan_COLAB_Experiemnts/blob/master/autoencoder_latent_vector_plot.ipynb
+[59]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter3-autoencoders/denoising-autoencoder-mnist-3.3.1.py
+[60]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter3-autoencoders/colorization-autoencoder-cifar10-3.4.1.py
+[61]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter3-autoencoders/classifier-autoencoder-mnist-3.3.1.py
