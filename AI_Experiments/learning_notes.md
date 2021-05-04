@@ -383,8 +383,38 @@ I have decided to systematically review all the details of deep learning, and or
 * [Autoencoder colorization][60]
   * Colorize the images 
 
+## Generative Adversarial Networks (GAN)
+* GANs belong to the family of generative models. Different from autoencoder, generative models can create new and meaningful output given arbitary encodings
+* GANs train 2 competing components
+  * Discriminator: it learns to discriminate the real and the fake data 
+  * Generator: it's trying to fool the discriminator by generating fake data that pretend to be real
+  * When it reaches to the point that the Discriminator can no longer tell the difference between real and fake data, it will be discarded and the model will use Generator to create new "realistic" data
+  * If the data input is images, both generator and discriminator will be using CNN; if the input is single-dimensional sequence (sucb as audio), both generator and discriminator will be using RNN/LSTM/GRU
+* Loss functions
+  * The loss function for discriminator is to minimize the error when identifying both real and fake data (given the condition)
+    * real data with label 1, fake data with label 0 
+  * The loss function for generator is to maximize the chance of making discriminator believing the fake data is real (conditioned on the specified conditions)
+    * When training the generator, it's in the adversarial step of GAN model where param updates of the discriminator will be frozen
+      * The Generator is only trained with fake data & label 1 (pretending to be real)
+    * The reason why the loss function of generator is not simply opposite the discriminator's loss function:
+      * The gradient updates are small and have diminished significantly when propagate to the generator layers, and will make the generator fail to converge
+* DCGAN vs CCGAN
+  * [DCGAN Design Principles][63]
+    * The use of BN (Batch Normalization) can help stablize learning by normalizing the input to each layer to have 0 mean and unit variance
+    * [The Code][64]  
+      * Opposite to CNNs, transposed CNNs can create an image given feature maps, this is also why it's used in autoencoder too 
+      * Due to custom training, `train_on_batch()` is used instead of using `fit()`
+      * train the discriminator --> train the generator in the adversarial model will be repeated in multiple train steps
+      * When the training converges, the discriminator loss is around 0.5 while the generator loss is around 1
+  * CCGAN
+    * It's quite similar to DGAN, except the additional conditions applied to generator, discriminator and the loss function
+    * With the given condition, we can use CCGAN to create a specified fake output 
+    * [The Code][65] 
+      * The condition here is the additional one hot vector which indicates which digit do we want to create the fake data for 
+* Comparing with other types of NN, GANs are notoriously hard to train, some minor change can lead to training instability
+
 ### Other
-* [A big of tricks when tunning GAN][39]
+* [A big of trick when tunning GAN][39]
 
 ## Meta Learning
 * Different from traditional supervised learning where the model learned the ground truth from the training labels, meta learning doesn't provide the ground truth but let the model to learn how to learn
@@ -472,3 +502,6 @@ I just found some companies like to ask you to implement methods used in deep le
 [60]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter3-autoencoders/colorization-autoencoder-cifar10-3.4.1.py
 [61]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter3-autoencoders/classifier-autoencoder-mnist-3.3.1.py
 [62]:https://www.analyticsvidhya.com/blog/2021/05/an-introduction-to-few-shot-learning/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+[63]:https://play.google.com/books/reader?id=68rTDwAAQBAJ&hl=en_CA&pg=GBS.PA111.w.5.0.3
+[64]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter4-gan/dcgan-mnist-4.2.1.py
+[65]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter4-gan/cgan-mnist-4.3.1.py
