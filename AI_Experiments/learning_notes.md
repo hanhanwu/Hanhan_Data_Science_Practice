@@ -443,7 +443,15 @@ I have decided to systematically review all the details of deep learning, and or
   * The loss function in WGAN is using`wasserstein_loss`, while DGAN is using `binary_crossentropy`
   * See [WGAN implementation and wasserstein_loss][66], [DGAN implementation][64]
 * But WGAN doesn't take care of the generated images' quality
-
+#### LGAN
+* Fake samples on the correct side vs Fake samples' distribution is closer
+  * Idealy, the fake samples' distribution should be as close as the real samples' distribution. However, in original GANs, once the fake samples are already on the correct side of the decision boundary, the gradients vanish. --> This prevents the generator from further improving the quality of generated fake data in order to move closer to the real samples' distribution.
+  * The solution is to replace the loss function with least square loss function, the gradients won't vanish as long as the fake samples' distribution is still far from the real samples' distribution. This will motivate the generator to keep improving its estimate of real dentisy distribution, even if the fake samples are already on the correct side of the decision boundaty.
+* LGAN is same as DGAN, except:
+  * The loss function for both generator and discriminator is `MSE` in LGAN
+    * Least square error minimizes the "total" euclidean distance between a line and the data points. MSE is mean squared error, a good metric to evaluate the distance in average
+  * There is no avtivation or the avtivation is None in LGAN
+  * See [LGAN implementation][68], [DGAN implementation][64]
 
 ### Other
 * [A big of trick when tunning GAN][39]
@@ -539,3 +547,4 @@ I just found some companies like to ask you to implement methods used in deep le
 [65]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter4-gan/cgan-mnist-4.3.1.py
 [66]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter5-improved-gan/wgan-mnist-5.1.2.py
 [67]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/lib/gan.py
+[68]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter5-improved-gan/lsgan-mnist-5.2.1.py
