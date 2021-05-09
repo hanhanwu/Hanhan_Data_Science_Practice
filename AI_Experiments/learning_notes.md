@@ -393,7 +393,7 @@ I have decided to systematically review all the details of deep learning, and or
 * Comparing with other types of NN, GANs are notoriously hard to train, and prone to mode collapse
   * Mode Collapse: the generator collapses which produces limited varieties of samples. For example, 0 ~9 digits, it only provides a few modes such as 6,7,8. The main cause is, in aach iteration of generator over-optimizes for a particular discriminator, and the discriminator never manages to learn its way out of the trap. As a result the generators rotate through a small set of output types. 
 
-### DCGAN vs CCGAN
+### DCGAN vs CGAN
 * [DCGAN Design Principles][63]
   * The use of BN (Batch Normalization) can help stablize learning by normalizing the input to each layer to have 0 mean and unit variance
   * [The Code][64]  
@@ -401,9 +401,9 @@ I have decided to systematically review all the details of deep learning, and or
     * Due to custom training, `train_on_batch()` is used instead of using `fit()`
     * train the discriminator --> train the generator in the adversarial model will be repeated in multiple train steps
     * When the training converges, the discriminator loss is around 0.5 while the generator loss is around 1
-* CCGAN
-  * It's quite similar to DGAN, except the additional conditions applied to generator, discriminator and the loss function
-  * With the given condition, we can use CCGAN to create a specified fake output 
+* CGAN
+  * It's quite similar to DCGAN, except the additional conditions applied to generator, discriminator and the loss function
+  * With the given condition, we can use CGAN to create a specified fake output 
   * [The Code][65] 
     * The condition here is the additional one hot vector which indicates which digit do we want to create the fake data for 
 * Loss functions
@@ -425,33 +425,49 @@ I have decided to systematically review all the details of deep learning, and or
  
 ### Improved GANs
 * WGAN (Wasserstein GAN) is trying to improve model stability and avoid mode collapse by replacing the loss function based on Earth Mover's Distance (EMD), also known as Wasserstein 1, which is a smooth disfferentiable function even when there is no overlap between the 2 probaiblity distributions.
-* LGAN (Least Square GAN) is trying to improve both model stability and generated images' perceptive quality on DGAN, by replacing sigmoid cross-entropy loss with least squares loss, since it doesn't bring in vanishing gradients during training
-* AGAN (Auxiliary GAN) is trying to improve both model stability and generated images' perceptive quality on CGAN
+* LSGAN (Least Square GAN) is trying to improve both model stability and generated images' perceptive quality on DCGAN, by replacing sigmoid cross-entropy loss with least squares loss, since it doesn't bring in vanishing gradients during training
+* ACGAN (Auxiliary GAN) is trying to improve both model stability and generated images' perceptive quality on CGAN, by requiring its discrimiator to perform an additional classification task
 * [Reusable discriminator, generator and train() by multiple GANs][67]
 #### WGAN
-* In DGAN and CGAN, the loss function is trying to minimizing the DISTANCE (JS distance, Jensen Shannon distance) between the target distribution and its estimate. However, for some pairs of distributions, there is no smooth path to minimize this JS distance, and the training will fail to converge by gradient descent.
+* In DCGAN and CGAN, the loss function is trying to minimizing the DISTANCE (JS distance, Jensen Shannon distance) between the target distribution and its estimate. However, for some pairs of distributions, there is no smooth path to minimize this JS distance, and the training will fail to converge by gradient descent.
   * The "distribution" here is probability distribution
   * When there is no overlap between the 2 distributions, there is no smooth function can close the gap between them
 * The idea of EMD is, it's a measure of how much mass should be tranported in order to match the 2 probability distributions
   * EMD can be interpreted as the least amount of work needed to move the pile of dirt p to fill holes q
   * When there is no overlap between 2 distributions, it can provide a smooth function to match the 2 probability distributions
-* WGAN is same as DGAN, except:
-  * WGAN is using `-1` as the label for fake data while DGAN is using 0
+* WGAN is same as DCGAN, except:
+  * WGAN is using `-1` as the label for fake data while DCGAN is using 0
     * In order to prevent the gradient from vanishing because of the opposite sign in real & fake lables, and the small magnitude of weights due to weights clipping, a tweak has been done in WGAN. Instead of training the weights in a single combined batch of real and fake data, it trains 1 batch of real data and then 1 batch of fake data
-  * WGAN trains the distriminator `n_critic` iterations before training the generator for 1 iteration; In DGAN, there is no `n_critic`, an in each iteration, both discriminator and generator will be trained once
+  * WGAN trains the distriminator `n_critic` iterations before training the generator for 1 iteration; In DCGAN, there is no `n_critic`, an in each iteration, both discriminator and generator will be trained once
     * In WGAN, after `n_critic` iterations of training discriminator, the training of generator will freeze the discriminator, then the discriminator will be unfrozen and start another `n_critic` iterations of distriminator training
-  * The loss function in WGAN is using`wasserstein_loss`, while DGAN is using `binary_crossentropy`
-  * See [WGAN implementation and wasserstein_loss][66], [DGAN implementation][64]
+  * The loss function in WGAN is using`wasserstein_loss`, while DCGAN is using `binary_crossentropy`
+  * See [WGAN implementation and wasserstein_loss][66], [DCGAN implementation][64]
 * But WGAN doesn't take care of the generated images' quality
-#### LGAN
+#### LSGAN
 * Fake samples on the correct side vs Fake samples' distribution is closer
   * Idealy, the fake samples' distribution should be as close as the real samples' distribution. However, in original GANs, once the fake samples are already on the correct side of the decision boundary, the gradients vanish. --> This prevents the generator from further improving the quality of generated fake data in order to move closer to the real samples' distribution.
   * The solution is to replace the loss function with least square loss function, the gradients won't vanish as long as the fake samples' distribution is still far from the real samples' distribution. This will motivate the generator to keep improving its estimate of real dentisy distribution, even if the fake samples are already on the correct side of the decision boundaty.
-* LGAN is same as DGAN, except:
-  * The loss function for both generator and discriminator is `MSE` in LGAN
+* LSGAN is same as DCGAN, except:
+  * The loss function for both generator and discriminator is `MSE` in LSGAN
     * Least square error minimizes the "total" euclidean distance between a line and the data points. MSE is mean squared error, a good metric to evaluate the distance in average
-  * There is no avtivation or the avtivation is None in LGAN
-  * See [LGAN implementation][68], [DGAN implementation][64]
+  * There is linear avtivation or the avtivation is None in LSGAN
+    * DCGAN can use 'sigmoid', 'relu', 'leakyrule'
+    * LSGAN uses None or 'linear' for the activation function
+  * See [LSGAN implementation][68], [DCGAN implementation][64]
+#### ACGAN
+* ACGAN makes the improvement upon CGAN by adding an auxiliary class decoder network. 
+* ACGAN assumes forcing the network to do additional work will improve the performance of the original task.
+  * The additional work is added classification
+  * The original task is fake data generation
+* ACGAN vs CGAN
+  * The data input doesn't have to be images, but here let's use images as an example 
+  * The input of CGAN discriminator is the image (fake or real) and the label of fake or real, output is the probability of fake or real. The input of ACGAN is the image (fake or real), and the input is the probability of fake or real, as well predicted class of the image
+    * The loss function to predict fake or real is 'binary_corssentropy'
+    * The loss function to predict image class is 'categorical_crossentropy'
+    * The auxiliary decoder network is used to perform image classification. In the code, it's the extra steps added in CGAN's discriminator
+  * [ACGAN implementation][69], [ACGAN discriminator][67], [CGAN implementation][65]
+    * Discriminator differences
+    * Loss functions differences 
 
 ### Other
 * [A big of trick when tunning GAN][39]
@@ -548,3 +564,4 @@ I just found some companies like to ask you to implement methods used in deep le
 [66]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter5-improved-gan/wgan-mnist-5.1.2.py
 [67]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/lib/gan.py
 [68]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter5-improved-gan/lsgan-mnist-5.2.1.py
+[69]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter4-gan/cgan-mnist-4.3.1.py
