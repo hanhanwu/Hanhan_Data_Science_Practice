@@ -390,6 +390,22 @@ I have decided to systematically review all the details of deep learning, and or
   * Generator: it's trying to fool the discriminator by generating fake data that pretend to be real
   * When it reaches to the point that the Discriminator can no longer tell the difference between real and fake data, it will be discarded and the model will use Generator to create new "realistic" data
   * If the data input is images, both generator and discriminator will be using CNN; if the input is single-dimensional sequence (sucb as audio), both generator and discriminator will be using RNN/LSTM/GRU
+* Comparing with other types of NN, GANs are notoriously hard to train, and prone to mode collapse
+  * Mode Collapse: the generator collapses which produces limited varieties of samples. For example, 0 ~9 digits, it only provides a few modes such as 6,7,8. The main cause is, in aach iteration of generator over-optimizes for a particular discriminator, and the discriminator never manages to learn its way out of the trap. As a result the generators rotate through a small set of output types. 
+
+### DCGAN vs CCGAN
+* [DCGAN Design Principles][63]
+  * The use of BN (Batch Normalization) can help stablize learning by normalizing the input to each layer to have 0 mean and unit variance
+  * [The Code][64]  
+    * Opposite to CNNs, transposed CNNs can create an image given feature maps, this is also why it's used in autoencoder too 
+    * Due to custom training, `train_on_batch()` is used instead of using `fit()`
+    * train the discriminator --> train the generator in the adversarial model will be repeated in multiple train steps
+    * When the training converges, the discriminator loss is around 0.5 while the generator loss is around 1
+* CCGAN
+  * It's quite similar to DGAN, except the additional conditions applied to generator, discriminator and the loss function
+  * With the given condition, we can use CCGAN to create a specified fake output 
+  * [The Code][65] 
+    * The condition here is the additional one hot vector which indicates which digit do we want to create the fake data for 
 * Loss functions
   * The loss function for discriminator is to minimize the error when identifying both real and fake data (given the condition)
     * real data with label 1, fake data with label 0 
@@ -402,20 +418,18 @@ I have decided to systematically review all the details of deep learning, and or
   * As we note that, 
     * During the discriminator training, there's no need to frozen generator's weights, since it's only used to create fake data
     * But during generator training, we need discriminator's participation, since the loss function needs its output
-* DCGAN vs CCGAN
-  * [DCGAN Design Principles][63]
-    * The use of BN (Batch Normalization) can help stablize learning by normalizing the input to each layer to have 0 mean and unit variance
-    * [The Code][64]  
-      * Opposite to CNNs, transposed CNNs can create an image given feature maps, this is also why it's used in autoencoder too 
-      * Due to custom training, `train_on_batch()` is used instead of using `fit()`
-      * train the discriminator --> train the generator in the adversarial model will be repeated in multiple train steps
-      * When the training converges, the discriminator loss is around 0.5 while the generator loss is around 1
-  * CCGAN
-    * It's quite similar to DGAN, except the additional conditions applied to generator, discriminator and the loss function
-    * With the given condition, we can use CCGAN to create a specified fake output 
-    * [The Code][65] 
-      * The condition here is the additional one hot vector which indicates which digit do we want to create the fake data for 
-* Comparing with other types of NN, GANs are notoriously hard to train, some minor change can lead to training instability
+* Why easy to have model instability
+  * If the discriminator learns faster than the generator, then the generator's params will fail to optimize
+  * But if the discriminator learns slower, then the gradients may vanish before reaching the generator
+    * Worst case, if the discriminator cannot converge, the generator cannot get useful feedback 
+ 
+### Improved GANs
+* WGAN (Wasserstein GAN) is trying to improve model stability and avoid mode collapse by replacing the loss function based on Earth Mover's Distance (EMD), also known as Wasserstein 1.
+* LGAN (Least Square GAN) is trying to improve both model stability and generated images' perceptive quality on DGAN, by replacing sigmoid cross-entropy loss with least squares loss, since it doesn't bring in vanishing gradients during training
+* AGAN (Auxiliary GAN) is trying to improve both model stability and generated images' perceptive quality on CGAN
+#### WGAN
+* 
+
 
 ### Other
 * [A big of trick when tunning GAN][39]
