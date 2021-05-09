@@ -16,7 +16,7 @@ I have decided to systematically review all the details of deep learning, and or
 ## [Deep Learning in Time Series / Sequential Analysis Learning Notes][46]
 
 
-## Data Preprocessing Methods 😱😱
+## Data Preprocessing Methods
 ### Input Structure
 * The image below is showing the data input requirements for MLP, CNN and RNN
   * [MLP input code][47]
@@ -424,11 +424,25 @@ I have decided to systematically review all the details of deep learning, and or
     * Worst case, if the discriminator cannot converge, the generator cannot get useful feedback 
  
 ### Improved GANs
-* WGAN (Wasserstein GAN) is trying to improve model stability and avoid mode collapse by replacing the loss function based on Earth Mover's Distance (EMD), also known as Wasserstein 1.
+* WGAN (Wasserstein GAN) is trying to improve model stability and avoid mode collapse by replacing the loss function based on Earth Mover's Distance (EMD), also known as Wasserstein 1, which is a smooth disfferentiable function even when there is no overlap between the 2 probaiblity distributions.
 * LGAN (Least Square GAN) is trying to improve both model stability and generated images' perceptive quality on DGAN, by replacing sigmoid cross-entropy loss with least squares loss, since it doesn't bring in vanishing gradients during training
 * AGAN (Auxiliary GAN) is trying to improve both model stability and generated images' perceptive quality on CGAN
+* [Reusable discriminator, generator and train() by multiple GANs][67]
 #### WGAN
-* 
+* In DGAN and CGAN, the loss function is trying to minimizing the DISTANCE (JS distance, Jensen Shannon distance) between the target distribution and its estimate. However, for some pairs of distributions, there is no smooth path to minimize this JS distance, and the training will fail to converge by gradient descent.
+  * The "distribution" here is probability distribution
+  * When there is no overlap between the 2 distributions, there is no smooth function can close the gap between them
+* The idea of EMD is, it's a measure of how much mass should be tranported in order to match the 2 probability distributions
+  * EMD can be interpreted as the least amount of work needed to move the pile of dirt p to fill holes q
+  * When there is no overlap between 2 distributions, it can provide a smooth function to match the 2 probability distributions
+* WGAN is same as DGAN, except:
+  * WGAN is using `-1` as the label for fake data while DGAN is using 0
+    * In order to prevent the gradient from vanishing because of the opposite sign in real & fake lables, and the small magnitude of weights due to weights clipping, a tweak has been done in WGAN. Instead of training the weights in a single combined batch of real and fake data, it trains 1 batch of real data and then 1 batch of fake data
+  * WGAN trains the distriminator `n_critic` iterations before training the generator for 1 iteration; In DGAN, there is no `n_critic`, an in each iteration, both discriminator and generator will be trained once
+    * In WGAN, after `n_critic` iterations of training discriminator, the training of generator will freeze the discriminator, then the discriminator will be unfrozen and start another `n_critic` iterations of distriminator training
+  * The loss function in WGAN is using`wasserstein_loss`, while DGAN is using `binary_crossentropy`
+  * See [WGAN implementation and wasserstein_loss][66], [DGAN implementation][64]
+* But WGAN doesn't take care of the generated images' quality
 
 
 ### Other
@@ -523,3 +537,5 @@ I just found some companies like to ask you to implement methods used in deep le
 [63]:https://play.google.com/books/reader?id=68rTDwAAQBAJ&hl=en_CA&pg=GBS.PA111.w.5.0.3
 [64]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter4-gan/dcgan-mnist-4.2.1.py
 [65]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter4-gan/cgan-mnist-4.3.1.py
+[66]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter5-improved-gan/wgan-mnist-5.1.2.py
+[67]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/lib/gan.py
