@@ -17,9 +17,16 @@ In industry, many times we need to generate features, understanding them and gen
   * Include multiple records plot
   * For each record, it shows how does each feature value lead to the final predictio result
 
+## Tips
+* When the data is large, you can use `clustered_df = shap_kmeans(df)` and put this clustered_df in a shap explainer. This method helps speed up the computation
+  * In SHAP, for each feature subset (2^m) it perturbs the values of features and makes prediction to see how peturbing a feature subset changes the prediction of model. For each feature subset (e.g. [0,1,1,0,0,0] only perturbing feature 2nd and 3rd) you can replace the feature values by any of the values in the training set. By default it does that exhaustively for all points in training, therefore the total number of model predictions it evaluates is n2^m. <b>So, we use shap.kmeans to only perturb based on some representatives (10 centroids instead of 1000 datapoints)</b>
+  * There are [different types of SHAP explainer][6]
+    * `KernelExplainer` is generic and can be used for all types of models, but slow. That's also why when using TreeExplainer, you don't have to use `shap.kmeans` for large dataset, since it's fast 
+
 
 [1]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Better4Industry/Feature_Selection_Collection/try_shap_xgboost.ipynb
 [2]:https://www.analyticsvidhya.com/blog/2019/11/shapley-value-machine-learning-interpretability-game-theory/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
 [3]:https://towardsdatascience.com/introducing-shap-decision-plots-52ed3b4a1cba
 [4]:https://slundberg.github.io/shap/notebooks/plots/decision_plot.html
 [5]:https://github.com/slundberg/shap/blob/6af9e1008702fb0fab939bf2154bbf93dfe84a16/shap/plots/_decision.py#L46
+[6]:https://shap-lrjball.readthedocs.io/en/docs_update/api.html
