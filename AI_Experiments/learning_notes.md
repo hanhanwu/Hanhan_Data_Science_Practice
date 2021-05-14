@@ -465,7 +465,7 @@ I have decided to systematically review all the details of deep learning, and or
     * The loss function to predict fake or real is 'binary_corssentropy'
     * The loss function to predict image class is 'categorical_crossentropy'
     * The auxiliary decoder network is used to perform image classification. In the code, it's the extra steps added in CGAN's discriminator
-  * [ACGAN implementation][69], [ACGAN discriminator][67], [CGAN implementation][65]
+  * [ACGAN implementation][69], [ACGAN discriminaton][67], [CGAN implementation][65]
     * Discriminator differences
     * Loss functions differences 
 
@@ -479,13 +479,37 @@ I have decided to systematically review all the details of deep learning, and or
 * InfoGAN learns the disentangled representation in an unsupervised way, by maximizing the mutual info between the input codes and output observation
   * In order to maximize this mutual info, InfoGAN proposes a regularizer that forces the generator to consider the latent codes when it synthesizes the fake data
 * InfoGAN vs ACGAN
-  * [InfoGAN implementation][70]
-    * For continuous code, recommends to have `λ<1`, and in the code, it's using 0.5
-    * For discrete code, recommends to have `λ=1`
-
+  * InfoGAN expands ACGAN by adding disentangled codes so that the generated output will be able to control specific attributes 
+  * For the input of generator of both ACGAN and InfoGAN, both have fake labels. 
+    * Besides InfoGAN has n codes for n disentangeled attributes
+  * For discriminator, both have loss function to predict fake or real (binary_crossentropy)
+    * ACGAN has categorical_corssentropy to predict input class, while InfoGAN has categorical_corssentropy for discrete code
+    * Besides InfoGAN has `mi_loss` for EACH continuous code
+  * [InfoGAN implementation][70], [ACGAN discriminaton][67]
+    * The disentangle codes in InfoGAN
+      * In this example , these are continuous codes, each code is drawn from a normal distribution with 0.5 std and 0 mean
+    * Loss functions 
+      * `λ` is the weight of loss functions
+      * For continuous code, recommends to have `λ<1`, and in the code, it's using 0.5
+      * For discrete code, recommends to have `λ=1`
+      * The weight for binary_crossentropy is also 1
+    * n attributes
+      * You can add whatever number of disentangled code, just need to specific the input in generator and discriminator and loss functions for each of these code 
 
 #### StackedGAN
-* StackedGAN uses a pretrained encoder or classifer to help disentangle the latent codes
+* StackedGAN uses a pretrained encoder or classifer to help disentangle the latent codes.
+* It breaks a GAN into a stack of GANs, that each is trained independently in discriminator-adversarial manner with its own latent code:
+  * The encoder is first trained to provide features
+  * Then the encoder-GANs are trained jointly to learn how to use the noise code to control the specific attributes of the generator output
+<p align="center">
+<img src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/images/stackGAN.PNG" width="600" height="400" />
+</p>
+
+* [StackGAN implementation][71]
+  * binary_crossentropy is used to predict real or fake. MSE is used for each encoder. 
+* StackGAN vs InfoGAN
+  * InfoGAN has simpler structure and faster to train 
+
 
 ### Other
 * [A big of trick when tunning GAN][39]
@@ -584,3 +608,4 @@ I just found some companies like to ask you to implement methods used in deep le
 [68]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter5-improved-gan/lsgan-mnist-5.2.1.py
 [69]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter4-gan/cgan-mnist-4.3.1.py
 [70]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter6-disentangled-gan/infogan-mnist-6.1.1.py
+[71]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter6-disentangled-gan/stackedgan-mnist-6.2.1.py
