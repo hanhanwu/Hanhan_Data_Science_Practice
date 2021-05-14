@@ -8,6 +8,8 @@ In industry, many times we need to generate features, understanding them and gen
 * [My practice code 1 - XGBoost Regressor][1]
 * Github has blocked the loading of JS, in fact it provides a method to interact with each record and understand how the feature values affect the prediction
 ![shap JS](https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Better4Industry/Feature_Selection_Collection/xgboost_shap.PNG)
+
+  * In this force plot, the "base value" of the average predicted value from the model training, the "output value" is the predicted value of current observation. Pink is the position impact while blue is the negative impact. Both impacts indicate how does the base value distance from the output value
 * [SHAP decision plot][3]
   * [Code example][4]
     * Just need trained model and feature values, no need lables in the data
@@ -19,9 +21,15 @@ In industry, many times we need to generate features, understanding them and gen
 
 ## Tips
 * When the data is large, you can use `clustered_df = shap_kmeans(df)` and put this clustered_df in a shap explainer. This method helps speed up the computation
-  * In SHAP, for each feature subset (2^m) it perturbs the values of features and makes prediction to see how peturbing a feature subset changes the prediction of model. For each feature subset (e.g. [0,1,1,0,0,0] only perturbing feature 2nd and 3rd) you can replace the feature values by any of the values in the training set. By default it does that exhaustively for all points in training, therefore the total number of model predictions it evaluates is n2^m. <b>So, we use shap.kmeans to only perturb based on some representatives (10 centroids instead of 1000 datapoints)</b>
+  * In SHAP, for each feature subset (2^m - 2) it perturbs the values of features and makes prediction to see how peturbing a feature subset changes the prediction of model. For each feature subset (e.g. [0,1,1,0,0,0] only perturbing feature 2nd and 3rd) you can replace the feature values by any of the values in the training set. By default it does that exhaustively for all points in training, therefore the total number of model predictions it evaluates is n2^m. <b>So, we use shap.kmeans to only perturb based on some representatives (10 centroids instead of 1000 datapoints)</b>
+    * `m` is the feature number
+    * `N` is the number of samples
+    * Total number of model evaluation is `N * (2^m - 2)` 
   * There are [different types of SHAP explainer][6]
     * `KernelExplainer` is generic and can be used for all types of models, but slow. That's also why when using TreeExplainer, you don't have to use `shap.kmeans` for large dataset, since it's fast 
+* When doing the experiments of SHAP performance, there are multiple things can check 
+  * Time efficiency for different number of samples, differnt number of features, different model sizes (such as different tree numbers)
+  * While the time efficiency has been improved, how's the accuracy of model predictions 
 
 
 [1]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Better4Industry/Feature_Selection_Collection/try_shap_xgboost.ipynb
