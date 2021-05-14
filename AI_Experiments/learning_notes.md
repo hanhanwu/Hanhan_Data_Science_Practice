@@ -469,6 +469,24 @@ I have decided to systematically review all the details of deep learning, and or
     * Discriminator differences
     * Loss functions differences 
 
+### Disentangled Representation GANs
+* GANs can also learn disentangled latent codes or representations that can vary attributes of the generator outputs
+* A disentangled code or representation is a tensor that can change a specific feature or attribute of the output data while not affecting other attributes
+* * Comparing with the original GANs, if we're able to seperate the representation into entangled and disentangled interpretable latent code vectors, we will be able to tell the generator what to synthesize
+  * For example, in an image, with disentangled codes,we can indicate thickness, gender, hair style, etc. 
+
+#### InfoGAN
+* InfoGAN learns the disentangled representation in an unsupervised way, by maximizing the mutual info between the input codes and output observation
+  * In order to maximize this mutual info, InfoGAN proposes a regularizer that forces the generator to consider the latent codes when it synthesizes the fake data
+* InfoGAN vs ACGAN
+  * [InfoGAN implementation][70]
+    * For continuous code, recommends to have `λ<1`, and in the code, it's using 0.5
+    * For discrete code, recommends to have `λ=1`
+
+
+#### StackedGAN
+* StackedGAN uses a pretrained encoder or classifer to help disentangle the latent codes
+
 ### Other
 * [A big of trick when tunning GAN][39]
 
@@ -565,3 +583,4 @@ I just found some companies like to ask you to implement methods used in deep le
 [67]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/lib/gan.py
 [68]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter5-improved-gan/lsgan-mnist-5.2.1.py
 [69]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter4-gan/cgan-mnist-4.3.1.py
+[70]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter6-disentangled-gan/infogan-mnist-6.1.1.py
