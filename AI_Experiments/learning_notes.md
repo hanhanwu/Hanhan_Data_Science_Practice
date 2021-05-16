@@ -563,6 +563,12 @@ I have decided to systematically review all the details of deep learning, and or
     * For example, in [CycleGAN implementation][72], `mnist_cross_svhn` is trying to translate images between MNIST digits and SVHM street view numbers...
   * Also as `mnist_cross_svhn` shown, the results of CycleGAN may not be sematic consistent. To address this issue, we can try `CyCADA (Cycle-Consistent Adversarial Domain Adaptation)` which adds a semantic loss to ensure the semantic consistency
 
+### [ProGAN][78]
+* It involves training by starting with a very small image and then the blocks of layers added incrementally so that the output size of the generator model increases and increases the input size of the discriminator model until the desired image size is obtained. 
+* During the training process, it systematically adds new blocks of convolutional layers to both the generator model and the discriminator model. 
+  * This incremental addition of the convolutional layers allows the models to learn coarse-level detail effectively at the beginning and later learn even finer detail, both on the generator and discriminator side.
+* Batch Normalization is not used here, instead of that two other techniques are introduced here, including pixel-wise normalization and minibatch standard deviation.
+
 
 ### Other
 * [A big of trick when tunning GAN][39]
@@ -668,3 +674,4 @@ I just found some companies like to ask you to implement methods used in deep le
 [75]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter7-cross-domain-gan/cifar10_utils.py
 [76]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter7-cross-domain-gan/mnist_svhn_utils.py
 [77]:https://www.analyticsvidhya.com/blog/2021/05/image-processing-using-numpy-with-practical-implementation-and-code/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+[78]:https://www.analyticsvidhya.com/blog/2021/05/progressive-growing-gan-progan/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
