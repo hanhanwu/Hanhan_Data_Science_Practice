@@ -21,6 +21,9 @@ I have decided to systematically review all the details of deep learning, and or
 #### Used in Computer Vision
 * [Convert color images to gray][74] and [reshape the images][75]
 * [Reshape MNIST digits data to SVHN data format][76]
+* [Image Processing using numpy][77]
+  * It includes: Opening an Image, Details of an image, Saving ndarray as Image, Rotating an Image, Negative of an Image, Padding Black Spaces, Visualizing RGB Channels, Colour Reduction, Trim Image, Pasting With Slice, Binarize Image, Flip Image, An alternate way to Flip an Image, Blending Two Images, Masking Images, Histogram For Pixel Intensity 
+  * Looks like the author really likes Emma Stone :D
 
 ### Input Structure
 * The image below is showing the data input requirements for MLP, CNN and RNN
@@ -664,3 +667,4 @@ I just found some companies like to ask you to implement methods used in deep le
 [74]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter7-cross-domain-gan/other_utils.py
 [75]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter7-cross-domain-gan/cifar10_utils.py
 [76]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter7-cross-domain-gan/mnist_svhn_utils.py
+[77]:https://www.analyticsvidhya.com/blog/2021/05/image-processing-using-numpy-with-practical-implementation-and-code/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
