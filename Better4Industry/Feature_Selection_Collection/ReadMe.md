@@ -25,6 +25,7 @@ In industry, many times we need to generate features, understanding them and gen
     * `m` is the feature number
     * `N` is the number of samples
     * Total number of model evaluation is `N * (2^m - 2)` 
+    * Although the value is randomly assigned for the perturbed values, it's choosing the possible value from the feature that appeared in the training data 
   * There are [different types of SHAP explainer][6]
     * `KernelExplainer` is generic and can be used for all types of models, but slow. That's also why when using TreeExplainer, you don't have to use `shap.kmeans` for large dataset, since it's fast 
 * When doing the experiments of SHAP performance, there are multiple things can check 
