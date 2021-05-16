@@ -17,6 +17,11 @@ I have decided to systematically review all the details of deep learning, and or
 
 
 ## Data Preprocessing Methods
+### Collected Preprocessing Methods
+#### Used in Computer Vision
+* [Convert color images to gray][74] and [reshape the images][75]
+* [Reshape MNIST digits data to SVHN data format][76]
+
 ### Input Structure
 * The image below is showing the data input requirements for MLP, CNN and RNN
   * [MLP input code][47]
@@ -510,6 +515,51 @@ I have decided to systematically review all the details of deep learning, and or
 * StackGAN vs InfoGAN
   * InfoGAN has simpler structure and faster to train 
 
+### Cross Domain GANs
+* This technique can be used in computer vision when an image in the source domain is transferred to the target domain.
+
+#### CycleGAN
+* This method doesn't need aligned source and traget images in the training.
+  * Most often, the aligned image pairs are not available or expensive to generate. Better to have a model that doesn't need aligned image pairs. Therefore, methods like pix2pix which required aligned pairs have limited capability.
+* The structure of CycleGAN
+  * In the forward cycle, the input data is real source data, while in the backward cycle, the input is real target data.
+  * In both forward and backward cycles, both have cycle consistency check, to minimize the input data and reconstructed data
+    * With cycle consistency check, even though we are transfering domain x to domain y, the original features in x should be intact in y and be recoverable
+    * Cycle consistency check uses L1 loss (MAE, mean absolute error) so that the reconstructed images can be less bluring, comparing with L2 loss (MSE, mean squared error)
+  * CycleGAN is symmetric. Forward cycle GAN is identical to the backward cycle GAN, but have the roles of the source data x and target data y reversed
+    * Generator F is just another generator borrowed from the backward cycle GAN
+  * <b>The objective of CycleGAN is to have generator G learn to synthesize fake target data y that can fool discriminator Dy in forward cycle, and have generator F learn to synthesize fake source daata x that can fool discrinminator Dx in backward cycle</b> 
+<p align="center">
+<img src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/images/cycleGAN.PNG" width="500" height="500" />
+</p>
+
+* [CycleGAN implementation][72]
+  * Generator is implemented with [U-Net][73]
+    * The problem of using autoencoder is, the lower level features are shared between both encoder and decoder layers, which is not suitable for image translation. 
+    * U-Net is used to deal with this issue, it enables the free flow of feature-level info between paired encoder and decoder
+    * IN (Instance Normalization) is BN (Batch Normalization) per image/sample or per feature
+      * <b>In style transfer, it's important to normalize the contrast per sample, not per batch</b>. IN is equivalent to contrast normalization while BN breaks contrast normlaization.
+    * An encoder layer is made of `IN-LeakyReLU-Conv2D`, a decoder layer is made of `IN-ReLU-Conv2D`
+  * PatchGAN is also an option in the discriminator. By choosing this option, you can divide an image into patches and predict real/fake for each patch, predict the probability
+    * Patches can overlap
+    * This can help improving the generated images' quality since an image will look more real if each of its sub-images looks more real
+  * Loss functions
+    * MAE is used for cycle consistency check
+    * MSE is used for generator and discriminator losses. This is inspired by LSGAN, that by replacing binary_crossentropy with MSE is improve the perceptual quality
+    * `Total Loss = λ1 * Loss_GAN + λ2 * Loss_cycle_consistency + (λ3 * Loss_identity)`
+      * `Total Loss` will be optimized in the adversarial training 
+      * Loss_identity is optitional
+        * Color composition may not be transferred from source image to the target image, that why the identity regularizers are added
+        * The auxiliary identity regularizer will be added in the cycleGAN network, it also uses MAE as the loss function
+<p align="center">
+<img src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/images/cycleGAN_identity_regularizer.PNG" width="550" height="550" />
+</p>
+
+* Tips
+  * When the 2 domains are drastically different, suggest to have smaller kernel_size. 
+    * For example, in [CycleGAN implementation][72], `mnist_cross_svhn` is trying to translate images between MNIST digits and SVHM street view numbers...
+  * Also as `mnist_cross_svhn` shown, the results of CycleGAN may not be sematic consistent. To address this issue, we can try `CyCADA (Cycle-Consistent Adversarial Domain Adaptation)` which adds a semantic loss to ensure the semantic consistency
+
 
 ### Other
 * [A big of trick when tunning GAN][39]
@@ -609,3 +659,8 @@ I just found some companies like to ask you to implement methods used in deep le
 [69]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter4-gan/cgan-mnist-4.3.1.py
 [70]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter6-disentangled-gan/infogan-mnist-6.1.1.py
 [71]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter6-disentangled-gan/stackedgan-mnist-6.2.1.py
+[72]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter7-cross-domain-gan/cyclegan-7.1.1.py
+[73]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/images/U_Net.PNG
+[74]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter7-cross-domain-gan/other_utils.py
+[75]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter7-cross-domain-gan/cifar10_utils.py
+[76]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter7-cross-domain-gan/mnist_svhn_utils.py
