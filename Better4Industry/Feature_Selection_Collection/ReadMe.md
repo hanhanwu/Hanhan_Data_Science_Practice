@@ -33,6 +33,8 @@ In industry, many times we need to generate features, understanding them and gen
 * When doing the experiments of SHAP performance, there are multiple things can check 
   * Time efficiency for different number of samples, differnt number of features, different model sizes (such as different tree numbers)
   * While the time efficiency has been improved, how's the accuracy of model predictions 
+* When the sample number is no more than 3000, you can consider to replace `TreeExplainer` with `SamplingExplainer`, it can be faster regardless the number of features
+  * https://shap.readthedocs.io/en/latest/generated/shap.explainers.Sampling.html  
 
 
 [1]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Better4Industry/Feature_Selection_Collection/try_shap_xgboost.ipynb
