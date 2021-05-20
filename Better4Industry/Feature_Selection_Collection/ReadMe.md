@@ -35,6 +35,14 @@ In industry, many times we need to generate features, understanding them and gen
   * While the time efficiency has been improved, how's the accuracy of model predictions 
 * When the sample number is no more than 3000, you can consider to replace `TreeExplainer` with `SamplingExplainer`, it can be faster regardless the number of features
   * https://shap.readthedocs.io/en/latest/generated/shap.explainers.Sampling.html  
+* Display shap plots on Databricks Notebooks
+
+```
+import matplotlib.pyplot as plt
+
+shap_force_plot = shap.force_plot(tree_explainer.expected_value, shap_values[check_row,:], X.iloc[check_row,:], matplotlib=True)
+display(shap_force_plot)
+```
 
 
 [1]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Better4Industry/Feature_Selection_Collection/try_shap_xgboost.ipynb
