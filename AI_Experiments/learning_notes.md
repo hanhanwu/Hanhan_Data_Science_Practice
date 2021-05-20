@@ -486,6 +486,7 @@ I have decided to systematically review all the details of deep learning, and or
 #### InfoGAN
 * InfoGAN learns the disentangled representation in an unsupervised way, by maximizing the mutual info between the input codes and output observation
   * In order to maximize this mutual info, InfoGAN proposes a regularizer that forces the generator to consider the latent codes when it synthesizes the fake data
+  * [InfoGAN structure][79]
 * InfoGAN vs ACGAN
   * InfoGAN expands ACGAN by adding disentangled codes so that the generated output will be able to control specific attributes 
   * For the input of generator of both ACGAN and InfoGAN, both have fake labels. 
@@ -675,3 +676,4 @@ I just found some companies like to ask you to implement methods used in deep le
 [76]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter7-cross-domain-gan/mnist_svhn_utils.py
 [77]:https://www.analyticsvidhya.com/blog/2021/05/image-processing-using-numpy-with-practical-implementation-and-code/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
 [78]:https://www.analyticsvidhya.com/blog/2021/05/progressive-growing-gan-progan/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+[79]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/images/infoGAN.PNG
