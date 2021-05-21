@@ -10,6 +10,7 @@ In industry, many times we need to generate features, understanding them and gen
 ![shap JS](https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Better4Industry/Feature_Selection_Collection/xgboost_shap.PNG)
 
   * In this force plot, the "base value" of the average predicted value from the model training, the "output value" is the predicted value of current observation. Pink is the position impact while blue is the negative impact. Both impacts indicate how does the base value distance from the output value
+  * The length of the bar for each feature indicates to which extent the feature affect the forecasted value
 * [SHAP decision plot][3]
   * [Code example][4]
     * Just need trained model and feature values, no need lables in the data
