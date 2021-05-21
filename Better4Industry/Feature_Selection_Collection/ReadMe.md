@@ -29,18 +29,32 @@ In industry, many times we need to generate features, understanding them and gen
   * There are [different types of SHAP explainer][6]
     * `KernelExplainer` is generic and can be used for all types of models, but slow. 
       * That's also why when using TreeExplainer, you don't have to use `shap.kmeans` for large dataset, since it's fast 
-      * kernelExplainer is not applicable for more than 15 features
+      * KernelExplainer is not applicable for more than 15 features
 * When doing the experiments of SHAP performance, there are multiple things can check 
   * Time efficiency for different number of samples, differnt number of features, different model sizes (such as different tree numbers)
   * While the time efficiency has been improved, how's the accuracy of model predictions 
-* When the sample number is no more than 3000, you can consider to replace `TreeExplainer` with `SamplingExplainer`, it can be faster regardless the number of features
-  * https://shap.readthedocs.io/en/latest/generated/shap.explainers.Sampling.html  
+* I don't think SamplingExplainer can replace TreeExplainer for ensembling models
+  * It requires a model input from `train()`, and cannot use loaded trained model
+  * When there are 3000+ samples, TreeExplainer is still faster  
 * Display shap plots on Databricks Notebooks
 
 ```
 import matplotlib.pyplot as plt
 
-shap_force_plot = shap.force_plot(tree_explainer.expected_value, shap_values[check_row,:], X.iloc[check_row,:], matplotlib=True)
+exp_shap = shap.TreeExplainer(model)
+shap_tree = exp_shap.shap_values(X_test_baseline)
+expected_tree = exp_shap.expected_value
+if isinstance(expected_tree, list):
+  expected_tree = expected_tree[1]
+print(f"Explainer expected value: {expected_tree}")
+
+idx = 10
+
+print(f'Tree Explanations for #"{idx}" observation in test dataframe:')
+## Option 1
+shap_force_plot = shap.force_plot(expected_tree, shap_tree[idx], feature_names=baseline_X_cols, matplotlib=True) # This doesn't show feature values
+## Option 2
+shap_force_plot = shap.force_plot(tree_explainer.expected_value, shap_values[check_row,:], X.iloc[check_row,:], matplotlib=True)  # this will show feature values, but look messy
 display(shap_force_plot)
 ```
 
