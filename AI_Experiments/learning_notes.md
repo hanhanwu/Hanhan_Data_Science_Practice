@@ -585,6 +585,15 @@ I have decided to systematically review all the details of deep learning, and or
   * In VAEs, a latent vector is sampled from a distribution. This is a "latent" distribution because this distribution outputs a compact (and hidden) representation of the inputs 
   * In Autoencoder, the latent vector is an internal (hidden) layer that describes a code used to represent the input
   * Different from Autoencoders, the latent space of VAEs is continuous, and the decoder is used as a generative model
+### VAE Design Principles
+* The goal of VAEs is to find a tractable distribution that can closely estimate the conditional distribution of the latent attributes `z`, given input `x`.
+  * To make the distribution tractable, VAEs introduced "Variational Inference Model", a modle that's often chosen to be a multivariate gaussian, whose mean and std are computed in the encoder using the input
+    * The elements of `z` (latent attributes) are independent
+  * Since the inference model is an estimate, we use `KL (Kullbeck-Leibler) divergence` to determine the distance between the inference model and the conditional distribution of `z` given `x`, in the encoder
+ * In the decoder, the generator takes z samples from the inference model output, to reconstruct the inputs. For the reconstruction loss,
+   * If the image distribution is assumed to be Gaussian, `MSE` is used
+   * If every pixel is considered to be Bernoulli distribution, then `binary cross entropy` is used
+ * `VAE loss = Reconstruct Loss + KL Loss`
 
 ## Meta Learning
 * Different from traditional supervised learning where the model learned the ground truth from the training labels, meta learning doesn't provide the ground truth but let the model to learn how to learn
