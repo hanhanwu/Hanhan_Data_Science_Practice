@@ -582,7 +582,8 @@ I have decided to systematically review all the details of deep learning, and or
   * They focus on the variational inferance of latent codes, and therefore it provides a framework for both mearning and efficient bayesian inference with latent variable
   * Meanwhile, VAEs have an intrinsic mechanism to disentangle the latent vectors.
 * Both VAEs and Autoencoders attempt to reconstruct the input data while learning the latent vector
-  * In VAEs, a latent vector is sampled from some distribution. This is a "latent" distribution because this distribution outputs a compact (and hidden) representation of the inputs 
+  * In VAEs, a latent vector is sampled from a distribution. This is a "latent" distribution because this distribution outputs a compact (and hidden) representation of the inputs 
+  * In Autoencoder, the latent vector is an internal (hidden) layer that describes a code used to represent the input
   * Different from Autoencoders, the latent space of VAEs is continuous, and the decoder is used as a generative model
 
 ## Meta Learning
