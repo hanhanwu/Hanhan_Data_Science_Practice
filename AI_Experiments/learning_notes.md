@@ -570,9 +570,20 @@ I have decided to systematically review all the details of deep learning, and or
   * This incremental addition of the convolutional layers allows the models to learn coarse-level detail effectively at the beginning and later learn even finer detail, both on the generator and discriminator side.
 * Batch Normalization is not used here, instead of that two other techniques are introduced here, including pixel-wise normalization and minibatch standard deviation.
 
-
 ### Other
 * [A big of trick when tunning GAN][39]
+
+## Variational Autoencoders (VAE)
+* Same as GANs, VAEs also belong to generative models family
+* Both GANs and VAEs are attempting to create synthetic output from latent space, but VAEs are simpler and easier to train, but GANs are able to generate more realistic signals (more sharp images)
+  * GANs focus on how to get a model that approximate the input distribution
+  * VAEs focus on modeling the input distribution from decodable continuous latent space
+* Within VAEs:
+  * They focus on the variational inferance of latent codes, and therefore it provides a framework for both mearning and efficient bayesian inference with latent variable
+  * Meanwhile, VAEs have an intrinsic mechanism to disentangle the latent vectors.
+* Both VAEs and Autoencoders attempt to reconstruct the input data while learning the latent vector
+  * In VAEs, a latent vector is sampled from some distribution. This is a "latent" distribution because this distribution outputs a compact (and hidden) representation of the inputs 
+  * Different from Autoencoders, the latent space of VAEs is continuous, and the decoder is used as a generative model
 
 ## Meta Learning
 * Different from traditional supervised learning where the model learned the ground truth from the training labels, meta learning doesn't provide the ground truth but let the model to learn how to learn
