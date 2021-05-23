@@ -594,6 +594,29 @@ I have decided to systematically review all the details of deep learning, and or
    * If the image distribution is assumed to be Gaussian, `MSE` is used
    * If every pixel is considered to be Bernoulli distribution, then `binary cross entropy` is used
  * `VAE loss = Reconstruct Loss + KL Loss`
+ * Reparameterization Trick
+   * [As shown here][80], decoder takes samples from the latent vector `Z` to reconstruct the input. But the gradients cannot pass through the stochastic sampling layer during backpropagation.
+   * To solve the problem, reparametrrization trick is brought in to move the sampling block outside of the encoder-decoder network and make it look like the sampling came from the latent space
+   * And now the network can be trained with familiar optimization methods such as Adam, RMSProp, SGD, etc.
+* Afrer training VAE model, we can discard the inference model as well as the addition and multiplication operators. To generate new meaningful outputs, samples are taken from the distribution block (often normal distribution) which generates `ε`
+* Implementations
+  * [VAE MLP][81], [VAE CNN][82] 
+    * VAE CNN has a significant improvement in output quality and a great reduction in the number of params
+### Conditional VAE (CVAE)
+* It imposes the condition (such as a one-hot label) to both encoder and decoder inputs, so that we can specify specific output
+* Comparing with VAE, there is no change in the loss function
+### β-VAE
+* It's the VAE with disentangled representations 
+  * Although VAEs are intrinsically disentangle the latent vector dimensions to a certain extent
+  * Disentangle representation has each single latent units sensitive to the changes in a single generative factor, but stay inrelevant to changes in other factors
+* VAE, CVAE, β-VAE
+  * β-VAE only changes the loss funcion of VAE, by adding `β` to KL loss
+    * β > 1, it serves as a regularizer, which forces the latent codes disentangle further
+    * When β=1, it's CVAE, that's why CVAE is a special case of β-VAE
+    * To determine the value of β needs some trial and error, there must be a careful balance between reconstruction error and regularization of latent code independence
+* [β-VAE, CVAE implementation][83]
+  * IN this example, the disentanglement maximized at around β=9. Cuz when β>9, there is only 1 latent code got learned and the output is only affected by only 1 latent code
+
 
 ## Meta Learning
 * Different from traditional supervised learning where the model learned the ground truth from the training labels, meta learning doesn't provide the ground truth but let the model to learn how to learn
@@ -698,3 +721,7 @@ I just found some companies like to ask you to implement methods used in deep le
 [77]:https://www.analyticsvidhya.com/blog/2021/05/image-processing-using-numpy-with-practical-implementation-and-code/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
 [78]:https://www.analyticsvidhya.com/blog/2021/05/progressive-growing-gan-progan/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
 [79]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/images/infoGAN.PNG
+[80]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/images/VAE_reparameterization_trick.PNG
+[81]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter8-vae/vae-mlp-mnist-8.1.1.py
+[82]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter8-vae/vae-cnn-mnist-8.1.2.py
+[83]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter8-vae/cvae-cnn-mnist-8.2.1.py
