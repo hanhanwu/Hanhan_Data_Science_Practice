@@ -53,9 +53,9 @@ idx = 10
 
 print(f'Tree Explanations for #"{idx}" observation in test dataframe:')
 ## Option 1
-shap_force_plot = shap.force_plot(expected_tree, shap_tree[idx], feature_names=baseline_X_cols, matplotlib=True) # This doesn't show feature values
+shap_force_plot = shap.force_plot(expected_tree, shap_tree[idx], feature_names=X_test_baseline_cols, matplotlib=True) # This doesn't show feature values
 ## Option 2
-shap_force_plot = shap.force_plot(tree_explainer.expected_value, shap_values[check_row,:], X.iloc[check_row,:], matplotlib=True)  # this will show feature values, but look messy
+shap_force_plot = shap.force_plot(expected_tree, shap_tree[idx], X_test_baseline.iloc[idx], matplotlib=True)  # this will show feature values, but can be messy
 display(shap_force_plot)
 ```
 
