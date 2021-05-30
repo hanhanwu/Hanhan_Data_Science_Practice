@@ -617,6 +617,7 @@ I have decided to systematically review all the details of deep learning, and or
 * [β-VAE, CVAE implementation][83]
   * IN this example, the disentanglement maximized at around β=9. Cuz when β>9, there is only 1 latent code got learned and the output is only affected by only 1 latent code
 
+## [Deep Reinforcement Learning][84]
 
 ## Meta Learning
 * Different from traditional supervised learning where the model learned the ground truth from the training labels, meta learning doesn't provide the ground truth but let the model to learn how to learn
@@ -725,3 +726,4 @@ I just found some companies like to ask you to implement methods used in deep le
 [81]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter8-vae/vae-mlp-mnist-8.1.1.py
 [82]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter8-vae/vae-cnn-mnist-8.1.2.py
 [83]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter8-vae/cvae-cnn-mnist-8.2.1.py
+[84]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/deep_reinforcement_learning.md
