@@ -24,6 +24,8 @@ In industry, many times we need to generate features, understanding them and gen
   * For each record, it shows how does each feature value lead to the final prediction result
 
 ## Tips
+* The base value generated from TreeExplainer `expected_value` can be different from the average forecatsed result when using model `predict()`, when [the TreeExplainer depends on some settings from the training data, such as leaf sample weights for random subsample][8]
+  * In this case, we need to pass X_train to SHAP instead of using the trained model
 * When the data is large, you can use `clustered_df = shap_kmeans(df)` and put this clustered_df in a shap explainer. This method helps speed up the computation
   * In SHAP, for each feature subset (2^m - 2) it perturbs the values of features and makes prediction to see how peturbing a feature subset changes the prediction of model. For each feature subset (e.g. [0,1,1,0,0,0] only perturbing feature 2nd and 3rd) you can replace the feature values by any of the values in the training set. By default it does that exhaustively for all points in training, therefore the total number of model predictions it evaluates is n2^m. <b>So, we use shap.kmeans to only perturb based on some representatives (10 centroids instead of 1000 datapoints)</b>
     * `m` is the feature number
@@ -74,3 +76,4 @@ shap.decision_plot(expected_tree, shap_tree[idx], X_test.iloc[idx])
 [5]:https://github.com/slundberg/shap/blob/6af9e1008702fb0fab939bf2154bbf93dfe84a16/shap/plots/_decision.py#L46
 [6]:https://shap-lrjball.readthedocs.io/en/docs_update/api.html
 [7]:https://datascience.stackexchange.com/questions/565/why-does-gradient-boosting-regression-predict-negative-values-when-there-are-no
+[8]:https://github.com/slundberg/shap/issues/318
