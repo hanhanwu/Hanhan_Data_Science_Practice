@@ -12,7 +12,8 @@ In industry, many times we need to generate features, understanding them and gen
   * In this force plot, the "base value" of the average predicted value from the model training, the "output value" is the predicted value of current observation. Pink is the position impact while blue is the negative impact. Both impacts indicate how does the base value distance from the output value
   * The length of the bar for each feature indicates to which extent the feature affect the forecasted value
   * `output value = base value + sum(all features' SHAP values)`
-    * Because of this, sometimes when you got unexpected negative forecast values, you can shift the output value to the right and split the shifted difference to each feature. By doing this the base value will stay the same, feature's impact visually stay almost the same and the forecasted value has been "corrected"
+    * Because of this, sometimes when you got negative forecast values, you can shift the output value to the right and split the shifted difference to each feature. By doing this the base value will stay the same, feature's impact visually stay almost the same and the forecasted value has been "corrected".
+      * BTW, [here's an explaination][7] about why you may get negative forecasting values in a boosting regressor even when the training target values are all positive
 * [SHAP decision plot][3]
   * [Code example][4]
     * Just need trained model and feature values, no need lables in the data
@@ -20,7 +21,7 @@ In industry, many times we need to generate features, understanding them and gen
   * [SHAP decision source code][5]
     * In the `decision plot`, by default the features are ordered by importance order. When there are multiple records, the importance of a feature is the sum of absolute shap values of the feature
   * Include multiple records plot
-  * For each record, it shows how does each feature value lead to the final predictio result
+  * For each record, it shows how does each feature value lead to the final prediction result
 
 ## Tips
 * When the data is large, you can use `clustered_df = shap_kmeans(df)` and put this clustered_df in a shap explainer. This method helps speed up the computation
@@ -45,20 +46,24 @@ In industry, many times we need to generate features, understanding them and gen
 import matplotlib.pyplot as plt
 
 exp_shap = shap.TreeExplainer(model)
-shap_tree = exp_shap.shap_values(X_test_baseline)
+shap_tree = exp_shap.shap_values(X_test)
 expected_tree = exp_shap.expected_value
 if isinstance(expected_tree, list):
   expected_tree = expected_tree[1]
-print(f"Explainer expected value: {expected_tree}")
+print(f"Explainer expected value (Base Value): {expected_tree}")
 
 idx = 10
 
-print(f'Tree Explanations for #"{idx}" observation in test dataframe:')
+print(f'Force Plot for #"{idx}" observation in test dataframe:')
 ## Option 1
-shap_force_plot = shap.force_plot(expected_tree, shap_tree[idx], feature_names=X_test_baseline_cols, matplotlib=True) # This doesn't show feature values
+shap_force_plot = shap.force_plot(expected_tree, shap_tree[idx], feature_names=X_test_cols, matplotlib=True) # This doesn't show feature values
 ## Option 2
-shap_force_plot = shap.force_plot(expected_tree, shap_tree[idx], X_test_baseline.iloc[idx], matplotlib=True)  # this will show feature values, but can be messy
+shap_force_plot = shap.force_plot(expected_tree, shap_tree[idx], X_test.iloc[idx], matplotlib=True)  # this will show feature values, but can be messy
 display(shap_force_plot)
+
+print(f'Decision Plot for #"{idx}" observation:')
+print('Base Value:', expected_tree)
+shap.decision_plot(expected_tree, shap_tree[idx], X_test.iloc[idx])
 ```
 
 
@@ -68,3 +73,4 @@ display(shap_force_plot)
 [4]:https://slundberg.github.io/shap/notebooks/plots/decision_plot.html
 [5]:https://github.com/slundberg/shap/blob/6af9e1008702fb0fab939bf2154bbf93dfe84a16/shap/plots/_decision.py#L46
 [6]:https://shap-lrjball.readthedocs.io/en/docs_update/api.html
+[7]:https://datascience.stackexchange.com/questions/565/why-does-gradient-boosting-regression-predict-negative-values-when-there-are-no
