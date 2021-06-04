@@ -9,7 +9,7 @@ In industry, many times we need to generate features, understanding them and gen
 * Github has blocked the loading of JS, in fact it provides a method to interact with each record and understand how the feature values affect the prediction
 ![shap JS](https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Better4Industry/Feature_Selection_Collection/xgboost_shap.PNG)
 
-  * In this force plot, the "base value" of the average predicted value from the model training, the "output value" is the predicted value of current observation. Pink is the position impact while blue is the negative impact. Both impacts indicate how does the base value distance from the output value
+  * In this force plot, the "base value" of the average predicted value from the model training (in new SHAP version, it's using leaf nodes and no longer the same as avg of forecasted values... maybe you can say it's the "avg of historical forecasted values"), the "output value" is the predicted value of current observation. Pink is the position impact while blue is the negative impact. Both impacts indicate how does the base value distance from the output value
   * The length of the bar for each feature indicates to which extent the feature affect the forecasted value
   * `output value = base value + sum(all features' SHAP values)`
     * Because of this, sometimes when you got negative forecast values, you can shift the output value to the right and split the shifted difference to each feature. By doing this the base value will stay the same, feature's impact visually stay almost the same and the forecasted value has been "corrected".
@@ -25,7 +25,8 @@ In industry, many times we need to generate features, understanding them and gen
 
 ## Tips
 * The base value generated from TreeExplainer `expected_value` can be different from the average forecatsed result when using model `predict()`, when [the TreeExplainer depends on some settings from the training data, such as leaf sample weights for random subsample][8]
-  * In this case, we need to pass X_train to SHAP instead of using the trained model
+  * With SHAP version <=0.33, you can pass X_train to SHAP instead of using the trained model
+  * Otherwise, the new version of SHAP is no longer the "average forecasted value", it's calcukated using leaf nodes
 * When the data is large, you can use `clustered_df = shap_kmeans(df)` and put this clustered_df in a shap explainer. This method helps speed up the computation
   * In SHAP, for each feature subset (2^m - 2) it perturbs the values of features and makes prediction to see how peturbing a feature subset changes the prediction of model. For each feature subset (e.g. [0,1,1,0,0,0] only perturbing feature 2nd and 3rd) you can replace the feature values by any of the values in the training set. By default it does that exhaustively for all points in training, therefore the total number of model predictions it evaluates is n2^m. <b>So, we use shap.kmeans to only perturb based on some representatives (10 centroids instead of 1000 datapoints)</b>
     * `m` is the feature number
