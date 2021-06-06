@@ -617,6 +617,42 @@ I have decided to systematically review all the details of deep learning, and or
 * [β-VAE, CVAE implementation][83]
   * IN this example, the disentanglement maximized at around β=9. Cuz when β>9, there is only 1 latent code got learned and the output is only affected by only 1 latent code
 
+## Object Detection
+* Bounding Box: It's used to localize an object in the image. Often uses upper left corner pixel and lower right corner pixel coordinates to describe a bounding box.
+  * The coordinates system has the origin (0,0) at the upper left corner pixel of the entire image. 
+* Object Detection needs to identify a bounding box belongs to a known object or background. It predicts 2 things:
+  * The category (class) of an object
+  * y_box = ((x_min, y_min), (x_max, y_max))
+* Offsets: They are the pixel error values that the network is trying to minimize between the ground truth bounding box and the predicted bounding box coordinates.
+* Anchor Box: An image is divided into regions, each region is an anchor box.
+  * The network will estimate the offsets with respect to each anchor box, in order to make the prediction closer to the ground truth
+  * The offsets can be reduced if we allow an anchor box to have different aspect ratios (different dimensions with the same centroid) 
+    * The resized anchor box has the same centroid as the original anchor box
+    * If there are `k`different aspect ratios, then there are `k+1` anchor boxes, since for `aspect_ratio=1` there is an additional anchor box
+  * Ground Truth Anchor Box: it's the anchor box that contains the object to be detected, there is 1 and only 1 ground truth anchor box for an object
+* Multi-scale object detection
+  * During the process of creating anchor boxes of various dimensions, an optimal anchor box size that nearest to the ground truth bounding box will emerge
+  * Multi-scale object detection uses multi-scale anchor boxes to effectively detect objects of different sizes
+* IoU (Intersection over Union)
+  * It's using Jaccard Index, `IoU = (A and B) / (A union B)`, A is an anchor box, B is the ground truth bounding box
+  * `Ai` is the "Positive Anchor Box" if it maximizes IoU with the ground truth bounding box
+    * Extra Positive Anchor Box: For the remaining anchor boxes, they can get a second chance if their IoU with the ground truth pass a given threshold
+  * After getting the Positive Anchor Box and the Extra Positive Box, the remaining anchor boxes are Negative Anchor Boxes.
+    * Negative anchor boxes do not contribute to the offsets loss function 
+  * `A positive anchor box's offset = ground truth bounding box coordinates - the positive anchor box's own bounding box coordinates`
+* Ground Truth Mask
+  * Imagive we have save the indexes of all the anchor boxes in a list 
+  *  The indexes of positive and extra positive anchor boxes have the ground truth mask as 1
+    * Negative anchor boxes have mask as 0 
+* Ground Truth Class
+  * It's an array of one-hot vectors, the values are all 0 except at the index of the anchor box. Index 0 is background, index 1 is the 1st non-background object, index n_class-1 is the last non-background object   
+### SSD (Single-Shot Detection)
+#### SSD Proposals
+* Anchor boxes with offsets worse than using the entire image should not contribute to the overall optimization process and need to be suppressed
+#### Loss Functions
+
+
+
 ## [Deep Reinforcement Learning][84]
 
 ## Meta Learning
