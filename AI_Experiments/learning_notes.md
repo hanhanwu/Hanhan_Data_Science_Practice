@@ -680,6 +680,26 @@ I have decided to systematically review all the details of deep learning, and or
       * `y_gt_normalized = ((c_bx - c_ax)/w_a/std_x, (c_by - c_ay)/h_a/std_y, log(w_b/w_a)/std_w, log(h_b/h_a)/std_h)`
         * Recommend to use `std_x = std_y = 0.1`, meaning the expected range of pixel error along x, y axes is (-10%, +10%)  
         * Recommend to use `std_w = std_h = 0.2`, meaning the expected range of width and height is (-20%, +20%) 
+#### SSD Architecture
+* Backbone Network: It extracts features fo the downstream of classification and offset prediction
+  * It can be a pre-trained model with frozen weights 
+  * If a backbone implements `k` rounds of downsampling, the image size is `m*n`, and there are `p` aspect ratios, then the total number of anchor boxes in the first set is `(m/(k*k)) * (n/(k*k)) * (1+p)`
+* SSD Head: It performs the object detection task after getting the features from the backbone
+##### [SSD Implementation Code][87]
+* Check the overall structure [here][86]
+* Multi-thread data generator is used since the images are in high resolution
+* NMS (Non-Maximum Suppression)
+  * After model training, when the model predicts the bounding box offsets, there can be 2+ bounding box refer to the same object, causing redundant predictions. NMS is used to remove redundant predictions.
+  * Among all the deplicated bounding boxes, the one with maximum confidence score (or probability) is used as reference `b_m`
+    * For the remaining boxes, if the IoU of a bounding box with `b_m` >= threshold `N_t`, the bounding is removed. The process repeated until there is no remaining box.
+      * The problem here is, a bounding box contains another object but with larger IoU will be removed too
+    * SoftNMS proposes that, instead of outright remove the box from the list, the score of the overlapping bounding box is decreased at a negative exponential rate in proportion to the square of its IoU with `b_m`. By doing this, an overlapped box might survive till later proves it contains another object
+      * SoftNMS appears to have higher average precision than classic NMS 
+* SSD Model Validation
+  * Mean IoU (mIoU) between ground truth bounding boxes and predicted bounding boxes
+    * Make sure the comparison is between the same object class
+  * Precision, Recall between the ground truth class and the predicted class
+  * In object detection, the precision and recall curves over different mIoUs are used to measure the performance
 
 ## [Deep Reinforcement Learning][84]
 
@@ -792,3 +812,5 @@ I just found some companies like to ask you to implement methods used in deep le
 [83]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter8-vae/cvae-cnn-mnist-8.2.1.py
 [84]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/deep_reinforcement_learning.md
 [85]:https://en.wikipedia.org/wiki/Huber_loss
+[86]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/images/ssd_imp_stru.PNG
+[87]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/tree/master/chapter11-detection
