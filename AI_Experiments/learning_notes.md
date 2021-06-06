@@ -650,8 +650,36 @@ I have decided to systematically review all the details of deep learning, and or
 #### SSD Proposals
 * Anchor boxes with offsets worse than using the entire image should not contribute to the overall optimization process and need to be suppressed
 #### Loss Functions
-
-
+* `L = L_cls + L_off`
+  * L_cls is the loss for object class prediction
+    * By default, it's categorical cross-entropy loss 
+    * We can replace categorical cross-entropy with Focal Loss to deal with class imbalance issue
+      * The majority of anchor boxes are classified as negative anchor boxes (including background) while the anchor boxes that represent the target object is the minority, this leads to the class imbalance issue. Categorical cross entropy can be overpowered by the contribution of negative anchor boxes.
+    * `L_cls_categorical_cross_entropy = -sum(y_true_i * log(y_pred_i))`
+    * `L_cls_focal_loss = -α * sum(y_true_i * log(y_pred_i) * pow(1 - y_pred_i, γ))`
+      * `pow(1 - y_pred_i, γ)` helps reduce the contribution of negative anchor boxes, since at the early stage, `y_pred` that are closer to 1 mainly came from negative anchor boxes, so with this added factor `pow(1 - y_pred_i, γ)`, th loss is larger
+      * This was inspired by RetinaNet, which works best with `γ=2, α=0.25` 
+  * L_off is the offsets loss 
+    * By default, it's using L1 loss (mean absolute error), L2 loss (mean square error) 
+    * SSD can also use Smooth L1, which is more robust than L1 and less sensitive to outliers
+      * `L_off = L1_smooth = pow(std * u, 2)/2 if |u| < 1/pow(std, 2) else |u| - 1/(2*pow(std, 2))`
+        * `u = y_true - y_pred` 
+        * In SSD, `std=1`, therefore L1_smooth is the same as [Huber Loss][85]
+        * When `std --> inf`, `L1_smooth = L1`
+      * Smooth L1 is is quadratic for small values of `u`, and linear for large values, you can think it's a combo of L1, L2
+* <b>SSD is a supervised method</b>, so it needs data labels
+  * y_label vs y_cls are the labels of the object class and the predicted class
+  * `y_gt = (x_gmin, x_gmax, y_gmin, y_gmax)` is the ground truth offsets, `y_off = ((x_omin, y_omin),(x_omax, y_omax))` is the predicted offsets in the form of pixel coordinates
+    * `y_gt = (x_bmin - x_amin, x_bmax - x_bmax, y_bmin - y_amin, y_bmax - y_bmax)` 
+  * <b>However, SSD doesn't recommend to predict raw pixel error values</b>, because raw pixel values tend to have high variance. Therefore, <b>here comes normalized offset values</b>:
+    * `y_bounding_box = ((x_bmin, y_bmin), (x_bmax, y_bmax))` to centroid dimension format is `(c_bx, c_by, w_b, h_b)`
+      * `(c_bx, c_by) = (x_min + (x_max - x_min)/2, y_min + (y_max - y_min)/2)`  
+      * `(w_b, h_b) = (x_max - x_min, y_max - y_min)`
+    * `y_anchor_box = ((x_amin, y_amin), (x_amax, y_amax))` to centroid dimension format is `(c_ax, c_ay, w_a, h_a)`
+    * `y_gt_normalized = ((c_bx - c_ax)/w_a, (c_by - c_ay)/h_a, log(w_b/w_a), log(h_b/h_a))`, but when y_gt_normalized are small, `||y_gt_normalized||<<1`, small gradients can make it more difficult for the network converge. To alleviate the problem, each element is divided by its estimated standard deviation:
+      * `y_gt_normalized = ((c_bx - c_ax)/w_a/std_x, (c_by - c_ay)/h_a/std_y, log(w_b/w_a)/std_w, log(h_b/h_a)/std_h)`
+        * Recommend to use `std_x = std_y = 0.1`, meaning the expected range of pixel error along x, y axes is (-10%, +10%)  
+        * Recommend to use `std_w = std_h = 0.2`, meaning the expected range of width and height is (-20%, +20%) 
 
 ## [Deep Reinforcement Learning][84]
 
@@ -763,3 +791,4 @@ I just found some companies like to ask you to implement methods used in deep le
 [82]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter8-vae/vae-cnn-mnist-8.1.2.py
 [83]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter8-vae/cvae-cnn-mnist-8.2.1.py
 [84]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/deep_reinforcement_learning.md
+[85]:https://en.wikipedia.org/wiki/Huber_loss
