@@ -58,15 +58,19 @@ print(f"Explainer expected value (Base Value): {expected_tree}")
 idx = 10
 
 print(f'Force Plot for #"{idx}" observation in test dataframe:')
-## Option 1
-shap_force_plot = shap.force_plot(expected_tree, shap_tree[idx], feature_names=X_test_cols, matplotlib=True) # This doesn't show feature values
-## Option 2
-shap_force_plot = shap.force_plot(expected_tree, shap_tree[idx], X_test.iloc[idx], matplotlib=True)  # this will show feature values, but can be messy
+## Option 1 - hide feature values
+shap_force_plot = shap.force_plot(expected_tree, shap_tree[idx], feature_names=X_test_cols, matplotlib=True)
+## Option 2 - show feature values
+shap_force_plot = shap.force_plot(expected_tree, shap_tree[idx], X_test.iloc[idx], matplotlib=True)
 display(shap_force_plot)
 
 print(f'Decision Plot for #"{idx}" observation:')
 print('Base Value:', expected_tree)
-shap.decision_plot(expected_tree, shap_tree[idx], X_test.iloc[idx])
+## Option 1 - hide feature values
+shap_deci_plot = shap.decision_plot(expected_tree, shap_tree[idx], X_test.iloc[idx])
+## Option 2 - show feature values
+shap_deci_plot = shap.decision_plot(expected_tree, shap_tree[idx], feature_names=list(X_test.columns))
+display(shap_deci_plot)
 ```
 
 
