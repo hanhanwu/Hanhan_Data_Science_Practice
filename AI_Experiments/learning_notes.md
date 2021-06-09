@@ -701,6 +701,23 @@ I have decided to systematically review all the details of deep learning, and or
   * Precision, Recall between the ground truth class and the predicted class
   * In object detection, the precision and recall curves over different mIoUs are used to measure the performance
 
+## Semantic Segmentation
+* The goal of semantic segmentation is to classify each pixel according to its object class.
+  * All pixels of the same object have the same color and they all belong to the same class.
+* Segmentation algorithms partition an image into different regions (set of pixels) in order to better understand what does the image represent
+* "Thing": countable object (such as vehicle, traffic sign, etc.) in an image
+* "Stuff": uncountable object (such as sky, water, grass, etc.) or collectively countable objects
+* Instance Segmentation: identify thing
+* Semantic Segmentation: identify stuff
+  * Semantic Segmentation Network is pixel-wise classifier
+  * Parallel classifiers running simultaneously
+    * Each classifier has its own one-hot vector with dimention of the number of objects to be identified
+    * The number of classifiers = number of pixels in the image = image width * image height
+* Panoptic Segmentation: identify both thing and stuff
+
+### FCN (Fully Convolutional Networks) 
+* FCN uses multiple scales of feature maps in generating the final prediction
+
 ## [Deep Reinforcement Learning][84]
 
 ## Meta Learning
