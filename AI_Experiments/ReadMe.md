@@ -766,6 +766,8 @@ Neural Network is a universal approximator, which means you can use it to implme
     * Version control: auto update, rollback
     * Configuration update
     * Deploying multiple models
+* Tools for Object Detection
+  * [Detecto][40] 
 
 
 [1]:https://stackoverflow.com/questions/45912124/python-keras-how-to-generate-right-image-dimension
@@ -807,3 +809,4 @@ Neural Network is a universal approximator, which means you can use it to implme
 [37]:https://www.analyticsvidhya.com/blog/2021/01/gpt-3-the-next-big-thing-foundation-of-future/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
 [38]:https://www.analyticsvidhya.com/blog/2021/01/auto-encoders-for-computer-vision-an-endless-world-of-possibilities/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
 [39]:analyticsvidhya.com/blog/2020/02/what-is-autoencoder-enhance-image-resolution/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+[40]:https://github.com/alankbi/detecto
