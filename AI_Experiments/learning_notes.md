@@ -736,6 +736,49 @@ I have decided to systematically review all the details of deep learning, and or
      * The number of filters in the features' pyramid can be reduced to reduce the # pf params
      * Increasing the number of levels in the features' pyramid can also be explored
 
+## Unsupervised Learning using Mutual Information
+* Mutual Information (MI) is a measure of dependency between 2 random variables M, N
+  * It's also known as "Information Gain" or the reduction of uncertainty of M upon observing N
+  * In contrast with correlation, MI can measure non-linear statistical dependence between M and N
+  * MI `I(M;N) = D_KL(P(M, N) || P(M)P(N))` is the KL divergence between joint distribution and the product of marginal distribution
+    * P(M, N) is the joint distribution
+    * P(M), P(N) are the marginal distribution
+  * MI is a measure of how far M, N are independent from each other. Higher MI, higher dependency. When MI=0, M, N are independent
+  * MI vs Entropy
+    * `I(M;N) = H(M) + H(N) - H(M, N)`
+      * `H(M)` is the entropy (the measure of undertainty) of variable M
+      * MI increases with marginal entropy but decreases with joint entropy
+     * `I(M;N) = H(P(M)) - H(P(M|N)) = H(M) - H(M|N) = H(P(N)) - H(P(N|M)) = H(N) - H(N|M)`
+       * ML is how much uncertainty decreases in one variable while given the other variable
+       * So when we are more certain about one variable given the other variable, we can maximize MI
+     * `I(M;N) = H(M,N) - H(N|M) - H(M|N)`
+     * `I(M;N) = I(N;M)`, MI is symmetric 
+### Unsupervised Learning by Maximizing MI
+#### Discrete Random Variables
+* Similar looking images will have latent vectors that can be clustered into the same region. And regions that are far away from each other can be easily seperated by a linear assignment problem.
+  * To learn the clusters of latent vectors wihtout labels, the model training objective is to maximize MI between the imput image X and its latent code X_bar
+* Model IIC (Invariant Information Clustering)
+  * Loss function `L(Z, Z_bar) = -I(Z;Z_bar) = P(Z, Z_bar) * (log(P(Z)) + log(P(Z_bar)) - log(P(Z, Z_bar)))` 
+    * Minimize the loss is to minimize the negative MI (maximize MI) 
+    * `Z` is encoded input X 
+    * `X_bar` is transformed X, the latent code vector of X
+      * The transformation can be small rotation, random cropping, brightness adjustment, etc.
+    * `Z_bar` is the encoded X_bar
+    * ICC assumes Z and Z_bar are independent such that the joint distribution can be estimated as `P(Z, Z_bar) = P(Z) * transpose(P(Z_bar))`
+      * `P(Z, Z_bar)` is an N*N matrix where each element Z_ij corresponds to the probability of simultaneously observing 2 random variables (Z_i, Z_bar_j)
+    * `P(Z, Z_bar) = sum(P(Z_i) * transpose(P(Z_bar_i))) / M`
+      * `M` is the batch size; `i` indicates the ith batch
+      * To enforce symmetry, `P(Z, Z_bar) = (P(Z, Z_bar) + transpose(P(Z, Z_bar))) / 2`
+    * The marginal distributions are:
+      * `P(Z) = sum(P(Z_i, Z_bar_j))`, `j >= 1 and j<= N`, sum up ROW-WISE
+      * `P(Z_bar) = sum(P(Z_i, Z_bar_j))`, `j >= 1 and j<= N`, sum up COLUMN-WISE
+  * [IIC implementation][90]
+    * [VGG is used as the encoder backbone][91] 
+    * Overclustering is used to improve IIC performance, overclustering here is an encoder with 2 or more heads.
+    * Paired training input data (Siamese input image) made of the input image X and transformed image X_bar
+    * Unsupervised Labeling: Hungarian algorithm is used to assign a label to a cluster with the min cost
+#### Continuous Random Variables
+
 ## [Deep Reinforcement Learning][84]
 
 ## Meta Learning
@@ -851,3 +894,5 @@ I just found some companies like to ask you to implement methods used in deep le
 [87]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/tree/master/chapter11-detection
 [88]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/images/FCN.PNG
 [89]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/tree/master/chapter12-segmentation
+[90]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter13-mi-unsupervised/iic-13.5.1.py
+[91]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter13-mi-unsupervised/vgg.py
