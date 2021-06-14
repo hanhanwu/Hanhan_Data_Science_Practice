@@ -22,8 +22,8 @@ I have decided to systematically review all the details of deep learning, and or
 * [Convert color images to gray][74] and [reshape the images][75]
 * [Reshape MNIST digits data to SVHN data format][76]
 * [Image Processing using numpy][77]
-  * It includes: Opening an Image, Details of an image, Saving ndarray as Image, Rotating an Image, Negative of an Image, Padding Black Spaces, Visualizing RGB Channels, Colour Reduction, Trim Image, Pasting With Slice, Binarize Image, Flip Image, An alternate way to Flip an Image, Blending Two Images, Masking Images, Histogram For Pixel Intensity 
-  * Looks like the author really likes Emma Stone :D
+  * It includes: Opening an Image, Details of an image, Convert numpy array to image, Rotating an Image, Negative of an Image, Padding Black Spaces, Visualizing RGB Channels, Colour Reduction, Trim Image, Pasting With Slice, Binarize Image, Flip Image, An alternate way to Flip an Image, Blending Two Images, Masking Images, Histogram For Pixel Intensity 
+* [Multi-threading data generator for object detection][93]
 
 ### Input Structure
 * The image below is showing the data input requirements for MLP, CNN and RNN
@@ -33,7 +33,6 @@ I have decided to systematically review all the details of deep learning, and or
 <p align="center">
 <img src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/images/NN_input_structure.PNG" width="700" height="300" />
 </p>
-
 
 
 ### Shuffle the data before spliting
@@ -46,6 +45,7 @@ I have decided to systematically review all the details of deep learning, and or
 
 ### How to Preprocessing Testing Data ❣❣
 * The parameters used for preprocessing the training data should be generated from the training data only, and be applied to the testing data too.
+  * This is also true for non-deep-learning models 
 * For example, when you are using `mean` and `std` to normalize the data, these params should be generated from the training data, and be applied to the testing data.
   * It seems that `(value - mean)/std` is a common way used to normalize features when they are in different scales. This method doesn't guarantee they are on the same scale, but could make them on similar scales
 
@@ -59,7 +59,7 @@ I have decided to systematically review all the details of deep learning, and or
 * [Example for both methods][8]
 
 ### Preprocess Text data
-* Text data means a column comtains longer text strings, such as comments, topics, etc.
+* Text data means a column contains longer text strings, such as comments, topics, etc.
 * General Steps
   1. Choose top N toknized words appeared in all the text, N excludes stop words
   2. One-hot encoding: each distinct word as a column, each row reprensents a text, for word appeared in this text, mark it as 1, others mark as 0
@@ -87,7 +87,7 @@ I have decided to systematically review all the details of deep learning, and or
 * The image tensor can be used to understand the output of each activation layer
   
 
-## Layers & Dimensions 😱😱😱
+## Layers & Dimensions
 ### Multiple Inputs
 * We often see one input in NN, but in fact it allows multiple inputs. 
   * For example, such as `Concatenate()` which concatenate multiple inputs of the same shape at the concatenation axis to form 1 tensor. [Check the code example here][54]
@@ -815,41 +815,41 @@ I just found some companies like to ask you to implement methods used in deep le
 [2]:https://www.manning.com/books/deep-learning-with-python?a_aid=keras&a_bid=76564dff
 [3]:https://keras.io/api/datasets/
 [4]:https://keras.io/api/metrics/
-[5]:https://nbviewer.jupyter.org/github/fchollet/deep-learning-with-python-notebooks/blob/master/3.7-predicting-house-prices.ipynb
+[5]:https://github.com/hanhanwu/deep-learning-with-python-notebooks-on-polyaxon/blob/master/3.7-predicting-house-prices.ipynb
 [6]:https://www.machinecurve.com/index.php/2020/02/18/how-to-use-k-fold-cross-validation-with-keras/
 [7]:https://scikit-learn.org/stable/modules/classes.html#module-sklearn.preprocessing
-[8]:https://nbviewer.jupyter.org/github/fchollet/deep-learning-with-python-notebooks/blob/master/3.6-classifying-newswires.ipynb
-[9]:https://nbviewer.jupyter.org/github/fchollet/deep-learning-with-python-notebooks/blob/master/4.4-overfitting-and-underfitting.ipynb#Adding-weight-regularization
-[10]:https://nbviewer.jupyter.org/github/fchollet/deep-learning-with-python-notebooks/blob/master/4.4-overfitting-and-underfitting.ipynb#Adding-dropout
+[8]:https://github.com/hanhanwu/deep-learning-with-python-notebooks-on-polyaxon/blob/master/3.6-classifying-newswires.ipynb
+[9]:https://github.com/hanhanwu/deep-learning-with-python-notebooks-on-polyaxon/blob/master/4.4-overfitting-and-underfitting.ipynb#Adding-weight-regularization
+[10]:https://github.com/hanhanwu/deep-learning-with-python-notebooks-on-polyaxon/blob/master/4.4-overfitting-and-underfitting.ipynb#Adding-dropout
 [11]:https://keras.io/api/layers/convolution_layers/
 [12]:https://keras.io/api/layers/convolution_layers/convolution2d/
 [13]:https://stackoverflow.com/questions/19062875/how-to-get-the-number-of-channels-from-an-image-in-opencv-2
 [14]:https://www.quora.com/What-does-stride-mean-in-the-context-of-convolutional-neural-networks
 [15]:https://www.kaggle.com/c/dogs-vs-cats/data
 [16]:https://keras.io/api/layers/pooling_layers/max_pooling2d/
-[17]:https://nbviewer.jupyter.org/github/fchollet/deep-learning-with-python-notebooks/blob/master/5.2-using-convnets-with-small-datasets.ipynb#Data-preprocessing
-[18]:https://nbviewer.jupyter.org/github/fchollet/deep-learning-with-python-notebooks/blob/master/5.2-using-convnets-with-small-datasets.ipynb#Using-data-augmentation
+[17]:https://github.com/hanhanwu/deep-learning-with-python-notebooks-on-polyaxon/blob/master/5.2-using-convnets-with-small-datasets.ipynb#Data-preprocessing
+[18]:https://github.com/hanhanwu/deep-learning-with-python-notebooks-on-polyaxon/blob/master/5.2-using-convnets-with-small-datasets.ipynb#Using-data-augmentation
 [19]:https://github.com/keras-team/keras-applications
 [20]:https://keras.io/api/applications/
-[21]:https://nbviewer.jupyter.org/github/fchollet/deep-learning-with-python-notebooks/blob/master/5.3-using-a-pretrained-convnet.ipynb
-[22]:https://nbviewer.jupyter.org/github/fchollet/deep-learning-with-python-notebooks/blob/master/5.4-visualizing-what-convnets-learn.ipynb#Visualizing-intermediate-activations
-[23]:https://nbviewer.jupyter.org/github/fchollet/deep-learning-with-python-notebooks/blob/master/5.4-visualizing-what-convnets-learn.ipynb
+[21]:https://github.com/hanhanwu/deep-learning-with-python-notebooks-on-polyaxon/blob/master/5.3-using-a-pretrained-convnet.ipynb
+[22]:https://github.com/hanhanwu/deep-learning-with-python-notebooks-on-polyaxon/blob/master/5.4-visualizing-what-convnets-learn.ipynb#Visualizing-intermediate-activations
+[23]:https://github.com/hanhanwu/deep-learning-with-python-notebooks-on-polyaxon/blob/master/5.4-visualizing-what-convnets-learn.ipynb
 [24]:https://www.quora.com/What-does-the-terms-Top-1-and-Top-5-mean-in-the-context-of-Machine-Learning-research-papers-when-report-empirical-results#:~:text=The%20Top%2D1%20error%20is,among%20its%20top%205%20guesses.
 [25]:https://www.analyticsvidhya.com/blog/2020/08/top-4-pre-trained-models-for-image-classification-with-python-code/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
-[26]:https://nbviewer.jupyter.org/github/fchollet/deep-learning-with-python-notebooks/blob/master/6.1-one-hot-encoding-of-words-or-characters.ipynb
+[26]:https://github.com/hanhanwu/deep-learning-with-python-notebooks-on-polyaxon/blob/master/6.1-one-hot-encoding-of-words-or-characters.ipynb
 [27]:https://nlp.stanford.edu/projects/glove/
-[28]:https://nbviewer.jupyter.org/github/fchollet/deep-learning-with-python-notebooks/blob/master/6.1-using-word-embeddings.ipynb
+[28]:https://github.com/hanhanwu/deep-learning-with-python-notebooks-on-polyaxon/blob/master/6.1-using-word-embeddings.ipynb
 [29]:https://www.analyticsvidhya.com/blog/2020/08/top-4-sentence-embedding-techniques-using-python/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
 [30]:https://radimrehurek.com/gensim/models/doc2vec.html#gensim.models.doc2vec.Doc2Vec
 [31]:https://github.com/UKPLab/sentence-transformers
 [32]:https://docs.google.com/spreadsheets/d/14QplCdTCDwEmTqrn1LH4yrbKvdogK4oQvYO1K1aPR5M/edit#gid=0
 [33]:https://github.com/facebookresearch/InferSent
 [34]:https://github.com/tensorflow/tfjs-models/tree/master/universal-sentence-encoder
-[35]:https://nbviewer.jupyter.org/github/fchollet/deep-learning-with-python-notebooks/blob/master/6.3-advanced-usage-of-recurrent-neural-networks.ipynb
+[35]:https://github.com/hanhanwu/deep-learning-with-python-notebooks-on-polyaxon/blob/master/6.3-advanced-usage-of-recurrent-neural-networks.ipynb
 [36]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/sequencial_analysis/time_series_forecasting.ipynb
 [37]:https://www.analyticsvidhya.com/blog/2020/08/a-beginners-guide-to-focal-loss-in-object-detection/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
-[38]:https://nbviewer.jupyter.org/github/fchollet/deep-learning-with-python-notebooks/blob/master/6.4-sequence-processing-with-convnets.ipynb
-[39]:https://nbviewer.jupyter.org/github/fchollet/deep-learning-with-python-notebooks/blob/master/8.5-introduction-to-gans.ipynb#A-bag-of-tricks
+[38]:https://github.com/hanhanwu/deep-learning-with-python-notebooks-on-polyaxon/blob/master/6.4-sequence-processing-with-convnets.ipynb
+[39]:https://github.com/hanhanwu/deep-learning-with-python-notebooks-on-polyaxon/blob/master/8.5-introduction-to-gans.ipynb#A-bag-of-tricks
 [40]:https://www.analyticsvidhya.com/blog/2020/09/overfitting-in-cnn-show-to-treat-overfitting-in-convolutional-neural-networks/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
 [41]:https://www.tensorflow.org/api_docs/python/tf/keras/initializers
 [42]:https://github.com/hanhanwu/ML-From-Scratch
@@ -903,3 +903,4 @@ I just found some companies like to ask you to implement methods used in deep le
 [90]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter13-mi-unsupervised/iic-13.5.1.py
 [91]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter13-mi-unsupervised/vgg.py
 [92]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter13-mi-unsupervised/mine-13.8.1.py
+[93]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter11-detection/data_generator.py
