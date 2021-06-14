@@ -777,7 +777,13 @@ I have decided to systematically review all the details of deep learning, and or
     * Overclustering is used to improve IIC performance, overclustering here is an encoder with 2 or more heads.
     * Paired training input data (Siamese input image) made of the input image X and transformed image X_bar
     * Unsupervised Labeling: Hungarian algorithm is used to assign a label to a cluster with the min cost
+    * The trained model here can be used for unsupervised labeling for other networks
+      * So the supervised evaluation part here is mainly to improve the clustering accuracy, it's not the unsupervised labeling part
 #### Continuous Random Variables
+* Model MINE (Mutual Information Network Estimator)
+  * The idea is similar to IIC for discrere random variables, but it's an approximation here with the input follows a certain distributions
+  * Because MINE is an approximation, it's not expected to perform better than IIC
+  * [MINE implementation][92]
 
 ## [Deep Reinforcement Learning][84]
 
@@ -896,3 +902,4 @@ I just found some companies like to ask you to implement methods used in deep le
 [89]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/tree/master/chapter12-segmentation
 [90]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter13-mi-unsupervised/iic-13.5.1.py
 [91]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter13-mi-unsupervised/vgg.py
+[92]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter13-mi-unsupervised/mine-13.8.1.py
