@@ -20,6 +20,7 @@ I have decided to systematically review all the details of deep learning, and or
 ### Collected Preprocessing Methods
 #### Used in Computer Vision
 * [Convert color images to gray][74] and [reshape the images][75]
+  * Also check [Raw images to NN readable input][94] 
 * [Reshape MNIST digits data to SVHN data format][76]
 * [Image Processing using numpy][77]
   * It includes: Opening an Image, Details of an image, Convert numpy array to image, Rotating an Image, Negative of an Image, Padding Black Spaces, Visualizing RGB Channels, Colour Reduction, Trim Image, Pasting With Slice, Binarize Image, Flip Image, An alternate way to Flip an Image, Blending Two Images, Masking Images, Histogram For Pixel Intensity 
@@ -81,7 +82,7 @@ I have decided to systematically review all the details of deep learning, and or
     * Labels are created based on directories, different classes of images are put in different directories
 * [Image batch preprocess for federated learning][43]
   * For each 28*28 image, it flatten to 784 one dimensional matrix, then divided by 255 to convert the values into [0,1] range because the pixel values are between 0 and 255
-  * The preprocessed image can also be reshaped baçk to 28*28
+  * The preprocessed image can also be reshaped back to 28*28
 #### Convert an image to image tensor
 * [Example][22]
 * The image tensor can be used to understand the output of each activation layer
@@ -904,3 +905,4 @@ I just found some companies like to ask you to implement methods used in deep le
 [91]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter13-mi-unsupervised/vgg.py
 [92]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter13-mi-unsupervised/mine-13.8.1.py
 [93]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter11-detection/data_generator.py
+[94]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/learning_notes.md#raw-images-to-nn-readable-input
