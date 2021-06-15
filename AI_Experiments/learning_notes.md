@@ -19,12 +19,31 @@ I have decided to systematically review all the details of deep learning, and or
 ## Data Preprocessing Methods
 ### Collected Preprocessing Methods
 #### Used in Computer Vision
-* [Convert color images to gray][74] and [reshape the images][75]
-  * Also check [Raw images to NN readable input][94] 
 * [Reshape MNIST digits data to SVHN data format][76]
 * [Image Processing using numpy][77]
   * It includes: Opening an Image, Details of an image, Convert numpy array to image, Rotating an Image, Negative of an Image, Padding Black Spaces, Visualizing RGB Channels, Colour Reduction, Trim Image, Pasting With Slice, Binarize Image, Flip Image, An alternate way to Flip an Image, Blending Two Images, Masking Images, Histogram For Pixel Intensity 
 * [Multi-threading data generator for object detection][93]
+* [Convert color images to gray][74] and [reshape the images][75]
+* Raw images to NN readable input 
+  * [Keras ImageDataGenerator][17] will make below steps easier
+    * Convert JPEG to RGB
+    * Resize all the images to the same size
+    * Convert images into floating point tensors
+    * Rescale the pixel values (between 0 and 255) to the [0, 1] interval
+    * "Batch size" is the number of samples in each training step
+      * Because you can't pass the entire dataset into NN all at once, need multiple batches
+      * `training_batchs = total training sample size / training batch size`
+      * `validation_batchs = total validation sample size / validation batch size`
+    * 1 "Epoch" will process the entire dataset to update weights
+    * "Number of iterations (or number of steps) = total dataset size/batch size", it's the number of steps needed to complete 1 epoch
+    * Seperate data and labels
+      * Labels are created based on directories, different classes of images are put in different directories
+* [Image batch preprocess for federated learning][43]
+  * For each 28*28 image, it flatten to 784 one dimensional matrix, then divided by 255 to convert the values into [0,1] range because the pixel values are between 0 and 255
+  * The preprocessed image can also be reshaped back to 28*28
+#### Convert an image to image tensor
+* [Example][22]
+* The image tensor can be used to understand the output of each activation layer
 
 ### Input Structure
 * The image below is showing the data input requirements for MLP, CNN and RNN
@@ -35,7 +54,6 @@ I have decided to systematically review all the details of deep learning, and or
 <img src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/images/NN_input_structure.PNG" width="700" height="300" />
 </p>
 
-
 ### Shuffle the data before spliting
 * When the arrangement of labels not distributed similar for training and testing data, better to shuffle the data before spliting into training and testing.
 
@@ -44,13 +62,13 @@ I have decided to systematically review all the details of deep learning, and or
   * For optimization functions, scaling the dependent & independent variables into [-1, 1] range ([0,1] range works too) or [-3, 3] range helps gradient descent, such as makes the converge faster
 * [sklearn functions][7]
 
-### How to Preprocessing Testing Data ❣❣
+### How to Preprocessing Testing Data 
 * The parameters used for preprocessing the training data should be generated from the training data only, and be applied to the testing data too.
   * This is also true for non-deep-learning models 
 * For example, when you are using `mean` and `std` to normalize the data, these params should be generated from the training data, and be applied to the testing data.
   * It seems that `(value - mean)/std` is a common way used to normalize features when they are in different scales. This method doesn't guarantee they are on the same scale, but could make them on similar scales
 
-### Multi-class lables (Python)
+### Multi-class lables
 * Mehtod 1 - One-hot encoding
   * The labels have N columns, each column represents a class
   * Mark the labeled class as 1
@@ -65,38 +83,16 @@ I have decided to systematically review all the details of deep learning, and or
   1. Choose top N toknized words appeared in all the text, N excludes stop words
   2. One-hot encoding: each distinct word as a column, each row reprensents a text, for word appeared in this text, mark it as 1, others mark as 0
   
-### Preprocess Image data
-#### Raw images to NN readable input 
-* [Keras ImageDataGenerator][17] will make below steps easier
-  * Convert JPEG to RGB
-  * Resize all the images to the same size
-  * Convert images into floating point tensors
-  * Rescale the pixel values (between 0 and 255) to the [0, 1] interval
-  * "Batch size" is the number of samples in each training step
-    * Because you can't pass the entire dataset into NN all at once, need multiple batches
-    * `training_batchs = total training sample size / training batch size`
-    * `validation_batchs = total validation sample size / validation batch size`
-  * 1 "Epoch" will process the entire dataset to update weights
-  * "Number of iterations (or number of steps) = total dataset size/batch size", it's the number of steps needed to complete 1 epoch
-  * Seperate data and labels
-    * Labels are created based on directories, different classes of images are put in different directories
-* [Image batch preprocess for federated learning][43]
-  * For each 28*28 image, it flatten to 784 one dimensional matrix, then divided by 255 to convert the values into [0,1] range because the pixel values are between 0 and 255
-  * The preprocessed image can also be reshaped back to 28*28
-#### Convert an image to image tensor
-* [Example][22]
-* The image tensor can be used to understand the output of each activation layer
-  
 
 ## Layers & Dimensions
 ### Multiple Inputs
 * We often see one input in NN, but in fact it allows multiple inputs. 
   * For example, such as `Concatenate()` which concatenate multiple inputs of the same shape at the concatenation axis to form 1 tensor. [Check the code example here][54]
-    * The 2 branches in this code are using different "dilation rate". The Dilation rate decides the kernel's receptive field's size. Comparing with `dilation_rate=1`, larger rate will fill more 0 around the kernel of dilation_rate as 1, which is a computationally effecient method to increase the kernel's receptive field's size. [See example here][55].
+    * The 2 branches in this code are using different "dilation rate". The Dilation rate decides the kernel's receptive field's size. Enlarging the dilation rate is used as a computationally effecient method. [See the defination of dialation rate][55].
     * Meanwhile, using different receptive field sizes for kernels here allows each branch to generate different feature maps.
   * Besides concatenation, we can also do other operations to put multiple inputs together, such as `add`, `dot`, `multiple`, etc.
-* Note! The input here doesn't have to bethe first layer of NN. Each input can be a sequence of layers, and finally all these inputs merged at a certain layer.
-  * It's like an NN has multiple branches, and each branch do different types of work with the same original input data 
+* Note! The input here doesn't have to be the first layer of NN. Each input can be a sequence of layers, and finally all these inputs merged at a certain layer.
+  * <b>It's like an NN has multiple branches, and each branch do different types of work with the same original input data</b> 
 * Multiple inputs also has a cost in model complexity and the increasing in parameters
 
 ### Hidden Layers
@@ -107,7 +103,7 @@ I have decided to systematically review all the details of deep learning, and or
   
 ### Activation Functions
 * In deep learning, layers like `Dense` only does linear operation, and a sequence of `Dense` only approximate a linear function. 
-* Inserting the activation function enables the nonlinear mappings.
+* Inserting the activation function enables the non-linear mappings.
 * [Formula, prod & cons of activation functions][50]
   * `relu` is simple to compute and often used, can only be used in the hidden layers
   * `sigmoid` (output value in 0..1 range) and `tanh` (output value in -1..1 range) can be used in the last layer, for binary classification
@@ -124,7 +120,7 @@ I have decided to systematically review all the details of deep learning, and or
   * Linear regression - 1 node without activation function
 
 ### Optimizer
-* `rmsprop` is often good enough, `adam` is better
+* `rmsprop` and `adam` are often used
 * It's recommended to start with a larger learning rate, and decrease it as the loss is getting closer to the minimum
 * This paper (https://arxiv.org/pdf/2103.05127.pdf) written in 2021 talked about the model complexicity in optimization
 #### Loss Function (Objective) & Optimizer & Regularizer
@@ -142,7 +138,9 @@ I have decided to systematically review all the details of deep learning, and or
 * Bigger networks do not always bring better performance
 * [Full list of Keras metrics][4]
 * [Top-n Error][24]
-  * We often saw "top-1 error", "top-5" error appeared in papers, here's more explaination
+  * We often saw "top-1 error", "top-5" error appeared in papers.
+  * If the correct answer is at least among the classifier’s top k guesses, it is said to be in the Top-k.
+  * The Top-k error is the percentage of the time that the classifier did not include the correct class among its top k guesses.
 
 #### Baseline Models
 * We often do this in time series prediction. Often choose a baseline model to compare with ML models, and nothing should be worse than this baseline model :P
@@ -159,7 +157,7 @@ I have decided to systematically review all the details of deep learning, and or
   * It measures the distance between y_true and y_pred probabilities
   * `binary_` one can be used for probability of 2 classes
   * `categorical_` one can be used for probability of 2+ classes, and the label is in categorical format (such as one-hot encoding)
-  * `sparse_categorical_` is similar to the use case of `categorical_`, but it's used when the labels are in integer format
+  * `sparse_categorical_` is similar to the use case of `categorical_`, but it's used when the labels are in integer format (nominal)
 * `focal loss` vs `cross entropy` vs `balanced cross entropy`
   * Focal loss works better in dealing with the data imbalance issue in object detection of one stage detection
     * Data imbalance in object detection is often caused by much larger amount of background object and only a few objects (foreground) locations
@@ -168,7 +166,7 @@ I have decided to systematically review all the details of deep learning, and or
   * Focal loss down-weights easy examples and focus training on hard negatives.
     * After a lot of trials and experiments, researchers have found `∝=0.25 & γ=2` to work best
   * [reference][37]
-* Some loss functions's formula
+* Some loss functions' formula
   *  `categorical_crossentropy` and `mean_squared_error` are good choices to be used after `softmax` layer
   *  `binary_corssentropy` is often used after `sigmoid` layer
   *  `mean_squared_error` is can be a choice after `tanh` layer
@@ -176,16 +174,15 @@ I have decided to systematically review all the details of deep learning, and or
 <img src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/images/loss_functions.PNG" width="600" height="300" />
 </p>
 
-  
 #### Evaluation Visualization
 ##### Epoch Plot
 * Epoch - Evaluation Metrics plot
   * If there are metrics for training and 1 validation set, plot both curves for comparison will help find the stopping epoch
-    * The stopping point is where starts the opposite trending
+    * The stopping point is where starts the opposite trending between training and validation set
   * For k-fold cross validation, we can average the validation metrics from all the k folds, and in each fold, training & validation sets generates 1 evaluation value
     * The stopping point is where the trend fully changed
     * Especially useful when the dataset is small
-  * If the curves look too noisy, you can try methods to smooth out the curves, such as using exponential moving average
+  * If the accuracy curves look too noisy, you can try methods to smooth out the curves, such as using exponential moving average
     * [See the example at the bottom][21]
 
 
@@ -866,7 +863,7 @@ I just found some companies like to ask you to implement methods used in deep le
 [52]:https://play.google.com/books/reader?id=68rTDwAAQBAJ&hl=en_CA&pg=GBS.PA30.w.3.0.53
 [53]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter1-keras-quick-tour/rnn-mnist-1.5.1.py
 [54]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter2-deep-networks/cnn-y-network-2.1.2.py
-[55]:https://towardsdatascience.com/understanding-2d-dilated-convolution-operation-with-examples-in-numpy-and-tensorflow-with-d376b3972b25
+[55]:https://towardsdatascience.com/types-of-convolutions-in-deep-learning-717013397f4d#:~:text=Dilated%20convolutions%20introduce%20another%20parameter,while%20only%20using%209%20parameters.
 [56]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter2-deep-networks/resnet-cifar10-2.2.1.py
 [57]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter2-deep-networks/densenet-cifar10-2.4.1.py
 [58]:https://github.com/hanhanwu/Hanhan_COLAB_Experiemnts/blob/master/autoencoder_latent_vector_plot.ipynb
@@ -905,4 +902,3 @@ I just found some companies like to ask you to implement methods used in deep le
 [91]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter13-mi-unsupervised/vgg.py
 [92]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter13-mi-unsupervised/mine-13.8.1.py
 [93]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter11-detection/data_generator.py
-[94]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/learning_notes.md#raw-images-to-nn-readable-input
