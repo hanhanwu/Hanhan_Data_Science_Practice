@@ -207,7 +207,7 @@ I have decided to systematically review all the details of deep learning, and or
   * L1 and L2
     * L1 regularization, where the cost added is proportional to the absolute value of the weights coefficients
     * L2 regularization, where the cost added is proportional to the square of the value of the weights coefficients
-    * Therefore, both L1 and L2 favor smaller param values. However, NN with small params are more insensitive to the noise in the input datasof
+    * Therefore, both L1 and L2 favor smaller param values. However, NN with small params are less sensitive to the data fluctuations
   * [Dropout][10]
     * It's one of the most effective and most commonly used regularization method
     * It randomly drops (i.e. setting to zero) a number of output features of a layer during training
@@ -224,7 +224,6 @@ I have decided to systematically review all the details of deep learning, and or
   * "Data augmentation takes the approach of generating more training data from existing training samples, by "augmenting" the samples via a number of random transformations that yield believable-looking image"
   * Even though there is no same image in the training set, with this method, the inputs can still be heavily intercorrelated. Therefore it's necessary to add a `dropout` layer right after flattened data to reduce some dimensions in order to further reduce overfitting.
 * Weight Initialization & Weight Constraint
-  * [See examples here][40]
   * [Tensorflow initializer][41]
   
 ## Convolutional Networks (Convnet)
