@@ -237,7 +237,7 @@ I have decided to systematically review all the details of deep learning, and or
     * However, in Keras `reshape()`, the order is `(sample_size, channels, width, height)`...
   * When there are multiple layers of Conv2D in a neural net, deeper layer gets larger number of batches, notmrally we choose batch size in a sequence of 32, 64, 128, ...
   * `image_channels` is also the image depth. [How to use opencv2 to find image channels][13]
-    * If returns 2 dimensions, the image channel is 1, otherwise it's the third number returned in the output
+    * If returns 2 dimensions (`len(img.shape=2`), the image channel is 1 for single channel; otherwise it's the third number returned in the output (also `len(img.shape=3` in this case)
   * `padding=same` will pad the borders with 0 to keep the original image size
   * `kernel` can be non-square, such as `kernel=(3,5)`
 * [MaxPooling2D][16]
