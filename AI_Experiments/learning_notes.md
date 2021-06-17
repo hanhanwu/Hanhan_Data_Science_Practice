@@ -262,13 +262,13 @@ I have decided to systematically review all the details of deep learning, and or
   * [python examples][20]
   * [A bit more description on some of the pre-trained models][25]
 * Method 1 - Pretrained Model + Standalone Densely-connected classifier
-  * This method is fast and cheap to run, but doesn't allow you to do data augmentation adn therefore may not reach to an optimal accuracy
+  * This method is fast and cheap to run, but doesn't allow you to do data augmentation and therefore may not reach to an optimal accuracy
     * It's possible to do with CPU
   * Need to reshape your new dataset as the output of the pre-trained convnet
   * [See example here][21]
 * Method 2 - Extend Pretrained Model
   * It's costly to run, at least need the GPU
-  * Before compile and train the model, need to freeze the the convolutional base. "Freezing" a layer or set of layers means preventing their weights from getting updated during training, in order to keep the representations learned by the trained trained model.
+  * Before compile and train the model, need to freeze the the convolutional base. "Freezing" a layer or set of layers means preventing their weights from getting updated during training, in order to keep the representations learned by the trained model.
     * If you ever modify weight trainability after compilation, you should then re-compile the model, or these changes would be ignored.
   * [See example here][21]
 * Fine Tuning
