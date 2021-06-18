@@ -34,6 +34,7 @@ I have decided to systematically review all the details of deep learning, and or
       * Because you can't pass the entire dataset into NN all at once, need multiple batches
       * `training_batchs = total training sample size / training batch size`
       * `validation_batchs = total validation sample size / validation batch size`
+      * It's recommended to have batch size to be the power of 2, for GPU optimization purpose
     * 1 "Epoch" will process the entire dataset to update weights
     * "Number of iterations (or number of steps) = total dataset size/batch size", it's the number of steps needed to complete 1 epoch
     * Seperate data and labels
