@@ -201,16 +201,18 @@ I have decided to systematically review all the details of deep learning, and or
 * Avoid having the dimensions of the hidden layers < N, N is the number of classes.
 * If the training dataset is small, use a smaller NN (1 or 2 hidden layers + 1 last layer), and use cross validation to find the optimal epoch number
 * [Regularization][9]
-  * Training data only, no need to be used in the last layer
+  * Use in training data only
   * It helps reduce overfirtting and makes NN more robust to unseen data input
   * In Keras, bias, weights and activation functions can be regularized in each layer
   * L1 and L2
     * L1 regularization, where the cost added is proportional to the absolute value of the weights coefficients
     * L2 regularization, where the cost added is proportional to the square of the value of the weights coefficients
     * Therefore, both L1 and L2 favor smaller param values. However, NN with small params are less sensitive to the data fluctuations
+    * No more layer should be added after a layer applied L1 or L2 regularization
   * [Dropout][10]
     * It's one of the most effective and most commonly used regularization method
-    * It randomly drops (i.e. setting to zero) a number of output features of a layer during training
+    * It randomly drops (i.e. setting to zero) a number of output features of a layer during training, to prevent this fraction of units from participating in the next layer
+      * This prevents NN from remembering the training data and can be more generalize to unforeseen input data 
     * Dropout rate is often set between 0.2 and 0.5
     * How to use dropout for recurrent NN
       * If we don't use dropout properly in recurrent NN, it will limit the learning instead of doing regularization
