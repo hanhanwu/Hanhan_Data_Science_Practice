@@ -524,6 +524,7 @@
     * The way it choose the best model is to find the one with the lowest validation loss
 * [ts forecast with basic LSTM, GRU][30]
 * [ts forecast with Stacking & Bidirectional RNN][31]
+  * RNNs are unidirectional by default, meaning current output is influenced by the past state and current input. Bidirectional allows info backflow so that the future states can affect current and past states. 
   * Having tried different activation functions, y was scaled into [0,1] range, but `tanh` works better than `sigmoid` and all better than `relu`. 
     * There is also an online suggestion that, `tanh` is a better choice for regression problem, while `relu` may not be
   * `optimizer=Adam(amsgrad=True, learning_rate=0.1)`, I have chosen adam optimizer
