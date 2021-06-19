@@ -234,6 +234,7 @@ I have decided to systematically review all the details of deep learning, and or
 * In CNN, a <b>kernel (filter)</b> can be visualized as a window that slides through the whole image from left to right, from top to bottom. 
   * This operation is called as "Convolution", which transforms the input image as a feature map
 * [Keras Convnet][11]
+* [simple CNN pyhton implementation][94], [Simple CNN for MNIST classification][95]
 * [Conv2D][12]
   * "Input shape" is `(batch_size, image_height, image_width, image_channels)`, batch_size is optional
     * The width and height tend to shrink when we go deeper in convnet
@@ -246,12 +247,14 @@ I have decided to systematically review all the details of deep learning, and or
 * [MaxPooling2D][16]
   * Pooling Layer - pooling is a down-sampling operation that reduces the feature map size
   * It performs down-sampling operations to reduce the dimensionality and creates a pooled feature map by sliding a filter matrix over the input matrix. See [example here][52], every patch of size pool_size * pool_size is reduced to 1 feature map.
+    * This also translates to the increase of receptive field field, since now to represent the same size of feature map, you just need a smaller matrix 
   * `MaxPooling2D` chooses the max value from each patch, `AveragePooling2D` chooses the average value from each patch
+    * Stratified convolution can do similar work too, such as `Conv2D(strides=2)` will skip every 2 pixels during convolution and will still have the same 50% size reduction effect
   * `pool_size` can be non-square, such as `pool_size=(1,2)`
 * [What is `strides`][14]
   * The size (height, width) of the moving window
 * Why `Flatten()`
-  * `Dense` layer is 1D, so if the output from Conv2D is more than 1D, it needs to be flatterned into 1D before entering into the Dense layer.
+  * `Dense` or `Dropout` layer is 1D, so if the output from Conv2D is more than 1D, it needs to be flatterned into 1D before entering into the Dense layer.
 * `fit_generator()`
   * `steps_per_epoch = total training sample size / training batch size`, this is because in each epoch, it runs all the samples
   * `validation_steps = total validation sample size / validation batch size`
@@ -904,3 +907,5 @@ I just found some companies like to ask you to implement methods used in deep le
 [91]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter13-mi-unsupervised/vgg.py
 [92]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter13-mi-unsupervised/mine-13.8.1.py
 [93]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter11-detection/data_generator.py
+[94]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter1-keras-quick-tour/cnn-model-1.3.2.py
+[95]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter1-keras-quick-tour/cnn-mnist-1.4.1.py
