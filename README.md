@@ -487,8 +487,10 @@ In this regard, Tomek’s link and edited nearest-neighbours are the two cleanin
 ### HungaBunga
 * https://github.com/ypeleg/HungaBunga
 * It runs through all sklearn models (both classification and regression), with all possible hyperparameters, and rank using cross-validation.
-* -_-||
 
+### Lazy Predict
+* https://github.com/shankarpandala/lazypredict
+* Similar to HungaBunga, which runs on a list of models
 
 ### MLBox
   * http://mlbox.readthedocs.io/en/latest/introduction.html
