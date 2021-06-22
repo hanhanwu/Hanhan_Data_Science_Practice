@@ -15,6 +15,13 @@ I have decided to systematically review all the details of deep learning, and or
 
 ## [Deep Learning in Time Series / Sequential Analysis Learning Notes][46]
 
+## Keras Tips
+* Sequantial Model API vs Functional API
+  * [Sequantial Model API Example][95]: layers of NN are added into the model in a sequence
+    * 1 input and 1 output only 
+  * [Functional API Example][96]: A layer is an instance that accepts a tensor as an argument and at the same time its output is another tensor that can be used as the argument of another layer. The model is a function between one or more input and output tensors.
+  * Functional API enables building more complex networks that can't be done in Sequential Model API
+
 
 ## Data Preprocessing Methods
 ### Collected Preprocessing Methods
@@ -909,3 +916,4 @@ I just found some companies like to ask you to implement methods used in deep le
 [93]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter11-detection/data_generator.py
 [94]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter1-keras-quick-tour/cnn-model-1.3.2.py
 [95]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter1-keras-quick-tour/cnn-mnist-1.4.1.py
+[96]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter2-deep-networks/cnn-functional-2.1.1.py
