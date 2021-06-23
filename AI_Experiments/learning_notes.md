@@ -22,8 +22,13 @@ I have decided to systematically review all the details of deep learning, and or
 * [Functional API Example][96]: A layer is an instance that accepts a tensor as an argument and at the same time its output is another tensor that can be used as the argument of another layer. The model is a function between one or more input and output tensors.
 * Functional API enables building more complex networks that can't be done in Sequential Model API
 ### Callbacks
-* 
-
+* These callback functions can be called in `model.fit()` [like this][97]
+* `checkpoint` helps saving the trained model with best validation data performance
+  * To load the saved model, you can call `load_model()` 
+* `lr_scheduler` helps reduce the learning rate during training after a certain number of epoches, [like this][98]
+  * `lr_schedule()` is called after every epoch during the training 
+* `lr_reducer` helps reduce the learning rate by a certain factor if the validation loss hasn't been improved after a certain number of epoches (patience)
+  * [Like this example][99], `patience=5`
 
 
 ## Data Preprocessing Methods
@@ -49,6 +54,7 @@ I have decided to systematically review all the details of deep learning, and or
     * "Number of iterations (or number of steps) = total dataset size/batch size", it's the number of steps needed to complete 1 epoch
     * Seperate data and labels
       * Labels are created based on directories, different classes of images are put in different directories
+  * [Another example of Keras ImageDataGenerator for data augmentation, multiple choices][100]
 * [Image batch preprocess for federated learning][43]
   * For each 28*28 image, it flatten to 784 one dimensional matrix, then divided by 255 to convert the values into [0,1] range because the pixel values are between 0 and 255
   * The preprocessed image can also be reshaped back to 28*28
