@@ -313,13 +313,26 @@ I have decided to systematically review all the details of deep learning, and or
 * ResNet introduces residual learning, which allows to build a very deep network while addresing the vanishing gradient problem.
   * Gradient Vanishing: Backpropagation follows the chain rule, there is a tendency for the gradient to diminish as it reaches to the shallow layers, due to the multiplication of small numbers (small loss functions and parameter values). However, if the gradients decrease and the parameters cannot update appropriately, then the network will fail to improve its performance.
   * ResNet allows info flows through shortcuts to the shallow layers, in order to relieve the gradient vanishing problem
-* [The implementation of ResNet][56]
-  * A transition layer is used when joining 2 residual blocks in different sizes
-  * `kernel_initializer='he_normal'` to help the convergence when back propagation is taking the place
-  * ResNet is easier to converge with Adam
-    * In Adam, `lr_reducer()` is to reduce the learning rate by a certain factor if the validation rate has not been improved after `patience=5` epochs
-  * In Keras, we can use `load_model()` to load the saved model from `checkpoint`
-  * It has v1 and v2. v2 improves the performance by making some chanages in the layers arrangement in residual block design. It moves Conv2D layer ahead of BN-ReLU layers in each residual block, and the kernel sizes of Conv2D are a bit different.
+### [The implementation of ResNet][56]
+#### Core
+* Core logic of each stack of residual block, and this is how info shortcut happens:
+  * `x1 = H(x0)`
+    * `H()` is `Conv2D-BN-ReLU` in v1
+      * `BN` is Batch Normalization 
+    * `H()` is `BN-ReLU-Conv2D` in v2
+    * By the way, H() is used in VGG, for example a 18-layer VGG has 18 H() operations before the input image is transformed to 18th layer of feature map
+  * `x2 = ReLU(F(x1) + x0)` 
+    * `F()` is `Conv2D-BN`, also known as "residual mapping"
+    * `+` is done by concatenation, element-wise addition
+    * The shortcut connection doesn't add extra params nor extra computational complexity
+  * Linear projection to match different dimensions
+    * `F(x1)` and `x0` should have the same dimentions. When the dimensions are different, then at the end of each residual block (except the first stack in v1), before concatenation, linear projection is applied to match different dimensions
+    * Linear projection is using a `Conv2D()` with 1x1 kernel `kernel=1` and `strides=2`
+      * NOTE: when strides > 1, it equivalents to skipping pixels during convolution
+    * This layer is similar to the "Transition layer" used in DenseNet, which is used to match different dimensions
+* `kernel_initializer='he_normal'` to help the convergence when back propagation is taking the place
+* ResNet is easier to converge with `Adam` optimization
+* The residualBlock in v1 vs v2. V2 could improve the performance a bit.
 <p align="center">
 <img src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/images/resnet_v1_v2_diff.PNG" width="400" height="250" />
 </p>
