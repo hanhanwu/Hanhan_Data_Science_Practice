@@ -38,7 +38,7 @@ I have decided to systematically review all the details of deep learning, and or
 * [Image Processing using numpy][77]
   * It includes: Opening an Image, Details of an image, Convert numpy array to image, Rotating an Image, Negative of an Image, Padding Black Spaces, Visualizing RGB Channels, Colour Reduction, Trim Image, Pasting With Slice, Binarize Image, Flip Image, An alternate way to Flip an Image, Blending Two Images, Masking Images, Histogram For Pixel Intensity 
 * [Multi-threading data generator for object detection][93]
-* [Convert color images to gray][74] and [reshape the images][75]
+* [Convert RGB images to gray][74] and [reshape the images][75]
 * Raw images to NN readable input 
   * [Keras ImageDataGenerator][17] will make below steps easier
     * Convert JPEG to RGB
@@ -399,42 +399,51 @@ I have decided to systematically review all the details of deep learning, and or
     * [Google Universal Sentence Encoder][34]
 
 ## Autoencoder
-* Autoencoder is a NN architecture that attempts to find the compressed representation of the given input data. It can learn the code alone without human label and therefore is considered as "unsupervised learning". However, when you are using autoencoder in some applications (such as denoising, colorization, etc.), labels are still needed in the model training part.
+* Autoencoder is a NN architecture that attempts to find the compressed representation of the given input data. It can learn the code alone without labels and therefore is considered as "unsupervised learning". 
 ### Main Architecture
 * Input (`x`) --> Encoder (`z = f(x)`) --> Latent Vector (`z`) --> Decoder (`x_approx = g(z)`)
   * Latent Vector is a low-dimensional compressed representation of the input distribution
   * It's expected that the output recovered by the decoder can only approximate the input
-  * The goal is to make `x_approx` as similar as `x`, so there's a loss function trying to minimize the dissimilarity between `x` and `x_approx`
+  * The goal is to make `x_approx` as similar as `x`
+    * So the loss function is trying to maximize the similarity between the distrobutions of `x` and `x_approx`
     * If the decoder's output is assumed to be Gaussian, then the loss function boils down to `MSE`
-    * The autoencoder can be trained to minimize the loss function through backpropagation. Keras does backpropagation automatically for you.
-* Visualized Common Autoencoder's Structure
-  * The example here was used for MNIST dataset (0 ~ 9 digits in grey scale) 
-  * For more complex dataset, we can create deeper encoder & decoder, as well as using more epoches in training
+    * The autoencoder can be trained to minimize the loss function through backpropagation. Keras does backpropagation automatically for you
+      * Just make sure the loss function is differentiable, which is a requirement of backproporgation 
+* Key Components
+  * Encoder
+    * It outputs the "latent vector" which has a lower dimension of the input
+      * The low dimension forces the encoder to capture the most important features of the input
+      * The dimension of latent vector `z` indicates the amount of salient (important) features it can represent
+        * In the application examples below, denoising autoencoder only has 16 latent-dims but in colorization example the latent-dims is 256. This is because the denoise one was using black-sand-white data while the colorization was using RGB data which needs to capture more complex features
+   * Decoder
+     * It reads the latent vector as the input and output the compressed result with the same size as the original input 
+   * Both encoder and decoder are non-linear functions, and therefore they are be implemented in NN
+* Visualized Autoencoder's Structure
+  * The example here was used for MNIST dataset (0 ~ 9 digits in grey scale). I found it's very helpful in showing the number of filters and the dimensions of feature maps' changes throughout the network
+  * [The implementation of this basic Autoencoder][101]
+    * For more complex dataset, we can create deeper encoder & decoder, as well as using more epoches in training 
+    * In the encoder part, several `Conv2D()` were used with increased number of filters
+      * The reason when network goes deeper and the filters can increase is, in shallower layers, we want to exclude the "noise" from the raw pixel as much as possible, and in deeper layers, we can extra more detailed features from previous denoised feature maps
+    * In the decoder part, the same amount of `Conv2DTranspose()` were used with reversed filter amount as what's in encoder
+  * [We can plot the latent vector as 2-dim plot][58], in order to understand the latent vector output better
 <p align="center">
 <img src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/images/encoder.PNG" width="600" height="350" />
 <img src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/images/decoder.PNG" width="600" height="450" />
  <img src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/images/autoencoder.PNG" width="600" height="250" />
 </p>
 
-* Using MNIST data as an example, we can plot the latent vector as 2-dim plot, [check the code here][58]
-  * Each digit is clustered in a region of the space in the latent vector plot
-  * In the decoder plot, it should reflect the same regions for each digit
-  * This type of plot can help gain more understanding of the NN
-
 ### Autoencoder Applications
-* All need labels
-* [Autoencoder denoising][59]
-  * Removing noise from the images
 * [Autoencoder classification][61]
-  * Here provides a function to convert colored images to grey images
-  *  The architecture here is more complex 🌺:
-    * Added more blocks of convolution and transposed convolution (see `layer_filters` has more values)
-    * Increased the number of filters at each CNN block (see each value in `layer_filters`)
-    * Latent Vactor has increased  the dimension, in order to increase the number of salient properties it can present
-    * Training increased epoches
-      * Learning rate reducer is used to scale down the learning rate when validation loss is not improving 
+  * It does both denoising and digit classification
+  * Within the autoencoder here, instead of using `Conv2D()` for encoder and `Conv2DTranspose()` for decoder, it's using `BN-ReLU-Conv2D-MaxPolling2D()` for encoder and `BN-ReLU-Conv2DTranspose-UpSampling2D` for decoder
+  * For classifier, it needs labels y_train to train the model
+  * [Denoising without classification][59]
+    * It doesn't have classification part, therefore labels are not needed 
 * [Autoencoder colorization][60]
-  * Colorize the images 
+  * The input is gray impage and the output is color image 
+  * Its structure is basic, just uses `Conv2D()` for encoder and `Conv2DTranspose()` for decoder
+    * Filters for each layer increased to capture more feature details
+    * Latent-dims increased to increase the capacity fo getting the most important features
 
 ## Generative Adversarial Networks (GAN)
 * GANs belong to the family of generative models. Different from autoencoder, generative models can create new and meaningful output given arbitary encodings
@@ -956,3 +965,4 @@ I just found some companies like to ask you to implement methods used in deep le
 [98]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter2-deep-networks/resnet-cifar10-2.2.1.py#L98
 [99]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter2-deep-networks/resnet-cifar10-2.2.1.py#L377
 [100]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter2-deep-networks/resnet-cifar10-2.2.1.py#L396
+[101]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter3-autoencoders/autoencoder-mnist-3.2.1.py
