@@ -338,15 +338,28 @@ I have decided to systematically review all the details of deep learning, and or
 </p>
 
 ## DenseNet
-* DenseNet improves ResNet further by allowing the next layer to get access to all the previous feature maps (Dense), while keeping the number of params low in deep networks by using both "bottleneck" and "transition layer". [See DenseNet implementation here][57]
-* The number of feature maps generated per layer is called the growth rate `k`, normally `k=12`
-* With the Bottleneck layer, each Conv2D(3) only need to process `4k` feature maps instead of `(l-1) * k + 2*k` for layer `l`
-* Transition layer is used to transform a feature map size to a smaller one between 2 `Dense` layers
-  * The reduction rate is usually half
-  * Within each Dense layerb, the feature map size remains constant
-  * Using multiple Dense layers joined by transition layers is a solution to solve feature maps sizes mismatch 
-  * When compression and dimensionality reduction being put together, the transition layer is BN-Conv2D(1)-AvergingPooling2D
-* `RMSprop` is used as the optimizer for DenseNet, since it converges better
+* Instead of using shortcuts as what ResNet does, DenseNet allows all the previous feature maps to be the input of the next layer
+### [The Implementation of DenseNet][57]
+#### Core
+* Stacks of Denseblocks bridged by Transition layers
+* Within each Stack of Denseblock
+  * There are multiple stacks of Bottleneck layers
+    * `num_bottleneck_layers = (depth - 4) // (2 * num_dense_blocks)` 
+  * Within each Bottleneck layer 
+    * "Bottlenck layer" formed by `BN-ReLU-Conv2D(1)-BN-ReLU-Conv2D(3)`
+      * By having `BN-ReLU-Conv2D(1)`, bottleneck leyer is trying to prevent the feature maps from growing to be computationally inefficient. 
+      * With `Cov2D(1)` with a `filter_size=4*k` to do dimensional reduction
+        * `k` is "growth rate", meaning the number of feature maps generated per layer 
+    * If there is no data augmentation, then `dropout()` will be added after `BN-ReLU-Conv2D(1)-BN-ReLU-Conv2D(3)`
+    * At the end of this bottle layer, concatenate the input and output of `BN-ReLU-Conv2D(1)-BN-ReLU-Conv2D(3)`
+  * Transition layer transforms the feature map to the smaller size needed in the next Denseblock
+    * The transition layer is made of `BN-Conv2D(1)-AveragingPolling2D`
+      * Assuming the feature maps has a dimension with (64, 64, 512)
+      * `Conv2D(1)` does the comrepssion work, which reduces the number of feature maps. The compression factor is 0.5 in DenseNet, so the feature maps' dimension will become (64, 64, 256)
+      * Averaging Pooling2D does dimensional reduction by halving the feature maps, so in this example, the feature maps' dimension will become (32, 32, 256)
+    * Last denseblock doesn't need the transition layer 
+* DenseNet converges better with `RMSprop` optimization
+* It takes very long time to run DenseNet while the performance may not be much better than ResNet
 
 ## RNN
 * RNN is trying to help analysis on a sequence, so that there could be more context, and therefore they are often used in NLP.
