@@ -509,9 +509,7 @@ I have decided to systematically review all the details of deep learning, and or
     * For generator, the added one-hot label is concatenated with the images and get into the same generator structure used in DCGAN
     * For discriminator, a `Dense()` layer and `Reshape()` have been applied to the one-hot label, then concatenated one-hot label and the images has been sent to the same discrimonator structure used in DCGAN
 <p align="center">
-<img src="<p align="center">
-<img src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/images/DCGAN_MNIST.PNG" width="500" height="350" />
-</p>" width="500" height="350" />
+<img src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/images/CGAN_MNIST.PNG" width="400" height="300" />
 </p>
  
 ### Improved GANs
