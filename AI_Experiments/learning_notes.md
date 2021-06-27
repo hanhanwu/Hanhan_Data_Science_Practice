@@ -481,7 +481,8 @@ I have decided to systematically review all the details of deep learning, and or
   * The process of `discrimintor training then generator training (adversarial training)` will be repeated in multiple train steps
   * Both generator and discriminator were using `RMSprop` optimizer
   * Settings the learning rate in adversarial training as half as the learning rate in discrimonator training will result in more stable training
-    * If the discriminator converges faster, the generator may not get sufficient gradient updates and fail to converge, therefore it's better to have lower learning rate in the adversarial training then discrimintor training 
+    * If the discriminator learns faster, the generator's params may fail to optimize
+    * If the discriminator learns slower, the gradients may vanish before reaching to the generator
   * Detailed model structure:
     * The 100-dim z-vector is a latent vector (similar to the latent vector in autoencoder), using to generate noise in [-1, 1] range using uniform distriution 
 <p align="center">
