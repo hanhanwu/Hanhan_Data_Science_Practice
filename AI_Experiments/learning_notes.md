@@ -519,20 +519,23 @@ I have decided to systematically review all the details of deep learning, and or
 * WGAN (Wasserstein GAN) is trying to improve model stability and avoid mode collapse by replacing the loss function based on Earth Mover's Distance (EMD), also known as Wasserstein 1, which is a smooth disfferentiable function even when there is no overlap between the 2 probaiblity distributions.
 * LSGAN (Least Square GAN) is trying to improve both model stability and generated images' perceptive quality on DCGAN, by replacing sigmoid cross-entropy loss with least squares loss, since it doesn't bring in vanishing gradients during training
 * ACGAN (Auxiliary GAN) is trying to improve both model stability and generated images' perceptive quality on CGAN, by requiring its discrimiator to perform an additional classification task
-* [Reusable discriminator, generator and train() by multiple GANs][67]
+* [Reusable discriminator, generator and `train()` for multiple GANs][67]
 #### WGAN
-* In DCGAN and CGAN, the loss function is trying to minimizing the DISTANCE (JS distance, Jensen Shannon distance) between the target distribution and its estimate. However, for some pairs of distributions, there is no smooth path to minimize this JS distance, and the training will fail to converge by gradient descent.
+* In DCGAN and CGAN, the loss function is trying to minimizing the DISTANCE (JS distance, Jensen Shannon distance) between the 2 distributions (real data's distribution and fake datta's distribution). However, when 2 distributions have no overlap, with JS Distance, there is no smooth path to close the gap between them, and the training will fail to converge
   * The "distribution" here is probability distribution
-  * When there is no overlap between the 2 distributions, there is no smooth function can close the gap between them
+  * JS is a divergence based on KL (Kullback-Leibler) divergence, but KL is asymmetric while JS is symmetric and finite 
 * The idea of EMD is, it's a measure of how much mass should be tranported in order to match the 2 probability distributions
   * EMD can be interpreted as the least amount of work needed to move the pile of dirt p to fill holes q
-  * When there is no overlap between 2 distributions, it can provide a smooth function to match the 2 probability distributions
+  * When there is no overlap between 2 distributions, it can servee as a logical loss 
 * WGAN is same as DCGAN, except:
-  * WGAN is using `-1` as the label for fake data while DCGAN is using 0
-    * In order to prevent the gradient from vanishing because of the opposite sign in real & fake lables, and the small magnitude of weights due to weights clipping, a tweak has been done in WGAN. Instead of training the weights in a single combined batch of real and fake data, it trains 1 batch of real data and then 1 batch of fake data
-  * WGAN trains the distriminator `n_critic` iterations before training the generator for 1 iteration; In DCGAN, there is no `n_critic`, an in each iteration, both discriminator and generator will be trained once
-    * In WGAN, after `n_critic` iterations of training discriminator, the training of generator will freeze the discriminator, then the discriminator will be unfrozen and start another `n_critic` iterations of distriminator training
+  * The fake data has label as -1 in WGAN while in DCGAN the fake data's label is 0
+    * Because of the opposite sign in real & fale labels in WGAN, in the discriminator's training process, WGAN trains a batch of real data and then trains a batch of fake data, instead of training them together as what DCGAN does
+      * This prevents the gradient from vanishing 
+  * WGAN trains the distriminator `n_critic` iterations before training the generator for 1 iteration; In DCGAN, `n_critic=1`
   * The loss function in WGAN is using`wasserstein_loss`, while DCGAN is using `binary_crossentropy`
+    * `wasserstein_loss` is the loss function that the generator tries to minimize while the discriminator tries to maximize
+    * At the end of each epoch of gradient updates (each round of "critic"), discriminator weights were clipped between lower and upper bounds (such as between (-0.01, 0.01)), in order to satisfy Lipschitz continuity (having bounded derivatives and be continuously differentiable)
+      * It constraints the discriminator to a compact parameter space 
   * See [WGAN implementation and wasserstein_loss][66], [DCGAN implementation][64]
 * But WGAN doesn't take care of the generated images' quality
 #### LSGAN
