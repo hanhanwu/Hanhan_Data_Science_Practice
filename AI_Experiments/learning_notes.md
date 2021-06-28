@@ -477,6 +477,7 @@ I have decided to systematically review all the details of deep learning, and or
   * The purpose of loss function of DCGAN is to maximize the chance of making the discriminator believes the generated fake data is real during the generator training
 * [The Implementation of DCGAN][64]  
   * Opposite to `Conv2D()`, `Conv2DTranspose()` can create an image given feature maps, this is also why it's used in autoencoder too 
+  * In the discriminator here, it didn't use `BN` or `ReLU`. It's known that DCGAN became unstable when you insert `BN` before `ReLU` in the discriminator
   * Due to custom training, `train_on_batch()` is used instead of using `fit()`
   * The process of `discrimintor training then generator training (adversarial training)` will be repeated in multiple train steps
   * Both generator and discriminator were using `RMSprop` optimizer
