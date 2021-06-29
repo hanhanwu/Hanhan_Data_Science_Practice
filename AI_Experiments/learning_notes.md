@@ -517,7 +517,7 @@ I have decided to systematically review all the details of deep learning, and or
  
 ### Improved GANs
 * WGAN (Wasserstein GAN) is trying to improve model stability and avoid mode collapse by replacing the loss function based on Earth Mover's Distance (EMD), also known as Wasserstein 1, which is a smooth disfferentiable function even when there is no overlap between the 2 probaiblity distributions.
-* LSGAN (Least Square GAN) is trying to improve both model stability and generated images' perceptive quality on DCGAN, by replacing sigmoid cross-entropy loss with least squares loss, since it doesn't bring in vanishing gradients during training
+* LSGAN (Least Square GAN) is trying to improve both model stability and generated images' perceptive quality on DCGAN, by replacing sigmoid cross-entropy loss with least squares loss
 * ACGAN (Auxiliary GAN) is trying to improve both model stability and generated images' perceptive quality on CGAN, by requiring its discrimiator to perform an additional classification task
 * [Reusable discriminator, generator and `train()` for multiple GANs][67]
 #### WGAN
@@ -540,12 +540,14 @@ I have decided to systematically review all the details of deep learning, and or
 * But WGAN doesn't take care of the generated images' quality
 #### LSGAN
 * Fake samples on the correct side vs Fake samples' distribution is closer
-  * Idealy, the fake samples' distribution should be as close as the real samples' distribution. However, in original GANs, once the fake samples are already on the correct side of the decision boundary, the gradients vanish. --> This prevents the generator from further improving the quality of generated fake data in order to move closer to the real samples' distribution.
-  * The solution is to replace the loss function with least square loss function, the gradients won't vanish as long as the fake samples' distribution is still far from the real samples' distribution. This will motivate the generator to keep improving its estimate of real dentisy distribution, even if the fake samples are already on the correct side of the decision boundaty.
+  * Idealy, the fake samples' distribution should be as close as the real samples' distribution. However, in DCGAN, once the fake samples are already on the correct side of the decision boundary, the gradients vanish.
+    * Fake samples that are still far away from the decision boundary will no longer move towards the real samples' distribution
+    * This prevents the generator from further improving the quality of generated fake data in order to move closer to the real samples' distribution.
+  * The solution is to replace the loss function with least square loss function, the gradients won't vanish as long as the fake samples' distribution is still far from the real samples' distribution. This will motivate the generator to keep improving its estimate of real density distribution, even if the fake samples are already on the correct side of the decision boundary.
 * LSGAN is same as DCGAN, except:
-  * The loss function for both generator and discriminator is `MSE` in LSGAN
-    * Least square error minimizes the "total" euclidean distance between a line and the data points. MSE is mean squared error, a good metric to evaluate the distance in average
-  * There is linear avtivation or the avtivation is None in LSGAN
+  * The loss function for both generator and discriminator is `MSE` or `L2` in LSGAN (replaced binary cross entropy)
+    * Least square error (L2) minimizes the "total" euclidean distance between a line and the data points. MSE is mean squared error, a good metric to evaluate the distance in average
+  * There is linear activation or the avtivation is None in LSGAN
     * DCGAN can use 'sigmoid', 'relu', 'leakyrule'
     * LSGAN uses None or 'linear' for the activation function
   * See [LSGAN implementation][68], [DCGAN implementation][64]
