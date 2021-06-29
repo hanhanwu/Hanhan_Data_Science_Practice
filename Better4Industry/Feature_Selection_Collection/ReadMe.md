@@ -44,6 +44,7 @@ In industry, many times we need to generate features, understanding them and gen
   * It requires a model input from `train()`, and cannot use loaded trained model
   * When there are 3000+ samples, TreeExplainer is still faster  
 * Display shap plots on Databricks Notebooks
+  * Set `matplotlib=True` so that you don't need to initiate JS. But on Databricks, this is not supported in Force Plot for multiple records now...
 
 ```
 import matplotlib.pyplot as plt
