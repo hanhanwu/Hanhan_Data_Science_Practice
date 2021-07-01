@@ -571,6 +571,8 @@ I have decided to systematically review all the details of deep learning, and or
       * In discriminator training stage, it's asking the discriminator to correctly classify both real and fake data
       * In the adversarial training stage, it's asking the discriminator to correctly classify the fake data 
   * [ACGAN implementation][69], [ACGAN discriminaton & generator implementation][67], [CGAN implementation][65]
+    * `softmax` was used as the activation in ACGAN. `Softmax` is often used for multi-class probability output. This is used for the added auxiliary classification
+    * The loss function later for classification is `categorical_crossentropy` 
 * ACGAN architecture
   * Comparing with CGAN, there is an Auxiliary network being added after the `Flatten()` function of the discrimonator, which do the the extra classification work
 <p align="center">
