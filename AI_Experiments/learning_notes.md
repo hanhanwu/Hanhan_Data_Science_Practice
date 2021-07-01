@@ -594,7 +594,7 @@ I have decided to systematically review all the details of deep learning, and or
   * For discriminator, both have loss function to predict fake or real (binary_crossentropy)
     * ACGAN has categorical_corssentropy to predict input class, while InfoGAN has categorical_corssentropy for discrete code
     * Besides InfoGAN has `mi_loss` for EACH continuous code
-  * [InfoGAN implementation][70], [ACGAN discriminaton][67]
+  * [InfoGAN implementation][70], [ACGAN implementation][69]
     * The disentangle codes in InfoGAN
       * In this example , these are continuous codes, each code is drawn from a normal distribution with 0.5 std and 0 mean
     * Loss functions 
