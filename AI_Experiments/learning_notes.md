@@ -510,6 +510,7 @@ I have decided to systematically review all the details of deep learning, and or
   * Comparing with DCGAN:
     * For generator, the added one-hot label is concatenated with the images and get into the same generator structure used in DCGAN
     * For discriminator, a `Dense()` layer and `Reshape()` have been applied to the one-hot label, then concatenated one-hot label and the images has been sent to the same discrimonator structure used in DCGAN
+    * `y` is the binary label to indicate whether the image is real (y=1) or fake (y=0)
   * The fake one-hot label was also randomly generated as the noise
 <p align="center">
 <img src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/images/CGAN_MNIST.PNG" width="500" height="350" />
@@ -554,17 +555,27 @@ I have decided to systematically review all the details of deep learning, and or
 #### ACGAN
 * ACGAN makes the improvement upon CGAN by adding an auxiliary class decoder network. 
 * ACGAN assumes forcing the network to do additional work will improve the performance of the original task.
-  * The additional work is added classification
+  * The additional work is the added classification
   * The original task is fake data generation
 * ACGAN vs CGAN
   * The data input doesn't have to be images, but here let's use images as an example 
-  * The input of CGAN discriminator is the image (fake or real) and the label of fake or real, output is the probability of fake or real. The input of ACGAN is the image (fake or real), and the input is the probability of fake or real, as well predicted class of the image
-    * The loss function to predict fake or real is 'binary_corssentropy'
-    * The loss function to predict image class is 'categorical_crossentropy'
-    * The auxiliary decoder network is used to perform image classification. In the code, it's the extra steps added in CGAN's discriminator
-  * [ACGAN implementation][69], [ACGAN discriminaton][67], [CGAN implementation][65]
-    * Discriminator differences
-    * Loss functions differences 
+  * `discriminator.train_on_batch()`
+    * In CGAN, it takes the real+fake images and real+fake image labels as input, the binary labels as output
+    * In ACGAN, it takes the real+fake images as the input, both binary labels and the real+fake image labels are the output
+  * `adversarial.train_on_batch()`
+    * In CGAN, it takes the noise and fake labels as input, the binary labels as output
+    * In ACGAN, it takes the noise and fake labels as the input, both binary labels and the fake labels are the output
+  * ACGAN added a loss function for classification
+    * The loss function to predict fake or real is 'binary_corssentropy', both CGAN and ACGAN have it
+    * The loss function to predict for classification is 'categorical_crossentropy'
+      * In discriminator training stage, it's asking the discriminator to correctly classify both real and fake data
+      * In the adversarial training stage, it's asking the discriminator to correctly classify the fake data 
+  * [ACGAN implementation][69], [ACGAN discriminaton & generator implementation][67], [CGAN implementation][65]
+* ACGAN architecture
+  * Comparing with CGAN, there is an Auxiliary network being added after the `Flatten()` function of the discrimonator, which do the the extra classification work
+<p align="center">
+<img src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/images/ACGAN.PNG" width="600" height="450" />
+</p>
 
 ### Disentangled Representation GANs
 * GANs can also learn disentangled latent codes or representations that can vary attributes of the generator outputs
