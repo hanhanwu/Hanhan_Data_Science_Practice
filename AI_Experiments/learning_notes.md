@@ -556,6 +556,7 @@ I have decided to systematically review all the details of deep learning, and or
 * ACGAN makes the improvement upon CGAN by adding an auxiliary class decoder network. 
 * ACGAN assumes forcing the network to do additional work will improve the performance of the original task.
   * The additional work is the added classification
+    * This added classification also helps ACGAN decides which class to generate, same as what CGAN does 
   * The original task is fake data generation
 * ACGAN vs CGAN
   * The data input doesn't have to be images, but here let's use images as an example 
@@ -575,37 +576,53 @@ I have decided to systematically review all the details of deep learning, and or
     * The loss function later for classification is `categorical_crossentropy` 
 * ACGAN architecture
   * Comparing with CGAN, there is an Auxiliary network being added after the `Flatten()` function of the discrimonator, which do the the extra classification work
+  * Same as CGAN, "y label" here is one-hot label, but in the code, `y` is the binary label
 <p align="center">
-<img src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/images/ACGAN.PNG" width="600" height="450" />
+<img src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/images/ACGAN_DG.PNG" width="450" height="450" />
+<img src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/images/ACGAN.PNG" width="500" height="450" />
 </p>
 
 ### Disentangled Representation GANs
 * GANs can also learn disentangled latent codes or representations that can vary attributes of the generator outputs
 * A disentangled code or representation is a tensor that can change a specific feature or attribute of the output data while not affecting other attributes
-* * Comparing with the original GANs, if we're able to seperate the representation into entangled and disentangled interpretable latent code vectors, we will be able to tell the generator what to synthesize
-  * For example, in an image, with disentangled codes,we can indicate thickness, gender, hair style, etc. 
+* Comparing with the original GANs, if we're able to seperate the representation into entangled and disentangled interpretable latent code vectors, we will be able to tell the generator what to synthesize
+  * For example, in an image, with disentangled codes, we can indicate thickness, gender, hair style, etc. 
 
 #### InfoGAN
 * InfoGAN learns the disentangled representation in an unsupervised way, by maximizing the mutual info between the input codes and output observation
-  * In order to maximize this mutual info, InfoGAN proposes a regularizer that forces the generator to consider the latent codes when it synthesizes the fake data
-  * [InfoGAN structure][79]
+  * In order to maximize this mutual info, InfoGAN forces the generator to consider the latent codes when it synthesizes the fake data
+  * The latent codes can be discrete or continuous
 * InfoGAN vs ACGAN
-  * InfoGAN expands ACGAN by adding disentangled codes so that the generated output will be able to control specific attributes 
-  * For the input of generator of both ACGAN and InfoGAN, both have fake labels. 
-    * Besides InfoGAN has n codes for n disentangeled attributes
-  * For discriminator, both have loss function to predict fake or real (binary_crossentropy)
-    * ACGAN has categorical_corssentropy to predict input class, while InfoGAN has categorical_corssentropy for discrete code
-    * Besides InfoGAN has `mi_loss` for EACH continuous code
-  * [InfoGAN implementation][70], [ACGAN implementation][69]
-    * The disentangle codes in InfoGAN
-      * In this example , these are continuous codes, each code is drawn from a normal distribution with 0.5 std and 0 mean
-    * Loss functions 
-      * `λ` is the weight of loss functions
-      * For continuous code, recommends to have `λ<1`, and in the code, it's using 0.5
+  * In InfoGAN, the binary labels and multi-class (one-hot) labels used in ACGAN are considered as "discrete codes", besides InfoGAN added extra continuous codes
+    * Same as ACGAN, the binary discrete code helps the discriminator predict real of fake image; the multi-class discrete code helps image classification and decide which class to generate from the generator
+    * Each continuous code controls the disentangled attributes of the image that the generator is going to generate. InfoGAN uses `mi_loss` for EACH continuous code
+      * The goal is to minimize mi_loss which will maximuze the mutual info between the codes and the generator output 
+* InfoGAN Architecture, comparing with ACGAN:
+  * The disentangled codes have been added as the input of both discriminator and generator
+    * `z` indicates both z-vector, th eentangled codes (noise code)
+    * `c` are the codes: both discrete and continuous codes
+    * `x` here include both data input (real images/noise, discrete codes, continuous codes)
+  * The auxiliary decoder here looks the same as the one in ACGAN, it's used to deal with discrete code, which is the same one-hot labels used in ACGAN
+  * MI (mutual info) loss for continuous codes
+<p align="center">
+ <img src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/images/InfoGAN_DG.PNG" width="400" height="600" />
+<img src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/images/infoGAN.PNG" width="500" height="600" />
+</p>
+
+* [InfoGAN implementation][70], [ACGAN implementation][69]
+  * The disentangle codes in InfoGAN
+    * In this example, each continuous code is drawn from a normal distribution with 0.5 std and 0 mean
+      * `codes` in InfoGAN's implemenattion here means the continuous codes 
+      * `sigmoid` activation function was used for continuous code
+      * Same as CGAN and ACGAN, `sigmoid` was used for the binary discrete code too
+      * Same as ACGAN, `softmax` was used for multi-class discrete code 
+  * Loss functions 
+    * `λ` is the weight of loss functions, a small positive constant
+      * For continuous code, recommends to have `λ<1`, and in the code here, it's using 0.5
       * For discrete code, recommends to have `λ=1`
-      * The weight for binary_crossentropy is also 1
-    * n attributes
-      * You can add whatever number of disentangled code, just need to specific the input in generator and discriminator and loss functions for each of these code 
+        * As you can see both binary discrete code and multi-class discrete code get weight as 1 
+  * n attributes
+    * You can add whatever number of disentangled codes (n=2 in this example)
 
 #### StackedGAN
 * StackedGAN uses a pretrained encoder or classifer to help disentangle the latent codes.
