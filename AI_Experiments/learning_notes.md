@@ -609,7 +609,7 @@ I have decided to systematically review all the details of deep learning, and or
 <img src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/images/infoGAN.PNG" width="500" height="600" />
 </p>
 
-* [InfoGAN implementation][70], [ACGAN implementation][69]
+* [InfoGAN implementation][70], [InfoGAN generator and discriminator implementation][67], [ACGAN implementation][69]
   * The disentangle codes in InfoGAN
     * In this example, each continuous code is drawn from a normal distribution with 0.5 std and 0 mean
       * `codes` in InfoGAN's implemenattion here means the continuous codes 
@@ -627,16 +627,81 @@ I have decided to systematically review all the details of deep learning, and or
 #### StackedGAN
 * StackedGAN uses a pretrained encoder or classifer to help disentangle the latent codes.
 * It breaks a GAN into a stack of GANs, that each is trained independently in discriminator-adversarial manner with its own latent code:
-  * The encoder is first trained to provide features
-  * Then the encoder-GANs are trained jointly to learn how to use the noise code to control the specific attributes of the generator output
+  * Each `encoder_i` extracts certain features from the image, then each `GAN_i` learns to invert the process of its conrresponding `encoder_i` to generate fake images from the extracted real features
+  * Each `GAN_i` uses latent code `z_i` that conditions its generator output, which means an `z_i` can alter specific attributes of the generated image
+  * Simplified overall view:
 <p align="center">
-<img src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/images/stackGAN.PNG" width="600" height="400" />
+<img src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/images/stackGAN.PNG" width="500" height="350" />
 </p>
 
-* [StackGAN implementation][71]
-  * binary_crossentropy is used to predict real or fake. MSE is used for each encoder. 
-* StackGAN vs InfoGAN
-  * InfoGAN has simpler structure and faster to train 
+##### StackedGAN Core Architecture
+* An overall view of a StackedGAN with 2 encoders
+  * Different from other GANS, StackedGAN has added "Conditional Loss", "Entropy Loss"
+<p align="center">
+<img src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/images/stackGAN_DG.PNG" width="400" height="450" />
+</p>
+
+* Conditional Loss is measured by `L2` or `MSE` (mean squared error), it's the difference between the generator input and the encoder recovered input
+  * As we can see in the flow chart, when the generator synthesizes the output `f_i'` from noise code `z_i`, with conditional loss, it forces the generator to consider the input `f_i+1` at the same time 
+<p align="center">
+<img src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/images/stackGAN_LC.PNG" width="300" height="250" />
+</p>
+
+* Entropy Loss is measured by `L2` or `MSE` (mean squared error), it's the difference between the recovered noise and the input noise
+  * Entropy loss forces the generator to consider the noise code `z_i` at the same time 
+  * Q network recovers the noise from generator output
+<p align="center">
+<img src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/images/stackGAN_LE.PNG" width="300" height="250" />
+</p>
+
+* Similar to multiple other GANs, it has `binary_crossentropy` to discriminate between real and fake images; it has `categorical_crossentropy` to classify images
+  * This binary discrimination is the "Adversarial Loss" in StackedGAN
+  * The multi-class classification is considered as a type of conditional loss here, even though it's using neither L2 nor MSE 
+<p align="center">
+<img src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/images/stackGAN_LA.PNG" width="300" height="250" />
+</p>
+
+##### [StackedGAN implementation][71]
+* General Process:
+  * Discrimonators are trained with real & fake images, one-hot labels and latent codes
+  * Adversarial is trained next with fake images pretending to be real, and corresponding one-hot labels as well as latent codes
+* Except entropy loss has weights as 10, other loss functions have weights 1
+* 2 Encoders
+  * Encoder0 reads real images as the input and output feature1 (intermediate latent features)
+  * Encoder1 reads feature1 as input and outputs the predicted labels (predicted image classes)
+<p align="center">
+<img src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/images/stack_GAN_encoders.PNG" width="300" height="350" />
+</p>
+
+* 2 Generators
+  * Generator1 reads noise code z1 and one-hot labels to generate fake_feature1
+    * This generator is StackedGAN specific
+  * Generator0 reads fake_feature1 and noise code z0 to generate the fake image
+    * This generator [shares common structure as other GANs][67] 
+<p align="center">
+<img src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/images/stackGAN_generator.PNG" width="350" height="350" />
+</p>
+
+* 2 Discrimonators
+  * Both Discrimonator_i outputs recovered latent code z_i, and the probability of real
+  * The input of Discrimonator0 is image, while the input of Discrimonator1 is feature_i
+<p align="center">
+<img src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/images/stackGAN_discriminator.PNG" width="400" height="350" />
+</p>
+
+* 2 Adversarials models
+  * Both encoder and discrimonator's weights are frozen for each adversarial model
+  * Adversarial0 is formed by generator0, discrimonator0 and encoder0
+    * The loss functions here are adversarial loss (the probability of being real), entropy loss and conditional loss 
+  * Adversarial1 is formed by generator1, discrimonator1 and encoder1
+    * The loss functions here are adversarial loss (the probability of being real), entropy loss and conditional loss (the image classification error)
+##### StackedGAN vs InfoGAN
+* InfoGAN has simpler structure and faster to train 
+* The latent codes between GAN, InfoGAN and StackedGAN
+  * Maybe this is also why 2 encoders in StackedGAN alters 2+ attributes while 2 codes in InfoGAN alters 2 attributes. But the overall cost of InfoGAN looks much smaller 
+<p align="center">
+<img src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/images/infoGAN_vs_stackGAN_latent_vector.PNG" width="500" height="150" />
+</p>
 
 ### Cross Domain GANs
 * This technique can be used in computer vision when an image in the source domain is transferred to the target domain.
