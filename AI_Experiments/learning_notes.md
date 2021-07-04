@@ -925,7 +925,12 @@ I have decided to systematically review all the details of deep learning, and or
      * The number of filters in the features' pyramid can be reduced to reduce the # pf params
      * Increasing the number of levels in the features' pyramid can also be explored
 
-## Unsupervised Learning using Mutual Information
+## Unsupervised Learning using Mutual Information (MI)
+* One of a successful unsupervised learning in deep learning is to maximize the MI betwrrn 2 random variables
+  * MI helps cluster latent vectors
+  * If we can cluster all the training data's latent vectors, then a linear seperation algorithm can be used to classify all the testing data's latent vectors
+    * Similar data will have their latent vectors be clustered together
+    * Regions far apart can be seperated by a linear seperation algorithm
 * Mutual Information (MI) is a measure of dependency between 2 random variables M, N
   * It's also known as "Information Gain" or the reduction of uncertainty of M upon observing N
   * In contrast with correlation, MI can measure non-linear statistical dependence between M and N
@@ -943,32 +948,42 @@ I have decided to systematically review all the details of deep learning, and or
      * `I(M;N) = H(M,N) - H(N|M) - H(M|N)`
      * `I(M;N) = I(N;M)`, MI is symmetric 
 ### Unsupervised Learning by Maximizing MI
-#### Discrete Random Variables
-* Similar looking images will have latent vectors that can be clustered into the same region. And regions that are far away from each other can be easily seperated by a linear assignment problem.
-  * To learn the clusters of latent vectors wihtout labels, the model training objective is to maximize MI between the imput image X and its latent code X_bar
-* Model IIC (Invariant Information Clustering)
-  * Loss function `L(Z, Z_bar) = -I(Z;Z_bar) = P(Z, Z_bar) * (log(P(Z)) + log(P(Z_bar)) - log(P(Z, Z_bar)))` 
+#### Model IIC (Invariant Information Clustering) for Discrete Random Variables
+##### Loss function 
+  * `L(Z, Z_bar) = -I(Z;Z_bar) = P(Z, Z_bar) * (log(P(Z)) + log(P(Z_bar)) - log(P(Z, Z_bar)))` 
     * Minimize the loss is to minimize the negative MI (maximize MI) 
-    * `Z` is encoded input X 
-    * `X_bar` is transformed X, the latent code vector of X
-      * The transformation can be small rotation, random cropping, brightness adjustment, etc.
-    * `Z_bar` is the encoded X_bar
+    * X is the input image 
+    * `X_bar` is transformed image
+      * The transformation can be small rotation, random cropping, brightness adjustment, etc., as long as the meaning of X stays the same
+    * `Z` and `Z_bar` are the encoded X and X_bar, namely, the latent vectors of X and X_bar
+      * The foundation of the whole unsupervised labling idea is base on that, X and X_bar share the same info as their latent vectors 
     * ICC assumes Z and Z_bar are independent such that the joint distribution can be estimated as `P(Z, Z_bar) = P(Z) * transpose(P(Z_bar))`
       * `P(Z, Z_bar)` is an N*N matrix where each element Z_ij corresponds to the probability of simultaneously observing 2 random variables (Z_i, Z_bar_j)
-    * `P(Z, Z_bar) = sum(P(Z_i) * transpose(P(Z_bar_i))) / M`
+    * Since for each X sample, we calculate its latent vector, so the joint distribution is `P(Z, Z_bar) = sum(P(Z_i) * transpose(P(Z_bar_i))) / M`
       * `M` is the batch size; `i` indicates the ith batch
-      * To enforce symmetry, `P(Z, Z_bar) = (P(Z, Z_bar) + transpose(P(Z, Z_bar))) / 2`
+      * To further enforce symmetry, `P(Z, Z_bar) = (P(Z, Z_bar) + transpose(P(Z, Z_bar))) / 2`
     * The marginal distributions are:
       * `P(Z) = sum(P(Z_i, Z_bar_j))`, `j >= 1 and j<= N`, sum up ROW-WISE
-      * `P(Z_bar) = sum(P(Z_i, Z_bar_j))`, `j >= 1 and j<= N`, sum up COLUMN-WISE
-  * [IIC implementation][90]
-    * [VGG is used as the encoder backbone][91] 
-    * Overclustering is used to improve IIC performance, overclustering here is an encoder with 2 or more heads.
-    * Paired training input data (Siamese input image) made of the input image X and transformed image X_bar
-    * Unsupervised Labeling: Hungarian algorithm is used to assign a label to a cluster with the min cost
-    * The trained model here can be used for unsupervised labeling for other networks
-      * So the supervised evaluation part here is mainly to improve the clustering accuracy, it's not the unsupervised labeling part
-    * NOTE: `fit()` should be `fit_generator()` here
+      * `P(Z_bar) = sum(P(Z_i, Z_bar_j))`, `i >= 1 and i<= N`, sum up COLUMN-WISE
+##### [IIC implementation][90]
+* The encoder network for unsupervised clustering is formed by [a VGG backbone][91], and a `Dense()` layer with `softmax` output
+* [Paired training input data][102] (Siamese input image) made of the input image X and transformed image X_bar
+  * ‼ NOTE: In [IIC implementation code][90], `fit()` should be `fit_generator()`, since there is a data generator to generate the paired images 
+* Overclustering is used to improve IIC performance, overclustering here is an encoder with 2 or more heads
+    * Each head contributes equally to the total loss, so the final negative MI is scaled by the number of heads 
+    * All the heads may not get same level of performance though
+<p align="center">
+<img src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/images/IIC_multi_heads.PNG" width="450" height="250" />
+</p>
+
+* [Unsupervised Labeling use Hungarian algorithm to assign a label to a cluster with the min cost][104]
+  * An example of how does Hungarian algorithm work
+  * Matrix X is a binary matrix that each row assiged to only 1 column
+  * To evaluate the clustering results, it's comparing matrix X output and the ground truth to calculate the accuracy
+<p align="center">
+<img src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/images/hungarian_alg.PNG" width="550" height="250" />
+</p>
+
 #### Continuous Random Variables
 * Model MINE (Mutual Information Network Estimator)
   * The idea is similar to IIC for discrere random variables, but it's an approximation here with the input follows a certain distributions
@@ -1104,3 +1119,4 @@ I just found some companies like to ask you to implement methods used in deep le
 [101]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter3-autoencoders/autoencoder-mnist-3.2.1.py
 [102]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter13-mi-unsupervised/data_generator.py
 [103]:https://www.pyimagesearch.com/2018/12/24/how-to-use-keras-fit-and-fit_generator-a-hands-on-tutorial/
+[104]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter13-mi-unsupervised/utils.py#L9
