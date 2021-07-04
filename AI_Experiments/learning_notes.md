@@ -29,6 +29,9 @@ I have decided to systematically review all the details of deep learning, and or
   * `lr_schedule()` is called after every epoch during the training 
 * `lr_reducer` helps reduce the learning rate by a certain factor if the validation loss hasn't been improved after a certain number of epoches (patience)
   * [Like this example][99], `patience=5`
+### [`fit()` vs `fit_generator()` vs `train_on_batch()`][103]
+* `fit_generator()` function assumes there is an underlying function that is generating the data for it, such as data generator like [Siamese image pairs generation][102]
+* `train_on_batch` function accepts a single batch of data, performs backpropagation, and then updates the model parameters
 
 
 ## Data Preprocessing Methods
@@ -58,9 +61,11 @@ I have decided to systematically review all the details of deep learning, and or
 * [Image batch preprocess for federated learning][43]
   * For each 28*28 image, it flatten to 784 one dimensional matrix, then divided by 255 to convert the values into [0,1] range because the pixel values are between 0 and 255
   * The preprocessed image can also be reshaped back to 28*28
-#### Convert an image to image tensor
-* [Example][22]
-* The image tensor can be used to understand the output of each activation layer
+* [How to convert an image to image tensor][22]
+  * The image tensor can be used to understand the output of each activation layer
+* [How to generate Siamese images][102]
+  * "Siamese" means image pairs, normally is the pair of an image and its transformation
+  * The image pairs can be used in evaluating unsupervisde image labeling method, such as MI methods like [IIC][90] or [MINE][92]
 
 ### Input Structure
 * The image below is showing the data input requirements for MLP, CNN and RNN
@@ -963,6 +968,7 @@ I have decided to systematically review all the details of deep learning, and or
     * Unsupervised Labeling: Hungarian algorithm is used to assign a label to a cluster with the min cost
     * The trained model here can be used for unsupervised labeling for other networks
       * So the supervised evaluation part here is mainly to improve the clustering accuracy, it's not the unsupervised labeling part
+    * NOTE: `fit()` should be `fit_generator()` here
 #### Continuous Random Variables
 * Model MINE (Mutual Information Network Estimator)
   * The idea is similar to IIC for discrere random variables, but it's an approximation here with the input follows a certain distributions
@@ -1096,3 +1102,5 @@ I just found some companies like to ask you to implement methods used in deep le
 [99]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter2-deep-networks/resnet-cifar10-2.2.1.py#L377
 [100]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter2-deep-networks/resnet-cifar10-2.2.1.py#L396
 [101]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter3-autoencoders/autoencoder-mnist-3.2.1.py
+[102]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter13-mi-unsupervised/data_generator.py
+[103]:https://www.pyimagesearch.com/2018/12/24/how-to-use-keras-fit-and-fit_generator-a-hands-on-tutorial/
