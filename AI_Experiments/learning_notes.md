@@ -928,9 +928,9 @@ I have decided to systematically review all the details of deep learning, and or
 ## Unsupervised Learning using Mutual Information (MI)
 * One of a successful unsupervised learning in deep learning is to maximize the MI betwrrn 2 random variables
   * MI helps cluster latent vectors
-  * If we can cluster all the training data's latent vectors, then a linear seperation algorithm can be used to classify all the testing data's latent vectors
+  * If we can cluster all the training data's latent vectors, then a linear seperation algorithm or linear classifier can be used to classify all the testing data's latent vectors
     * Similar data will have their latent vectors be clustered together
-    * Regions far apart can be seperated by a linear seperation algorithm
+    * Regions far apart can be seperated by a linear seperation algorithm or linear classifier
 * Mutual Information (MI) is a measure of dependency between 2 random variables M, N
   * It's also known as "Information Gain" or the reduction of uncertainty of M upon observing N
   * In contrast with correlation, MI can measure non-linear statistical dependence between M and N
@@ -969,7 +969,7 @@ I have decided to systematically review all the details of deep learning, and or
 * The encoder network for unsupervised clustering is formed by [a VGG backbone][91], and a `Dense()` layer with `softmax` output
 * [Paired training input data][102] (Siamese input image) made of the input image X and transformed image X_bar
   * ‼ NOTE: In [IIC implementation code][90], `fit()` should be `fit_generator()`, since there is a data generator to generate the paired images 
-* Overclustering is used to improve IIC performance, overclustering here is an encoder with 2 or more heads
+* Overclustering is used to improve IIC performance, overclustering here is an encoder with 2 or more heads. The encoder network looks like below:
     * Each head contributes equally to the total loss, so the final negative MI is scaled by the number of heads 
     * All the heads may not get same level of performance though
 <p align="center">
@@ -984,12 +984,21 @@ I have decided to systematically review all the details of deep learning, and or
 <img src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/images/hungarian_alg.PNG" width="550" height="250" />
 </p>
 
-#### Continuous Random Variables
-* Model MINE (Mutual Information Network Estimator)
-  * The idea is similar to IIC for discrere random variables, but it's an approximation here with the input follows a certain distributions
-  * Because MINE is an approximation, it's not expected to perform better than IIC
-  * [MINE implementation][92]
-
+#### Model MINE (Mutual Information Network Estimator) for Continuous Random Variables
+* The idea is similar to IIC for discrere random variables, but it's an approximation here with the input follows a certain distributions
+  * The approximation is done by taking huge amount of samples and creating a histogram with large number of bins 
+* Because MINE is an approximation, it's not expected to perform better than IIC
+##### [MINE implementation][92]
+* Assume the X and X_bar forms a binary Gussian distribution
+* Similar to IIC:
+  * The input is images and their corresponding transformed images, the goal of MINE clustering is to maximize the MI between the latent vectors of the image pairs
+* Different from IIC:
+  * The output of MINE clustering is in continuous format instead of one-hot vector format, therefore we need to use linear classifier instead of linear assignment algorithm
+    * A linear classifier is a MLP without a non-linear activation function
+    * ‼ In the code, it's making 2 mistakes:
+      * The activation function in class MINE's `build_model()` should be `softmax`
+      * The activation function in class LinearClassifier's `build_model()` should be `linear`
+   
 ## [Deep Reinforcement Learning][84]
 
 ## Meta Learning
