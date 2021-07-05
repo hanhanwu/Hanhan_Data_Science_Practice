@@ -948,6 +948,7 @@ I have decided to systematically review all the details of deep learning, and or
      * `I(M;N) = H(M,N) - H(N|M) - H(M|N)`
      * `I(M;N) = I(N;M)`, MI is symmetric 
 ### Unsupervised Learning by Maximizing MI
+* "Discrete" below means discrete joint and marginal distributions of latent vectors Z, Z_bar; "Continuous" means continuous joint and marginal distributions
 #### Model IIC (Invariant Information Clustering) for Discrete Random Variables
 ##### Loss function 
   * `L(Z, Z_bar) = -I(Z;Z_bar) = P(Z, Z_bar) * (log(P(Z)) + log(P(Z_bar)) - log(P(Z, Z_bar)))` 
