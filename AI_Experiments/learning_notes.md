@@ -430,7 +430,7 @@ I have decided to systematically review all the details of deep learning, and or
     * For more complex dataset, we can create deeper encoder & decoder, as well as using more epoches in training 
     * In the encoder part, several `Conv2D()` were used with increased number of filters
       * The reason when network goes deeper and the filters can increase is, in shallower layers, we want to exclude the "noise" from the raw pixel as much as possible, and in deeper layers, we can extra more detailed features from previous denoised feature maps
-    * In the decoder part, the same amount of `Conv2DTranspose()` were used with reversed filter amount as what's in encoder
+    * In the decoder part, the same amount of `Conv2DTransposed()` were used with reversed filter amount as what's in encoder
   * [We can plot the latent vector as 2-dim plot][58], in order to understand the latent vector output better
 <p align="center">
 <img src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/images/encoder.PNG" width="600" height="350" />
@@ -441,13 +441,13 @@ I have decided to systematically review all the details of deep learning, and or
 ### Autoencoder Applications
 * [Autoencoder classification][61]
   * It does both denoising and digit classification
-  * Within the autoencoder here, instead of using `Conv2D()` for encoder and `Conv2DTranspose()` for decoder, it's using `BN-ReLU-Conv2D-MaxPolling2D()` for encoder and `BN-ReLU-Conv2DTranspose-UpSampling2D` for decoder
+  * Within the autoencoder here, instead of using `Conv2D()` for encoder and `Conv2DTransposed()` for decoder, it's using `BN-ReLU-Conv2D-MaxPolling2D()` for encoder and `BN-ReLU-Conv2DTransposed-UpSampling2D` for decoder
   * For classifier, it needs labels y_train to train the model
   * [Denoising without classification][59]
     * It doesn't have classification part, therefore labels are not needed 
 * [Autoencoder colorization][60]
   * The input is gray impage and the output is color image 
-  * Its structure is basic, just uses `Conv2D()` for encoder and `Conv2DTranspose()` for decoder
+  * Its structure is basic, just uses `Conv2D()` for encoder and `Conv2DTransposed()` for decoder
     * Filters for each layer increased to capture more feature details
     * Latent-dims increased to increase the capacity fo getting the most important features
 
@@ -481,7 +481,7 @@ I have decided to systematically review all the details of deep learning, and or
 * Loss function
   * The purpose of loss function of DCGAN is to maximize the chance of making the discriminator believes the generated fake data is real during the generator training
 * [The Implementation of DCGAN][64]  
-  * Opposite to `Conv2D()`, `Conv2DTranspose()` can create an image given feature maps, this is also why it's used in autoencoder too 
+  * Opposite to `Conv2D()`, `Conv2DTransposed()` can create an image given feature maps, this is also why it's used in autoencoder too 
   * In the discriminator here, it didn't use `BN` or `ReLU`. It's known that DCGAN became unstable when you insert `BN` before `ReLU` in the discriminator
   * Due to custom training, `train_on_batch()` is used instead of using `fit()`
   * The process of `discrimintor training then generator training (adversarial training)` will be repeated in multiple train steps
