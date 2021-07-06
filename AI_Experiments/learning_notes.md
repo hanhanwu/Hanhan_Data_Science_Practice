@@ -252,8 +252,11 @@ I have decided to systematically review all the details of deep learning, and or
   
 ## Convolutional Networks (Convnet)
 * Convnets can learn <b>local, translation-invariant features</b>, so they are very data-efficient on perceptual problems. Therefore, even when the dataset is small (such as hundreds of images), you might still get a reasonable results.
-* In CNN, a <b>kernel (filter)</b> can be visualized as a window that slides through the whole image from left to right, from top to bottom. 
+* In CNN, a <b>kernel</b> can be visualized as a window that slides through the whole image from left to right, from top to bottom. 
   * This operation is called as "Convolution", which transforms the input image as a feature map
+  * Kernel vs Filter
+    * Kernel size is the size of the "grid" of pixels that you convolve, it's like your sliding window.
+    * Filters is the number of such sliding windows that you want your network to learn.  
 * [Keras Convnet][11]
 * [simple CNN pyhton implementation][94], [Simple CNN for MNIST classification][95]
 * [Conv2D][12]
