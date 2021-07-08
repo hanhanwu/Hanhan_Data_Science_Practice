@@ -716,40 +716,51 @@ I have decided to systematically review all the details of deep learning, and or
 
 #### CycleGAN
 * This method doesn't need aligned source and traget images in the training.
-  * Most often, the aligned image pairs are not available or expensive to generate. Better to have a model that doesn't need aligned image pairs. Therefore, methods like pix2pix which required aligned pairs have limited capability.
-* The structure of CycleGAN
+  * Most often, the aligned image pairs are not available or expensive to generate. Better to have a model that doesn't need aligned image pairs. By contrast, methods like pix2pix which required aligned pairs have limited capability.
+##### Core Architecture
+* The main structure of CycleGAN
   * In the forward cycle, the input data is real source data, while in the backward cycle, the input is real target data.
-  * In both forward and backward cycles, both have cycle consistency check, to minimize the input data and reconstructed data
-    * With cycle consistency check, even though we are transfering domain x to domain y, the original features in x should be intact in y and be recoverable
-    * Cycle consistency check uses L1 loss (MAE, mean absolute error) so that the reconstructed images can be less bluring, comparing with L2 loss (MSE, mean squared error)
+  * In both forward and backward cycles, both have cycle consistency check, to minimize the differences between the input data and reconstructed data. Also because of the cycle consistency check, we don't need paired source and target data.
+    * The cycle consistency check implies that, although we are transfering domain x to domain y, the original features in x should remain intact in y and be recoverable
+    * Cycle consistency check uses L1 loss (MAE, mean absolute error) so that the reconstructed images can be less bluring than using L2 loss (MSE, mean squared error)
   * CycleGAN is symmetric. Forward cycle GAN is identical to the backward cycle GAN, but have the roles of the source data x and target data y reversed
     * Generator F is just another generator borrowed from the backward cycle GAN
-  * <b>The objective of CycleGAN is to have generator G learn to synthesize fake target data y that can fool discriminator Dy in forward cycle, and have generator F learn to synthesize fake source daata x that can fool discrinminator Dx in backward cycle</b> 
+  * <b>The objective of CycleGAN is to have generator G learn to synthesize fake target data y that can fool discriminator Dy in forward cycle, and have generator F learn to synthesize fake source data x that can fool discrinminator Dx in backward cycle</b> 
 <p align="center">
 <img src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/images/cycleGAN.PNG" width="500" height="500" />
 </p>
 
-* [CycleGAN implementation][72]
-  * Generator is implemented with [U-Net][73]
-    * The problem of using autoencoder is, the lower level features are shared between both encoder and decoder layers, which is not suitable for image translation. 
-    * U-Net is used to deal with this issue, it enables the free flow of feature-level info between paired encoder and decoder
-    * IN (Instance Normalization) is BN (Batch Normalization) per image/sample or per feature
-      * <b>In style transfer, it's important to normalize the contrast per sample, not per batch</b>. IN is equivalent to contrast normalization while BN breaks contrast normlaization.
-    * An encoder layer is made of `IN-LeakyReLU-Conv2D`, a decoder layer is made of `IN-ReLU-Conv2D`
-  * PatchGAN is also an option in the discriminator. By choosing this option, you can divide an image into patches and predict real/fake for each patch, predict the probability
-    * Patches can overlap
-    * This can help improving the generated images' quality since an image will look more real if each of its sub-images looks more real
-  * Loss functions
-    * MAE is used for cycle consistency check
-    * MSE is used for generator and discriminator losses. This is inspired by LSGAN, that by replacing binary_crossentropy with MSE is improve the perceptual quality
-    * `Total Loss = λ1 * Loss_GAN + λ2 * Loss_cycle_consistency + (λ3 * Loss_identity)`
-      * `Total Loss` will be optimized in the adversarial training 
-      * Loss_identity is optitional
-        * Color composition may not be transferred from source image to the target image, that why the identity regularizers are added
-        * The auxiliary identity regularizer will be added in the cycleGAN network, it also uses MAE as the loss function
+* Identity Regularizer
+  * The color composition may not be successfully transfered from the source image to the fake target image. To deal with this issue, identity regularizer is added to CycleGAN's network. It adds cycle identity loss function to both forward and backward cycles
 <p align="center">
 <img src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/images/cycleGAN_identity_regularizer.PNG" width="550" height="550" />
 </p>
+
+##### [CycleGAN implementation][72]
+* Training Process, repeat in each training step:
+  * Train the forward discriminator with a batch of real target data (label=1), and a batch of fake target data (label=0), minimize the MSE loss for this discriminator
+  * Train the backward discriminator with a batch of real source data (label=1), and a batch of fake source data (label=0), minimize the MSE loss for this discriminator
+  * Train the fprward and backward generators in the adversarial network, minimizing the MSE loss for generator and MAE loss for the cycle consistency checks
+    * The input of forward generator is a batch of fake target data with label=1 
+    * The input of backward generator is a batch of fake source data with label=1 
+    * The weights of discriminators are frozen
+* Generator is implemented with [U-Net][73]
+  * The problem of using autoencoder is, the lower level features are shared between both encoder and decoder layers, which is not suitable for image translation. 
+  * U-Net is used to deal with this issue, it enables the free flow of feature-level info between paired encoder and decoder
+  * IN (Instance Normalization) is BN (Batch Normalization) per image/sample or per feature
+    * <b>In style transfer, it's important to normalize the contrast per sample, not per batch</b>. IN is equivalent to contrast normalization while BN breaks contrast normlaization.
+  * An encoder layer is made of `IN-LeakyReLU-Conv2D`, a decoder layer is made of `IN-ReLU-Conv2D`
+* PatchGAN is also an option in the discriminator. By choosing this option, you can divide an image into patches and predict real/fake for each patch, predict the probability
+  * Patches can overlap
+  * This can help improving the generated images' quality since an image will look more real if each of its sub-images looks more real
+* Loss functions
+  * MAE (L1 loss) is used for cycle consistency check
+    * CycleGAN suggests to give its weight as `λ=1` 
+  * MSE (L2 loss) is used for generator and discriminator losses. This is inspired by LSGAN, that by replacing binary_crossentropy with MSE improves the perceptual quality
+    * CycleGAN suggests to give its weight as `λ=10` to give more importance to the cycle consistency check
+  * MAE is also used for cycle identity loss
+    *  `λ=0.5`
+    *  It's optimized during the adversarial training step
 
 * Tips
   * When the 2 domains are drastically different, suggest to have smaller kernel_size. 
