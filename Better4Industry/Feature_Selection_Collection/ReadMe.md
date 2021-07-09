@@ -9,7 +9,7 @@ In industry, many times we need to generate features, understanding them and gen
 * Github has blocked the loading of JS, in fact it provides a method to interact with each record and understand how the feature values affect the prediction
 ![shap JS](https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Better4Industry/Feature_Selection_Collection/xgboost_shap.PNG)
 
-  * In this force plot, the "base value" of the average predicted value from the model training (in new SHAP version, it's using leaf nodes and no longer the same as avg of forecasted values... maybe you can say it's the "avg of historical forecasted values"), the "output value" is the predicted value of current observation. Pink is the position impact while blue is the negative impact. Both impacts indicate how does the base value distance from the output value
+  * In this force plot, the "base value" of the estimated average predicted value from the model training (in new SHAP version, it's using leaf nodes and no longer the same as avg of forecasted values...), the "output value" is the predicted value of current observation. Pink is the position impact (dragging the prediction value higher or towards 1) while blue is the negative impact (dragging the prediction value lower or towards 0).
   * The length of the bar for each feature indicates to which extent the feature affect the forecasted value
   * `output value = base value + sum(all features' SHAP values)`
     * Because of this, sometimes when you got negative forecast values, you can shift the output value to the right and split the shifted difference to each feature. By doing this the base value will stay the same, feature's impact visually stay almost the same and the forecasted value has been "corrected".
