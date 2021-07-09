@@ -736,6 +736,25 @@ I have decided to systematically review all the details of deep learning, and or
 <img src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/images/cycleGAN_identity_regularizer.PNG" width="550" height="550" />
 </p>
 
+* U-network
+  * The generator of CycleGAN learns the latent represnetation of the input data distribution and translates to the target data distribution. This is exactly what does an autoencoder do. However, the low level features are shared between encoder and decoder layers in autoencoder, which is not suitable for image translation. U-network is used to solve this problem.
+  * From the example U-net below we can see, when there are `n` encoder & decoder layers, the `encoder_i` will be connected to `decoder_n-i`. This structure allows specific feature-level info flows between corresponding encoder & decoder layer
+  * IN (Instance Normalization) is BN (Batch Normalization) per image/sample or per feature
+    * <b>In style transfer, it's important to normalize the contrast per sample, not per batch</b>. IN is equivalent to contrast normalization while BN breaks contrast normlaization.
+  * The encoder is using `IN-LeakyReLU-Conv2D` while the decoder is using `IN-ReLU-Conv2DTransposed`. But in the code, `IN` is optional, `LeakyReLU` and `ReLU` can replace each other in both encoder and decoder
+<p align="center">
+<img src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/images/U_network.PNG" width="600" height="400" />
+</p>
+
+* PatchGAN
+  * Left is the discriminator without PatchGAN, right has PatchGAN. 
+  * The difference is the last layer. Without PatchGAN, `Dense(1)` is used at the end to predict the probability of whether an image is real. However in large images, computing this probability using 1 number is param-inefficient and the image quality from the generator later can be poor.
+  * With PatchGAN, it divides each image into a grid of patches, and the discriminator will make prediction for each patch. Meanwhile, the whole image looks more real if its patches look more real
+    * Patches can overlap 
+<p align="center">
+<img src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/images/patchGAN.PNG" width="600" height="400" />
+</p>
+
 ##### [CycleGAN implementation][72]
 * Training Process, repeat in each training step:
   * Train the forward discriminator with a batch of real target data (label=1), and a batch of fake target data (label=0), minimize the MSE loss for this discriminator
@@ -744,15 +763,6 @@ I have decided to systematically review all the details of deep learning, and or
     * The input of forward generator is a batch of fake target data with label=1 
     * The input of backward generator is a batch of fake source data with label=1 
     * The weights of discriminators are frozen
-* Generator is implemented with [U-Net][73]
-  * The problem of using autoencoder is, the lower level features are shared between both encoder and decoder layers, which is not suitable for image translation. 
-  * U-Net is used to deal with this issue, it enables the free flow of feature-level info between paired encoder and decoder
-  * IN (Instance Normalization) is BN (Batch Normalization) per image/sample or per feature
-    * <b>In style transfer, it's important to normalize the contrast per sample, not per batch</b>. IN is equivalent to contrast normalization while BN breaks contrast normlaization.
-  * An encoder layer is made of `IN-LeakyReLU-Conv2D`, a decoder layer is made of `IN-ReLU-Conv2D`
-* PatchGAN is also an option in the discriminator. By choosing this option, you can divide an image into patches and predict real/fake for each patch, predict the probability
-  * Patches can overlap
-  * This can help improving the generated images' quality since an image will look more real if each of its sub-images looks more real
 * Loss functions
   * MAE (L1 loss) is used for cycle consistency check
     * CycleGAN suggests to give its weight as `λ=1` 
