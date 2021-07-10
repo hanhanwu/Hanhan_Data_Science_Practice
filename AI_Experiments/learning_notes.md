@@ -717,6 +717,7 @@ I have decided to systematically review all the details of deep learning, and or
 #### CycleGAN
 * This method doesn't need aligned source and traget images in the training.
   * Most often, the aligned image pairs are not available or expensive to generate. Better to have a model that doesn't need aligned image pairs. By contrast, methods like pix2pix which required aligned pairs have limited capability.
+* It's symmetric, which means the translation between the target and the source images can be reversed
 ##### Core Architecture
 * The main structure of CycleGAN
   * In the forward cycle, the input data is real source data, while in the backward cycle, the input is real target data.
@@ -732,6 +733,7 @@ I have decided to systematically review all the details of deep learning, and or
 
 * Identity Regularizer
   * The color composition may not be successfully transfered from the source image to the fake target image. To deal with this issue, identity regularizer is added to CycleGAN's network. It adds cycle identity loss function to both forward and backward cycles
+  * But this piece is not needed when the source and target images are having different number of channels, such as the translation between grey and colored images
 <p align="center">
 <img src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/images/cycleGAN_identity_regularizer.PNG" width="550" height="550" />
 </p>
@@ -759,7 +761,7 @@ I have decided to systematically review all the details of deep learning, and or
 * Training Process, repeat in each training step:
   * Train the forward discriminator with a batch of real target data (label=1), and a batch of fake target data (label=0), minimize the MSE loss for this discriminator
   * Train the backward discriminator with a batch of real source data (label=1), and a batch of fake source data (label=0), minimize the MSE loss for this discriminator
-  * Train the fprward and backward generators in the adversarial network, minimizing the MSE loss for generator and MAE loss for the cycle consistency checks
+  * Train the forward and backward generators in the adversarial network, minimizing the MSE loss for generator and MAE loss for the cycle consistency checks
     * The input of forward generator is a batch of fake target data with label=1 
     * The input of backward generator is a batch of fake source data with label=1 
     * The weights of discriminators are frozen
@@ -771,11 +773,13 @@ I have decided to systematically review all the details of deep learning, and or
   * MAE is also used for cycle identity loss
     *  `λ=0.5`
     *  It's optimized during the adversarial training step
-
+* The network is symmetric, therefore it can do grey <--> color 2 directions image translation
+  * In fact, in this code, trained `g_target`, the target generator (backward generator) can do the reversed work by converting color image to gery 
 * Tips
-  * When the 2 domains are drastically different, suggest to have smaller kernel_size. 
-    * For example, in [CycleGAN implementation][72], `mnist_cross_svhn` is trying to translate images between MNIST digits and SVHM street view numbers...
-  * Also as `mnist_cross_svhn` shown, the results of CycleGAN may not be sematic consistent. To address this issue, we can try `CyCADA (Cycle-Consistent Adversarial Domain Adaptation)` which adds a semantic loss to ensure the semantic consistency
+  * When the 2 domains of the source and the target are drastically different, suggest to have a larger kernel_size. 
+    * For example, in [CycleGAN implementation][72], `mnist_cross_svhn` is trying to translate images between MNIST digits and SVHM street view numbers, comparing with the color tranlation which uses `kernel_size=3`, this case is using `kernel_size=5`
+  * Also as `mnist_cross_svhn` shown, the results of CycleGAN may not be sematic consistent. To address this issue, we can try `CyCADA (Cycle-Consistent Adversarial Domain Adaptation)` which adds a semantic loss to improve the semantic consistency
+    * "Semantic Inconsistent" here means, the image translation tranlated the source digit to the wrong target digit, even though the style has been translated right between the 2 domains. This is also called as "label flipping" 
 
 ### [ProGAN][78]
 * It involves training by starting with a very small image and then the blocks of layers added incrementally so that the output size of the generator model increases and increases the input size of the discriminator model until the desired image size is obtained. 
