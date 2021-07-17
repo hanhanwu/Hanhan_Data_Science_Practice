@@ -788,40 +788,60 @@ I have decided to systematically review all the details of deep learning, and or
 * Batch Normalization is not used here, instead of that two other techniques are introduced here, including pixel-wise normalization and minibatch standard deviation.
 
 ### Other
-* [A big of trick when tunning GAN][39]
+* [A trick when tunning GAN][39]
 
 ## Variational Autoencoders (VAE)
 * Same as GANs, VAEs also belong to generative models family
-* Both GANs and VAEs are attempting to create synthetic output from latent space, but VAEs are simpler and easier to train, but GANs are able to generate more realistic signals (more sharp images)
+* Both GANs and VAEs are attempting to create synthetic output from latent space, VAEs are simpler and easier to train, and GANs are able to generate more realistic signals (sharper images)
   * GANs focus on how to get a model that approximate the input distribution
-  * VAEs focus on modeling the input distribution from decodable continuous latent space
+  * VAEs focus on modeling the input distribution from a decodable continuous latent space
 * Within VAEs:
-  * They focus on the variational inferance of latent codes, and therefore it provides a framework for both mearning and efficient bayesian inference with latent variable
+  * They focus on the variational inferance of latent codes, and therefore it provides a framework for both learning and efficient bayesian inference with latent variable
   * Meanwhile, VAEs have an intrinsic mechanism to disentangle the latent vectors.
-* Both VAEs and Autoencoders attempt to reconstruct the input data while learning the latent vector
+* VAE vs Autoencoder
+  * Both VAEs and Autoencoders attempt to reconstruct the input data while learning the latent vector
   * In VAEs, a latent vector is sampled from a distribution. This is a "latent" distribution because this distribution outputs a compact (and hidden) representation of the inputs 
   * In Autoencoder, the latent vector is an internal (hidden) layer that describes a code used to represent the input
   * Different from Autoencoders, the latent space of VAEs is continuous, and the decoder is used as a generative model
 ### VAE Design Principles
 * The goal of VAEs is to find a tractable distribution that can closely estimate the conditional distribution of the latent attributes `z`, given input `x`.
-  * To make the distribution tractable, VAEs introduced "Variational Inference Model", a modle that's often chosen to be a multivariate gaussian, whose mean and std are computed in the encoder using the input
+  * To make the distribution tractable, VAEs introduced "Variational Inference Model" (an encoder) `Q(z|x)`, a modle that's often chosen to be a multivariate gaussian, whose mean and std are computed in the encoder network using the input
     * The elements of `z` (latent attributes) are independent
-  * Since the inference model is an estimate, we use `KL (Kullbeck-Leibler) divergence` to determine the distance between the inference model and the conditional distribution of `z` given `x`, in the encoder
- * In the decoder, the generator takes z samples from the inference model output, to reconstruct the inputs. For the reconstruction loss,
-   * If the image distribution is assumed to be Gaussian, `MSE` is used
-   * If every pixel is considered to be Bernoulli distribution, then `binary cross entropy` is used
- * `VAE loss = Reconstruct Loss + KL Loss`
- * Reparameterization Trick
-   * [As shown here][80], decoder takes samples from the latent vector `Z` to reconstruct the input. But the gradients cannot pass through the stochastic sampling layer during backpropagation.
-   * To solve the problem, reparametrrization trick is brought in to move the sampling block outside of the encoder-decoder network and make it look like the sampling came from the latent space
-   * And now the network can be trained with familiar optimization methods such as Adam, RMSProp, SGD, etc.
+  * Since the inference model is an estimate, we use `KL (Kullbeck-Leibler) divergence` to determine the distance between the inference model `Q(z|x)` and the conditional distribution `P(z|x)`, in the encoder
+  * In the decoder, the reconstruction loss:
+    * If the image distribution is assumed to be Gaussian, `MSE` is used
+    * If every pixel is considered to be Bernoulli distribution, then `binary cross entropy` is used
+  * `VAE loss = Reconstruction Loss + KL Loss`
+  * Reparameterization Trick
+    * Decoder takes samples from the latent vector `z` to reconstruct the input. But the gradients cannot pass through the stochastic sampling layer during backpropagation. To solve the problem, reparametrrization trick is brought in to move the sampling block outside of the encoder-decoder network and make it look like the sampling came from the latent space
+    * And now the network can be trained with familiar optimization methods such as Adam, RMSProp, SGD, etc.
+<p align="center">
+<img src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/images/VAE_reparameterization_trick.PNG" width="650" height="400" />
+</p>
+
 * Afrer training VAE model, we can discard the inference model as well as the addition and multiplication operators. To generate new meaningful outputs, samples are taken from the distribution block (often normal distribution) which generates `ε`
+<p align="center">
+<img src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/images/VAE_decoder_test.PNG" width="300" height="300" />
+</p>
+
 * Implementations
   * [VAE MLP][81], [VAE CNN][82] 
-    * VAE CNN has a significant improvement in output quality and a great reduction in the number of params
+    * VAE CNN has a significant improvement in perceptive quality and a great reduction in the number of params
+    * The `lambda()` function implements the reparameterization trick to push the sampling block out of VAE network
+    * VAEs are intrinsically disentangle the latent vector dimensions to a certain extent, therefore when you set `latent_dim=2`, you will see the output images might be affected by 2 attributes
 ### Conditional VAE (CVAE)
-* It imposes the condition (such as a one-hot label) to both encoder and decoder inputs, so that we can specify specific output
-* Comparing with VAE, there is no change in the loss function
+* It imposes the condition (such as a one-hot label) on both encoder and decoder inputs, so that we can control which class to generate
+* Comparing with VAE, the loss function is similar but added the given condition
+  * KL Loss: meansures the distance between the encoder given the latent vector and the condition `Q(z|x, c)`, and the priori distribution given the condition `P(z|c)`
+  * Reconstruction Loss: measures the loss of the decoder, given both latent vector and condition
+* [CVAE implementation][83], comparing with VAE CNN:
+  * The encoder input is the concatenation of the added condition and the original image input  
+  * The decoder input is the concatenation of the added codition and the latent space sampling
+<p align="center">
+<img src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/images/VAE_encoder.PNG" width="500" height="600" />
+ <img src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/images/VAE_decoder.PNG" width="500" height="600" />
+</p>
+
 ### β-VAE
 * It's the VAE with disentangled representations 
   * Although VAEs are intrinsically disentangle the latent vector dimensions to a certain extent
@@ -829,6 +849,7 @@ I have decided to systematically review all the details of deep learning, and or
 * VAE, CVAE, β-VAE
   * β-VAE only changes the loss funcion of VAE, by adding `β` to KL loss
     * β > 1, it serves as a regularizer, which forces the latent codes disentangle further
+      * The implicit effect of β is to set tighter standard deviation, which forces the latent codes in the posterior distribution `Q(z|x)` to be independent
     * When β=1, it's CVAE, that's why CVAE is a special case of β-VAE
     * To determine the value of β needs some trial and error, there must be a careful balance between reconstruction error and regularization of latent code independence
 * [β-VAE, CVAE implementation][83]
