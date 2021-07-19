@@ -860,14 +860,35 @@ I have decided to systematically review all the details of deep learning, and or
   * The coordinates system has the origin (0,0) at the upper left corner pixel of the entire image. 
 * Object Detection needs to identify a bounding box belongs to a known object or background. It predicts 2 things:
   * The category (class) of an object
-  * y_box = ((x_min, y_min), (x_max, y_max))
-* Offsets: They are the pixel error values that the network is trying to minimize between the ground truth bounding box and the predicted bounding box coordinates.
+  * Bounding box pixel coordinates `y_box = ((x_min, y_min), (x_max, y_max))`
 * Anchor Box: An image is divided into regions, each region is an anchor box.
   * The network will estimate the offsets with respect to each anchor box, in order to make the prediction closer to the ground truth
-  * The offsets can be reduced if we allow an anchor box to have different aspect ratios (different dimensions with the same centroid) 
-    * The resized anchor box has the same centroid as the original anchor box
-    * If there are `k`different aspect ratios, then there are `k+1` anchor boxes, since for `aspect_ratio=1` there is an additional anchor box
-  * Ground Truth Anchor Box: it's the anchor box that contains the object to be detected, there is 1 and only 1 ground truth anchor box for an object
+    * Offsets: They are the pixel error values that the network is trying to minimize between the ground truth bounding box and the predicted bounding box coordinates. It's the distance between the upper left corner of the anchor box and the upper left corner of the bounding box; it's also the distance between the lower right corner of the anchor box and the lower right corner of the bounding box
+<p align="center">
+<img src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/images/anchor_box.PNG" width="500" height="600" />
+</p>
+
+* Multi-scale object detection: the use of different scales of anchor boxes to detect object
+  * Scaling Factors
+    * Example: `s = [(1/40, 1/30), (1/20, 1/15), (1/10, 1/8), (1/5, 1/4), (1/3, 1/2), (1/2, 1)]`, this list contains all the scaling factors
+    * `(1/40, 1/30)` means to divide the image's width into 40 pieces and divide its height into 30 pieces  
+    * In each scaling factor, pixels covered by the smallest anchor box is known as the "Receptive Field"
+* The offsets might be be reduced if we allow an anchor box to have different aspect ratios (different dimensions with the same centroid) 
+  * The resized anchor box has the same centroid as the original anchor box
+  * For each aspect ratio, the dimensions of the anchor box is
+    * `(w_i, h_i) = (w*sx_j*sqrt(a_i), h*sy_j/sqrt(a_i))`
+      * `a_i` is the aspect ratio of the anchor box
+      * `(w, h)` is the original image's dimension
+      * `sx_j`, `sy_j` is the jth scaling factor
+  * For `aspect_ratio=1`, SSD recommends an additional anchor box
+    * Its dimension is `(w_i, h_i) = (w*sqrt(sx_j * sx_j+1), h*sqrt(sy_j * sy_j+1))` 
+  * The image below is showing aspect ratios as `[2, 1, 1/2]`
+<p align="center">
+<img src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/images/aspect_ratios.PNG" width="400" height="300" />
+</p>
+
+
+* Ground Truth Anchor Box: it's the anchor box that contains the object to be detected, there is 1 and only 1 ground truth anchor box for an object
 * Multi-scale object detection
   * During the process of creating anchor boxes of various dimensions, an optimal anchor box size that nearest to the ground truth bounding box will emerge
   * Multi-scale object detection uses multi-scale anchor boxes to effectively detect objects of different sizes
