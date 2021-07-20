@@ -887,13 +887,16 @@ I have decided to systematically review all the details of deep learning, and or
 <img src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/images/aspect_ratios.PNG" width="400" height="300" />
 </p>
 
+* IoU (Intersection over Union) 
+  * It's using Jaccard Index, `IoU = (A and B) / (A union B)`, A is an anchor box, B is the ground truth bounding box
+<p align="center">
+<img src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/images/IoU.PNG" width="500" height="300" />
+</p>
 
 * Ground Truth Anchor Box: it's the anchor box that contains the object to be detected, there is 1 and only 1 ground truth anchor box for an object
 * Multi-scale object detection
   * During the process of creating anchor boxes of various dimensions, an optimal anchor box size that nearest to the ground truth bounding box will emerge
   * Multi-scale object detection uses multi-scale anchor boxes to effectively detect objects of different sizes
-* IoU (Intersection over Union)
-  * It's using Jaccard Index, `IoU = (A and B) / (A union B)`, A is an anchor box, B is the ground truth bounding box
   * `Ai` is the "Positive Anchor Box" if it maximizes IoU with the ground truth bounding box
     * Extra Positive Anchor Box: For the remaining anchor boxes, they can get a second chance if their IoU with the ground truth pass a given threshold
   * After getting the Positive Anchor Box and the Extra Positive Box, the remaining anchor boxes are Negative Anchor Boxes.
