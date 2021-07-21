@@ -890,46 +890,37 @@ I have decided to systematically review all the details of deep learning, and or
 * IoU (Intersection over Union) 
   * It's using Jaccard Index, `IoU = (A and B) / (A union B)`, A is an anchor box, B is the ground truth bounding box
 <p align="center">
-<img src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/images/IoU.PNG" width="500" height="300" />
+<img src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/images/IoU.PNG" width="500" height="400" />
 </p>
 
-* Ground Truth Anchor Box: it's the anchor box that contains the object to be detected, there is 1 and only 1 ground truth anchor box for an object
+* Ground Truth Anchor Box (positive anchor box): it's the anchor box that has the largest IoU with the ground truth bounding box
+* Extra Positive Anchor Box: besides the ground truth anchor box, if the IoU of an anchor box is above a certain threshold, this anchor box will also be added into the positive anchor box list
+  * The remained anchor boxes are the negative anchor boxes and they do not contribute to the offset loss function
 * Multi-scale object detection
   * During the process of creating anchor boxes of various dimensions, an optimal anchor box size that nearest to the ground truth bounding box will emerge
   * Multi-scale object detection uses multi-scale anchor boxes to effectively detect objects of different sizes
-  * `Ai` is the "Positive Anchor Box" if it maximizes IoU with the ground truth bounding box
-    * Extra Positive Anchor Box: For the remaining anchor boxes, they can get a second chance if their IoU with the ground truth pass a given threshold
-  * After getting the Positive Anchor Box and the Extra Positive Box, the remaining anchor boxes are Negative Anchor Boxes.
-    * Negative anchor boxes do not contribute to the offsets loss function 
-  * `A positive anchor box's offset = ground truth bounding box coordinates - the positive anchor box's own bounding box coordinates`
-* Ground Truth Mask
-  * Imagive we have save the indexes of all the anchor boxes in a list 
-  *  The indexes of positive and extra positive anchor boxes have the ground truth mask as 1
-    * Negative anchor boxes have mask as 0 
-* Ground Truth Class
-  * It's an array of one-hot vectors, the values are all 0 except at the index of the anchor box. Index 0 is background, index 1 is the 1st non-background object, index n_class-1 is the last non-background object   
+    
 ### SSD (Single-Shot Detection)
-#### SSD Proposals
-* Anchor boxes with offsets worse than using the entire image should not contribute to the overall optimization process and need to be suppressed
+* It's a supervised object detection method
 #### Loss Functions
-* `L = L_cls + L_off`
+* `L = L_cls + L_off`, predict both object category and the offsets of each anchor box
   * L_cls is the loss for object class prediction
     * By default, it's categorical cross-entropy loss 
     * We can replace categorical cross-entropy with Focal Loss to deal with class imbalance issue
       * The majority of anchor boxes are classified as negative anchor boxes (including background) while the anchor boxes that represent the target object is the minority, this leads to the class imbalance issue. Categorical cross entropy can be overpowered by the contribution of negative anchor boxes.
     * `L_cls_categorical_cross_entropy = -sum(y_true_i * log(y_pred_i))`
     * `L_cls_focal_loss = -α * sum(y_true_i * log(y_pred_i) * pow(1 - y_pred_i, γ))`
-      * `pow(1 - y_pred_i, γ)` helps reduce the contribution of negative anchor boxes, since at the early stage, `y_pred` that are closer to 1 mainly came from negative anchor boxes, so with this added factor `pow(1 - y_pred_i, γ)`, th loss is larger
+      * `pow(1 - y_pred_i, γ)` helps reduce the contribution of negative anchor boxes, since negative anchor box has label as 1 while positive anchor box has label as 0. For negative anchor boxes, `1 - y_pred_i` is close to 0 which will increase the loss of negative anchor box without sacrificing the contributions from the positive anchor box
       * This was inspired by RetinaNet, which works best with `γ=2, α=0.25` 
   * L_off is the offsets loss 
     * By default, it's using L1 loss (mean absolute error), L2 loss (mean square error) 
     * SSD can also use Smooth L1, which is more robust than L1 and less sensitive to outliers
       * `L_off = L1_smooth = pow(std * u, 2)/2 if |u| < 1/pow(std, 2) else |u| - 1/(2*pow(std, 2))`
         * `u = y_true - y_pred` 
-        * In SSD, `std=1`, therefore L1_smooth is the same as [Huber Loss][85]
+        * In SSD, `std=1`, therefore L1_smooth is the same as [Huber Loss][85], which is less likely to be dominated by outliers
         * When `std --> inf`, `L1_smooth = L1`
-      * Smooth L1 is is quadratic for small values of `u`, and linear for large values, you can think it's a combo of L1, L2
-* <b>SSD is a supervised method</b>, so it needs data labels
+      * Smooth L1 is quadratic for small values of `u`, and linear for large values, you can think it's a combo of L1, L2
+* Labels
   * y_label vs y_cls are the labels of the object class and the predicted class
   * `y_gt = (x_gmin, x_gmax, y_gmin, y_gmax)` is the ground truth offsets, `y_off = ((x_omin, y_omin),(x_omax, y_omax))` is the predicted offsets in the form of pixel coordinates
     * `y_gt = (x_bmin - x_amin, x_bmax - x_bmax, y_bmin - y_amin, y_bmax - y_bmax)` 
@@ -943,24 +934,36 @@ I have decided to systematically review all the details of deep learning, and or
         * Recommend to use `std_x = std_y = 0.1`, meaning the expected range of pixel error along x, y axes is (-10%, +10%)  
         * Recommend to use `std_w = std_h = 0.2`, meaning the expected range of width and height is (-20%, +20%) 
 #### SSD Architecture
-* Backbone Network: It extracts features fo the downstream of classification and offset prediction
+* Backbone Network: It extracts features of the downstream of classification and offset prediction
   * It can be a pre-trained model with frozen weights 
   * If a backbone implements `k` rounds of downsampling, the image size is `m*n`, and there are `p` aspect ratios, then the total number of anchor boxes in the first set is `(m/(k*k)) * (n/(k*k)) * (1+p)`
 * SSD Head: It performs the object detection task after getting the features from the backbone
+* As we can see here, after the backbone, it starts with lower scaling factor
+<p align="center">
+<img src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/images/SSD_head_layers_order.PNG" width="600" height="500" />
+</p>
+
 ##### [SSD Implementation Code][87]
-* Check the overall structure [here][86]
+* SSD Object
+<p align="center">
+<img src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/images/SSD_object.PNG" width="500" height="400" />
+</p>
+
 * Multi-thread data generator is used since the images are in high resolution
 * NMS (Non-Maximum Suppression)
   * After model training, when the model predicts the bounding box offsets, there can be 2+ bounding box refer to the same object, causing redundant predictions. NMS is used to remove redundant predictions.
   * Among all the deplicated bounding boxes, the one with maximum confidence score (or probability) is used as reference `b_m`
-    * For the remaining boxes, if the IoU of a bounding box with `b_m` >= threshold `N_t`, the bounding is removed. The process repeated until there is no remaining box.
-      * The problem here is, a bounding box contains another object but with larger IoU will be removed too
-    * SoftNMS proposes that, instead of outright remove the box from the list, the score of the overlapping bounding box is decreased at a negative exponential rate in proportion to the square of its IoU with `b_m`. By doing this, an overlapped box might survive till later proves it contains another object
+    * For the remaining boxes, if the IoU of a bounding box with `b_m` >= threshold `N_t`, the bounding box is removed. The process repeated until there is no remaining box.
+      * The problem here is, a bounding box contains another object but might be removed too
+    * SoftNMS proposes that, instead of removing the box from the list, the score of the overlapping bounding box is decreased at a negative exponential rate in proportion to the square of its IoU with `b_m`. By doing this, the bounding box with smaller IoU has a higher chance to survive for later iterations
       * SoftNMS appears to have higher average precision than classic NMS 
 * SSD Model Validation
   * Mean IoU (mIoU) between ground truth bounding boxes and predicted bounding boxes
-    * Make sure the comparison is between the same object class
+    * Suggest to make comparisons between the same object class
+    * In this code, the comparisons are NOT between the same object class...
   * Precision, Recall between the ground truth class and the predicted class
+    * Precision measures how good SSD is at correctly identifying an object in the image
+    * Recall measures how good SSD is at not misclassifying an object in the image
   * In object detection, the precision and recall curves over different mIoUs are used to measure the performance
 
 ## Semantic Segmentation
