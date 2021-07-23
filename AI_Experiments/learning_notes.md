@@ -1038,7 +1038,7 @@ I have decided to systematically review all the details of deep learning, and or
       * The transformation can be small rotation, random cropping, brightness adjustment, etc., as long as the meaning of X stays the same
     * `Z` and `Z_bar` are the encoded X and X_bar, namely, the latent vectors of X and X_bar
       * The foundation of the whole unsupervised labling idea is base on that, X and X_bar share the same info as their latent vectors 
-    * ICC assumes Z and Z_bar are independent such that the joint distribution can be estimated as `P(Z, Z_bar) = P(Z) * transpose(P(Z_bar))`
+    * IIC assumes Z and Z_bar are independent such that the joint distribution can be estimated as `P(Z, Z_bar) = P(Z) * transpose(P(Z_bar))`
       * `P(Z, Z_bar)` is an N*N matrix where each element Z_ij corresponds to the probability of simultaneously observing 2 random variables (Z_i, Z_bar_j)
     * Since for each X sample, we calculate its latent vector, so the joint distribution is `P(Z, Z_bar) = sum(P(Z_i) * transpose(P(Z_bar_i))) / M`
       * `M` is the batch size; `i` indicates the ith batch
