@@ -991,7 +991,7 @@ I have decided to systematically review all the details of deep learning, and or
   * [The code][89]
     * I didn't find the PSPNet part in this code... 
 <p align="center">
-<img src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/images/FCN.PNG" width="500" height="400" />
+<img src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/images/FCN.PNG" width="700" height="500" />
 </p>
 
 * Validation
