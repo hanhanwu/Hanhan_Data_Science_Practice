@@ -1006,7 +1006,7 @@ I have decided to systematically review all the details of deep learning, and or
   * Increasing the number of levels in the features' pyramid can also be explored
 
 ## Unsupervised Learning using Mutual Information (MI)
-* One of a successful unsupervised learning in deep learning is to maximize the MI betwrrn 2 random variables
+* One of a successful unsupervised learning in deep learning is to maximize the MI between 2 random variables
   * MI helps cluster latent vectors
   * If we can cluster all the training data's latent vectors, then a linear seperation algorithm or linear classifier can be used to classify all the testing data's latent vectors
     * Similar data will have their latent vectors be clustered together
