@@ -139,10 +139,14 @@
     * [Example of decomposing a ts][7]
       * Different from the above decomposition which can be used on the original ts, [Prophet's decomposition comes with the forecasting model][8]
     * Additive model
-      * x_t = F_t + S_t + E_t
+      * x_t = T_t + S_t + E_t
+        * `x_t` is the time series value at time t
+        * `T_t` is the deterministic trend-cycle component
+        * `S_t` is the deterministic seasonal component
+        * `E_t` is the residual (stationary) component
       * This model is usually applied when thre is a time-dependent trend cycle component but independent seasonality that does not change over time (constant seasonality)
     * Multiplicative model
-      * x_t = F_t * S_t * E_t
+      * x_t = T_t * S_t * E_t
       * This model often used when there is time-varying seasonality (non-constant seasonality)
     * [Example of applying both additive and multiplicative methods for decomposition, and python built-in `seasonal_decompose`][6]
     
