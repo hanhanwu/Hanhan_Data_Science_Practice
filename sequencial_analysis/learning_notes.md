@@ -144,13 +144,9 @@
         * `T_t` is the deterministic trend-cycle component, the increasing or decreasing value in the series.
         * `S_t` is the deterministic seasonal component, the repeating the short-term cycle in the series
         * `E_t` is the residual (stationary) component, the random variation in the series
-        * `y_t = Level + T_t + S_t + E_t`
-          * `y_t` is the time series formula till time t
-          * `Level` is the average value in the series
       * This model is usually applied when thre is a time-dependent trend cycle component but independent seasonality that does not change over time (constant seasonality)
     * Multiplicative model
       * `x_t = T_t * S_t * E_t`
-        * `y_y = Level * T_t * S_t * E_t` 
       * This model often used when there is time-varying seasonality (non-constant seasonality)
     * [Example of applying both additive and multiplicative methods for decomposition, and python built-in `seasonal_decompose`][6]
       * [This article visually explained when to use additive or multicative model][66]
