@@ -139,16 +139,21 @@
     * [Example of decomposing a ts][7]
       * Different from the above decomposition which can be used on the original ts, [Prophet's decomposition comes with the forecasting model][8]
     * Additive model
-      * x_t = T_t + S_t + E_t
+      * `x_t = T_t + S_t + E_t`
         * `x_t` is the time series value at time t
-        * `T_t` is the deterministic trend-cycle component
-        * `S_t` is the deterministic seasonal component
-        * `E_t` is the residual (stationary) component
+        * `T_t` is the deterministic trend-cycle component, the increasing or decreasing value in the series.
+        * `S_t` is the deterministic seasonal component, the repeating the short-term cycle in the series
+        * `E_t` is the residual (stationary) component, the random variation in the series
+        * `y_t = Level + T_t + S_t + E_t`
+          * `y_t` is the time series formula till time t
+          * `Level` is the average value in the series
       * This model is usually applied when thre is a time-dependent trend cycle component but independent seasonality that does not change over time (constant seasonality)
     * Multiplicative model
-      * x_t = T_t * S_t * E_t
+      * `x_t = T_t * S_t * E_t`
+        * `y_y = Level * T_t * S_t * E_t` 
       * This model often used when there is time-varying seasonality (non-constant seasonality)
     * [Example of applying both additive and multiplicative methods for decomposition, and python built-in `seasonal_decompose`][6]
+      * [This article visually explained when to use additive or multicative model][66]
     
 ### Auto-Regressive Models
 * Besides stationary, exponential smoothing also assumes that random noise is truly random and follows independent identical distribution, but iid assumption often got violated and smoothing is not sufficient to solve the problem. Auto-regressive methods, which will consider the serial correlation between observations instead
@@ -635,3 +640,4 @@
 [63]:https://colab.research.google.com/drive/1G6XJdUkKUWUzR5jPb0hE3nUuZipRHiAR#scrollTo=sMYwUsJ8HAtu
 [64]:http://colah.github.io/posts/2015-08-Understanding-LSTMs/
 [65]:https://nbviewer.jupyter.org/github/fchollet/deep-learning-with-python-notebooks/blob/master/6.3-advanced-usage-of-recurrent-neural-networks.ipynb
+[66]:https://sigmundojr.medium.com/seasonality-in-python-additive-or-multiplicative-model-d4b9cf1f48a7
