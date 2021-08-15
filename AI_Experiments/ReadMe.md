@@ -436,6 +436,8 @@ Neural Network is a universal approximator, which means you can use it to implme
 * Code Snapshot
 ![model checkpoint code](https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/AI_Experiments/model_checkpoint.png)
 * reference: https://machinelearningmastery.com/how-to-stop-training-deep-neural-networks-at-the-right-time-using-early-stopping/
+
+### [How to do stacking in deep learning][41]
   
 
 ## EXPERIMENTS
@@ -810,3 +812,4 @@ Neural Network is a universal approximator, which means you can use it to implme
 [38]:https://www.analyticsvidhya.com/blog/2021/01/auto-encoders-for-computer-vision-an-endless-world-of-possibilities/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
 [39]:analyticsvidhya.com/blog/2020/02/what-is-autoencoder-enhance-image-resolution/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
 [40]:https://github.com/alankbi/detecto
+[41]:https://www.analyticsvidhya.com/blog/2021/08/ensemble-stacking-for-machine-learning-and-deep-learning/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
