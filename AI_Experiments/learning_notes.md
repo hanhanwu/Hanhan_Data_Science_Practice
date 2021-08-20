@@ -918,6 +918,7 @@ I have decided to systematically review all the details of deep learning, and or
       * `L_off = L1_smooth = pow(std * u, 2)/2 if |u| < 1/pow(std, 2) else |u| - 1/(2*pow(std, 2))`
         * `u = y_true - y_pred` 
         * In SSD, `std=1`, therefore L1_smooth is the same as [Huber Loss][85], which is less likely to be dominated by outliers
+          * As we can see [here][105], when `δ` is decreasing, huber loss will become less sensitive to outliers and large errors
         * When `std --> inf`, `L1_smooth = L1`
       * Smooth L1 is quadratic for small values of `u`, and linear for large values, you can think it's a combo of L1, L2
 * Labels
@@ -1210,3 +1211,4 @@ I just found some companies like to ask you to implement methods used in deep le
 [102]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter13-mi-unsupervised/data_generator.py
 [103]:https://www.pyimagesearch.com/2018/12/24/how-to-use-keras-fit-and-fit_generator-a-hands-on-tutorial/
 [104]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter13-mi-unsupervised/utils.py#L9
+[105]:https://www.machinecurve.com/index.php/2019/10/04/about-loss-and-loss-functions/#huber-loss
