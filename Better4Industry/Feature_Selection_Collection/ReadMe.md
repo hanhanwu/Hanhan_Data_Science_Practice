@@ -2,6 +2,8 @@
 In industry, many times we need to generate features, understanding them and generate more to improve model performance. I'm taking notes of some method that may help do further exploration.
 
 ## SHAP
+* How to calculate shaply value step by step: https://www.youtube.com/watch?v=fbrVvMU8T6o
+  * It originated from game theory. The basic idea is, there are several players share icecream, shaply calculates, if remove one of the players, how much share the rest of players will get
 * It's amethod used to deal with the draw back of XGBoost feature selection
 * [You know what, SHAP value came from game theory][2]
   * "Shapley values correspond to the contribution of each feature towards pushing the prediction away from the expected value."
