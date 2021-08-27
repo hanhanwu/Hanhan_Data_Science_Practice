@@ -33,11 +33,21 @@
   * Differences in trending (such as daily trending), using p_value to check statistical significance.
 
 ### [A simplified A/B test process][7]
-* Hypothesis
-* Cotrol group and test group
-  * calculate smaple size first
-* Why daily conversation rate is a simple measure
-* 2 sample t-test
+1. null hypothesis
+    * 2 options, no difference
+2. control group & test group (new option)
+    * sampling method, sample size —> reduce bias, polulation representative
+3. data collection 
+    * what to collect: daily conversion rates for both groups  —> sample size = days
+    * testing period: 2 months
+    * what to test: difference bt avg. daily conversion rate, across the test period
+4. statistical significance
+    * to be statistical significant —> the difference bt avg. is not due to error or random chance
+    * 2 sample t-test
+      * Significance level (alpha): The significance level, also denoted as alpha or α, is the probability of rejecting the null hypothesis when it is true. Generally, we use the significance value of 0.05
+      * P-Value: It is the probability that the difference between the two values is just because of random chance. P-value is evidence against the null hypothesis. The smaller the p-value stronger the chances to reject the H0. For the significance level of 0.05, if the p-value is lesser than it hence we can reject the null hypothesis
+      * Confidence interval: The confidence interval is an observed range in which a given percentage of test outcomes fall. We manually select our desired confidence level at the beginning of our test. Generally, we take a 95% confidence interval
+    * p_value < alpha: reject H0
 * [Some suggestions to comapre the control and the test groups][8]
   * Such as Mann Whitney U-test, a non-parametric method used to compare the 2 groups when the distribution is not normal
 
