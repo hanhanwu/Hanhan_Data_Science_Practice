@@ -248,6 +248,10 @@ Outliers Detection and Clustering are related to each other, and in a world with
 * To overcome this problem, kernel density estimation can be used, which is a nonparametric density estimation approach from statistics. DENCLUE uses a Gaussian kernel to estimate density based on the given set of objects
 to be clustered.
 
+### Hierarchical Clustering
+* [Linkage methods][10]
+  * It measures the distance between clusters in order to decide which clusters to merge when goes up on the dendrogram 
+
 
 ## IDEAS SPARK
 * About data labeling
@@ -267,3 +271,4 @@ to be clustered.
 [7]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Outliers_and_Clustering/GMMs_vs_kmeans.ipynb
 [8]:https://www.analyticsvidhya.com/blog/2020/09/how-dbscan-clustering-works/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
 [9]:https://scikit-learn.org/stable/modules/generated/sklearn.cluster.OPTICS.html
+[10]:https://www.analyticsvidhya.com/blog/2021/08/hierarchical-clustering-algorithm-python/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
