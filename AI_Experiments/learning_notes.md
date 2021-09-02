@@ -38,6 +38,7 @@ I have decided to systematically review all the details of deep learning, and or
 ### Collected Preprocessing Methods
 #### Used in Computer Vision
 * [Reshape MNIST digits data to SVHN data format][76]
+* [Normalize colored images][106]
 * [Image Processing using numpy][77]
   * It includes: Opening an Image, Details of an image, Convert numpy array to image, Rotating an Image, Negative of an Image, Padding Black Spaces, Visualizing RGB Channels, Colour Reduction, Trim Image, Pasting With Slice, Binarize Image, Flip Image, An alternate way to Flip an Image, Blending Two Images, Masking Images, Histogram For Pixel Intensity 
 * [Multi-threading data generator for object detection][93]
@@ -83,6 +84,7 @@ I have decided to systematically review all the details of deep learning, and or
 * When features are in different ranges, better to normalize them into the same range.
   * For optimization functions, scaling the dependent & independent variables into [-1, 1] range ([0,1] range works too) or [-3, 3] range helps gradient descent, such as makes the converge faster
 * [sklearn functions][7]
+* [How to Normalize Colored Images][106]
 
 ### How to Preprocessing Testing Data 
 * The parameters used for preprocessing the training data should be generated from the training data only, and be applied to the testing data too.
@@ -1212,3 +1214,4 @@ I just found some companies like to ask you to implement methods used in deep le
 [103]:https://www.pyimagesearch.com/2018/12/24/how-to-use-keras-fit-and-fit_generator-a-hands-on-tutorial/
 [104]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter13-mi-unsupervised/utils.py#L9
 [105]:https://www.machinecurve.com/index.php/2019/10/04/about-loss-and-loss-functions/#huber-loss
+[106]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter7-cross-domain-gan/other_utils.py#L178
