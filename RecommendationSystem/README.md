@@ -23,6 +23,11 @@
     * Visitor cold start
     * Product cold start
   * While collaborative filtering needs a certain amount of history, content based filtering can help deal with cold start
+
+### Ranking Methods
+* [LGBM Ranker][6]
+  * [A simple example][7] 
+  * [FLAML also provides param tuning method for this][8]
   
 ### Words Embedding
 * It makes recommendations based on the similarity of words vectors
@@ -94,3 +99,6 @@
 [3]:https://github.com/hanhanwu/Hanhan_Break_the_Limits/tree/master/attack_signals_recommendation_system
 [4]:https://github.com/hanhanwu/Hanhan_Play_With_Social_Media/blob/master/DEF_CON_video_list_linear_optimization.ipynb
 [5]:https://www.analyticsvidhya.com/blog/2020/09/how-to-rank-entities-with-multi-criteria-decision-making-methodsmcdm/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+[6]:https://lightgbm.readthedocs.io/en/latest/pythonapi/lightgbm.LGBMRanker.html
+[7]:https://stackoverflow.com/questions/64294962/how-to-implement-learning-to-rank-using-lightgbm/67627169#67627169
+[8]:https://github.com/microsoft/FLAML#examples
