@@ -1083,6 +1083,8 @@ I have decided to systematically review all the details of deep learning, and or
       * The activation function in class MINE's `build_model()` should be `softmax`
       * The activation function in class LinearClassifier's `build_model()` should be `linear`
    
+## [Graph Neural Network][107]
+
 ## [Deep Reinforcement Learning][84]
 
 ## Meta Learning
@@ -1215,3 +1217,4 @@ I just found some companies like to ask you to implement methods used in deep le
 [104]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter13-mi-unsupervised/utils.py#L9
 [105]:https://www.machinecurve.com/index.php/2019/10/04/about-loss-and-loss-functions/#huber-loss
 [106]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter7-cross-domain-gan/other_utils.py#L178
+[107]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Graph_Database/Readme.md#graph-neural-network-gnn
