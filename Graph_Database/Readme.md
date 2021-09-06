@@ -15,27 +15,6 @@
   * It says its performance is better than GraphX, and as we can see, it supports many graph algorithms. But it needs the data stored in HDFS (Hadoop File System).
 
 
-[7]:https://neo4j.com/developer/get-started/
-[2]:https://www.boost.org/doc/libs/1_70_0/libs/graph/doc/index.html
-[3]:https://graph-tool.skewed.de/
-[4]:https://graph-tool.skewed.de/static/doc/index.html
-[5]:https://igraph.org/
-[6]:https://github.com/networkx/networkx
-[8]:https://github.com/Tencent/plato
-[9]:https://spark.apache.org/docs/latest/graphx-programming-guide.html
-[10]:https://cs.stanford.edu/~jure/pubs/node2vec-kdd16.pdf
-[11]:https://github.com/hanhanwu/Hanhan_COLAB_Experiemnts/blob/master/Try_DeepWalk.ipynb
-[12]:https://github.com/hanhanwu/Hanhan_COLAB_Experiemnts
-[13]:https://networkx.github.io/documentation/stable/reference/algorithms/centrality.html
-[14]:https://www.analyticsvidhya.com/blog/2020/03/using-graphs-to-identify-social-media-influencers/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
-[15]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/graph_theory_airlines.ipynb
-[16]:https://www.analyticsvidhya.com/blog/2020/04/community-detection-graphs-networks/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
-[17]:https://networkx.github.io/documentation/stable/reference/algorithms/community.html
-[18]:https://networkx.github.io/documentation/stable/reference/algorithms/generated/networkx.algorithms.community.centrality.girvan_newman.html
-[19]:https://github.com/hanhanwu/Hanhan_COLAB_Experiemnts/blob/master/link_prediction.ipynb
-[20]:https://github.com/hanhanwu/Hanhan_COLAB_Experiemnts/blob/master/directional_graphDB.ipynb
-
-
 ## Algorithms
 ### Terminology
 * Node Embedding - Similar to Word Embedding in NLP, which uses a vector to represent a word and capture the contextual info. Same here, it uses a vector to represent a node, after training by a model, it's trying to keep the contextual info of the node.
@@ -57,6 +36,16 @@
 * It's a process that uses RandomWalk to extract sequences of nodes, then feed these sequences into a skip-gram model to get node embeddings.
 * [More Description][12]
 
+
+## Graph Neural Network (GNN)
+* [Basic Understanding of GNN][21]
+  * There are some good papers relevant to this area
+  * It can solve problems in:
+    * Node Prediction
+    * Link Prediction
+    * Graph Classification
+    * Graph Clustering
+    * Graph Visualization 
 
 ## Social Network Analysis
 ### Basics in Building Graphs
@@ -88,6 +77,28 @@
   * Check an implementation example [here][16]
   * networkx also has its built-in function [here][18]
 * ‼️ networkx provides different types of community detection algorithms [here][17]
+
+
+[7]:https://neo4j.com/developer/get-started/
+[2]:https://www.boost.org/doc/libs/1_70_0/libs/graph/doc/index.html
+[3]:https://graph-tool.skewed.de/
+[4]:https://graph-tool.skewed.de/static/doc/index.html
+[5]:https://igraph.org/
+[6]:https://github.com/networkx/networkx
+[8]:https://github.com/Tencent/plato
+[9]:https://spark.apache.org/docs/latest/graphx-programming-guide.html
+[10]:https://cs.stanford.edu/~jure/pubs/node2vec-kdd16.pdf
+[11]:https://github.com/hanhanwu/Hanhan_COLAB_Experiemnts/blob/master/Try_DeepWalk.ipynb
+[12]:https://github.com/hanhanwu/Hanhan_COLAB_Experiemnts
+[13]:https://networkx.github.io/documentation/stable/reference/algorithms/centrality.html
+[14]:https://www.analyticsvidhya.com/blog/2020/03/using-graphs-to-identify-social-media-influencers/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+[15]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/graph_theory_airlines.ipynb
+[16]:https://www.analyticsvidhya.com/blog/2020/04/community-detection-graphs-networks/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+[17]:https://networkx.github.io/documentation/stable/reference/algorithms/community.html
+[18]:https://networkx.github.io/documentation/stable/reference/algorithms/generated/networkx.algorithms.community.centrality.girvan_newman.html
+[19]:https://github.com/hanhanwu/Hanhan_COLAB_Experiemnts/blob/master/link_prediction.ipynb
+[20]:https://github.com/hanhanwu/Hanhan_COLAB_Experiemnts/blob/master/directional_graphDB.ipynb
+[21]:https://www.analyticsvidhya.com/blog/2021/09/getting-started-with-graph-neural-networks/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
 
 ## Tutorial
 ### Neo4j Graph DB
