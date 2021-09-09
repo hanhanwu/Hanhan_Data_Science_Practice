@@ -48,6 +48,7 @@
       * P-Value: It is the probability that the difference between the two values is just because of random chance. P-value is evidence against the null hypothesis. The smaller the p-value stronger the chances to reject the H0. For the significance level of 0.05, if the p-value is lesser than it hence we can reject the null hypothesis
       * Confidence interval: The confidence interval is an observed range in which a given percentage of test outcomes fall. We manually select our desired confidence level at the beginning of our test. Generally, we take a 95% confidence interval
     * p_value < alpha: reject H0
+    * [Besides t-test, when to use other test types][9]
 * [Some suggestions to comapre the control and the test groups][8]
   * Such as Mann Whitney U-test, a non-parametric method used to compare the 2 groups when the distribution is not normal
 
@@ -59,3 +60,4 @@
 [6]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/Learning_Notes/bayesian_analysis/Bayesian_Approaches_for%20Hypothesis_Tests.md
 [7]:https://www.analyticsvidhya.com/blog/2020/10/ab-testing-data-science/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
 [8]:https://www.analyticsvidhya.com/blog/2021/03/a-b-testing-measurement-frameworks%e2%80%8a-%e2%80%8aevery-data-scientist-should-know/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+[9]:https://www.analyticsvidhya.com/blog/2021/09/hypothesis-testing-in-machine-learning-everything-you-need-to-know/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
