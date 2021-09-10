@@ -540,7 +540,7 @@ I have decided to systematically review all the details of deep learning, and or
   * When there is no overlap between 2 distributions, it can servee as a logical loss 
 * WGAN is same as DCGAN, except:
   * The fake data has label as -1 in WGAN while in DCGAN the fake data's label is 0
-    * Because of the opposite sign in real & fale labels in WGAN, in the discriminator's training process, WGAN trains a batch of real data and then trains a batch of fake data, instead of training them together as what DCGAN does
+    * Because of the opposite sign in real & fake labels in WGAN, in the discriminator's training process, WGAN trains a batch of real data and then trains a batch of fake data, instead of training them together as what DCGAN does
       * This prevents the gradient from vanishing 
   * WGAN trains the distriminator `n_critic` iterations before training the generator for 1 iteration; In DCGAN, `n_critic=1`
   * The loss function in WGAN is using`wasserstein_loss`, while DCGAN is using `binary_crossentropy`
