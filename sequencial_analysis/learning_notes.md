@@ -415,6 +415,7 @@
   * I don't like its user experience
     * Its ts feature extractor has `window_size` but it's tricky to use and not sure whether it does support rolling/expanding window
     * To add customized features, it's similar to `tsfresh` that you need to update the source code 
+  * According to my colleague, this library works faster than tsfresh for larger datasets. Just noted here for future exploration
 * [R tsfeatures][44]
   * List of features: https://cran.r-project.org/web/packages/tsfeatures/vignettes/tsfeatures.html
     * There are a few functions are designed for rolling windows
