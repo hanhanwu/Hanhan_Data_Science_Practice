@@ -31,6 +31,11 @@
 ## Experiments
 
 ### Maximum Likelihood Estimation
+* [Detailed theory behind MLE][22]
+  * The basic idea behind MLE is to find param(s) of the probability distributions that can minimize KL Divergence between the estimator distribution and the real distribution
+    * likelihood function --> maximum Likelihood Estimator --> recommended params
+    * Formulas for different distributions 
+    * For both single param and multi-params cases 
 * With Maximum Likelihood, you can estimate population parameters from sample data such that the probability (likelihood) of obtaining the observed data is maximized
 * It seems that all the likelihood function can be written in this way regardless of the distribution, and the purpose of maximum of likelihood is to estimate the coefficients `β0, β1`, in R it's `θ0, θ1`, so that the estimated coefficients will maximize the likelihood function.
 <img src="https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Applied_Statistics/images/likelihood_function.png" width="180" height="60">
@@ -386,3 +391,4 @@ but it's easier to use pyton built-in functions
 [19]:https://nbviewer.jupyter.org/github/CamDavidsonPilon/Probabilistic-Programming-and-Bayesian-Methods-for-Hackers/blob/master/Chapter1_Introduction/Ch1_Introduction_PyMC2.ipynb#Probability-Distributions
 [20]:https://www.analyticsvidhya.com/blog/2021/02/statistics-101-beginners-guide-to-continuous-probability-distributions/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
 [21]:https://github.com/hanhanwu/Hanhan_Applied_DataScience/blob/master/Learning_Notes.md#3-types-of-t-test
+[22]:https://www.analyticsvidhya.com/blog/2021/09/maximum-likelihood-estimation-a-comprehensive-guide/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
