@@ -477,11 +477,9 @@ In this regard, Tomek’s link and edited nearest-neighbours are the two cleanin
 ## ADVANCED TOOLS
 
 ### TPOT
-  * https://github.com/EpistasisLab/tpot
-  * It does feature selection, model selection and param optimization automatically. It uses genetic algorithm to optimize the parameters
-  * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/try_genetic_alg_through_TPOT.ipynb
-    * scoring method: By default, accuracy is used for classification and mean squared error (MSE) is used for regression. https://rhiever.github.io/tpot/using/#scoring-functions
-    * At the end of its pipelien output, you will see selected model with optimized params
+* https://github.com/EpistasisLab/tpot
+* It uses genetic programming to optimize a machine learning pipeline that maximizes the score on the provided features and target. This pipeline optimization procedure uses internal k-fold cross-validaton to avoid overfitting on the provided data. At the end of the pipeline optimization procedure, the best pipeline is then trained on the entire set of provided samples.
+* My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/try_genetic_alg_through_TPOT.ipynb
   * Reference: https://www.analyticsvidhya.com/blog/2017/07/introduction-to-genetic-algorithm/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
   
 ### HungaBunga
