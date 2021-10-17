@@ -477,7 +477,7 @@ In this regard, Tomek’s link and edited nearest-neighbours are the two cleanin
 ## ADVANCED TOOLS
 
 ### TPOT
-  * https://rhiever.github.io/tpot/
+  * https://github.com/EpistasisLab/tpot
   * It does feature selection, model selection and param optimization automatically. It uses genetic algorithm to optimize the parameters
   * My code: https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/try_genetic_alg_through_TPOT.ipynb
     * scoring method: By default, accuracy is used for classification and mean squared error (MSE) is used for regression. https://rhiever.github.io/tpot/using/#scoring-functions
