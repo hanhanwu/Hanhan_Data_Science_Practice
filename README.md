@@ -476,6 +476,9 @@ In this regard, Tomek’s link and edited nearest-neighbours are the two cleanin
 
 ## ADVANCED TOOLS
 
+### [More AutoML tools for model selection][7]
+* [MLJAR is a good one][8]
+
 ### TPOT
 * https://github.com/EpistasisLab/tpot
 * It uses genetic programming to optimize a machine learning pipeline that maximizes the score on the provided features and target. This pipeline optimization procedure uses internal k-fold cross-validaton to avoid overfitting on the provided data. At the end of the pipeline optimization procedure, the best pipeline is then trained on the entire set of provided samples.
@@ -488,7 +491,7 @@ In this regard, Tomek’s link and edited nearest-neighbours are the two cleanin
 
 ### Lazy Predict
 * https://github.com/shankarpandala/lazypredict
-* Similar to HungaBunga, which runs on a list of models
+* It helps model selection without param tuning, but too slow for larger dataset and kind of old
 
 ### MLBox
   * http://mlbox.readthedocs.io/en/latest/introduction.html
@@ -575,3 +578,5 @@ In this regard, Tomek’s link and edited nearest-neighbours are the two cleanin
 [4]:https://www.youtube.com/watch?v=5tsyz3ibYzk
 [5]:https://info.neo4j.com/WBCODWBRIntroducingNeo4j3.0_LP-Video.html?_ga=2.181131879.1575748286.1525582408-1956689004.1525582408
 [6]:https://www.analyticsvidhya.com/blog/2019/04/predicting-movie-genres-nlp-multi-label-classification/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+[7]:https://www.analyticsvidhya.com/blog/2021/09/10-automated-machine-learning-for-supervised-learning-part-2/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+[8]:https://github.com/mljar/mljar-supervised
