@@ -3,6 +3,7 @@
 ## Must Known 🌺
 * [p-value vs t-test vs z-test][13]
   * [t-test in python and R][21] 
+  * [z-test in python][23]
 * KS (Kolmogorov–Smirnov) test for 2 samles comparision
   * It is a statistical hypothesis test that checks whether a test set is sampled from the same probability distribution as a reference set.
   * [KS test is able to find the variance that can be ignored by t-test][15]
@@ -392,3 +393,4 @@ but it's easier to use pyton built-in functions
 [20]:https://www.analyticsvidhya.com/blog/2021/02/statistics-101-beginners-guide-to-continuous-probability-distributions/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
 [21]:https://github.com/hanhanwu/Hanhan_Applied_DataScience/blob/master/Learning_Notes.md#3-types-of-t-test
 [22]:https://www.analyticsvidhya.com/blog/2021/09/maximum-likelihood-estimation-a-comprehensive-guide/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+[23]:https://www.analyticsvidhya.com/blog/2021/11/creating-a-simple-z-test-calculator-using-streamlit/?utm_source=feedburner&utm_medium=email
