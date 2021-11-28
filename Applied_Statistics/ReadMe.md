@@ -11,8 +11,9 @@
   * [This 2020 paper developed al angorothm MOCHI to show how to find the smallest subset that can change failed KS test to a passed test][16]
 * [ANOVA, categorical vs numerical][14]
   * Includes methods to check data Randomness, Noramality, Homogeneity assumptions
+* [Expectation & Variance of random variables][24]
 
-## Statistics Tables
+## Statistics Tables & Formulas
 * [Z table - Having z score to get p-value][8]
   * I found this one contains more z-values to check.
   * NOTE, as we can see `P(Z ≤ z-score)` here all on left side, which means the probability that we obtained is to the left of the Z-score. However, p value is to the right-hand side of the threshold, with the fact that the total area under the normal Z distribution is 1, `p-value = 1-P(Z ≤ z-score)`
@@ -394,3 +395,4 @@ but it's easier to use pyton built-in functions
 [21]:https://github.com/hanhanwu/Hanhan_Applied_DataScience/blob/master/Learning_Notes.md#3-types-of-t-test
 [22]:https://www.analyticsvidhya.com/blog/2021/09/maximum-likelihood-estimation-a-comprehensive-guide/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
 [23]:https://www.analyticsvidhya.com/blog/2021/11/creating-a-simple-z-test-calculator-using-streamlit/?utm_source=feedburner&utm_medium=email
+[24]:https://www.analyticsvidhya.com/blog/2021/05/understanding-random-variables-their-distributions/
