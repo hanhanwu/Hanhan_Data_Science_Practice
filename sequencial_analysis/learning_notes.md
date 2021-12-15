@@ -38,7 +38,7 @@
     * `P(X1=x1, X2=x2, ..., Xn=xn) = f(X1=x1)*f(X2=x2)*...*f(Xn=xn)`
     * stationary series also have constant variance and mean, but it doesn't mean zero mean ts is stationary
   * Random Walk models: the cumulative sum of the zero mean model (a sum of n_i iids at ith iid), and it has 0 mean and constant variace
-    * So if we take the difference between 2 consecutive time indices from this model, we will an iid with 0 mean and constant variance, which is also a zero mean model
+    * So if we take the difference between 2 consecutive time indices from this model, we will get an iid with 0 mean and constant variance, which is also a zero mean model
   * Trend models: `x_t = μ_t + y_t`
     * `μ_t` is the time dependent trend of the series, it can be linear or non-linear
     * `y_t` is zero mean model, residuals
@@ -59,7 +59,8 @@
     * In the example PACF [here][2], besides lag0, only at lag1 there is significant autocorrelation, so the order for AR model is 1
     * Sometimes, PACF has a critical value for a large lag, which is caused by seasonal cycle. We can set `m` in SARIMA with this lag value to catch the seasonality
   * ACF and PACF have the same critical region
-    * `[-1.96*sqrt(n), 1.96*sqrt(n)]`
+    * `[-1.96/sqrt(n), 1.96/sqrt(n)]`
+      * [Check how to calculate `n` here][67]
   * The ACF of stationary data should drop to zero quickly. For nonstationary data the value at lag 1 is positive and large.
     * but for white noise (non-stationry), its ACF also drops to zero quickly
   
@@ -640,3 +641,4 @@
 [64]:http://colah.github.io/posts/2015-08-Understanding-LSTMs/
 [65]:https://nbviewer.jupyter.org/github/fchollet/deep-learning-with-python-notebooks/blob/master/6.3-advanced-usage-of-recurrent-neural-networks.ipynb
 [66]:https://sigmundojr.medium.com/seasonality-in-python-additive-or-multiplicative-model-d4b9cf1f48a7
+[67]:https://stats.stackexchange.com/questions/185425/how-to-determine-the-critical-values-of-acf
