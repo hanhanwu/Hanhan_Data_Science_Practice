@@ -139,6 +139,7 @@
   * Decomposition methods to convert to stationary
     * [Example of decomposing a ts][7]
       * Different from the above decomposition which can be used on the original ts, [Prophet's decomposition comes with the forecasting model][8]
+      * This method is often better used in forecasting models which allow you choose between "additive" and "multiplicative". If only forecasting on a stationary residuals, hard to forecast the wanted ts data, since it's chanllenging to reverse decomposing
     * Additive model
       * `x_t = T_t + S_t + E_t`
         * `x_t` is the time series value at time t
