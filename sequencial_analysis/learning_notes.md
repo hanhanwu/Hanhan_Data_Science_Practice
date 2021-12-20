@@ -10,7 +10,7 @@
 * [Amazon Forecast][52]
   * Examples: https://github.com/aws-samples/amazon-forecast-samples/tree/master/notebooks
 
-## Statistical Models for Time Series Analysis
+## Statistical  Models for Time Series Analysis
 * Components of a time series
   * f: trend
     * For example, there is linear trending, we will see ts goes up or down, using a linear regression model can get the trend line with coefficient and intercept 
@@ -215,6 +215,21 @@
     * You can use Portmanteau test to check whether there is multivariate series correlation, and it's interesting that for this type of test, H0 is "there is no serial correlation"
     * I'm also wondering whether VIF will work too?
 * [Check details and eaxmple here][38]
+
+### Granger Causality in Time Series
+* Granger Causality tests whether variable `A` has a direct influence on `B` in `n` lags distance
+  * Both `A` and `B` have to stationary
+  * Granger Causality tests for (A -> B, lag n) rejects the null hypothesis and tests on (B -> A, lag n) accepts the null hypothesis, then we can say variable A has a influence on  B
+    * But granger causality is not not true causality
+  * Granger causality fails to forecast when there is an interdependency between two or more variables
+* [Reference][68] 
+
+### [Forecastability Analysis][69]
+* The method is mainly to quantify the amount of regularity and the unpredictability of fluctuations over time-series data. The presence of repetitive patterns of fluctuation in a time series renders it more predictable than a time series in which such patterns are absent. 
+* We use Sample Entropy or Approximate Entropy to reflect the likelihood that similar patterns of observations will not be followed by additional similar observations
+  * Sample Entropy is better
+  * These methods might be better to use of your forecasting model depends on trend and/or seasonality (such as Prophet), instead of models which require stationary ts (such as auto regression models)  
+
 
 ## Classical Machine Learning Models for Time Series Analysis
 * Instead of making assumptions of the underlying process as statistical models above, these models instead focus on identifying patterns that describe the process’s behavior in ways relevant to predicting the outcome of interest.
@@ -643,3 +658,5 @@
 [65]:https://nbviewer.jupyter.org/github/fchollet/deep-learning-with-python-notebooks/blob/master/6.3-advanced-usage-of-recurrent-neural-networks.ipynb
 [66]:https://sigmundojr.medium.com/seasonality-in-python-additive-or-multiplicative-model-d4b9cf1f48a7
 [67]:https://stats.stackexchange.com/questions/185425/how-to-determine-the-critical-values-of-acf
+[68]:https://www.analyticsvidhya.com/blog/2021/08/granger-causality-in-time-series-explained-using-chicken-and-egg-problem/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+[69]:https://github.com/hanhanwu/Hanhan_Break_the_Limits/blob/master/Bank_Fantasy/Golden_Bridge/forecastable_analysis.ipynb
