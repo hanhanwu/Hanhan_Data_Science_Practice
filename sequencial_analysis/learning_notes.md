@@ -5,6 +5,11 @@
 * [CompEngine time series data][25]
 * [R-CRAN list of time series packages][26]
 
+### Time Series Data Simulation
+* [How to simulate ts with seasonality][70]
+  * You can define the seasonality and the residuals 
+
+
 ## Forecasting as a Service
 * We can learn from these services when building a forecasting system
 * [Amazon Forecast][52]
@@ -660,3 +665,4 @@
 [67]:https://stats.stackexchange.com/questions/185425/how-to-determine-the-critical-values-of-acf
 [68]:https://www.analyticsvidhya.com/blog/2021/08/granger-causality-in-time-series-explained-using-chicken-and-egg-problem/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
 [69]:https://github.com/hanhanwu/Hanhan_Break_the_Limits/blob/master/Bank_Fantasy/Golden_Bridge/forecastable_analysis.ipynb
+[70]:https://github.com/facebookresearch/Kats/blob/7eb2c6a5deb5392fe66d6a3a5e4bbff473e9e70b/tutorials/kats_202_detection.ipynb
