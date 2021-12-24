@@ -8,6 +8,8 @@
 ### Time Series Data Simulation
 * [How to simulate ts with seasonality][70]
   * You can define the seasonality and the residuals 
+* [How to simulate ts with changepoints][71]
+* [How to simulate ts with trend][71]
 
 
 ## Forecasting as a Service
@@ -666,3 +668,4 @@
 [68]:https://www.analyticsvidhya.com/blog/2021/08/granger-causality-in-time-series-explained-using-chicken-and-egg-problem/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
 [69]:https://github.com/hanhanwu/Hanhan_Break_the_Limits/blob/master/Bank_Fantasy/Golden_Bridge/forecastable_analysis.ipynb
 [70]:https://github.com/facebookresearch/Kats/blob/7eb2c6a5deb5392fe66d6a3a5e4bbff473e9e70b/tutorials/kats_202_detection.ipynb
+[71]:https://github.com/facebookresearch/Kats/blob/main/tutorials/kats_202_detection.ipynb
