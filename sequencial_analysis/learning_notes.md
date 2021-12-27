@@ -6,10 +6,14 @@
 * [R-CRAN list of time series packages][26]
 
 ### Time Series Data Simulation
+* [Kats ts simulator][72]
+  * Simulate arima ts data, trend shift, level shift, etc. 
 * [How to simulate ts with seasonality][70]
   * You can define the seasonality and the residuals 
 * [How to simulate ts with changepoints][71]
+  * Level shift 
 * [How to simulate ts with trend][71]
+  * Trend shift 
 
 
 ## Forecasting as a Service
@@ -669,3 +673,4 @@
 [69]:https://github.com/hanhanwu/Hanhan_Break_the_Limits/blob/master/Bank_Fantasy/Golden_Bridge/forecastable_analysis.ipynb
 [70]:https://github.com/facebookresearch/Kats/blob/7eb2c6a5deb5392fe66d6a3a5e4bbff473e9e70b/tutorials/kats_202_detection.ipynb
 [71]:https://github.com/facebookresearch/Kats/blob/main/tutorials/kats_202_detection.ipynb
+[72]:https://facebookresearch.github.io/Kats/api/kats.utils.simulator.html
