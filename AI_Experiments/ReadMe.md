@@ -754,7 +754,7 @@ Neural Network is a universal approximator, which means you can use it to implme
   * https://github.com/hanhanwu/readings/blob/master/Practical%20Recommendations%20for%20Gradient-Based%20Training.pdf
   * Detailed suggestions in almost all the process in Gradient-Based training, very practical
 
-## Deep Learning in Real World
+## Deep Learning in Real World Applications
 * [How to use forward feed network to detect PowerShell Obfuscation][15]
   * Obfuscation is typically used to evade detection
   * Microsoft PowerShell is the ideal attacker’s tool in a Windows operating system. Because it is installed by default in Windows, and attackers are better off using existing tools that allow them to blend well and possibly evade Antivirus (AV) software.
@@ -770,6 +770,8 @@ Neural Network is a universal approximator, which means you can use it to implme
     * Deploying multiple models
 * Tools for Object Detection
   * [Detecto][40] 
+* [Transformer's Pipeline][42]
+  * The pipeline can be used to execute different NLP tasks, such as Named Entity Recognition, Masked Language Modeling, Sentiment Analysis, Feature Extraction, Question Answering, etc. 
 
 
 [1]:https://stackoverflow.com/questions/45912124/python-keras-how-to-generate-right-image-dimension
@@ -813,3 +815,4 @@ Neural Network is a universal approximator, which means you can use it to implme
 [39]:analyticsvidhya.com/blog/2020/02/what-is-autoencoder-enhance-image-resolution/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
 [40]:https://github.com/alankbi/detecto
 [41]:https://www.analyticsvidhya.com/blog/2021/08/ensemble-stacking-for-machine-learning-and-deep-learning/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+[42]:https://www.analyticsvidhya.com/blog/2021/12/all-nlp-tasks-using-transformers-package/?utm_source=feedburner&utm_medium=email
