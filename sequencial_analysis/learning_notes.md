@@ -4,6 +4,8 @@
 * [UCI time series datasets][24]
 * [CompEngine time series data][25]
 * [R-CRAN list of time series packages][26]
+* [Turing Change Point Dataset][73]
+  * Collected by Alan Turing Institute, it's  a set of time series specifically collected for the evaluation of change point detection algorithms on real-world data. 
 
 ### Time Series Data Simulation
 * [Kats ts simulator][72]
@@ -674,3 +676,4 @@
 [70]:https://github.com/facebookresearch/Kats/blob/7eb2c6a5deb5392fe66d6a3a5e4bbff473e9e70b/tutorials/kats_202_detection.ipynb
 [71]:https://github.com/facebookresearch/Kats/blob/main/tutorials/kats_202_detection.ipynb
 [72]:https://facebookresearch.github.io/Kats/api/kats.utils.simulator.html
+[73]:https://github.com/alan-turing-institute/TCPD
