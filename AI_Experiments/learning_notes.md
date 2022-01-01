@@ -41,6 +41,8 @@ I have decided to systematically review all the details of deep learning, and or
 * [Normalize colored images][106]
 * [Image Processing using numpy][77]
   * It includes: Opening an Image, Details of an image, Convert numpy array to image, Rotating an Image, Negative of an Image, Padding Black Spaces, Visualizing RGB Channels, Colour Reduction, Trim Image, Pasting With Slice, Binarize Image, Flip Image, An alternate way to Flip an Image, Blending Two Images, Masking Images, Histogram For Pixel Intensity 
+* [Image Operations using OpenCV][108]
+  * Including: Image Erosion, Image Dilation, Border Creation, Mirrored Borders, Intensity Transformations (such as Log Transformation), Linear Transformation, Denoising, Image Analysis using histogram
 * [Multi-threading data generator for object detection][93]
 * [Convert RGB images to gray][74] and [reshape the images][75]
 * Raw images to NN readable input 
@@ -1218,3 +1220,4 @@ I just found some companies like to ask you to implement methods used in deep le
 [105]:https://www.machinecurve.com/index.php/2019/10/04/about-loss-and-loss-functions/#huber-loss
 [106]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter7-cross-domain-gan/other_utils.py#L178
 [107]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Graph_Database/Readme.md#graph-neural-network-gnn
+[108]:https://www.analyticsvidhya.com/blog/2021/12/image-operations-in-python-with-opencv/?utm_source=feedburner&utm_medium=email
