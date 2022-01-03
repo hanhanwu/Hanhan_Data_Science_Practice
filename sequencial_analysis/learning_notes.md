@@ -143,6 +143,7 @@
       * Example of using first-order differencing using `diff()`: https://github.com/PacktPublishing/Practical-Time-Series-Analysis/blob/master/Chapter02/Chapter_2_First_Order_Differencing.ipynb
     * Second-order differencing
       * `(x_t - x_t-1) - (x_t-1 - x_t-2)`
+      * Python solution: https://stackoverflow.com/a/59095333/2085454
     * Seasonal differencing
       * `x_t - x_t-m`
       * If in the de-trended ts' ACF plot, we are seeing repeated significant autocorrelation (beyond the confidence interval), then use seasonal differencing
@@ -187,13 +188,14 @@
 #### ARMA models
 * The AR(p) models tend to capture the mean reversion effect wheres MA(q) models tend to capture the shock effect in error
 * 🌺 Some Thumb rules to determine the orders of ARMA:
-  * ACF is exponentially decreasing or forming a sine-wave, and PACF has significant correlation use p
+  * ACF is exponentially decreasing or forming a sine-wave, and PACF has significant autocorrelation use p
   * ACF has significant autocorrelation and PACF has exponential decay or sine-wave pattern, use q
   * Both ACF, PACF are showing sine-waves, use both p, q
 * When there is uncertainty in , p, q values, can try grid search with AIC as the metric, choose the option with the minimum AIC
 * After choosing the orders need to check the normality of residuals of the model to see whether it's normally distributed
   * qq-plot, check the [example here][16]
 #### ARIMA (Box_Jenkins model)
+* ARIMA(p, d, q)
 * Comparing with ARMA model, it added the differencing order `d`, which is used to de-trend the signal to make it stationary before applying ARMA
   * ARIMA(0,0,0) is white noise
   * ARIMA(0,1,0) represents a random walk model
