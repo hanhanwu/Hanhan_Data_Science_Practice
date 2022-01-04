@@ -205,8 +205,12 @@
   * d represents d-order differencing
 * When there is uncertainty in p, d, q values, we can try grid search with AIC as the metric, choose the option with the minimum AIC
 * After choosing the orders need to check the normality of residuals of the model to see whether it's normally distributed
-  * qq-plot, check the [example here][16]
+  * q-q plot, check the [example here][74]
   * Shapiro-wilk test
+* `plot_diagnostics()`
+  * Check residual to see whether it's random enough
+  * Both Q-Q plot and Histogram & KDE plot are checking whether the residual is normally distributed
+  * Correlogram is to confirm whether there is seasonality left by checking whether the residuals have autocorrelation with its lagged data 
 #### SARIMA (Seasonal ARIMA)
 * SARIMA(p,d,q,m), `m` represents the number of periods per season
 * In [this example][16], check the ACF, PACF, at 42 time index it's showing slghtly significant corelation, which may be the seasonality present, so m=42
@@ -221,7 +225,10 @@
     * It combines unit root tests, minimizing AIC and MLE to obtain an ARIMA model
     * Check all the params here: https://www.rdocumentation.org/packages/forecast/versions/8.13/topics/auto.arima
       * Also supports seasonal model
-* Check fitted model's residual normality to further valid the model, [check the bottom of the example here][16]
+* `plot_diagnostics()`
+  * Check residual to see whether it's random enough
+  * Both Q-Q plot and Histogram & KDE plot are checking whether the residual is normally distributed
+  * Correlogram is to confirm whether there is seasonality left by checking whether the residuals have autocorrelation with its lagged data 
 
 #### VAR (Vector Autoregression) for multi-variate time series
 * All the methods mentioned above are used for univariate ts analysis. Vector Autoregression (VAR) is a multivariate forecasting algorithm that is used when two or more time series influence each other.
@@ -679,3 +686,4 @@
 [71]:https://github.com/facebookresearch/Kats/blob/main/tutorials/kats_202_detection.ipynb
 [72]:https://facebookresearch.github.io/Kats/api/kats.utils.simulator.html
 [73]:https://github.com/alan-turing-institute/TCPD
+[74]:https://www.digitalocean.com/community/tutorials/a-guide-to-time-series-forecasting-with-arima-in-python-3
