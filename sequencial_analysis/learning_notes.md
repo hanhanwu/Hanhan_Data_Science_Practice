@@ -237,6 +237,7 @@
     * You can use Portmanteau test to check whether there is multivariate series correlation, and it's interesting that for this type of test, H0 is "there is no serial correlation"
     * I'm also wondering whether VIF will work too?
 * [Check details and eaxmple here][38]
+* [Example to use VAR detect ts anomalies][75]
 
 ### Granger Causality in Time Series
 * Granger Causality tests whether variable `A` has a direct influence on `B` in `n` lags distance
@@ -687,3 +688,4 @@
 [72]:https://facebookresearch.github.io/Kats/api/kats.utils.simulator.html
 [73]:https://github.com/alan-turing-institute/TCPD
 [74]:https://www.digitalocean.com/community/tutorials/a-guide-to-time-series-forecasting-with-arima-in-python-3
+[75]:https://www.analyticsvidhya.com/blog/2021/08/multivariate-time-series-anomaly-detection-using-var-model/
