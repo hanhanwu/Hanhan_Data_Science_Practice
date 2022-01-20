@@ -141,6 +141,7 @@
     * First-order differencing: take differences between successive realizations of the time series
       * `x_t - x_t-1`
       * Example of using first-order differencing using `diff()`: https://github.com/PacktPublishing/Practical-Time-Series-Analysis/blob/master/Chapter02/Chapter_2_First_Order_Differencing.ipynb
+      * There is also a simply way to use differencing to reach to stationary, that is to apply `diff()` multiple times until the ts reaches to stationary, such as ts.diff().diff()
     * Second-order differencing
       * `(x_t - x_t-1) - (x_t-1 - x_t-2)`
       * Python solution: https://stackoverflow.com/a/59095333/2085454
@@ -235,8 +236,23 @@
   * You need at least two time series (variables)
   * All the time series should influence each other.
     * You can use Portmanteau test to check whether there is multivariate series correlation, and it's interesting that for this type of test, H0 is "there is no serial correlation"
-    * I'm also wondering whether VIF will work too?
-* [Check details and eaxmple here][38]
+* [Check more details of VAR here][38]
+  * Uni-directional vs bidirectional
+  * Formulas for VAR, such as `VAR(1)`, `VAR(2)`
+  * Order of Integration(d): the number of differencing required to make a non-stationary time series stationary
+    * Cointegration Test: when you have two or more time series, and there exists a linear combination of them that has an order of integration (d) less than each of the individual series, then the collection of series is said to be cointegrated. This is what VAR is based on
+  * How to select order(p) for VAR
+  * Serial Correlation of Residuals checks whether the model has sufficiently explained the variances and patterns in the time serie
+    * If there is any correlation left in residuals, then there is more pattern needs to be explained, and we can try to 
+      * increase the order of the model
+      * or bring in more predictors into the system
+      * or look for a different algorithm to model
+    * Durbin Watson’s Statistic
+      * Closer to 2 then there is no significant serial correlation
+      * Closer to 0 then positive serial correlation
+      * Closer to 4 then negative serial correlation
+  * There are points I can't agree:
+    * The way it calculates causality, using the matrix is a good idea, but the way to decide what caused what looks incorrect to me
 * [Example to use VAR detect ts anomalies][75]
 
 ### Granger Causality in Time Series
