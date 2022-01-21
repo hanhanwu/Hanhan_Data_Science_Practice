@@ -238,6 +238,10 @@
     * You can use Portmanteau test to check whether there is multivariate series correlation, and it's interesting that for this type of test, H0 is "there is no serial correlation"
 * [Check more details of VAR here][38]
   * Uni-directional vs bidirectional
+  * How does VAR work:
+    * VAR uses the lags of each ts as features
+    * It then fits features to least-squares or linear regression by using each ts as target separately
+    * The reason we can't use linear regression directly is because of the autoregression in the ts data 
   * Formulas for VAR, such as `VAR(1)`, `VAR(2)`
   * Order of Integration(d): the number of differencing required to make a non-stationary time series stationary
     * Cointegration Test: when you have two or more time series, and there exists a linear combination of them that has an order of integration (d) less than each of the individual series, then the collection of series is said to be cointegrated. This is what VAR is based on
@@ -254,6 +258,12 @@
   * There are points I can't agree:
     * The way it calculates causality, using the matrix is a good idea, but the way to decide what caused what looks incorrect to me
 * [Example to use VAR detect ts anomalies][75]
+  * It uses VAR with the best lag (smallest AIC) to fit the data and gets squared errors. It then auusmes the anomalies are those have squared error larger than a threshold.
+  * There're other multivariate models, such as:
+    * VMA (Vector Moving Average)
+    * VARMA (Vector Auto-Regression Moving Average)
+    * VARIMA (Vector Auto-Regressive Integrated Moving Average)
+    * VECM (Vector Error Correction Model) 
 
 ### Granger Causality in Time Series
 * Granger Causality tests whether variable `A` has a direct influence on `B` in `n` lags distance
