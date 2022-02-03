@@ -13,6 +13,7 @@
 * [ANOVA, categorical vs numerical][14]
   * Includes methods to check data Randomness, Noramality, Homogeneity assumptions
 * [Expectation & Variance of random variables][24]
+* [Efficient way to find roots of polynomial equation][26]
 
 ## Statistics Tables & Formulas
 * [Z table - Having z score to get p-value][8]
@@ -398,3 +399,4 @@ but it's easier to use pyton built-in functions
 [23]:https://www.analyticsvidhya.com/blog/2021/11/creating-a-simple-z-test-calculator-using-streamlit/?utm_source=feedburner&utm_medium=email
 [24]:https://www.analyticsvidhya.com/blog/2021/05/understanding-random-variables-their-distributions/
 [25]:https://www.analyticsvidhya.com/blog/2022/01/understanding-confidence-intervals-with-python/?utm_source=feedburner&utm_medium=email
+[26]:https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.root_scalar.html#scipy.optimize.root_scalar
