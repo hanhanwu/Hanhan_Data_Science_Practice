@@ -69,6 +69,10 @@ I have decided to systematically review all the details of deep learning, and or
 * [How to generate Siamese images][102]
   * "Siamese" means image pairs, normally is the pair of an image and its transformation
   * The image pairs can be used in evaluating unsupervisde image labeling method, such as MI methods like [IIC][90] or [MINE][92]
+* Image Labeling (annotation) Tools
+  * LabelImg: https://github.com/tzutalin/labelImg
+  * Intel OpenVINO CVAT: https://github.com/openvinotoolkit/cvat
+  * VGG Image Annotator: https://github.com/ox-vgg/via 
 
 ### Input Structure
 * The image below is showing the data input requirements for MLP, CNN and RNN
