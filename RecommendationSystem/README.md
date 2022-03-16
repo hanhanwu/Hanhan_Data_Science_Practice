@@ -94,6 +94,9 @@
 * [Golden Bridge - bridge individual & business users][2]
 * [Automatic & Interactive FLinraud Detection][3]
 
+## Applications
+* [Recommendation engine with simple algorithms][9]
+
 [1]:https://www.analyticsvidhya.com/blog/2019/07/how-to-build-recommendation-system-word2vec-python/?utm_source=blog&utm_medium=graph-feature-extraction-deepwalk
 [2]:https://github.com/hanhanwu/Hanhan_Break_the_Limits/tree/master/Bank_Fantasy/Golden_Bridge
 [3]:https://github.com/hanhanwu/Hanhan_Break_the_Limits/tree/master/attack_signals_recommendation_system
@@ -102,3 +105,4 @@
 [6]:https://lightgbm.readthedocs.io/en/latest/pythonapi/lightgbm.LGBMRanker.html
 [7]:https://stackoverflow.com/questions/64294962/how-to-implement-learning-to-rank-using-lightgbm/67627169#67627169
 [8]:https://github.com/microsoft/FLAML#examples
+[9]:https://www.analyticsvidhya.com/blog/2022/03/a-comprehensive-guide-on-recommendation-engines-and-implementation/?utm_source=feedburner&utm_medium=email
