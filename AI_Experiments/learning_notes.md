@@ -1088,8 +1088,14 @@ I have decided to systematically review all the details of deep learning, and or
     * ‼ In the code, it's making 2 mistakes:
       * The activation function in class MINE's `build_model()` should be `softmax`
       * The activation function in class LinearClassifier's `build_model()` should be `linear`
-   
+
+## More Unsupervised Deep Learning Models
+* [Restricted Boltzmann Machines (RBMs)][109]
+  * RBMs try to capture all patterns, parameters, and correlations among the data once the input is delivered 
+
+
 ## [Graph Neural Network][107]
+* Graph NN is part of this graph ML page
 
 ## [Deep Reinforcement Learning][84]
 
@@ -1225,3 +1231,4 @@ I just found some companies like to ask you to implement methods used in deep le
 [106]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter7-cross-domain-gan/other_utils.py#L178
 [107]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Graph_Database/Readme.md#graph-neural-network-gnn
 [108]:https://www.analyticsvidhya.com/blog/2021/12/image-operations-in-python-with-opencv/?utm_source=feedburner&utm_medium=email
+[109]:https://www.analyticsvidhya.com/blog/2022/03/a-brief-overview-of-restricted-boltzmann-machine-rbm/?utm_source=feedburner&utm_medium=email
