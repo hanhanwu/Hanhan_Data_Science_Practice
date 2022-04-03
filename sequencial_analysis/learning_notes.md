@@ -31,11 +31,11 @@
     * It manifests as repetitive and period variations in a ts
     * For example, a seasonality series can be a function of sine wave (`sin()`) with residuals 
     * "seasonal sub series" plots the mean or variance of de-trended residuals (seasonality + residuals) in each season (such as Q1, Q2, etc.)
-  * c: cyclical
+  * c: cycle
     * Comparing with seasonality:
       * It occurs less frequently than seasonal fluctuations
       * It may not have a fixed period of variations
-      * The average periodicity for cyclical changes can be larger (such as in years), while seasonal variations can happen within the same year
+      * The average periodicity for cycle changes can be larger (such as in years), while seasonal variations can happen within the same year
       * This is not the part to be removed when making the ts stationary, since it's not time dependent and can only be explained by exogenous variables, when we check stationary, exogenous variables are not considered.
   * e: residuals
     * Irreducible error component, random and doesn't systematic dependent on the time index. It's caused by the lack of info of explanatory variables that can model the variations, or caused by random noise
