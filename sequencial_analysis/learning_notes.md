@@ -91,7 +91,6 @@
     
 * Exponential Smoothing Methods
   * The limitation of moving average and weighted moving average is the ignorance of observation recency effect (equally weighted in a window), and exponential smoothing methods can help deal with this issue by having exponential decaying weights on observations (older data gets lower weights)
-  * <b>Need to convert the ts to stationary</b> before applying moving average and exponential smoothing methods, since that align with the assumption of these methods
   * Smoothing methods are used to remove random noise, but can be extended for forecasting by ading smoothing factor α, trend factor β, seasonality factor γ in exponential smoothing methods
   * First order exponential smoothing
     * `F_t = α*x_t + (1-α)*F_t-1`, x_i is observation value, α is the smoothing factor in [0,1] range
