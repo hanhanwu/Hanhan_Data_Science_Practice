@@ -379,6 +379,11 @@ I have decided to systematically review all the details of deep learning, and or
 * It takes very long time to run DenseNet while the performance may not be much better than ResNet
 
 ## RNN
+* [Understand RNN deeper][110]
+  * Comparing with ANN, how does RNN works
+  * How does RNN back propagastion work
+  * Why RNN only has a short term memory
+  * How does vanishing gradient problem happen
 * RNN is trying to help analysis on a sequence, so that there could be more context, and therefore they are often used in NLP.
 * RNN can also be applied to images, see [example here][53]
   * Each image can be considered as "height" number of sequences that each sequence with length of "width"
@@ -1232,3 +1237,4 @@ I just found some companies like to ask you to implement methods used in deep le
 [107]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Graph_Database/Readme.md#graph-neural-network-gnn
 [108]:https://www.analyticsvidhya.com/blog/2021/12/image-operations-in-python-with-opencv/?utm_source=feedburner&utm_medium=email
 [109]:https://www.analyticsvidhya.com/blog/2022/03/a-brief-overview-of-restricted-boltzmann-machine-rbm/?utm_source=feedburner&utm_medium=email
+[110]:https://www.analyticsvidhya.com/blog/2022/04/recurrent-neural-networks-digging-a-bit-deeper/?utm_source=feedburner&utm_medium=email
