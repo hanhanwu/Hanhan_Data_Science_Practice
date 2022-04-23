@@ -802,6 +802,10 @@ I have decided to systematically review all the details of deep learning, and or
 
 ### Other
 * [A trick when tunning GAN][39]
+* GANs to change image styles
+  * [StyleGAN - Tensorflow][111]
+  * [JojoGAN - PyTorch][112]
+    * [An example][113], JojoGAN supports fast training
 
 ## Variational Autoencoders (VAE)
 * Same as GANs, VAEs also belong to generative models family
@@ -1238,3 +1242,6 @@ I just found some companies like to ask you to implement methods used in deep le
 [108]:https://www.analyticsvidhya.com/blog/2021/12/image-operations-in-python-with-opencv/?utm_source=feedburner&utm_medium=email
 [109]:https://www.analyticsvidhya.com/blog/2022/03/a-brief-overview-of-restricted-boltzmann-machine-rbm/?utm_source=feedburner&utm_medium=email
 [110]:https://www.analyticsvidhya.com/blog/2022/04/recurrent-neural-networks-digging-a-bit-deeper/?utm_source=feedburner&utm_medium=email
+[111]:https://github.com/NVlabs/stylegan
+[112]:https://github.com/mchong6/JoJoGAN
+[113]:https://www.analyticsvidhya.com/blog/2022/04/an-introduction-to-creating-stylized-sketches-of-faces-using-jojogan/?utm_source=feedburner&utm_medium=email
