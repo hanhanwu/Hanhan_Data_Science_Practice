@@ -5,6 +5,18 @@
   * [t-test in python and R][21] 
   * [z-test in python][23]
   * [Calculate confidence interval with t-score][25], python example
+* [Some Parametric & Non-parametric Hypothesis Testing][27]
+  * The parametric tests is that we have a fixed set of parameters that are used to determine a probabilistic model 
+  * Parametric Tests for Hypothesis testing
+    * T-test
+    * Z-test
+    * F-test
+    * ANOVA
+  * Non-parametric Tests for Hypothesis testing
+    * Chi-square
+    * Mann-Whitney U-test
+    * Kruskal-Wallis H-test
+
 * KS (Kolmogorov–Smirnov) test for 2 samles comparision
   * It is a statistical hypothesis test that checks whether a test set is sampled from the same probability distribution as a reference set.
   * [KS test is able to find the variance that can be ignored by t-test][15]
@@ -400,3 +412,4 @@ but it's easier to use pyton built-in functions
 [24]:https://www.analyticsvidhya.com/blog/2021/05/understanding-random-variables-their-distributions/
 [25]:https://www.analyticsvidhya.com/blog/2022/01/understanding-confidence-intervals-with-python/?utm_source=feedburner&utm_medium=email
 [26]:https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.root_scalar.html#scipy.optimize.root_scalar
+[27]:https://www.analyticsvidhya.com/blog/2021/06/hypothesis-testing-parametric-and-non-parametric-tests-in-statistics/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
