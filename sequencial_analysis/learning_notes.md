@@ -497,6 +497,12 @@
 * sklearn feature selectors allow you to use different machine learning estimators: https://scikit-learn.org/stable/modules/classes.html#module-sklearn.feature_selection
 
 ### Validation, Testing, Evaluation of Time Series Forecasting
+
+#### Promising Forecasting Tools
+* [AutoTS][76]
+* [Darts][77]
+* [Greykits][78]
+
 #### NOTES 💝
 * Exponential smoothing will bring in lookahead in forecasting, because your data has fitted to an exponential smoothing formula before forefasting
   * And any method that will fit both training and testing time series data into a formula. <b>Be cautious about lookahead before applying a preprocessing method</b>
@@ -714,3 +720,6 @@
 [73]:https://github.com/alan-turing-institute/TCPD
 [74]:https://www.digitalocean.com/community/tutorials/a-guide-to-time-series-forecasting-with-arima-in-python-3
 [75]:https://www.analyticsvidhya.com/blog/2021/08/multivariate-time-series-anomaly-detection-using-var-model/
+[76]:https://github.com/winedarksea/autots
+[77]:https://github.com/unit8co/darts
+[78]:https://github.com/linkedin/greykite
