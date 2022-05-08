@@ -66,6 +66,7 @@
     * Autocorrelation is a value between [-1, 1]
   * ACF plot
     * Each vertical bar indicates the autocorrelation between ith ts and i+gth ts, given a confidence level (such as 95%), out of the confidence interval (the threshold lines), the autocorrelation is significant
+    * For example, we see high autocorrelation at lag 12, it means the correlation between 1st & 13th observations, 2nd & 14th observations, and so on
   * PACF
     * In ACF, the autocorrelation between ith ts and i+gth ts can be affected by i+1th, t+2th, ..., i+g-1th ts too, so PACF removes the influences from these intermediate variables and only checks the autocorrelation between ith ts and i+gth ts
     * Lag0 always has autocorrelation as 1
