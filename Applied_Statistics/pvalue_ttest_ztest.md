@@ -18,6 +18,9 @@
   * When population variance is known -> z-test
     
 ## z-test
+
+* Note: `z-score` is different, here's the formula of z-score: https://www.google.com/search?client=firefox-b-d&q=z+score+formula
+
 ### One Sample z-test
 * The hypothesis tests compares a sample means with an assumped mean (population mean)
 <p align="center">
