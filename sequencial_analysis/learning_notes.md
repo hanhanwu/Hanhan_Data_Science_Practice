@@ -67,6 +67,7 @@
   * ACF plot
     * Each vertical bar indicates the autocorrelation between ith ts and i+gth ts, given a confidence level (such as 95%), out of the confidence interval (the threshold lines), the autocorrelation is significant
     * For example, we see high autocorrelation at lag 12, it means the correlation between 1st & 13th observations, 2nd & 14th observations, and so on
+    * It seems that ACF can help disclose seasoanlity pattern, see [example 1][79] and [example 2][80]
   * PACF
     * In ACF, the autocorrelation between ith ts and i+gth ts can be affected by i+1th, t+2th, ..., i+g-1th ts too, so PACF removes the influences from these intermediate variables and only checks the autocorrelation between ith ts and i+gth ts
     * Lag0 always has autocorrelation as 1
@@ -724,3 +725,5 @@
 [76]:https://github.com/winedarksea/autots
 [77]:https://github.com/unit8co/darts
 [78]:https://github.com/linkedin/greykite
+[79]:https://docs.oracle.com/cd/E57185_01/CBPUG/PRHistData_Autocorr.htm
+[80]:https://stats.stackexchange.com/questions/263366/interpreting-seasonality-in-acf-and-pacf-plots
