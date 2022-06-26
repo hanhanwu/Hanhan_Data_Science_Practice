@@ -181,6 +181,10 @@ I have decided to systematically review all the details of deep learning, and or
     * Exponetial Smoothing
 
 #### Loss Functions
+* [Deep Learning Loss Functions][114]
+  * Loss function vs Cost function
+  * Loss functions used in regresssion, binary classification, multi-class classification
+  * Pros & Cons of each loss functions 
 * The training process is trying to reduce the loss.
 * `crossentropy`
   * Good choice for probability output.
@@ -1245,3 +1249,4 @@ I just found some companies like to ask you to implement methods used in deep le
 [111]:https://github.com/NVlabs/stylegan
 [112]:https://github.com/mchong6/JoJoGAN
 [113]:https://www.analyticsvidhya.com/blog/2022/04/an-introduction-to-creating-stylized-sketches-of-faces-using-jojogan/?utm_source=feedburner&utm_medium=email
+[114]:https://www.analyticsvidhya.com/blog/2022/06/understanding-loss-function-in-deep-learning/?utm_source=feedburner&utm_medium=email
