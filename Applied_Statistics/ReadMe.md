@@ -16,6 +16,7 @@
     * Chi-square
     * Mann-Whitney U-test
     * Kruskal-Wallis H-test
+  * Besides, [this can serve as a reference][28] to get more info, but don't fully trust every word
 
 * KS (Kolmogorov–Smirnov) test for 2 samles comparision
   * It is a statistical hypothesis test that checks whether a test set is sampled from the same probability distribution as a reference set.
@@ -413,3 +414,4 @@ but it's easier to use pyton built-in functions
 [25]:https://www.analyticsvidhya.com/blog/2022/01/understanding-confidence-intervals-with-python/?utm_source=feedburner&utm_medium=email
 [26]:https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.root_scalar.html#scipy.optimize.root_scalar
 [27]:https://www.analyticsvidhya.com/blog/2021/06/hypothesis-testing-parametric-and-non-parametric-tests-in-statistics/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+[28]:https://www.analyticsvidhya.com/blog/2022/06/hypothesis-testing-in-inferential-statistics/?utm_source=feedburner&utm_medium=email
