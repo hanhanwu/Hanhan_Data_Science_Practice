@@ -153,6 +153,8 @@ I have decided to systematically review all the details of deep learning, and or
 * `rmsprop` and `adam` are often used
 * It's recommended to start with a larger learning rate, and decrease it as the loss is getting closer to the minimum
 * This paper (https://arxiv.org/pdf/2103.05127.pdf) written in 2021 talked about the model complexicity in optimization
+* [Details of each optimizer][115]
+
 #### Loss Function (Objective) & Optimizer & Regularizer
 * The goal of deep learning is to reduce the loss function during training
 * To minimize this loss value, optimizer is employed to determine how weights and bias should be adjusted during each training step
@@ -1250,3 +1252,4 @@ I just found some companies like to ask you to implement methods used in deep le
 [112]:https://github.com/mchong6/JoJoGAN
 [113]:https://www.analyticsvidhya.com/blog/2022/04/an-introduction-to-creating-stylized-sketches-of-faces-using-jojogan/?utm_source=feedburner&utm_medium=email
 [114]:https://www.analyticsvidhya.com/blog/2022/06/understanding-loss-function-in-deep-learning/?utm_source=feedburner&utm_medium=email
+[115]:https://www.analyticsvidhya.com/blog/2021/10/a-comprehensive-guide-on-deep-learning-optimizers/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
