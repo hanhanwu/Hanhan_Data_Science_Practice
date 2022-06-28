@@ -209,6 +209,8 @@
 * After choosing the orders need to check the normality of residuals of the model to see whether it's normally distributed
   * q-q plot, check the [example here][74]
   * Shapiro-wilk test
+* [Example of using Auto ARIMA to find optimal params automatically][81]
+  * Also contains the usage of `plot_diagnostics()` 
 * `plot_diagnostics()`
   * Check residual to see whether it's random enough
   * Both Q-Q plot and Histogram & KDE plot are checking whether the residual is normally distributed
@@ -727,3 +729,4 @@
 [78]:https://github.com/linkedin/greykite
 [79]:https://docs.oracle.com/cd/E57185_01/CBPUG/PRHistData_Autocorr.htm
 [80]:https://stats.stackexchange.com/questions/263366/interpreting-seasonality-in-acf-and-pacf-plots
+[81]:https://www.analyticsvidhya.com/blog/2021/04/time-series-analysis-forecast-covid-19-vaccination-rate/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
