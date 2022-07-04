@@ -69,7 +69,7 @@
     * For example, we see high autocorrelation at lag 12, it means the correlation between 1st & 13th observations, 2nd & 14th observations, and so on
     * It seems that ACF can help disclose seasonality pattern, see [example 1][79] and [example 2][80]
   * PACF
-    * In ACF, the autocorrelation between ith ts and i+gth ts can be affected by i+1th, t+2th, ..., i+g-1th ts too, so PACF removes the influences from these intermediate variables and only checks the autocorrelation between ith ts and i+gth ts
+    * In ACF, the autocorrelation between ith ts and i+gth ts can be affected by i+1th, i+2th, ..., i+g-1th ts too, so PACF removes the influences from these intermediate variables and only checks the autocorrelation between ith ts and i+gth ts
     * Lag0 always has autocorrelation as 1
     * In the example PACF [here][2], besides lag0, only at lag1 there is significant autocorrelation, so the order for AR model is 1
     * Sometimes, PACF has a critical value for a large lag, which is caused by seasonal cycle. We can set `m` in SARIMA with this lag value to catch the seasonality
