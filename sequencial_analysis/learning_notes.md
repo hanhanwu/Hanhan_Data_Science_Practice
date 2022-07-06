@@ -421,7 +421,7 @@
 * Main methods to impute missing data
   * With/Without Lookahead
     * Having lookahead can improve imputation quality from domain knowledge sense. However, if the problem is forecasting, lookahead has to be avoided!
-  * Forward/Backword fill
+  * Forward/Backward fill
     * Forward fill is to carry forward the last known value prior to the missing one
     * Of course, if you need to avoid lookahead, forward fill is the right choice
   * Moving Average
