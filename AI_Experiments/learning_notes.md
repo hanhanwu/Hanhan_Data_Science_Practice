@@ -1032,6 +1032,9 @@ I have decided to systematically review all the details of deep learning, and or
   * The number of filters in the features' pyramid can be reduced to reduce the # of params
   * Increasing the number of levels in the features' pyramid can also be explored
 
+### Other Image Segmentation
+* [Threshold-base, Edge-base, Region-based, Clustering-based, NN-based, Watershed Segmentation methods with code][117]
+
 ## Unsupervised Learning using Mutual Information (MI)
 * One of a successful unsupervised learning in deep learning is to maximize the MI between 2 random variables
   * MI helps cluster latent vectors
@@ -1257,3 +1260,4 @@ I just found some companies like to ask you to implement methods used in deep le
 [114]:https://www.analyticsvidhya.com/blog/2022/06/understanding-loss-function-in-deep-learning/?utm_source=feedburner&utm_medium=email
 [115]:https://www.analyticsvidhya.com/blog/2021/10/a-comprehensive-guide-on-deep-learning-optimizers/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
 [116]:https://www.analyticsvidhya.com/blog/2021/09/a-comprehensive-guide-on-neural-networks-performance-optimization/
+[117]:https://www.analyticsvidhya.com/blog/2021/09/image-segmentation-algorithms-with-implementation-in-python/
