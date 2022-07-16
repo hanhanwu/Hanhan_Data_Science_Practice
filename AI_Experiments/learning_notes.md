@@ -13,6 +13,9 @@ I have decided to systematically review all the details of deep learning, and or
       * grey image (black and white) has 1 channel, RGB image has 3 channels (red, green and blue)
     * Each pixel has a value between 0 and 255, smaller values is darker color, higher value is brighter color (0 is black, 255 is white)  
 
+## Tips on Improving Deep Learning Performance
+* [Tips on NN architecture, weight initialization, reduce overfitting, normalization, gradient clipping, HPO][116]
+
 ## [Deep Learning in Time Series / Sequential Analysis Learning Notes][46]
 
 ## Tensorflow Keras Tips
@@ -1253,3 +1256,4 @@ I just found some companies like to ask you to implement methods used in deep le
 [113]:https://www.analyticsvidhya.com/blog/2022/04/an-introduction-to-creating-stylized-sketches-of-faces-using-jojogan/?utm_source=feedburner&utm_medium=email
 [114]:https://www.analyticsvidhya.com/blog/2022/06/understanding-loss-function-in-deep-learning/?utm_source=feedburner&utm_medium=email
 [115]:https://www.analyticsvidhya.com/blog/2021/10/a-comprehensive-guide-on-deep-learning-optimizers/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+[116]:https://www.analyticsvidhya.com/blog/2021/09/a-comprehensive-guide-on-neural-networks-performance-optimization/
