@@ -925,7 +925,10 @@ I have decided to systematically review all the details of deep learning, and or
 * Multi-scale object detection
   * During the process of creating anchor boxes of various dimensions, an optimal anchor box size that nearest to the ground truth bounding box will emerge
   * Multi-scale object detection uses multi-scale anchor boxes to effectively detect objects of different sizes
-    
+
+### Anchor Free Algorithms
+* [FCOS (Fully Convolutional One-Stage Object Detection)][119]
+
 ### SSD (Single-Shot Detection)
 * It's a supervised object detection method
 #### Loss Functions
@@ -1267,3 +1270,4 @@ I just found some companies like to ask you to implement methods used in deep le
 [116]:https://www.analyticsvidhya.com/blog/2021/09/a-comprehensive-guide-on-neural-networks-performance-optimization/
 [117]:https://www.analyticsvidhya.com/blog/2021/09/image-segmentation-algorithms-with-implementation-in-python/
 [118]:https://www.analyticsvidhya.com/blog/2021/09/active-contours-a-method-for-image-segmentation-in-computer-vision/
+[119]:https://www.analyticsvidhya.com/blog/2022/07/high-accuracy-lightweight-and-superfast-model-nanodet-plus/?utm_source=feedburner&utm_medium=email
