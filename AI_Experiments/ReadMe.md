@@ -19,6 +19,7 @@ Neural Network is a universal approximator, which means you can use it to implme
     * `loss = distance(style(reference_image) - style(generated_image)) + distance(content(original_image) - content(generated_image))`
 * [GPT-3][37]
   * It's a poswerful GPT series model that's trained with almost all the data on the Intenet, and therefore it can do many things such as writing essays, poems, writing code, writing songs, etc.. Also super expensive to train.
+  * You can go to OpenAI Playground: https://beta.openai.com/playground/p/default-vr-fitness, [here're some examples of this amazing API][44]
 
 
 ## RESOURCES
@@ -768,3 +769,4 @@ Neural Network is a universal approximator, which means you can use it to implme
 [41]:https://www.analyticsvidhya.com/blog/2021/08/ensemble-stacking-for-machine-learning-and-deep-learning/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
 [42]:https://www.analyticsvidhya.com/blog/2021/12/all-nlp-tasks-using-transformers-package/?utm_source=feedburner&utm_medium=email
 [43]:https://www.analyticsvidhya.com/blog/2022/03/introductory-guide-on-the-activation-functions/?utm_source=feedburner&utm_medium=email
+[44]:https://www.analyticsvidhya.com/blog/2021/05/hands-on-experience-with-gpt3/
