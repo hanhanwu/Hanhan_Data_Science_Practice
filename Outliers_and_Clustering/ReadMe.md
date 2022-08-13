@@ -9,6 +9,10 @@ Outliers Detection and Clustering are related to each other, and in a world with
 * As [my data mining bible reading notes][1] recorded (Chapter 11, high demensional clustering), even it's biclustering (such as <b>MaPle</b>), which searches subsapace in both objects and features, can be time consuming because it enumerates all the subspaces. Here is another implemented example of [HiCS, LOF with description][2], [HiCS code only][3], according to the author, HiCS can solve the subspaces search in an more effective way. I think so, since MaPle is publised in 2008, HiCS is published in 2012. So deserve to try
 * People have also implemneted another method to detect outliers, [LOF][4], it is densitiy based, and calculates nearest neighbours. Note that, when there is high dimensional features, PCA (linear regression model), LOF (proximity-based) can be less effective. This is the so-called The Curse of Dimensionality, when there are more dimensions, these methods can be time consuming, and outliers, random noise could make the calculation results lose meaning
 
+### Proxity Measures
+* [How to use Proximity measure to calculate similarity/dissimilarity][11]
+  * Matrix, same or different rates
+
 ### Clustering Evaluation Methods
 * NMI (Normalized Mutual Information)
   ![NMI](https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Outliers_and_Clustering/NMI.png)
@@ -272,3 +276,4 @@ to be clustered.
 [8]:https://www.analyticsvidhya.com/blog/2020/09/how-dbscan-clustering-works/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
 [9]:https://scikit-learn.org/stable/modules/generated/sklearn.cluster.OPTICS.html
 [10]:https://www.analyticsvidhya.com/blog/2021/08/hierarchical-clustering-algorithm-python/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
+[11]:https://www.analyticsvidhya.com/blog/2021/04/proximity-measures-in-data-mining-and-machine-learning/
