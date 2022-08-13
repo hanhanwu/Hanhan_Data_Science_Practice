@@ -724,6 +724,7 @@ Neural Network is a universal approximator, which means you can use it to implme
   * [Detecto][40] 
 * [Transformer's Pipeline][42]
   * The pipeline can be used to execute different NLP tasks, such as Named Entity Recognition, Masked Language Modeling, Sentiment Analysis, Feature Extraction, Question Answering, etc. 
+* [Realtime Visual Bakground Replacement with CVZone & OpenCV][45]
 
 
 [1]:https://stackoverflow.com/questions/45912124/python-keras-how-to-generate-right-image-dimension
@@ -770,3 +771,4 @@ Neural Network is a universal approximator, which means you can use it to implme
 [42]:https://www.analyticsvidhya.com/blog/2021/12/all-nlp-tasks-using-transformers-package/?utm_source=feedburner&utm_medium=email
 [43]:https://www.analyticsvidhya.com/blog/2022/03/introductory-guide-on-the-activation-functions/?utm_source=feedburner&utm_medium=email
 [44]:https://www.analyticsvidhya.com/blog/2021/05/hands-on-experience-with-gpt3/
+[45]:https://www.analyticsvidhya.com/blog/2021/07/learn-how-to-do-real-time-background-replacement-using-opencv-and-cvzone/
