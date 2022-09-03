@@ -138,6 +138,8 @@ I have decided to systematically review all the details of deep learning, and or
 * In deep learning, layers like `Dense` only does linear operation, and a sequence of `Dense` only approximate a linear function. 
 * Inserting the activation function enables the non-linear mappings.
 * [Formula, prod & cons of activation functions][50]
+  * [Equation & deviation formula of activation functions][121] 
+  * [More activation functions and pros & cons][120] 
   * `relu` is simple to compute and often used, can only be used in the hidden layers
   * `sigmoid` (output value in 0..1 range) and `tanh` (output value in -1..1 range) can be used in the last layer, for binary classification
     * `tanh` is also popularly used in the hidden layers of RNN 
@@ -1271,3 +1273,5 @@ I just found some companies like to ask you to implement methods used in deep le
 [117]:https://www.analyticsvidhya.com/blog/2021/09/image-segmentation-algorithms-with-implementation-in-python/
 [118]:https://www.analyticsvidhya.com/blog/2021/09/active-contours-a-method-for-image-segmentation-in-computer-vision/
 [119]:https://www.analyticsvidhya.com/blog/2022/07/high-accuracy-lightweight-and-superfast-model-nanodet-plus/?utm_source=feedburner&utm_medium=email
+[120]:https://www.analyticsvidhya.com/blog/2022/03/introductory-guide-on-the-activation-functions/?utm_source=feedburner&utm_medium=email
+[121]:https://www.analyticsvidhya.com/blog/2021/04/activation-functions-and-their-derivatives-a-quick-complete-guide/
