@@ -4,6 +4,7 @@ For more complex models Reinforcement Learning (RL) can struggle with scale, and
 
 ## Basics
 * [Terminology][9]
+* [Q-learning basics][10]
 
 ## Principles of RL
 * Q-Learning
@@ -58,3 +59,4 @@ For more complex models Reinforcement Learning (RL) can struggle with scale, and
 [7]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter9-drl/dqn-cartpole-9.6.1.py
 [8]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter10-policy/policygradient-car-10.1.1.py
 [9]:https://towardsdatascience.com/reinforcement-learning-rl-what-is-it-and-how-does-it-work-1962cf6db103
+[10]:https://towardsdatascience.com/q-learning-algorithm-how-to-successfully-teach-an-intelligent-agent-to-play-a-game-933595fd1abf
