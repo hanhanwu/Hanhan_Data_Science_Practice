@@ -2,6 +2,9 @@
 
 For more complex models Reinforcement Learning (RL) can struggle with scale, and Deep Reinforcement Learning (DRL) has been developed to resolve the scalability problem.
 
+## Basics
+* [Terminology][9]
+
 ## Principles of RL
 * Q-Learning
   * [Python example of a simple Q-learning problem][3]
@@ -54,3 +57,4 @@ For more complex models Reinforcement Learning (RL) can struggle with scale, and
 [6]:https://play.google.com/books/reader?id=68rTDwAAQBAJ&hl=en_CA&pg=GBS.PA313.w.8.0.32.0.1
 [7]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter9-drl/dqn-cartpole-9.6.1.py
 [8]:https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter10-policy/policygradient-car-10.1.1.py
+[9]:https://towardsdatascience.com/reinforcement-learning-rl-what-is-it-and-how-does-it-work-1962cf6db103
