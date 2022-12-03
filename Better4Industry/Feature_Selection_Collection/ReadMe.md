@@ -14,7 +14,7 @@ In industry, many times we need to generate features, understanding them and gen
   * In this force plot, the "base value" of the estimated average predicted value from the model training (in new SHAP version, it's using leaf nodes and no longer the same as avg of forecasted values...), the "output value" is the predicted value of current observation. Pink is the position impact (dragging the prediction value higher or towards 1) while blue is the negative impact (dragging the prediction value lower or towards 0).
   * The length of the bar for each feature indicates to which extent the feature affect the forecasted value
   * `output value = base value + sum(all features' SHAP values)`
-    * Because of this, sometimes when you got negative forecast values, you can shift the output value to the right and split the shifted difference to each feature. By doing this the base value will stay the same, feature's impact visually stay almost the same and the forecasted value has been "corrected".
+    * Because of this, sometimes when you got negative forecast values, you can shift the output value to the right and split the shifted difference to each feature (better to shift proportional to each feature's absoluve SHAP so that we can keep original feature importance as much as possible). By doing this the base value will stay the same, feature's impact visually stay almost the same and the forecasted value has been "corrected".
       * BTW, [here's an explaination][7] about why you may get negative forecasting values in a boosting regressor even when the training target values are all positive
 * [SHAP decision plot][3]
   * [Code example][4]
