@@ -24,6 +24,7 @@ In industry, many times we need to generate features, understanding them and gen
     * In the `decision plot`, by default the features are ordered by importance order. When there are multiple records, the importance of a feature is the sum of absolute shap values of the feature
   * Include multiple records plot
   * For each record, it shows how does each feature value lead to the final prediction result
+* [More Advanced SHAP Insights][9]
 
 ## Tips
 * The base value generated from TreeExplainer `expected_value` can be different from the average forecatsed result when using model `predict()`, when [the TreeExplainer depends on some settings from the training data, such as leaf sample weights for random subsample][8]
@@ -85,3 +86,4 @@ display(shap_deci_plot)
 [6]:https://shap-lrjball.readthedocs.io/en/docs_update/api.html
 [7]:https://datascience.stackexchange.com/questions/565/why-does-gradient-boosting-regression-predict-negative-values-when-there-are-no
 [8]:https://github.com/slundberg/shap/issues/318
+[9]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/tree/master/Better4Industry/shap_advance
