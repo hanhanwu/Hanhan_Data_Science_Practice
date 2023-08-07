@@ -90,7 +90,7 @@ I have decided to systematically review all the details of deep learning, and or
 * When the arrangement of labels not distributed similar for training and testing data, better to shuffle the data before spliting into training and testing.
 
 ### Better to Normalize to the same range
-* When features are in different ranges, better to normalize them into the same range.
+* When features are in different ranges, better to normalize them into the same range. This helps maintain stable gradients (Gradients are the values used to update the model's parameters during training. When features have different scales, the gradients can become large for some features and small for others) and get faster convergence.
   * For optimization functions, scaling the dependent & independent variables into [-1, 1] range ([0,1] range works too) or [-3, 3] range helps gradient descent, such as makes the converge faster
 * [sklearn functions][7]
 * [How to Normalize Colored Images][106]
