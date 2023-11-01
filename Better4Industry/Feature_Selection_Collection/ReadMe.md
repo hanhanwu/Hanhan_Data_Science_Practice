@@ -86,7 +86,7 @@ shap_deci_plot = shap.decision_plot(expected_tree, shap_tree[idx], feature_names
 display(shap_deci_plot)
 ```
 
-* Apply SHAP on binary classifiers like LGBM, XGBoost, these classifiers are built on the log-odds scale and then just transformed to probabilities for predict_proba. So SHAP values are also in log odds units. A negative base value means you are more likely class 0 than 1, and the sum will equal the log-odds output of the model not the transformed probability after the logistic function. It you need you SHAP output probability scale, code as below, making sure you have `data` specified in TreeExplainer and `model_output='probability', feature_dependence='independent'`:
+* Apply SHAP on binary classifiers like LGBM, XGBoost, these classifiers are built on the log-odds scale and then just transformed to probabilities for predict_proba. So SHAP values are also in log odds units. A negative base value means you are more likely class 0 than 1, and the sum will equal the log-odds output of the model not the transformed probability after the logistic function. It you need you SHAP output probability scale, code as below, making sure you have `data` specified in TreeExplainer and `model_output='probability', feature_dependence='independent'` ([complete example code][10]):
 
 ```
 explainer_real = shap.TreeExplainer(model_real, data=encoded_X_train, 
@@ -108,3 +108,4 @@ print(f"Explainer expected value (Base Value): {expected_tree_real}")
 [7]:https://datascience.stackexchange.com/questions/565/why-does-gradient-boosting-regression-predict-negative-values-when-there-are-no
 [8]:https://github.com/slundberg/shap/issues/318
 [9]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/tree/master/Better4Industry/shap_advance
+[10]:https://github.com/hanhanwu/Hanhan_My_Garden/blob/main/code/secret_guest/cgan_exps/deep_dive.ipynb
