@@ -86,6 +86,18 @@ shap_deci_plot = shap.decision_plot(expected_tree, shap_tree[idx], feature_names
 display(shap_deci_plot)
 ```
 
+* Apply SHAP on binary classifiers like LGBM, XGBoost, these classifiers are built on the log-odds scale and then just transformed to probabilities for predict_proba. So SHAP values are also in log odds units. A negative base value means you are more likely class 0 than 1, and the sum will equal the log-odds output of the model not the transformed probability after the logistic function. It you need you SHAP output probability scale, code as below, making sure you have `data` specified in TreeExplainer and `model_output='probability', feature_dependence='independent'`:
+
+```
+explainer_real = shap.TreeExplainer(model_real, data=encoded_X_train, 
+                                    model_output='probability', feature_dependence='independent')
+shap_values_real = explainer_real(encoded_X_test)
+expected_tree_real = explainer_real.expected_value
+if isinstance(expected_tree_real, list):
+    expected_tree_real = expected_tree_real[1]
+print(f"Explainer expected value (Base Value): {expected_tree_real}")
+```
+
 
 [1]:https://github.com/hanhanwu/Hanhan_Data_Science_Practice/blob/master/Better4Industry/Feature_Selection_Collection/try_shap_xgboost.ipynb
 [2]:https://www.analyticsvidhya.com/blog/2019/11/shapley-value-machine-learning-interpretability-game-theory/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+AnalyticsVidhya+%28Analytics+Vidhya%29
