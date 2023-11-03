@@ -87,6 +87,7 @@ display(shap_deci_plot)
 ```
 
 * Apply SHAP on binary classifiers like LGBM, XGBoost, these classifiers are built on the log-odds scale and then just transformed to probabilities for predict_proba. So SHAP values are also in log odds units. A negative base value means you are more likely class 0 than 1, and the sum will equal the log-odds output of the model not the transformed probability after the logistic function. It you need you SHAP output probability scale, code as below, making sure you have `data` specified in TreeExplainer and `model_output='probability', feature_dependence='independent'` ([complete example code][10]):
+  * <b>NOTE:</b> this method may not work for CatBoost (till SHAP==0.43.0, catboost=1.2.2 this is still a bug), however, you can use `np.exp(shap_value)/(1+np.exp(shap_value))` to convert SHAP's log odds output to probability format (only need `shap.TreeExplainer(model)`).
 
 ```
 explainer_real = shap.TreeExplainer(model_real, data=encoded_X_train, 
