@@ -26,7 +26,6 @@ In industry, many times we need to generate features, understanding them and gen
     * Because of this, sometimes when you got negative forecast values, you can shift the output value to the right and split the shifted difference to each feature (better to shift proportional to each feature's absoluve SHAP so that we can keep original feature importance as much as possible). By doing this the base value will stay the same, feature's impact visually stay almost the same and the forecasted value has been "corrected".
       * BTW, [here's an explaination][7] about why you may get negative forecasting values in a boosting regressor even when the training target values are all positive
 * [SHAP decision plot][3]
-  * [Code example][4]
     * Just need trained model and feature values, no need lables in the data
     * Add `link='logit'` in the `decision_plot()` function will convert log odds back to prediction probabilities (SHAP value is log odds)
   * [SHAP decision source code][5]
@@ -34,8 +33,14 @@ In industry, many times we need to generate features, understanding them and gen
   * Include multiple records plot
   * For each record, it shows how does each feature value lead to the final prediction result
 * [More Advanced SHAP Insights][9]
+* SHAP for binary classification, by default, the generated SHAP values are log odds. Adding `data`, `model_output` and `feature_dependence` as below can convert SHAP values back to probabilities
+```
+explainer = shap.TreeExplainer(enc_model, data=encoded_X_test,
+                               model_output='probability',
+                               feature_dependence='independent')
+```
 
-## Tips
+ 
 * The base value generated from TreeExplainer `expected_value` can be different from the average forecatsed result when using model `predict()`, when [the TreeExplainer depends on some settings from the training data, such as leaf sample weights for random subsample][8]
   * With SHAP version <=0.33, you can pass X_train to SHAP instead of using the trained model
   * Otherwise, the new version of SHAP is no longer the "average forecasted value", it's calcukated using leaf nodes
